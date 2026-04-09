@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lifted.vc — Pre-Seed & Seed Fundraising Specialists</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F8F7F2; --ink: #0B0B09; --accent: #1A47FF;
+      --accent-light: #EEF1FF; --muted: #6B6B60;
+      --border: #E0DED6; --white: #FFFFFF;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,242,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-weight:800;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;}
+    .logo span{color:var(--accent);}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+    .nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-cta{background:var(--ink);color:var(--white)!important;padding:8px 18px;border-radius:6px;font-weight:600!important;transition:background .15s!important;}
+    .nav-cta:hover{background:var(--accent)!important;}
+
+    /* SECTION */
+    section{padding:96px 32px;}
+    .section-inner{max-width:1100px;margin:0 auto;}
+    .section-tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+    h2{font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.025em;line-height:1.1;color:var(--ink);margin-bottom:16px;}
+    .section-sub{font-size:18px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:48px;}
+
+    /* HERO */
+    .hero{padding:140px 32px 96px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:5px 12px;border-radius:4px;margin-bottom:24px;}
+    .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    h1{font-weight:800;font-size:clamp(38px,5vw,60px);line-height:1.07;letter-spacing:-.03em;color:var(--ink);margin-bottom:24px;}
+    h1 em{font-style:normal;color:var(--accent);}
+    .hero-sub{font-size:18px;line-height:1.65;color:var(--muted);margin-bottom:36px;max-width:440px;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+    .btn-primary{background:var(--ink);color:var(--white);padding:14px 28px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:background .15s,transform .1s;display:inline-flex;align-items:center;gap:8px;}
+    .btn-primary:hover{background:var(--accent);transform:translateY(-1px);}
+    .btn-secondary{background:transparent;color:var(--ink);padding:14px 28px;border-radius:8px;border:1.5px solid var(--border);font-size:15px;font-weight:600;text-decoration:none;transition:border-color .15s,transform .1s;}
+    .btn-secondary:hover{border-color:var(--ink);transform:translateY(-1px);}
+    .btn-white{background:var(--white);color:var(--ink);padding:13px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .15s,transform .1s;}
+    .btn-white:hover{background:var(--accent);color:var(--white);transform:translateY(-1px);}
+
+    .hero-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 4px 40px rgba(0,0,0,.06);position:relative;overflow:hidden;}
+    .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+    .hero-card-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+    .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+    .stat-box{background:var(--bg);border-radius:10px;padding:18px;}
+    .stat-num{font-weight:800;font-size:26px;letter-spacing:-.03em;color:var(--ink);line-height:1;margin-bottom:4px;}
+    .stat-label{font-size:12px;color:var(--muted);font-weight:500;}
+    .testimonial-mini{background:var(--bg);border-radius:10px;padding:16px 20px;font-size:14px;line-height:1.55;color:var(--ink);font-style:italic;}
+    .testimonial-mini cite{display:block;font-style:normal;font-size:12px;font-weight:600;color:var(--muted);margin-top:8px;}
+
+    /* PROOF BAR */
+    .proof-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 32px;background:var(--white);}
+    .proof-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+    .proof-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+    .proof-items{display:flex;gap:36px;flex-wrap:wrap;align-items:center;}
+    .proof-item{font-weight:700;font-size:14px;color:var(--muted);opacity:.65;}
+
+    /* HOW IT WORKS */
+    .how-bg{background:var(--white);}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:14px;overflow:hidden;}
+    .step{background:var(--white);padding:40px 32px;}
+    .step-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+    .step h3{font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:12px;color:var(--ink);}
+    .step p{font-size:15px;color:var(--muted);line-height:1.65;}
+
+    /* RESULTS */
+    .results-band{background:var(--ink);padding:64px 32px;}
+    .results-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center;}
+    .result-num{font-weight:800;font-size:clamp(30px,4vw,46px);color:var(--white);letter-spacing:-.03em;line-height:1;margin-bottom:8px;}
+    .result-num span{color:var(--accent);}
+    .result-label{font-size:14px;color:rgba(255,255,255,.5);line-height:1.4;}
+
+    /* SERVICES */
+    .offerings{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .offering-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:36px;transition:border-color .2s,box-shadow .2s;}
+    .offering-card:hover{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-light);}
+    .offering-card.featured{grid-column:1/-1;background:var(--ink);border-color:var(--ink);display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;}
+    .offering-card.featured:hover{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-light);}
+    .offering-icon{width:44px;height:44px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:20px;}
+    .offering-card.featured .offering-icon{background:rgba(255,255,255,.1);}
+    .offering-card h3{font-weight:700;font-size:20px;letter-spacing:-.02em;margin-bottom:10px;}
+    .offering-card.featured h3{color:var(--white);}
+    .offering-card p{font-size:15px;color:var(--muted);line-height:1.65;}
+    .offering-card.featured p{color:rgba(255,255,255,.6);}
+    .offering-price{font-weight:800;font-size:38px;letter-spacing:-.03em;color:var(--white);margin-bottom:6px;}
+    .offering-price span{font-weight:400;font-size:16px;opacity:.55;}
+    .offering-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin:20px 0 28px;}
+    .offering-bullets li{font-size:14px;color:rgba(255,255,255,.75);display:flex;align-items:flex-start;gap:10px;}
+    .offering-bullets li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+
+    /* COACHES */
+    .coaches-bg{background:var(--bg);}
+    .coaches-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .coach-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px;}
+    .coach-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+    .coach-avatar{width:52px;height:52px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:var(--white);flex-shrink:0;}
+    .coach-avatar.quinn{background:#2D3A8C;}
+    .coach-name{font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-.01em;}
+    .coach-role{font-size:13px;color:var(--muted);margin-top:2px;}
+    .coach-bio{font-size:15px;color:var(--muted);line-height:1.7;}
+    .coach-bio strong{color:var(--ink);font-weight:600;}
+    .creds-list{display:flex;flex-direction:column;gap:2px;margin-top:20px;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+    .cred{background:var(--bg);display:flex;align-items:center;gap:12px;padding:12px 16px;}
+    .cred-icon{width:32px;height:32px;border-radius:8px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+    .cred-text{font-size:13px;font-weight:500;color:var(--ink);}
+    .cred-sub{font-size:12px;color:var(--muted);margin-top:1px;}
+
+    /* PHILOSOPHY */
+    .philosophy-bg{background:var(--white);}
+    .philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .phil-card{background:var(--bg);border-radius:12px;padding:28px;border:1px solid var(--border);}
+    .phil-icon{font-size:24px;margin-bottom:14px;}
+    .phil-title{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:8px;}
+    .phil-desc{font-size:14px;color:var(--muted);line-height:1.65;}
+
+    /* TESTIMONIALS */
+    .testi-bg{background:var(--bg);}
+    .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .testi-card{background:var(--white);border-radius:14px;padding:28px;border:1px solid var(--border);}
+    .testi-card.span2{grid-column:1/-1;}
+    .testi-quote{font-size:15px;line-height:1.7;color:var(--ink);margin-bottom:20px;font-style:italic;}
+    .testi-author{display:flex;align-items:center;gap:12px;}
+    .testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--white);flex-shrink:0;}
+    .testi-name{font-size:14px;font-weight:600;color:var(--ink);}
+    .testi-role{font-size:12px;color:var(--muted);}
+
+    /* ETHOS */
+    .ethos-bg{background:var(--white);}
+    .ethos-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+    .ethos-principles{display:flex;flex-direction:column;gap:28px;}
+    .ethos-label{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px;}
+    .ethos-text{font-size:15px;color:var(--muted);line-height:1.65;}
+
+    /* FAQ */
+    .faq-bg{background:var(--bg);}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:28px;}
+    .faq-q{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;}
+    .faq-a{font-size:14px;color:var(--muted);line-height:1.7;}
+
+    /* CTA */
+    .cta-section{background:var(--ink);padding:100px 32px;text-align:center;}
+    .cta-section h2{color:var(--white);font-size:clamp(28px,5vw,52px);margin-bottom:16px;}
+    .cta-section p{font-size:18px;color:rgba(255,255,255,.5);margin-bottom:40px;}
+    .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:32px;}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+    .footer-logo{font-weight:800;font-size:16px;color:var(--white);text-decoration:none;}
+    .footer-logo span{color:var(--accent);}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.3);}
+    .footer-links{display:flex;gap:24px;list-style:none;}
+    .footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .15s;}
+    .footer-links a:hover{color:var(--white);}
+
+    /* ANIMATION */
+    .fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:40px;padding:110px 24px 64px;}
+      .steps{grid-template-columns:1fr;}
+      .results-inner{grid-template-columns:1fr 1fr;gap:24px;}
+      .offerings{grid-template-columns:1fr;}
+      .offering-card.featured{grid-template-columns:1fr;}
+      .coaches-grid{grid-template-columns:1fr;}
+      .philosophy-grid{grid-template-columns:1fr 1fr;}
+      .testi-grid{grid-template-columns:1fr;}
+      .testi-card.span2{grid-column:auto;}
+      .faq-grid{grid-template-columns:1fr;}
+      .ethos-grid{grid-template-columns:1fr;gap:40px;}
+      #coaches .section-inner > div{grid-template-columns:1fr!important;}
+      #sprint .section-inner > div{grid-template-columns:1fr!important;gap:40px!important;}
+      .nav-links{display:none;}
+      section{padding:64px 24px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">lifted<span>.vc</span></a>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#coaches">Coaches</a></li>
+      <li><a href="#playbook">Free Playbook</a></li>
+      <li><a href="mailto:adam@lifted.vc" class="nav-cta">Work With Me →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1100px;margin:0 auto;">
+  <div class="hero">
+    <div>
+      <div class="hero-tag">Pre-Seed, Seed &amp; Series A Fundraising</div>
+      <h1>I'm a <em>Fundraising</em><br/>Specialist.</h1>
+      <p class="hero-sub">Expert 1-on-1 coaching for founders raising pre-seed through Series A — built on 100+ coaching engagements, a YC pedigree, and the inside track on what investors actually want.</p>
+      <div class="hero-actions">
+        <a href="mailto:adam@lifted.vc" class="btn-primary">Work With Me →</a>
+        <a href="#how" class="btn-secondary">See How It Works</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-label">Lifted.vc by the numbers</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-num">$80M+</div><div class="stat-label">Raised by coached founders</div></div>
+          <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label">Founders coached</div></div>
+          <div class="stat-box"><div class="stat-num">Pre-seed</div><div class="stat-label">through Series A</div></div>
+          <div class="stat-box"><div class="stat-num">1,400x</div><div class="stat-label">Beat the VC odds</div></div>
+        </div>
+        <div class="testimonial-mini">
+          "Adam didn't just give me coaching — he gave me a process. One that replaced guesswork with clarity, confidence, and precision."
+          <cite>— Leni, Pre-Seed Founder &amp; Sprint Alum</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <span class="proof-label">Founders backed by</span>
+    <div class="proof-items">
+      <span class="proof-item">Y Combinator</span>
+      <span class="proof-item">Andreessen Horowitz</span>
+      <span class="proof-item">Pear Ventures</span>
+      <span class="proof-item">Bessemer</span>
+      <span class="proof-item">Techstars</span>
+      <span class="proof-item">Khosla Ventures</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-bg">
+  <div class="section-inner">
+    <div class="section-tag">How It Works</div>
+    <h2>The three steps to funding.</h2>
+    <p class="section-sub">Good fundraising is built on the industry's hidden rules. I make sure you know them before you walk in the room — whether you're raising your first check or your Series A.</p>
+    <div class="steps fade-up">
+      <div class="step">
+        <div class="step-num">Step 01</div>
+        <h3>Get Organized</h3>
+        <p>Present your company in the best possible light. I build your investor targeting list, sharpen your narrative, and get your deck and data room investor-ready — so that when you're in front of the right people, everything lands.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 02</div>
+        <h3>Be Pitch-Perfect</h3>
+        <p>Demonstrate that your team is venture-backable. I drill your pitch, sharpen your investor communications, and build your warm intro pipeline through connector calls — so you're walking into meetings with credibility, not just a calendar invite.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 03</div>
+        <h3>Build Authentic FOMO</h3>
+        <p>Real investor demand doesn't happen by accident — it's engineered. I work on timeline compression, parallel process management, and how to create genuine signal in the market so investors feel the urgency to move. This means coordinating your conversations so multiple investors are in diligence at once, using soft commitments to pull others in, and knowing exactly when and how to communicate momentum without overselling it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS BAND -->
+<div class="results-band">
+  <div class="results-inner">
+    <div><div class="result-num">$80<span>M+</span></div><div class="result-label">Total capital raised by coached founders</div></div>
+    <div><div class="result-num">100<span>+</span></div><div class="result-label">Founders coached, pre-seed through Series A</div></div>
+    <div><div class="result-num">VC<span> &amp; Angels</span></div><div class="result-label">My specialty — institutional rounds and angels</div></div>
+    <div><div class="result-num">1,400<span>x</span></div><div class="result-label">Founders I've coached beat the average VC funding odds</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">Founder Services</div>
+    <h2>1-on-1 coaching,<br/>built around your raise.</h2>
+    <p class="section-sub">I work with a small number of founders at a time — pre-seed through Series A — so I can go deep on what matters for your specific round, sector, and investors.</p>
+    <div class="offerings">
+      <div class="offering-card fade-up" style="grid-column:1/-1;padding:44px;">
+        <div class="offering-icon">🎯</div>
+        <h3 style="font-size:22px;margin-bottom:14px;">1-on-1 Fundraising Coaching</h3>
+        <p style="max-width:640px;">Your dedicated co-pilot for the entire raise — from narrative and deck through close. I work with a small number of founders at a time so I can go deep on what matters: your specific investors, your specific story, your specific round.</p>
+        <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 48px;margin-top:24px;">
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Investor targeting &amp; tiered pipeline build</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Connector call playbook &amp; warm intro strategy</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Deck teardown + narrative sharpening</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Live pitch practice with real feedback</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>FOMO &amp; parallel process management</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Deal dynamics &amp; term sheet coaching</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:16px;text-align:center;">
+      <a href="mailto:adam@lifted.vc" class="btn-primary">Get in Touch to Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDRAISING PLAYBOOK CALLOUT -->
+<section id="playbook" style="background:var(--ink);padding:80px 32px;">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+      <div>
+        <div class="section-tag" style="color:rgba(255,255,255,.4);">Free Resource</div>
+        <h2 style="color:var(--white);margin-bottom:16px;">The Fundraising Playbook</h2>
+        <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:12px;">The operating system for running a tight, rapid, and intentional fundraising process — built from hard-won experience across 100+ founder coaching engagements.</p>
+        <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px;">Covers how fundraising actually works, your North Star KPI, pitch deck teardown, the investor psychology framework, building authentic FOMO, and a full master checklist. Free, no signup required.</p>
+        <a href="fundraising-playbook.html" target="_blank" class="btn-white">Read the Playbook →</a>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;">What's inside</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,.06);border-radius:10px;">
+            <span style="font-size:18px;">📡</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;">How Fundraising Actually Works</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.4);">The 7 myths debunked · SAFEs explained · valuation benchmarking</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,.06);border-radius:10px;">
+            <span style="font-size:18px;">🧮</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;">Your North Star Calculator</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.4);">Work backwards from your target raise to your weekly KPI</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,.06);border-radius:10px;">
+            <span style="font-size:18px;">📋</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;">Pitch Deck · 12 Slides Broken Down</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.4);">What goes on each slide and what kills deals</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,.06);border-radius:10px;">
+            <span style="font-size:18px;">⚡</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;">Authentic FOMO · Connector Hierarchy</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.4);">Parallel process, investor fit scoring, CRM pipeline</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(255,255,255,.06);border-radius:10px;">
+            <span style="font-size:18px;">✅</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;">Master Checklist</div>
+              <div class="section-tag" style="font-size:12px;color:rgba(255,255,255,.4);margin:0;">28-item interactive checklist with chapter progress tracking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section id="coaches" class="coaches-bg">
+  <div class="section-inner">
+    <div class="section-tag">Your Coach</div>
+    <h2>I've been exactly<br/>where you are.</h2>
+    <p class="section-sub">I've founded and sold a YC company, raised from top-tier funds, and spent years on the investor side. I coach from lived experience — not theory.</p>
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;" class="fade-up">
+      <div>
+        <div style="width:100%;aspect-ratio:1;background:var(--ink);border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:64px;color:rgba(255,255,255,.08);margin-bottom:16px;position:relative;overflow:hidden;">
+          <span style="position:relative;z-index:1;color:rgba(255,255,255,.12);font-size:80px;">AR</span>
+          <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.06);backdrop-filter:blur(8px);padding:16px 20px;">
+            <div style="font-weight:700;font-size:15px;color:var(--white);">Adam Roberts</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.45);margin-top:2px;">Fundraising Coach · Lifted.vc</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:16px;">I spent five years on the <strong style="color:var(--ink);">USA Sailing Team</strong> before pivoting to tech. My first role in startups was as the first sales hire at inDinero, where I helped them hit their first $1M ARR (the company is now valued at $1B+).</p>
+        <p style="font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:16px;">I then founded <strong style="color:var(--ink);">Paid Labs</strong>, going through <strong style="color:var(--ink);">Y Combinator S2014</strong> and raising from Pear Ventures and Founder Collective before being acquired. After the sale, I joined <strong style="color:var(--ink);">Zinc Technologies (YC)</strong> as head of sales, then became an <strong style="color:var(--ink);">EIR at Wefunder</strong> — where I rediscovered my passion for helping early-stage founders raise.</p>
+        <p style="font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:16px;">That led me to launch Lifted.vc. Since then, I've coached 100+ founders across pre-seed through Series A, helping them raise over $80M in total capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-bg">
+  <div class="section-inner">
+    <div class="section-tag">My Coaching Philosophy</div>
+    <h2>Coaching done differently.</h2>
+    <p class="section-sub">I built Lifted around the coaching I wished I'd had when I was raising.</p>
+    <div class="philosophy-grid fade-up">
+      <div class="phil-card"><div class="phil-icon">🎯</div><div class="phil-title">Founder-Focused</div><div class="phil-desc">I've been in your shoes and understand your challenges. My advice comes from the founder perspective — not from an investor or a consultant who's never built.</div></div>
+      <div class="phil-card"><div class="phil-icon">🧭</div><div class="phil-title">Unbiased Sounding Board</div><div class="phil-desc">Honest feedback with no ego or experience bias. I have no problem if you throw my advice in the mental trash bin — I just want you funded.</div></div>
+      <div class="phil-card"><div class="phil-icon">⚙️</div><div class="phil-title">Tactical + Mental</div><div class="phil-desc">I provide tactical strategies to get things done AND mental support to navigate the emotional rollercoaster of fundraising. Both matter equally.</div></div>
+      <div class="phil-card"><div class="phil-icon">⚡</div><div class="phil-title">Direct</div><div class="phil-desc">You don't have time to waste. I cut to the chase, focus on what moves the needle, and help you get results — not give you homework you'll never do.</div></div>
+      <div class="phil-card"><div class="phil-icon">🔒</div><div class="phil-title">No Equity Taken</div><div class="phil-desc">I don't take equity in your startup — I want to remain unbiased and solely focused on your fundraising goals.</div></div>
+      <div class="phil-card"><div class="phil-icon">🌱</div><div class="phil-title">Engaging by Design</div><div class="phil-desc">Fundraising can suck — but I make it deliberately enjoyable and interactive. A burnt-out founder is not a funded founder.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-bg">
+  <div class="section-inner">
+    <div class="section-tag">What Founders Say</div>
+    <h2>Results speak louder.</h2>
+    <p class="section-sub">From first-time founders to repeat entrepreneurs.</p>
+    <div class="testi-grid fade-up">
+      <div class="testi-card span2">
+        <p class="testi-quote">"Adam didn't just give me coaching — he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.' I shudder to think of the rookie mistakes I would've made without him."</p>
+        <div class="testi-author"><div class="testi-avatar">L</div><div><div class="testi-name">Leni</div><div class="testi-role">Pre-Seed Founder · Fundraising Sprint Alum</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"10/10. The sprint was extremely helpful to understand the VC game. I wish I had found it even earlier — it would have saved me at least 100 hours and $20K+. They have a unique ability to see the best in participants and help them frame it for a fundraising advantage."</p>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Misha</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"I never ran a process before working with Adam. He made it easy — a lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period. My only regret is not having signed up sooner."</p>
+        <div class="testi-author"><div class="testi-avatar">N</div><div><div class="testi-name">Ndonga</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"I highly recommend this program. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset. Adam is an incredible coach who will set you up for success no matter where you're at in your journey."</p>
+        <div class="testi-author"><div class="testi-avatar">MA</div><div><div class="testi-name">Mary-Ann</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ETHOS -->
+<section class="ethos-bg">
+  <div class="section-inner">
+    <div class="ethos-grid fade-up">
+      <div>
+        <div class="section-tag">My Ethos</div>
+        <h2>Everyone deserves a fair shot at the game.</h2>
+        <p style="font-size:17px;color:var(--muted);line-height:1.7;margin-top:8px;">Good fundraising is built on the industry's hidden rules. I believe those rules shouldn't be hidden. My coaching ethos rests on three pillars:</p>
+      </div>
+      <div class="ethos-principles">
+        <div><div class="ethos-label">Deep Authenticity</div><div class="ethos-text">I don't teach you to perform for investors. I help you tell your real story as compellingly as possible — with evidence, precision, and genuine conviction.</div></div>
+        <div><div class="ethos-label">Founder-First Focus</div><div class="ethos-text">I'm hyper-focused on fundraising. You can get business advice anywhere — but roll-up-your-sleeves, in-the-trenches fundraising help is rare (or cost-prohibitive). That's what I provide.</div></div>
+        <div><div class="ethos-label">Short-Term Goals</div><div class="ethos-text">Get you funded. That's it. I aspire to be the Y-Combinator of fundraising — known for quality, not quantity, with fundraising as my relentless wedge.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg">
+  <div class="section-inner">
+    <div class="section-tag">FAQ</div>
+    <h2>Good questions, straight answers.</h2>
+    <p class="section-sub" style="margin-bottom:40px;">From the founders who asked before you.</p>
+    <div class="faq-grid fade-up">
+      <div class="faq-item"><div class="faq-q">Do you take equity?</div><div class="faq-a">No. I don't take equity in your startup — I want to remain unbiased and solely focused on your fundraising goals, not on the long-term value of your company.</div></div>
+      <div class="faq-item"><div class="faq-q">Do you really have a 70% success rate?</div><div class="faq-a">Yes. But context matters: I only work with founders I strongly believe can successfully fundraise. I care about my track record and only take on clients I'm confident I can help.</div></div>
+      <div class="faq-item"><div class="faq-q">Who is the Fundraising Sprint for?</div><div class="faq-a">Founders raising their first or second non-friends-and-family round — typically pre-seed, seed, or Series A ($500K–$25M+). You should have a rough deck, some traction, a team, and a product.</div></div>
+      <div class="faq-item"><div class="faq-q">How much time does the Sprint take?</div><div class="faq-a">Sprint meetings: 2–3 hrs/wk. Content: 1–2 hrs/wk. Async work (sourcing, networking, connector meetings): 20–60 hrs/wk. Fundraising is not passive — but I make sure that time goes toward the right things.</div></div>
+      <div class="faq-item"><div class="faq-q">What if I'm not sure I'm ready to fundraise?</div><div class="faq-a">Ask me — readiness is complex. Market timing, revenue, product maturity, traction, and long-term funding outlook all factor in. I help you evaluate before you commit.</div></div>
+      <div class="faq-item"><div class="faq-q">What's the selection process?</div><div class="faq-a">Fill out my 10-minute questionnaire. If it's a fit, I'll invite you to a 30-minute call. I review every application personally — this isn't a rubber-stamp process.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="section-tag" style="color:rgba(255,255,255,.35);margin-bottom:16px;">Let's talk</div>
+    <h2>Ready to run<br/>a real raise?</h2>
+    <p>Most founders spend 6–12 months on a raise that should take 3. Let's change that.</p>
+    <div class="cta-actions">
+      <a href="mailto:adam@lifted.vc" class="btn-white">Get in Touch →</a>
+      <a href="fundraising-playbook.html" target="_blank" class="btn-secondary" style="color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.15);">Read the Free Playbook</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">lifted<span>.vc</span></a>
+    <ul class="footer-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#coaches">Coaches</a></li>
+      <li><a href="fundraising-playbook.html" target="_blank">Free Playbook</a></li>
+      <li><a href="mailto:adam@lifted.vc">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Lifted.vc · Built for founders who mean it.</span>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        el.target.querySelectorAll('.step,.offering-card,.coach-card,.phil-card,.testi-card,.faq-item').forEach((child, i) => {
+          child.style.transitionDelay = `${i * 70}ms`;
+          child.classList.add('fade-up','visible');
+        });
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
