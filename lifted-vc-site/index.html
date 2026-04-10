@@ -177,6 +177,30 @@
     .fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
     .fade-up.visible{opacity:1;transform:translateY(0);}
 
+    /* PLAYBOOK CARD */
+    .pb-card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:36px;overflow:hidden;}
+    .pb-glow{position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,rgba(26,71,255,.28) 0%,rgba(26,71,255,0) 70%);pointer-events:none;filter:blur(20px);}
+    .pb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;position:relative;}
+    .pb-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);}
+    .pb-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(26,71,255,.9),0 0 24px rgba(26,71,255,.5);animation:pbPulse 2.4s ease-in-out infinite;}
+    @keyframes pbPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(.85);}}
+    .pb-chapters-pill{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.03);}
+    .pb-timeline{position:relative;display:flex;flex-direction:column;gap:22px;margin-bottom:24px;}
+    .pb-line{position:absolute;left:23px;top:28px;bottom:28px;width:2px;background:linear-gradient(180deg,rgba(26,71,255,.9) 0%,rgba(26,71,255,.35) 50%,rgba(255,255,255,.1) 100%);border-radius:2px;}
+    .pb-phase{position:relative;display:flex;align-items:flex-start;gap:20px;}
+    .pb-badge{position:relative;flex-shrink:0;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#1A47FF 0%,#4D6DFF 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(26,71,255,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .25s ease;}
+    .pb-phase:hover .pb-badge{transform:translateY(-2px) scale(1.04);}
+    .pb-badge span{font-size:14px;font-weight:800;color:#fff;letter-spacing:.02em;font-family:Georgia,serif;font-style:italic;}
+    .pb-content{flex:1;padding-top:2px;}
+    .pb-phase-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(26,71,255,.85);margin-bottom:4px;}
+    .pb-phase-title{font-size:18px;font-weight:800;color:var(--white);margin-bottom:6px;letter-spacing:-.01em;}
+    .pb-phase-desc{font-size:13px;line-height:1.6;color:rgba(255,255,255,.62);}
+    .pb-phase-desc strong{color:rgba(255,255,255,.95);font-weight:700;}
+    .pb-checklist{display:flex;align-items:center;gap:14px;padding:16px 18px;background:rgba(26,71,255,.08);border:1px solid rgba(26,71,255,.22);border-radius:12px;position:relative;}
+    .pb-check-icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(26,71,255,.2);color:#8EA6FF;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;}
+    .pb-check-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
+    .pb-check-sub{font-size:12px;color:rgba(255,255,255,.55);}
+
     /* RESPONSIVE */
     @media(max-width:900px){
       .hero{grid-template-columns:1fr;gap:40px;padding:110px 24px 64px;}
@@ -345,36 +369,52 @@
         <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px;">Covers list building, network mapping, lining up 60+ warm intros, preparing materials, pitch practice, activating all intros in a single window, pipeline management, diligence, and closing. Plus a full interactive checklist. Free, no signup required.</p>
         <a href="fundraising-playbook.html" target="_blank" class="btn-white">Take me to the free playbook →</a>
       </div>
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;">What's inside</div>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,.06);border-radius:10px;">
-            <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--white);letter-spacing:.04em;">P1</div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Prepare</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;">Build a qualified target list of 70–120 investors worth pitching</div>
+      <div class="pb-card">
+        <div class="pb-glow"></div>
+        <div class="pb-header">
+          <div class="pb-eyebrow">
+            <span class="pb-dot"></span>
+            The 3-Phase System
+          </div>
+          <div class="pb-chapters-pill">9 chapters</div>
+        </div>
+
+        <div class="pb-timeline">
+          <div class="pb-line"></div>
+
+          <div class="pb-phase">
+            <div class="pb-badge"><span>01</span></div>
+            <div class="pb-content">
+              <div class="pb-phase-label">Phase 1 · Chapter 1</div>
+              <div class="pb-phase-title">Prepare</div>
+              <div class="pb-phase-desc">Build a qualified target list of <strong>70–120 investors</strong> worth pitching.</div>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,.06);border-radius:10px;">
-            <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--white);letter-spacing:.04em;">P2</div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Line Up</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;">Map your network, collect 60+ promised warm intros, and drill your materials — all before firing a single intro</div>
+
+          <div class="pb-phase">
+            <div class="pb-badge"><span>02</span></div>
+            <div class="pb-content">
+              <div class="pb-phase-label">Phase 2 · Chapters 2–5</div>
+              <div class="pb-phase-title">Line Up</div>
+              <div class="pb-phase-desc">Map your network, collect <strong>60+ promised warm intros</strong>, and drill your materials — all before firing a single intro.</div>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,.06);border-radius:10px;">
-            <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--white);letter-spacing:.04em;">P3</div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Execute</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;">Activate every intro in a single window, manage the pipeline, run diligence, and close the round</div>
+
+          <div class="pb-phase">
+            <div class="pb-badge"><span>03</span></div>
+            <div class="pb-content">
+              <div class="pb-phase-label">Phase 3 · Chapters 6–9</div>
+              <div class="pb-phase-title">Execute</div>
+              <div class="pb-phase-desc">Activate every intro in a <strong>single 24–48 hour window</strong>, manage the pipeline, run diligence, and close the round.</div>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,.06);border-radius:10px;border:1px dashed rgba(255,255,255,.12);">
-            <div style="flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:14px;">✓</div>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Full Interactive Checklist</div>
-              <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;">Every step across all 9 chapters in one place</div>
-            </div>
+        </div>
+
+        <div class="pb-checklist">
+          <div class="pb-check-icon">✓</div>
+          <div>
+            <div class="pb-check-title">Full Interactive Checklist</div>
+            <div class="pb-check-sub">Every step across all 9 chapters in one place</div>
           </div>
         </div>
       </div>
