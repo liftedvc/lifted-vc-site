@@ -163,12 +163,26 @@
     .testi-name{font-size:14px;font-weight:600;color:var(--ink);}
     .testi-role{font-size:12px;color:var(--muted);}
 
-    /* ETHOS */
-    .ethos-bg{background:var(--white);}
-    .ethos-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-    .ethos-principles{display:flex;flex-direction:column;gap:28px;}
-    .ethos-label{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px;}
-    .ethos-text{font-size:15px;color:var(--muted);line-height:1.65;}
+    /* ETHOS — manifesto panel */
+    .ethos-bg{background:var(--navy);color:var(--white);position:relative;overflow:hidden;}
+    .ethos-bg::before{content:'';position:absolute;top:-220px;right:-180px;width:620px;height:620px;background:radial-gradient(circle,rgba(45,27,110,.55),transparent 55%);pointer-events:none;}
+    .ethos-bg::after{content:'';position:absolute;bottom:-180px;left:-160px;width:520px;height:520px;background:radial-gradient(circle,rgba(90,126,168,.18),transparent 55%);pointer-events:none;}
+    .ethos-bg .section-inner{position:relative;z-index:1;}
+    .ethos-bg .section-tag{color:var(--mist);}
+    .ethos-bg h2{color:var(--white);font-style:italic;font-size:clamp(34px,4.6vw,52px);line-height:1.08;}
+    .ethos-bg h2 em{color:var(--mist);font-style:italic;}
+    .ethos-intro{font-size:18px;color:rgba(255,255,255,.72);line-height:1.7;margin-top:14px;max-width:420px;}
+    .ethos-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start;}
+    .ethos-principles{display:flex;flex-direction:column;}
+    .ethos-principle{padding:30px 0;border-top:1px solid rgba(155,175,196,.18);display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;transition:padding-left .3s ease,border-color .3s ease;}
+    .ethos-principle:first-child{border-top:1px solid rgba(155,175,196,.4);padding-top:26px;}
+    .ethos-principle:last-child{padding-bottom:0;}
+    .ethos-principle:hover{padding-left:10px;border-top-color:rgba(155,175,196,.5);}
+    .ethos-principle:hover + .ethos-principle{border-top-color:rgba(155,175,196,.5);}
+    .ethos-num{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:38px;color:var(--mist);line-height:1;letter-spacing:.01em;}
+    .ethos-content{padding-top:6px;}
+    .ethos-label{font-family:Georgia,serif;font-weight:700;font-size:22px;color:var(--white);margin-bottom:10px;letter-spacing:-.01em;}
+    .ethos-text{font-size:15px;color:rgba(255,255,255,.72);line-height:1.72;}
 
     /* FAQ */
     .faq-bg{background:var(--bg);}
@@ -234,6 +248,9 @@
       .testi-card.span2{grid-column:auto;}
       .faq-grid{grid-template-columns:1fr;}
       .ethos-grid{grid-template-columns:1fr;gap:40px;}
+      .ethos-principle{grid-template-columns:48px 1fr;gap:18px;padding:24px 0;}
+      .ethos-num{font-size:32px;}
+      .ethos-label{font-size:20px;}
       .personality-grid{grid-template-columns:1fr!important;}
       .services-card{grid-template-columns:1fr!important;gap:28px!important;}
       .services-card > div:first-child{max-width:220px;margin:0 auto;}
@@ -539,14 +556,38 @@
     <div class="ethos-grid fade-up">
       <div>
         <div class="section-tag">My Ethos</div>
-        <h2>Everyone deserves a fair shot at the game.</h2>
-        <p style="font-size:17px;color:var(--muted);line-height:1.7;margin-top:8px;">Good fundraising is built on the industry's hidden rules. I believe those rules shouldn't be hidden. My coaching ethos rests on three pillars:</p>
+        <h2>Everyone deserves<br/>a fair shot at <em>the game</em>.</h2>
+        <p class="ethos-intro">Good fundraising is built on the industry's hidden rules. I believe those rules shouldn't be hidden. My coaching ethos rests on four principles:</p>
       </div>
       <div class="ethos-principles">
-        <div><div class="ethos-label">Deep Authenticity</div><div class="ethos-text">I don't teach you to perform for investors. I help you tell your real story as compellingly as possible — with evidence, precision, and genuine conviction.</div></div>
-        <div><div class="ethos-label">Founder-First Focus</div><div class="ethos-text">I'm hyper-focused on fundraising. You can get business advice anywhere — but roll-up-your-sleeves, in-the-trenches fundraising help is rare (or cost-prohibitive). That's what I provide.</div></div>
-        <div><div class="ethos-label">A Skill That Compounds</div><div class="ethos-text">Working with me isn't just about closing this round — it's about learning to fundraise well. It's one of the most critical skills a founder can build, and once you have it, it pays you back for every round, every company, forever.</div></div>
-        <div><div class="ethos-label">Short-Term Goals</div><div class="ethos-text">Get you funded. That's it. I aspire to be the Y-Combinator of fundraising — known for quality, not quantity, with fundraising as my relentless wedge.</div></div>
+        <div class="ethos-principle">
+          <div class="ethos-num">i.</div>
+          <div class="ethos-content">
+            <div class="ethos-label">Deep Authenticity</div>
+            <div class="ethos-text">I don't teach you to perform for investors. I help you tell your real story as compellingly as possible — with evidence, precision, and genuine conviction.</div>
+          </div>
+        </div>
+        <div class="ethos-principle">
+          <div class="ethos-num">ii.</div>
+          <div class="ethos-content">
+            <div class="ethos-label">Founder-First Focus</div>
+            <div class="ethos-text">I'm hyper-focused on fundraising. You can get business advice anywhere — but roll-up-your-sleeves, in-the-trenches fundraising help is rare (or cost-prohibitive). That's what I provide.</div>
+          </div>
+        </div>
+        <div class="ethos-principle">
+          <div class="ethos-num">iii.</div>
+          <div class="ethos-content">
+            <div class="ethos-label">A Skill That Compounds</div>
+            <div class="ethos-text">Working with me isn't just about closing this round — it's about learning to fundraise well. It's one of the most critical skills a founder can build, and once you have it, it pays you back for every round, every company, forever.</div>
+          </div>
+        </div>
+        <div class="ethos-principle">
+          <div class="ethos-num">iv.</div>
+          <div class="ethos-content">
+            <div class="ethos-label">Short-Term Goals</div>
+            <div class="ethos-text">Get you funded. That's it. I aspire to be the Y-Combinator of fundraising — known for quality, not quantity, with fundraising as my relentless wedge.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
