@@ -1,3 +1,1 @@
-# Netlify redirects
-# Redirect www to bare domain
-https://www.lifted.vc/* https://lifted.vc/:splat 301!
+https://www.lifted.vc/*  https://lifted.vc/:splat  301!
