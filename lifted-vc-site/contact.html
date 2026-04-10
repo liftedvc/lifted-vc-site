@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work With Me — Lifted.vc</title>
+  <meta name="description" content="Get in touch with Adam Roberts at Lifted.vc to start working on your pre-seed, seed, or Series A raise." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F8F7F2; --ink: #0B0B09; --accent: #1A47FF;
+      --accent-light: #EEF1FF; --muted: #6B6B60;
+      --border: #E0DED6; --white: #FFFFFF;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,242,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+    .logo img{height:28px;width:auto;display:block;}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+    .nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s;}
+    .nav-links a:hover{color:var(--ink);}
+
+    .page{max-width:880px;margin:0 auto;padding:140px 32px 80px;}
+    .eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:6px 12px;border-radius:999px;margin-bottom:20px;}
+    h1{font-weight:800;font-size:clamp(36px,5vw,54px);letter-spacing:-.03em;line-height:1.05;margin-bottom:20px;}
+    h1 em{font-style:italic;font-weight:500;color:var(--accent);}
+    .lede{font-size:19px;color:var(--muted);line-height:1.6;max-width:640px;margin-bottom:48px;}
+
+    .pricing-card{background:var(--ink);color:var(--white);border-radius:16px;padding:36px;margin-bottom:56px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;}
+    .pricing-amount{font-weight:800;font-size:46px;letter-spacing:-.03em;line-height:1;}
+    .pricing-amount span{font-size:18px;font-weight:500;color:rgba(255,255,255,.5);margin-left:4px;}
+    .pricing-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:8px;}
+    .pricing-details{font-size:15px;color:rgba(255,255,255,.75);line-height:1.65;}
+    .pricing-details strong{color:var(--white);font-weight:700;}
+
+    form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:40px;}
+    .form-title{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;}
+    .form-sub{font-size:14px;color:var(--muted);margin-bottom:28px;}
+    .field{margin-bottom:22px;}
+    .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+    .field label .req{color:var(--accent);}
+    .field input,.field textarea{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;transition:border-color .15s,background .15s;}
+    .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:var(--white);}
+    .field textarea{resize:vertical;min-height:140px;line-height:1.55;}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+    .hp{position:absolute;left:-9999px;opacity:0;pointer-events:none;}
+
+    .submit-btn{background:var(--ink);color:var(--white);border:none;font-family:inherit;font-size:15px;font-weight:600;padding:14px 28px;border-radius:8px;cursor:pointer;transition:background .15s;}
+    .submit-btn:hover{background:var(--accent);}
+    .form-footnote{font-size:12px;color:var(--muted);margin-top:14px;}
+
+    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:32px;margin-top:40px;}
+    .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+    .footer-logo img{height:26px;width:auto;display:block;}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.3);}
+    .footer-links{display:flex;gap:24px;list-style:none;}
+    .footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .15s;}
+    .footer-links a:hover{color:var(--white);}
+
+    @media (max-width: 720px){
+      .field-row{grid-template-columns:1fr;gap:0;}
+      .pricing-card{grid-template-columns:1fr;gap:20px;text-align:left;padding:28px;}
+      form{padding:28px 22px;}
+      .nav-links{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="images/lifted-logo.png" alt="Lifted.vc"/></a>
+    <ul class="nav-links">
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#coaches">About Me</a></li>
+      <li><a href="fundraising-playbook.html" target="_blank">Free Playbook</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="eyebrow">Work With Me</div>
+  <h1>I'm <em>excited</em> to hear from you.</h1>
+  <p class="lede">Fundraising is hard, and reaching out takes guts. Tell me a little about your round and what you're working on — I read every message personally, and I'll get back to you within 1&ndash;2 business days.</p>
+
+  <div class="pricing-card">
+    <div>
+      <div class="pricing-amount">$1K<span>/month</span></div>
+      <div class="pricing-label">Retainer</div>
+    </div>
+    <div class="pricing-details">
+      <strong>Weekly 45-minute meetings</strong> &middot; <strong>chat support</strong> &middot; <strong>unlimited ad-hoc meetings</strong> as needed to get the job done.<br/>
+      Simple, flat-rate pricing. No equity, no success fees, no long contracts — I work month to month so you only keep going if it's working.
+    </div>
+  </div>
+
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="hp"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+
+    <div class="form-title">Tell me about your raise</div>
+    <div class="form-sub">Fields marked <span style="color:var(--accent)">*</span> are required.</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="name">Your name <span class="req">*</span></label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="email">Your email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="website">Company website</label>
+      <input type="url" id="website" name="website" placeholder="https://" />
+    </div>
+
+    <div class="field">
+      <label for="round">What round are you raising, and what is your target? <span class="req">*</span></label>
+      <input type="text" id="round" name="round" placeholder="e.g. Seed, targeting $2M" required />
+    </div>
+
+    <div class="field">
+      <label for="message">What else? <span class="req">*</span></label>
+      <textarea id="message" name="message" placeholder="Tell me about your company, your traction, where you are in the process, and what you're hoping to get out of working together." required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Send Message →</button>
+    <div class="form-footnote">Your message goes straight to adam@lifted.vc. I'll never share your info.</div>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo"><img src="images/lifted-logo-white.png" alt="Lifted.vc"/></a>
+    <ul class="footer-links">
+      <li><a href="/#how">How It Works</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="fundraising-playbook.html" target="_blank">Free Playbook</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+    <span class="footer-copy">&copy; 2026 Lifted.vc &middot; Built for founders who mean it.</span>
+  </div>
+</footer>
+
+</body>
+</html>
