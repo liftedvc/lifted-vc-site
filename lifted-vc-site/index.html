@@ -48,7 +48,7 @@
     .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
     .nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s;}
     .nav-links a:hover{color:var(--ink);}
-    .nav-cta{background:var(--ink);color:var(--white)!important;padding:8px 18px;border-radius:6px;font-weight:600!important;transition:background .15s!important;}
+    .nav-cta{background:var(--ink);color:var(--white)!important;padding:8px 18px;border-radius:8px;font-weight:600!important;transition:background .15s!important;}
     .nav-cta:hover{background:var(--accent)!important;}
 
     /* SECTION */
@@ -61,8 +61,7 @@
     /* HERO */
     .hero{padding:140px 32px 96px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
     .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:5px 12px;border-radius:4px;margin-bottom:24px;}
-    .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);}
     h1{font-weight:700;font-size:clamp(42px,5.3vw,64px);line-height:1.05;letter-spacing:-.015em;color:var(--ink);margin-bottom:26px;}
     h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     .hero-sub{font-size:18px;line-height:1.65;color:var(--muted);margin-bottom:36px;max-width:440px;}
@@ -92,7 +91,7 @@
     .proof-bar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
     .proof-label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
     .proof-items{display:flex;gap:36px;flex-wrap:wrap;align-items:center;}
-    .proof-item{font-weight:700;font-size:14px;color:var(--muted);opacity:.65;}
+    .proof-item{font-weight:700;font-size:14px;color:var(--muted);opacity:.85;}
 
     /* HOW IT WORKS */
     .how-bg{background:var(--white);}
@@ -216,8 +215,7 @@
     .pb-glow{position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,rgba(90,126,168,.32) 0%,rgba(90,126,168,0) 70%);pointer-events:none;filter:blur(20px);}
     .pb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;position:relative;}
     .pb-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);}
-    .pb-dot{width:8px;height:8px;border-radius:50%;background:var(--steel);box-shadow:0 0 12px rgba(90,126,168,.9),0 0 24px rgba(90,126,168,.5);animation:pbPulse 2.4s ease-in-out infinite;}
-    @keyframes pbPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(.85);}}
+    .pb-dot{width:8px;height:8px;border-radius:50%;background:var(--steel);box-shadow:0 0 12px rgba(90,126,168,.9),0 0 24px rgba(90,126,168,.5);}
     .pb-chapters-pill{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.03);}
     .pb-timeline{position:relative;display:flex;flex-direction:column;gap:22px;margin-bottom:24px;}
     .pb-line{position:absolute;left:23px;top:28px;bottom:28px;width:2px;background:linear-gradient(180deg,rgba(155,175,196,.9) 0%,rgba(155,175,196,.35) 50%,rgba(255,255,255,.1) 100%);border-radius:2px;}
@@ -234,6 +232,11 @@
     .pb-check-icon{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:rgba(155,175,196,.22);color:#C5D4E5;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;}
     .pb-check-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
     .pb-check-sub{font-size:12px;color:rgba(255,255,255,.55);}
+
+    /* REDUCED MOTION */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important;}
+    }
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -606,7 +609,7 @@
       <div class="faq-item"><div class="faq-q">What if I'm not sure I'm ready to fundraise?</div><div class="faq-a">Ask me, readiness is complex. Market timing, revenue, product maturity, traction, and long-term funding outlook all factor in. I help you evaluate before you commit.</div></div>
       <div class="faq-item"><div class="faq-q">Can you guarantee success?</div><div class="faq-a">No, and be skeptical of anyone who does. Fundraising depends on factors no coach controls: market conditions, your business fundamentals, investor appetite. What I can promise is a process that gives you the best possible shot, and the honesty to tell you when something isn't working.</div></div>
       <div class="faq-item"><div class="faq-q">How much does it cost?</div><div class="faq-a">Most of my engagements run around $1k/month on retainer. That said, it's flexible. Sprints, ongoing coaching, and one-off working sessions are priced differently depending on what you need and how involved you want me to be. Reach out and we'll figure out what fits.</div></div>
-      <div class="faq-item"><div class="faq-q">What do I get?</div><div class="faq-a">It depends on which engagement is the right fit, coaching, a structured sprint, or a focused working session. Each is built around a different stage and need. <a href="#services" style="color:var(--purple);text-decoration:underline;">See the full breakdown in services →</a></div></div>
+      <div class="faq-item"><div class="faq-q">What do I get?</div><div class="faq-a">It depends on which engagement is the right fit, coaching, a structured sprint, or a focused working session. Each is built around a different stage and need. <a href="#services" style="color:var(--accent);text-decoration:underline;">See the full breakdown in services →</a></div></div>
     </div>
   </div>
 </section>
