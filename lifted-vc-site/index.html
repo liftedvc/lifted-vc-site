@@ -25,6 +25,10 @@
       --muted: #5A5566;
       --border: #E2DEF0;
       --white: #FFFFFF;
+      /* Warm accents */
+      --coral: #E07A5F;
+      --coral-deep: #C4624A;
+      --blush: #FAE8E0;
       /* Brand kit radii */
       --r-sm: 6px;
       --r-md: 10px;
@@ -43,7 +47,7 @@
     h1 em, h2 em{font-style:italic;color:var(--accent);font-weight:700;}
     /* Squiggle accent, subtle steel underline */
     .squiggle{position:relative;display:inline-block;}
-    .squiggle::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-7px;height:8px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6 T 150 6 T 200 6' fill='none' stroke='%235A7EA8' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;}
+    .squiggle::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-7px;height:8px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6 T 150 6 T 200 6' fill='none' stroke='%23E07A5F' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;}
     .squiggle-light::after{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6 T 150 6 T 200 6' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' opacity='.5'/></svg>") center/100% 100% no-repeat;}
 
     /* NAV */
@@ -55,7 +59,7 @@
     .nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s;}
     .nav-links a:hover{color:var(--ink);}
     .nav-cta{background:var(--ink);color:var(--white)!important;padding:8px 18px;border-radius:8px;font-weight:600!important;transition:background .2s,box-shadow .2s,transform .2s!important;}
-    .nav-cta:hover{background:var(--accent)!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(45,27,110,.2);}
+    .nav-cta:hover{background:var(--coral)!important;transform:translateY(-1px);box-shadow:0 4px 14px rgba(224,122,95,.25);}
 
     /* SECTION */
     section{padding:96px 32px;}
@@ -67,7 +71,7 @@
     /* HERO */
     .hero{padding:140px 32px 96px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
     .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:5px 12px;border-radius:4px;margin-bottom:24px;}
-    .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);}
+    .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--coral);}
     h1{font-weight:700;font-size:clamp(42px,5.3vw,64px);line-height:1.05;letter-spacing:-.015em;color:var(--ink);margin-bottom:26px;}
     h1 em{font-style:italic;color:var(--accent);font-weight:700;}
     .hero-sub{font-size:18px;line-height:1.65;color:var(--muted);margin-bottom:36px;max-width:440px;}
@@ -81,7 +85,7 @@
     .btn-white:hover{background:var(--accent);color:var(--white);transform:translateY(-3px) scale(1.02);box-shadow:0 8px 24px rgba(45,27,110,.22);}
 
     .hero-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 4px 40px rgba(0,0,0,.06);position:relative;overflow:hidden;}
-    .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent) 0%,var(--steel) 60%,var(--mist) 100%);}
+    .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--coral) 0%,var(--accent) 40%,var(--steel) 100%);}
     .hero-card-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
     .stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px;}
     .stat-box{background:var(--bg);border-radius:10px;padding:18px;grid-column:span 3;}
@@ -114,11 +118,11 @@
     .pipe-icon svg{width:26px;height:26px;}
     .pipe-icon.icon-prep{background:linear-gradient(135deg,#EAE5FA,#C9BFF2);}
     .pipe-icon.icon-pitch{background:linear-gradient(135deg,#5A7EA8,#3D5F8A);}
-    .pipe-icon.icon-close{background:linear-gradient(135deg,#2D1B6E,#1A2744);}
+    .pipe-icon.icon-close{background:linear-gradient(135deg,var(--coral),var(--coral-deep));}
     .pipe-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:4px;}
     .pipe-step h3{font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:10px;color:var(--ink);}
     .pipe-step p{font-size:14px;color:var(--muted);line-height:1.65;}
-    .pipe-signal{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--steel);}
+    .pipe-signal{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);}
     /* pipeline hover detail reveal */
     .pipe-detail{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s ease;opacity:0;margin-top:0;}
     .pipe-step:hover .pipe-detail{max-height:120px;opacity:1;margin-top:12px;}
@@ -128,7 +132,7 @@
     .results-band{background:linear-gradient(135deg,var(--ink) 0%,#1F1250 100%);padding:64px 32px;}
     .results-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center;}
     .result-num{font-weight:800;font-size:clamp(30px,4vw,46px);color:var(--white);letter-spacing:-.03em;line-height:1;margin-bottom:8px;}
-    .result-num span{color:var(--accent);}
+    .result-num span{color:var(--coral);}
     .result-label{font-size:14px;color:rgba(255,255,255,.5);line-height:1.4;}
 
     /* SERVICES */
@@ -147,7 +151,7 @@
     .offering-price span{font-weight:400;font-size:16px;opacity:.55;}
     .offering-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin:20px 0 28px;}
     .offering-bullets li{font-size:14px;color:rgba(255,255,255,.75);display:flex;align-items:flex-start;gap:10px;}
-    .offering-bullets li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0;}
+    .offering-bullets li::before{content:'→';color:var(--coral);font-weight:600;flex-shrink:0;}
 
     /* COACHES */
     .coaches-bg{background:var(--bg);}
@@ -172,6 +176,7 @@
     .phil-card{background:var(--bg);border-radius:12px;padding:28px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
     .phil-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
     .phil-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent-light),rgba(90,126,168,.15));display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 2px 8px rgba(45,27,110,.08);}
+    .phil-card:nth-child(1) .phil-icon,.phil-card:nth-child(4) .phil-icon,.phil-card:nth-child(6) .phil-icon{background:linear-gradient(135deg,var(--blush),rgba(224,122,95,.15));box-shadow:0 2px 8px rgba(224,122,95,.1);}
     .phil-icon svg{width:26px;height:26px;}
     .phil-title{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:8px;}
     .phil-desc{font-size:14px;color:var(--muted);line-height:1.65;}
@@ -196,7 +201,7 @@
     .ethos-bg .section-inner{position:relative;z-index:1;}
     .ethos-bg .section-tag{color:var(--mist);}
     .ethos-bg h2{color:var(--white);font-style:italic;font-size:clamp(34px,4.6vw,52px);line-height:1.08;}
-    .ethos-bg h2 em{color:var(--mist);font-style:italic;}
+    .ethos-bg h2 em{color:var(--coral);font-style:italic;}
     .ethos-intro{font-size:18px;color:rgba(255,255,255,.72);line-height:1.7;margin-top:14px;max-width:420px;}
     .ethos-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start;}
     .ethos-principles{display:flex;flex-direction:column;}
@@ -253,7 +258,7 @@
     .pb-glow{position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,rgba(90,126,168,.32) 0%,rgba(90,126,168,0) 70%);pointer-events:none;filter:blur(20px);}
     .pb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;position:relative;}
     .pb-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);}
-    .pb-dot{width:8px;height:8px;border-radius:50%;background:var(--steel);box-shadow:0 0 12px rgba(90,126,168,.9),0 0 24px rgba(90,126,168,.5);}
+    .pb-dot{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 12px rgba(224,122,95,.9),0 0 24px rgba(224,122,95,.5);}
     .pb-chapters-pill{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:6px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.03);}
     .pb-timeline{position:relative;display:flex;flex-direction:column;gap:22px;margin-bottom:24px;}
     .pb-line{position:absolute;left:23px;top:28px;bottom:28px;width:2px;background:linear-gradient(180deg,rgba(155,175,196,.9) 0%,rgba(155,175,196,.35) 50%,rgba(255,255,255,.1) 100%);border-radius:2px;}
@@ -431,15 +436,15 @@
           </div>
         </div>
         <div>
-        <h3 style="font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:12px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(90,126,168,.25),rgba(45,27,110,.35));box-shadow:0 2px 12px rgba(0,0,0,.2);flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".08"/><circle cx="12" cy="12" r="6" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".06"/><circle cx="12" cy="12" r="2.5" fill="white"/></svg></span>1-on-1 Fundraising Coaching</h3>
+        <h3 style="font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:12px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(224,122,95,.3),rgba(224,122,95,.15));box-shadow:0 2px 12px rgba(224,122,95,.2);flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#E07A5F" stroke-width="1.5" fill="#E07A5F" fill-opacity=".08"/><circle cx="12" cy="12" r="6" stroke="#E07A5F" stroke-width="1.5" fill="#E07A5F" fill-opacity=".06"/><circle cx="12" cy="12" r="2.5" fill="#E07A5F"/></svg></span>1-on-1 Fundraising Coaching</h3>
         <p>Your dedicated co-pilot for the entire raise, from narrative and deck through close. I work with a small number of founders at a time so I can go deep on what matters: your specific investors, your specific story, your specific round.</p>
         <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;margin-top:24px;">
-          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Investor targeting &amp; tiered pipeline build</li>
-          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Connector call playbook &amp; warm intro strategy</li>
-          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Collateral guidance + narrative sharpening</li>
-          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Live pitch practice with real feedback</li>
-          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>FOMO &amp; parallel process management</li>
-          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Deal dynamics &amp; term sheet coaching</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Investor targeting &amp; tiered pipeline build</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Connector call playbook &amp; warm intro strategy</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Collateral guidance + narrative sharpening</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Live pitch practice with real feedback</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>FOMO &amp; parallel process management</li>
+          <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Deal dynamics &amp; term sheet coaching</li>
         </ul>
         </div>
       </div>
@@ -546,12 +551,12 @@
     <h2>Coaching done differently.</h2>
     <p class="section-sub">I built Lifted around the coaching I wished I'd had when I was raising.</p>
     <div class="philosophy-grid fade-up">
-      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#5A7EA8"/><stop offset="100%" stop-color="#2D1B6E"/></linearGradient></defs><circle cx="12" cy="8" r="4" stroke="url(#gPh1)" stroke-width="1.5" fill="url(#gPh1)" fill-opacity=".1"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="url(#gPh1)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="url(#gPh1)" stroke-width="1.5" stroke-dasharray="2 2" opacity=".5" fill="none" stroke-linecap="round"/></svg></div><div class="phil-title">Founder-Focused</div><div class="phil-desc">I've been in your shoes and understand your challenges. My advice comes from the founder perspective, not from an investor or a consultant who's never built.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#E07A5F"/><stop offset="100%" stop-color="#2D1B6E"/></linearGradient></defs><circle cx="12" cy="8" r="4" stroke="url(#gPh1)" stroke-width="1.5" fill="url(#gPh1)" fill-opacity=".1"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="url(#gPh1)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="url(#gPh1)" stroke-width="1.5" stroke-dasharray="2 2" opacity=".5" fill="none" stroke-linecap="round"/></svg></div><div class="phil-title">Founder-Focused</div><div class="phil-desc">I've been in your shoes and understand your challenges. My advice comes from the founder perspective, not from an investor or a consultant who's never built.</div></div>
       <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#9BAFC4"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><circle cx="12" cy="12" r="10" fill="url(#gPh2)" opacity=".12" stroke="url(#gPh2)" stroke-width="1.5"/><path d="M12 8l-4 4 4 4 4-4-4-4z" stroke="url(#gPh2)" stroke-width="1.5" fill="url(#gPh2)" fill-opacity=".2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2" fill="url(#gPh2)"/></svg></div><div class="phil-title">Unbiased Sounding Board</div><div class="phil-desc">Honest feedback with no ego or experience bias. I have no problem if you throw my advice in the mental trash bin, I just want you funded.</div></div>
       <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh3" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#2D1B6E"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(#gPh3)" opacity=".15" stroke="url(#gPh3)" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="url(#gPh3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M2 12l10 5 10-5" stroke="url(#gPh3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div class="phil-title">Tactical + Mental</div><div class="phil-desc">I provide tactical strategies to get things done AND mental support to navigate the emotional rollercoaster of fundraising. Both matter equally.</div></div>
-      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh4" x1="4" y1="2" x2="20" y2="22"><stop offset="0%" stop-color="#5A7EA8"/><stop offset="100%" stop-color="#2D1B6E"/></linearGradient></defs><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#gPh4)" opacity=".15" stroke="url(#gPh4)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="phil-title">Direct</div><div class="phil-desc">You don't have time to waste. I cut to the chase, focus on what moves the needle, and help you get results, not give you homework you'll never do.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh4" x1="4" y1="2" x2="20" y2="22"><stop offset="0%" stop-color="#E07A5F"/><stop offset="100%" stop-color="#1A2744"/></linearGradient></defs><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#gPh4)" opacity=".15" stroke="url(#gPh4)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="phil-title">Direct</div><div class="phil-desc">You don't have time to waste. I cut to the chase, focus on what moves the needle, and help you get results, not give you homework you'll never do.</div></div>
       <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh5" x1="3" y1="5" x2="21" y2="22"><stop offset="0%" stop-color="#1A2744"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><rect x="4" y="11" width="16" height="10" rx="2.5" fill="url(#gPh5)" opacity=".12" stroke="url(#gPh5)" stroke-width="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="url(#gPh5)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="16" r="1.5" fill="url(#gPh5)"/><path d="M12 17.5V19" stroke="url(#gPh5)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="phil-title">No Equity Taken</div><div class="phil-desc">I don't take equity in your startup, I want to remain unbiased and solely focused on your fundraising goals.</div></div>
-      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh6" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#5A7EA8"/><stop offset="50%" stop-color="#2D1B6E"/><stop offset="100%" stop-color="#9BAFC4"/></linearGradient></defs><circle cx="12" cy="12" r="10" fill="url(#gPh6)" opacity=".1" stroke="url(#gPh6)" stroke-width="1.5"/><path d="M8 14s1.5 2.5 4 2.5 4-2.5 4-2.5" stroke="url(#gPh6)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="9" cy="10" r="1" fill="url(#gPh6)"/><circle cx="15" cy="10" r="1" fill="url(#gPh6)"/></svg></div><div class="phil-title">Engaging by Design</div><div class="phil-desc">Fundraising can suck, but I make it deliberately enjoyable and interactive. A burnt-out founder is not a funded founder.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh6" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#E07A5F"/><stop offset="50%" stop-color="#5A7EA8"/><stop offset="100%" stop-color="#2D1B6E"/></linearGradient></defs><circle cx="12" cy="12" r="10" fill="url(#gPh6)" opacity=".1" stroke="url(#gPh6)" stroke-width="1.5"/><path d="M8 14s1.5 2.5 4 2.5 4-2.5 4-2.5" stroke="url(#gPh6)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="9" cy="10" r="1" fill="url(#gPh6)"/><circle cx="15" cy="10" r="1" fill="url(#gPh6)"/></svg></div><div class="phil-title">Engaging by Design</div><div class="phil-desc">Fundraising can suck, but I make it deliberately enjoyable and interactive. A burnt-out founder is not a funded founder.</div></div>
     </div>
   </div>
 </section>
