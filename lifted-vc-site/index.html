@@ -110,10 +110,11 @@
     .pipe-step:not(:last-child)::after{content:'';position:absolute;right:-13px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:13px solid var(--border);z-index:2;}
     .pipe-step:not(:last-child)::before{content:'';position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:11px solid var(--white);z-index:3;}
     .pipe-step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);z-index:4;}
-    .pipe-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px;}
-    .pipe-icon.icon-prep{background:linear-gradient(135deg,var(--accent-light),rgba(90,126,168,.15));}
-    .pipe-icon.icon-pitch{background:linear-gradient(135deg,rgba(90,126,168,.2),rgba(155,175,196,.2));}
-    .pipe-icon.icon-close{background:linear-gradient(135deg,var(--navy),var(--accent));color:var(--white);}
+    .pipe-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 3px 10px rgba(0,0,0,.08);}
+    .pipe-icon svg{width:26px;height:26px;}
+    .pipe-icon.icon-prep{background:linear-gradient(135deg,#EAE5FA,#C9BFF2);}
+    .pipe-icon.icon-pitch{background:linear-gradient(135deg,#5A7EA8,#3D5F8A);}
+    .pipe-icon.icon-close{background:linear-gradient(135deg,#2D1B6E,#1A2744);}
     .pipe-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:4px;}
     .pipe-step h3{font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:10px;color:var(--ink);}
     .pipe-step p{font-size:14px;color:var(--muted);line-height:1.65;}
@@ -170,7 +171,8 @@
     .philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
     .phil-card{background:var(--bg);border-radius:12px;padding:28px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
     .phil-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
-    .phil-icon{font-size:24px;margin-bottom:14px;}
+    .phil-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent-light),rgba(90,126,168,.15));display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 2px 8px rgba(45,27,110,.08);}
+    .phil-icon svg{width:26px;height:26px;}
     .phil-title{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:8px;}
     .phil-desc{font-size:14px;color:var(--muted);line-height:1.65;}
 
@@ -377,7 +379,7 @@
     <p class="section-sub">Good fundraising is built on best practices and knowing the industry's hidden rules. I make sure you walk in the room a seasoned pro, whether you're going for your first check or your Series A.</p>
     <div class="pipeline fade-up">
       <div class="pipe-step">
-        <div class="pipe-icon icon-prep">📋</div>
+        <div class="pipe-icon icon-prep"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPrep" x1="3" y1="3" x2="21" y2="21"><stop offset="0%" stop-color="#2D1B6E"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="url(#gPrep)" stroke-width="1.5" fill="none" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke="url(#gPrep)" stroke-width="1.5" fill="url(#gPrep)" fill-opacity=".15"/><path d="M9 14l2 2 4-4" stroke="url(#gPrep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
         <div class="pipe-num">Phase 1</div>
         <h3>Prepare</h3>
         <p>Build your investor target list, sharpen narrative, and get collateral and data room investor-ready so your story feels inevitable.</p>
@@ -385,7 +387,7 @@
         <div class="pipe-detail"><div class="pipe-detail-inner">Investor target list · Deck narrative · Data room · Warm intro mapping · Connector call strategy</div></div>
       </div>
       <div class="pipe-step">
-        <div class="pipe-icon icon-pitch">🎯</div>
+        <div class="pipe-icon icon-pitch"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".1"/><circle cx="12" cy="12" r="6" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".08"/><circle cx="12" cy="12" r="2.5" fill="white"/></svg></div>
         <div class="pipe-num">Phase 2</div>
         <h3>Pitch</h3>
         <p>Drill your pitch, sharpen investor comms, and build your warm intro pipeline through connector calls. Walk in with confidence.</p>
@@ -393,7 +395,7 @@
         <div class="pipe-detail"><div class="pipe-detail-inner">Pitch drilling · Objection handling · Investor communication templates · Meeting scheduling cadence</div></div>
       </div>
       <div class="pipe-step">
-        <div class="pipe-icon icon-close">🤝</div>
+        <div class="pipe-icon icon-close"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".08"/><path d="M8 12.5l3 3 5.5-5.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
         <div class="pipe-num">Phase 3</div>
         <h3>Close</h3>
         <p>Engineer real demand through timeline compression, parallel processes, and soft commitments. Signal momentum at the right moments.</p>
@@ -429,7 +431,7 @@
           </div>
         </div>
         <div>
-        <h3 style="font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:12px;"><span style="font-size:28px;line-height:1;">🎯</span>1-on-1 Fundraising Coaching</h3>
+        <h3 style="font-size:22px;margin-bottom:14px;display:flex;align-items:center;gap:12px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,rgba(90,126,168,.25),rgba(45,27,110,.35));box-shadow:0 2px 12px rgba(0,0,0,.2);flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".08"/><circle cx="12" cy="12" r="6" stroke="white" stroke-width="1.5" fill="white" fill-opacity=".06"/><circle cx="12" cy="12" r="2.5" fill="white"/></svg></span>1-on-1 Fundraising Coaching</h3>
         <p>Your dedicated co-pilot for the entire raise, from narrative and deck through close. I work with a small number of founders at a time so I can go deep on what matters: your specific investors, your specific story, your specific round.</p>
         <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;margin-top:24px;">
           <li style="font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">→</span>Investor targeting &amp; tiered pipeline build</li>
@@ -544,12 +546,12 @@
     <h2>Coaching done differently.</h2>
     <p class="section-sub">I built Lifted around the coaching I wished I'd had when I was raising.</p>
     <div class="philosophy-grid fade-up">
-      <div class="phil-card"><div class="phil-icon">🎯</div><div class="phil-title">Founder-Focused</div><div class="phil-desc">I've been in your shoes and understand your challenges. My advice comes from the founder perspective, not from an investor or a consultant who's never built.</div></div>
-      <div class="phil-card"><div class="phil-icon">🧭</div><div class="phil-title">Unbiased Sounding Board</div><div class="phil-desc">Honest feedback with no ego or experience bias. I have no problem if you throw my advice in the mental trash bin, I just want you funded.</div></div>
-      <div class="phil-card"><div class="phil-icon">⚙️</div><div class="phil-title">Tactical + Mental</div><div class="phil-desc">I provide tactical strategies to get things done AND mental support to navigate the emotional rollercoaster of fundraising. Both matter equally.</div></div>
-      <div class="phil-card"><div class="phil-icon">⚡</div><div class="phil-title">Direct</div><div class="phil-desc">You don't have time to waste. I cut to the chase, focus on what moves the needle, and help you get results, not give you homework you'll never do.</div></div>
-      <div class="phil-card"><div class="phil-icon">🔒</div><div class="phil-title">No Equity Taken</div><div class="phil-desc">I don't take equity in your startup, I want to remain unbiased and solely focused on your fundraising goals.</div></div>
-      <div class="phil-card"><div class="phil-icon">🌱</div><div class="phil-title">Engaging by Design</div><div class="phil-desc">Fundraising can suck, but I make it deliberately enjoyable and interactive. A burnt-out founder is not a funded founder.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#5A7EA8"/><stop offset="100%" stop-color="#2D1B6E"/></linearGradient></defs><circle cx="12" cy="8" r="4" stroke="url(#gPh1)" stroke-width="1.5" fill="url(#gPh1)" fill-opacity=".1"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" stroke="url(#gPh1)" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="url(#gPh1)" stroke-width="1.5" stroke-dasharray="2 2" opacity=".5" fill="none" stroke-linecap="round"/></svg></div><div class="phil-title">Founder-Focused</div><div class="phil-desc">I've been in your shoes and understand your challenges. My advice comes from the founder perspective, not from an investor or a consultant who's never built.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#9BAFC4"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><circle cx="12" cy="12" r="10" fill="url(#gPh2)" opacity=".12" stroke="url(#gPh2)" stroke-width="1.5"/><path d="M12 8l-4 4 4 4 4-4-4-4z" stroke="url(#gPh2)" stroke-width="1.5" fill="url(#gPh2)" fill-opacity=".2" stroke-linejoin="round"/><circle cx="12" cy="12" r="2" fill="url(#gPh2)"/></svg></div><div class="phil-title">Unbiased Sounding Board</div><div class="phil-desc">Honest feedback with no ego or experience bias. I have no problem if you throw my advice in the mental trash bin, I just want you funded.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh3" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#2D1B6E"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(#gPh3)" opacity=".15" stroke="url(#gPh3)" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="url(#gPh3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M2 12l10 5 10-5" stroke="url(#gPh3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div class="phil-title">Tactical + Mental</div><div class="phil-desc">I provide tactical strategies to get things done AND mental support to navigate the emotional rollercoaster of fundraising. Both matter equally.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh4" x1="4" y1="2" x2="20" y2="22"><stop offset="0%" stop-color="#5A7EA8"/><stop offset="100%" stop-color="#2D1B6E"/></linearGradient></defs><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#gPh4)" opacity=".15" stroke="url(#gPh4)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div><div class="phil-title">Direct</div><div class="phil-desc">You don't have time to waste. I cut to the chase, focus on what moves the needle, and help you get results, not give you homework you'll never do.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh5" x1="3" y1="5" x2="21" y2="22"><stop offset="0%" stop-color="#1A2744"/><stop offset="100%" stop-color="#5A7EA8"/></linearGradient></defs><rect x="4" y="11" width="16" height="10" rx="2.5" fill="url(#gPh5)" opacity=".12" stroke="url(#gPh5)" stroke-width="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="url(#gPh5)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="16" r="1.5" fill="url(#gPh5)"/><path d="M12 17.5V19" stroke="url(#gPh5)" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="phil-title">No Equity Taken</div><div class="phil-desc">I don't take equity in your startup, I want to remain unbiased and solely focused on your fundraising goals.</div></div>
+      <div class="phil-card"><div class="phil-icon"><svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gPh6" x1="2" y1="2" x2="22" y2="22"><stop offset="0%" stop-color="#5A7EA8"/><stop offset="50%" stop-color="#2D1B6E"/><stop offset="100%" stop-color="#9BAFC4"/></linearGradient></defs><circle cx="12" cy="12" r="10" fill="url(#gPh6)" opacity=".1" stroke="url(#gPh6)" stroke-width="1.5"/><path d="M8 14s1.5 2.5 4 2.5 4-2.5 4-2.5" stroke="url(#gPh6)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="9" cy="10" r="1" fill="url(#gPh6)"/><circle cx="15" cy="10" r="1" fill="url(#gPh6)"/></svg></div><div class="phil-title">Engaging by Design</div><div class="phil-desc">Fundraising can suck, but I make it deliberately enjoyable and interactive. A burnt-out founder is not a funded founder.</div></div>
     </div>
   </div>
 </section>
