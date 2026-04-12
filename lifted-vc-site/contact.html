@@ -58,8 +58,9 @@
     .field{margin-bottom:22px;}
     .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;}
     .field label .req{color:var(--accent);}
-    .field input,.field textarea{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;transition:border-color .15s,background .15s;}
-    .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:var(--white);box-shadow:0 0 0 4px rgba(45,27,110,.08);}
+    .field input,.field textarea,.field select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;transition:border-color .15s,background .15s;appearance:none;-webkit-appearance:none;}
+    .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A5566' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
+    .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);background:var(--white);box-shadow:0 0 0 4px rgba(45,27,110,.08);}
     .field textarea{resize:vertical;min-height:140px;line-height:1.55;}
     .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 
@@ -139,9 +140,22 @@
       <input type="url" id="website" name="website" placeholder="https://" />
     </div>
 
-    <div class="field">
-      <label for="round">What round are you raising, and what is your target? <span class="req">*</span></label>
-      <input type="text" id="round" name="round" placeholder="e.g. Seed, targeting $2M" required />
+    <div class="field-row">
+      <div class="field">
+        <label for="round">What round? <span class="req">*</span></label>
+        <select id="round" name="round" required>
+          <option value="" disabled selected>Select round</option>
+          <option value="Pre-seed">Pre-seed</option>
+          <option value="Seed">Seed</option>
+          <option value="Series A">Series A</option>
+          <option value="Not sure yet">Not sure yet</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="target">Target raise?</label>
+        <input type="text" id="target" name="target" placeholder="e.g. $2M" />
+      </div>
     </div>
 
     <div class="field">

@@ -44,6 +44,7 @@
     /* Squiggle accent, subtle steel underline */
     .squiggle{position:relative;display:inline-block;}
     .squiggle::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-7px;height:8px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6 T 150 6 T 200 6' fill='none' stroke='%235A7EA8' stroke-width='2.5' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;}
+    .squiggle-light::after{background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M0 6 Q 25 0 50 6 T 100 6 T 150 6 T 200 6' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' opacity='.5'/></svg>") center/100% 100% no-repeat;}
 
     /* NAV */
     nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(242,240,250,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
@@ -117,6 +118,10 @@
     .pipe-step h3{font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:10px;color:var(--ink);}
     .pipe-step p{font-size:14px;color:var(--muted);line-height:1.65;}
     .pipe-signal{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--steel);}
+    /* pipeline hover detail reveal */
+    .pipe-detail{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .3s ease;opacity:0;margin-top:0;}
+    .pipe-step:hover .pipe-detail{max-height:120px;opacity:1;margin-top:12px;}
+    .pipe-detail-inner{font-size:12px;color:var(--muted);line-height:1.6;padding:10px 14px;background:var(--bg);border-radius:8px;border:1px solid var(--border);}
 
     /* RESULTS */
     .results-band{background:linear-gradient(135deg,var(--ink) 0%,#1F1250 100%);padding:64px 32px;}
@@ -164,8 +169,6 @@
     .philosophy-bg{background:var(--white);}
     .philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
     .phil-card{background:var(--bg);border-radius:12px;padding:28px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
-    .phil-card:nth-child(2){transform:translateY(12px);}
-    .phil-card:nth-child(5){transform:translateY(12px);}
     .phil-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
     .phil-icon{font-size:24px;margin-bottom:14px;}
     .phil-title{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:8px;}
@@ -187,9 +190,7 @@
     .testi-role{font-size:12px;color:var(--muted);}
 
     /* ETHOS, manifesto panel */
-    .ethos-bg{background:var(--navy);color:var(--white);position:relative;overflow:hidden;}
-    .ethos-bg::before{content:'';position:absolute;top:-220px;right:-180px;width:620px;height:620px;background:radial-gradient(circle,rgba(45,27,110,.55),transparent 55%);pointer-events:none;}
-    .ethos-bg::after{content:'';position:absolute;bottom:-180px;left:-160px;width:520px;height:520px;background:radial-gradient(circle,rgba(90,126,168,.18),transparent 55%);pointer-events:none;}
+    .ethos-bg{background:linear-gradient(165deg,var(--navy) 0%,#1F1250 100%);color:var(--white);position:relative;overflow:hidden;}
     .ethos-bg .section-inner{position:relative;z-index:1;}
     .ethos-bg .section-tag{color:var(--mist);}
     .ethos-bg h2{color:var(--white);font-style:italic;font-size:clamp(34px,4.6vw,52px);line-height:1.08;}
@@ -288,7 +289,6 @@
       .philosophy-grid{grid-template-columns:1fr 1fr;}
       .testi-grid{grid-template-columns:1fr;}
       .testi-card.span2{grid-column:auto;margin-left:0;margin-right:0;}
-      .phil-card:nth-child(2),.phil-card:nth-child(5){transform:none;}
       .faq-grid{grid-template-columns:1fr;}
       .ethos-grid{grid-template-columns:1fr;gap:40px;}
       .ethos-principle{grid-template-columns:48px 1fr;gap:18px;padding:24px 0;}
@@ -382,6 +382,7 @@
         <h3>Prepare</h3>
         <p>Build your investor target list, sharpen narrative, and get collateral and data room investor-ready so your story feels inevitable.</p>
         <div class="pipe-signal">→ 60+ warm intros queued</div>
+        <div class="pipe-detail"><div class="pipe-detail-inner">Investor target list · Deck narrative · Data room · Warm intro mapping · Connector call strategy</div></div>
       </div>
       <div class="pipe-step">
         <div class="pipe-icon icon-pitch">🎯</div>
@@ -389,6 +390,7 @@
         <h3>Pitch</h3>
         <p>Drill your pitch, sharpen investor comms, and build your warm intro pipeline through connector calls. Walk in with confidence.</p>
         <div class="pipe-signal">→ Meetings converting</div>
+        <div class="pipe-detail"><div class="pipe-detail-inner">Pitch drilling · Objection handling · Investor communication templates · Meeting scheduling cadence</div></div>
       </div>
       <div class="pipe-step">
         <div class="pipe-icon icon-close">🤝</div>
@@ -396,6 +398,7 @@
         <h3>Close</h3>
         <p>Engineer real demand through timeline compression, parallel processes, and soft commitments. Signal momentum at the right moments.</p>
         <div class="pipe-signal">→ Term sheets in hand</div>
+        <div class="pipe-detail"><div class="pipe-detail-inner">Timeline compression · Parallel process management · Soft commitment strategy · Term sheet negotiation</div></div>
       </div>
     </div>
   </div>
@@ -440,7 +443,7 @@
       </div>
     </div>
     <div style="margin-top:16px;text-align:center;">
-      <a href="contact.html" class="btn-primary">Get in Touch to Learn More →</a>
+      <a href="contact.html" class="btn-primary">Work With Me →</a>
     </div>
   </div>
 </section>
@@ -454,7 +457,7 @@
         <h2 style="color:var(--white);margin-bottom:16px;">The Fundraising Playbook</h2>
         <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:12px;">A step-by-step, milestone-gated playbook for running a disciplined fundraise, from building your target list to closing the round. Nine sequential chapters, built from hard-won experience across 100+ founder coaching engagements.</p>
         <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px;">Covers list building, network mapping, lining up 60+ warm intros, preparing materials, pitch practice, activating all intros in a single window, pipeline management, diligence, and closing. Plus a full interactive checklist. Free, no signup required.</p>
-        <a href="fundraising-playbook.html" target="_blank" class="btn-white">Take me to the free playbook →</a>
+        <a href="fundraising-playbook.html" target="_blank" class="btn-white">Read the Free Playbook →</a>
       </div>
       <div class="pb-card">
         <div class="pb-glow"></div>
@@ -664,10 +667,10 @@
 <section class="cta-section">
   <div class="section-inner">
     <div class="section-tag" style="color:rgba(255,255,255,.35);margin-bottom:16px;">Let's talk</div>
-    <h2>Ready to <em>raise</em>?</h2>
+    <h2>Ready to <em class="squiggle squiggle-light">raise</em>?</h2>
     <p>Most founders spend 6–12 months on a raise that should take 3. Let's change that.</p>
     <div class="cta-actions">
-      <a href="contact.html" class="btn-white">Get in Touch →</a>
+      <a href="contact.html" class="btn-white">Work With Me →</a>
       <a href="fundraising-playbook.html" target="_blank" class="btn-secondary" style="color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.15);">Read the Free Playbook</a>
     </div>
   </div>
