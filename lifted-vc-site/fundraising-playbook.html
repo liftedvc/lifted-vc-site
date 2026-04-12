@@ -33,6 +33,9 @@
     --lavender-dim: rgba(45,27,110,0.06);
     --deep:       #1A2744;
     --white:      #FFFFFF;
+    --coral: #E07A5F;
+    --coral-deep: #C4624A;
+    --blush: #FAE8E0;
     /* Brand kit radii */
     --r-sm: 6px;
     --r-md: 10px;
@@ -157,7 +160,7 @@
     content:'';
     position: absolute; left:0; top:0; bottom:0;
     width: 3px;
-    background: linear-gradient(180deg, var(--accent-bright), var(--deep));
+    background: linear-gradient(180deg, var(--coral), var(--accent));
     border-radius: 0 2px 2px 0;
   }
 
@@ -196,7 +199,7 @@
   }
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+    background: linear-gradient(90deg, var(--accent), var(--coral));
     border-radius: 2px;
     transition: width 0.4s ease;
   }
@@ -293,8 +296,8 @@
   .ch-phase-badge .dot {
     width: 7px; height: 7px;
     border-radius: 50%;
-    background: var(--accent-bright);
-    box-shadow: 0 0 6px var(--accent);
+    background: var(--coral);
+    box-shadow: 0 0 6px var(--coral);
   }
 
   /* ── SECTIONS ── */
@@ -399,7 +402,7 @@
     gap: 8px;
     margin-top: 16px;
     padding: 12px 22px;
-    background: linear-gradient(135deg, var(--accent), var(--deep));
+    background: linear-gradient(135deg, var(--coral), var(--coral-deep));
     color: #fff;
     font-family: Georgia, serif;
     font-size: 14px;
@@ -534,7 +537,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, var(--accent), var(--deep));
+    background: linear-gradient(135deg, var(--accent), var(--coral-deep));
     border-radius: 12px;
     padding: 14px 18px;
     margin: 0 0 20px;
@@ -613,7 +616,7 @@
     left: calc(16.66% + 14px);
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+    background: linear-gradient(90deg, var(--accent), var(--coral));
     z-index: 1;
   }
   .pt-phase {
@@ -628,7 +631,7 @@
   .pt-node {
     width: 56px; height: 56px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--deep));
+    background: linear-gradient(135deg, var(--accent), var(--coral-deep));
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 0 0 4px rgba(45,27,110,0.15), 0 4px 16px rgba(45,27,110,0.35);
     position: relative;
@@ -639,7 +642,7 @@
     position: absolute;
     inset: -6px;
     border-radius: 50%;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--coral);
     opacity: 0;
     animation: ptPulse 2s ease-out infinite;
   }
@@ -978,7 +981,7 @@
   /* ── QUOTE BLOCK ── */
   .quote-block {
     background: var(--bg-4);
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid var(--coral);
     padding: 11px 15px;
     border-radius: 0 8px 8px 0;
     font-size: 13px;
@@ -1012,7 +1015,7 @@
   .body-list li::before {
     content: '·';
     position: absolute; left: 0;
-    color: var(--accent-bright);
+    color: var(--coral);
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
@@ -1041,7 +1044,7 @@
   .gate-box .gate-items li::before {
     content: '→';
     position: absolute; left: 0;
-    color: var(--accent-bright); font-size: 12px;
+    color: var(--coral); font-size: 12px;
     top: 6px;
   }
 
@@ -1062,7 +1065,7 @@
     padding: 14px 10px;
     text-align: center;
   }
-  .funnel-step:first-child { border-left: 3px solid var(--accent); }
+  .funnel-step:first-child { border-left: 3px solid var(--coral); }
   .funnel-num {
     font-size: 22px;
     font-weight: 800;
@@ -1168,8 +1171,8 @@
     background: transparent;
   }
   .check-item.checked .check-box {
-    background: var(--accent);
-    border-color: var(--accent);
+    background: var(--coral);
+    border-color: var(--coral);
   }
   .check-item.checked .check-box::after {
     content: '✓';
@@ -1216,7 +1219,7 @@
     font-family: Georgia, serif;
     font-size: 11px; font-weight: 900; letter-spacing: 0.06em;
     color: #fff;
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--coral-deep));
     border-radius: 6px;
     padding: 3px 8px;
     flex-shrink: 0;
@@ -1236,7 +1239,7 @@
   }
   .master-ch-fill {
     height: 100%; width: 0%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+    background: linear-gradient(90deg, var(--accent), var(--coral));
     border-radius: 99px;
     transition: width 0.3s ease;
   }
@@ -1291,7 +1294,7 @@
     transition: all 0.15s;
   }
   .master-check-item.checked .master-check-box {
-    background: var(--accent); border-color: var(--accent);
+    background: var(--coral); border-color: var(--coral);
   }
   .master-check-item.checked .master-check-box::after {
     content: '✓'; color: #fff; font-size: 11px; font-weight: 900;
