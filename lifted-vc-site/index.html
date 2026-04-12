@@ -255,6 +255,7 @@
     .hero-card.visible{opacity:1;transform:translateX(0);}
 
     /* PLAYBOOK CARD */
+    .playbook-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
     .pb-card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.02) 100%);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:36px;overflow:hidden;}
     .pb-glow{position:absolute;top:-120px;right:-120px;width:340px;height:340px;background:radial-gradient(circle,rgba(90,126,168,.32) 0%,rgba(90,126,168,0) 70%);pointer-events:none;filter:blur(20px);}
     .pb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;position:relative;}
@@ -303,6 +304,7 @@
       .ethos-num{font-size:32px;}
       .ethos-label{font-size:20px;}
       .personality-grid{grid-template-columns:1fr!important;}
+      .playbook-grid{grid-template-columns:1fr;gap:40px;}
       .services-card{grid-template-columns:1fr!important;gap:28px!important;}
       .services-card > div:first-child{max-width:220px;margin:0 auto;}
       #coaches .section-inner > div{grid-template-columns:1fr!important;}
@@ -459,7 +461,7 @@
 <!-- FUNDRAISING PLAYBOOK CALLOUT -->
 <section id="playbook" style="background:var(--ink);padding:80px 32px;">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+    <div class="playbook-grid">
       <div>
         <div class="section-tag" style="color:rgba(255,255,255,.4);">Free Resource</div>
         <h2 style="color:var(--white);margin-bottom:16px;">The Fundraising Playbook</h2>

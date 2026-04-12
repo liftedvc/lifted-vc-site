@@ -25,6 +25,9 @@
       --muted: #5A5566;
       --border: #E2DEF0;
       --white: #FFFFFF;
+      --coral: #E07A5F;
+      --coral-deep: #C4624A;
+      --blush: #FAE8E0;
       --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -40,9 +43,10 @@
     .nav-links a:hover{color:var(--ink);}
 
     .page{max-width:880px;margin:0 auto;padding:140px 32px 80px;}
-    .eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:6px 12px;border-radius:999px;margin-bottom:20px;}
+    .eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:6px 12px;border-radius:999px;margin-bottom:20px;position:relative;}
+    .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--coral);display:inline-block;margin-right:8px;vertical-align:middle;}
     h1{font-weight:700;font-size:clamp(38px,5vw,56px);letter-spacing:-.015em;line-height:1.05;margin-bottom:20px;}
-    h1 em{font-style:italic;font-weight:700;color:var(--accent);}
+    h1 em{font-style:italic;font-weight:700;color:var(--coral);}
     .lede{font-size:19px;color:var(--muted);line-height:1.6;max-width:640px;margin-bottom:48px;}
 
     .pricing-card{background:var(--ink);color:var(--white);border-radius:16px;padding:36px;margin-bottom:56px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;}
@@ -57,20 +61,20 @@
     .form-sub{font-size:14px;color:var(--muted);margin-bottom:28px;}
     .field{margin-bottom:22px;}
     .field label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;}
-    .field label .req{color:var(--accent);}
+    .field label .req{color:var(--coral);}
     .field input,.field textarea,.field select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;transition:border-color .15s,background .15s;appearance:none;-webkit-appearance:none;}
     .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A5566' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
-    .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);background:var(--white);box-shadow:0 0 0 4px rgba(45,27,110,.08);}
+    .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--coral);background:var(--white);box-shadow:0 0 0 4px rgba(224,122,95,.1);}
     .field textarea{resize:vertical;min-height:140px;line-height:1.55;}
     .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 
     .hp{position:absolute;left:-9999px;opacity:0;pointer-events:none;}
 
-    .submit-btn{background:linear-gradient(135deg,var(--ink) 0%,#1F1250 100%);color:var(--white);border:none;font-family:inherit;font-size:15px;font-weight:600;padding:14px 28px;border-radius:8px;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(45,27,110,.12);}
-    .submit-btn:hover{background:linear-gradient(135deg,var(--accent) 0%,#1F1250 100%);transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,27,110,.2);}
+    .submit-btn{background:linear-gradient(135deg,var(--coral) 0%,var(--coral-deep) 100%);color:var(--white);border:none;font-family:inherit;font-size:15px;font-weight:600;padding:14px 28px;border-radius:8px;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(224,122,95,.2);}
+    .submit-btn:hover{background:linear-gradient(135deg,var(--coral-deep) 0%,var(--accent) 100%);transform:translateY(-2px);box-shadow:0 6px 20px rgba(224,122,95,.3);}
     .form-footnote{font-size:12px;color:var(--muted);margin-top:14px;}
 
-    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.07);padding:32px;margin-top:40px;}
+    footer{background:linear-gradient(135deg,#0A0A0F 0%,#161230 100%);border-top:1px solid rgba(255,255,255,.07);padding:32px;margin-top:40px;}
     .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
     .footer-logo img{height:26px;width:auto;display:block;}
     .footer-copy{font-size:13px;color:rgba(255,255,255,.3);}
@@ -122,7 +126,7 @@
     <p class="hp"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
 
     <div class="form-title">Tell me about your raise</div>
-    <div class="form-sub">I read every message personally. Share your stage, timeline, and what you're looking for. Fields marked <span style="color:var(--accent)">*</span> are required.</div>
+    <div class="form-sub">I read every message personally. Share your stage, timeline, and what you're looking for. Fields marked <span style="color:var(--coral)">*</span> are required.</div>
 
     <div class="field-row">
       <div class="field">
