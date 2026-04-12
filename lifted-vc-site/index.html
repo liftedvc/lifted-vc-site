@@ -36,7 +36,10 @@
     /* A: subtle grain texture overlay */
     body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:180px;}
     /* Display font, Georgia per brand kit */
-    h1, h2, h3, .stat-num, .result-num, .form-title, .pricing-amount{font-family:Georgia,serif;font-weight:700;}
+    h1, h2, h3, .stat-num, .result-num, .form-title, .pricing-amount, .section-sub, .hero-sub, .testi-quote, .phil-title, .faq-q, .proof-label, .ethos-intro{font-family:Georgia,serif;font-weight:700;}
+    .section-sub, .hero-sub, .ethos-intro{font-weight:400;}
+    .testi-quote{font-weight:400;}
+    .faq-q{font-weight:700;}
     h1 em, h2 em{font-style:italic;color:var(--accent);font-weight:700;}
     /* Squiggle accent, subtle steel underline */
     .squiggle{position:relative;display:inline-block;}
@@ -95,13 +98,25 @@
     .proof-items{display:flex;gap:36px;flex-wrap:wrap;align-items:center;}
     .proof-item{font-weight:700;font-size:14px;color:var(--muted);opacity:.85;}
 
-    /* HOW IT WORKS */
+    /* HOW IT WORKS — pipeline */
     .how-bg{background:var(--white);}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:14px;overflow:hidden;}
-    .step{background:var(--white);padding:40px 32px;}
-    .step-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:18px;}
-    .step h3{font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:12px;color:var(--ink);}
-    .step p{font-size:15px;color:var(--muted);line-height:1.65;}
+    .pipeline{display:flex;gap:0;position:relative;}
+    .pipe-step{flex:1;position:relative;padding:36px 28px 36px 36px;background:var(--white);border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
+    .pipe-step:first-child{border-radius:14px 0 0 14px;}
+    .pipe-step:last-child{border-radius:0 14px 14px 0;}
+    .pipe-step:not(:last-child){border-right:none;}
+    /* arrow connector between steps */
+    .pipe-step:not(:last-child)::after{content:'';position:absolute;right:-13px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:13px solid var(--border);z-index:2;}
+    .pipe-step:not(:last-child)::before{content:'';position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:11px solid var(--white);z-index:3;}
+    .pipe-step:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);z-index:4;}
+    .pipe-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px;}
+    .pipe-icon.icon-prep{background:linear-gradient(135deg,var(--accent-light),rgba(90,126,168,.15));}
+    .pipe-icon.icon-pitch{background:linear-gradient(135deg,rgba(90,126,168,.2),rgba(155,175,196,.2));}
+    .pipe-icon.icon-close{background:linear-gradient(135deg,var(--navy),var(--accent));color:var(--white);}
+    .pipe-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:4px;}
+    .pipe-step h3{font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:10px;color:var(--ink);}
+    .pipe-step p{font-size:14px;color:var(--muted);line-height:1.65;}
+    .pipe-signal{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--steel);}
 
     /* RESULTS */
     .results-band{background:linear-gradient(135deg,var(--ink) 0%,#1F1250 100%);padding:64px 32px;}
@@ -148,7 +163,10 @@
     /* PHILOSOPHY */
     .philosophy-bg{background:var(--white);}
     .philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-    .phil-card{background:var(--bg);border-radius:12px;padding:28px;border:1px solid var(--border);}
+    .phil-card{background:var(--bg);border-radius:12px;padding:28px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;}
+    .phil-card:nth-child(2){transform:translateY(12px);}
+    .phil-card:nth-child(5){transform:translateY(12px);}
+    .phil-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
     .phil-icon{font-size:24px;margin-bottom:14px;}
     .phil-title{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:8px;}
     .phil-desc{font-size:14px;color:var(--muted);line-height:1.65;}
@@ -157,10 +175,14 @@
     .testi-bg{background:var(--bg);}
     .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
     .testi-card{background:var(--white);border-radius:14px;padding:28px;border:1px solid var(--border);}
-    .testi-card.span2{grid-column:1/-1;}
+    .testi-card.span2{grid-column:1/-1;margin-left:-20px;margin-right:40px;background:linear-gradient(135deg,var(--white) 0%,var(--accent-light) 100%);border-color:rgba(45,27,110,.1);}
     .testi-quote{font-size:15px;line-height:1.7;color:var(--ink);margin-bottom:20px;font-style:italic;}
     .testi-author{display:flex;align-items:center;gap:12px;}
     .testi-avatar{width:36px;height:36px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--white);flex-shrink:0;}
+    .testi-avatar.av-purple{background:var(--accent);}
+    .testi-avatar.av-navy{background:var(--navy);}
+    .testi-avatar.av-steel{background:var(--steel);}
+    .testi-avatar.av-mist{background:var(--mist);color:var(--ink);}
     .testi-name{font-size:14px;font-weight:600;color:var(--ink);}
     .testi-role{font-size:12px;color:var(--muted);}
 
@@ -254,14 +276,19 @@
     /* RESPONSIVE */
     @media(max-width:900px){
       .hero{grid-template-columns:1fr;gap:40px;padding:110px 24px 64px;}
-      .steps{grid-template-columns:1fr;}
+      .pipeline{flex-direction:column;}
+      .pipe-step{border-radius:14px!important;border-right:1px solid var(--border)!important;}
+      .pipe-step:not(:last-child)::after,.pipe-step:not(:last-child)::before{display:none;}
+      .pipe-step:not(:last-child){border-bottom:none;margin-bottom:-1px;border-radius:14px 14px 0 0!important;}
+      .pipe-step:last-child{border-radius:0 0 14px 14px!important;}
       .results-inner{grid-template-columns:1fr 1fr;gap:24px;}
       .offerings{grid-template-columns:1fr;}
       .offering-card.featured{grid-template-columns:1fr;}
       .coaches-grid{grid-template-columns:1fr;}
       .philosophy-grid{grid-template-columns:1fr 1fr;}
       .testi-grid{grid-template-columns:1fr;}
-      .testi-card.span2{grid-column:auto;}
+      .testi-card.span2{grid-column:auto;margin-left:0;margin-right:0;}
+      .phil-card:nth-child(2),.phil-card:nth-child(5){transform:none;}
       .faq-grid{grid-template-columns:1fr;}
       .ethos-grid{grid-template-columns:1fr;gap:40px;}
       .ethos-principle{grid-template-columns:48px 1fr;gap:18px;padding:24px 0;}
@@ -348,21 +375,27 @@
     <div class="section-tag">How It Works</div>
     <h2>The three steps to funding.</h2>
     <p class="section-sub">Good fundraising is built on best practices and knowing the industry's hidden rules. I make sure you walk in the room a seasoned pro, whether you're going for your first check or your Series A.</p>
-    <div class="steps fade-up">
-      <div class="step">
-        <div class="step-num">Step 01</div>
-        <h3>Get Organized</h3>
-        <p>Together, we build your dream investor target list, sharpen your narrative, and get your fundraising collateral and data room investor-ready, so when you're in front of the right people, everything lands, and your story feels inevitable.</p>
+    <div class="pipeline fade-up">
+      <div class="pipe-step">
+        <div class="pipe-icon icon-prep">📋</div>
+        <div class="pipe-num">Phase 1</div>
+        <h3>Prepare</h3>
+        <p>Build your investor target list, sharpen narrative, and get collateral and data room investor-ready so your story feels inevitable.</p>
+        <div class="pipe-signal">→ 60+ warm intros queued</div>
       </div>
-      <div class="step">
-        <div class="step-num">Step 02</div>
-        <h3>Be Pitch-Perfect</h3>
-        <p>The goal is to demonstrate that you're venture-backable. We drill your pitch, sharpen investor communications, and build your warm intro pipeline through connector calls. You'll walk into meetings with confidence and credibility.</p>
+      <div class="pipe-step">
+        <div class="pipe-icon icon-pitch">🎯</div>
+        <div class="pipe-num">Phase 2</div>
+        <h3>Pitch</h3>
+        <p>Drill your pitch, sharpen investor comms, and build your warm intro pipeline through connector calls. Walk in with confidence.</p>
+        <div class="pipe-signal">→ Meetings converting</div>
       </div>
-      <div class="step">
-        <div class="step-num">Step 03</div>
-        <h3>Build Authentic FOMO</h3>
-        <p>Real investor demand is engineered, not accidental. We'll cover timeline compression, parallel process management, keeping multiple investors in diligence at once, using soft commitments to pull others in, and knowing exactly when to signal momentum.</p>
+      <div class="pipe-step">
+        <div class="pipe-icon icon-close">🤝</div>
+        <div class="pipe-num">Phase 3</div>
+        <h3>Close</h3>
+        <p>Engineer real demand through timeline compression, parallel processes, and soft commitments. Signal momentum at the right moments.</p>
+        <div class="pipe-signal">→ Term sheets in hand</div>
       </div>
     </div>
   </div>
@@ -527,19 +560,19 @@
     <div class="testi-grid fade-up">
       <div class="testi-card span2">
         <p class="testi-quote">"Adam didn't just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.' I shudder to think of the rookie mistakes I would've made without him."</p>
-        <div class="testi-author"><div class="testi-avatar">L</div><div><div class="testi-name">Leni</div><div class="testi-role">Pre-Seed Founder · Fundraising Sprint Alum</div></div></div>
+        <div class="testi-author"><div class="testi-avatar av-purple">L</div><div><div class="testi-name">Leni</div><div class="testi-role">Pre-Seed Founder · Fundraising Sprint Alum</div></div></div>
       </div>
       <div class="testi-card">
         <p class="testi-quote">"10/10. The sprint was extremely helpful to understand the VC game. I wish I had found it even earlier, it would have saved me at least 100 hours and $20K+. They have a unique ability to see the best in participants and help them frame it for a fundraising advantage."</p>
-        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Misha</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
+        <div class="testi-author"><div class="testi-avatar av-navy">M</div><div><div class="testi-name">Misha</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
       </div>
       <div class="testi-card">
         <p class="testi-quote">"I never ran a process before working with Adam. He made it easy, a lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period. My only regret is not having signed up sooner."</p>
-        <div class="testi-author"><div class="testi-avatar">N</div><div><div class="testi-name">Ndonga</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
+        <div class="testi-author"><div class="testi-avatar av-steel">N</div><div><div class="testi-name">Ndonga</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
       </div>
       <div class="testi-card">
         <p class="testi-quote">"I highly recommend this program. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset. Adam is an incredible coach who will set you up for success no matter where you're at in your journey."</p>
-        <div class="testi-author"><div class="testi-avatar">MA</div><div><div class="testi-name">Mary-Ann</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
+        <div class="testi-author"><div class="testi-avatar av-mist">MA</div><div><div class="testi-name">Mary-Ann</div><div class="testi-role">Fundraising Sprint Alum</div></div></div>
       </div>
     </div>
   </div>
@@ -662,7 +695,7 @@
     entries.forEach(el => {
       if (el.isIntersecting) {
         el.target.classList.add('visible');
-        el.target.querySelectorAll('.step,.offering-card,.coach-card,.phil-card,.testi-card,.faq-item').forEach((child, i) => {
+        el.target.querySelectorAll('.pipe-step,.offering-card,.coach-card,.phil-card,.testi-card,.faq-item').forEach((child, i) => {
           child.style.transitionDelay = `${i * 70}ms`;
           child.classList.add('fade-up','visible');
         });
