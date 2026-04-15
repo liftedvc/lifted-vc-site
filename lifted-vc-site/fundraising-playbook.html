@@ -3412,6 +3412,17 @@
  <button class="tip-chip" data-tip-type="tip" type="button"><span class="tip-chip-icon">💡</span><span class="tip-chip-label">Tip: Why setting a high bar pays off</span><span class="tip-chip-arrow">▾</span></button>
 <div class="tip-body" hidden>Every investor you don't disqualify costs hours: research, intro work, meeting prep, follow-up, all the way through. A founder who filters 200 investors down to 80 spends roughly the same time as one who keeps 200 in the pipeline, but converts at 3x the rate. The bar isn't about being picky for its own sake. It's about protecting your time so the right meetings get your full attention.</div>
 
+ <div style="margin-top:18px;padding:16px 18px;background:linear-gradient(135deg,rgba(95,75,218,0.06),rgba(124,106,232,0.08));border:1px solid rgba(95,75,218,0.25);border-radius:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+   <div style="flex:1;min-width:220px;">
+     <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:3px;">Want to skip the manual filtering?</div>
+     <div style="font-size:12.5px;line-height:1.55;color:var(--text-dim);">Metal automates this whole filter stack. I can get you 25% off.</div>
+   </div>
+   <button type="button" class="crm-template-btn" onclick="openMetalModal()" style="flex-shrink:0;">
+     <span style="font-size:14px;">⚡</span>
+     Claim 25% off of Metal
+   </button>
+ </div>
+
  </div>
  </div>
 
@@ -5332,6 +5343,27 @@
  function _crmEsc(e) { if (e.key === 'Escape') closeCrmModal(); }
  window.openCrmModal = openCrmModal;
  window.closeCrmModal = closeCrmModal;
+ /* ── Metal Discount Lightbox ── */
+ function openMetalModal() {
+   var m = document.getElementById('metalModal');
+   if (m) {
+     m.classList.add('is-open');
+     document.body.style.overflow = 'hidden';
+     document.addEventListener('keydown', _metalEsc);
+   }
+ }
+ function closeMetalModal() {
+   var m = document.getElementById('metalModal');
+   if (m) {
+     m.classList.remove('is-open');
+     document.body.style.overflow = '';
+     document.removeEventListener('keydown', _metalEsc);
+   }
+ }
+ function _metalEsc(e) { if (e.key === 'Escape') closeMetalModal(); }
+ window.openMetalModal = openMetalModal;
+ window.closeMetalModal = closeMetalModal;
+
 
  /* ── Tip Chips (inline expandable tips & warnings) ── */
  function initTipChips() {
@@ -5962,6 +5994,41 @@ window.applyStageProfile = function(stage) {
     </ol>
     <a class="crm-modal-cta" href="https://docs.google.com/spreadsheets/d/1NwKcoBWv6S_RNvciq812sb_OiNbwMpG4SMb65MPWYn0/edit?usp=sharing" target="_blank" rel="noopener">
       Access the CRM ↗
+    </a>
+  </div>
+</div>
+
+<!-- Metal 25% Off Lightbox -->
+<div class="crm-modal-overlay" id="metalModal" role="dialog" aria-modal="true" aria-labelledby="metalModalTitle" onclick="if(event.target===this) closeMetalModal()">
+  <div class="crm-modal-card" style="max-width:560px;">
+    <button type="button" class="crm-modal-close" onclick="closeMetalModal()" aria-label="Close">×</button>
+    <div class="crm-modal-tag">Exclusive Discount</div>
+    <h2 class="crm-modal-title" id="metalModalTitle">Claim 25% off Metal</h2>
+    <p style="font-size:14px;line-height:1.65;color:var(--text-dim);margin:0 0 14px;">Metal is a fundraising operating system that gives founders high-precision intelligence to raise smarter and faster.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin:0 0 22px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;">
+        <div style="font-size:18px;flex-shrink:0;line-height:1.2;">🎯</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">Investor Intelligence</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--text-dim);">Deep profiles, fit scoring, and advanced filters to identify and prioritize the right investors for your round.</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;">
+        <div style="font-size:18px;flex-shrink:0;line-height:1.2;">🔗</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">Warm Intro Pathways</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--text-dim);">Surfaces shared connections to target investors so you can land meetings through trusted relationships.</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;">
+        <div style="font-size:18px;flex-shrink:0;line-height:1.2;">🤖</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">Round Coach</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--text-dim);">AI-powered guidance on pitch decks, valuation, and round strategy, trained on thousands of real investor calls.</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;">
+        <div style="font-size:18px;flex-shrink:0;line-height:1.2;">📊</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;">Fundraising CRM</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--text-dim);">A dedicated pipeline to track, manage, and share your investor process in one place.</div></div>
+      </div>
+    </div>
+    <a class="crm-modal-cta" href="https://metal.cello.so/F76nZiIxFbZ" target="_blank" rel="noopener">
+      Claim 25% off of Metal ↗
     </a>
   </div>
 </div>
