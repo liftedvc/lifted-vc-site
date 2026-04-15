@@ -2237,6 +2237,42 @@
  color: var(--text-dim);
  }
 
+ /* Embedded Video */
+ .video-embed {
+ display: block;
+ border-radius: 12px;
+ overflow: hidden;
+ background: var(--bg-2);
+ border: 1px solid var(--border);
+ margin: 20px 0;
+ box-shadow: 0 4px 16px rgba(45,27,110,0.06);
+ }
+ .video-embed .ve-frame {
+ position: relative;
+ aspect-ratio: 16/9;
+ background: #000;
+ }
+ .video-embed .ve-frame iframe {
+ position: absolute; inset: 0;
+ width: 100%; height: 100%;
+ border: 0;
+ }
+ .video-embed .ve-footer {
+ padding: 12px 16px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ }
+ .video-embed .ve-title {
+ font-size: 13px; font-weight: 700;
+ color: var(--text);
+ font-family: Georgia, serif;
+ }
+ .video-embed .ve-duration {
+ font-size: 11px; font-weight: 600;
+ color: var(--text-dim);
+ }
+
  /* Stage Tip Styles */
  .stage-tip {
  display: none;
@@ -2653,7 +2689,7 @@
 
 <!-- TOP BAR -->
 <header class="topbar">
- <a class="topbar-logo" href="https://www.lifted.vc"><img src="https://cdn.prod.website-files.com/65591eea5765a8bfe768788c/672aab98e3bac41000996fba_Lifted-Logo.svg" alt="Lifted.vc" /></a>
+ <a class="topbar-logo" href="https://www.lifted.vc"><img src="images/lifted-logo.png" alt="Lifted.vc" /></a>
  <div class="topbar-divider"></div>
  <span class="topbar-title">Fundraising Playbook</span>
  <div class="topbar-right">
@@ -3146,16 +3182,15 @@
  </div>
  <div class="section-body">
  <p>Most founders assume more shots on goal equals more checks. It doesn't. Investors take meetings with non-fit founders all the time, partly to hit internal deal-flow goals (every fund tracks how many companies they evaluate) and partly because investors are opportunistic by nature. They want to see as much as possible, and they take meetings in good faith. But a meeting that has a low chance of turning into a check has a high chance of being a waste of time.</p>
- <div class="video-placeholder">
- <div class="vp-thumb">
- <div class="vp-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
- <span class="vp-badge">Coming Soon</span>
+ <figure class="video-embed">
+ <div class="ve-frame">
+ <iframe src="https://www.youtube-nocookie.com/embed/BW3BGTtaLug?rel=0" title="300 vs. 80" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
  </div>
- <div class="vp-footer">
- <span class="vp-title">300 vs. 80</span>
- <span class="vp-duration">60s</span>
- </div>
- </div>
+ <figcaption class="ve-footer">
+ <span class="ve-title">300 vs. 80</span>
+ <span class="ve-duration">60s</span>
+ </figcaption>
+ </figure>
  <div class="stat-callout">
  <div class="stat-callout-item">
  <div class="stat-callout-num">300</div>
