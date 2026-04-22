@@ -1696,42 +1696,53 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  </header>
 
  <div class="ss-body">
+   <!--
+     ARCHIVED "DRIVEN BY" COPY — paste back inside each .clean-goal card as the third block if the video is ever removed.
+
+     Goal 01 (Control your timing):
+     Double opt-in introductions let you hold intros until you're ready. Line them up at once, then sequence pitches: first-check writers (Angels and Leads) early, follow-on investors later.
+
+     Goal 02 (Generate momentum):
+     Put yourself in an investor's shoes: you'd pay more attention to something that already has everyone's attention. That's Authentic FOMO working in your favor.
+
+     Goal 03 (Immediate authenticity):
+     Let volume do the work. With 30–50+ partner meetings on the calendar, this level of activity is very obvious to investors.
+
+     Goal 04 (Optimized cap table):
+     Volume lets you evaluate investors side by side and spot the patterns that matter. When bad fits ghost you, is it really a ghost?
+   -->
+   <div class="clean-split">
+     <button type="button" class="video-thumb clean-video" onclick="openVideoLightbox('KM2BHWa490U','The Four Goals')" aria-label="Play video: The Four Goals">
+       <img src="https://img.youtube.com/vi/KM2BHWa490U/hqdefault.jpg" alt="">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
+     </button>
+     <div class="prose">
+       <p>Compress 30&ndash;50+ meetings into a two-to-three-week window and everything downstream takes shape. A full calendar carries the confidence for you; you operate authentically because the numbers are real. Partners reply faster because they sense the process is live. You feel real pull from the investors who want in, making prioritization obvious.</p>
+       <p class="prose-pull">Run the process and the four outcomes arrive naturally.</p>
+     </div>
+   </div>
+
    <div class="clean-goals">
      <div class="clean-goal">
        <div class="clean-goal-num">01</div>
        <div class="clean-goal-title">Control your timing</div>
        <div class="clean-goal-desc">You decide when the round opens, and you control the scheduling of each investor pitch.</div>
-       <div style="margin-top:auto;padding-top:10px;border-top:1px solid var(--border-light)">
-         <div style="font-size:10.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Driven by</div>
-         <div style="font-size:13px;line-height:1.5;color:var(--text-dim)">Double opt-in introductions let you hold intros until you&rsquo;re ready. Line them up at once, then sequence pitches: first-check writers (Angels and Leads) early, follow-on investors later.</div>
-       </div>
      </div>
      <div class="clean-goal">
        <div class="clean-goal-num">02</div>
        <div class="clean-goal-title">Generate momentum</div>
        <div class="clean-goal-desc">When you pitch 30&ndash;50+ investors inside a 2&ndash;3 week window, you generate real engagement you can honestly speak to.</div>
-       <div style="margin-top:auto;padding-top:10px;border-top:1px solid var(--border-light)">
-         <div style="font-size:10.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Driven by</div>
-         <div style="font-size:13px;line-height:1.5;color:var(--text-dim)">Put yourself in an investor&rsquo;s shoes: you&rsquo;d pay more attention to something that already has everyone&rsquo;s attention. That&rsquo;s Authentic FOMO working in your favor.</div>
-       </div>
      </div>
      <div class="clean-goal">
        <div class="clean-goal-num">03</div>
        <div class="clean-goal-title">Immediate authenticity</div>
        <div class="clean-goal-desc">Show up honestly. Be exactly who you are today. Authenticity is the root of trust, and investors feel it before they hear it.</div>
-       <div style="margin-top:auto;padding-top:10px;border-top:1px solid var(--border-light)">
-         <div style="font-size:10.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Driven by</div>
-         <div style="font-size:13px;line-height:1.5;color:var(--text-dim)">Let volume do the work. With 30&ndash;50+ partner meetings on the calendar, this level of activity is very obvious to investors.</div>
-       </div>
      </div>
      <div class="clean-goal">
        <div class="clean-goal-num">04</div>
        <div class="clean-goal-title">Optimized cap table</div>
        <div class="clean-goal-desc">Investor behavior becomes obvious when you see it in parallel. You can prioritize the ones who treat you best, then weigh their potential value to the company.</div>
-       <div style="margin-top:auto;padding-top:10px;border-top:1px solid var(--border-light)">
-         <div style="font-size:10.5px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Driven by</div>
-         <div style="font-size:13px;line-height:1.5;color:var(--text-dim)">Volume lets you evaluate investors side by side and spot the patterns that matter. When bad fits ghost you, is it really a ghost?</div>
-       </div>
      </div>
    </div>
 
@@ -4122,6 +4133,111 @@ function sendToGoogleSheet(d){try{sheetSend({firstName:d.firstName||'',lastName:
 function sendQuizToGoogleSheet(u,p){try{sheetSend({action:'quiz_complete',email:u.email||'',stage:p.stage||'',targetRaise:p.targetRaise||'',revenue:p.revenue||'',priorRaise:p.priorRaise||'',network:p.network||'',liftedCoaching:p.liftedCoaching||''})}catch(e){}}
 
 /* ══════════════════════════════════════
+   PROGRESS TRACKING
+   Sends a snapshot of how far the user has advanced through the playbook.
+   Fires on chapter change, sub-panel change, knowledge-check save, and dashboard return.
+   Debounced so rapid clicks collapse into a single update.
+   ══════════════════════════════════════ */
+function _liftedUser(){try{return JSON.parse(localStorage.getItem('lifted_user')||'{}')}catch(e){return{}}}
+function _liftedProfile(){try{return JSON.parse(localStorage.getItem('lifted_profile')||'{}')}catch(e){return{}}}
+
+function computeProgressSnapshot(){
+  var user=_liftedUser();
+  var profile=_liftedProfile();
+  var allChs=(typeof allChapters!=='undefined')?allChapters:[];
+  var totalChs=allChs.length;
+
+  // Current chapter + sub from the DOM (source of truth for "where they are")
+  var activeCh=document.querySelector('.chapter-panel.active');
+  var currentChapterId=activeCh?activeCh.id.replace(/^ch-/,''):'';
+  var activeSub=activeCh?activeCh.querySelector('.sub-panel.active'):null;
+  var currentSub=(activeSub&&activeSub.id)?activeSub.id:'';
+  var currentChapterName='';
+  var chMeta=null;
+  for(var i=0;i<allChs.length;i++){if(String(allChs[i].id)===currentChapterId){chMeta=allChs[i];break}}
+  if(chMeta) currentChapterName=chMeta.name;
+  else if(!currentChapterId) currentChapterName='Dashboard';
+
+  // Completed chapters: intro/arc complete on visit; others complete when all KCs pass
+  var completedList=[];
+  allChs.forEach(function(ch){
+    var id=String(ch.id);
+    var done=false;
+    if(id==='intro'||id==='arc'){done=!!(typeof completedChapters!=='undefined'&&completedChapters[ch.id])}
+    else if(typeof isChapterKcComplete==='function'){done=isChapterKcComplete(ch.id)}
+    if(done) completedList.push(id);
+  });
+
+  // Knowledge check counts
+  var kcDone=0,kcTotal=0;
+  if(typeof knowledgeChecks!=='undefined'){
+    for(var chId in knowledgeChecks){
+      var list=knowledgeChecks[chId]||[];
+      kcTotal+=list.length;
+      list.forEach(function(_,i){if(typeof kcState!=='undefined'&&kcState['kc-'+chId+'-'+i]!==undefined) kcDone++});
+    }
+  }
+
+  // Farthest chapter reached (highest index in allChapters that's been visited)
+  var farthestIdx=-1,farthestName='',farthestId='';
+  var visited=(typeof chaptersVisited!=='undefined')?chaptersVisited:{};
+  allChs.forEach(function(ch,idx){
+    if(visited[ch.id]&&idx>farthestIdx){farthestIdx=idx;farthestName=ch.name;farthestId=String(ch.id)}
+  });
+
+  var percent=totalChs>0?Math.round((completedList.length/totalChs)*100):0;
+
+  return {
+    email:user.email||'',
+    firstName:user.firstName||'',
+    lastName:user.lastName||'',
+    company:user.company||'',
+    stage:profile.stage||'',
+    targetRaise:profile.targetRaise||'',
+    currentChapter:currentChapterId,
+    currentChapterName:currentChapterName,
+    currentSub:currentSub,
+    farthestChapter:farthestId,
+    farthestChapterName:farthestName,
+    chaptersCompleted:completedList.length,
+    chaptersTotal:totalChs,
+    chaptersCompletedList:completedList.join(','),
+    kcCompleted:kcDone,
+    kcTotal:kcTotal,
+    progressPercent:percent,
+    timestamp:new Date().toISOString()
+  };
+}
+
+var _progressDebounce=null;
+function sendProgressToGoogleSheet(){
+  var user=_liftedUser();
+  if(!user.email) return; // Only track identified users
+  clearTimeout(_progressDebounce);
+  _progressDebounce=setTimeout(function(){
+    try{
+      var snap=computeProgressSnapshot();
+      snap.action='progress_update';
+      sheetSend(snap);
+    }catch(e){}
+  },1500);
+}
+window.sendProgressToGoogleSheet=sendProgressToGoogleSheet;
+
+// Send a final snapshot when the tab is being closed/hidden (no debounce).
+document.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='hidden'){
+    try{
+      var user=_liftedUser();
+      if(!user.email) return;
+      var snap=computeProgressSnapshot();
+      snap.action='progress_update';
+      sheetSend(snap);
+    }catch(e){}
+  }
+});
+
+/* ══════════════════════════════════════
    QUIZ SYSTEM
    ══════════════════════════════════════ */
 var quizQuestions = [
@@ -4321,6 +4437,8 @@ function goToChapter(id, navEl){
   if(window.innerWidth<=1024){
     document.getElementById('app').classList.remove('sidebar-open');
   }
+  // Push progress snapshot to the Google Sheet
+  if(typeof sendProgressToGoogleSheet==='function') sendProgressToGoogleSheet();
 }
 window.goToChapter=goToChapter;
 
@@ -4363,6 +4481,8 @@ function goToSub(chId, subId, navEl){
   if(typeof autoExpandTips==='function'){
     requestAnimationFrame(function(){requestAnimationFrame(autoExpandTips)});
   }
+  // Push progress snapshot to the Google Sheet
+  if(typeof sendProgressToGoogleSheet==='function') sendProgressToGoogleSheet();
   // KC-based completion is handled in handleKc; no sub-panel-based completion for numbered chapters
 }
 window.goToSub=goToSub;
@@ -4395,6 +4515,8 @@ function goToDashboard(){
   document.getElementById('mainContent').scrollTop=0;
   window.scrollTo(0,0);
   updateDashboard();
+  // Push progress snapshot to the Google Sheet
+  if(typeof sendProgressToGoogleSheet==='function') sendProgressToGoogleSheet();
 }
 window.goToDashboard=goToDashboard;
 
@@ -4521,6 +4643,8 @@ window.handleKc=function(kcId,chosen,answer){
   }
   updateDashboard();
   updateProgressRing();
+  // Push progress snapshot to the Google Sheet
+  if(isCorrect&&typeof sendProgressToGoogleSheet==='function') sendProgressToGoogleSheet();
 };
 
 /* ══════════════════════════════════════
