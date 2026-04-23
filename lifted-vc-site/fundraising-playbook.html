@@ -393,7 +393,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
 .filter-card-meta.warn{color:var(--warning)}
 .filter-card-meta.accent{color:var(--accent);font-weight:700}
 .filter-card-desc{grid-column:2;grid-row:2;font-size:12px;line-height:1.5;color:var(--text-dim)}
-/* Tiering summary (3-up T1/T2/T3) */
+/* Tiering summary (3-up Tier 1/Tier 2/Tier 3) */
 .tier-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
 .tier-summary-head{grid-column:1 / -1;font-size:10.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:-2px}
 .tier-cell{padding:8px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-sm)}
@@ -1438,11 +1438,11 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
           <span class="nav-num">03</span><span class="nav-name">Map Your Connectors</span><span class="nav-chevron">▾</span><span class="nav-check">✓</span><div class="nav-progress"><div class="nav-progress-fill" id="nav-prog-1" style="width:0%"></div></div>
         </div>
         <div class="sub-nav" id="sub-nav-1">
-          <div class="sub-nav-item" data-sub="1-0" onclick="goToSub('1','0',this)"><span class="sub-dot"></span>The Connector Process</div>
-          <div class="sub-nav-item" data-sub="1-1" onclick="goToSub('1','1',this)"><span class="sub-dot"></span>What a Connector Is</div>
-          <div class="sub-nav-item" data-sub="1-2" onclick="goToSub('1','2',this)"><span class="sub-dot"></span>Where to Find Them</div>
-          <div class="sub-nav-item" data-sub="1-3" onclick="goToSub('1','3',this)"><span class="sub-dot"></span>The Audit Workflow</div>
-          <div class="sub-nav-item" data-sub="1-4" onclick="goToSub('1','4',this)"><span class="sub-dot"></span>Milestone Gate</div>
+          <div class="sub-nav-item" data-sub="1-0" onclick="goToSub('1','0',this)"><span class="sub-dot"></span>What a Connector Is</div>
+          <div class="sub-nav-item" data-sub="1-1" onclick="goToSub('1','1',this)"><span class="sub-dot"></span>The Connector Process</div>
+          <div class="sub-nav-item" data-sub="1-2" onclick="goToSub('1','2',this)"><span class="sub-dot"></span>Finding your connectors</div>
+          <div class="sub-nav-item" data-sub="1-3" onclick="goToSub('1','3',this)"><span class="sub-dot"></span>Who to Target at the Fund</div>
+          <div class="sub-nav-item" data-sub="1-4" onclick="goToSub('1','4',this)"><span class="sub-dot"></span>Rate Your List</div>
           <div class="sub-nav-item" data-sub="1-5" onclick="goToSub('1','5',this)"><span class="sub-dot"></span>Knowledge Check</div>
         </div>
         <div class="chapter-nav-item" data-chapter="2" onclick="toggleSubNav(this,'2')">
@@ -1746,8 +1746,16 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
      </div>
    </div>
 
-   <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>How this shows up: Authentic vs. Hype FOMO</button>
-   <div class="tip-body" hidden><strong>Authentic:</strong> &ldquo;I have 40 more partner meetings this week. Want to make sure you have everything you need.&rdquo; Grounded in real activity, builds long-term confidence. <strong>Hype:</strong> fake deadlines, vague &ldquo;we&rsquo;re closing soon,&rdquo; pressure without substance. Investors see through it, and the credibility hit outlasts the round.</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+     <div>
+       <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>How this shows up: Authentic vs. Hype FOMO</button>
+       <div class="tip-body" hidden><strong>Authentic:</strong> &ldquo;I have 40 more partner meetings this week. Want to make sure you have everything you need.&rdquo; Grounded in real activity, builds long-term confidence. <strong>Hype:</strong> fake deadlines, vague &ldquo;we&rsquo;re closing soon,&rdquo; pressure without substance. Investors see through it, and the credibility hit outlasts the round.</div>
+     </div>
+     <div>
+       <button class="tip-chip insight" type="button"><svg class="icon"><use href="#i-bulb"/></svg>What to scale, what to keep authentic</button>
+       <div class="tip-body" hidden>At pre-seed and seed, <em>you</em> are a huge part of what investors evaluate, alongside your deck, market, and traction. Your judgment, demeanor, energy, and how you build relationships are all on the table. Every interaction is a data point for them. <strong>Scale the back office:</strong> investor list building, intro-path mapping, CRM logging, AI notetakers. <strong>Keep authentic anything investor-facing:</strong> your collateral, your outreach to connectors, your investor sourcing, and especially your emails. &ldquo;Personalized&rdquo; AI emails do not count.</div>
+     </div>
+   </div>
 
  </div>
 
@@ -1979,7 +1987,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  <header class="page-head">
    <div class="page-head-crumb">Chapter 2 &middot; Build Your Target List</div>
    <h1 class="page-head-title">Soft Filters</h1>
-   <p class="page-head-sub">Pass 2 of 2. Soft filters don't eliminate investors, they decide where you spend effort. Your working list of 80&ndash;120 is T1 and T2 only.</p>
+   <p class="page-head-sub">Pass 2 of 2. Soft filters don't eliminate investors, they decide where you spend effort. Your working list of 80&ndash;120 is Tier 1 and Tier 2 only.</p>
  </header>
 
  <div class="ss-body">
@@ -1990,13 +1998,13 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
        <span class="video-thumb-badge">Watch: Soft Filters</span>
      </button>
      <div class="prose">
-       <p>T1 investors get most of your effort. T2 get some. T3 is backstop only and doesn't count toward your target.</p>
+       <p>Tier 1 investors get most of your effort. Tier 2 get some. Tier 3 is backstop only and doesn't count toward your target.</p>
        <div class="clean-tier-summary" style="margin-top:8px">
-         <div class="clean-tier-cell"><div class="clean-tier-name">T1 &middot; passes all</div><div class="clean-tier-pct">70%</div><div class="clean-tier-desc">High-conviction. Strong intro, scheduled early.</div></div>
-         <div class="clean-tier-cell"><div class="clean-tier-name">T2 &middot; fails one</div><div class="clean-tier-pct">25%</div><div class="clean-tier-desc">Likely follow-ons; a lead can persuade them.</div></div>
-         <div class="clean-tier-cell"><div class="clean-tier-name">T3 &middot; fails 2+</div><div class="clean-tier-pct">5%</div><div class="clean-tier-desc">Backstop only. Pitch if a connector volunteers.</div></div>
+         <div class="clean-tier-cell"><div class="clean-tier-name">Tier 1 &middot; passes all</div><div class="clean-tier-pct">70%</div><div class="clean-tier-desc">High-conviction. Strong intro, scheduled early.</div></div>
+         <div class="clean-tier-cell"><div class="clean-tier-name">Tier 2 &middot; fails one</div><div class="clean-tier-pct">25%</div><div class="clean-tier-desc">Likely follow-ons; a lead can persuade them.</div></div>
+         <div class="clean-tier-cell"><div class="clean-tier-name">Tier 3 &middot; fails 2+</div><div class="clean-tier-pct">5%</div><div class="clean-tier-desc">Backstop only. Pitch if a connector volunteers.</div></div>
        </div>
-       <div class="clean-warning" style="margin-top:16px"><span><strong>Aim for ~70% of your working list to be T1.</strong> T3 may be the largest group on your spreadsheet, but they get about 5% of your effort.</span></div>
+       <div class="clean-warning" style="margin-top:16px"><span><strong>Aim for ~70% of your working list to be Tier 1.</strong> Tier 3 may be the largest group on your spreadsheet, but they get about 5% of your effort.</span></div>
      </div>
    </div>
 
@@ -2026,7 +2034,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
        <div class="clean-filter" style="grid-column:1 / -1">
          <div class="clean-filter-num">L</div>
          <div class="clean-filter-title">Lead Appetite <span class="clean-filter-meta accent">critical for leads</span></div>
-         <div class="clean-filter-desc">Need a lead? Target investors who've led 10%+ of their deals (20% is strong). At least 30% of your T1 should be lead candidates. Angels and family offices are almost always follow-on.</div>
+         <div class="clean-filter-desc">Need a lead? Target investors who've led 10%+ of their deals (20% is strong). At least 30% of your Tier 1 should be lead candidates. Angels and family offices are almost always follow-on.</div>
        </div>
      </div>
    </section>
@@ -2069,7 +2077,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
        <div class="clean-step">
          <div class="clean-step-num">Step 04</div>
          <div class="clean-step-title">Note tier + connector status</div>
-         <div class="clean-step-desc">Mark T1/T2/T3 and which connector you have (or "none yet"). Sets you up to start Chapter 3 in parallel.</div>
+         <div class="clean-step-desc">Mark Tier 1/Tier 2/Tier 3 and which connector you have (or "none yet"). Sets you up to start Chapter 3 in parallel.</div>
        </div>
      </div>
    </section>
@@ -2135,189 +2143,107 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
     <!-- ═══ CHAPTER 2: MAP CONNECTORS ═══ -->
     <div class="chapter-panel" id="ch-1">
 
- <!-- SUB-CHAPTER 2.0 — The Connector Process -->
+ <!-- SUB-CHAPTER 2.0 — What a Connector Is -->
  <div class="sub-panel active single-screen clean" id="sub-1-0">
 
    <div class="learning-objectives-slot" data-chapter="1"></div>
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 3</div>
-     <h1 class="page-head-title">The Connector Process</h1>
-     <p class="page-head-sub">Your target list is built. Now you line up warm paths into every partner on it. This is the single highest-leverage step in the raise. Who introduces you matters as much as who you&rsquo;re introduced to.</p>
+     <h1 class="page-head-title">What a Connector Is</h1>
+     <p class="page-head-sub">A connector is someone with genuine, warm relationships to partners at your target funds. Not a LinkedIn connection, not someone who "knows of" the firm. The partner would recognize and respond to them.</p>
    </header>
 
    <div class="ss-body">
      <section>
-       <div class="section-label">Where this sits in the raise</div>
-       <div class="clean-list cols-3">
-         <div class="clean-list-item neutral">
-           <div class="clean-list-label">Just done</div>
-           <div class="clean-list-title">Targets locked</div>
-           <div class="clean-list-desc">You filtered 80&ndash;120 qualified investors, tiered them, and set 70% as Tier 1.</div>
-         </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">You are here</div>
-           <div class="clean-list-title">Connector work &middot; Ch 3&ndash;4</div>
-           <div class="clean-list-desc">Map a warm path to each investor, then activate connectors to stage 80+ promised intros before launch.</div>
-         </div>
-         <div class="clean-list-item neutral">
-           <div class="clean-list-label">Up next</div>
-           <div class="clean-list-title">Launch &amp; close</div>
-           <div class="clean-list-desc">Fire all intros in a 24&ndash;48 hour window. Compress the raise. Let authentic FOMO emerge.</div>
-         </div>
-       </div>
-     </section>
-
-     <section>
-       <div class="section-label">Two chapters, one process</div>
+       <div class="section-label">Three tiers of connector &middot; Tier B is your primary pipeline</div>
        <div class="clean-list cols-3">
          <div class="clean-list-item accent">
-           <div class="clean-list-label">Chapter 3 &middot; Map</div>
-           <div class="clean-list-title">Identify the warm path</div>
-           <div class="clean-list-desc">For every investor on your list, find a specific Tier 0&ndash;2 connector who can reach a named partner. No path, no list spot.</div>
-         </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Chapter 4 &middot; Activate</div>
-           <div class="clean-list-title">Secure the intro</div>
-           <div class="clean-list-desc">Reach out, brief the connector, get double opt-in. Goal: 80+ promised intros staged and ready to fire on launch day.</div>
+           <div class="clean-list-label">Tier A &middot; most powerful</div>
+           <div class="clean-list-title">Existing investors</div>
+           <div class="clean-list-desc">People already on your cap table, actively advocating for you. They know how to intro and they want you to raise. No workflow needed &mdash; go direct and ask.</div>
          </div>
          <div class="clean-list-item success">
-           <div class="clean-list-label">Why it matters</div>
-           <div class="clean-list-title">Warm intros are what convert</div>
-           <div class="clean-list-desc">Cold outreach produces meetings; warm intros through Tier 1 connectors produce checks. Allocate effort where leverage lives.</div>
+           <div class="clean-list-label">Tier B &middot; primary pipeline</div>
+           <div class="clean-list-title">Portfolio founders of the fund</div>
+           <div class="clean-list-desc">Founders the fund has backed. Ideally, they have just raised additional capital or had a positive exit. This will likely be the primary source of your introductions.</div>
+         </div>
+         <div class="clean-list-item neutral">
+           <div class="clean-list-label">Tier C &middot; avoid</div>
+           <div class="clean-list-title">Service providers &amp; casual contacts</div>
+           <div class="clean-list-desc">Lawyers, accountants, service providers, and advisors who haven&rsquo;t invested. Skip them unless the relationship is exceptional. Investors know they are being compensated.</div>
          </div>
        </div>
      </section>
 
-     <section>
-       <div class="section-label">Four rules that make the process work</div>
-       <div class="clean-list cols-4">
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Rule 01</div>
-           <div class="clean-list-title">Name a specific partner</div>
-           <div class="clean-list-desc">If a connector won&rsquo;t name who they&rsquo;re introducing you to, don&rsquo;t use them. &ldquo;I know some VCs&rdquo; is a pass.</div>
-         </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Rule 02</div>
-           <div class="clean-list-title">Double opt-in, always</div>
-           <div class="clean-list-desc">Both sides agree before the connection is made. Every intro lands pre-qualified and your connector&rsquo;s relationship stays intact.</div>
-         </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Rule 03</div>
-           <div class="clean-list-title">Quality over quantity</div>
-           <div class="clean-list-desc">5&ndash;10 high-leverage connectors move more than 50 weak ones. Aim for 60&ndash;70 tier-1 matches, not 150 promised intros.</div>
-         </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Rule 04</div>
-           <div class="clean-list-title">Portfolio founders are the primary pipeline</div>
-           <div class="clean-list-desc">A current portfolio founder at the target fund is the most scalable and highest-trust intro. Most founders underuse them.</div>
-         </div>
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+       <div>
+         <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Tip: The superconnector shortcut</button>
+         <div class="tip-body" hidden>A single well-connected individual who can intro you to 5+ investors can help accelerate your warm introduction mining. When you find one, treat them like gold. But also make sure to vet their relationship with the investors, as high volume can sometimes mean a shallow connection.</div>
        </div>
-     </section>
-
-     <section>
-       <div class="section-label">Why double opt-in is your timing lever</div>
-       <p class="prose" style="max-width:960px;margin-top:-2px">The double opt-in system does more than protect your connector&rsquo;s relationship. It hands you the timing lever for the entire raise. Because you control when each connector forwards your blurb, you decide when the round begins.</p>
-       <div class="clean-list cols-3">
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Step 01 &middot; Stage</div>
-           <div class="clean-list-title">Line up promises in advance</div>
-           <div class="clean-list-desc">Connectors confirm the intro and wait for your green light. Nothing gets forwarded yet. You build the full set of 80+ promised intros while investors stay unaware a round is starting.</div>
-         </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">Step 02 &middot; Hold</div>
-           <div class="clean-list-title">You control the send</div>
-           <div class="clean-list-desc">No connector forwards until you say so. That means no premature leaks, no staggered intros, no partner hearing about you weeks before their colleagues. The round stays dark until you&rsquo;re ready.</div>
-         </div>
-         <div class="clean-list-item success">
-           <div class="clean-list-label">Step 03 &middot; Fire</div>
-           <div class="clean-list-title">Release them together</div>
-           <div class="clean-list-desc">Green-light every connector in a 24&ndash;48 hour window. Intros land in parallel. Meetings compress into 2&ndash;3 weeks. Density creates authentic FOMO because the activity is real.</div>
-         </div>
+       <div>
+         <button class="tip-chip warn" type="button"><svg class="icon"><use href="#i-warn"/></svg>Watch out: a weak warm intro is essentially the same value as a cold email</button>
+         <div class="tip-body" hidden>If your connector has no real pull with the partner (no track record, no recent conversation, no specific relationship), the intro is low leverage because the connector is effectively coming in cold themselves.</div>
        </div>
-     </section>
-
-     <button class="tip-chip warn" type="button"><svg class="icon"><use href="#i-warn"/></svg>Watch out: a weak warm intro can be worse than a thoughtful cold email</button>
-     <div class="tip-body" hidden>If your connector has no real pull with the partner &mdash; no track record, no recent conversation, no specific relationship &mdash; the intro signals low leverage and lands as a courtesy, not a vouch. The test: can your connector honestly say &ldquo;I&rsquo;ve backed companies with them and they&rsquo;re excited about your space&rdquo;? If not, skip the intro and send a researched cold email instead.</div>
+     </div>
    </div>
 
    <div class="nav-btn-row end-only">
-     <button class="nav-btn next" onclick="goToSub('1','1')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">What a Connector Is</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn next" onclick="goToSub('1','1')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">The Connector Process</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
  </div><!-- /sub-1-0 -->
 
 
- <!-- SUB-CHAPTER 2.1 -->
+ <!-- SUB-CHAPTER 2.1 — The Connector Process -->
  <div class="sub-panel single-screen clean" id="sub-1-1">
-
-   <div class="learning-objectives-slot" data-chapter="1"></div>
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 3 &middot; Map Your Connectors</div>
-     <h1 class="page-head-title">What a Connector Is</h1>
-     <p class="page-head-sub">A connector is someone with a genuine, warm relationship to a partner at one of your target funds. Not a LinkedIn connection, not someone who "knows of" the firm. The partner would recognize and respond to them.</p>
+     <h1 class="page-head-title">The Connector Process</h1>
+     <p class="page-head-sub">You have now made serious progress on building your target list. Now it&rsquo;s time to line up warm introductions to specific partners at the funds. The person who makes the introduction matters a lot.</p>
    </header>
 
    <div class="ss-body">
      <section>
-       <div class="section-label">Four tiers of connector &middot; T2 is your primary pipeline</div>
-       <div class="clean-list cols-4">
+       <div class="section-label">The process, end to end</div>
+       <div class="clean-list cols-3">
          <div class="clean-list-item accent">
-           <div class="clean-list-label">T0 &middot; most powerful</div>
-           <div class="clean-list-title">Existing investors</div>
-           <div class="clean-list-desc">Already in your round, actively advocating. Carries implicit proof. Provides VC intros, process navigation, and momentum.</div>
+           <div class="clean-list-label">Step 01 &middot; Chapter 3</div>
+           <div class="clean-list-title">Map the path</div>
+           <div class="clean-list-desc">For every investor on your target list, find someone who can reach a specific named partner at the fund. The strongest paths come from people on your cap table (Tier A) or founders the fund has backed (Tier B).</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-label">T1 &middot; highest trust</div>
-           <div class="clean-list-title">Exited founders</div>
-           <div class="clean-list-desc">Founders who exited or returned capital to the fund. Transfers credibility instantly. Rare but powerful.</div>
+           <div class="clean-list-label">Step 02 &middot; Chapter 3</div>
+           <div class="clean-list-title">Audit and pair</div>
+           <div class="clean-list-desc">Score each connector by strength (Tier A, B, or C), then pair each investor with the best path you have to them. It will become obvious how strong your list is, and if it still needs work before activating your introductions.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Step 03 &middot; Chapter 4</div>
+           <div class="clean-list-title">Reach out</div>
+           <div class="clean-list-desc">Have a short call where necessary to secure the introduction. It&rsquo;s much harder to say no when they have to do so to your face!</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Step 04 &middot; Chapter 4</div>
+           <div class="clean-list-title">Run the connector call</div>
+           <div class="clean-list-desc">A 20&ndash;30 minute conversation with one specific outcome: a commitment to forward your short pitch (your &ldquo;blurb&rdquo;) to a named partner. Done well, you walk away with a promised intro queued up.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Step 05 &middot; Chapter 4</div>
+           <div class="clean-list-title">Stage the promises</div>
+           <div class="clean-list-desc">You prime your connectors with the strategy you are running, and keep them updated on your timing.</div>
          </div>
          <div class="clean-list-item success">
-           <div class="clean-list-label">T2 &middot; primary pipeline</div>
-           <div class="clean-list-title">Current portfolio founders</div>
-           <div class="clean-list-desc">Founders currently funded by the target fund. Most accessible and scalable path. Majority of your intros come from here.</div>
-         </div>
-         <div class="clean-list-item neutral">
-           <div class="clean-list-label">T3 &middot; bonus only</div>
-           <div class="clean-list-title">Service providers &amp; friends</div>
-           <div class="clean-list-desc">Lawyers, accountants, casual friends. Gets you in the door but doesn't move the needle. Never rely on T3 for T1 investors.</div>
+           <div class="clean-list-label">Step 06 &middot; Chapter 4</div>
+           <div class="clean-list-title">Fire together</div>
+           <div class="clean-list-desc">Email all your connectors asking them to forward your blurb on to the investors in a short window. Then you schedule your meetings over a 2&ndash;3 week period.</div>
          </div>
        </div>
      </section>
-
-     <section>
-       <div class="section-label">Who they need to connect you to &middot; name a specific partner</div>
-       <div class="clean-list cols-4">
-         <div class="clean-list-item accent">
-           <div class="clean-list-label">GP &middot; target</div>
-           <div class="clean-list-title">Partner / General Partner</div>
-           <div class="clean-list-desc">The decision-maker. Only person who can say yes. Always name the specific partner. "Someone at Benchmark" is not an intro to Peter Fenton.</div>
-         </div>
-         <div class="clean-list-item warn">
-           <div class="clean-list-label">VP &middot; strategic</div>
-           <div class="clean-list-title">Venture Partner</div>
-           <div class="clean-list-desc">Operators or founders brought in deal-by-deal. Often excellent connectors and internal champions. Use to get warm to a GP.</div>
-         </div>
-         <div class="clean-list-item error">
-           <div class="clean-list-label">P &middot; likely skip</div>
-           <div class="clean-list-title">Principal / VP</div>
-           <div class="clean-list-desc">Cannot close unilaterally. Avoid in favor of a direct partner intro. Always push for a GP conversation.</div>
-         </div>
-         <div class="clean-list-item error">
-           <div class="clean-list-label">A &middot; skip</div>
-           <div class="clean-list-title">Analyst / Associate</div>
-           <div class="clean-list-desc">Sourcing and research only. No investment authority. Gets you a screening call, not a real meeting.</div>
-         </div>
-       </div>
-     </section>
-
-     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Tip: The superconnector shortcut</button>
-     <div class="tip-body" hidden>A single well-connected founder who can intro you to 6+ investors in one conversation is worth a week of normal outreach. When you find one, treat them like gold. Ask for warm intros to each of their investors by name, then ask who else they'd recommend you talk to. One superconnector unlocks a week's worth of work.</div>
    </div>
 
    <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('1','0')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">The Connector Process</span></button>
-     <button class="nav-btn next" onclick="goToSub('1','2')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Where to Find Them</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn prev" onclick="goToSub('1','0')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">What a Connector Is</span></button>
+     <button class="nav-btn next" onclick="goToSub('1','2')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Finding your connectors</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
  </div><!-- /sub-1-1 -->
 
@@ -2326,8 +2252,8 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
 
  <header class="page-head">
    <div class="page-head-crumb">Chapter 3 &middot; Map Your Connectors</div>
-   <h1 class="page-head-title">Where to Find Them</h1>
-   <p class="page-head-sub">Five places to look for warm paths to each target investor, ordered by return on time.</p>
+   <h1 class="page-head-title">Finding your connectors</h1>
+   <p class="page-head-sub">Here is where you can find connectors. It won&rsquo;t always be efficient, but thoughtful work here will pay off in the long run.</p>
  </header>
 
  <div class="ss-body">
@@ -2337,134 +2263,160 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
        <div class="clean-list-item accent">
          <div class="clean-list-icon"><svg class="icon"><use href="#i-clipboard"/></svg></div>
          <div class="clean-list-title">Your cap table</div>
-         <div class="clean-list-desc">Anyone already in your round is Tier 0. Start here before anything else.</div>
-       </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-icon"><svg class="icon"><use href="#i-briefcase"/></svg></div>
-         <div class="clean-list-title">LinkedIn</div>
-         <div class="clean-list-desc">Cross-reference your connections with each investor and their portfolio founders. Most important manual source.</div>
-       </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-icon"><svg class="icon"><use href="#i-search"/></svg></div>
-         <div class="clean-list-title">Crunchbase / PitchBook</div>
-         <div class="clean-list-desc">Identify portfolio founders at each fund by name, then find them on LinkedIn. Builds the raw list of T2 candidates.</div>
-       </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-icon"><svg class="icon"><use href="#i-cap"/></svg></div>
-         <div class="clean-list-title">Accelerator networks</div>
-         <div class="clean-list-desc">Batchmates and program alumni. Shared identity makes intros natural.</div>
+         <div class="clean-list-desc">Your existing investors are Tier A. Ask them to suggest portfolio founders at each target fund. Start here before anything else.</div>
        </div>
        <div class="clean-list-item accent">
          <div class="clean-list-icon"><svg class="icon"><use href="#i-crystal"/></svg></div>
          <div class="clean-list-title">Intelligence platforms</div>
-         <div class="clean-list-desc">Software that surfaces connection paths across your network. Manual mapping takes 20+ hours; automate where you can.</div>
+         <div class="clean-list-desc"><a href="https://metal.cello.so/F76nZiIxFbZ" target="_blank" rel="noopener" onclick="event.preventDefault();event.stopPropagation();openMetalModal();return false;" style="color:var(--accent);font-weight:700;text-decoration:none;cursor:pointer;">Metal</a> is purpose-built for finding founders funded by your target investors. Crunchbase and PitchBook are solid alternatives.</div>
+       </div>
+       <div class="clean-list-item accent">
+         <div class="clean-list-icon"><svg class="icon"><use href="#i-briefcase"/></svg></div>
+         <div class="clean-list-title">LinkedIn &amp; your network</div>
+         <div class="clean-list-desc">Cross-reference your connections against each fund&rsquo;s portfolio founders. Strong manual source for Tier B candidates, and it surfaces who can introduce you to them.</div>
+       </div>
+       <div class="clean-list-item accent">
+         <div class="clean-list-icon"><svg class="icon"><use href="#i-cap"/></svg></div>
+         <div class="clean-list-title">Accelerator networks</div>
+         <div class="clean-list-desc">Program alumni who&rsquo;ve raised from your target funds. Shared identity makes these intros natural.</div>
+       </div>
+       <div class="clean-list-item success">
+         <div class="clean-list-icon"><svg class="icon"><use href="#i-bolt"/></svg></div>
+         <div class="clean-list-title">Anyone can connect!</div>
+         <div class="clean-list-desc">Anyone who can connect you to a portfolio founder is a great way in. The relationship quality bar is lower here too, but of course, the stronger the better.</div>
        </div>
      </div>
    </section>
 
-   <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="lifted-cta-btn">Map your LinkedIn network &rarr;</a>
+   <div class="clean-cta coral" onclick="openMetalModal()">
+     <div class="clean-cta-icon"><svg class="icon"><use href="#i-crystal"/></svg></div>
+     <div class="clean-cta-body">
+       <div class="clean-cta-title">Map your network through Metal</div>
+       <div class="clean-cta-desc">Instantly surface portfolio founders funded by your target investors, plus the warm paths to reach them. Claim 25% off.</div>
+     </div>
+     <div class="clean-cta-arrow">&rarr;</div>
+   </div>
 
    <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Tip: How to build connectors from scratch</button>
-   <div class="tip-body" hidden>If you don't know any portfolio founders yet, build the relationships before you need them. Five paths that work: <strong>(1) Founder communities &amp; alumni networks</strong> (Slack groups, accelerator alumni circles). <strong>(2) Engage as a customer</strong> if you genuinely use their product. <strong>(3) Industry events</strong> with research and follow-up. <strong>(4) Cold email to founders</strong> (not investors) with something of value. <strong>(5) Content collaboration</strong> like podcasts or joint articles.</div>
+   <div class="tip-body" hidden>If you don't know any portfolio founders yet, it's time to start building them. Four paths that work: <strong>(1) Founder communities &amp; alumni networks</strong> (Slack groups, accelerator alumni circles). <strong>(2) Engage as a customer</strong> if you genuinely use their product. <strong>(3) Industry events</strong> where you can make friends over drinks. <strong>(4) Cold email or LinkedIn DMs</strong> to founders (not investors) asking for fundraising feedback has a surprisingly high conversion rate.</div>
  </div>
 
  <div class="nav-btn-row">
-   <button class="nav-btn prev" onclick="goToSub('1','1')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">What a Connector Is</span></button>
-   <button class="nav-btn next" onclick="goToSub('1','3')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">The Audit Workflow</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+   <button class="nav-btn prev" onclick="goToSub('1','1')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">The Connector Process</span></button>
+   <button class="nav-btn next" onclick="goToSub('1','3')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Who to Target at the Fund</span></span><span class="nav-btn-arrow">&rarr;</span></button>
  </div>
  </div><!-- /sub-1-2 -->
 
- <!-- SUB-CHAPTER 2.3 -->
+ <!-- SUB-CHAPTER 2.3 — Who to Target at the Fund -->
  <div class="sub-panel single-screen clean" id="sub-1-3">
 
- <header class="page-head">
-   <div class="page-head-crumb">Chapter 3 &middot; Map Your Connectors</div>
-   <h1 class="page-head-title">The Audit Workflow</h1>
-   <p class="page-head-sub">For each investor on your list, run this five-step sequence. Track where each connector is in the process from identified to intro made.</p>
- </header>
+   <header class="page-head">
+     <div class="page-head-crumb">Chapter 3 &middot; Map Your Connectors</div>
+     <h1 class="page-head-title">Who to Target at the Fund</h1>
+     <p class="page-head-sub">There is really only one target: Partners. 99% of the time, only partners write checks. Everyone else at the fund routes, screens, or assists. Target partners, and redirect every junior intro you&rsquo;re offered.</p>
+   </header>
 
- <div class="ss-body">
-   <section>
-     <div class="section-label">Run this sequence for every investor</div>
-     <div class="clean-list cols-5">
-       <div class="clean-list-item accent">
-         <div class="clean-list-label">Step 01</div>
-         <div class="clean-list-title">Identify the partner</div>
-         <div class="clean-list-desc">Not "someone at the fund." A specific named partner with investment authority.</div>
+   <div class="ss-body">
+     <section>
+       <div class="section-label">Two categories &middot; one worth pursuing</div>
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+         <div class="clean-list-item success">
+           <div class="clean-list-label">Target</div>
+           <div class="clean-list-title">Partners (GP)</div>
+           <div class="clean-list-desc">Partners are the ones who write checks and carry the most weight when championing deals internally. They are the ones you need to sign off on the deal. Your connector&rsquo;s credibility needs to be meaningful to the partner themself, and it won&rsquo;t if your connector doesn&rsquo;t know them.</div>
+         </div>
+         <div class="clean-list-item error">
+           <div class="clean-list-label">Deflect</div>
+           <div class="clean-list-title">Junior VC (Associate, Analyst, Principal, VP)</div>
+           <div class="clean-list-desc">They source, screen, and filter. Some can champion internally, but none can write a check or carry a deal through the partnership meeting alone. An intro to a junior starts you on the filter side of the funnel rather than the decision side. Redirect.</div>
+         </div>
        </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-label">Step 02</div>
-         <div class="clean-list-title">Check Tier 0</div>
-         <div class="clean-list-desc">Do any existing investors have a direct relationship with this partner?</div>
+     </section>
+
+     <section>
+       <div class="section-label">What to say when you&rsquo;re offered a junior intro</div>
+       <div style="background:var(--bg);border-left:3px solid var(--accent);padding:14px 20px;border-radius:var(--r-sm);font-size:14px;line-height:1.65;color:var(--text);max-width:920px;font-style:italic">
+         &ldquo;Thanks so much. Out of respect for everyone&rsquo;s time, I try to get introduced directly to the partner who covers [sector/stage] at [Firm]. Is there a specific partner you&rsquo;d recommend, or someone who could make that intro?&rdquo;
        </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-label">Step 03</div>
-         <div class="clean-list-title">Map portfolio founders</div>
-         <div class="clean-list-desc">Find founders the partner has backed. Cross-reference against your network.</div>
+       <p class="prose" style="font-size:13px;color:var(--text-dim);margin-top:8px;max-width:920px">The move: acknowledge warmly so you don&rsquo;t burn the connector, name the reason (respecting everyone&rsquo;s time), ask for the partner specifically, and put the ball back on the connector to facilitate.</p>
+     </section>
+
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+       <div>
+         <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>When a junior meeting IS worth taking</button>
+         <div class="tip-body" hidden>Narrow exception: if fund fit is genuinely unclear, a junior meeting works as qualification plus pitch practice. Take it, pursue a parallel partner intro, and downgrade the fund in your list if the only entry remains through the junior.</div>
        </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-label">Step 04</div>
-         <div class="clean-list-title">Pick the strongest</div>
-         <div class="clean-list-desc">Assign one connector per investor. Don't multi-thread yet.</div>
-       </div>
-       <div class="clean-list-item accent">
-         <div class="clean-list-label">Step 05</div>
-         <div class="clean-list-title">Flag if none</div>
-         <div class="clean-list-desc">Don't remove. Flag and revisit in Chapter 4 to build new relationships.</div>
+       <div>
+         <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>The exception: partner-led diligence</button>
+         <div class="tip-body" hidden>When a partner has already taken the meeting and hands you to an associate for follow-up diligence, that&rsquo;s standard process, not a filter. The partner is still your champion; the associate is doing the workflow. Different from a cold junior entry.</div>
        </div>
      </div>
-   </section>
+   </div>
 
-   <section>
-     <div class="section-label">Track connector status in your CRM</div>
-     <div class="clean-funnel">
-       <span class="clean-funnel-step"><span class="clean-funnel-step-num">01</span>Identified</span>
-       <span class="clean-funnel-arrow">&rarr;</span>
-       <span class="clean-funnel-step"><span class="clean-funnel-step-num">02</span>Reached Out</span>
-       <span class="clean-funnel-arrow">&rarr;</span>
-       <span class="clean-funnel-step"><span class="clean-funnel-step-num">03</span>Meeting Held</span>
-       <span class="clean-funnel-arrow">&rarr;</span>
-       <span class="clean-funnel-step"><span class="clean-funnel-step-num">04</span>Promised</span>
-       <span class="clean-funnel-arrow">&rarr;</span>
-       <span class="clean-funnel-step success"><span class="clean-funnel-step-num">05</span>Intro Made</span>
-     </div>
-   </section>
-
-   <button class="tip-chip warn" type="button"><svg class="icon"><use href="#i-warn"/></svg>Watch out: Don't rely on memory</button>
-   <div class="tip-body" hidden>By the time you have 40+ connectors in motion, the details blur fast. Names, commitments, who said what. Log every connector touchpoint in your CRM the same day. Memory loses fights with calendar pressure.</div>
- </div>
-
- <div class="nav-btn-row">
-   <button class="nav-btn prev" onclick="goToSub('1','2')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Where to Find Them</span></button>
-   <button class="nav-btn next" onclick="goToSub('1','4')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Milestone Gate</span></span><span class="nav-btn-arrow">&rarr;</span></button>
- </div>
+   <div class="nav-btn-row">
+     <button class="nav-btn prev" onclick="goToSub('1','2')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Finding your connectors</span></button>
+     <button class="nav-btn next" onclick="goToSub('1','4')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Rate Your List</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+   </div>
  </div><!-- /sub-1-3 -->
 
- <!-- SUB-CHAPTER 2.4 -->
+ <!-- SUB-CHAPTER 2.3 -->
  <div class="sub-panel single-screen clean" id="sub-1-4">
 
  <header class="page-head">
    <div class="page-head-crumb">Chapter 3 &middot; Map Your Connectors</div>
-   <h1 class="page-head-title">Milestone Gate</h1>
-   <p class="page-head-sub">Before you move to Chapter 4, the map has to support 80+ promised intros. If it doesn't, go back and build.</p>
+   <h1 class="page-head-title">Rate Your List</h1>
+   <p class="page-head-sub">Pair every investor with your strongest path to them. The pairing code on each row tells you instantly whether your list is ready to launch.</p>
  </header>
 
  <div class="ss-body">
-   <div class="clean-gate">
-     <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don't move to Chapter 4 until</div>
-     <ul class="clean-gate-list">
-       <li><strong>75%</strong> of your investor list has a Tier 0&ndash;2 connector identified</li>
-       <li>All connectors are tiered in your CRM</li>
-       <li>"No connector found" investors are flagged, not removed</li>
-       <li>You have a realistic path to <strong>80+ promised intros</strong> from Tier 0&ndash;2 connectors</li>
-     </ul>
-   </div>
+   <section>
+     <div class="section-label">Two tier systems, combined into one pairing</div>
+     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start">
+       <div class="clean-list-item accent">
+         <div class="clean-list-label">From Chapter 2</div>
+         <div class="clean-list-title">Investor tiers: Tier 1, 2, or 3</div>
+         <div class="clean-list-desc">How well the investor fits you by stage, sector, and thesis. Tier 1 gets 70% of your effort. Tier 2 are follow-ons. Tier 3 is backstop.</div>
+       </div>
+       <div class="clean-list-item success">
+         <div class="clean-list-label">From this chapter</div>
+         <div class="clean-list-title">Connector tiers: Tier A, B, or C</div>
+         <div class="clean-list-desc">How strong your path to that investor is. Tier A is existing investors. Tier B is portfolio founders. Tier C is to be avoided.</div>
+       </div>
+     </div>
+     <p class="prose" style="max-width:960px;margin-top:14px">Combine them into a single pairing code per investor. A Tier 1 investor reached through a Tier A connector is a <strong>1A</strong>. Tier 2 with a Tier B connector is <strong>2B</strong>. Log the pairing in your CRM and list quality becomes obvious at a glance.</p>
+   </section>
 
-   <p class="prose" style="max-width:760px">If the map doesn't support 80+ Tier 0&ndash;2 pathways, go back to Chapter 2 and expand the list, or use the "build from scratch" tip in 3.2 to develop new connector relationships before activating.</p>
+   <section>
+     <div class="section-label">The launch bar</div>
+     <div class="clean-list cols-3">
+       <div class="clean-list-item success">
+         <div class="clean-list-label">Target</div>
+         <div class="clean-list-title">80&ndash;100 at 2B or better</div>
+         <div class="clean-list-desc">The launch bar when you don&rsquo;t have a lead yet. Anything below this means your list, your connector coverage, or both need more work before activation.</div>
+       </div>
+       <div class="clean-list-item accent">
+         <div class="clean-list-label">Exception</div>
+         <div class="clean-list-title">Already have a lead?</div>
+         <div class="clean-list-desc">With a lead locked, you can operate on far fewer paths. Focus shifts to follow-on investors who fill the round rather than set its terms.</div>
+       </div>
+       <div class="clean-list-item warn">
+         <div class="clean-list-label">What counts</div>
+         <div class="clean-list-title">1A, 1B, 2A, 2B</div>
+         <div class="clean-list-desc">Tier 1 or Tier 2 investors reached through a Tier A or Tier B connector. Tier 3 investors and Tier C pairs are worth having but shouldn&rsquo;t dominate the list.</div>
+       </div>
+     </div>
+   </section>
+
+   <section>
+     <div class="section-label">Example: what hitting the bar looks like</div>
+     <div style="background:var(--accent-pale);border-left:4px solid var(--accent);border-radius:var(--r-sm);padding:18px 24px">
+       <p style="font-size:15px;line-height:1.7;color:var(--text);margin:0">You have <strong>100 investors</strong> on your list with warm introductions mapped. From Chapter 2, 70% are Tier 1 and 25% are Tier 2. That gives you <strong>70 pairings at 1A or 1B</strong> and <strong>25 at 2A or 2B</strong>, for <strong>95 at 2B or better</strong>. That&rsquo;s the quality bar your list needs to hit.</p>
+     </div>
+   </section>
  </div>
 
  <div class="nav-btn-row">
-   <button class="nav-btn prev" onclick="goToSub('1','3')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">The Audit Workflow</span></button>
+   <button class="nav-btn prev" onclick="goToSub('1','3')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Who to Target at the Fund</span></button>
    <button class="nav-btn next" onclick="goToSub('1','5')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Knowledge Check</span></span><span class="nav-btn-arrow">&rarr;</span></button>
  </div>
  </div><!-- /sub-1-4 -->
@@ -2485,7 +2437,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  </div>
 
  <div class="nav-btn-row">
-   <button class="nav-btn prev" onclick="goToSub('1','4')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Milestone Gate</span></button>
+   <button class="nav-btn prev" onclick="goToSub('1','4')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Rate Your List</span></button>
    <button class="nav-btn next" onclick="goToChapter(2)"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Activate Your Intros</span></span><span class="nav-btn-arrow">&rarr;</span></button>
  </div>
  </div><!-- /sub-1-5 -->
@@ -2503,7 +2455,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4</div>
      <h1 class="page-head-title">Activate Your Intros</h1>
-     <p class="page-head-sub">Activation is two moves: secure 80&ndash;120 promised intros from your connector network, then fire them all in a single compressed window to create authentic FOMO. This chapter covers both halves.</p>
+     <p class="page-head-sub">Activation is two moves: secure 80&ndash;100 promised intros from your connector network, then fire them all in a single compressed window to create Authentic FOMO. This chapter covers both halves.</p>
    </header>
 
    <div class="ss-body">
@@ -2585,10 +2537,18 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
      </div>
    </section>
 
-   <p class="prose" style="max-width:760px">The system only works if you have a sharp blurb &mdash; Chapter 5 covers writing one. Draft it before you start making connector calls. And because the investor doesn't get the intro until <strong>you</strong> tell the connector to forward, you control timing. That's the lever.</p>
+   <p class="prose" style="max-width:760px">The system only works if you have a sharp blurb. Chapter 5 covers writing one. Draft it before you start making connector calls. And because the investor doesn't get the intro until <strong>you</strong> tell the connector to forward, you control timing. That's the lever.</p>
 
-   <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Tip: The double opt-in is your timing weapon</button>
-   <div class="tip-body" hidden>Stack 80&ndash;120 promises across your list, then activate all of them in the same 24 to 48 hour window. That concentration is what creates the authentic momentum that defines this whole process. Part 04 of this chapter covers the simultaneous launch in detail.</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
+     <div>
+       <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Why double opt-in is your timing lever</button>
+       <div class="tip-body" hidden>Double opt-in is your timing lever for the whole raise. Connectors confirm the intro and wait for your green light, so nothing forwards until you say so. The round stays dark while you stage 80&ndash;100 promises. Then you release every connector in a 24&ndash;48 hour window: intros land in parallel, meetings compress into 2&ndash;3 weeks, and Authentic FOMO emerges because the activity is real.</div>
+     </div>
+     <div>
+       <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>The simultaneous launch is where this pays off</button>
+       <div class="tip-body" hidden>Stack 80&ndash;100 promises across your list, then activate all of them in the same 24&ndash;48 hour window. That concentration is what creates the Authentic FOMO that defines this whole process. Part 04 of this chapter covers the simultaneous launch in detail.</div>
+     </div>
+   </div>
  </div>
 
  <div class="nav-btn-row">
@@ -2603,7 +2563,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  <header class="page-head">
    <div class="page-head-crumb">Chapter 4 &middot; Activate Your Intros</div>
    <h1 class="page-head-title">Connector Calls</h1>
-   <p class="page-head-sub">Most of your connectors are Tier 2 portfolio founders. Every call has one specific outcome: a commitment to forward your blurb to a named partner.</p>
+   <p class="page-head-sub">Most of your connectors are Tier B portfolio founders. Every call has one specific outcome: a commitment to forward your blurb to a named partner.</p>
  </header>
 
  <div class="ss-body">
@@ -2636,7 +2596,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
          <ul class="clean-compare-ul">
            <li><strong>Name the fund and the partner.</strong> Specificity separates a real ask from a vague one.</li>
            <li><strong>Give a concise, confident picture.</strong> Arm them so the intro email writes itself.</li>
-           <li><strong>Make the small ask.</strong> "Would you be willing to forward a short blurb?" Low friction.</li>
+           <li><strong>Make the de-escalated ask.</strong> "Will you forward an email to the investor to see if they&rsquo;re interested in a meeting?" Easier to say yes to than "will you make the intro?"</li>
            <li><strong>Confirm they know the investor well.</strong> A weak intro can hurt more than no intro.</li>
            <li><strong>Bring value.</strong> A useful connection, a sharp insight, honest product feedback.</li>
          </ul>
@@ -2677,7 +2637,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  <header class="page-head">
    <div class="page-head-crumb">Chapter 4 &middot; Activate Your Intros</div>
    <h1 class="page-head-title">Troubleshooting</h1>
-   <p class="page-head-sub">The five scenarios that bleed time if you let them. Log every connector touchpoint the same day &mdash; memory loses fights with calendar pressure.</p>
+   <p class="page-head-sub">The five scenarios that bleed time if you let them. Log every connector touchpoint the same day; memory loses fights with calendar pressure.</p>
  </header>
 
  <div class="ss-body">
@@ -2729,7 +2689,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  <header class="page-head">
    <div class="page-head-crumb">Chapter 4 &middot; Activate Your Intros</div>
    <h1 class="page-head-title">The Simultaneous Launch</h1>
-   <p class="page-head-sub">Come back here after Chapters 5 &amp; 6 (materials and practice) are done. Fire all 80&ndash;120 promised intros in the same 24&ndash;48 hour window. Concentration creates authentic FOMO; a drip creates nothing.</p>
+   <p class="page-head-sub">Come back here after Chapters 5 &amp; 6 (materials and practice) are done. Fire all 80&ndash;100 promised intros in the same 24&ndash;48 hour window. Concentration creates Authentic FOMO; a drip creates nothing.</p>
  </header>
 
  <div class="ss-body">
@@ -2770,7 +2730,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
        <div class="clean-list-item accent">
          <div class="clean-list-label">Move 04</div>
          <div class="clean-list-title">Log every response in CRM immediately</div>
-         <div class="clean-list-desc">As investors opt in, intros get made. Positive, negative, or silent &mdash; all logged the same day.</div>
+         <div class="clean-list-desc">As investors opt in, intros get made. Positive, negative, or silent: all logged the same day.</div>
        </div>
        <div class="clean-list-item success">
          <div class="clean-list-label">Move 05</div>
@@ -2802,7 +2762,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
    <div class="clean-gate">
      <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don't move to Chapter 5 until</div>
      <ul class="clean-gate-list">
-       <li><strong>80+</strong> genuine promised intros from Tier 0&ndash;2 connectors. Tier 3 logged separately, bonus only.</li>
+       <li><strong>80+</strong> genuine promised intros from Tier A or Tier B connectors. Tier C logged separately, bonus only.</li>
        <li>Every entry has a specific connector, a specific investor, and a confirmed commitment.</li>
        <li>You asked for more connectors at the end of every call.</li>
      </ul>
@@ -2810,7 +2770,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
    <div class="clean-gate">
      <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don't move past the launch until</div>
      <ul class="clean-gate-list">
-       <li>Launch week blocked &mdash; calendar cleared for fundraising only.</li>
+       <li>Launch week blocked; calendar cleared for fundraising only.</li>
        <li>All connectors messaged simultaneously within a 24&ndash;48 hour window.</li>
        <li>All double opt-in responses logged in CRM the same day.</li>
        <li>Meetings sequenced: throwaway pitches first, then first-check writers.</li>
@@ -2818,7 +2778,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
      </ul>
    </div>
 
-   <p class="prose" style="max-width:760px">If you don't have 80+ clean Tier 0&ndash;2 promises, go back to Chapter 3 and expand your connector map before you try to launch. If the launch stalls, double-check your blurb (Chapter 5) before forcing more follow-ups.</p>
+   <p class="prose" style="max-width:760px">If you don't have 80+ clean Tier A or Tier B promises, go back to Chapter 3 and expand your connector map before you try to launch. If the launch stalls, double-check your blurb (Chapter 5) before forcing more follow-ups.</p>
  </div>
 
  <div class="nav-btn-row">
@@ -2907,6 +2867,9 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  </div>
  </div>
  </div>
+
+ <button class="tip-chip insight" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Own your collateral</button>
+ <div class="tip-body" hidden>No one should describe your business better than you. If someone else can do it better, that's not a delegation problem, it's a you problem. AI is great for stress-testing, sharpening, and pressure-checking your blurb, deck, and one-pager. The words you ship to investors should be yours, in your voice, and defendable cold.</div>
 
  <div class="nav-btn-row end-only">
    <button class="nav-btn next" onclick="goToSub('3','1')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Writing the Blurb</span></span><span class="nav-btn-arrow">→</span></button>
@@ -3332,7 +3295,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
  <div class="section-body">
  <ul class="body-list">
  <li>Investor name + fund</li>
- <li>Tier (T1 / T2 / T3)</li>
+ <li>Investor tier (Tier 1, Tier 2, or Tier 3)</li>
  <li>Lead or follow</li>
  <li>Expected check size</li>
  <li>Stage</li>
@@ -3931,9 +3894,9 @@ var learningObjectives = {
   ],
   1: [
     'Understand where connector work sits in the raise and why it is the highest-leverage step',
-    'Identify the four tiers of connectors from strongest to weakest',
+    'Identify the three tiers of connector (Tier A, Tier B, Tier C) and know which workflow applies to each',
     'Know which roles at a fund to target for introductions',
-    'Complete a connector audit for your existing network'
+    'Use the pairing notation (1A, 1B, 2B, etc.) to see whether your list is ready to launch'
   ],
   2: [
     'Execute the double opt-in introduction system',
@@ -3974,10 +3937,10 @@ var learningObjectives = {
 
 var knowledgeChecks = {
   arc: [{
-    q: 'What creates Authentic FOMO in a fundraising process?',
-    opts: ['Telling investors you have other term sheets','Multiple investors independently reaching the same conclusion about your potential','Sending mass emails to create urgency','Setting artificial deadlines'],
-    answer: 1,
-    feedback: {correct:'Authentic FOMO comes from real, independent conviction among multiple investors. It cannot be manufactured through artificial pressure tactics.',incorrect:'The key insight is that Authentic FOMO emerges when multiple investors independently reach the same conclusion about your potential. It comes from real signal, not manufactured urgency.'}
+    q: 'What is the hinge moment in a well-run raise?',
+    opts: ['Choosing your target investors','Writing the first pitch deck','When you activate your promised intros','Signing the term sheet'],
+    answer: 2,
+    feedback: {correct:'The hinge of the whole process is when you activate. Fire too early and you get a trickle. Fire at the right moment and you get a flood in a compressed window.',incorrect:"Targeting, materials, and connector work all feed into one decision: when to activate. That's the hinge. Fire too early and you get a trickle; fire at the right moment and you get a flood."}
   },{
     q: 'Why should you wait to activate intros until you have 80+ promised?',
     opts: ['So you can pick the best 10 and ignore the rest','So you can fire them all at once and pack meetings into a tight window','Because investors require proof of 80 intros before meeting','To give yourself more time to prepare your deck'],
@@ -4001,15 +3964,15 @@ var knowledgeChecks = {
     feedback: {correct:'80-120 is the sweet spot. Enough to create a real process, focused enough to give each investor proper attention.',incorrect:'The playbook recommends 80-120 investors. Most founders start with 300+ but fail to filter. A focused list of 80-120 creates better outcomes than a spray-and-pray approach.'}
   }],
   1: [{
-    q: 'Which connector type is typically the strongest?',
-    opts: ['Service providers (lawyers, accountants)','Portfolio founders of the target fund','Your existing investors','Accelerator mentors'],
-    answer: 2,
-    feedback: {correct:'Existing investors have the most credibility. They\'ve already put money behind you, so their recommendation carries real weight.',incorrect:'Existing investors are the strongest connectors because they\'ve already bet on you. Their endorsement signals real conviction, which carries more weight than other relationship types.'}
+    q: 'Which connector tier is your primary pipeline for warm intros?',
+    opts: ['Tier A: existing investors on your cap table','Tier B: portfolio founders of the target fund','Tier C: service providers and casual contacts','You should distribute intros evenly across all three tiers'],
+    answer: 1,
+    feedback: {correct:'Tier B (portfolio founders of the target fund) is your primary pipeline. Tier A is strongest but small; Tier B is scalable and where the whole Chapter 4 workflow is built.',incorrect:'Tier B is the primary pipeline. Tier A (existing investors) is strongest but limited in size. Tier C is avoided unless exceptional. Most of the teachable workflow exists for Tier B because that is where the volume lives.'}
   },{
-    q: 'Who should you ideally get introduced to at a fund?',
-    opts: ['An analyst','An associate','A partner or GP','The head of marketing'],
-    answer: 2,
-    feedback: {correct:'Partners and GPs are the decision-makers. Getting introduced at the right level saves you from being filtered out by junior team members.',incorrect:'Always target a Partner or GP for introductions. They are the investment decision-makers. Intros to junior roles mean your deal still has to survive an internal pitch process.'}
+    q: 'Using the pairing notation, what does a 1B mean in your CRM?',
+    opts: ['A Tier 1 investor with a Tier A connector (existing investor path)','A Tier 1 investor with a Tier B connector (portfolio founder path)','A Tier 2 investor with a Tier B connector','A B-tier investor with a level-1 connector'],
+    answer: 1,
+    feedback: {correct:'1B means a Tier 1 (top priority) investor paired with a Tier B (portfolio founder) connector. The target before launch is 80–100 paths at 2B or better.',incorrect:'Investor tier first, connector tier second. 1B is a Tier 1 investor with a Tier B connector. Aim for 80–100 paths at 2B or better before launch; fewer is acceptable if you already have a lead locked.'}
   }],
   2: [{
     q: 'What is the "double opt-in" introduction system?',
@@ -4106,9 +4069,9 @@ var allChapters = [
 ];
 
 var masterChapters = [
-  {num:'02',name:'Build Your Target List',items:['Investor universe sourced from at least 3 databases or lists','Hard filters applied. Stage, sector, check size, geo, activity','Soft filters scored. Thesis fit, portfolio overlap, founder rep, velocity, openness','Investors tiered into A / B / C based on filter scores','CRM or tracking sheet created with all filtered investors','Stage-specific nuances reviewed and applied','Target list finalized at 80\u2013120 investors']},
-  {num:'03',name:'Map Your Connectors',items:['Every investor on your list has a connector path identified','Connector tiers assigned. Existing Investors, Exited Founders, Portfolio Founders, Service Providers','Target contact at each fund identified. Partner or GP preferred','All 5 connector sources checked. Investors, LinkedIn, portfolio, accelerators, advisors','Connector Audit completed. Coverage, gaps, action plan documented','Backup paths created for top-priority investors']},
-  {num:'04',name:'Activate Your Intros',items:['Blurb finalized and approved by at least one advisor or mentor','Double opt-in system understood','80+ genuine promised intros secured from Tier 0\u20132 connectors','Every promise logged with specific connector + specific investor + commitment date','Troubleshooting playbook reviewed for all 5 common scenarios','Launch week blocked. Calendar cleared for fundraising only','All connectors messaged simultaneously within a 24\u201348 hour window','All double opt-in responses logged in CRM immediately','Meetings sequenced: throwaway pitches first, then first-check writers','Non-schedulers sent one follow-up with calendar link, then logged as Paused']},
+  {num:'02',name:'Build Your Target List',items:['Investor universe sourced from at least 3 databases or lists','Hard filters applied. Stage, sector, check size, geo, activity','Soft filters scored. Thesis fit, portfolio overlap, founder rep, velocity, openness','Investors tiered into Tier 1, Tier 2, or Tier 3 based on filter scores','CRM or tracking sheet created with all filtered investors','Stage-specific nuances reviewed and applied','Target list finalized at 80\u2013120 investors']},
+  {num:'03',name:'Map Your Connectors',items:['Every investor on your list has a connector path identified','Connector tiers assigned. Tier A (existing investors), Tier B (portfolio founders), Tier C (service providers)','Target contact at each fund identified. Partner or GP preferred','All 5 connector sources checked. Investors, LinkedIn, portfolio, accelerators, advisors','Connector Audit completed. Coverage, gaps, action plan documented','Backup paths created for top-priority investors']},
+  {num:'04',name:'Activate Your Intros',items:['Blurb finalized and approved by at least one advisor or mentor','Double opt-in system understood','80+ genuine promised intros secured from Tier A or Tier B connectors','Every promise logged with specific connector + specific investor + commitment date','Troubleshooting playbook reviewed for all 5 common scenarios','Launch week blocked. Calendar cleared for fundraising only','All connectors messaged simultaneously within a 24\u201348 hour window','All double opt-in responses logged in CRM immediately','Meetings sequenced: throwaway pitches first, then first-check writers','Non-schedulers sent one follow-up with calendar link, then logged as Paused']},
   {num:'05',name:'Prepare Your Materials',items:['Blurb written, advisor-tested, and AI stress-tested','One-pager passes 90-second test with someone unfamiliar with the company','Deck drafted and AI objection prep completed','Demo rehearsed and under 5 minutes','Data room structure created (share in Chapter 8)','Narrative built around the three storytelling pillars','All five materials serve their specific job in the funnel']},
   {num:'06',name:'Refine Through Practice',items:['Numbers known cold. KPIs, unit economics, cohorts, market, model assumptions','5+ practice pitches completed with experienced, honest feedback','Can deliver 3-minute version of pitch conversationally without notes','Top 10 objections identified, prepped, and practiced live','AI transcript review prompt built and used on at least one session','Deck updated on any objections or weaknesses that came up consistently','Recorded yourself and watched it back']},
   {num:'07',name:'Manage Your Pipeline',items:['CRM investor fields set up with all required fields','All investors entered with correct stage and tier','Post-meeting logging habit established. Within 30 minutes of every meeting','Timing signals actively monitored. Fast movers prioritized','AI transcript review running on every pitch session']},
@@ -4209,10 +4172,22 @@ function computeProgressSnapshot(){
   };
 }
 
+function _progressReady(){
+  // Only track users who finished the full onboarding (email gate + quiz).
+  // Without this guard, progress events fire mid-quiz and create junk rows.
+  var user=_liftedUser();
+  var profile=_liftedProfile();
+  if(!user||!user.email) return false;
+  if(!profile||!profile.stage) return false;
+  // Quiz overlay still on screen? Don't track yet.
+  var ov=document.getElementById('quizOverlay');
+  if(ov&&ov.classList.contains('show')) return false;
+  return true;
+}
+
 var _progressDebounce=null;
 function sendProgressToGoogleSheet(){
-  var user=_liftedUser();
-  if(!user.email) return; // Only track identified users
+  if(!_progressReady()) return;
   clearTimeout(_progressDebounce);
   _progressDebounce=setTimeout(function(){
     try{
@@ -4226,10 +4201,8 @@ window.sendProgressToGoogleSheet=sendProgressToGoogleSheet;
 
 // Send a final snapshot when the tab is being closed/hidden (no debounce).
 document.addEventListener('visibilitychange',function(){
-  if(document.visibilityState==='hidden'){
+  if(document.visibilityState==='hidden'&&_progressReady()){
     try{
-      var user=_liftedUser();
-      if(!user.email) return;
       var snap=computeProgressSnapshot();
       snap.action='progress_update';
       sheetSend(snap);
@@ -5255,14 +5228,14 @@ function generateGeneralPrompt(stageLabel,sector,geo,raise,instrument,needLead,t
   p+='\n';
 
   p+='SOFT FILTERS (use these to tier the list, not eliminate):\n';
-  p+='After applying hard filters, tier every remaining investor into T1, T2, or T3:\n';
-  p+='- T1 (best fit): Stage match + strong thesis fit + active in my geography. These get 70% of effort.\n';
-  p+='- T2 (partial fit): Hit most criteria but missing one. These get 25% of effort.\n';
-  p+='- T3 (backstop): Marginal fit. These get 5% of effort and do not count toward the working list of 80-120.\n\n';
+  p+='After applying hard filters, tier every remaining investor into Tier 1, Tier 2, or Tier 3:\n';
+  p+='- Tier 1 (best fit): Stage match + strong thesis fit + active in my geography. These get 70% of effort.\n';
+  p+='- Tier 2 (partial fit): Hit most criteria but missing one. These get 25% of effort.\n';
+  p+='- Tier 3 (backstop): Marginal fit. These get 5% of effort and do not count toward the working list of 80-120.\n\n';
 
   p+='Soft filter criteria for tiering:\n';
   if(needLead==='yes'){
-    p+='- Lead appetite: At least '+leadPct+'% of the T1 list should be lead candidates (firms that have led at least 10-20% of their deals). I need a lead investor for this round.\n';
+    p+='- Lead appetite: At least '+leadPct+'% of the Tier 1 list should be lead candidates (firms that have led at least 10-20% of their deals). I need a lead investor for this round.\n';
   }
   if(checkSize) p+='- Check size: I am targeting checks in the '+checkSize+' range. Many investors publicly state their check sizes. As a rule of thumb, investors write 1-2% of their total fund size per check.\n';
   if(valuation) p+='- Valuation range: My expected valuation range is '+valuation+'. Flag any investors whose recent deals are at 2x+ my range as a yellow flag.\n';
@@ -5289,17 +5262,17 @@ function generateGeneralPrompt(stageLabel,sector,geo,raise,instrument,needLead,t
     p+='Rules for the tab-separated output:\n';
     p+='- The first row of your output must be the column headers exactly as shown above.\n';
     p+='- One investor per row. Use a tab character between each field.\n';
-    p+='- Fill in these columns with your research: Investor Name, Fund / Firm, Fund Size ($M), Tier (T1/T2/T3), Lead or Follow (Lead/Follow), Expected Check ($K) (number only), Sector Fit (short description of their relevant portfolio), Last Deal Date (YYYY-MM format).\n';
+    p+='- Fill in these columns with your research: Investor Name, Fund / Firm, Fund Size ($M), Tier (Tier 1/Tier 2/Tier 3), Lead or Follow (Lead/Follow), Expected Check ($K) (number only), Sector Fit (short description of their relevant portfolio), Last Deal Date (YYYY-MM format).\n';
     p+='- Set Pipeline Stage to "Targeted" for every row.\n';
     p+='- Leave these columns blank (I will fill them in as I work the process): Intro Path, Connector Name, Connector Tier, Last Activity Date, Next Step, Next Step Owner, Next Step Due, Notes, Pass Reason.\n';
     p+='- For Fund Size, use the number only in millions (e.g. 50, not $50M).\n';
     p+='- For Expected Check, use the number only in thousands (e.g. 500, not $500K).\n';
   } else {
-    p+='Return a table with these columns: Investor/Fund Name, Relevant Partner, Tier (T1/T2/T3), Why They Fit (1 sentence), Estimated Check Size, Last Deal Date, Lead Candidate (Yes/No).\n';
+    p+='Return a table with these columns: Investor/Fund Name, Relevant Partner, Tier (Tier 1/Tier 2/Tier 3), Why They Fit (1 sentence), Estimated Check Size, Last Deal Date, Lead Candidate (Yes/No).\n';
   }
 
-  p+='Sort by tier (T1 first), then by fit strength within each tier.\n';
-  p+='Target composition: 70% T1, with at least '+leadPct+'% of T1 being lead candidates. The working list (T1 + T2) should total 80-120 investors. T3 is backstop only and does not count toward that number.';
+  p+='Sort by tier (Tier 1 first), then by fit strength within each tier.\n';
+  p+='Target composition: 70% Tier 1, with at least '+leadPct+'% of Tier 1 being lead candidates. The working list (Tier 1 + Tier 2) should total 80-120 investors. Tier 3 is backstop only and does not count toward that number.';
 
   return p;
 }
@@ -5475,7 +5448,7 @@ function resetWizard(){
   <div class="wiz-panel" id="wizStep3" style="display:none;">
     <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#5f4bda;margin-bottom:6px;">Step 3 of 3</div>
     <div style="font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px;font-family:'Nunito',sans-serif;">Soft Filter Preferences</div>
-    <div style="font-size:13px;color:var(--text-dim);margin-bottom:18px;">These won't eliminate investors, but they'll help the AI tier your list into T1, T2, and T3.</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-bottom:18px;">These won't eliminate investors, but they'll help the AI tier your list into Tier 1, Tier 2, and Tier 3.</div>
 
     <div class="wiz-row">
       <div class="wiz-field" style="flex:1;">
@@ -5503,7 +5476,7 @@ function resetWizard(){
         </select>
       </div>
       <div class="wiz-field" style="flex:1;">
-        <label class="wiz-label">Lead candidates <span style="font-weight:400;color:var(--text-dim);">(% of T1 list)</span></label>
+        <label class="wiz-label">Lead candidates <span style="font-weight:400;color:var(--text-dim);">(% of Tier 1 list)</span></label>
         <select id="wizLeadPct" class="wiz-input">
           <option value="30">30% (minimum)</option>
           <option value="40">40%</option>
