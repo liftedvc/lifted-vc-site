@@ -946,43 +946,50 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
 .quiz-overlay{position:fixed;inset:0;background:var(--accent);z-index:1000;display:none;align-items:center;justify-content:center}
 .quiz-overlay.show{display:flex}
 
-/* Landing page (pre-email-gate experience) */
-.landing-overlay{position:fixed;inset:0;background:linear-gradient(180deg,#1a2547 0%,var(--accent) 100%);color:#fff;z-index:1000;overflow-y:auto;display:none}
+/* Landing page (playbook-matched aesthetic) */
+.landing-overlay{position:fixed;inset:0;background:var(--bg);color:var(--text);z-index:1000;overflow-y:auto;display:none}
 .landing-overlay.show{display:block}
-.landing-container{max-width:880px;margin:0 auto;padding:48px 32px 80px}
-.landing-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}
-.landing-logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.02em;color:#fff}
-.landing-hero{text-align:center;margin-bottom:64px}
-.landing-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:18px}
-.landing-headline{font-family:'Nunito',sans-serif;font-size:46px;font-weight:800;letter-spacing:-0.03em;line-height:1.05;margin:0 0 20px;color:#fff}
-.landing-subhead{font-size:17px;line-height:1.55;color:rgba(255,255,255,0.82);max-width:620px;margin:0 auto 36px}
-.landing-video{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:14px;width:100%;max-width:680px;margin:0 auto 36px;cursor:pointer;transition:all .2s;color:#fff;text-align:center;padding:0;overflow:hidden;position:relative;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
-.landing-video:hover{background:rgba(255,255,255,0.13);border-color:rgba(255,255,255,0.25)}
-.landing-video-inner{display:flex;flex-direction:column;align-items:center;gap:14px}
-.landing-video-play{width:60px;height:60px;border-radius:50%;background:#fff;color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;padding-left:4px;box-shadow:0 6px 20px rgba(0,0,0,0.25)}
-.landing-video-label{font-size:14px;font-weight:600;color:#fff}
-.landing-video-sub{font-size:12px;color:rgba(255,255,255,0.6);font-weight:500}
-.landing-cta{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--coral);color:#fff;border:none;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;text-decoration:none}
-.landing-cta:hover{background:var(--coral-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(224,122,95,0.35)}
-.landing-cta-note{font-size:12.5px;color:rgba(255,255,255,0.55);margin-top:14px}
-.landing-section-title{font-family:'Nunito',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.02em;text-align:center;margin:0 0 32px;color:#fff}
-.landing-credibility{margin-bottom:64px}
-.landing-bullets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
-.landing-bullet{padding:24px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px}
-.landing-bullet-title{font-weight:700;font-size:15px;color:#fff;margin-bottom:8px;line-height:1.3}
-.landing-bullet-desc{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,0.72)}
-.landing-toc{margin-bottom:56px}
-.landing-chapters{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin:0 auto}
-.landing-chapter{padding:12px 18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;font-size:14px;color:rgba(255,255,255,0.9);font-weight:500}
-.landing-final{text-align:center;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)}
-.landing-final .landing-cta-note{margin-top:14px}
+.landing-container{max-width:780px;margin:0 auto;padding:40px 32px 72px}
+.landing-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.landing-logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.02em;color:var(--text)}
+.landing-hero{margin-bottom:56px;text-align:center}
+.landing-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+.landing-headline{font-family:'Nunito',sans-serif;font-size:42px;font-weight:800;letter-spacing:-0.025em;line-height:1.08;margin:0 0 18px;color:var(--text)}
+.landing-subhead{font-size:17px;line-height:1.55;color:var(--text-dim);max-width:580px;margin:0 auto 22px}
+.landing-stat{display:inline-block;padding:8px 18px;background:var(--accent-pale);color:var(--accent);font-size:14px;font-weight:600;border-radius:20px;margin-bottom:32px}
+.landing-stat strong{font-weight:800}
+.landing-video{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;width:100%;max-width:640px;margin:0 auto 32px;cursor:pointer;transition:all .2s;overflow:hidden;position:relative;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:0;color:var(--text)}
+.landing-video:hover{background:var(--accent-pale);border-color:var(--accent)}
+.landing-video-inner{display:flex;flex-direction:column;align-items:center;gap:12px}
+.landing-video-play{width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;box-shadow:0 4px 14px rgba(45,61,110,0.2)}
+.landing-video-label{font-size:14px;font-weight:600;color:var(--text)}
+.landing-video-sub{font-size:12px;color:var(--text-dim);font-weight:500}
+.landing-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--coral);color:#fff;border:none;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;text-decoration:none}
+.landing-cta:hover{background:var(--coral-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(224,122,95,0.3)}
+.landing-cta-note{font-size:12.5px;color:var(--text-light);margin-top:12px}
+.landing-section{margin-bottom:52px}
+.landing-section-title{font-family:'Nunito',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-align:center;margin:0 0 26px;color:var(--text)}
+.landing-quotes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.landing-quote{padding:18px 20px;background:var(--bg-2);border-left:3px solid var(--coral);border-radius:8px}
+.landing-quote-tag{font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+.landing-quote-text{font-size:13.5px;line-height:1.55;color:var(--text);margin:0 0 12px}
+.landing-quote-attr{font-size:12px;font-weight:500;color:var(--text-dim)}
+.landing-quote-attr strong{color:var(--text);font-weight:700}
+.landing-bullets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.landing-bullet{padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.landing-bullet-title{font-weight:700;font-size:14.5px;color:var(--text);margin-bottom:8px;line-height:1.3}
+.landing-bullet-desc{font-size:13px;line-height:1.5;color:var(--text-dim)}
+.landing-chapters{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:560px;margin:0 auto}
+.landing-chapter{padding:11px 16px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;font-size:13.5px;color:var(--text);font-weight:500}
+.landing-final{text-align:center;padding-top:28px;border-top:1px solid var(--border)}
 @media (max-width:760px){
-  .landing-headline{font-size:34px;letter-spacing:-0.02em}
-  .landing-subhead{font-size:15.5px}
+  .landing-headline{font-size:30px}
+  .landing-subhead{font-size:15px}
+  .landing-quotes-grid{grid-template-columns:1fr}
   .landing-bullets{grid-template-columns:1fr}
   .landing-chapters{grid-template-columns:1fr}
   .landing-container{padding:28px 18px 56px}
-  .landing-section-title{font-size:20px}
+  .landing-section-title{font-size:19px}
 }
 .quiz-container{background:var(--bg-card);border-radius:var(--r);padding:40px;max-width:520px;width:90%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
 .quiz-header{text-align:center;margin-bottom:28px}
@@ -2649,7 +2656,8 @@ html, body {
     <section class="landing-hero">
       <div class="landing-eyebrow">The Fundraising Playbook</div>
       <h1 class="landing-headline">Raise your round, the way founders who&rsquo;ve done it would.</h1>
-      <p class="landing-subhead">A practical guide to pre-seed and seed fundraising, built from hundreds of hours coaching real founders through real raises. No theory, no fluff, just the moves that actually move a round forward.</p>
+      <p class="landing-subhead">A practical guide to pre-seed and seed fundraising, built from hundreds of hours coaching real founders through real raises.</p>
+      <div class="landing-stat"><strong>$80M+</strong> raised by founders using this playbook in the last two years.</div>
       <button type="button" class="landing-video" onclick="openVideoLightbox('PLACEHOLDER_VIDEO_ID','Why we built this playbook')" aria-label="Watch: Why we built this playbook">
         <div class="landing-video-inner">
           <div class="landing-video-play">&#9654;</div>
@@ -2663,7 +2671,28 @@ html, body {
       </div>
     </section>
 
-    <section class="landing-credibility">
+    <section class="landing-section">
+      <h2 class="landing-section-title">What founders say</h2>
+      <div class="landing-quotes-grid">
+        <div class="landing-quote">
+          <div class="landing-quote-tag">Pyramid Answers</div>
+          <p class="landing-quote-text">&ldquo;Pyramid Answers completely changed how I run investor meetings. I used to build to the conclusion; now I lead with it. Investors actually leaned in instead of waiting for me to wrap up.&rdquo;</p>
+          <div class="landing-quote-attr"><strong>[Founder name]</strong>, [Company]</div>
+        </div>
+        <div class="landing-quote">
+          <div class="landing-quote-tag">Stack the window</div>
+          <p class="landing-quote-text">&ldquo;Compressing first meetings into a 2-week window made the momentum real. By week 3 we had two term sheets in hand, because investors could feel everyone was looking at the same time.&rdquo;</p>
+          <div class="landing-quote-attr"><strong>[Founder name]</strong>, [Company]</div>
+        </div>
+        <div class="landing-quote">
+          <div class="landing-quote-tag">Five-message framework</div>
+          <p class="landing-quote-text">&ldquo;The five-message framework forced us to actually decide what our pitch was. Stripped down to five short answers our whole team could repeat without thinking. Investors noticed immediately.&rdquo;</p>
+          <div class="landing-quote-attr"><strong>[Founder name]</strong>, [Company]</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section">
       <h2 class="landing-section-title">Built from real raises, not theory</h2>
       <div class="landing-bullets">
         <div class="landing-bullet">
@@ -2681,7 +2710,7 @@ html, body {
       </div>
     </section>
 
-    <section class="landing-toc">
+    <section class="landing-section">
       <h2 class="landing-section-title">What&rsquo;s inside</h2>
       <div class="landing-chapters">
         <div class="landing-chapter">Fundraising Mindset</div>
