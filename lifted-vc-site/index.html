@@ -281,6 +281,20 @@
     .pb-check-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
     .pb-check-sub{font-size:12px;color:rgba(255,255,255,.55);}
 
+    /* PLAYBOOK PREVIEW (matches actual playbook UI) */
+    .pb-preview{background:#fff;border-radius:16px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.35);position:relative;}
+    .pb-preview-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #e5e5e7;}
+    .pb-preview-logo{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;color:#0A0A0A;letter-spacing:-0.01em;}
+    .pb-preview-meta{font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E73;}
+    .pb-preview-chapters{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+    .pb-preview-chapter{padding:14px 16px;background:#F5F5F7;border:1px solid #e5e5e7;border-radius:8px;transition:all .15s;}
+    .pb-preview-chapter:hover{border-color:#2D3D6E;background:#E8ECF5;}
+    .pb-preview-num{font-family:'Nunito',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.08em;color:#E07A5F;margin-bottom:5px;}
+    .pb-preview-title{font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;color:#0A0A0A;margin-bottom:4px;line-height:1.25;}
+    .pb-preview-desc{font-size:12px;line-height:1.45;color:#6E6E73;}
+    .pb-preview-footer{padding-top:14px;border-top:1px solid #e5e5e7;font-size:12px;color:#6E6E73;line-height:1.5;text-align:center;}
+    .pb-preview-footer strong{color:#2D3D6E;font-weight:700;}
+
     /* REDUCED MOTION */
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation:none!important;transition:none!important;}
@@ -470,58 +484,33 @@
       <div>
         <div class="section-tag" style="color:rgba(255,255,255,.4);">Free Resource</div>
         <h2 style="color:var(--white);margin-bottom:16px;">The Fundraising Playbook</h2>
-        <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:12px;">A step-by-step, milestone-gated playbook for running a disciplined fundraise, from building your target list to closing the round. Nine sequential chapters, built from hard-won experience across 100+ founder coaching engagements.</p>
-        <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px;">Covers list building, network mapping, lining up 60+ warm intros, preparing materials, pitch practice, activating all intros in a single window, pipeline management, diligence, and closing. Plus a full interactive checklist. Free, no signup required.</p>
+        <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:12px;">A step-by-step playbook for running a disciplined fundraise, from leading with the problem to closing the round. Eleven interactive chapters, built from hard-won experience across 100+ founder coaching engagements.</p>
+        <p style="font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px;">Covers narrative, materials, list building, network mapping, warm intros, pitch practice, pipeline management, diligence, and closing. Plus interactive checklists, knowledge checks, and personalization for your stage.</p>
         <a href="fundraising-playbook.html" target="_blank" class="btn-white">Use the Free Playbook →</a>
       </div>
-      <div class="pb-card">
-        <div class="pb-glow"></div>
-        <div class="pb-header">
-          <div class="pb-eyebrow">
-            <span class="pb-dot"></span>
-            The 3-Phase System
-          </div>
-          <div class="pb-chapters-pill">9 chapters</div>
+      <div class="pb-preview">
+        <div class="pb-preview-header">
+          <div class="pb-preview-logo">The Fundraising Playbook</div>
+          <div class="pb-preview-meta">11 chapters</div>
         </div>
-
-        <div class="pb-timeline">
-          <div class="pb-line"></div>
-
-          <div class="pb-phase">
-            <div class="pb-badge"><span>01</span></div>
-            <div class="pb-content">
-              <div class="pb-phase-label">Phase 1 · Chapter 1</div>
-              <div class="pb-phase-title">Prepare</div>
-              <div class="pb-phase-desc">Build a qualified target list of <strong>70–120 investors</strong> worth pitching.</div>
-            </div>
+        <div class="pb-preview-chapters">
+          <div class="pb-preview-chapter">
+            <div class="pb-preview-num">CHAPTER 02</div>
+            <div class="pb-preview-title">Communicate Your Story</div>
+            <div class="pb-preview-desc">Problem, Why Now, Solution, Market, Traction, Team, Competition, Ask.</div>
           </div>
-
-          <div class="pb-phase">
-            <div class="pb-badge"><span>02</span></div>
-            <div class="pb-content">
-              <div class="pb-phase-label">Phase 2 · Chapters 2–5</div>
-              <div class="pb-phase-title">Line Up</div>
-              <div class="pb-phase-desc">Map your network, collect <strong>60+ promised warm intros</strong>, and drill your materials, all before firing a single intro.</div>
-            </div>
+          <div class="pb-preview-chapter">
+            <div class="pb-preview-num">CHAPTER 04</div>
+            <div class="pb-preview-title">Build Your Target List</div>
+            <div class="pb-preview-desc">80 to 120 qualified investors, 70% Tier 1A, with hard and soft filters.</div>
           </div>
-
-          <div class="pb-phase">
-            <div class="pb-badge"><span>03</span></div>
-            <div class="pb-content">
-              <div class="pb-phase-label">Phase 3 · Chapters 6–9</div>
-              <div class="pb-phase-title">Execute</div>
-              <div class="pb-phase-desc">Activate every intro in a <strong>single 24–48 hour window</strong>, manage the pipeline, run diligence, and close the round.</div>
-            </div>
+          <div class="pb-preview-chapter">
+            <div class="pb-preview-num">CHAPTER 07</div>
+            <div class="pb-preview-title">Pitching Best Practices</div>
+            <div class="pb-preview-desc">The anatomy of a first meeting, leading with the problem, pyramid answers.</div>
           </div>
         </div>
-
-        <div class="pb-checklist">
-          <div class="pb-check-icon">✓</div>
-          <div>
-            <div class="pb-check-title">Full Interactive Checklist</div>
-            <div class="pb-check-sub">Every step across all 9 chapters in one place</div>
-          </div>
-        </div>
+        <div class="pb-preview-footer">Plus interactive checklists, knowledge checks, and personalization for <strong>your stage</strong>.</div>
       </div>
     </div>
   </div>
