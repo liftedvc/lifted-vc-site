@@ -8462,14 +8462,13 @@ document.addEventListener('DOMContentLoaded',function(){
   restoreKcState();
   restoreVisited();
   restoreCompletedChapters();
-  // DEV BYPASS — auto-populate user + profile so the email gate / quiz never shows.
-  // Remove or comment out before going live to real users.
-  if(!localStorage.getItem('lifted_user')){
-    localStorage.setItem('lifted_user',JSON.stringify({firstName:'Adam',lastName:'',email:'adam@lifted.vc',company:'Lifted',createdAt:new Date().toISOString()}));
-  }
-  if(!localStorage.getItem('lifted_profile')){
-    localStorage.setItem('lifted_profile',JSON.stringify({stage:'preseed',targetRaise:'$2M–5M',revenue:'No revenue yet',priorRaise:'No, first raise',network:'Know a few investors',liftedCoaching:'No'}));
-  }
+  // DEV BYPASS (disabled) — uncomment to skip the landing page / email gate / quiz during local development.
+  // if(!localStorage.getItem('lifted_user')){
+  //   localStorage.setItem('lifted_user',JSON.stringify({firstName:'Adam',lastName:'',email:'adam@lifted.vc',company:'Lifted',createdAt:new Date().toISOString()}));
+  // }
+  // if(!localStorage.getItem('lifted_profile')){
+  //   localStorage.setItem('lifted_profile',JSON.stringify({stage:'preseed',targetRaise:'$2M–5M',revenue:'No revenue yet',priorRaise:'No, first raise',network:'Know a few investors',liftedCoaching:'No'}));
+  // }
   // Quiz check
   var sp=localStorage.getItem('lifted_profile');
   var su=localStorage.getItem('lifted_user');
