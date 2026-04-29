@@ -1001,7 +1001,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
 }
 .quiz-container{background:var(--bg-card);border-radius:var(--r);padding:40px;max-width:520px;width:90%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
 .quiz-header{text-align:center;margin-bottom:28px}
-.quiz-logo{font-weight:800;font-size:24px;color:var(--accent)}
+.quiz-logo{display:inline-flex;align-items:center;justify-content:center}
+.quiz-logo img{height:30px;width:auto;display:block}
 .email-gate-title{font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px}
 .email-gate-sub{font-size:14px;color:var(--text-dim);line-height:1.6;margin-bottom:24px}
 .email-gate-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -2786,7 +2787,7 @@ html, body {
 
 <div class="quiz-overlay" id="quizOverlay">
   <div class="quiz-container">
-    <div class="quiz-header"><div class="quiz-logo">lifted</div></div>
+    <div class="quiz-header"><div class="quiz-logo"><img src="images/lifted-logo.png" alt="Lifted"></div></div>
     <div class="email-gate" id="emailGate">
       <div class="email-gate-title">Your Fundraising Playbook</div>
       <div class="email-gate-sub">Enter your details to get started. Your progress will be saved so you can pick up where you left off.</div>
@@ -2949,13 +2950,12 @@ html, body {
         </div>
         <div class="sub-nav" id="sub-nav-3">
           <div class="sub-nav-item" data-sub="3-0" onclick="goToSub('3','0',this)"><span class="sub-dot"></span>Collateral Prioritization</div>
-          <div class="sub-nav-item" data-sub="3-1" onclick="goToSub('3','1',this)"><span class="sub-dot"></span>Best Practices</div>
-          <div class="sub-nav-item" data-sub="3-2" onclick="goToSub('3','2',this)"><span class="sub-dot"></span>Elevator Pitch</div>
-          <div class="sub-nav-item" data-sub="3-3" onclick="goToSub('3','3',this)"><span class="sub-dot"></span>Email Blurb</div>
-          <div class="sub-nav-item" data-sub="3-4" onclick="goToSub('3','4',this)"><span class="sub-dot"></span>One-Pager</div>
-          <div class="sub-nav-item" data-sub="3-5" onclick="goToSub('3','5',this)"><span class="sub-dot"></span>Pitch Deck</div>
-          <div class="sub-nav-item" data-sub="3-6" onclick="goToSub('3','6',this)"><span class="sub-dot"></span>Data Room</div>
-          <div class="sub-nav-item" data-sub="3-7" onclick="goToSub('3','7',this)"><span class="sub-dot"></span>Demo Best Practices</div>
+          <div class="sub-nav-item" data-sub="3-1" onclick="goToSub('3','1',this)"><span class="sub-dot"></span>Elevator Pitch</div>
+          <div class="sub-nav-item" data-sub="3-2" onclick="goToSub('3','2',this)"><span class="sub-dot"></span>Email Blurb</div>
+          <div class="sub-nav-item" data-sub="3-3" onclick="goToSub('3','3',this)"><span class="sub-dot"></span>One-Pager</div>
+          <div class="sub-nav-item" data-sub="3-4" onclick="goToSub('3','4',this)"><span class="sub-dot"></span>Pitch Deck</div>
+          <div class="sub-nav-item" data-sub="3-5" onclick="goToSub('3','5',this)"><span class="sub-dot"></span>Data Room</div>
+          <div class="sub-nav-item" data-sub="3-6" onclick="goToSub('3','6',this)"><span class="sub-dot"></span>Demo Best Practices</div>
         </div>
       </div>
       <div class="chapter-nav-group">
@@ -4541,111 +4541,11 @@ html, body {
 
    <div class="nav-btn-row">
      <button class="nav-btn prev" onclick="goToChapter('arc')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">The Authentic FOMO Framework</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','1')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Best Practices</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','1')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Elevator Pitch</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
  </div><!-- /sub-3-0 -->
 
  <div class="sub-panel single-screen clean" id="sub-3-1">
-
-   <header class="page-head">
-     <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
-     <h1 class="page-head-title">Best Practices</h1>
-   </header>
-     <p class="page-head-sub">Nine communication habits that investors consistently respond well to. They apply across everything you&rsquo;ll write, from the blurb all the way to a data-room folder label.</p>
-
-   <div class="ss-body">
-     <section>
-       <div class="section-label">Nine best practices:</div>
-       <div class="clean-filters" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px 24px">
-         <div class="clean-filter">
-           <div class="clean-filter-num">01</div>
-           <div class="clean-filter-title">Love your problem</div>
-           <div class="clean-filter-desc">Make the investor feel it before they see your solution. Specific people, real stories, quantified pain. It&rsquo;s critical an investor internalizes the problem, otherwise the solution won&rsquo;t pack much punch.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">02</div>
-           <div class="clean-filter-title">Lead with your strongest assets</div>
-           <div class="clean-filter-desc">Open with whichever proof points are strongest: capital committed, a flagship customer, breakout traction, or a team credential. Something like &ldquo;Closed $650K from two operators in the space.&rdquo; Don&rsquo;t bury the lede.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">03</div>
-           <div class="clean-filter-title">Authentic signal over polish</div>
-           <div class="clean-filter-desc">Investors read the founder as much as the business, and AI-assisted or over-polished writing tends to read as inauthentic. Save AI for back-office work like list building or CRM logging, and keep your collateral, connector outreach, and emails in your own voice.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">04</div>
-           <div class="clean-filter-title">Reality supports your narrative</div>
-           <div class="clean-filter-desc">A customer experience, a crazy user story, or a real quote adds depth and weight to your narrative. Thread real-world experiences into the story, and the conversation tends to shift from &ldquo;is this real?&rdquo; to believable.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">05</div>
-           <div class="clean-filter-title">Upside framing wins</div>
-           <div class="clean-filter-desc">Present the round as the opportunity, like &ldquo;$2M backed by these names, doubling MRR every quarter.&rdquo; Investors tend to react positively when they feel they&rsquo;ve discovered something special, so frame it that way.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">06</div>
-           <div class="clean-filter-title">Use Plain English</div>
-           <div class="clean-filter-desc">Strip marketing speak, AI phrasing, and TED-talk cadence. If a non-industry friend wouldn&rsquo;t follow it, rework it until they would. &ldquo;Disruptive,&rdquo; &ldquo;table stakes,&rdquo; &ldquo;completely transform,&rdquo; &ldquo;AI-powered, full-stack, next-gen&rdquo; tend to read as fluff.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">07</div>
-           <div class="clean-filter-title">Precise numbers, real metrics</div>
-           <div class="clean-filter-desc">Be specific, and choose metrics that matter. &ldquo;$2.5M round&rdquo; reads better than &ldquo;raising $2 to 3M.&rdquo; Also, prioritize real metrics like paying customers, retention, and unit economics over signaling metrics like signups, downloads, impressions, and pipeline.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">08</div>
-           <div class="clean-filter-title">Present tense</div>
-           <div class="clean-filter-desc">&ldquo;We are doing X.&rdquo; &ldquo;We work with Y.&rdquo; &ldquo;We are seeing Z.&rdquo; Future tense (&ldquo;we will,&rdquo; &ldquo;we plan to&rdquo;) can signal you&rsquo;re waiting for money to act, and often discredits what you&rsquo;ve already accomplished.</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">09</div>
-           <div class="clean-filter-title">Attention to detail</div>
-           <div class="clean-filter-desc">Typos, mismatched numbers across documents, sloppy formatting, and the AI long dash character. All get noticed. <em>(editor&rsquo;s note: when you find a playbook typo, do as I say, not as I do)</em></div>
-         </div>
-       </div>
-     </section>
-
-     <section>
-       <div class="section-label">Be precise about your traction</div>
-       <p>Traction carries more weight than almost anything else in your pitch. Investors anchor on it, so clarity matters most here. The instinct when traction is thin is to get crafty with how you present it, lumping pilots, LOIs, and run rate into a single inflated number to dress up weak spots. It tends to read as inauthentic, and investors figure it out fast. The smaller, accurate figure paired with the right label lands stronger than the bigger one that gets walked back in diligence. The hierarchy below is how investors weight each layer of revenue, so use it as your reference when you label what you have.</p>
-       <div class="clean-filters" style="display:grid;grid-template-columns:1fr 1fr;gap:16px 32px">
-         <div class="clean-filter">
-           <div class="clean-filter-num">01</div>
-           <div class="clean-filter-title">Non-binding LOIs</div>
-           <div class="clean-filter-desc">A signed letter saying a customer would pay $X if your product gets built and works. An indication of intent, with no payment attached. Phrase it as: &ldquo;$100K in non-binding LOIs from customers X, Y, and Z.&rdquo;</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">02</div>
-           <div class="clean-filter-title">GMV / GSR</div>
-           <div class="clean-filter-desc">For marketplaces and retailers, this is the top-line transaction volume flowing through your platform. Your revenue is GMV multiplied by your take rate. Phrase it as: &ldquo;$100K GMV this month at a 20% take rate, so $20K in marketplace revenue.&rdquo;</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">03</div>
-           <div class="clean-filter-title">Bookings / cARR</div>
-           <div class="clean-filter-desc">A signed contract specifying $X per year or per month. Stronger than an LOI. Pilots, opt-out clauses, and &ldquo;starts billing after deployment&rdquo; all reduce its strength. Phrase it as: &ldquo;$100K in cARR, mostly pilots that start billing once we&rsquo;re fully deployed.&rdquo;</div>
-         </div>
-         <div class="clean-filter">
-           <div class="clean-filter-num">04</div>
-           <div class="clean-filter-title">Transactional revenue / Run rate</div>
-           <div class="clean-filter-desc">Actual sales annualized. If you sold $50K this month, your annual revenue run rate is $600K. Phrase it as: &ldquo;$50K per month in transactional revenue&rdquo; or &ldquo;$600K in annual revenue run rate.&rdquo; Reserve ARR for the next tier, where revenue actually recurs by contract.</div>
-         </div>
-         <div class="clean-filter" style="grid-column:1 / -1">
-           <div class="clean-filter-num">05</div>
-           <div class="clean-filter-title">MRR / ARR (recurring revenue)</div>
-           <div class="clean-filter-desc">Revenue invoiced and paid on a contract that renews monthly or yearly. The prized terms fit here, and only here. Phrase it as: &ldquo;$50K MRR&rdquo; or &ldquo;$600K ARR.&rdquo;</div>
-         </div>
-       </div>
-     </section>
-
-   </div>
-
-   <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('3','0')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Collateral Prioritization</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','2')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Elevator Pitch</span></span><span class="nav-btn-arrow">&rarr;</span></button>
-   </div>
- </div><!-- /sub-3-1 -->
-
- <div class="sub-panel single-screen clean" id="sub-3-2">
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
@@ -4729,11 +4629,11 @@ html, body {
 
    <div class="nav-btn-row">
      <button class="nav-btn prev" onclick="goToSub('3','1')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Best Practices</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','3')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Email Blurb</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','2')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Email Blurb</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
- </div><!-- /sub-3-2 -->
+ </div><!-- /sub-3-1 -->
 
- <div class="sub-panel single-screen clean" id="sub-3-3">
+ <div class="sub-panel single-screen clean" id="sub-3-2">
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
@@ -4840,12 +4740,12 @@ html, body {
    </div>
 
    <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('3','2')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Elevator Pitch</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','4')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">One-Pager</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn prev" onclick="goToSub('3','1')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Elevator Pitch</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','3')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">One-Pager</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
- </div><!-- /sub-3-3 -->
+ </div><!-- /sub-3-2 -->
 
- <div class="sub-panel single-screen clean" id="sub-3-4">
+ <div class="sub-panel single-screen clean" id="sub-3-3">
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
@@ -4928,12 +4828,12 @@ html, body {
    </div>
 
    <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('3','3')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Email Blurb</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','5')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Pitch Deck</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn prev" onclick="goToSub('3','2')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Email Blurb</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','4')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Pitch Deck</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
- </div><!-- /sub-3-4 -->
+ </div><!-- /sub-3-3 -->
 
- <div class="sub-panel single-screen clean" id="sub-3-5">
+ <div class="sub-panel single-screen clean" id="sub-3-4">
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
@@ -5013,12 +4913,12 @@ html, body {
    </div>
 
    <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('3','4')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">One-Pager</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','6')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Data Room</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn prev" onclick="goToSub('3','3')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">One-Pager</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','5')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Data Room</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
- </div><!-- /sub-3-5 -->
+ </div><!-- /sub-3-4 -->
 
- <div class="sub-panel single-screen clean" id="sub-3-6">
+ <div class="sub-panel single-screen clean" id="sub-3-5">
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
@@ -5085,12 +4985,12 @@ html, body {
    </div>
 
    <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('3','5')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Pitch Deck</span></button>
-     <button class="nav-btn next" onclick="goToSub('3','7')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Demo Best Practices</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn prev" onclick="goToSub('3','4')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Pitch Deck</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','6')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Demo Best Practices</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
- </div><!-- /sub-3-6 -->
+ </div><!-- /sub-3-5 -->
 
- <div class="sub-panel single-screen clean" id="sub-3-7">
+ <div class="sub-panel single-screen clean" id="sub-3-6">
 
    <header class="page-head">
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
@@ -5156,10 +5056,10 @@ html, body {
    </div>
 
    <div class="nav-btn-row">
-     <button class="nav-btn prev" onclick="goToSub('3','6')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Data Room</span></button>
+     <button class="nav-btn prev" onclick="goToSub('3','5')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Data Room</span></button>
      <button class="nav-btn next" onclick="goToChapter(0)"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Build Your Target List</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
- </div><!-- /sub-3-7 -->
+ </div><!-- /sub-3-6 -->
 
 </div><!-- /ch-3 -->
 
@@ -5467,41 +5367,44 @@ html, body {
      <p class="page-head-sub">The problem is what every pitch is built around. The investor needs to internalize it before the rest of the pitch can land.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('BjCO1BAti1s','The Problem')" aria-label="Play video: The Problem">
+       <img src="https://img.youtube.com/vi/BjCO1BAti1s/hqdefault.jpg" alt="">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
+     </button>
+     <div class="video-section-caption">Watch: The Problem</div>
+   </div>
      <section>
-       <div class="section-label">Five moves to build your problem pitch</div>
-       <p>The best founders spend a disproportionate amount of time working on how they pitch the problem. It leads off in most collateral, and often the first subject of a meeting. The instinct is to rush to the solution because that&rsquo;s the exciting part. The opposite is what lands. Invest the time to make the investor see the problem through your eyes.</p>
+       <div class="section-label">Four elements every great problem statement shares</div>
+       <p>Experienced fundraisers spend a disproportionate amount of time working on how they pitch the problem. It leads off in most collateral, and often the first subject of a meeting. The instinct is to rush to the solution because that&rsquo;s the exciting part, but <strong>it&rsquo;s the problem that makes your solution interesting.</strong> The best problem statements share the same four elements. Build all four into your pitch and the investor sees the problem through your eyes.</p>
        <div class="clean-list cols-2">
          <div class="clean-list-item accent">
-           <div class="clean-list-label">Move 01</div>
-           <div class="clean-list-title">Set a specific scene</div>
+           <div class="clean-list-label">Element 01</div>
+           <div class="clean-list-title">A specific scene</div>
            <div class="clean-list-desc">Anchor in a specific subject. A person, team, department, or company in a clear context. Specific scenes tend to land. Investors connect to something they can picture, then extrapolate to the market on their own. The strongest framings draw a clear line: inside the system something works, outside the system it breaks.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-label">Move 02</div>
-           <div class="clean-list-title">Tell it from the customer&rsquo;s POV</div>
-           <div class="clean-list-desc">Tell the problem the way the customer lives it. Their language, their texture, their experience. Verbatim quotes carry the most weight, and even without a direct quote, the move is to stay in their frame. The customer&rsquo;s voice tends to do more work than your description.</div>
+           <div class="clean-list-label">Element 02</div>
+           <div class="clean-list-title">The customer&rsquo;s POV</div>
+           <div class="clean-list-desc">Tell the problem the way the customer lives it. Use their language, their texture, their experience. Even without a direct quote, staying in their frame helps investors see the problem more clearly. Also, if you have them, verbatim quotes help take it even deeper.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-label">Move 03</div>
-           <div class="clean-list-title">Quantify the problem</div>
-           <div class="clean-list-desc">Give a specific number per affected subject per period. Hours burned, dollars lost, deals missed, customers churned. Lead with the per-customer cost first. The investor extrapolates to the market on the back of that anchor.</div>
+           <div class="clean-list-label">Element 03</div>
+           <div class="clean-list-title">The cost and scope</div>
+           <div class="clean-list-desc">Show both the per-customer cost and how widespread the problem is. Hours burned, dollars lost, deals missed, customers churned. The number of subjects feeling the same pain, and what they collectively spend dealing with it. Also, establishing the scope here helps clarify your market size later in the pitch.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-label">Move 04</div>
-           <div class="clean-list-title">Show the scope</div>
-           <div class="clean-list-desc">How widespread the problem is. The number of subjects feeling the same pain, plus what they collectively spend dealing with it. This is the weight of the problem, separate from your revenue potential (which lives on the Market Size page).</div>
-         </div>
-         <div class="clean-list-item accent" style="grid-column:1 / -1">
-           <div class="clean-list-label">Move 05</div>
-           <div class="clean-list-title">Show the band-aid solutions</div>
-           <div class="clean-list-desc">Walk through what customers do today to manage the problem. Hacky spreadsheets, dedicated headcount, third-party tools that almost work, manual workarounds that break at scale. The silliness of those band-aids does double duty. It puts weight on the problem (customers will put up with a lot to solve it) and sets up the wedge for your solution.</div>
+           <div class="clean-list-label">Element 04</div>
+           <div class="clean-list-title">The band-aid solutions</div>
+           <div class="clean-list-desc">Walk through what customers do today to manage the problem. Hacky spreadsheets, dedicated headcount, third-party tools that almost work, manual workarounds that break at scale. The silliness of those band-aids does double duty. It proves how badly customers want a fix, and sets up the wedge for your solution.</div>
          </div>
        </div>
      </section>
 
      <section>
        <div class="section-label">Examples:</div>
-       <p>Two strong problem framings, with the four moves called out so you can see what makes each one land. Click an example to expand.</p>
+       <p>Two strong problem framings, with the four elements called out so you can see what makes each one land. Click an example to expand.</p>
 
        <div class="clean-cta-strip">
          <div class="clean-cta" onclick="openExampleModal('problemExampleSaas')">
@@ -5541,13 +5444,21 @@ html, body {
      <div class="page-head-crumb">Chapter 3 &middot; Communicate Your Story</div>
      <h1 class="page-head-title">Why Now</h1>
    </header>
-     <p class="page-head-sub">Why Now tells the investor why this moment matters, and why waiting costs them. The strongest answers are specific, dated, and compress to a single root category before stacking a second.</p>
+     <p class="page-head-sub">Why Now tells the investor why this moment matters, and why waiting costs them. The strongest answers are specific, dated, and built on one of three foundations before stacking a second.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('AmLm5LioP1c','Why Now')" aria-label="Play video: Why Now">
+       <img src="https://img.youtube.com/vi/AmLm5LioP1c/hqdefault.jpg" alt="">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
+     </button>
+     <div class="video-section-caption">Watch: Why Now</div>
+   </div>
 
      <section>
-       <div class="section-label">Pick the root category</div>
-       <p>Every strong Why Now compresses to one of these three. Pick the one most true for you.</p>
+       <div class="section-label">Pick the foundation</div>
+       <p>Every strong Why Now is built on one of these three foundations. Pick the one most true for you.</p>
        <div class="clean-list cols-3">
          <div class="clean-list-item accent">
            <div class="clean-list-title">Cost dropped</div>
@@ -5566,17 +5477,16 @@ html, body {
 
      <section>
        <div class="section-label">Anchor it with specifics and a date</div>
-       <div class="clean-list cols-2">
-         <div class="clean-list-item accent" style="grid-column:1 / -1">
-           <div class="clean-list-title">Specific dates, costs, and events anchor the argument; vague trends skip past</div>
-           <div class="clean-list-desc">Investors fund visible inflections. Pick the cost number, the technical threshold, or the dated event that activated your moment. &ldquo;The world is ready&rdquo; gets skipped past; &ldquo;LiDAR cost crossed $1,000 in 2023&rdquo; lands.</div>
-         </div>
+       <p>Pick the cost, the technical threshold, or the event that activated your moment. Specifics land. Vague trends get skipped past.</p>
+       <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:16px 20px;margin-top:6px;font-size:14px;line-height:1.7;color:var(--text)">
+         <div style="color:var(--text-dim);margin-bottom:6px"><span style="font-weight:700;color:var(--text)">Skipped past:</span> &ldquo;The world is ready.&rdquo;</div>
+         <div><span style="font-weight:700;color:var(--text)">Lands:</span> &ldquo;LiDAR cost crossed $1,000 in 2023.&rdquo;</div>
        </div>
      </section>
 
      <section>
-       <div class="section-label">Stack a second category</div>
-       <p>Single-category arguments feel fragile. Two-category stacks feel credible. Three-category stacks make investors feel late. After picking the primary, look for a second that&rsquo;s also true.</p>
+       <div class="section-label">Stack additional foundations</div>
+       <p>Stacking compounds. One foundation can be argued away. Two are hard to dismiss. Three make the moment feel inevitable. After picking the primary, look for a second that&rsquo;s also true. If a third is also true, even better.</p>
        <div class="clean-list cols-3">
          <div class="clean-list-item accent">
            <div class="clean-list-label">Cost + Tech</div>
@@ -5591,37 +5501,73 @@ html, body {
            <div class="clean-list-desc">Solar got cheap and corporates committed to net zero. The climate wave required both.</div>
          </div>
        </div>
-       <p style="margin-top:14px;font-size:13.5px;color:var(--text-dim)"><strong style="color:var(--text)">Three-category stacks land hardest.</strong> Modern AI applications: GPU costs collapsing plus foundation models arriving plus enterprise willingness to buy AI. Defense tech: drone and software costs collapsing plus dual-use capabilities maturing plus geopolitical urgency. Climate tech after IRA: solar and battery cost curves plus grid software and EV platforms plus federal capital and corporate net zero.</p>
+       <div style="margin-top:22px">
+         <div style="font-size:13px;font-weight:700;color:var(--text);letter-spacing:0.02em;margin-bottom:6px">See the stacking in action</div>
+         <p style="font-size:13.5px;color:var(--text);margin-bottom:12px">The same company, the same moment. Watch how each foundation you add changes the investor&rsquo;s reaction.</p>
+
+         <div style="background:var(--bg-2);border-left:3px solid var(--text-light);border-radius:var(--r-sm);padding:14px 18px;margin-bottom:10px">
+           <div style="font-size:11px;font-weight:800;color:var(--text-dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">One foundation &middot; fragile</div>
+           <div style="font-size:14px;line-height:1.65;color:var(--text);margin-bottom:8px">&ldquo;Autonomous defense drones are possible now because the cost of building military-grade materials has dropped 90%.&rdquo;</div>
+           <div style="font-size:13px;line-height:1.55;color:var(--text);font-style:italic">Investor: &ldquo;The unit economics are clearer. But what makes the product actually work?&rdquo;</div>
+         </div>
+
+         <div style="background:var(--accent-pale);border-left:4px solid var(--accent-light);border-radius:var(--r-sm);padding:14px 18px;margin-bottom:10px">
+           <div style="font-size:11px;font-weight:800;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Two foundations &middot; credible</div>
+           <div style="font-size:14px;line-height:1.65;color:var(--text);margin-bottom:8px">&ldquo;Autonomous defense drones are possible now because the cost of building military-grade materials has dropped 90%, and dual-use AI capabilities matured enough to meet operational military requirements.&rdquo;</div>
+           <div style="font-size:13px;line-height:1.55;color:var(--text);font-style:italic">Investor: &ldquo;Now I see how the product works at this price. But who&rsquo;s actually buying?&rdquo;</div>
+         </div>
+
+         <div style="background:var(--accent-pale);border-left:6px solid var(--accent);border-radius:var(--r-sm);padding:14px 18px">
+           <div style="font-size:11px;font-weight:800;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Three foundations &middot; undeniable</div>
+           <div style="font-size:14px;line-height:1.65;color:var(--text);margin-bottom:8px">&ldquo;Autonomous defense drones are possible now because the cost of building military-grade materials has dropped 90%, dual-use AI capabilities matured enough to meet operational military requirements, and geopolitical urgency put defense procurement on a faster timeline than at any point in the last forty years.&rdquo;</div>
+           <div style="font-size:13px;line-height:1.55;color:var(--text);font-style:italic">Investor: &ldquo;All three are real. This isn&rsquo;t a guess about the future. It&rsquo;s already happening.&rdquo;</div>
+         </div>
+       </div>
+
      </section>
 
      <section>
-       <div class="section-label">Close with urgency</div>
+       <div class="section-label">Draft your Why Now</div>
+       <p>Two ways to start: walk through the builder for a guided draft, or fill in the template yourself. If the blanks resist filling, the argument needs more time.</p>
+       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px;align-items:stretch">
+         <div class="clean-cta" onclick="openWhyNowWizard()" style="margin:0">
+           <div class="clean-cta-icon"><svg class="icon"><use href="#i-sparkle"/></svg></div>
+           <div class="clean-cta-body">
+             <div class="clean-cta-title">Build Your Why Now</div>
+             <div class="clean-cta-desc">Answer a few focused questions and get a draft Why Now that applies the framework, plus a rubric to pressure-test it.</div>
+           </div>
+           <div class="clean-cta-arrow">&rarr;</div>
+         </div>
+         <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:18px 22px;font-size:14px;line-height:1.7;color:var(--text);display:flex;flex-direction:column">
+           <div style="font-weight:700;color:var(--accent);margin-bottom:10px;font-size:11px;letter-spacing:0.06em;text-transform:uppercase">Fill-in-the-blank template</div>
+           <div><strong>[Our product]</strong> is possible now because <strong>[Cost dropped / Tech arrived / Buyer changed]</strong>, specifically <strong>[the shift]</strong>, which crossed a threshold around <strong>[date or event]</strong>. We additionally benefit from <strong>[second category if real]</strong>.</div>
+         </div>
+       </div>
+     </section>
+
+     <section>
+       <div class="section-label">Extra credit</div>
+       <p>These aren&rsquo;t required, but they sharpen your Why Now and give you powerful talking points in investor conversations. Add either or both if they fit your story.</p>
        <div class="clean-list cols-2">
          <div class="clean-list-item accent">
            <div class="clean-list-title">Name the graveyard</div>
            <div class="clean-list-desc">Prior attempts that failed are your friend. Name them. Then say what&rsquo;s true today that was false then. The graveyard is the fastest way to show the moment has shifted from theoretical to real.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Make passing feel costly</div>
-           <div class="clean-list-desc">A great Why Now closes by making the next 18 months feel decisive. Capital forming around the category, incumbents stirring, regulatory clocks ticking. Pick the urgency that&rsquo;s real for you.</div>
+           <div class="clean-list-title">Pin the window</div>
+           <div class="clean-list-desc">Name how long the category window stays open and what closes it. Capital forming around the category, incumbents stirring, regulatory clocks ticking. Pick the lever that&rsquo;s real for you.</div>
          </div>
        </div>
      </section>
 
      <section>
-       <div class="section-label">The fill-in-the-blank template</div>
-       <p>Use this before drafting your Why Now. If the blanks resist filling, the argument needs more time.</p>
-       <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:18px 22px;font-size:14px;line-height:1.8;color:var(--text);margin-top:6px">Our company is possible now because <strong>[Cost dropped / Tech arrived / Buyer changed]</strong>, specifically <strong>[the shift]</strong>, which crossed a threshold around <strong>[date or event]</strong>. Previous attempts at this, including <strong>[name 1-2]</strong>, failed because <strong>[the missing piece]</strong>. We additionally benefit from <strong>[second category if real]</strong>. The investor who passes today loses to the investor who acts within <strong>[timeline]</strong> because <strong>[competitor capital / incumbent move / regulatory window]</strong>.</div>
-     </section>
-
-     <div style="margin-top:8px">
        <button class="tip-chip warn" type="button"><svg class="icon"><use href="#i-warn"/></svg>Where Why Now pitches flatten</button>
        <div class="tip-body" hidden><strong>Listing every trend without picking one.</strong> Pick one trend and own it. Listing every shift (&ldquo;AI, cloud, mobile, regulation&rdquo;) reads as throwing things at the wall and hoping one sticks.<br><br><strong>Citing a tailwind that hasn&rsquo;t arrived.</strong> Cite the tailwind that&rsquo;s already arrived. &ldquo;Voice AI will replace support phones by 2027&rdquo; relies on a future nobody has seen yet, so it lands as a wish.<br><br><strong>Citing a tailwind that already played out.</strong> Find the wave still cresting. &ldquo;The rise of mobile&rdquo; as a Why Now today reads as a decade late, since mobile became the incumbent infrastructure years ago.<br><br><strong>Pitching a Why Now that fits 50 other startups.</strong> The Why Now should belong only to your company. &ldquo;AI will transform every industry&rdquo; applies to 50 other startups across categories and gives the investor no reason to fund yours. The strongest version names a shift that activates your specific solution before anyone else&rsquo;s.<br><br><strong>Handwaving without specifics.</strong> &ldquo;Things are changing fast&rdquo; is true in every era, so it lands as background noise. Name the specific shift, the specific date, the specific threshold.<br><br><strong>Citing a real trend without urgency.</strong> Show why the trend forces action now. &ldquo;AI is here&rdquo; is observation; &ldquo;enterprise AI budgets doubled in 2025 and CIOs need to ship something by Q4&rdquo; is urgency. The trend has to put the investor in motion.</div>
-     </div>
+     </section>
 
      <div style="margin-top:32px;padding-top:14px;border-top:1px solid var(--border);font-size:11.5px;color:var(--text-light);line-height:1.6">
        <div style="font-weight:600;color:var(--text-dim);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px">Sources</div>
-       The three-category compression (cost / tech / buyer) is adapted from First Round Capital&rsquo;s pitch deck template, popularized via Beautiful.ai. The convention of treating Why Now as a discrete pitch element traces to Sequoia Capital&rsquo;s pitch deck template.
+       The three-foundation framework (cost / tech / buyer) and the closing structure (graveyard + window) are adapted from First Round Capital&rsquo;s pitch deck template, popularized via Beautiful.ai. The convention of treating Why Now as a discrete pitch element traces to Sequoia Capital&rsquo;s pitch deck template.
      </div>
 
    </div>
@@ -5643,17 +5589,25 @@ html, body {
      <p class="page-head-sub">Communicating your solution answers three questions in about 60 seconds: what is it, how does it actually work, and why is this approach 10x better than the alternative. When it lands, the investor thinks &ldquo;I haven&rsquo;t seen anyone do it like that.&rdquo; When it misses, the investor hears a feature list.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('S06EPzfLF3g','The Solution')" aria-label="Play video: The Solution">
+       <img src="https://img.youtube.com/vi/S06EPzfLF3g/hqdefault.jpg" alt="">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
+     </button>
+     <div class="video-section-caption">Watch: The Solution</div>
+   </div>
 
      <section>
        <div class="section-label">What is it</div>
        <div class="clean-list cols-2">
          <div class="clean-list-item accent">
            <div class="clean-list-title">Lead with the non-obvious insight</div>
-           <div class="clean-list-desc">A great solution rests on a thesis the market hasn&rsquo;t caught up to yet. State it in one sentence. The insight is what the investor pays you to know.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">How founders say it</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div><strong>Stripe.</strong> Developers should be the buyer, not finance teams.</div><div><strong>Plaid.</strong> Bank logins should work like OAuth, not screen scraping.</div><div><strong>Notion.</strong> Docs and databases are the same primitive.</div></div></div></div>
+           <div class="clean-list-desc">A great solution rests on a thesis the market hasn&rsquo;t caught up to yet. State it as succinctly as possible. The insight is the thing only you see.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">How founders say it</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div><strong>Stripe.</strong> Developers should be the buyer, not finance teams.</div><div><strong>Plaid.</strong> Bank logins should work like OAuth, not screen scraping.</div><div><strong>Notion.</strong> Docs and databases are the same primitive.</div></div></div></div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Pick the wedge</div>
-           <div class="clean-list-desc">The narrow first product that gets you in the door. The wedge sells now; the platform comes after. Strong communication makes the wedge obviously winnable and the platform credibly large.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">How founders say it</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div><strong>Uber.</strong> Black cars in San Francisco.</div><div><strong>Square.</strong> A credit card reader for tiny merchants.</div><div><strong>Shopify.</strong> A store builder for small online merchants.</div></div></div></div>
+           <div class="clean-list-title">Describe the first product</div>
+           <div class="clean-list-desc">What you&rsquo;re shipping today, in plain specific terms. Concrete enough that an investor can picture using it. Lead with what&rsquo;s shipping; the bigger vision after.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">How founders say it</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div><strong>Uber.</strong> Black cars in San Francisco.</div><div><strong>Square.</strong> A credit card reader for tiny merchants.</div><div><strong>Shopify.</strong> A store builder for small online merchants.</div></div></div></div>
          </div>
        </div>
      </section>
@@ -5663,11 +5617,11 @@ html, body {
        <div class="clean-list cols-2">
          <div class="clean-list-item accent">
            <div class="clean-list-title">Show the mechanism, not the features</div>
-           <div class="clean-list-desc">How the product actually works, in one diagram, one paragraph, or one demo. The mechanism is the load-bearing piece of how you describe the solution.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">How founders say it</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div><strong>Stripe.</strong> 7 lines of code, abstracts away merchant accounts.</div><div><strong>Uber.</strong> Matches drivers and riders via GPS in real time.</div><div><strong>Toast.</strong> Vertical SaaS plus integrated payments running on Android.</div></div></div></div>
+           <div class="clean-list-desc">How the product actually works, in one diagram, one paragraph, or one demo. The mechanism is what makes the solution believable.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">How founders say it</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div><strong>Stripe.</strong> 7 lines of code, abstracts away merchant accounts.</div><div><strong>Uber.</strong> Matches drivers and riders via GPS in real time.</div><div><strong>Toast.</strong> Vertical SaaS plus integrated payments running on Android.</div></div></div></div>
          </div>
          <div class="clean-list-item accent">
            <div class="clean-list-title">Show, don&rsquo;t just describe</div>
-           <div class="clean-list-desc">Solutions communicate faster through visuals than through prose. When you&rsquo;re in the room, demo for 90 seconds when you can. Words alone push the listener to imagine; showing lets them see.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">Formats that work</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div>A screenshot of the product in action.</div><div>A short loop of the killer interaction.</div><div>A before/after that makes the gap visceral.</div><div>A three-step &ldquo;how it works&rdquo; diagram.</div></div></div></div>
+           <div class="clean-list-desc">Solutions communicate faster through visuals than through prose. A 90 second demo can beat just words that force the listener to imagine. Showing lets them see.<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)"><div style="font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px">Formats that work</div><div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.55;color:var(--text)"><div>A screenshot of the product in action.</div><div>A short loop of the killer interaction.</div><div>A before/after that makes the gap visceral.</div><div>A three-step &ldquo;how it works&rdquo; diagram.</div></div></div></div>
          </div>
        </div>
      </section>
@@ -5677,14 +5631,14 @@ html, body {
        <div class="clean-list cols-2">
          <div class="clean-list-item accent" style="grid-column:1 / -1">
            <div class="clean-list-title">Make the 10x claim explicit</div>
-           <div class="clean-list-desc">Pick the axis where you beat the status quo by an order of magnitude. Faster, cheaper, simpler, more accessible, more delightful, or net new. Marginal-improvement claims push the weight onto the Why Now and tend to fail there too.</div>
+           <div class="clean-list-desc">Pick where you beat the status quo. Faster, cheaper, simpler, more accessible, more delightful, or net new. Marginal improvements read as a vitamin, not a painkiller.</div>
          </div>
        </div>
      </section>
 
      <section>
        <div class="section-label">The single test</div>
-       <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:22px 28px;font-size:17px;line-height:1.6;color:var(--text);margin-top:6px">After hearing your solution explained, can the investor describe your company to a colleague in one sentence? If yes, the explanation works.</div>
+       <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:22px 28px;font-size:17px;line-height:1.6;color:var(--text);margin-top:6px">After hearing your solution explained, can the investor describe your company to a colleague in a few sentences? If yes, the explanation works.</div>
      </section>
 
      <div style="margin-top:8px">
@@ -5710,6 +5664,13 @@ html, body {
      <p class="page-head-sub">Market size answers &ldquo;how big can this get.&rdquo; The cleanest framework we&rsquo;ve seen on this is from Pear VC. We adopt it here in full because we agree with it, and we recommend reading their original guide.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: Market Size">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Coming soon</span>
+     </button>
+     <div class="video-section-caption">Watch: Market Size</div>
+   </div>
      <div style="background:linear-gradient(180deg,var(--accent-pale),rgba(45,61,110,0.02));border:1px solid rgba(45,61,110,0.18);border-radius:var(--r);padding:16px 20px;display:flex;align-items:flex-start;gap:14px">
        <svg class="icon" style="width:18px;height:18px;color:var(--accent);flex-shrink:0;margin-top:1px"><use href="#i-bulb"/></svg>
        <div style="font-size:14px;line-height:1.6;color:var(--text)">
@@ -5733,7 +5694,7 @@ html, body {
          <div class="clean-list-item accent">
            <div class="clean-list-label">Principle 03</div>
            <div class="clean-list-title">Show 5+ years of future revenue</div>
-           <div class="clean-list-desc">Pear&rsquo;s data from Series A VCs: future revenue matters more than current size, even at seed. A bottom-up build of revenue five-plus years out tends to land harder than a hypothetical percentage share of TAM or SAM.</div>
+           <div class="clean-list-desc">Data from a Series A VC suggests that future revenue matters more than current size, even at seed. A bottom-up build of revenue five-plus years out tends to land harder than a hypothetical percentage share of TAM or SAM.</div>
          </div>
          <div class="clean-list-item accent">
            <div class="clean-list-label">Principle 04</div>
@@ -5743,7 +5704,7 @@ html, body {
          <div class="clean-list-item accent" style="grid-column:1 / -1">
            <div class="clean-list-label">Principle 05</div>
            <div class="clean-list-title">Clarity over the number</div>
-           <div class="clean-list-desc">Pear puts it well: clarity of thought and enduring ambition matter more than the headline market-size figure itself. The goal of the section is to show you understand the market deeply, and you&rsquo;re targeting a big opportunity inside it. The number is downstream of that.</div>
+           <div class="clean-list-desc">Clarity of thought and enduring ambition matter more than the headline market-size figure itself. The goal of the section is to show you understand the market deeply, and you&rsquo;re targeting a big opportunity inside it. The number is downstream of that.</div>
          </div>
        </div>
      </section>
@@ -8941,6 +8902,180 @@ function copyNarrative(){
 }
 
 
+// ═══ Why Now Wizard ═══
+window.openWhyNowWizard=function(){document.getElementById('whyNowOverlay').classList.add('open');document.body.style.overflow='hidden';};
+window.closeWhyNowWizard=function(){document.getElementById('whyNowOverlay').classList.remove('open');document.body.style.overflow='';};
+
+function whyNowNext(step){
+  var panels=['whyNowStep1','whyNowStep2','whyNowStep3'];
+  var bars=['whyNowBar1','whyNowBar2','whyNowBar3'];
+  panels.forEach(function(id){document.getElementById(id).style.display='none';});
+  document.getElementById(panels[step-1]).style.display='block';
+  bars.forEach(function(id,i){
+    var el=document.getElementById(id);
+    if(i<step) el.classList.add('wiz-active');
+    else el.classList.remove('wiz-active');
+  });
+  document.getElementById('whyNowOutput').style.display='none';
+  document.getElementById('whyNowProgress').style.display='flex';
+  // Refresh second-foundation options whenever we enter step 2
+  if(step===2) updateWhyNowSecondOptions();
+}
+
+function updateWhyNowSecondOptions(){
+  var primary=document.querySelector('input[name="whyNowFound1"]:checked');
+  var primaryValue=primary?primary.value:'';
+  document.querySelectorAll('#whyNowOverlay label[data-found2]').forEach(function(label){
+    var value=label.getAttribute('data-found2');
+    var radio=label.querySelector('input[type="radio"]');
+    var inner=label.querySelector('div');
+    var existingNote=inner.querySelector('.found2-disabled-note');
+    if(value && value===primaryValue){
+      // Disable this option
+      radio.disabled=true;
+      if(radio.checked){
+        radio.checked=false;
+        var skip=document.querySelector('input[name="whyNowFound2"][value=""]');
+        if(skip) skip.checked=true;
+      }
+      label.style.opacity='0.5';
+      label.style.cursor='not-allowed';
+      label.style.background='var(--bg-2)';
+      if(!existingNote){
+        var note=document.createElement('div');
+        note.className='found2-disabled-note';
+        note.style.cssText='font-size:12px;color:var(--text-dim);margin-top:2px;font-style:italic;';
+        note.textContent='Already your primary foundation. Stacking is about combining different categories.';
+        inner.appendChild(note);
+      }
+    } else {
+      // Enable this option
+      radio.disabled=false;
+      label.style.opacity='';
+      label.style.cursor='pointer';
+      label.style.background='';
+      if(existingNote) existingNote.remove();
+    }
+  });
+}
+
+function whyNowBackFromOutput(){
+  document.getElementById('whyNowOutput').style.display='none';
+  document.getElementById('whyNowProgress').style.display='flex';
+  document.getElementById('whyNowStep3').style.display='block';
+  ['whyNowBar1','whyNowBar2','whyNowBar3'].forEach(function(id){document.getElementById(id).classList.add('wiz-active');});
+}
+
+function resetWhyNowWizard(){
+  document.querySelectorAll('#whyNowOverlay .wiz-input').forEach(function(el){el.value='';});
+  document.querySelectorAll('#whyNowOverlay input[type="radio"]').forEach(function(el){el.checked=false;});
+  // Re-check the default "Skip" option for second foundation
+  var skipRadio=document.querySelector('#whyNowOverlay input[name="whyNowFound2"][value=""]');
+  if(skipRadio) skipRadio.checked=true;
+  whyNowNext(1);
+}
+
+function updateWhyNowAnchorPlaceholder(which){
+  var radioName='whyNowFound'+which;
+  var inputId='whyNowAnchor'+which;
+  var checked=document.querySelector('input[name="'+radioName+'"]:checked');
+  var area=document.getElementById(inputId);
+  if(!checked||!area) return;
+  var hints={
+    'cost':'e.g. GPU costs dropped 75 percent between 2023 and 2025',
+    'tech':'e.g. Smartphone GPS became accurate enough for ride-hailing in 2008',
+    'buyer':'e.g. ChatGPT hit 100 million users in two months, putting AI on every CEO’s agenda'
+  };
+  area.placeholder=hints[checked.value]||'';
+}
+
+function generateWhyNow(){
+  var v=function(id){return(document.getElementById(id).value||'').trim();};
+  var clean=function(s){return s.replace(/[.!?;,]+\s*$/,'');};
+  var lower1=function(s){
+    if(!s) return s;
+    // Preserve acronyms at the start (e.g. "AI", "GPU", "CIO")
+    if(/^[A-Z]{2,}\b/.test(s)) return s;
+    return s.charAt(0).toLowerCase()+s.slice(1);
+  };
+  var radio=function(name){var el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:'';};
+
+  var company=clean(v('whyNowCompany'));
+  var found1=radio('whyNowFound1');
+  var anchor1=clean(v('whyNowAnchor1'));
+  var found2=radio('whyNowFound2');
+  var anchor2=clean(v('whyNowAnchor2'));
+  var urgencyType=radio('whyNowUrgency');
+  var urgencyDetail=clean(v('whyNowUrgencyDetail'));
+
+  var foundationPhrase={
+    'cost':'a specific input cost dropped',
+    'tech':'a new technical capability arrived',
+    'buyer':'a new buyer emerged who needs this urgently'
+  };
+
+  var urgencyPhrase={
+    'capital':'capital is forming around the category',
+    'incumbents':'incumbents are stirring',
+    'regulatory':'a regulatory window is closing'
+  };
+
+  var subject=company||'Our company';
+  var draft='';
+
+  // Opening: foundation + anchor
+  if(found1){
+    draft+=subject+' is possible now because '+foundationPhrase[found1]+'.';
+    if(anchor1){draft+=' Specifically, '+lower1(anchor1)+'.';}
+    draft+='\n\n';
+  } else if(anchor1){
+    draft+=subject+' is possible now because of a structural shift in the market: '+lower1(anchor1)+'.\n\n';
+  }
+
+  // Stack a second foundation
+  if(found2){
+    draft+='We additionally benefit from the fact that '+foundationPhrase[found2];
+    if(anchor2){draft+=': '+lower1(anchor2);}
+    draft+='.\n\n';
+  }
+
+  // Window timing close
+  if(urgencyType||urgencyDetail){
+    draft+='The window is open right now';
+    var reason='';
+    if(urgencyType&&urgencyType!=='other'){
+      reason=urgencyPhrase[urgencyType];
+      if(urgencyDetail){reason+=': '+lower1(urgencyDetail);}
+    } else if(urgencyDetail){
+      reason=lower1(urgencyDetail);
+    }
+    if(reason){draft+=' because '+reason;}
+    draft+='.';
+  }
+
+  document.getElementById('whyNowDraftBox').textContent=draft.trim();
+  ['whyNowStep1','whyNowStep2','whyNowStep3'].forEach(function(id){document.getElementById(id).style.display='none';});
+  document.getElementById('whyNowProgress').style.display='none';
+  document.getElementById('whyNowOutput').style.display='block';
+}
+
+function copyWhyNow(){
+  var text=document.getElementById('whyNowDraftBox').textContent;
+  var flash=function(){
+    var btn=document.getElementById('whyNowCopyBtn');
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},1500);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(flash);
+  } else {
+    var ta=document.createElement('textarea');
+    ta.value=text;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');}catch(e){}
+    document.body.removeChild(ta);flash();
+  }
+}
+
 
 // One-Pager Example Modal
 window.openOnePagerExample=function(){
@@ -9150,6 +9285,191 @@ Featured in The Information on Oct 14"></textarea>
         &bull; Precise numbers. No ranges, no vanity metrics<br>
         &bull; Social proof leads the highlights<br>
         &bull; Under 80 words in the main paragraph
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ WHY NOW BUILDER LIGHTBOX ═══ -->
+<div id="whyNowOverlay" class="wiz-overlay" onclick="if(event.target===this)closeWhyNowWizard()">
+<div class="wiz-modal">
+  <button class="wiz-close" onclick="closeWhyNowWizard()" aria-label="Close">&times;</button>
+  <div class="wiz-modal-header">
+    <div style="font-size:20px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;">Build Your Why Now</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-top:4px;">Three steps grounded in the framework. Leave fields blank to leave them out of the draft. The wizard builds your Why Now around what you fill in.</div>
+  </div>
+
+  <div style="display:flex;gap:6px;margin:20px 0 24px;" id="whyNowProgress">
+    <div class="wiz-step-bar wiz-active" id="whyNowBar1"></div>
+    <div class="wiz-step-bar" id="whyNowBar2"></div>
+    <div class="wiz-step-bar" id="whyNowBar3"></div>
+  </div>
+
+  <!-- Step 1: Primary Foundation + Anchor -->
+  <div class="wiz-panel" id="whyNowStep1">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#4b6bda;margin-bottom:6px;">Step 1 of 3 &middot; Your Foundation</div>
+    <div style="font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px;font-family:'Nunito',sans-serif;">Pick your primary foundation</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-bottom:18px;">Most strong Why Now is built on one of three. Pick the one most true for your company.</div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Company name (optional)</label>
+      <input type="text" id="whyNowCompany" class="wiz-input" placeholder="e.g. Crewpath">
+    </div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Primary foundation</label>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound1" value="cost" onchange="updateWhyNowAnchorPlaceholder(1);updateWhyNowSecondOptions();" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Cost dropped</div>
+            <div style="font-size:13px;color:var(--text-dim);margin-top:2px;">A specific input cost crossed a threshold and the unit economics now work for the first time.</div>
+          </div>
+        </label>
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound1" value="tech" onchange="updateWhyNowAnchorPlaceholder(1);updateWhyNowSecondOptions();" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Tech arrived</div>
+            <div style="font-size:13px;color:var(--text-dim);margin-top:2px;">A new capability became available that your product fundamentally requires.</div>
+          </div>
+        </label>
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound1" value="buyer" onchange="updateWhyNowAnchorPlaceholder(1);updateWhyNowSecondOptions();" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Buyer changed</div>
+            <div style="font-size:13px;color:var(--text-dim);margin-top:2px;">Demand shifted. A buyer who didn&rsquo;t exist or didn&rsquo;t care now exists and cares urgently.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Anchor with a specific number, threshold, or dated event</label>
+      <div style="font-size:12px;color:var(--text-dim);margin-bottom:6px;">Specifics land. Vague trends get skipped past. Pick the cost number, the technical threshold, or the dated event that activated your moment.</div>
+      <textarea id="whyNowAnchor1" class="wiz-input" rows="2" placeholder="Pick a foundation above to see examples"></textarea>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin-top:18px;">
+      <button type="button" class="wiz-btn-next" onclick="whyNowNext(2)">Next: Stack a Second &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Second Foundation (optional) -->
+  <div class="wiz-panel" id="whyNowStep2" style="display:none;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#4b6bda;margin-bottom:6px;">Step 2 of 3 &middot; Stack a Second</div>
+    <div style="font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px;font-family:'Nunito',sans-serif;">Stack a second foundation if it&rsquo;s also true</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-bottom:18px;">Stacking compounds. One foundation can be argued away. Two are hard to dismiss. Three make the moment feel inevitable. Skip this step if the primary stands alone.</div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Second foundation (optional)</label>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <label data-found2-skip="true" style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound2" value="" checked style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Skip this step</div>
+            <div style="font-size:13px;color:var(--text-dim);margin-top:2px;">My Why Now stands on the primary foundation alone.</div>
+          </div>
+        </label>
+        <label data-found2="cost" style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound2" value="cost" onchange="updateWhyNowAnchorPlaceholder(2)" style="margin-top:3px;flex-shrink:0;">
+          <div style="flex:1">
+            <div style="font-weight:700;color:var(--text);">Cost dropped</div>
+          </div>
+        </label>
+        <label data-found2="tech" style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound2" value="tech" onchange="updateWhyNowAnchorPlaceholder(2)" style="margin-top:3px;flex-shrink:0;">
+          <div style="flex:1">
+            <div style="font-weight:700;color:var(--text);">Tech arrived</div>
+          </div>
+        </label>
+        <label data-found2="buyer" style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowFound2" value="buyer" onchange="updateWhyNowAnchorPlaceholder(2)" style="margin-top:3px;flex-shrink:0;">
+          <div style="flex:1">
+            <div style="font-weight:700;color:var(--text);">Buyer changed</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Anchor for the second foundation (optional)</label>
+      <textarea id="whyNowAnchor2" class="wiz-input" rows="2" placeholder="Specific number, threshold, or dated event for the second foundation"></textarea>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:18px;">
+      <button type="button" class="wiz-btn-back" onclick="whyNowNext(1)">&larr; Back</button>
+      <button type="button" class="wiz-btn-next" onclick="whyNowNext(3)">Next: Urgency &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Make Passing Feel Costly -->
+  <div class="wiz-panel" id="whyNowStep3" style="display:none;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#4b6bda;margin-bottom:6px;">Step 3 of 3 &middot; Pin the Window</div>
+    <div style="font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px;font-family:'Nunito',sans-serif;">What defines your category window?</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-bottom:18px;">Pick the lever that defines your window. Then write a specific reason tied to it.</div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Urgency lever</label>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowUrgency" value="capital" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Capital is forming around the category</div>
+          </div>
+        </label>
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowUrgency" value="incumbents" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Incumbents are stirring</div>
+          </div>
+        </label>
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowUrgency" value="regulatory" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Regulatory window is closing</div>
+          </div>
+        </label>
+        <label style="display:flex;gap:12px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;align-items:flex-start;">
+          <input type="radio" name="whyNowUrgency" value="other" style="margin-top:3px;flex-shrink:0;">
+          <div>
+            <div style="font-weight:700;color:var(--text);">Other</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="wiz-field">
+      <label class="wiz-label">Specific reason</label>
+      <div style="font-size:12px;color:var(--text-dim);margin-bottom:6px;">A specific moment, name, or timeline that defines your category window.</div>
+      <textarea id="whyNowUrgencyDetail" class="wiz-input" rows="2" placeholder="e.g. Sequoia and a16z each made three bets in this category in the last six months"></textarea>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:18px;">
+      <button type="button" class="wiz-btn-back" onclick="whyNowNext(2)">&larr; Back</button>
+      <button type="button" class="wiz-btn-next" onclick="generateWhyNow()">Generate My Why Now</button>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div id="whyNowOutput" style="display:none;margin-top:18px;">
+    <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#16a34a;margin-bottom:8px;">Your Why Now Draft</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-bottom:10px;">A first-cut Why Now assembled from your inputs. Use it as a starting point. Sharpen it in your own voice before delivering.</div>
+    <div id="whyNowDraftBox" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:20px;font-size:13.5px;line-height:1.7;color:var(--text);white-space:pre-wrap;max-height:360px;overflow-y:auto;"></div>
+    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+      <button type="button" class="wiz-btn-next" onclick="copyWhyNow();" id="whyNowCopyBtn">Copy to Clipboard</button>
+      <button type="button" class="wiz-btn-back" onclick="whyNowBackFromOutput()">&larr; Back</button>
+      <button type="button" class="wiz-btn-back" onclick="resetWhyNowWizard()">Start Over</button>
+    </div>
+    <div style="margin-top:14px;padding:14px 16px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;">
+      <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">Pressure-test your draft</div>
+      <div style="font-size:12.5px;color:var(--text-dim);line-height:1.75;">
+        &bull; Each foundation is anchored with a specific number, threshold, or dated event<br>
+        &bull; Stacked categories are honestly true (no stretching)<br>
+        &bull; Urgency reason is concrete: named names, dated events, specific timelines<br>
+        &bull; The argument doesn&rsquo;t fit fifty other startups<br>
+        &bull; Your tailwind has already arrived (not &ldquo;coming soon&rdquo;)
       </div>
     </div>
   </div>
