@@ -149,6 +149,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
 .dash-chapter-card .card-bar-fill{height:100%;background:var(--coral);border-radius:2px;transition:width .3s}
 .dash-chapter-card.completed{border-color:var(--success)}
 .dash-chapter-card.completed .card-num{color:var(--success)}
+/* Locked state — applied on the live site to chapters under construction */
+.chapter-nav-item.locked{cursor:not-allowed;opacity:.45;pointer-events:none}
+.chapter-nav-item.locked .nav-progress{display:none}
+.chapter-nav-item.locked .nav-chevron{display:none}
+.chapter-nav-item.locked .nav-check{display:none}
+.chapter-nav-item.locked::after{content:'Coming soon';margin-left:auto;font-size:9.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.dash-chapter-card.locked{cursor:not-allowed;opacity:.55;background:var(--bg-2);border-color:var(--border)}
+.dash-chapter-card.locked:hover{border-color:var(--border);box-shadow:none;transform:none}
+.dash-chapter-card.locked .card-num{color:var(--text-muted)}
+.dash-chapter-card .locked-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);background:var(--border-light);padding:3px 8px;border-radius:10px}
 
 /* ── CHAPTER PANELS ── */
 .chapter-panel{display:none;animation:fadeSlideUp .4s var(--ease)}
@@ -2665,7 +2675,7 @@ html, body {
     <section class="landing-hero">
       <div class="landing-eyebrow">The Fundraising Playbook</div>
       <h1 class="landing-headline">Raise your round, the way founders who&rsquo;ve done it would.</h1>
-      <p class="landing-subhead">A practical guide to pre-seed and seed fundraising, built from hundreds of hours coaching real founders through real raises.</p>
+      <p class="landing-subhead">A practical guide to pre-seed and seed fundraising from a YC founder, built across hundreds of hours coaching real founders through real raises.</p>
       <div class="landing-stat"><strong>$80M+</strong> raised by founders using this playbook in the last two years.</div>
       <button type="button" class="landing-video" onclick="openVideoLightbox('PLACEHOLDER_VIDEO_ID','Why we built this playbook')" aria-label="Watch: Why we built this playbook">
         <div class="landing-video-inner">
@@ -2944,6 +2954,7 @@ html, body {
           <div class="sub-nav-item" data-sub="comm-6" onclick="goToSub('comm','6',this)"><span class="sub-dot"></span>The Team</div>
           <div class="sub-nav-item" data-sub="comm-7" onclick="goToSub('comm','7',this)"><span class="sub-dot"></span>The Competition</div>
           <div class="sub-nav-item" data-sub="comm-8" onclick="goToSub('comm','8',this)"><span class="sub-dot"></span>The Ask</div>
+          <div class="sub-nav-item" data-sub="comm-9" onclick="goToSub('comm','9',this)"><span class="sub-dot"></span>Knowledge Check</div>
         </div>
         <div class="chapter-nav-item" data-chapter="3" onclick="toggleSubNav(this,'3')">
           <span class="nav-num">04</span><span class="nav-name">Prepare Your Materials</span><span class="nav-chevron">▾</span><span class="nav-check">✓</span><div class="nav-progress"><div class="nav-progress-fill" id="nav-prog-3" style="width:0%"></div></div>
@@ -2956,6 +2967,7 @@ html, body {
           <div class="sub-nav-item" data-sub="3-4" onclick="goToSub('3','4',this)"><span class="sub-dot"></span>Pitch Deck</div>
           <div class="sub-nav-item" data-sub="3-5" onclick="goToSub('3','5',this)"><span class="sub-dot"></span>Data Room</div>
           <div class="sub-nav-item" data-sub="3-6" onclick="goToSub('3','6',this)"><span class="sub-dot"></span>Demo Best Practices</div>
+          <div class="sub-nav-item" data-sub="3-7" onclick="goToSub('3','7',this)"><span class="sub-dot"></span>Knowledge Check</div>
         </div>
       </div>
       <div class="chapter-nav-group">
@@ -5057,9 +5069,31 @@ html, body {
 
    <div class="nav-btn-row">
      <button class="nav-btn prev" onclick="goToSub('3','5')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Data Room</span></button>
-     <button class="nav-btn next" onclick="goToChapter(0)"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Build Your Target List</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn next" onclick="goToSub('3','7')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Knowledge Check</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
  </div><!-- /sub-3-6 -->
+
+ <!-- SUB-CHAPTER 3.7: Knowledge Check -->
+ <div class="sub-panel single-screen clean" id="sub-3-7">
+
+   <header class="page-head">
+     <div class="page-head-crumb">Chapter 4 &middot; Knowledge Check</div>
+     <h1 class="page-head-title">Check your understanding</h1>
+   </header>
+   <p class="page-head-sub">Two quick questions to lock in the materials playbook before you start building your target list.</p>
+
+   <div class="ss-body">
+     <div class="ss-kc-grid">
+       <div class="knowledge-check-slot" data-chapter="3" data-section="0"></div>
+       <div class="knowledge-check-slot" data-chapter="3" data-section="1"></div>
+     </div>
+   </div>
+
+   <div class="nav-btn-row">
+     <button class="nav-btn prev" onclick="goToSub('3','6')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">Demo Best Practices</span></button>
+     <button class="nav-btn next" onclick="goToChapter(0)"><span><span class="nav-btn-label">Next chapter</span><span class="nav-btn-text">Build Your Target List</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+   </div>
+ </div><!-- /sub-3-7 -->
 
 </div><!-- /ch-3 -->
 
@@ -5315,37 +5349,49 @@ html, body {
          </div>
        </div>
        <script>
-       (function initBpCarousel(){
-         var root=document.getElementById('bp-carousel');
-         if(!root||root.dataset.bpBound==='1')return;
-         root.dataset.bpBound='1';
-         var track=root.querySelector('.bp-track');
-         var slides=root.querySelectorAll('.bp-slide');
-         var prev=root.querySelector('.bp-prev');
-         var next=root.querySelector('.bp-next');
-         var counter=root.querySelector('.bp-counter');
-         var dots=root.querySelectorAll('.bp-dot');
-         var idx=0;
-         function goTo(i){
-           if(i<0||i>=slides.length)return;
-           idx=i;
-           track.style.transform='translateX(-'+(idx*100)+'%)';
-           if(counter)counter.textContent=(idx+1)+' of '+slides.length;
-           dots.forEach(function(d,di){d.classList.toggle('active',di===idx)});
-           if(prev)prev.disabled=idx===0;
-           if(next)next.disabled=idx===slides.length-1;
+       /* Generalized carousel init — handles every .bp-carousel on the page.
+          Runs on DOMContentLoaded so it picks up carousels added later in
+          the source (e.g. on other sub-chapters). */
+       (function initBpCarousels(){
+         function init(){
+           var roots=document.querySelectorAll('.bp-carousel');
+           roots.forEach(function(root){
+             if(root.dataset.bpBound==='1')return;
+             root.dataset.bpBound='1';
+             var track=root.querySelector('.bp-track');
+             var slides=root.querySelectorAll('.bp-slide');
+             var prev=root.querySelector('.bp-prev');
+             var next=root.querySelector('.bp-next');
+             var counter=root.querySelector('.bp-counter');
+             var dots=root.querySelectorAll('.bp-dot');
+             var idx=0;
+             function goTo(i){
+               if(i<0||i>=slides.length)return;
+               idx=i;
+               track.style.transform='translateX(-'+(idx*100)+'%)';
+               if(counter)counter.textContent=(idx+1)+' of '+slides.length;
+               dots.forEach(function(d,di){d.classList.toggle('active',di===idx)});
+               if(prev)prev.disabled=idx===0;
+               if(next)next.disabled=idx===slides.length-1;
+             }
+             if(prev)prev.addEventListener('click',function(){goTo(idx-1)});
+             if(next)next.addEventListener('click',function(){goTo(idx+1)});
+             dots.forEach(function(d){d.addEventListener('click',function(){goTo(parseInt(d.dataset.slide,10))})});
+             document.addEventListener('keydown',function(e){
+               if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+               var r=root.getBoundingClientRect();
+               if(r.bottom<0||r.top>window.innerHeight)return;
+               if(e.key==='ArrowLeft')goTo(idx-1);
+               if(e.key==='ArrowRight')goTo(idx+1);
+             });
+             goTo(0);
+           });
          }
-         if(prev)prev.addEventListener('click',function(){goTo(idx-1)});
-         if(next)next.addEventListener('click',function(){goTo(idx+1)});
-         dots.forEach(function(d){d.addEventListener('click',function(){goTo(parseInt(d.dataset.slide,10))})});
-         // Keyboard arrow navigation when carousel is in view
-         document.addEventListener('keydown',function(e){
-           var visible=root.getBoundingClientRect();
-           if(visible.top>window.innerHeight||visible.bottom<0)return;
-           if(e.key==='ArrowLeft')goTo(idx-1);
-           if(e.key==='ArrowRight')goTo(idx+1);
-         });
-         goTo(0);
+         if(document.readyState==='loading'){
+           document.addEventListener('DOMContentLoaded',init);
+         } else {
+           init();
+         }
        })();
        </script>
      </section>
@@ -5665,9 +5711,10 @@ html, body {
 
    <div class="ss-body">
    <div class="video-section">
-     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: Market Size">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('AV-HTGhFcwI','Market Size')" aria-label="Play video: Market Size">
+       <img src="https://img.youtube.com/vi/AV-HTGhFcwI/hqdefault.jpg" alt="">
        <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
-       <span class="video-thumb-badge">Coming soon</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
      </button>
      <div class="video-section-caption">Watch: Market Size</div>
    </div>
@@ -5740,13 +5787,21 @@ html, body {
      <div class="page-head-crumb">Chapter 3 &middot; Communicate Your Story</div>
      <h1 class="page-head-title">Your Traction</h1>
    </header>
-     <p class="page-head-sub">Investors anchor on traction more than almost anything else in your pitch. The strongest move is to live in authenticity here. The smaller, accurate number paired with the right label tends to land stronger than the bigger one that gets walked back in diligence.</p>
+     <p class="page-head-sub">Investors anchor on traction more than almost anything else in your pitch. Which isn&rsquo;t surprising, because traction is an objective proof point. The strongest move is to lead with clarity here. The accurate number with the correct label resonates more with investors.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('0phWMKQfsCM','Your Traction')" aria-label="Play video: Your Traction">
+       <img src="https://img.youtube.com/vi/0phWMKQfsCM/hqdefault.jpg" alt="">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
+     </button>
+     <div class="video-section-caption">Watch: Your Traction</div>
+   </div>
      <section>
-       <div class="section-label">Live in authenticity</div>
-       <p>The instinct when traction is thin is to get crafty. Lump pilots, LOIs, and run rate into a single &ldquo;ARR&rdquo; number. Stretch definitions to make the headline pop. Diligence catches it every time.</p>
-       <p>A founder who claims &ldquo;$600K ARR&rdquo; in a first meeting after annualizing one strong $50K month loses credibility for the rest of the deal. ARR is reserved for revenue that actually recurs by contract. Saying &ldquo;$50K in revenue last month&rdquo; from the start keeps the numbers real and the deal moving.</p>
+       <div class="section-label">Lead with clarity</div>
+       <p>The instinct for founders is to make traction sound as strong as possible, and do things like lump pilots, LOIs, and run rate into a single &ldquo;ARR&rdquo; number, or stretch definitions to make the headline pop. But because this is a proof point for investors, the strongest move is to lead with clarity.</p>
+       <p>A founder who claims &ldquo;$600K ARR&rdquo; in a first meeting after annualizing one strong $50K month loses credibility for the rest of the deal. Be accurate with whatever revenue you&rsquo;re claiming. Saying &ldquo;$50K in revenue last month&rdquo; from the start keeps the numbers real and the deal moving.</p>
      </section>
 
      <section>
@@ -5774,11 +5829,21 @@ html, body {
            <div class="clean-filter-desc">A signed letter saying a customer would pay $X if your product gets built and works. An indication of intent, with no payment attached. Phrase it as: &ldquo;$100K in non-binding LOIs from customers X, Y, and Z.&rdquo;</div>
          </div>
        </div>
+       <div class="clean-cta-strip" style="margin-top:18px">
+         <div class="clean-cta" onclick="openExampleModal('tractionGlossary')">
+           <div class="clean-cta-icon"><svg class="icon"><use href="#i-bulb"/></svg></div>
+           <div class="clean-cta-body">
+             <div class="clean-cta-title">Sales &amp; Growth Glossary</div>
+             <div class="clean-cta-desc">A reference of the acronyms that come up in fundraising conversations: ARR, MRR, GMV, ICP, MEDDIC, and dozens more, organized by category.</div>
+           </div>
+           <div class="clean-cta-arrow">&rarr;</div>
+         </div>
+       </div>
      </section>
 
      <section>
        <div class="section-label">Talking about thin traction</div>
-       <p>Light traction is a pattern investors see often, especially at pre-seed. The play is to acknowledge where you are, point to the leading indicator that&rsquo;s working, and redirect to the proof points that matter at your stage. Founder-market fit, customer-discovery depth, design partner commitments, and a working prototype all carry weight when the ARR number is light.</p>
+       <p>Light traction is a pattern investors see often, especially at pre-seed. At this stage, investors are searching for conviction points: signals that the problem you believe is real is substantiated through the market itself. Acknowledge where you are, then lay out every conversation, every signal, every customer who moved you forward. Founder-market fit, customer-discovery depth, design partner commitments, and a working prototype all carry weight when the ARR number is light.</p>
      </section>
    </div>
 
@@ -5795,45 +5860,113 @@ html, body {
      <div class="page-head-crumb">Chapter 3 &middot; Communicate Your Story</div>
      <h1 class="page-head-title">The Team</h1>
    </header>
-     <p class="page-head-sub">At pre-seed and seed, investors are mostly betting on the team. The bet hinges on founder-market fit, complementary skills, and how you handle the gaps.</p>
+     <p class="page-head-sub">At pre-seed and seed, investors are mostly buying belief in the people. Product data is thin, traction is partial, and the most durable signal about whether this company can be built is the team building it.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('0dG2yc2ajDc','The Team')" aria-label="Play video: The Team">
+       <img src="https://img.youtube.com/vi/0dG2yc2ajDc/hqdefault.jpg" alt="">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
+     </button>
+     <div class="video-section-caption">Watch: The Team</div>
+   </div>
+
+     <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:14px 20px;font-size:13px;line-height:1.6;color:var(--text-dim)">
+       <div style="font-weight:700;color:var(--accent);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Sources</div>
+       Best practices on this page draw from Y Combinator (Michael Seibel, Kevin Hale), First Round Capital (Josh Kopelman), Sequoia Capital, Andreessen Horowitz, and Hustle Fund (Eric Bahn). The &ldquo;specific accomplishments over titles&rdquo; framing and the structural-facts checklist trace to Seibel&rsquo;s &ldquo;How to Pitch Your Company.&rdquo; The co-founder dysfunction framing and the deal framework that puts team first come from Hustle Fund. The recruiter framing comes from Andreessen Horowitz.
+     </div>
+
      <section>
-       <div class="section-label">Founder-market fit</div>
-       <p>Founder-market fit is the answer to &ldquo;why you, why this problem.&rdquo; The depth of your relationship with the problem, the years you&rsquo;ve spent inside it, and the moment that drove you to start the company all carry weight. The story of how you found the problem tends to do more work than your title on LinkedIn.</p>
+       <div style="background:linear-gradient(180deg,var(--accent-pale),rgba(45,61,110,0.02));border:1px solid rgba(45,61,110,0.18);border-radius:var(--r);padding:22px 28px">
+         <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">The single test</div>
+         <p style="font-size:18px;font-weight:500;line-height:1.5;color:var(--text);margin:0;letter-spacing:-0.005em">Can the investor answer &ldquo;why these people, for this problem, right now&rdquo;? Everything below is in service of that one question.</p>
+       </div>
      </section>
 
      <section>
-       <div class="section-label">The earned secret</div>
-       <p>The earned secret is what the founder knows that most of the market doesn&rsquo;t yet. It&rsquo;s the connective tissue between why-you and why-now. A decade inside the regulatory body that&rsquo;s about to change the rules. Years building the prior generation of the tool, knowing exactly where it broke. Being the customer long enough to see what every vendor got wrong. Founders who name their earned secret in one sentence and repeat it consistently compound their positioning.</p>
-     </section>
-
-     <section>
-       <div class="section-label">Complementary skills</div>
+       <div class="section-label">Six moves to build your team narrative</div>
+       <p>Each move adds a layer to the case. Build all six and the investor leaves the meeting able to answer the single test.</p>
        <div class="clean-list cols-2">
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Clear ownership</div>
-           <div class="clean-list-desc">Each founder owns a domain. Product, engineering, go-to-market, operations. Investors pattern-match on whether the team covers the surface area the company needs.</div>
+           <div class="clean-list-label">Move 01</div>
+           <div class="clean-list-title">Lead with founder-market fit</div>
+           <div class="clean-list-desc">Open with the connection between your background and the problem, before any job title. If you&rsquo;ve lived the customer pain, say so plainly. If you&rsquo;ve built or sold into this market before, lead with that. The team narrative answers one question: why these people, for this problem, right now.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Prior collaboration</div>
-           <div class="clean-list-desc">Co-founders who&rsquo;ve worked together before, especially through hard moments, tend to read as lower risk. If you haven&rsquo;t, the proof is in how you&rsquo;ve operated together so far.</div>
+           <div class="clean-list-label">Move 02</div>
+           <div class="clean-list-title">Lead with accomplishments, not titles</div>
+           <div class="clean-list-desc">&ldquo;Maya built the credit underwriting system at Brex that processes $4B in annual transactions&rdquo; lands far stronger than &ldquo;Maya was Director of Engineering at Brex.&rdquo; Lead with the system shipped, the deal closed, the team scaled, the metric moved. Brand names support; the unit of credibility is the accomplishment.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Move 03</div>
+           <div class="clean-list-title">Connect the team to the unique insight</div>
+           <div class="clean-list-desc">The unique insight is what your team understands about the problem that the market doesn&rsquo;t yet. Link the people directly to the insight. Investors should walk away thinking: of course this team sees this, look where they came from. Team and insight stop being separate sections and become one argument.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Move 04</div>
+           <div class="clean-list-title">Prove the co-founder relationship will hold</div>
+           <div class="clean-list-desc">Co-founder dysfunction creates cascading damage. The way to address the risk is shared history: worked together before, shipped something together, years of real friendship, or a real disagreement resolved cleanly. Clarity on who does what at the founder level matters too. Role ambiguity reads as future conflict.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Move 05</div>
+           <div class="clean-list-title">Cover the structural facts</div>
+           <div class="clean-list-desc">Investors expect the basics: how many founders, who&rsquo;s technical, how long you&rsquo;ve known each other, full-time status, equity split, and any credential extremely relevant to this problem. These belong somewhere in your communication, even if you don&rsquo;t lead with them. Including them up front prevents the awkward unanswered question.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Move 06</div>
+           <div class="clean-list-title">Show momentum and the bench</div>
+           <div class="clean-list-desc">Past founder behavior is the strongest signal of future founder behavior. Surface what your team has produced since starting: customer conversations, prototypes, design partners, hires, hard decisions resolved. Add the bench: advisors, queued hires, and people who&rsquo;ve signaled they&rsquo;ll join when the time is right.</div>
          </div>
        </div>
      </section>
 
      <section>
-       <div class="section-label">Handle gaps with honesty</div>
-       <p>Most early teams have gaps. The cleanest move is to name them and explain how you&rsquo;re covering until you fill them. &ldquo;We don&rsquo;t have a sales lead yet. The CEO is running the first 20 pilots himself. We&rsquo;ll hire a head of sales after we close $1M ARR.&rdquo; That tends to read better than papering over the gap or pretending it isn&rsquo;t there.</p>
+       <div class="section-label">Strong vs weak team narrative</div>
+       <p>The same facts can land as a strong narrative or a weak one depending on how they&rsquo;re framed. The two columns below use the same underlying credentials, told two ways.</p>
+       <div class="clean-compare">
+         <div class="clean-compare-col pos">
+           <div class="clean-compare-label">Strong</div>
+           <ul class="clean-compare-ul">
+             <li>&ldquo;Maya spent five years at Brex building credit underwriting infrastructure. She shipped the system that processes $4B in annual transactions and dropped default rates 22% in year one.&rdquo;</li>
+             <li>&ldquo;Sam ran sales ops at NerdWallet&rsquo;s small-business team for four years and built the partner program that contributed $40M in annual revenue. He saw the same lending bottleneck across every partner.&rdquo;</li>
+             <li>&ldquo;We worked together at Brex on a cross-functional credit team, then shipped a side project that became this company. We&rsquo;ve already been through one hard pivot together.&rdquo;</li>
+           </ul>
+         </div>
+         <div class="clean-compare-col neg">
+           <div class="clean-compare-label">Weak</div>
+           <ul class="clean-compare-ul">
+             <li>&ldquo;Maya is a Director of Engineering with experience in fintech.&rdquo;</li>
+             <li>&ldquo;Sam has been working in the small-business space for several years.&rdquo;</li>
+             <li>&ldquo;We met at Brex and decided to start a company together.&rdquo;</li>
+           </ul>
+         </div>
+       </div>
      </section>
 
      <section>
-       <div class="section-label">The single test</div>
-       <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:22px 28px;font-size:17px;line-height:1.6;color:var(--text);margin-top:6px">After encountering the team narrative, can the investor answer &ldquo;why this team and not another team building the same thing&rdquo;? If yes, the narrative works.</div>
+       <div class="section-label">Example:</div>
+       <div class="clean-cta-strip">
+         <div class="clean-cta" onclick="openExampleModal('teamNarrativeExample')">
+           <div class="clean-cta-icon"><svg class="icon"><use href="#i-bulb"/></svg></div>
+           <div class="clean-cta-body">
+             <div class="clean-cta-title">A complete team narrative &middot; all six moves</div>
+             <div class="clean-cta-desc">A two-paragraph team intro for a fictional B2B fintech, with each move highlighted inline.</div>
+           </div>
+           <div class="clean-cta-arrow">&rarr;</div>
+         </div>
+       </div>
      </section>
 
-     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>The origin-story rule</button>
-     <div class="tip-body" hidden>Every founder has an origin story for the company. The moment they realized the problem was real, the customer who told them it mattered, the version they tried first that failed. Investors remember the story when they don&rsquo;t remember the slides. Have one ready, in one minute.</div>
+          <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Lead with strength, keep it tight</button>
+     <div class="tip-body" hidden>The most impressive attribute on the team should come first, with the rest in descending order of strength. Investor attention compresses across every minute of every meeting. Whatever your strongest signal is, hard-tech background, repeat-founder experience, or what you&rsquo;ve shipped in the last 90 days, lead with it. Keep the team portion tight. The narrative answers one question: why these people, for this problem, right now.</div>
+
+     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>How this plays across different surfaces</button>
+     <div class="tip-body" hidden><strong>Intro email.</strong> One tight sentence per founder, tying background to the problem. Lead with the strongest credential.<br><br><strong>First call.</strong> Open with the why-us narrative in under 60 seconds. Save structural facts for when the investor probes.<br><br><strong>Partner meeting.</strong> Tighter version of founder-market fit, then pivot quickly to what the team has done with the company so far.<br><br><strong>Follow-up.</strong> Reinforce the team thesis with a concrete data point that landed since the last conversation.<br><br><strong>Investor update.</strong> Continue building the team story over time. Each update is a chance to add evidence.<br><br><strong>Offline conversations and warm intros.</strong> A 15-second version of the founder-market-fit answer should be in your back pocket. The version you can say without slides is the version that travels.</div>
+
+     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Structural facts checklist</button>
+     <div class="tip-body" hidden>The basics investors expect to know about the team, even if you don&rsquo;t lead with them.<br><br><strong>Founder count.</strong> Solo, two, three, or more.<br><strong>Technical co-founder.</strong> Yes / no / which one.<br><strong>Time known.</strong> Years of friendship or working relationship before this company.<br><strong>Full-time status.</strong> Everyone working on this full-time, or who&rsquo;s still part-time and when they&rsquo;ll switch.<br><strong>Equity split.</strong> Close to equal reads as healthy partnership; lopsided invites questions.<br><strong>Relevant credential.</strong> Any single most-relevant credential for this specific problem.</div>
+
    </div>
 
    <div class="nav-btn-row">
@@ -5849,35 +5982,131 @@ html, body {
      <div class="page-head-crumb">Chapter 3 &middot; Communicate Your Story</div>
      <h1 class="page-head-title">The Competition</h1>
    </header>
-     <p class="page-head-sub">Acknowledge the landscape. Position cleanly. Trash-talking competitors tends to read as insecurity, and investors remember the founders who handled the question with confidence.</p>
+     <p class="page-head-sub">How a founder talks about competition is one of the fastest signals investors get about market awareness, intellectual honesty, and strategic clarity. The way you map the field, position against incumbents, and explain why you win tells investors how you think.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: The Competition">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Coming soon</span>
+     </button>
+     <div class="video-section-caption">Watch: The Competition</div>
+   </div>
+
+     <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:14px 20px;font-size:13px;line-height:1.6;color:var(--text-dim)">
+       <div style="font-weight:700;color:var(--accent);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Sources</div>
+       Best practices on this page draw from Y Combinator (Kevin Hale, Michael Seibel), First Round Capital (Josh Kopelman), Sequoia Capital, Andreessen Horowitz, and Hustle Fund. The moat taxonomy and the data-network-effects skepticism trace to Andreessen Horowitz&rsquo;s writing on defensibility. The speed-of-execution framing for pre-seed companies comes from Hustle Fund. The contrarian-insight framing comes from First Round.
+     </div>
+
      <section>
-       <div class="section-label">Map the landscape honestly</div>
-       <p>Investors know the landscape better than founders sometimes assume. Pretending a competitor doesn&rsquo;t exist tends to land worse than naming them and explaining where you sit. The cleanest move is to name the major players, group them by approach, and let the differentiation do the work.</p>
+       <div style="background:linear-gradient(180deg,var(--accent-pale),rgba(45,61,110,0.02));border:1px solid rgba(45,61,110,0.18);border-radius:var(--r);padding:22px 28px">
+         <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">The single test</div>
+         <p style="font-size:18px;font-weight:500;line-height:1.5;color:var(--text);margin:0;letter-spacing:-0.005em">Can the investor explain how you win, in their own words? Everything below is in service of that one question.</p>
+       </div>
      </section>
 
      <section>
-       <div class="section-label">Show where you sit</div>
-       <div class="clean-list cols-2">
-         <div class="clean-list-item accent">
-           <div class="clean-list-title">Your edge</div>
-           <div class="clean-list-desc">What you do that no one else does as well. One specific dimension where you win clearly. Resist the urge to claim three at once.</div>
+       <div class="section-label">Five moves to build your competitive narrative</div>
+       <p>Each move adds a layer to the case. Build all five and the investor leaves the meeting able to map the field and trace your edge to a specific reason. Use the arrows to step through.</p>
+       <div class="bp-carousel" id="competition-carousel">
+         <div class="bp-viewport">
+           <button class="bp-btn bp-btn-side bp-prev" type="button" aria-label="Previous slide">&larr;</button>
+           <button class="bp-btn bp-btn-side bp-next" type="button" aria-label="Next slide">&rarr;</button>
+           <div class="bp-window">
+             <div class="bp-track">
+
+             <!-- Slide 1 · Moves 01 + 02 -->
+             <div class="bp-slide">
+               <div class="bp-habit">
+                 <div class="bp-habit-head"><div class="bp-habit-num">01</div><div class="bp-habit-title">Map the field, including the status quo</div></div>
+                 <p class="bp-habit-desc">The single biggest unforced error is claiming you have no competition. Map direct competitors (same problem, same audience, similar approach) and indirect ones (same pain through a different mechanism, plus the status quo). For most pre-seed companies, the largest competitor is &ldquo;people doing nothing,&rdquo; &ldquo;a spreadsheet,&rdquo; or &ldquo;an internal tool somebody built five years ago.&rdquo; Naming the status quo often does more work than any logo grid.</p>
+               </div>
+               <div class="bp-habit">
+                 <div class="bp-habit-head"><div class="bp-habit-num">02</div><div class="bp-habit-title">Lead with a durable differentiator, not a feature</div></div>
+                 <p class="bp-habit-desc">Features investors see as easy to replicate signal the company hasn&rsquo;t found its real edge yet. Durable differentiators sit deeper: technology depth, distribution advantage, positioning, brand, go-to-market mechanics, team composition, regulatory access, or a unique insight about the customer. Features can support these; the sustainable advantage runs deeper than any single feature.</p>
+               </div>
+             </div>
+
+             <!-- Slide 2 · Moves 03 + 04 -->
+             <div class="bp-slide">
+               <div class="bp-habit">
+                 <div class="bp-habit-head"><div class="bp-habit-num">03</div><div class="bp-habit-title">Tie differentiation to your unique insight</div></div>
+                 <p class="bp-habit-desc">The most credible competitive narratives turn the unique insight into the reason your differentiation exists. The story sounds like: &ldquo;Here&rsquo;s what incumbents are doing. Here&rsquo;s what we believe they got wrong, based on these specific customer signals. That belief led us to build differently in this specific way, which is why we win in this segment first.&rdquo; Competition becomes the proof point for the insight.</p>
+               </div>
+               <div class="bp-habit">
+                 <div class="bp-habit-head"><div class="bp-habit-num">04</div><div class="bp-habit-title">Make the defensibility case explicit</div></div>
+                 <p class="bp-habit-desc">Investors know your moat is thin today. Their question is whether you have a credible path to defensibility as you scale. Pick one or two of the four classic mechanisms (economies of scale, network effects, switching costs, counter-positioning) that genuinely apply, and walk the investor through how each strengthens with scale. Be precise about network effects especially. Much of what founders call data network effects is closer to data scale effects, where the marginal value of each new data point falls as the cost of acquiring unique data rises. Claim only the defensibility you can prove, and spell out the mechanics: walk through the feedback loop, name the participant type, name the specific value each new participant adds. Vague &ldquo;our moat is execution&rdquo; claims land flat.</p>
+               </div>
+             </div>
+
+             <!-- Slide 3 · Move 05 -->
+             <div class="bp-slide">
+               <div class="bp-habit">
+                 <div class="bp-habit-head"><div class="bp-habit-num">05</div><div class="bp-habit-title">Anticipate the standard threats</div></div>
+                 <p class="bp-habit-desc">Two competitive threats come up almost every time: &ldquo;What if a well-funded competitor copies your feature tomorrow?&rdquo; and &ldquo;What stops a big incumbent from waking up?&rdquo; Have specific answers ready, and pre-empt the well-funded copycat question yourself when you can; raising it first turns a doubt into evidence of self-awareness. The strongest answers separate the feature from the underlying advantage, or name structural reasons (failed incumbent attempts, internal incentives, channel conflict) the threat usually doesn&rsquo;t materialize. Keep a sharp 15-second version of the answer ready for warm intros and offline conversations, where an honest, specific reply travels furthest.</p>
+               </div>
+             </div>
+
+           </div>
+           </div>
          </div>
-         <div class="clean-list-item accent">
-           <div class="clean-list-title">The trade-off</div>
-           <div class="clean-list-desc">Every edge comes with a trade-off. Naming yours signals you&rsquo;ve thought about it. &ldquo;We&rsquo;re slower to deploy than X but more configurable&rdquo; reads as a real position.</div>
+
+         <div class="bp-controls">
+           <span class="bp-counter">1 of 3</span>
+           <div class="bp-dots">
+             <button class="bp-dot active" type="button" data-slide="0" aria-label="Slide 1"></button>
+             <button class="bp-dot" type="button" data-slide="1" aria-label="Slide 2"></button>
+             <button class="bp-dot" type="button" data-slide="2" aria-label="Slide 3"></button>
+           </div>
          </div>
        </div>
      </section>
 
      <section>
-       <div class="section-label">Talking about a giant competitor</div>
-       <p>The &ldquo;what about Microsoft&rdquo; question lands in almost every meeting. The wrong move is to dismiss it. The right move is to acknowledge the threat, explain why the giant is structurally unable to do what you do, and point to the edge where their size is a disadvantage. Distribution, focus, integration depth, or speed of iteration tend to be the strongest answers.</p>
+       <div class="section-label">Strong vs weak competitive narrative</div>
+       <p>The same competitive landscape can land as a strong narrative or a weak one depending on how it&rsquo;s framed. The two columns below contrast common founder defaults.</p>
+       <div class="clean-compare">
+         <div class="clean-compare-col pos">
+           <div class="clean-compare-label">Strong</div>
+           <ul class="clean-compare-ul">
+             <li>&ldquo;We compete with Tool A, which mid-market customers love for its reporting and hate for its sales process. We start where their hate lives: a self-serve onboarding that gets a customer to first value in twelve minutes instead of three weeks.&rdquo;</li>
+             <li>&ldquo;The biggest competitor isn&rsquo;t a company. It&rsquo;s the spreadsheet finance teams have been maintaining for ten years. We replace the spreadsheet for teams of 50 to 200, where it finally breaks.&rdquo;</li>
+             <li>&ldquo;Three companies tried this and failed for the same structural reason: they all sold to enterprise IT instead of the operations leader. We sell directly to ops because that&rsquo;s who feels the pain.&rdquo;</li>
+             <li>&ldquo;We sit between Tool X and Tool Y. We own the mid-market segment that sits above X&rsquo;s self-serve ceiling and below Y&rsquo;s enterprise floor.&rdquo;</li>
+           </ul>
+         </div>
+         <div class="clean-compare-col neg">
+           <div class="clean-compare-label">Weak</div>
+           <ul class="clean-compare-ul">
+             <li>&ldquo;We have no direct competition.&rdquo;</li>
+             <li>&ldquo;We compete with Tool A but our product is better.&rdquo;</li>
+             <li>&ldquo;We&rsquo;re the first company to do this.&rdquo;</li>
+           </ul>
+         </div>
+       </div>
      </section>
 
-     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>The 2x2 trap</button>
-     <div class="tip-body" hidden>The classic 2x2 competitive matrix that puts you in the top-right corner tends to read as marketing. Investors see hundreds of these. A clearer move is a one-sentence statement of where you sit and what you&rsquo;re not trying to be.</div>
+     <section>
+       <div class="section-label">Example:</div>
+       <div class="clean-cta-strip">
+         <div class="clean-cta" onclick="openExampleModal('competitionNarrativeExample')">
+           <div class="clean-cta-icon"><svg class="icon"><use href="#i-bulb"/></svg></div>
+           <div class="clean-cta-body">
+             <div class="clean-cta-title">A complete competitive narrative &middot; all five moves</div>
+             <div class="clean-cta-desc">A two-paragraph competition narrative for a fictional vertical AI company, with each move highlighted inline.</div>
+           </div>
+           <div class="clean-cta-arrow">&rarr;</div>
+         </div>
+       </div>
+     </section>
+
+     <section>
+       <div class="section-label">A valid contrarian view</div>
+       <p>Some pre-seed investors push back on the standard competitive playbook and argue you should make execution speed and learning velocity the centerpiece of the narrative, with everything else playing a supporting role. The case for it: at pre-seed, speed compounds faster than any other advantage you can credibly claim, and founders who lead with it tend to outrun a field that put defensibility first.</p>
+       <p>Under this framing, the proof points are cycle time from customer conversation to product change, specific learnings from the last 30 to 90 days that already shifted the roadmap, and direct customer quotes about your team&rsquo;s responsiveness versus incumbents.</p>
+       <p>One caution worth flagging: speed claims invite skepticism when your team is also the smallest in the room, and the optics turn against you fast if the proof is thin. If you take this route, hold the discipline tight and stick to the method almost to the letter. Concrete cycle times, dated learnings, and named customer quotes are what carry the weight. Anything softer collapses the case.</p>
+     </section>
+
    </div>
 
    <div class="nav-btn-row">
@@ -5893,51 +6122,122 @@ html, body {
      <div class="page-head-crumb">Chapter 3 &middot; Communicate Your Story</div>
      <h1 class="page-head-title">The Ask</h1>
    </header>
-     <p class="page-head-sub">Specificity here is signal. Be exact about amount, instrument, post-money, what&rsquo;s already committed, and how the funds get used. A specific ask reads as someone running a real process.</p>
+     <p class="page-head-sub">The ask is the moment a fundraising conversation turns from storytelling into a transaction. Founders who skip it leave deals on the table every meeting.</p>
 
    <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: The Ask">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Coming soon</span>
+     </button>
+     <div class="video-section-caption">Watch: The Ask</div>
+   </div>
+
+     <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:14px 20px;font-size:13px;line-height:1.6;color:var(--text-dim)">
+       <div style="font-weight:700;color:var(--accent);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Sources</div>
+       Best practices on this page draw from Y Combinator (Michael Seibel, Kevin Hale, Aaron Harris), First Round Capital, Sequoia Capital, Andreessen Horowitz (Scott Kupor), and Hustle Fund. The &ldquo;actually ask&rdquo; framing and the milestone-over-hires guidance trace to Seibel&rsquo;s &ldquo;How to Pitch Your Company.&rdquo; The valuation, tweener, and run-a-process-that-creates-competition framings come from Scott Kupor at Andreessen Horowitz. The simple use-of-funds approach comes from Sequoia.
+     </div>
+
      <section>
-       <div class="section-label">The specifics</div>
-       <p>&ldquo;$2.5M SAFE at $15M post, $1.1M committed, raising the rest in the next 8 weeks&rdquo; tells the investor you&rsquo;ve thought about every part of the round. &ldquo;We&rsquo;re raising $2 to 3M at a fair valuation&rdquo; tells them the opposite. Pick the number, name the instrument, name the cap or the post-money, and own it.</p>
+       <div style="background:linear-gradient(180deg,var(--accent-pale),rgba(45,61,110,0.02));border:1px solid rgba(45,61,110,0.18);border-radius:var(--r);padding:22px 28px">
+         <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">The single test</div>
+         <p style="font-size:18px;font-weight:500;line-height:1.5;color:var(--text);margin:0;letter-spacing:-0.005em">Did you actually ask, name the amount, tie it to a milestone, and request a decision? Everything below is in service of that one question.</p>
+       </div>
+     </section>
+
+     <section>
+       <div class="section-label">Six moves to build your ask</div>
+       <p>Each move adds a layer. Build all six and a specific ask reads as someone who has been thoughtful and capital efficient.</p>
        <div class="clean-list cols-2">
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Amount</div>
-           <div class="clean-list-desc">One number, not a range. Tied to a milestone the round funds.</div>
+           <div class="clean-list-label">Move 01</div>
+           <div class="clean-list-title">Actually ask</div>
+           <div class="clean-list-desc">Most founders dance around the ask, hoping the investor will offer unprompted. They won&rsquo;t. The closing question must be direct, specific, and force a yes-or-no answer. &ldquo;We&rsquo;re raising $2M on a SAFE at $15M post. $1.4M committed. Closing in three weeks. Are you in?&rdquo;</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Instrument</div>
-           <div class="clean-list-desc">SAFE, priced round, convertible note. Pick one and explain why it fits the stage.</div>
+           <div class="clean-list-label">Move 02</div>
+           <div class="clean-list-title">Tie the ask to milestones, not time or hires</div>
+           <div class="clean-list-desc">Investors fund the next valuation inflection, not runway or hiring plans. &ldquo;$1.5M to go from $30K MRR to $150K MRR over 18 months&rdquo; beats both &ldquo;$1.5M for 18 months of runway&rdquo; and &ldquo;$1.5M to hire three engineers and two AEs.&rdquo; Hiring is a means to an end. Lead with the outcome.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Valuation</div>
-           <div class="clean-list-desc">Cap or post-money, stated specifically. &ldquo;$15M post&rdquo; lands stronger than &ldquo;market terms.&rdquo;</div>
+           <div class="clean-list-label">Move 03</div>
+           <div class="clean-list-title">Size the round for the next valuation inflection</div>
+           <div class="clean-list-desc">The dollar amount should map to a believable plan that delivers a credible next-round story. The standard runway target holds: 18 to 24 months. Raising takes about six months; hitting milestones that make the next round fundable takes 12 to 18 of execution. Less than 18 puts the company back in market before there are meaningful proof points.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">Committed</div>
-           <div class="clean-list-desc">What&rsquo;s already in. Names if they&rsquo;re known, dollar amount if they&rsquo;re not. Investors react to capital that&rsquo;s already moved.</div>
+           <div class="clean-list-label">Move 04</div>
+           <div class="clean-list-title">Show use of funds simply</div>
+           <div class="clean-list-desc">A one-pager with three columns: percentage allocation, what that bucket buys, the milestone it unlocks. &ldquo;60% engineering and product to ship V2 and unlock enterprise pipeline. 25% go-to-market to reach $1M ARR. 15% reserve.&rdquo; Investors want to see the dollars are tied to outcomes, not a line-by-line budget.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Move 05</div>
+           <div class="clean-list-title">Don&rsquo;t optimize for the highest valuation</div>
+           <div class="clean-list-desc">The highest headline number isn&rsquo;t the best outcome. A valuation set too high creates pressure to grow into it within the runway you have, and missing that bar leads to flat or down rounds. Lead with the amount and the milestones. Treat valuation as a downstream negotiation, not an opening anchor.</div>
+         </div>
+         <div class="clean-list-item accent">
+           <div class="clean-list-label">Move 06</div>
+           <div class="clean-list-title">Run a process that creates competition</div>
+           <div class="clean-list-desc">The ask lands harder when investors know other investors are interested. Batch first meetings into a tight two-to-three week window. Be transparent about timing. Share progress signals as they happen. State the facts of your process without hyperbole.</div>
          </div>
        </div>
      </section>
 
      <section>
-       <div class="section-label">Use of funds tied to milestones</div>
-       <p>Every dollar gets a job. Walk through what the round funds and what it gets you to: the next product launch, the next $X in ARR, the next round at a higher post. Investors fund the version that gets to the next milestone, so the milestone has to be specific. &ldquo;Get to $1M ARR and 80% gross margins&rdquo; lands stronger than &ldquo;scale the business.&rdquo;</p>
+       <div class="section-label">Strong vs weak ask</div>
+       <p>The same round can land as a real proposal or as a vague request depending on how it&rsquo;s framed. The two columns below contrast common founder defaults.</p>
+       <div class="clean-compare">
+         <div class="clean-compare-col pos">
+           <div class="clean-compare-label">Strong</div>
+           <ul class="clean-compare-ul">
+             <li>&ldquo;We&rsquo;re raising $2M on a SAFE at $15M post. $1.4M committed. Closing in three weeks. Are you in?&rdquo;</li>
+             <li>&ldquo;$1.5M to take us from $30K MRR to $150K MRR over 18 months, with three named enterprise logos already in late-stage procurement.&rdquo;</li>
+             <li>&ldquo;60% engineering and product to ship V2 and unlock enterprise pipeline. 25% go-to-market to reach $1M ARR with three named logos. 15% reserve.&rdquo;</li>
+             <li>&ldquo;Anchored by [Fund] at $1M. $400K from angels. Raising the remaining $600K over the next four weeks.&rdquo;</li>
+           </ul>
+         </div>
+         <div class="clean-compare-col neg">
+           <div class="clean-compare-label">Weak</div>
+           <ul class="clean-compare-ul">
+             <li>&ldquo;We&rsquo;re raising $2 to 3M at a fair valuation.&rdquo;</li>
+             <li>&ldquo;$1.5M for 18 months of runway to grow the team and scale the business.&rdquo;</li>
+             <li>&ldquo;$2M to hire three engineers, one designer, two AEs, an SDR, and a head of marketing.&rdquo;</li>
+             <li>&ldquo;Let me know if there are any questions.&rdquo;</li>
+           </ul>
+         </div>
+       </div>
      </section>
 
-     <section>
-       <div class="section-label">Round status</div>
-       <p>Where the round stands is part of the ask. Capital committed, an anchor or a lead, the timeline you&rsquo;re running on. The cleanest move is to be transparent about all three. &ldquo;Anchored by [Fund] at $1M, $400K in from angels, raising the remaining $1.1M in the next month&rdquo; gives the investor everything they need to figure out where they&rsquo;d sit.</p>
-     </section>
-
-     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>The vagueness tax</button>
-     <div class="tip-body" hidden>Vagueness in the ask is one of the strongest signals that the founder isn&rsquo;t running a real process. Investors read it as either &ldquo;they don&rsquo;t know yet&rdquo; or &ldquo;they&rsquo;re negotiating with themselves.&rdquo; Either reading hurts. Pick the number, name the terms, and let the investor react to a real proposal.</div>
+     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>How this plays across different surfaces</button>
+     <div class="tip-body" hidden><strong>Intro email.</strong> The ask appears plainly in the email, not buried in an attachment. &ldquo;We&rsquo;re raising $2M on a SAFE at $15M post. $1.2M committed. Closing in four weeks. Would you like to take a look?&rdquo;<br><br><strong>First call.</strong> End every first call with a direct question. &ldquo;Based on what you&rsquo;ve seen, what would need to be true for you to lead this round?&rdquo; Force a real answer. Vague signals are noes.<br><br><strong>Partner meeting.</strong> The ask should be tight and the use of funds defensible. Walk through the milestone math, the runway logic, and the next-round thesis without notes.<br><br><strong>Follow-up.</strong> Anything but a check is a no. Drive toward a decision rather than restating the pitch. &ldquo;We&rsquo;re tracking to close on Friday and would love to know whether to count you in.&rdquo;<br><br><strong>Investor update.</strong> Updates after the round closes are how founders set up the next ask. Each update reinforces the milestone story that justified the last round and the trajectory that will justify the next one.<br><br><strong>Offline conversations and warm intros.</strong> A 15-second version of the ask in your back pocket at all times. &ldquo;We&rsquo;re raising a $2M seed to reach $1M ARR. Already at $30K MRR with strong enterprise pipeline. Closing in March.&rdquo;</div>
    </div>
 
    <div class="nav-btn-row">
      <button class="nav-btn prev" onclick="goToSub('comm','7')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">The Competition</span></button>
-     <button class="nav-btn next" onclick="goToChapter(3)"><span><span class="nav-btn-label">Next chapter</span><span class="nav-btn-text">Prepare Your Materials</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+     <button class="nav-btn next" onclick="goToSub('comm','9')"><span><span class="nav-btn-label">Up next</span><span class="nav-btn-text">Knowledge Check</span></span><span class="nav-btn-arrow">&rarr;</span></button>
    </div>
  </div><!-- /sub-comm-8 -->
+
+ <!-- SUB-CHAPTER COMM.9: Knowledge Check -->
+ <div class="sub-panel single-screen clean" id="sub-comm-9">
+
+   <header class="page-head">
+     <div class="page-head-crumb">Chapter 3 &middot; Knowledge Check</div>
+     <h1 class="page-head-title">Check your understanding</h1>
+   </header>
+   <p class="page-head-sub">Two quick questions to lock in the storytelling fundamentals before you build the materials.</p>
+
+   <div class="ss-body">
+     <div class="ss-kc-grid">
+       <div class="knowledge-check-slot" data-chapter="comm" data-section="0"></div>
+       <div class="knowledge-check-slot" data-chapter="comm" data-section="1"></div>
+     </div>
+   </div>
+
+   <div class="nav-btn-row">
+     <button class="nav-btn prev" onclick="goToSub('comm','8')"><span class="nav-btn-arrow">&larr;</span><span class="nav-btn-text">The Ask</span></button>
+     <button class="nav-btn next" onclick="goToChapter(3)"><span><span class="nav-btn-label">Next chapter</span><span class="nav-btn-text">Prepare Your Materials</span></span><span class="nav-btn-arrow">&rarr;</span></button>
+   </div>
+ </div><!-- /sub-comm-9 -->
 
 </div><!-- /ch-comm -->
 
@@ -7113,6 +7413,28 @@ var knowledgeChecks = {
     opts: ['When the term sheet is signed','When the wire hits your bank account','When the investor says yes verbally','When legal documents are sent out'],
     answer: 1,
     feedback: {correct:'The wire is the only thing that counts. Plan your runway based on when money actually arrives in your account, not when documents are signed.',incorrect:'Your runway is secured when the wire hits your bank account. Verbal commits, signed term sheets, and even signed legal docs are all just steps along the way. Cash in the bank is the only thing that counts.'}
+  }],
+  comm: [{
+    q: 'What is the single biggest unforced error founders make when pitching the competition?',
+    opts: ['Naming too many direct competitors','Claiming they have no competition','Mentioning the status quo as a competitor','Showing a logo grid of incumbents'],
+    answer: 1,
+    feedback: {correct:'Claiming no competition is the unforced error. The status quo, an internal tool, or a spreadsheet always counts. Mapping the real landscape demonstrates self-awareness and earns trust.',incorrect:'The single biggest unforced error is claiming you have no competition. Investors know better. Map direct, indirect, and the status quo. The honest map shows you understand your market.'}
+  },{
+    q: 'When sizing and framing your ask, what should the dollar amount be tied to?',
+    opts: ['Months of runway you will get','Specific hires you plan to make','The next valuation inflection or milestone','The valuation cap on your SAFE'],
+    answer: 2,
+    feedback: {correct:'Investors fund the next valuation inflection. Frame the ask as the dollars needed to hit a specific milestone, like "$1.5M to go from $30K MRR to $150K MRR." That ties capital directly to outcomes.',incorrect:'The ask should map to the milestone that unlocks the next round. Frame it as the dollars needed for a specific outcome. Hires and runway sit underneath as means to that end.'}
+  }],
+  3: [{
+    q: 'What is the primary job of your email blurb?',
+    opts: ['Tell the full story of the company in one screen','Get the recipient to ask for the deck or a meeting','List every accomplishment and customer logo','Summarize the contents of the data room'],
+    answer: 1,
+    feedback: {correct:'The blurb earns the next click. Three to five lines that get a busy partner to ask for the deck or take a meeting.',incorrect:'The blurb has one job: get the recipient to ask for more. Three to five lines designed to earn the next step in the funnel, not to tell the whole story.'}
+  },{
+    q: 'What test should your one-pager pass?',
+    opts: ['Total length under 250 words','A 90-second skim by someone unfamiliar with your company who can then explain back what you do','Comprehensive coverage of every metric in the data room','Exact match to the slide count of your deck'],
+    answer: 1,
+    feedback: {correct:'The 90-second test is the bar. Hand the one-pager to someone who has never heard of your company. If they can explain what you do after 90 seconds, it works.',incorrect:'The one-pager passes the 90-second test. A stranger reads it for 90 seconds and can summarize what you do back to you. If they cannot, the message is buried.'}
   }]
 };
 
@@ -7125,6 +7447,25 @@ var kcState = {}; // tracks knowledge check answers
 var currentView = 'dashboard'; // 'dashboard' or chapter id
 var chaptersVisited = {};
 var completedChapters = {};
+
+/* ──────────────────────────────────────
+   CHAPTER LOCK (live site only)
+   While certain chapters are still being edited, they are greyed out and
+   unclickable on the live site. Local development keeps everything open.
+   ────────────────────────────────────── */
+var IS_LIVE_SITE = (window.location.protocol !== 'file:'
+  && window.location.hostname !== 'localhost'
+  && window.location.hostname !== '127.0.0.1'
+  && window.location.hostname !== ''
+  && !/^192\.168\./.test(window.location.hostname)
+  && !/^10\./.test(window.location.hostname));
+// Chapter ids 4 (Refine Through Practice), 5 (Pitching Best Practices), 6 (Manage Your Pipeline),
+// 7 (Diligence & Term Sheet), 8 (Close the Round) — these correspond to display chapters 08–12.
+var LOCKED_CHAPTER_IDS = IS_LIVE_SITE ? ['4','5','6','7','8'] : [];
+function isChapterLocked(id){
+  if(!LOCKED_CHAPTER_IDS.length) return false;
+  return LOCKED_CHAPTER_IDS.indexOf(String(id)) !== -1;
+}
 
 /* ══════════════════════════════════════
    CHAPTER META
@@ -7202,7 +7543,7 @@ function computeProgressSnapshot(){
   allChs.forEach(function(ch){
     var id=String(ch.id);
     var done=false;
-    if(id==='intro'||id==='arc'||id==='3'){done=!!(typeof completedChapters!=='undefined'&&completedChapters[ch.id])}
+    if(id==='intro'||id==='arc'){done=!!(typeof completedChapters!=='undefined'&&completedChapters[ch.id])}
     else if(typeof isChapterKcComplete==='function'){done=isChapterKcComplete(ch.id)}
     if(done) completedList.push(id);
   });
@@ -7441,6 +7782,7 @@ function initStreak(){
    NAVIGATION
    ══════════════════════════════════════ */
 function goToChapter(id, navEl){
+  if(isChapterLocked(id)) return;
   var previousView=currentView;
   currentView=id;
   // If the user is leaving the intro chapter for a real chapter,
@@ -7519,6 +7861,7 @@ window.goToChapter=goToChapter;
    SUB-CHAPTER NAVIGATION
    ══════════════════════════════════════ */
 function goToSub(chId, subId, navEl){
+  if(isChapterLocked(chId)) return;
   // First make sure parent chapter is showing
   var target=document.getElementById('ch-'+chId);
   if(target && !target.classList.contains('active')){
@@ -7556,19 +7899,12 @@ function goToSub(chId, subId, navEl){
   }
   // Push progress snapshot to the Google Sheet
   if(typeof sendProgressToGoogleSheet==='function') sendProgressToGoogleSheet();
-  // Ch-3 has no KC gate, so mark it complete when the user reaches its final sub-panel
-  if(String(chId)==='3' && String(subId)==='7' && !completedChapters['3']){
-    completedChapters['3']=true;
-    if(typeof markNavCompleted==='function') markNavCompleted('3');
-    if(typeof saveCompletedChapters==='function') saveCompletedChapters();
-    if(typeof updateProgressRing==='function') updateProgressRing();
-    if(typeof updateDashboard==='function') updateDashboard();
-  }
   // KC-based completion is handled in handleKc; no sub-panel-based completion for numbered chapters
 }
 window.goToSub=goToSub;
 
 function toggleSubNav(navEl, chId){
+  if(isChapterLocked(chId)) return;
   var isExpanded=navEl.classList.contains('expanded');
   var subNav=document.getElementById('sub-nav-'+chId);
   if(isExpanded){
@@ -7773,7 +8109,7 @@ function markNavCompleted(chId){
 function countChaptersDone(){
   var count=0;
   allChapters.forEach(function(ch){
-    if(ch.id==='intro'||String(ch.id)==='3'){if(completedChapters[ch.id]) count++;}
+    if(ch.id==='intro'){if(completedChapters[ch.id]) count++;}
     else{if(isChapterKcComplete(ch.id)) count++;}
   });
   return count;
@@ -7818,15 +8154,18 @@ function renderDashChapterCards(){
   var container=document.getElementById('dashChapterCards');
   var h='';
   allChapters.forEach(function(ch){
-    var isIntroOrArc=(ch.id==='intro'||String(ch.id)==='3');
+    var locked=isChapterLocked(ch.id);
+    var isIntroOrArc=(ch.id==='intro');
     var visited=chaptersVisited[ch.id]||false;
     var done=isIntroOrArc?(completedChapters[ch.id]||false):isChapterKcComplete(ch.id);
-    var compCls=done?' completed':(visited?' visited':'');
+    var compCls=locked?' locked':(done?' completed':(visited?' visited':''));
     var statusLabel='';
-    if(done) statusLabel='<span style="color:var(--success);font-size:11px;font-weight:700">&#10003; Completed</span>';
+    if(locked) statusLabel='<span class="locked-badge">Coming soon &middot; under construction</span>';
+    else if(done) statusLabel='<span style="color:var(--success);font-size:11px;font-weight:700">&#10003; Completed</span>';
     else if(visited) statusLabel='<span style="font-size:11px;color:var(--text-light)">In progress</span>';
     else statusLabel='<span style="font-size:11px;color:var(--text-muted)">Not started</span>';
-    h+='<div class="dash-chapter-card'+compCls+'" onclick="goToChapter(\''+ch.id+'\')"><div class="card-num">'+ch.num+'</div><div class="card-title">'+ch.name+'</div><div class="card-desc">'+ch.desc+'</div>'+statusLabel+'</div>';
+    var clickAttr=locked?'':' onclick="goToChapter(\''+ch.id+'\')"';
+    h+='<div class="dash-chapter-card'+compCls+'"'+clickAttr+'><div class="card-num">'+ch.num+'</div><div class="card-title">'+ch.name+'</div><div class="card-desc">'+ch.desc+'</div>'+statusLabel+'</div>';
   });
   container.innerHTML=h;
 }
@@ -8524,6 +8863,19 @@ document.addEventListener('DOMContentLoaded',function(){
   updateProgressRing();
   updateDashboard();
   initMobile();
+  // Apply chapter lock styling to sidebar nav items (live site only)
+  if(typeof LOCKED_CHAPTER_IDS!=='undefined' && LOCKED_CHAPTER_IDS.length){
+    LOCKED_CHAPTER_IDS.forEach(function(lid){
+      document.querySelectorAll('.chapter-nav-item').forEach(function(n){
+        if(String(n.dataset.chapter)===String(lid)){
+          n.classList.add('locked');
+          n.classList.remove('expanded','active','completed');
+        }
+      });
+      var subNav=document.getElementById('sub-nav-'+lid);
+      if(subNav) subNav.classList.remove('open');
+    });
+  }
   // Restore the last page the user was on, so refresh lands them where
   // they were rather than the dashboard.
   restoreLastView();
@@ -9698,7 +10050,148 @@ Featured in The Information on Oct 14"></textarea>
 
 <!-- One-Pager Example Modal -->
 
+<!-- TRACTION GLOSSARY MODAL -->
+<div class="example-modal-overlay" id="tractionGlossary" onclick="if(event.target===this)closeExampleModal('tractionGlossary')">
+  <div class="example-modal-card">
+    <button class="example-modal-close" onclick="closeExampleModal('tractionGlossary')" aria-label="Close">&times;</button>
+    <div class="example-modal-title">Sales &amp; Growth Glossary</div>
+    <div class="example-modal-body">
+      <p class="move-legend">For pre-seed, seed, and Series A founders. Skim the categories or search the page with Cmd+F.</p>
+
+      <!-- Revenue & Recurring Metrics -->
+      <div style="margin:6px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Revenue &amp; Recurring Metrics</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ARR</strong> <span style="color:var(--text-dim)">&middot; Annual Recurring Revenue</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The yearly run-rate of predictable subscription revenue. Multiply MRR by 12. Investors anchor on this for SaaS valuation, often paying multiples on it directly.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MRR</strong> <span style="color:var(--text-dim)">&middot; Monthly Recurring Revenue</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Predictable subscription revenue normalized to a one-month period. The heartbeat metric for SaaS. Track new MRR, expansion MRR, churned MRR, and contraction MRR separately.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">TCV</strong> <span style="color:var(--text-dim)">&middot; Total Contract Value</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The full dollar value of a contract over its entire term, including one-time fees plus all recurring revenue. Useful for measuring deal size, less useful for valuation.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ACV</strong> <span style="color:var(--text-dim)">&middot; Annual Contract Value</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The annualized portion of contract revenue. On a three-year, $300k contract, ACV is $100k. The standard input for SaaS sales productivity math.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ARPU</strong> <span style="color:var(--text-dim)">&middot; Average Revenue Per User</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total revenue divided by total users in a period. The default for consumer products and freemium PLG businesses.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ARPA</strong> <span style="color:var(--text-dim)">&middot; Average Revenue Per Account</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total revenue divided by total customer accounts. The right denominator for B2B businesses where one account contains many seats.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">GMV</strong> <span style="color:var(--text-dim)">&middot; Gross Merchandise Value</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total dollar value of goods or services sold through a marketplace before fees and refunds. Investors look at GMV plus take rate to back into actual revenue.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">GSR</strong> <span style="color:var(--text-dim)">&middot; Gross Sales Revenue</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total revenue booked before discounts, returns, allowances, or refunds are applied. The top of the revenue waterfall.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">NRR</strong> <span style="color:var(--text-dim)">&middot; Net Revenue Retention</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Revenue retained from existing customers, with expansion added back. Above 100% means the existing book grows on its own. Best-in-class SaaS sits at 120%+.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">GRR</strong> <span style="color:var(--text-dim)">&middot; Gross Revenue Retention</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Revenue retained from existing customers, measured before any expansion is added back. Caps at 100% and reveals raw churn pressure on the book.</p></div>
+
+      <!-- Unit Economics -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Unit Economics</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">LTV</strong> <span style="color:var(--text-dim)">&middot; Lifetime Value (also CLV)</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The total gross profit a customer generates over the full relationship. For SaaS, a common shortcut is ARPA times gross margin divided by churn rate.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CAC</strong> <span style="color:var(--text-dim)">&middot; Customer Acquisition Cost</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total sales and marketing spend in a period divided by new customers acquired in that period. Include fully-loaded headcount costs to avoid flattering yourself.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">LTV:CAC</strong> <span style="color:var(--text-dim)">&middot; Lifetime Value to Acquisition Cost Ratio</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The classic unit economics ratio. 3:1 is the rule of thumb for healthy SaaS. Below that signals an efficiency problem; well above can signal you should spend more.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CAC Payback</strong> <span style="color:var(--text-dim)">&middot; CAC Payback Period</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Months required for the gross profit from a new customer to repay the CAC. Sub-12 months reads as efficient at seed and Series A; sub-18 is acceptable for enterprise.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">COGS</strong> <span style="color:var(--text-dim)">&middot; Cost of Goods Sold</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Direct costs of delivering the product. For SaaS, primarily hosting, third-party services, payment processing, and customer support. Drives gross margin.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">Gross Margin</strong></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Revenue minus COGS, expressed as a percentage of revenue. SaaS investors expect 70%+ at scale. Below 60% raises questions about whether the business is software at all.</p></div>
+
+      <!-- Market & Funnel -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Market &amp; Funnel</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ICP</strong> <span style="color:var(--text-dim)">&middot; Ideal Customer Profile</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The specific type of customer who gets the most value from the product, closes fastest, retains longest, and refers others. Sharper ICP, faster sales cycles.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">TAM</strong> <span style="color:var(--text-dim)">&middot; Total Addressable Market</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The total revenue opportunity if you captured 100% of demand globally. Used in pitch decks to frame ambition.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SAM</strong> <span style="color:var(--text-dim)">&middot; Serviceable Addressable Market</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The slice of TAM you can realistically serve given current product, geography, language, and channel reach.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SOM</strong> <span style="color:var(--text-dim)">&middot; Serviceable Obtainable Market</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The slice of SAM you can realistically capture in the next few years given competition, sales capacity, and brand. The honest number.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MQL</strong> <span style="color:var(--text-dim)">&middot; Marketing Qualified Lead</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A lead marketing has scored as ready for sales follow-up based on engagement signals like content downloads, demo requests, or pricing page visits.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SQL</strong> <span style="color:var(--text-dim)">&middot; Sales Qualified Lead</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A lead sales has confirmed as worth active pursuit, typically after a discovery call validating fit, budget, and intent.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">PQL</strong> <span style="color:var(--text-dim)">&middot; Product Qualified Lead</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A user whose in-product behavior signals readiness to convert. The native lead type for PLG, where usage patterns trigger sales outreach.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SAL</strong> <span style="color:var(--text-dim)">&middot; Sales Accepted Lead</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A lead sales has formally accepted from marketing for active follow-up. The handoff stage between MQL and SQL in a strict marketing-to-sales pipeline.</p></div>
+
+      <!-- Sales Methodology -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Sales Methodology</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">BANT</strong> <span style="color:var(--text-dim)">&middot; Budget, Authority, Need, Timeline</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The classic four-question qualification framework from IBM. Fast and easy to teach. Many modern sellers consider it too transactional for complex deals.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MEDDIC / MEDDPICC</strong> <span style="color:var(--text-dim)">&middot; Metrics, Economic Buyer, Decision Criteria, Decision Process, Identify Pain, Champion (plus Paper Process and Competition)</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The standard framework for complex enterprise deals. Forces sellers to map the buying organization in detail and earn a Champion who sells internally on your behalf.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SPIN</strong> <span style="color:var(--text-dim)">&middot; Situation, Problem, Implication, Need-payoff</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Neil Rackham&rsquo;s question framework for consultative selling. Move buyers from facts to felt pain to articulated value through a sequence of questions.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ABM</strong> <span style="color:var(--text-dim)">&middot; Account-Based Marketing</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Marketing aimed at a defined list of target accounts with personalized campaigns and content, in tight coordination with sales.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">GTM</strong> <span style="color:var(--text-dim)">&middot; Go-To-Market</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The full strategy and motion for taking a product to customers, covering ICP, channels, pricing, packaging, sales process, and customer success.</p></div>
+
+      <!-- Sales Roles -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Sales Roles</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SDR</strong> <span style="color:var(--text-dim)">&middot; Sales Development Representative</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Outbound prospector. Researches accounts, runs cold sequences, and books qualified meetings for AEs to close.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">BDR</strong> <span style="color:var(--text-dim)">&middot; Business Development Representative</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Often the inbound counterpart to an SDR, qualifying leads that come in through marketing. Some orgs use BDR and SDR interchangeably.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">AE</strong> <span style="color:var(--text-dim)">&middot; Account Executive</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The closer. Owns deals from qualified opportunity through signed contract. Carries a quota in ARR or ACV.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">AM</strong> <span style="color:var(--text-dim)">&middot; Account Manager</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Owns the customer relationship post-sale, focused on renewal and expansion across the existing book.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CSM</strong> <span style="color:var(--text-dim)">&middot; Customer Success Manager</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Drives adoption, value realization, and account health. The role most responsible for NRR in modern SaaS orgs.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CRO</strong> <span style="color:var(--text-dim)">&middot; Chief Revenue Officer</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Owns the entire revenue function across sales, marketing, and customer success. The first CRO hire often signals readiness to scale GTM at Series B and beyond.</p></div>
+
+      <!-- Deal Documents -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Deal Documents</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">LOI</strong> <span style="color:var(--text-dim)">&middot; Letter of Intent</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A document signaling intent to enter a deal, used as a soft commitment ahead of definitive agreements. Founders collect these as demand signals to show investors.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MOU</strong> <span style="color:var(--text-dim)">&middot; Memorandum of Understanding</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">An expression of alignment between parties on the shape of a future agreement. Used as a soft commitment ahead of formal contracting.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">NDA</strong> <span style="color:var(--text-dim)">&middot; Non-Disclosure Agreement</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A contract protecting confidential information shared between parties. Mutual NDAs cover both sides; one-way NDAs cover only the disclosing party.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MSA</strong> <span style="color:var(--text-dim)">&middot; Master Services Agreement</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The umbrella legal contract governing an ongoing commercial relationship. Specific work attaches via SOWs, so future deals move faster.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SOW</strong> <span style="color:var(--text-dim)">&middot; Statement of Work</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The specific scope, deliverables, timeline, and price for a defined engagement under an MSA. Where the actual work gets agreed on.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SLA</strong> <span style="color:var(--text-dim)">&middot; Service Level Agreement</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Performance commitments such as uptime, response time, and support availability, often with penalties or credits attached if missed.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">DPA</strong> <span style="color:var(--text-dim)">&middot; Data Processing Agreement</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A contract addendum covering how customer data is processed, stored, and protected. Required for GDPR compliance and most enterprise security reviews.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">POC</strong> <span style="color:var(--text-dim)">&middot; Proof of Concept</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">A scoped trial where the buyer validates the product against their specific use case. Usually time-bound with success criteria agreed upfront.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">RFP</strong> <span style="color:var(--text-dim)">&middot; Request for Proposal</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Formal procurement document where a buyer asks vendors to bid on a defined scope. Common in regulated industries and enterprise IT.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">RFI</strong> <span style="color:var(--text-dim)">&middot; Request for Information</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Early-stage procurement request to learn about vendor capabilities. Often precedes an RFP and helps the buyer narrow the field.</p></div>
+
+      <!-- Marketing & Acquisition -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Marketing &amp; Acquisition</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CPL</strong> <span style="color:var(--text-dim)">&middot; Cost Per Lead</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total marketing spend divided by leads generated. The headline metric for top-of-funnel marketing efficiency.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CPA</strong> <span style="color:var(--text-dim)">&middot; Cost Per Acquisition</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Total marketing spend divided by new customers, or whatever conversion event you define as the acquisition. A close cousin of CAC for paid channels.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CPC</strong> <span style="color:var(--text-dim)">&middot; Cost Per Click</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Average cost paid per ad click. The atomic unit of paid search and most paid social buying.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CPM</strong> <span style="color:var(--text-dim)">&middot; Cost Per Mille</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Cost per thousand ad impressions. The standard pricing model for awareness and brand campaigns.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CTR</strong> <span style="color:var(--text-dim)">&middot; Click-Through Rate</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Clicks divided by impressions, expressed as a percentage. The headline engagement metric for ads, emails, and search snippets.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CVR</strong> <span style="color:var(--text-dim)">&middot; Conversion Rate</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Conversions divided by visitors or clicks at a given funnel stage. Track per channel and per stage to find leaks.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">ROAS</strong> <span style="color:var(--text-dim)">&middot; Return on Ad Spend</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Revenue generated per dollar of ad spend. The performance marketing benchmark, typically targeting 3x to 5x for healthy paid programs.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SEO</strong> <span style="color:var(--text-dim)">&middot; Search Engine Optimization</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The practice of earning organic search traffic through content depth, technical site quality, and backlinks. Compounds over years.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SEM</strong> <span style="color:var(--text-dim)">&middot; Search Engine Marketing</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Paid search advertising, primarily through Google Ads. Often used loosely to include SEO, though most teams reserve it for paid.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">PPC</strong> <span style="color:var(--text-dim)">&middot; Pay-Per-Click</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Ad model where you pay only when someone clicks. The dominant pricing model for search ads and most performance social.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">UTM</strong> <span style="color:var(--text-dim)">&middot; Urchin Tracking Module Parameters</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">URL parameters that tag traffic by source, medium, and campaign so you can attribute conversions in analytics tools.</p></div>
+
+      <!-- Product & Engagement -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Product &amp; Engagement</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">DAU</strong> <span style="color:var(--text-dim)">&middot; Daily Active Users</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Unique users active on a given day. The granular pulse metric for habit-forming consumer products.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">WAU</strong> <span style="color:var(--text-dim)">&middot; Weekly Active Users</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Unique users active in a rolling or fixed seven-day window. Useful for products used a few times a week, like collaboration tools.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MAU</strong> <span style="color:var(--text-dim)">&middot; Monthly Active Users</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Unique users active in a thirty-day window. The default scale metric for consumer and freemium products.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">DAU/MAU</strong> <span style="color:var(--text-dim)">&middot; Stickiness Ratio</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">DAU divided by MAU, expressed as a percentage. 20%+ signals real habitual usage; consumer social products target 50%+.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">NPS</strong> <span style="color:var(--text-dim)">&middot; Net Promoter Score</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Survey metric from -100 to +100 measuring willingness to recommend on a 0-10 scale. Promoters minus Detractors. Above 50 is excellent for B2B SaaS.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CSAT</strong> <span style="color:var(--text-dim)">&middot; Customer Satisfaction Score</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Direct satisfaction rating from a customer interaction or experience, typically on a 1-5 or 1-7 scale.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CES</strong> <span style="color:var(--text-dim)">&middot; Customer Effort Score</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Survey measuring how easy it was for a customer to accomplish their goal. Higher predictive power for retention than satisfaction scores.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">TTV / TTFV</strong> <span style="color:var(--text-dim)">&middot; Time to Value / Time to First Value</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">How long from sign-up until a customer experiences meaningful value. TTFV focuses on the first activation moment, the leading indicator for retention.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">MVP</strong> <span style="color:var(--text-dim)">&middot; Minimum Viable Product</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">The smallest version of a product that delivers learning about a hypothesis. The point is the learning, the speed is just a means to it.</p></div>
+
+      <!-- Models & Motions -->
+      <div style="margin:24px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent)">Models &amp; Motions</div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">B2B</strong> <span style="color:var(--text-dim)">&middot; Business to Business</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Selling to other companies. Defined by longer sales cycles, larger ACVs, and procurement processes.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">B2C</strong> <span style="color:var(--text-dim)">&middot; Business to Consumer</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Selling to individual end users. Defined by shorter purchase decisions, lower price points, and brand-driven acquisition.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">B2B2C</strong> <span style="color:var(--text-dim)">&middot; Business to Business to Consumer</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Selling to a business that delivers your product to consumers. Common for embedded fintech, white-label software, and platform plays.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">D2C / DTC</strong> <span style="color:var(--text-dim)">&middot; Direct to Consumer</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Brand sells directly to end users, owning the customer relationship and the channel. Common in e-commerce and CPG.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SaaS</strong> <span style="color:var(--text-dim)">&middot; Software as a Service</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Software delivered over the cloud on a subscription model. The dominant venture-backable software business model of the past two decades.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">PaaS</strong> <span style="color:var(--text-dim)">&middot; Platform as a Service</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Cloud platforms developers build applications on top of, like Heroku, Vercel, and Render. Abstracts away infrastructure management.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">IaaS</strong> <span style="color:var(--text-dim)">&middot; Infrastructure as a Service</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Raw cloud compute, storage, and networking, like AWS EC2, GCP Compute, and Azure VMs.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">PLG</strong> <span style="color:var(--text-dim)">&middot; Product-Led Growth</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Growth motion where the product itself drives acquisition, activation, and expansion. Sales gets involved later for expansion and enterprise tiers.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">SLG</strong> <span style="color:var(--text-dim)">&middot; Sales-Led Growth</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Growth motion driven by sales team activity, with marketing supporting through demand gen. Standard for enterprise software with high ACVs.</p></div>
+      <div style="margin-bottom:14px"><div style="margin-bottom:3px;font-size:14px"><strong style="color:var(--accent)">CLG</strong> <span style="color:var(--text-dim)">&middot; Community-Led Growth</span></div><p style="margin:0;font-size:13.5px;line-height:1.55;color:var(--text)">Growth motion built around an engaged user community as the primary acquisition and retention channel. Common in dev tools and creator platforms.</p></div>
+    </div>
+  </div>
+</div>
+
 <!-- PROBLEM EXAMPLE MODALS -->
+<div class="example-modal-overlay" id="competitionNarrativeExample" onclick="if(event.target===this)closeExampleModal('competitionNarrativeExample')">
+  <div class="example-modal-card">
+    <button class="example-modal-close" onclick="closeExampleModal('competitionNarrativeExample')" aria-label="Close">&times;</button>
+    <div class="example-modal-title">A complete competitive narrative &middot; all five moves</div>
+    <div class="example-modal-body">
+      <p class="move-legend">Highlighted phrases below show where each of the five moves shows up. Read end-to-end, then notice which sentence is doing which job. <strong>A fictional vertical-AI company building clinical documentation for independent medical practices.</strong></p>
+      <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:22px 26px">
+        <p style="font-size:15.5px;line-height:2;color:var(--text);margin:0 0 14px"><span class="move-mark">The clinical documentation market splits three ways. Epic and Athena dominate the EHR layer for hospitals and large groups, but their workflow lives inside a closed ecosystem. Companies like Suki and DeepScribe build AI scribes that bolt onto those systems, optimized for the hospital sales motion. The status quo for the 60% of doctors in independent practice is still a transcription service, a part-time scribe, or two hours of after-hours typing.</span><span class="move-label">M01 &middot; Map the field</span> <span class="move-mark">We win because we built for the independent practice from day one: SOAP notes that ship to any major EHR, pricing that fits a single-doctor practice, and a self-serve onboarding that takes thirty minutes.</span><span class="move-label">M02 &middot; Durable differentiator</span> <span class="move-mark">We saw what hospital-first AI scribes miss: independent doctors don&rsquo;t have IT departments. The unique insight is that the buyer and the user are the same person, which changes what the product has to do.</span><span class="move-label">M03 &middot; Unique insight</span></p>
+        <p style="font-size:15.5px;line-height:2;color:var(--text);margin:0"><span class="move-mark">Our defensibility compounds in two places: a switching cost that grows as our notes integrate with each doctor&rsquo;s specific EHR setup, and a counter-position to the hospital sales playbook that incumbent AI scribes can&rsquo;t pivot away from without abandoning their book.</span><span class="move-label">M04 &middot; Defensibility</span> <span class="move-mark">Two questions investors raise: a well-funded competitor builds for independents, or a hospital-AI player pivots downmarket. The first runs into the integration switching cost we&rsquo;re already accumulating. The second triggers channel conflict with the hospital deals already on their book.</span><span class="move-label">M05 &middot; Anticipate threats</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="example-modal-overlay" id="teamNarrativeExample" onclick="if(event.target===this)closeExampleModal('teamNarrativeExample')">
+  <div class="example-modal-card">
+    <button class="example-modal-close" onclick="closeExampleModal('teamNarrativeExample')" aria-label="Close">&times;</button>
+    <div class="example-modal-title">A complete team narrative &middot; all six moves</div>
+    <div class="example-modal-body">
+      <p class="move-legend">Highlighted phrases below show where each of the six moves shows up. Read the narrative end-to-end, then notice which sentence is doing which job. <strong>A fictional B2B fintech for small-business lending automation.</strong></p>
+      <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:22px 26px">
+        <p style="font-size:15.5px;line-height:2;color:var(--text);margin:0 0 14px">Maya Chen and Sam Patel are building a fintech for small-business lending automation. <span class="move-mark">Maya spent five years at Brex building credit underwriting infrastructure. Sam ran sales operations at NerdWallet&rsquo;s small-business team for four years, where he saw the same lending bottleneck show up across every partner.</span><span class="move-label">M01 &middot; Founder-market fit</span> <span class="move-mark">Maya&rsquo;s credit models dropped default rates 22% in year one. Sam built the partner program that contributed $40M in annual revenue.</span><span class="move-label">M02 &middot; Accomplishments</span> <span class="move-mark">What they saw that the market hasn&rsquo;t: small-business credit decisions take fourteen days because every lender rebuilds the same scoring infrastructure from scratch. The unique insight is that credit-as-a-service for SMB lending is finally possible.</span><span class="move-label">M03 &middot; Unique insight</span></p>
+        <p style="font-size:15.5px;line-height:2;color:var(--text);margin:0">They&rsquo;ve worked together for three years. <span class="move-mark">First at Brex on a cross-functional credit team, then on a side project that became this company. They&rsquo;ve already been through one hard pivot, when their first wedge proved more capital-intensive than their thesis allowed.</span><span class="move-label">M04 &middot; Co-founder relationship</span> <span class="move-mark">Two co-founders, one technical (Maya), 50/50 equity, both full-time since January, based in San Francisco.</span><span class="move-label">M05 &middot; Structural facts</span> <span class="move-mark">Three months in, they&rsquo;ve signed three design partner LOIs, built a working prototype that returns credit decisions in ninety seconds, and brought on the former head of credit at LendingClub as an advisor. The next two hires are already lined up: the head of credit risk from Square Capital and a senior backend engineer from Plaid.</span><span class="move-label">M06 &middot; Momentum and bench</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="example-modal-overlay" id="problemExampleSaas" onclick="if(event.target===this)closeExampleModal('problemExampleSaas')">
   <div class="example-modal-card">
     <button class="example-modal-close" onclick="closeExampleModal('problemExampleSaas')" aria-label="Close">&times;</button>
