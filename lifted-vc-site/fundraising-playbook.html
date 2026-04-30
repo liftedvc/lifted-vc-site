@@ -7,6 +7,9 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/lifted-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ══════════════════════════════════════════
    LIFTED FUNDRAISING PLAYBOOK v2
@@ -957,57 +960,342 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica N
 .quiz-overlay.show{display:flex}
 
 /* Landing page (playbook-matched aesthetic) */
-.landing-overlay{position:fixed;inset:0;background:var(--bg);color:var(--text);z-index:1000;overflow-y:auto;display:none}
-.landing-overlay.show{display:block}
-.landing-container{max-width:780px;margin:0 auto;padding:40px 32px 72px}
-.landing-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;padding-bottom:18px;border-bottom:1px solid var(--border)}
-.landing-logo{display:inline-flex;align-items:center}
-.landing-logo img{height:32px;width:auto;display:block}
-.landing-hero{margin-bottom:56px;text-align:center}
-.landing-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
-.landing-headline{font-family:'Nunito',sans-serif;font-size:42px;font-weight:800;letter-spacing:-0.025em;line-height:1.08;margin:0 0 18px;color:var(--text)}
-.landing-subhead{font-size:17px;line-height:1.55;color:var(--text-dim);max-width:580px;margin:0 auto 22px}
-.landing-stat{display:inline-block;padding:8px 18px;background:var(--accent-pale);color:var(--accent);font-size:14px;font-weight:600;border-radius:20px;margin-bottom:32px}
-.landing-stat strong{font-weight:800}
-.landing-video{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;width:100%;max-width:640px;margin:0 auto 32px;cursor:pointer;transition:all .2s;overflow:hidden;position:relative;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:0;color:var(--text)}
-.landing-video:hover{background:var(--accent-pale);border-color:var(--accent)}
-.landing-video-inner{display:flex;flex-direction:column;align-items:center;gap:12px}
-.landing-video-play{width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;box-shadow:0 4px 14px rgba(45,61,110,0.2)}
-.landing-video-label{font-size:14px;font-weight:600;color:var(--text)}
-.landing-video-sub{font-size:12px;color:var(--text-dim);font-weight:500}
-.landing-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--coral);color:#fff;border:none;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;text-decoration:none}
-.landing-cta:hover{background:var(--coral-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(224,122,95,0.3)}
-.landing-cta-note{font-size:12.5px;color:var(--text-light);margin-top:12px}
-.landing-section{margin-bottom:52px}
-.landing-section-title{font-family:'Nunito',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-align:center;margin:0 0 26px;color:var(--text)}
-.landing-quotes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.landing-quote{padding:18px 20px;background:var(--bg-2);border-left:3px solid var(--coral);border-radius:8px}
-.landing-quote-tag{font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
-.landing-quote-text{font-size:13.5px;line-height:1.55;color:var(--text);margin:0 0 12px}
-.landing-quote-attr{font-size:12px;font-weight:500;color:var(--text-dim)}
-.landing-quote-attr strong{color:var(--text);font-weight:700}
-.landing-bullets{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.landing-bullet{padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:10px}
-.landing-bullet-title{font-weight:700;font-size:14.5px;color:var(--text);margin-bottom:8px;line-height:1.3}
-.landing-bullet-desc{font-size:13px;line-height:1.5;color:var(--text-dim)}
-.landing-chapters{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.landing-chapter-card{padding:18px 20px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;transition:all .15s;cursor:default}
-.landing-chapter-card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 4px 12px rgba(45,61,110,0.08)}
-.landing-chapter-num{font-family:'Nunito',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.06em;color:var(--coral);margin-bottom:8px}
-.landing-chapter-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.25;font-family:'Nunito',sans-serif}
-.landing-chapter-desc{font-size:12.5px;line-height:1.5;color:var(--text-dim)}
-.landing-funds{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
-.landing-fund{padding:6px 14px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px;font-size:12px;font-weight:600;color:var(--text-dim)}
-.landing-final{text-align:center;padding-top:28px;border-top:1px solid var(--border)}
-@media (max-width:760px){
-  .landing-headline{font-size:30px}
-  .landing-subhead{font-size:15px}
-  .landing-quotes-grid{grid-template-columns:1fr}
-  .landing-bullets{grid-template-columns:1fr}
-  .landing-chapters{grid-template-columns:1fr}
-  .landing-container{padding:28px 18px 56px}
-  .landing-section-title{font-size:19px}
-  .landing-logo img{height:28px}
+/* ============================================================
+   PLAYBOOK LANDING — redesigned to match Lifted.vc design system
+   ============================================================ */
+.landing-overlay {
+  --lp-bg: #fbf6ec;
+  --lp-ink: #1a1a1a;
+  --lp-ink-soft: #4f4d49;
+  --lp-ink-mute: #8a8680;
+  --lp-line: #e6dfd0;
+  --lp-line-soft: #efe9db;
+  --lp-butter: #f5d574;
+  --lp-sage: #b6cdb4;
+  --lp-sky: #aac4dd;
+  --lp-blush: #efbfb1;
+  --lp-deep: #1a2235;
+  --lp-cream: #fbf6ec;
+  --lp-accent: #c25a3c;
+  --lp-serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --lp-sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: fixed; inset: 0;
+  background: var(--lp-bg);
+  color: var(--lp-ink);
+  font-family: var(--lp-sans);
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  z-index: 1000;
+  overflow-y: auto;
+  display: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.landing-overlay.show { display: block; }
+.landing-overlay h1, .landing-overlay h2, .landing-overlay h3, .landing-overlay h4 {
+  font-family: var(--lp-serif); font-weight: 400;
+  letter-spacing: -0.025em; margin: 0;
+}
+.landing-overlay a { color: inherit; text-decoration: none; }
+.landing-overlay ::selection { background: var(--lp-accent); color: var(--lp-cream); }
+.landing-overlay button { font-family: inherit; }
+
+.landing-overlay .lp-wrap {
+  max-width: 1280px; margin: 0 auto; padding: 0 56px;
+}
+.landing-overlay .lp-section { padding: 160px 0; position: relative; }
+.landing-overlay .lp-bg-cream { background: var(--lp-cream); }
+.landing-overlay .lp-bg-butter { background: var(--lp-butter); }
+.landing-overlay .lp-bg-sage { background: var(--lp-sage); }
+.landing-overlay .lp-bg-sky { background: var(--lp-sky); }
+.landing-overlay .lp-bg-blush { background: var(--lp-blush); }
+.landing-overlay .lp-bg-deep { background: var(--lp-deep); color: var(--lp-cream); }
+
+.landing-overlay .lp-eyebrow {
+  font-family: var(--lp-sans); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.02em; color: var(--lp-ink-soft);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.landing-overlay .lp-eyebrow::before {
+  content: ''; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--lp-accent);
+}
+
+.landing-overlay .lp-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251, 246, 236, 0.92);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--lp-line-soft);
+  height: 76px; display: flex; align-items: center;
+}
+.landing-overlay .lp-header-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 56px;
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.landing-overlay .lp-wordmark {
+  height: 36px; width: auto; display: block;
+}
+
+.landing-overlay .lp-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px; border-radius: 999px;
+  font-family: var(--lp-sans); font-size: 16px; font-weight: 500;
+  border: 1.5px solid transparent; cursor: pointer; text-decoration: none;
+  white-space: nowrap;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.landing-overlay .lp-btn-primary { background: var(--lp-ink); color: var(--lp-cream); }
+.landing-overlay .lp-btn-primary:hover { background: var(--lp-accent); transform: translateY(-1px); }
+.landing-overlay .lp-btn-ghost { background: transparent; color: var(--lp-ink); border-color: var(--lp-ink); }
+.landing-overlay .lp-btn-ghost:hover { background: var(--lp-ink); color: var(--lp-cream); }
+.landing-overlay .lp-btn-butter { background: var(--lp-butter); color: var(--lp-deep); }
+.landing-overlay .lp-btn-butter:hover { transform: translateY(-1px); }
+.landing-overlay .lp-btn .lp-arrow { transition: transform .25s ease; }
+.landing-overlay .lp-btn:hover .lp-arrow { transform: translateX(3px); }
+.landing-overlay .lp-btn-header { padding: 11px 22px; font-size: 14px; }
+
+.landing-overlay .lp-hero { padding: 100px 0 140px; text-align: center; }
+.landing-overlay .lp-hero-headline {
+  font-size: clamp(56px, 7.5vw, 124px);
+  line-height: 0.96; text-wrap: balance;
+  margin: 0 0 36px;
+}
+.landing-overlay .lp-italic { font-style: italic; color: var(--lp-accent); }
+.landing-overlay .lp-italic-plain { font-style: italic; }
+.landing-overlay .lp-hero-sub {
+  font-size: 22px; line-height: 1.45;
+  color: var(--lp-ink-soft); max-width: 720px;
+  margin: 0 auto 36px; text-wrap: pretty;
+}
+.landing-overlay .lp-hero-stat {
+  display: inline-flex; align-items: baseline; gap: 12px;
+  margin: 0 0 44px; padding: 14px 24px;
+  background: var(--lp-butter); border-radius: 999px;
+  font-size: 15px; color: var(--lp-deep);
+}
+.landing-overlay .lp-hero-stat strong {
+  font-family: var(--lp-serif); font-style: italic; font-weight: 400;
+  font-size: 22px; letter-spacing: -0.02em;
+}
+.landing-overlay .lp-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1280px;
+  margin: 56px auto 8px;
+  text-align: left;
+}
+.landing-overlay .lp-proof {
+  padding: 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  height: 100%;
+}
+.landing-overlay .lp-proof-blush { background: var(--lp-blush); }
+.landing-overlay .lp-proof-butter { background: var(--lp-butter); }
+.landing-overlay .lp-proof-sky { background: var(--lp-sky); }
+.landing-overlay .lp-proof-sage { background: var(--lp-sage); }
+.landing-overlay .lp-proof-tag {
+  font-family: var(--lp-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--lp-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.landing-overlay .lp-proof-tag::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lp-accent);
+  display: inline-block;
+}
+.landing-overlay .lp-proof-text {
+  font-family: var(--lp-serif);
+  font-size: 24px;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--lp-ink);
+  margin: 0;
+  text-wrap: pretty;
+  font-weight: 400;
+}
+.landing-overlay .lp-proof-text strong {
+  font-weight: 500;
+  font-style: italic;
+}
+.landing-overlay .lp-hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+}
+
+.landing-overlay .lp-video {
+  display: block; width: 100%; max-width: 880px;
+  margin: 80px auto 0; padding: 0;
+  background: var(--lp-cream); border: 1px solid var(--lp-line);
+  border-radius: 16px; cursor: pointer; overflow: hidden;
+  position: relative; aspect-ratio: 16/9;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  color: var(--lp-ink);
+}
+.landing-overlay .lp-video:hover {
+  transform: translateY(-3px); border-color: var(--lp-ink);
+  box-shadow: 0 24px 60px rgba(26, 34, 53, 0.12);
+}
+.landing-overlay .lp-video-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 18px;
+  background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(0,0,0,0.04) 14px 15px);
+}
+.landing-overlay .lp-video-play {
+  width: 78px; height: 78px; border-radius: 50%;
+  background: var(--lp-accent); color: var(--lp-cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; padding-left: 5px;
+  box-shadow: 0 16px 40px rgba(194, 90, 60, 0.32);
+}
+.landing-overlay .lp-video-label {
+  font-family: var(--lp-serif); font-style: italic;
+  font-size: 24px; color: var(--lp-ink);
+}
+.landing-overlay .lp-video-sub {
+  font-size: 13px; color: var(--lp-ink-soft);
+}
+
+.landing-overlay .lp-sec-head {
+  text-align: center; max-width: 760px; margin: 0 auto 96px;
+}
+.landing-overlay .lp-sec-eyebrow { margin-bottom: 20px; }
+.landing-overlay .lp-sec-title {
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 1; text-wrap: balance;
+}
+.landing-overlay .lp-sec-lead {
+  font-size: 19px; color: var(--lp-ink-soft);
+  margin: 24px 0 0; text-wrap: pretty;
+}
+.landing-overlay .lp-bg-deep .lp-sec-lead { color: rgba(251, 246, 236, 0.7); }
+
+.landing-overlay .lp-quotes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.landing-overlay .lp-quote {
+  padding: 40px; background: var(--lp-cream);
+  border-radius: 16px; display: flex; flex-direction: column;
+}
+.landing-overlay .lp-quote-mark {
+  font-family: var(--lp-serif); font-size: 80px; font-style: italic;
+  color: var(--lp-ink); opacity: 0.25; line-height: 0.5;
+  margin-bottom: 24px;
+}
+.landing-overlay .lp-quote-tag {
+  font-size: 13px; color: var(--lp-accent);
+  font-weight: 500; margin-bottom: 14px;
+}
+.landing-overlay .lp-quote-text {
+  font-family: var(--lp-serif); font-style: italic;
+  font-size: 22px; line-height: 1.4;
+  color: var(--lp-ink); margin: 0 0 28px;
+  flex: 1; text-wrap: pretty;
+}
+.landing-overlay .lp-quote-attr {
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  font-size: 14px; color: var(--lp-ink-soft);
+}
+.landing-overlay .lp-quote-attr strong {
+  display: block;
+  font-family: var(--lp-serif); font-style: italic;
+  font-weight: 400; font-size: 17px;
+  color: var(--lp-ink);
+}
+
+.landing-overlay .lp-bullets-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.landing-overlay .lp-bullet {
+  padding: 44px; background: var(--lp-cream);
+  border-radius: 16px;
+}
+.landing-overlay .lp-bullet-title {
+  font-size: 28px; line-height: 1.1; margin: 0 0 14px;
+}
+.landing-overlay .lp-bullet-desc {
+  font-size: 16.5px; line-height: 1.55;
+  color: var(--lp-ink-soft); margin: 0; text-wrap: pretty;
+}
+
+.landing-overlay .lp-chapters-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.landing-overlay .lp-chapter {
+  padding: 36px 32px; background: var(--lp-cream);
+  border-radius: 16px;
+  display: flex; flex-direction: column;
+  transition: transform .25s ease;
+}
+.landing-overlay .lp-chapter:hover { transform: translateY(-3px); }
+.landing-overlay .lp-chapter-num {
+  font-family: var(--lp-serif); font-style: italic;
+  font-size: 56px; line-height: 0.9;
+  color: var(--lp-accent); margin-bottom: 18px;
+}
+.landing-overlay .lp-chapter-title {
+  font-size: 24px; line-height: 1.1; margin: 0 0 10px;
+}
+.landing-overlay .lp-chapter-desc {
+  font-size: 15px; line-height: 1.55;
+  color: var(--lp-ink-soft); margin: 0; text-wrap: pretty;
+}
+
+.landing-overlay .lp-final {
+  padding: 200px 0; text-align: center;
+}
+.landing-overlay .lp-final-title {
+  font-size: clamp(56px, 8vw, 132px);
+  line-height: 0.94; color: var(--lp-cream);
+  text-wrap: balance; margin: 0 0 36px;
+}
+.landing-overlay .lp-final-italic { font-style: italic; color: var(--lp-butter); }
+.landing-overlay .lp-final-sub {
+  font-family: var(--lp-serif); font-style: italic;
+  font-size: 24px; line-height: 1.45;
+  color: rgba(251, 246, 236, 0.7);
+  max-width: 580px; margin: 0 auto 48px; text-wrap: pretty;
+}
+
+@media (max-width: 1024px) {
+  .landing-overlay .lp-wrap, .landing-overlay .lp-header-inner { padding-left: 32px; padding-right: 32px; }
+  .landing-overlay .lp-section { padding: 120px 0; }
+  .landing-overlay .lp-final { padding: 140px 0; }
+  .landing-overlay .lp-hero { padding: 60px 0 100px; }
+  .landing-overlay { font-size: 17px; }
+}
+@media (max-width: 768px) {
+  .landing-overlay .lp-wrap, .landing-overlay .lp-header-inner { padding-left: 20px; padding-right: 20px; }
+  .landing-overlay .lp-section { padding: 80px 0; }
+  .landing-overlay .lp-hero { padding: 40px 0 60px; }
+  .landing-overlay .lp-final { padding: 100px 0; }
+  .landing-overlay { font-size: 16px; }
+  .landing-overlay .lp-quotes-grid,
+  .landing-overlay .lp-bullets-grid,
+  .landing-overlay .lp-chapters-grid { grid-template-columns: 1fr; gap: 20px; }
+  .landing-overlay .lp-proof-grid { grid-template-columns: 1fr; gap: 28px; padding-top: 32px; margin: 40px auto 0; }
+  .landing-overlay .lp-sec-head { margin-bottom: 56px; }
+  .landing-overlay .lp-btn { padding: 13px 22px; font-size: 15px; }
+  .landing-overlay .lp-wordmark { height: 28px; }
+  .landing-overlay .lp-header { height: 64px; }
+  .landing-overlay .lp-bullet { padding: 32px; }
+  .landing-overlay .lp-quote { padding: 32px; }
+  .landing-overlay .lp-video-label { font-size: 18px; }
+  .landing-overlay .lp-video-play { width: 60px; height: 60px; font-size: 18px; }
 }
 .quiz-container{background:var(--bg-card);border-radius:var(--r);padding:40px;max-width:520px;width:90%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
 .quiz-header{text-align:center;margin-bottom:28px}
@@ -2667,132 +2955,185 @@ html, body {
      LANDING PAGE (pre-email-gate)
      ════════════════════════════════════════════ -->
 <div class="landing-overlay" id="landingOverlay">
-  <div class="landing-container">
-    <div class="landing-header">
-      <div class="landing-logo"><img src="images/lifted-logo.png" alt="Lifted"></div>
+  <header class="lp-header">
+    <div class="lp-header-inner">
+      <a href="https://lifted.vc"><img class="lp-wordmark" src="images/lifted-logo.png" alt="Lifted"></a>
+      <button type="button" class="lp-btn lp-btn-primary lp-btn-header" onclick="window.startEmailGate()">
+        Get the playbook
+        <svg class="lp-arrow" width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
+  </header>
 
-    <section class="landing-hero">
-      <div class="landing-eyebrow">The Fundraising Playbook</div>
-      <h1 class="landing-headline">Raise your round, the way founders who&rsquo;ve done it would.</h1>
-      <p class="landing-subhead">A practical guide to pre-seed and seed fundraising from a YC founder, built across hundreds of hours coaching real founders through real raises.</p>
-      <div class="landing-stat"><strong>$80M+</strong> raised by founders using this playbook in the last two years.</div>
-      <button type="button" class="landing-video" onclick="openVideoLightbox('PLACEHOLDER_VIDEO_ID','Why we built this playbook')" aria-label="Watch: Why we built this playbook">
-        <div class="landing-video-inner">
-          <div class="landing-video-play">&#9654;</div>
-          <div class="landing-video-label">Why we built this playbook</div>
-          <div class="landing-video-sub">2 min from Adam</div>
+  <section class="lp-section lp-hero lp-bg-cream">
+    <div class="lp-wrap">
+      <div class="lp-eyebrow" style="margin-bottom:32px;">The Fundraising Playbook</div>
+      <h1 class="lp-hero-headline">Raise your round, <span class="lp-italic">the way founders who&rsquo;ve done it</span> would.</h1>
+      <p class="lp-hero-sub">A practical guide to pre-seed and seed fundraising built through lived experience and a curation of top VCs:</p>
+      <div class="lp-proof-grid">
+        <div class="lp-proof lp-proof-blush">
+          <div class="lp-proof-tag">Track record</div>
+          <p class="lp-proof-text"><strong>300+ coaching sessions</strong> that raised $80M in venture funding.</p>
+        </div>
+        <div class="lp-proof lp-proof-butter">
+          <div class="lp-proof-tag">Curated from the best</div>
+          <p class="lp-proof-text">A vetted selection of borrowed <strong>top fundraising intellect</strong> from Pear VC, Hustle Fund, Y Combinator, First Round Capital, Garry Tan, and more.</p>
+        </div>
+        <div class="lp-proof lp-proof-sky">
+          <div class="lp-proof-tag">Lived experience</div>
+          <p class="lp-proof-text">Experience <strong>closing top-tier VCs</strong> for my own YC startup.</p>
+        </div>
+      </div>
+      <div class="lp-hero-actions">
+        <button type="button" class="lp-btn lp-btn-primary" onclick="window.startEmailGate()">
+          Get the playbook
+          <svg class="lp-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <button type="button" class="lp-video" onclick="openVideoLightbox('PLACEHOLDER_VIDEO_ID','Why we built this playbook')" aria-label="Watch: Why we built this playbook">
+        <div class="lp-video-inner">
+          <div class="lp-video-play">&#9654;</div>
+          <div class="lp-video-label">Why we built this playbook</div>
+          <div class="lp-video-sub">2 min from Adam</div>
         </div>
       </button>
-      <div>
-        <button type="button" class="landing-cta" onclick="window.startEmailGate()">Get the playbook &rarr;</button>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="landing-section">
-      <h2 class="landing-section-title">What founders say</h2>
-      <div class="landing-quotes-grid">
-        <div class="landing-quote">
-          <div class="landing-quote-tag">Process discipline</div>
-          <p class="landing-quote-text">&ldquo;Adam didn&rsquo;t just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, &lsquo;You&rsquo;re raising your pre-seed with the diligence of a Series A.&rsquo;&rdquo;</p>
-          <div class="landing-quote-attr"><strong>Leni</strong>, Founder</div>
-        </div>
-        <div class="landing-quote">
-          <div class="landing-quote-tag">Stacking the window</div>
-          <p class="landing-quote-text">&ldquo;I never ran a process before working with Adam. He made it easy, a lot of work, but the consistent effort paid off in more investor calls than I&rsquo;ve ever taken in a 4-week period. My only regret is not having signed up sooner.&rdquo;</p>
-          <div class="landing-quote-attr"><strong>Ndonga</strong>, Founder</div>
-        </div>
-        <div class="landing-quote">
-          <div class="landing-quote-tag">Authentic narrative</div>
-          <p class="landing-quote-text">&ldquo;Adam took me from cool science project to funded business. The curriculum gave me tangible mechanics that translated directly into capital raised, and the coaching had an authenticity that earned my trust from the first conversation all the way through close.&rdquo;</p>
-          <div class="landing-quote-attr"><strong>Aidan</strong>, Founder</div>
-        </div>
+  <section class="lp-section lp-bg-blush">
+    <div class="lp-wrap">
+      <div class="lp-sec-head">
+        <div class="lp-eyebrow lp-sec-eyebrow">What founders say</div>
+        <h2 class="lp-sec-title">What founders <span class="lp-italic-plain">say.</span></h2>
       </div>
-    </section>
-
-    <section class="landing-section">
-      <h2 class="landing-section-title">Built from real raises, not theory</h2>
-      <div class="landing-bullets">
-        <div class="landing-bullet">
-          <div class="landing-bullet-title">From lived experience</div>
-          <div class="landing-bullet-desc">Adam founded and sold a YC company, raised from top-tier funds, and spent years on the investor side. The playbook is the curriculum he wishes he&rsquo;d had on his own raises.</div>
+      <div class="lp-quotes-grid">
+        <div class="lp-quote">
+          <div class="lp-quote-mark">&ldquo;</div>
+          <div class="lp-quote-tag">Process discipline</div>
+          <p class="lp-quote-text">Adam didn&rsquo;t just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, &lsquo;You&rsquo;re raising your pre-seed with the diligence of a Series A.&rsquo;</p>
+          <div class="lp-quote-attr"><strong>Leni</strong>Founder</div>
         </div>
-        <div class="landing-bullet">
-          <div class="landing-bullet-title">100+ founders, $80M+ raised</div>
-          <div class="landing-bullet-desc">Every framework here came out of an actual coaching session with a real founder closing a real round. The patterns are the ones that showed up across hundreds of meetings, term sheets, and closes.</div>
+        <div class="lp-quote">
+          <div class="lp-quote-mark">&ldquo;</div>
+          <div class="lp-quote-tag">Stacking the window</div>
+          <p class="lp-quote-text">I never ran a process before working with Adam. He made it easy, a lot of work, but the consistent effort paid off in more investor calls than I&rsquo;ve ever taken in a 4-week period. My only regret is not having signed up sooner.</p>
+          <div class="lp-quote-attr"><strong>Ndonga</strong>Founder</div>
         </div>
-        <div class="landing-bullet">
-          <div class="landing-bullet-title">Backed by funds founders want</div>
-          <div class="landing-bullet-desc">Founders using these moves have closed checks from Y Combinator, Andreessen Horowitz, Pear Ventures, Bessemer, Founder Collective, Hustle Fund, Techstars, and Khosla Ventures.</div>
+        <div class="lp-quote">
+          <div class="lp-quote-mark">&ldquo;</div>
+          <div class="lp-quote-tag">Authentic narrative</div>
+          <p class="lp-quote-text">Adam took me from cool science project to funded business. The curriculum gave me tangible mechanics that translated directly into capital raised, and the coaching had an authenticity that earned my trust from the first conversation all the way through close.</p>
+          <div class="lp-quote-attr"><strong>Aidan</strong>Founder</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="landing-section">
-      <h2 class="landing-section-title">What&rsquo;s inside</h2>
-      <div class="landing-chapters">
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 01</div>
-          <div class="landing-chapter-title">Fundraising Mindset</div>
-          <div class="landing-chapter-desc">The Authentic FOMO framework and the four goals that frame every strong raise.</div>
+  <section class="lp-section lp-bg-sage">
+    <div class="lp-wrap">
+      <div class="lp-sec-head">
+        <div class="lp-eyebrow lp-sec-eyebrow">Why this playbook</div>
+        <h2 class="lp-sec-title">Built from real raises, <span class="lp-italic-plain">not theory.</span></h2>
+      </div>
+      <div class="lp-bullets-grid">
+        <div class="lp-bullet">
+          <h3 class="lp-bullet-title">From lived experience</h3>
+          <p class="lp-bullet-desc">Adam founded and sold a YC company, raised from top-tier funds, and spent years on the investor side. The playbook is the curriculum he wishes he&rsquo;d had on his own raises.</p>
         </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 02</div>
-          <div class="landing-chapter-title">Communicate Your Story</div>
-          <div class="landing-chapter-desc">Problem, Why Now, Solution, Market, Traction, Team, Competition, Ask.</div>
+        <div class="lp-bullet">
+          <h3 class="lp-bullet-title">100+ founders, $80M+ raised</h3>
+          <p class="lp-bullet-desc">Every framework here came out of an actual coaching session with a real founder closing a real round. The patterns are the ones that showed up across hundreds of meetings, term sheets, and closes.</p>
         </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 03</div>
-          <div class="landing-chapter-title">Prepare Your Materials</div>
-          <div class="landing-chapter-desc">Blurb, one-pager, deck, demo, data room. What each does and how to build them.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 04</div>
-          <div class="landing-chapter-title">Build Your Target List</div>
-          <div class="landing-chapter-desc">80 to 120 qualified investors, 70% Tier 1A, with hard and soft filters.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 05</div>
-          <div class="landing-chapter-title">Map Your Connectors</div>
-          <div class="landing-chapter-desc">The A-D connector hierarchy. Quality of connector matters as much as investor fit.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 06</div>
-          <div class="landing-chapter-title">Activate Your Intros</div>
-          <div class="landing-chapter-desc">Double opt-in, simultaneous launch, momentum from day one.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 07</div>
-          <div class="landing-chapter-title">Pitching Best Practices</div>
-          <div class="landing-chapter-desc">The anatomy of a first meeting, leading with the problem, pyramid answers.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 08</div>
-          <div class="landing-chapter-title">Refine Through Practice</div>
-          <div class="landing-chapter-desc">Drill the pitch, sharpen the answers, walk in confident.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 09</div>
-          <div class="landing-chapter-title">Manage Your Pipeline</div>
-          <div class="landing-chapter-desc">CRM setup, reading investor signals, knowing when to cut a lead.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 10</div>
-          <div class="landing-chapter-title">Diligence &amp; Term Sheet</div>
-          <div class="landing-chapter-desc">Key terms, valuation conversations, what diligence actually looks like.</div>
-        </div>
-        <div class="landing-chapter-card">
-          <div class="landing-chapter-num">CHAPTER 11</div>
-          <div class="landing-chapter-title">Close the Round</div>
-          <div class="landing-chapter-desc">Securing the lead, the first close, getting the wire.</div>
+        <div class="lp-bullet">
+          <h3 class="lp-bullet-title">Backed by funds founders want</h3>
+          <p class="lp-bullet-desc">Founders using these moves have closed checks from Y Combinator, Andreessen Horowitz, Pear Ventures, Bessemer, Founder Collective, Hustle Fund, Techstars, and Khosla Ventures.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="landing-final">
-      <button type="button" class="landing-cta" onclick="window.startEmailGate()">Get the playbook &rarr;</button>
-    </section>
-  </div>
+  <section class="lp-section lp-bg-sky">
+    <div class="lp-wrap">
+      <div class="lp-sec-head">
+        <div class="lp-eyebrow lp-sec-eyebrow">What&rsquo;s inside</div>
+        <h2 class="lp-sec-title">What&rsquo;s <span class="lp-italic-plain">inside.</span></h2>
+      </div>
+      <div class="lp-chapters-grid">
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">01</div>
+          <h3 class="lp-chapter-title">Fundraising Mindset</h3>
+          <p class="lp-chapter-desc">The Authentic FOMO framework and the four goals that frame every strong raise.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">02</div>
+          <h3 class="lp-chapter-title">Communicate Your Story</h3>
+          <p class="lp-chapter-desc">Problem, Why Now, Solution, Market, Traction, Team, Competition, Ask.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">03</div>
+          <h3 class="lp-chapter-title">Prepare Your Materials</h3>
+          <p class="lp-chapter-desc">Blurb, one-pager, deck, demo, data room. What each does and how to build them.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">04</div>
+          <h3 class="lp-chapter-title">Build Your Target List</h3>
+          <p class="lp-chapter-desc">80 to 120 qualified investors, 70% Tier 1A, with hard and soft filters.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">05</div>
+          <h3 class="lp-chapter-title">Map Your Connectors</h3>
+          <p class="lp-chapter-desc">The A-D connector hierarchy. Quality of connector matters as much as investor fit.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">06</div>
+          <h3 class="lp-chapter-title">Activate Your Intros</h3>
+          <p class="lp-chapter-desc">Double opt-in, simultaneous launch, momentum from day one.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">07</div>
+          <h3 class="lp-chapter-title">Pitching Best Practices</h3>
+          <p class="lp-chapter-desc">The anatomy of a first meeting, leading with the problem, pyramid answers.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">08</div>
+          <h3 class="lp-chapter-title">Refine Through Practice</h3>
+          <p class="lp-chapter-desc">Drill the pitch, sharpen the answers, walk in confident.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">09</div>
+          <h3 class="lp-chapter-title">Manage Your Pipeline</h3>
+          <p class="lp-chapter-desc">CRM setup, reading investor signals, knowing when to cut a lead.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">10</div>
+          <h3 class="lp-chapter-title">Diligence &amp; Term Sheet</h3>
+          <p class="lp-chapter-desc">Key terms, valuation conversations, what diligence actually looks like.</p>
+        </div>
+        <div class="lp-chapter">
+          <div class="lp-chapter-num">11</div>
+          <h3 class="lp-chapter-title">Close the Round</h3>
+          <p class="lp-chapter-desc">Securing the lead, the first close, getting the wire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-section lp-final lp-bg-deep">
+    <div class="lp-wrap">
+      <h2 class="lp-final-title">Get the <span class="lp-final-italic">playbook.</span></h2>
+      <p class="lp-final-sub">Eleven chapters of hard-won knowledge. Free, self-serve, immediately useful.</p>
+      <button type="button" class="lp-btn lp-btn-butter" onclick="window.startEmailGate()">
+        Get the playbook
+        <svg class="lp-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
 </div>
 
 <div class="quiz-overlay" id="quizOverlay">
@@ -5986,9 +6327,10 @@ html, body {
 
    <div class="ss-body">
    <div class="video-section">
-     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: The Competition">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('kQ8hLILlJEQ','The Competition')" aria-label="Play video: The Competition">
+       <img src="https://img.youtube.com/vi/kQ8hLILlJEQ/hqdefault.jpg" alt="">
        <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
-       <span class="video-thumb-badge">Coming soon</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
      </button>
      <div class="video-section-caption">Watch: The Competition</div>
    </div>
@@ -6125,13 +6467,6 @@ html, body {
      <p class="page-head-sub">The ask is the moment a fundraising conversation turns from storytelling into a transaction. Founders who skip it leave deals on the table every meeting.</p>
 
    <div class="ss-body">
-   <div class="video-section">
-     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: The Ask">
-       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
-       <span class="video-thumb-badge">Coming soon</span>
-     </button>
-     <div class="video-section-caption">Watch: The Ask</div>
-   </div>
 
      <div style="background:var(--bg-2);border-left:3px solid var(--accent);border-radius:var(--r-sm);padding:14px 20px;font-size:13px;line-height:1.6;color:var(--text-dim)">
        <div style="font-weight:700;color:var(--accent);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">Sources</div>
