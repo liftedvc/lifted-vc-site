@@ -158,7 +158,7 @@ function Nav({ current = 'home' }) {
 function Wordmark() {
   return (
     <img
-      src="assets/lifted-logo-full.png"
+      src="images/lifted-logo.png"
       alt="Lifted"
       className="wordmark-img"
       style={{ height: 36, width: 'auto', display: 'block' }}
