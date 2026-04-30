@@ -2877,6 +2877,13 @@ html, body {
 @media (max-width: 1024px) {
   .topbar-hamburger { display: inline-flex; }
 
+  /* Collapse the .app grid to a single column so main content fills
+     the full viewport width. The sidebar is now fixed-positioned and
+     lives outside the grid flow as a drawer. */
+  .app {
+    grid-template-columns: 1fr !important;
+  }
+
   /* Sidebar slides in from the left as a drawer */
   .sidebar {
     transform: translateX(-100%) !important;
