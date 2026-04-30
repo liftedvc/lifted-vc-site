@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lifted.vc — Raise your round like a repeat founder</title>
-  <meta name="description" content="1-on-1 fundraising coaching for founders. Built on 100+ founders coached and 50+ closed rounds. Pre-seed through Series A." />
+  <title>Pricing · Lifted.vc</title>
+  <meta name="description" content="Three ways to work with Adam: free fundraising consultation, 1-on-1 round coaching, and round prep coaching. No equity taken, ever." />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -17,51 +17,20 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Netlify form discovery: shadow form so the build crawler picks up the field schema. The real form lives in components/contact-page.jsx. -->
-  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
-    <input type="text" name="name" />
-    <input type="email" name="email" />
-    <input type="text" name="company" />
-    <input type="text" name="stage" />
-    <textarea name="message"></textarea>
-  </form>
-
   <div id="root"></div>
-
-  <script>
-    window.__TWEAKS__ = /*EDITMODE-BEGIN*/{
-      "palette": "bright",
-      "typePair": "fraunces-inter"
-    }/*EDITMODE-END*/;
-  </script>
-
+  <script>window.__TWEAKS__ = { "palette": "default", "typePair": "fraunces-inter" };</script>
   <script type="text/babel" src="tweaks-panel.jsx"></script>
   <script type="text/babel" src="components/primitives.jsx"></script>
   <script type="text/babel" src="components/nav.jsx"></script>
   <script type="text/babel" src="components/footer.jsx"></script>
-  <script type="text/babel" src="components/hero.jsx"></script>
-  <script type="text/babel" src="components/proof.jsx"></script>
-  <script type="text/babel" src="components/process.jsx"></script>
-  <script type="text/babel" src="components/services.jsx"></script>
-  <script type="text/babel" src="components/testimonials.jsx"></script>
   <script type="text/babel" src="components/cta.jsx"></script>
+  <script type="text/babel" src="components/pricing-page.jsx"></script>
   <script type="text/babel" src="components/tweaks.jsx"></script>
   <script type="text/babel" src="components/shell.jsx"></script>
-
   <script type="text/babel">
-    function HomePage() {
-      return (
-        <PageShell current="home">
-          <Hero />
-          <Proof />
-          <Process />
-          <ServicesTeaser />
-          <FeaturedQuote />
-          <CTA />
-        </PageShell>
-      );
-    }
-    ReactDOM.createRoot(document.getElementById('root')).render(<HomePage />);
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <PageShell current="pricing"><PricingPage /><CTA /></PageShell>
+    );
   </script>
 </body>
 </html>
