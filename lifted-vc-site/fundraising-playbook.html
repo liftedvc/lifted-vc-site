@@ -2832,6 +2832,445 @@ html, body {
 }
 .streak-num { color: #fff !important; font-weight: 700 !important; }
 .streak-label { font-size: 11px !important; opacity: 0.85; font-weight: 500 !important; color: #FED7AA !important; }
+
+/* ════════════════════════════════════════════════════════════════
+   FULL RESPONSIVE OVERRIDES (mobile-first audit pass)
+   Hamburger + sidebar drawer, fluid hero typography,
+   single-column grids, modal sizing, and content padding.
+   Desktop styles are unaffected — these only kick in <= 1024px.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Hamburger button — hidden on desktop, shown on tablet/mobile */
+.topbar-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin-right: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .15s var(--ease), border-color .15s var(--ease);
+}
+.topbar-hamburger svg { width: 20px; height: 20px; display: block; }
+.topbar-hamburger:hover { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.32); }
+
+/* Sidebar backdrop — visible when sidebar is open on tablet/mobile */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: var(--topbar-h) 0 0 0;
+  background: rgba(10, 10, 30, 0.45);
+  z-index: 55;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s var(--ease);
+}
+
+/* ───────────────────────────────────────────────
+   <= 1024px : tablet landscape & below
+   ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .topbar-hamburger { display: inline-flex; }
+
+  /* Sidebar slides in from the left as a drawer */
+  .sidebar {
+    transform: translateX(-100%) !important;
+    position: fixed !important;
+    top: var(--topbar-h) !important;
+    left: 0 !important;
+    width: var(--sidebar-w);
+    height: calc(100vh - var(--topbar-h)) !important;
+    z-index: 60 !important;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
+    visibility: visible !important;
+  }
+  .app.sidebar-open .sidebar { transform: translateX(0) !important; }
+  .app.sidebar-open .sidebar-backdrop {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Hide the desktop edge toggle on tablet — hamburger replaces it */
+  .sidebar-toggle { display: none !important; }
+
+  /* Fixed page-head + nav-btn-row span the full width since sidebar is hidden */
+  .sub-panel .page-head,
+  .dashboard .page-head { left: 0 !important; padding: 12px 24px !important; }
+  .sub-panel .nav-btn-row,
+  .sub-panel.single-screen .nav-btn-row,
+  .dashboard .nav-btn-row { left: 0 !important; padding: 12px 24px !important; }
+
+  /* Main content uses sane padding */
+  .main { padding: 20px 24px 80px !important; }
+  .main:has(.sub-panel.single-screen.active) { padding: 20px 24px 0 !important; max-width: none !important; }
+
+  /* Topbar tightens up */
+  .topbar { padding: 0 16px !important; }
+  .topbar-right { gap: 8px !important; }
+  .topbar-btn { padding: 6px 11px !important; font-size: 12.5px !important; }
+
+  /* Hero title scales down */
+  .page-head-title { font-size: 28px !important; }
+
+  /* The fixed page-head + nav-btn-row sit above the mobile bottom bar.
+     Reserve enough space at the bottom of scrolling content. */
+  .sub-panel.single-screen .ss-body { padding-bottom: 140px !important; }
+}
+
+/* ───────────────────────────────────────────────
+   <= 768px : tablet portrait & below
+   ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Topbar — hide the secondary "Notes" button to save room; keep "Ask" */
+  .topbar-btn:not(.topbar-btn-ask):not(.topbar-btn-primary) span { display: none; }
+  .topbar-btn:not(.topbar-btn-ask):not(.topbar-btn-primary) {
+    padding: 6px 9px !important;
+    width: 34px;
+    justify-content: center;
+  }
+  .topbar-btn.reset { display: none !important; }
+  .topbar-logo { font-size: 16px; }
+  .topbar-logo img { height: 18px; }
+  .topbar-hamburger { width: 34px; height: 34px; }
+
+  /* Page padding tightens further */
+  .main { padding: 16px 16px 100px !important; }
+  .main:has(.sub-panel.single-screen.active) { padding: 16px 16px 0 !important; }
+
+  /* Account for the mobile bottom bar (~60px tall) below the fixed nav-btn-row */
+  .sub-panel .nav-btn-row,
+  .sub-panel.single-screen .nav-btn-row,
+  .dashboard .nav-btn-row {
+    bottom: 60px !important;
+    padding: 10px 16px !important;
+    gap: 8px;
+  }
+  .nav-btn { padding: 9px 14px !important; font-size: 13px !important; }
+  .nav-btn-label { display: none !important; }
+  .sub-panel.single-screen .ss-body { padding-bottom: 180px !important; }
+  .sub-panel:not(.single-screen) { padding-bottom: 200px !important; }
+  .dashboard { padding-bottom: 200px !important; }
+
+  /* Page-head — tighter padding on mobile */
+  .sub-panel .page-head,
+  .dashboard .page-head { padding: 10px 16px !important; }
+  .page-head-title,
+  .sub-panel .page-head .page-head-title,
+  .dashboard .page-head .page-head-title { font-size: 22px !important; line-height: 1.18 !important; }
+  .sub-panel.single-screen.active,
+  .sub-panel:not(.single-screen).active { padding-top: 96px !important; }
+  .dashboard.active { padding-top: 96px !important; }
+
+  /* Page-head-sub lede block — smaller text and padding */
+  .sub-panel > .page-head-sub,
+  .dashboard > .page-head-sub,
+  .page-head-sub { font-size: 16px !important; padding: 12px 14px !important; }
+
+  /* Sub-header */
+  .sub-header-title { font-size: 18px !important; }
+
+  /* Single-screen sub-panels: drop the viewport-clamping behavior on mobile */
+  .sub-panel.single-screen.active {
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+  .sub-panel.single-screen .ss-body { gap: 28px !important; overflow: visible !important; }
+  .sub-panel.single-screen .ss-split { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .sub-panel.single-screen .ss-tri { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .sub-panel.single-screen .ss-hero { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; padding: 16px 18px !important; }
+  .sub-panel.single-screen .ss-hero-title { font-size: 19px !important; }
+  .sub-panel.single-screen .ss-hero-main { min-width: 0 !important; }
+
+  /* Single-screen helpers — collapse all multi-col grids to one column */
+  .sub-panel.single-screen .goals-grid,
+  .sub-panel.single-screen .goals-grid-4col,
+  .investor-types-grid,
+  .steps-rail,
+  .ss-cta-strip,
+  .fomo-phases-filled,
+  .tier-summary,
+  .intro-principles,
+  .ss-kc-grid,
+  .ss-kc-grid.ss-kc-grid-3,
+  .ss-stats-row,
+  .ss-prereq-items,
+  .filter-rail,
+  .clean-funnel { grid-template-columns: 1fr !important; gap: 10px !important; }
+
+  /* Goals + FOMO arc */
+  .goals-grid { grid-template-columns: 1fr !important; gap: 12px; }
+  .fomo-phases { grid-template-columns: 1fr !important; }
+  .fomo-arc-head { flex-direction: column; align-items: flex-start !important; gap: 6px; }
+
+  /* Compare grids */
+  .compare-grid,
+  .clean-compare,
+  .clean-compare-stat { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .clean-compare-stat-vs { padding: 6px 0; }
+
+  /* Clean-everything grids */
+  .clean-goals,
+  .clean-phases,
+  .clean-prereq,
+  .clean-investor-types,
+  .clean-tier-summary,
+  .clean-steps,
+  .clean-cta-strip,
+  .clean-principles,
+  .clean-list,
+  .clean-list.cols-2,
+  .clean-list.cols-3,
+  .clean-list.cols-4,
+  .clean-list.cols-5 { grid-template-columns: 1fr !important; gap: 14px !important; }
+
+  /* Force single column on every inline grid template (catches the many
+     style="grid-template-columns:1fr 1fr" patterns sprinkled throughout the
+     chapter HTML). Only neutralize when there's an actual multi-column inline
+     declaration — leave 1fr alone. */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:repeat(2"],
+  [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"],
+  [style*="grid-template-columns: repeat(3"],
+  [style*="grid-template-columns:1.15fr"],
+  [style*="grid-template-columns: 1.15fr"],
+  [style*="grid-template-columns:1.4fr"],
+  [style*="grid-template-columns: 1.4fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 9-stage journey arc collapses to 3-col grid (already partly handled) */
+  .journey-arc { grid-template-columns: repeat(3, 1fr) !important; gap: 14px 4px !important; }
+  .journey-arc::before { display: none !important; }
+  .arc-dots { grid-template-columns: repeat(3, 1fr) !important; gap: 16px 4px !important; }
+  .arc-dots::before { display: none !important; }
+  .arc-phases-caption { flex-direction: column; gap: 4px; align-items: flex-start; }
+
+  /* Knowledge check options — slightly smaller paddings */
+  .kc-card { padding: 18px !important; }
+  .kc-question { font-size: 15px !important; }
+  .kc-option { padding: 12px 14px !important; font-size: 14px !important; }
+
+  /* Card grids w/ auto-fill should still work, but force smaller min */
+  .card-grid,
+  .hf-filters,
+  .itype-grid,
+  .sf-grid,
+  .stat-grid,
+  .tier-cards,
+  .con-grid,
+  .dash-chapters,
+  .dash-stats { grid-template-columns: 1fr !important; gap: 10px !important; }
+
+  /* Stat callout, funnel, master summary bar stack */
+  .stat-callout { flex-direction: column !important; }
+  .funnel-row { flex-direction: column !important; }
+  .funnel-arrow { transform: rotate(90deg); }
+  .master-summary-bar { flex-direction: column !important; align-items: stretch !important; gap: 14px; padding: 16px !important; }
+  .master-summary-divider { display: none; }
+  .master-overall-bar { width: 100%; }
+
+  /* Phase tracker stacks vertically on mobile */
+  .phase-tracker { flex-direction: column !important; }
+  .phase-step:first-child { border-radius: var(--r-sm) var(--r-sm) 0 0 !important; }
+  .phase-step:last-child { border-radius: 0 0 var(--r-sm) var(--r-sm) !important; }
+
+  /* Welcome banner padding shrinks */
+  .chapter-hero { padding: 24px 20px !important; }
+  .chapter-hero h1 { font-size: 22px !important; }
+  .content-section .section-toggle { padding: 16px 18px !important; font-size: 15px !important; }
+  .section-body { padding: 0 18px !important; }
+  .content-section.open .section-body { padding: 0 18px 22px !important; }
+
+  /* Modals on mobile — full-width minus a small gutter */
+  .quiz-container,
+  .crm-modal-card,
+  .ask-modal-card,
+  .wiz-modal,
+  .example-modal-card,
+  .onboarding-card,
+  .celebration-card {
+    width: 100% !important;
+    max-width: calc(100vw - 24px) !important;
+    max-height: calc(100vh - 24px) !important;
+    padding: 22px 18px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box;
+  }
+  .ask-modal,
+  .wiz-overlay,
+  .example-modal-overlay,
+  .crm-modal-overlay,
+  .quiz-overlay,
+  .onboarding-overlay,
+  .celebration-overlay { padding: 12px !important; }
+
+  .ask-form-row,
+  .email-gate-row,
+  .wiz-row { grid-template-columns: 1fr !important; flex-direction: column !important; gap: 10px !important; }
+
+  .quiz-question { font-size: 17px !important; }
+  .quiz-option { padding: 12px 14px !important; font-size: 14px !important; }
+  .ask-modal-title { font-size: 19px !important; }
+  .example-modal-title { font-size: 19px !important; }
+
+  /* Best-Practices carousel: single column slides, smaller side controls */
+  .bp-slide { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .bp-viewport { padding: 0 8px !important; }
+  .bp-btn-side { width: 34px !important; height: 34px !important; font-size: 16px !important; }
+  .bp-btn-side.bp-prev { left: -6px !important; }
+  .bp-btn-side.bp-next { right: -6px !important; }
+  .bp-habit { padding: 14px 16px !important; }
+
+  /* Side panel (notes drawer) — full width on mobile */
+  .side-panel { width: 100% !important; right: -100% !important; }
+
+  /* Comparison table — allow horizontal scroll if it must stay tabular */
+  .comparison-table,
+  .data-table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  /* Glossary modal — denser layout, smaller text */
+  #tractionGlossary .example-modal-card { padding: 20px 18px !important; }
+  #tractionGlossary [style*="font-size:14px"] { font-size: 13.5px !important; }
+  #tractionGlossary [style*="font-size:13.5px"] { font-size: 13px !important; }
+
+  /* Why Now Builder + similar interactive widgets — let inner forms wrap */
+  .wiz-tool-btn,
+  #wizToolPicker { width: 100%; }
+  #wizToolPicker { flex-direction: column !important; }
+
+  /* Mini video player — already shrunk at 640px in original CSS */
+  .video-player[data-state="lightbox"] {
+    width: calc(100vw - 16px) !important;
+    height: calc((100vw - 16px) * 9 / 16) !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+
+  /* Sidebar progress ring — smaller on narrow drawer */
+  .sidebar-progress-header { padding: 10px 16px 14px !important; }
+  .progress-ring-wrap { width: 78px !important; height: 78px !important; margin: 0 auto 4px !important; }
+  .progress-ring-wrap svg { width: 78px; height: 78px; }
+  .progress-ring-pct { font-size: 18px !important; }
+}
+
+/* ───────────────────────────────────────────────
+   <= 480px : phone portrait
+   ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root { --sidebar-w: 280px; }
+  .topbar { padding: 0 12px !important; }
+  .topbar-logo img { height: 16px; }
+  .topbar-btn-ask span { display: none !important; }
+  .topbar-btn-ask { padding: 6px 9px !important; width: 34px; justify-content: center; }
+
+  .main { padding: 12px 12px 100px !important; }
+  .main:has(.sub-panel.single-screen.active) { padding: 12px 12px 0 !important; }
+
+  .sub-panel .page-head,
+  .dashboard .page-head { padding: 8px 12px !important; }
+  .page-head-title,
+  .sub-panel .page-head .page-head-title,
+  .dashboard .page-head .page-head-title { font-size: 19px !important; letter-spacing: -0.015em !important; }
+
+  .sub-panel.single-screen.active,
+  .sub-panel:not(.single-screen).active { padding-top: 86px !important; }
+  .dashboard.active { padding-top: 86px !important; }
+
+  .sub-panel > .page-head-sub,
+  .dashboard > .page-head-sub,
+  .page-head-sub { font-size: 15px !important; padding: 10px 12px !important; line-height: 1.5 !important; }
+
+  /* Body prose sizes down on phone */
+  .sub-panel .prose p,
+  .sub-panel .ss-body p { font-size: 15px !important; line-height: 1.6 !important; }
+  .prose-pull { font-size: 17px !important; }
+  .clean-list-desc,
+  .clean-goal-desc,
+  .clean-step-desc,
+  .clean-filter-desc,
+  .clean-principle-desc,
+  .clean-tier-desc { font-size: 14px !important; }
+
+  /* Card padding shrinks */
+  .clean-list-item,
+  .clean-goal,
+  .clean-filter,
+  .clean-principle,
+  .clean-tier-cell,
+  .clean-itype-col,
+  .clean-step,
+  .feature-card,
+  .goal-card,
+  .investor-card,
+  .filter-card { padding: 14px 16px !important; }
+
+  /* Tip body */
+  .tip-chip { padding: 12px 14px 0 !important; font-size: 11px !important; }
+  .tip-body { padding: 8px 14px 14px !important; font-size: 13px !important; }
+
+  /* Mobile bottom bar — smaller paddings */
+  .mobile-bottom-bar { padding: 6px 8px !important; gap: 6px !important; }
+  .mob-nav-btn { width: 36px; height: 36px; }
+  .mob-center-label { font-size: 12.5px !important; }
+
+  /* Nav buttons — icons only would be too cryptic, so just shorter text */
+  .nav-btn { padding: 8px 12px !important; font-size: 12.5px !important; gap: 5px !important; }
+
+  /* Glossary modal */
+  #tractionGlossary .example-modal-card { padding: 16px 14px !important; }
+
+  /* Modal padding */
+  .quiz-container,
+  .ask-modal-card,
+  .wiz-modal,
+  .example-modal-card,
+  .onboarding-card,
+  .celebration-card,
+  .crm-modal-card { padding: 18px 14px !important; }
+
+  /* Landing page final tweaks */
+  .landing-overlay .lp-wrap,
+  .landing-overlay .lp-header-inner { padding-left: 16px !important; padding-right: 16px !important; }
+  .landing-overlay .lp-section { padding: 56px 0 !important; }
+  .landing-overlay .lp-hero { padding: 28px 0 48px !important; }
+  .landing-overlay .lp-final { padding: 72px 0 !important; }
+  .landing-overlay .lp-bullet { padding: 24px !important; }
+  .landing-overlay .lp-quote { padding: 24px !important; }
+  .landing-overlay .lp-chapter { padding: 28px 24px !important; }
+  .landing-overlay .lp-proof { padding: 28px !important; }
+  .landing-overlay .lp-hero-sub { font-size: 17px !important; }
+  .landing-overlay .lp-hero-stat { padding: 12px 18px !important; font-size: 14px !important; }
+  .landing-overlay .lp-hero-stat strong { font-size: 18px !important; }
+  .landing-overlay .lp-quote-text { font-size: 19px !important; }
+  .landing-overlay .lp-bullet-title { font-size: 24px !important; }
+  .landing-overlay .lp-chapter-num { font-size: 44px !important; }
+  .landing-overlay .lp-final-sub { font-size: 19px !important; }
+  .landing-overlay .lp-btn { padding: 12px 20px !important; font-size: 14px !important; }
+}
+
+/* Prevent horizontal scroll anywhere on small viewports */
+@media (max-width: 1024px) {
+  html, body { max-width: 100vw; overflow-x: hidden !important; }
+  .main { overflow-x: hidden !important; }
+  .sub-panel,
+  .dashboard,
+  .ss-body,
+  .prose { max-width: 100% !important; }
+  img, video, iframe { max-width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -3208,6 +3647,11 @@ html, body {
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-left">
+      <button class="topbar-hamburger" id="topbarHamburger" onclick="toggleSidebar()" aria-label="Open navigation menu" type="button">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
       <a href="https://www.lifted.vc" target="_blank" class="topbar-logo"><img src="images/lifted-logo-white.png" alt="Lifted"></a>
     </div>
     <div class="topbar-right">
@@ -3406,6 +3850,9 @@ html, body {
 
   <!-- SIDEBAR TOGGLE -->
   <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" title="Toggle sidebar">◀</button>
+
+  <!-- SIDEBAR BACKDROP (mobile/tablet) -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()" aria-hidden="true"></div>
 
   <!-- MAIN CONTENT -->
   <div class="main" id="mainContent">
@@ -8206,6 +8653,10 @@ window.goToChapter=goToChapter;
    ══════════════════════════════════════ */
 function goToSub(chId, subId, navEl){
   if(isChapterLocked(chId)) return;
+  // Close mobile sidebar drawer when navigating
+  if(window.innerWidth<=1024){
+    document.getElementById('app').classList.remove('sidebar-open');
+  }
   // First make sure parent chapter is showing
   var target=document.getElementById('ch-'+chId);
   if(target && !target.classList.contains('active')){
