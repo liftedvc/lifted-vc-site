@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Fundraising Playbook | Lifted</title>
+<title>The Free Fundraising Playbook | Lifted</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/lifted-logo.png">
@@ -2191,7 +2191,7 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
   width: auto !important;
   max-width: none !important;
   z-index: 40; /* below the topbar (z-index 100) so the topbar sits above the page-head */
-  padding: 14px 48px 14px !important;
+  padding: 14px 0 !important;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border-light);
   border-radius: 0 !important;
@@ -2200,6 +2200,22 @@ select.wiz-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg
   overflow: visible !important;
   transition: left .3s var(--ease);
   display: block;
+}
+/* Constrain the fixed page-head content to the same column the .main body
+   uses (max 1180px, centered, 40px gutters) so the chapter title stays
+   flush with the chapter content on extra-wide viewports. Desktop only —
+   the existing mobile rules below restore edge-to-edge layout there. */
+@media (min-width: 901px) {
+  .sub-panel .page-head > *,
+  .dashboard .page-head > * {
+    max-width: 1180px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
+  }
 }
 
 /* ─── UNIVERSAL TIP BOX STYLE ──────────────────────────────────────
@@ -3405,7 +3421,7 @@ html, body {
     <div class="lp-header-inner">
       <a href="https://lifted.vc"><img class="lp-wordmark" src="images/lifted-logo.png" alt="Lifted"></a>
       <button type="button" class="lp-btn lp-btn-primary lp-btn-header" onclick="window.startEmailGate()">
-        Get the playbook
+        Get the free playbook
         <svg class="lp-arrow" width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -3415,7 +3431,7 @@ html, body {
 
   <section class="lp-section lp-hero lp-bg-cream">
     <div class="lp-wrap">
-      <div class="lp-eyebrow" style="margin-bottom:32px;">The Fundraising Playbook</div>
+      <div class="lp-eyebrow" style="margin-bottom:32px;">The Free Fundraising Playbook</div>
       <h1 class="lp-hero-headline">Raise your round <span class="lp-italic">the way experienced founders</span> would.</h1>
       <p class="lp-hero-sub">A practical guide to pre-seed and seed fundraising built through lived experience and a curation of top VCs:</p>
       <div class="lp-proof-grid">
@@ -3434,7 +3450,7 @@ html, body {
       </div>
       <div class="lp-hero-actions">
         <button type="button" class="lp-btn lp-btn-primary" onclick="window.startEmailGate()">
-          Get the playbook
+          Get the free playbook
           <svg class="lp-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -3570,10 +3586,10 @@ html, body {
 
   <section class="lp-section lp-final lp-bg-deep">
     <div class="lp-wrap">
-      <h2 class="lp-final-title">Get the <span class="lp-final-italic">playbook.</span></h2>
+      <h2 class="lp-final-title">Get the <span class="lp-final-italic">free playbook.</span></h2>
       <p class="lp-final-sub">Eleven chapters of hard-won knowledge. Free, self-serve, immediately useful.</p>
       <button type="button" class="lp-btn lp-btn-butter" onclick="window.startEmailGate()">
-        Get the playbook
+        Get the free playbook
         <svg class="lp-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -4983,7 +4999,7 @@ html, body {
      </div>
    </section>
 
-   <p class="prose" style="max-width:760px">The system only works if you have a sharp blurb. Chapter 3 covers writing one. Draft it before you start making connector calls. And because the investor doesn't get the intro until <strong>you</strong> tell the connector to forward, you control timing. That's the lever.</p>
+   <p class="prose" style="max-width:760px">The system only works if you have a sharp blurb. <strong>Prepare Your Materials</strong> covers writing one. Draft it before you start making connector calls. And because the investor doesn't get the intro until <strong>you</strong> tell the connector to forward, you control timing. That's the lever.</p>
 
    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start">
      <div>
@@ -5094,37 +5110,47 @@ html, body {
    <p class="page-head-sub">The five scenarios that bleed time if you let them. Log every connector touchpoint the same day; memory loses fights with calendar pressure.</p>
 
  <div class="ss-body">
-   <div class="clean-list" style="grid-template-columns:repeat(2,1fr);gap:18px 28px">
-     <div class="clean-list-item warn">
-       <div class="clean-list-label">Vague yes</div>
-       <div class="clean-list-title">"Send me your blurb and I'll forward to some investors."</div>
-       <div class="clean-list-desc">Not a promise. No named investor = no commitment. Push for specificity before you log.</div>
-       <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "We have a few people making intros for us, and I don't want to double dip. Which specific investors were you thinking of?"</div>
-     </div>
-     <div class="clean-list-item warn">
-       <div class="clean-list-label">Hedged</div>
-       <div class="clean-list-title">"I can probably help, let me think about it."</div>
-       <div class="clean-list-desc">Log as hedged. Send one follow-up, then treat as a no. Don't let soft maybes inflate your pipeline.</div>
-       <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "How about I send my list over and you flag the ones you know or suggest ones I'm missing."</div>
-     </div>
-     <div class="clean-list-item warn">
-       <div class="clean-list-label">Goes quiet</div>
-       <div class="clean-list-title">Connector agreed, then disappeared.</div>
-       <div class="clean-list-desc">One light check-in, then stop. Better to spend time finding a different path to that investor.</div>
-       <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "Just wanted to make sure my blurb didn't get buried. Happy to re-send if helpful."</div>
-     </div>
-     <div class="clean-list-item warn">
-       <div class="clean-list-label">Thin relationship</div>
-       <div class="clean-list-title">"I know them, but not that well."</div>
-       <div class="clean-list-desc">Qualify before you ask. A weak intro can do more harm than no intro. Find a stronger path.</div>
-       <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "How well do you know them? I want the intro to feel natural. Not looking to put you in an awkward spot."</div>
-     </div>
-     <div class="clean-list-item error" style="grid-column:1 / -1">
-       <div class="clean-list-label">Asks for equity or payment</div>
-       <div class="clean-list-title">Paid intro brokers don't carry the same credibility.</div>
-       <div class="clean-list-desc">Decline gracefully. Investors recognize the source and the intro loses weight. Find a different path.</div>
-     </div>
+   <div class="video-section">
+     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: Troubleshooting">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Coming soon</span>
+     </button>
+     <div class="video-section-caption">Watch: Troubleshooting</div>
    </div>
+   <section>
+     <div class="section-label">Five scenarios you'll see in the wild</div>
+     <div class="clean-list cols-2" style="gap:18px 28px">
+       <div class="clean-list-item warn">
+         <div class="clean-list-label">Vague yes</div>
+         <div class="clean-list-title">"Send me your blurb and I'll forward to some investors."</div>
+         <div class="clean-list-desc">Not a promise. No named investor = no commitment. Push for specificity before you log.</div>
+         <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "We have a few people making intros for us, and I don't want to double dip. Which specific investors were you thinking of?"</div>
+       </div>
+       <div class="clean-list-item warn">
+         <div class="clean-list-label">Hedged</div>
+         <div class="clean-list-title">"I can probably help, let me think about it."</div>
+         <div class="clean-list-desc">Log as hedged. Send one follow-up, then treat as a no. Don't let soft maybes inflate your pipeline.</div>
+         <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "How about I send my list over and you flag the ones you know or suggest ones I'm missing."</div>
+       </div>
+       <div class="clean-list-item warn">
+         <div class="clean-list-label">Goes quiet</div>
+         <div class="clean-list-title">Connector agreed, then disappeared.</div>
+         <div class="clean-list-desc">One light check-in, then stop. Better to spend time finding a different path to that investor.</div>
+         <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "Just wanted to make sure my blurb didn't get buried. Happy to re-send if helpful."</div>
+       </div>
+       <div class="clean-list-item warn">
+         <div class="clean-list-label">Thin relationship</div>
+         <div class="clean-list-title">"I know them, but not that well."</div>
+         <div class="clean-list-desc">Qualify before you ask. A weak intro can do more harm than no intro. Find a stronger path.</div>
+         <div class="clean-list-desc" style="margin-top:8px;padding-left:12px;border-left:2px solid var(--accent);color:var(--text);font-style:italic"><strong>Script:</strong> "How well do you know them? I want the intro to feel natural. Not looking to put you in an awkward spot."</div>
+       </div>
+       <div class="clean-list-item error" style="grid-column:1 / -1">
+         <div class="clean-list-label">Asks for equity or payment</div>
+         <div class="clean-list-title">Paid intro brokers don't carry the same credibility.</div>
+         <div class="clean-list-desc">Decline gracefully. Investors recognize the source and the intro loses weight. Find a different path.</div>
+       </div>
+     </div>
+   </section>
 
    <button class="tip-chip warn" type="button"><svg class="icon"><use href="#i-warn"/></svg>Watch out: Don't rely on memory</button>
    <div class="tip-body" hidden>By the time you have 40+ connectors in motion, the details blur fast. Names, commitments, who said what. Log every connector touchpoint in your CRM the same day. Memory loses fights with calendar pressure.</div>
@@ -5143,9 +5169,16 @@ html, body {
    <div class="page-head-crumb">Chapter 7 &middot; Activate Your Intros</div>
    <h1 class="page-head-title">The Simultaneous Launch</h1>
  </header>
-   <p class="page-head-sub">Come back here after Chapters 3 &amp; 6 (materials and practice) are done. Fire all 80&ndash;120 promised intros over the course of a few days. Concentration creates Authentic FOMO; a drip creates nothing.</p>
+   <p class="page-head-sub">Come back here after Chapters 4 and 9 (Prepare Your Materials and Refine Through Practice) are done. Fire all 80&ndash;120 promised intros over the course of a few days. Concentration creates Authentic FOMO; a drip creates nothing.</p>
 
  <div class="ss-body">
+   <div class="video-section">
+     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: The simultaneous launch">
+       <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
+       <span class="video-thumb-badge">Coming soon</span>
+     </button>
+     <div class="video-section-caption">Watch: The simultaneous launch</div>
+   </div>
    <section>
      <div class="section-label">The volume math &middot; why the buffer exists</div>
      <div class="clean-funnel">
@@ -5212,26 +5245,36 @@ html, body {
    <p class="page-head-sub">Activation isn't done when promises are collected; it's done when intros are firing and meetings are stacking up. Both halves have to clear the bar.</p>
 
  <div class="ss-body">
-   <div class="clean-gate">
-     <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don’t move to Chapter 9 until</div>
-     <ul class="clean-gate-list">
-       <li><strong>80+</strong> genuine promised intros from Tier A or Tier B connectors. Tier C logged separately, bonus only.</li>
-       <li>Every entry has a specific connector, a specific investor, and a confirmed commitment.</li>
-       <li>You asked for more connectors at the end of every call.</li>
-     </ul>
-   </div>
-   <div class="clean-gate">
-     <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don't move past the launch until</div>
-     <ul class="clean-gate-list">
-       <li>Launch week blocked; calendar cleared for fundraising only.</li>
-       <li>All connectors messaged over a few days.</li>
-       <li>All double opt-in responses logged in CRM the same day.</li>
-       <li>Meetings sequenced: throwaway pitches first, then first-check writers.</li>
-       <li>Non-schedulers sent one follow-up with a calendar link, then logged as Paused.</li>
-     </ul>
-   </div>
+   <section>
+     <div class="section-label">The promises bar</div>
+     <div class="clean-gate">
+       <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don't move to Refine Through Practice until</div>
+       <ul class="clean-gate-list">
+         <li><strong>80+</strong> genuine promised intros from Tier A or Tier B connectors. Tier C logged separately, bonus only.</li>
+         <li>Every entry has a specific connector, a specific investor, and a confirmed commitment.</li>
+         <li>You asked for more connectors at the end of every call.</li>
+       </ul>
+     </div>
+   </section>
 
-   <p class="prose" style="max-width:760px">If you don't have 80+ clean Tier A or Tier B promises, go back to Chapter 6 and expand your connector map before you try to launch. If the launch stalls, double-check your blurb (Chapter 3) before forcing more follow-ups.</p>
+   <section>
+     <div class="section-label">The launch bar</div>
+     <div class="clean-gate">
+       <div class="clean-gate-label"><svg class="icon"><use href="#i-gate"/></svg>Don't move past the launch until</div>
+       <ul class="clean-gate-list">
+         <li>Launch week blocked; calendar cleared for fundraising only.</li>
+         <li>All connectors messaged over a few days.</li>
+         <li>All double opt-in responses logged in CRM the same day.</li>
+         <li>Meetings sequenced: throwaway pitches first, then first-check writers.</li>
+         <li>Non-schedulers sent one follow-up with a calendar link, then logged as Paused.</li>
+       </ul>
+     </div>
+   </section>
+
+   <section>
+     <div class="section-label">If either bar feels short</div>
+     <p class="prose" style="max-width:760px;margin:0">If you don't have 80+ clean Tier A or Tier B promises, go back to <strong>Map Your Connectors</strong> and expand your connector map before you try to launch. If the launch stalls, double-check your blurb in <strong>Prepare Your Materials</strong> before forcing more follow-ups.</p>
+   </section>
  </div>
 
  <div class="nav-btn-row">
@@ -5278,15 +5321,17 @@ html, body {
 
    <div class="ss-body">
    <div class="video-section">
-     <button type="button" class="video-thumb placeholder" disabled aria-label="Video coming soon: Collateral prioritization">
+     <button type="button" class="video-thumb" onclick="openVideoLightbox('5sf5VTGCurI','Collateral prioritization')" aria-label="Play video: Collateral prioritization">
+       <img src="https://img.youtube.com/vi/5sf5VTGCurI/hqdefault.jpg" alt="">
        <span class="video-thumb-play" aria-hidden="true">&#9654;</span>
-       <span class="video-thumb-badge">Coming soon</span>
+       <span class="video-thumb-badge">Watch the walkthrough</span>
      </button>
      <div class="video-section-caption">Watch: Collateral prioritization</div>
    </div>
 
      <div class="prose" style="max-width:880px;margin:0 auto;padding:0 22px 0 25px">
        <p>Collateral gets built in iterations. You&rsquo;ll draft, send, listen, and sharpen as you go, using every investor conversation as feedback for the next version. Build these in parallel with your investor list and connector pipeline. All the meetings you have before your investor pitches will be influential.</p>
+       <p style="font-size:14px;color:var(--text-dim);margin-top:14px">Throughout this chapter we use one running example, Ledgerly, a fictional B2B SaaS that automates AP for mid-market finance teams, so the elevator pitch, blurb, one-pager, and deck all hang together. The principles apply across verticals.</p>
      </div>
 
      <section style="max-width:1000px;margin:0 auto;width:100%">
@@ -5358,38 +5403,43 @@ html, body {
      <div class="page-head-crumb">Chapter 4 &middot; Prepare Your Materials</div>
      <h1 class="page-head-title">Elevator Pitch</h1>
    </header>
-     <p class="page-head-sub">A one-minute story that makes the problem you solve and how you solve it impossible to miss. Every material you ship after is a translation of it, so get it ruthlessly clear here.</p>
+     <p class="page-head-sub">Two short pitches that make your business land in an investor's head. A ~25-second verbal version, and a 2-4 sentence written version that seeds your forwardable email. Both are the root of every other piece of fundraising collateral you build.</p>
 
    <div class="ss-body">
 
      <section>
-       <div class="section-label">The three pillars &middot; what a great one-minute pitch lands</div>
+       <div class="section-label">A note on audience</div>
+       <p style="margin:0;font-size:15px;line-height:1.65;color:var(--text);max-width:820px">The elevator pitch is for investors, not your customers. Here's the difference: your homepage and product copy speak to customers, who care about how the product helps them with a job they are already doing. Investors care about whether the problem is real, whether the market is big enough, and how the path to revenue actually works. Plain language carries the weight in this room. Marketing copy belongs on the website.</p>
+     </section>
+
+     <section>
+       <div class="section-label">The three pillars &middot; what a great pitch lands</div>
        <div class="clean-list cols-3">
          <div class="clean-list-item accent">
-           <div class="clean-list-title">The problem is real</div>
-           <div class="clean-list-desc">The investor needs to understand this before all else. Use human evidence, real stories, and quantified pain to show the problem happening in the real world, today.</div>
+           <div class="clean-list-title">Lead with the result</div>
+           <div class="clean-list-desc">Open with the outcome the company delivers, in numbers an investor can repeat back. Dollars saved, hours returned, customers reached. The result earns you the next twenty seconds before you say a word about the product.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">The problem is urgent</div>
-           <div class="clean-list-desc">Urgency is the consequence of waiting, not pressure on the investor to decide. Name what gets worse the longer this problem goes unsolved: a trend accelerating, a deadline approaching, a market shifting.</div>
+           <div class="clean-list-title">Make the problem feel real</div>
+           <div class="clean-list-desc">Show the pain the way someone actually lives it. The AP team buried in 180 invoices, GL codes typed by hand, approvals chased through Slack. Specific scenes beat category labels. If the listener can picture the mess, the solution lands harder.</div>
          </div>
          <div class="clean-list-item accent">
-           <div class="clean-list-title">The solution is clear</div>
-           <div class="clean-list-desc">Directly answers the problem you just painted: how the product works and why your approach wins, both stated so plainly that an investor can repeat them back.</div>
+           <div class="clean-list-title">Map the solution to the pain</div>
+           <div class="clean-list-desc">Walk through what your product actually does about the mess you just described. Each piece of the problem gets answered by a specific piece of the product. Show the chain from pain to fix.</div>
          </div>
        </div>
      </section>
 
      <section>
-       <div class="section-label">What a landed pitch sounds like &middot; narrative leads, data substantiates</div>
-       <p style="margin:0 0 22px;font-size:15px;line-height:1.65;color:var(--text-dim);max-width:820px">The most common pitch failure is leading with the solution before you&rsquo;ve made the investor feel the problem. When the three pillars all land, the pitch tends to carry itself.</p>
+       <div class="section-label">The verbal version &middot; about 25 seconds, all three pillars</div>
+       <p style="margin:0 0 22px;font-size:15px;line-height:1.65;color:var(--text-dim);max-width:820px">The verbal version lands all three pillars in three sentences. An identity opener frames the company in one breath. The dollar result and the solution mechanics share the next sentence, so value and how arrive together. A before-and-after closer makes the change tangible. Aim for a rhythm that breathes when you say it out loud.</p>
        <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start">
          <div>
            <div style="background:var(--bg-2);border:1px solid var(--border);border-left:4px solid var(--text-dim);border-radius:var(--r);padding:18px 22px 20px">
              <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px">Weak elevator &middot; solution first, no problem in sight</div>
              <p style="font-size:14px;line-height:1.65;color:var(--text);margin:0;font-style:italic">&ldquo;Ledgerly is an AI-powered, end-to-end finance automation platform purpose-built for the modern CFO office. We leverage machine learning and agentic workflows to transform accounts payable, accounts receivable, close, and spend across the enterprise. Our best-in-class intelligent platform unlocks operational efficiencies and empowers finance teams to focus on strategic, value-add work. We&rsquo;re the leading next-generation intelligence layer for mid-market finance teams and high-growth B2B SaaS.&rdquo;</p>
            </div>
-           <div class="audio-player" data-src="audio/weak-opener.mp4">
+           <div class="audio-player" data-src="audio/weak-opener.wav">
              <button type="button" class="audio-player-btn" aria-label="Play audio">
                <svg class="icon-play" viewBox="0 0 12 12" aria-hidden><path d="M2 1l9 5-9 5z"/></svg>
                <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden><rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/></svg>
@@ -5399,7 +5449,7 @@ html, body {
                <div class="audio-player-progress"><div class="audio-player-progress-fill"></div></div>
              </div>
              <div class="audio-player-time">0:00</div>
-             <audio preload="metadata" src="audio/weak-opener.mp4"></audio>
+             <audio preload="metadata" src="audio/weak-opener.wav"></audio>
            </div>
            <div style="font-size:13.5px;line-height:1.65;color:var(--text-dim);padding:14px 4px 0">
              <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:var(--text);margin-bottom:10px">Why it falls flat</div>
@@ -5409,9 +5459,9 @@ html, body {
          <div>
            <div style="background:var(--accent-pale);border:1px solid rgba(45,61,110,.18);border-left:4px solid var(--accent);border-radius:var(--r);padding:18px 22px 20px">
              <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px">Strong elevator &middot; all three pillars in one breath</div>
-             <p style="font-size:14px;line-height:1.65;color:var(--text);margin:0;font-style:italic">&ldquo;The average AP specialist at a 300-person SaaS company processes 180 invoices per week. They are scattered across email and PDFs, they have to code GL accounts by hand, match POs, and chase approvals in Slack. It&rsquo;s a maddening process, and because of it, the typical company loses $24K a month in late fees and another $50K in missed early-pay discounts, or almost $900K a year. This is a growing problem, as invoice volume is up 40% since 2022, and CFO hiring is frozen. Ledgerly solves this problem by sitting on top of their ERP, extracting invoices, coding GL accounts the team&rsquo;s way, and routing approvals through Slack. Invoices clear in minutes, stopping the cash leak.&rdquo;</p>
+             <p style="font-size:14px;line-height:1.65;color:var(--text);margin:0;font-style:italic">&ldquo;Ledgerly is the AP automation layer for mid-market SaaS. We save the average customer ~$900K a year in late fees and missed early-pay discounts by sitting on top of their ERP, pulling every invoice in, coding it the team&rsquo;s way, and routing approvals automatically. AP teams that used to push 180 invoices a week through manual GL mapping and Slack approval chases now clear the same volume in a fraction of the time.&rdquo;</p>
            </div>
-           <div class="audio-player" data-src="audio/strong-opener.mp4">
+           <div class="audio-player" data-src="audio/strong-opener.wav">
              <button type="button" class="audio-player-btn" aria-label="Play audio">
                <svg class="icon-play" viewBox="0 0 12 12" aria-hidden><path d="M2 1l9 5-9 5z"/></svg>
                <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden><rect x="2" y="1" width="3" height="10" rx="1"/><rect x="7" y="1" width="3" height="10" rx="1"/></svg>
@@ -5421,17 +5471,32 @@ html, body {
                <div class="audio-player-progress"><div class="audio-player-progress-fill"></div></div>
              </div>
              <div class="audio-player-time">0:00</div>
-             <audio preload="metadata" src="audio/strong-opener.mp4"></audio>
+             <audio preload="metadata" src="audio/strong-opener.wav"></audio>
            </div>
            <div style="font-size:13.5px;line-height:1.65;color:var(--text-dim);padding:14px 4px 0">
              <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:var(--accent);margin-bottom:10px">Why it lands</div>
-             Besides the product being cool in 2016, this elevator makes sense. The founder sits in the problem for extra clarity before moving to the solution. The pain is real, the dollar cost is measurable, and the urgency is named with specifics. The solution that follows answers each part of the problem you just laid out.
+             Three sentences, all three pillars. The opener names the company and the category in nine words, so the listener has a frame before any number lands. The middle sentence pairs the dollar result with the solution mechanics so value and how arrive together. The closing line lands the lived before-and-after: 180 invoices used to mean manual GL mapping and Slack chases, and now they clear in a fraction of the time. About 25 seconds, every word earning its place.
            </div>
          </div>
        </div>
      </section>
 
-   
+     <section>
+       <div class="section-label">The written version &middot; 2 to 4 sentences, the seed for your forwardable email</div>
+       <p style="margin:0 0 22px;font-size:15px;line-height:1.65;color:var(--text-dim);max-width:820px">Same arc, tighter container. The written pitch usually drops the grounded problem and lets the dollar result imply it; the result and the solution carry the whole thing. Every sentence has to stand on its own without your voice behind it, because this is the version partners actually copy and forward. It becomes the core of the email blurb you build in the next sub-chapter.</p>
+       <div style="background:var(--accent-pale);border:1px solid rgba(45,61,110,.18);border-left:4px solid var(--accent);border-radius:var(--r);padding:18px 22px 20px;max-width:820px">
+         <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px">Strong written pitch &middot; four sentences</div>
+         <p style="font-size:14px;line-height:1.65;color:var(--text);margin:0;font-style:italic">&ldquo;Ledgerly is the AP automation layer for mid-market SaaS. We save the average customer ~$900K a year in late fees and missed early-pay discounts. We sit on top of the ERP, pull every invoice, code it their way, route approvals. Invoice cycle times drop from hours to minutes.&rdquo;</p>
+       </div>
+       <div style="font-size:13.5px;line-height:1.65;color:var(--text-dim);padding:14px 4px 0;max-width:820px">
+         <div style="font-size:16px;font-weight:700;letter-spacing:-0.01em;color:var(--accent);margin-bottom:10px">Why it travels</div>
+         Four sentences, all signal. The identity opener frames the company. The dollar result frames why it matters. The solution sentence strips to the verbs that matter, no connectives doing extra work. The closer lands the outcome. The grounded problem stays implied; $900K of cost is enough for the reader to fill in the pain. Drop it in an email and a partner can forward it untouched.
+       </div>
+     </section>
+
+     <button class="tip-chip tip" type="button"><svg class="icon"><use href="#i-bulb"/></svg>Tip: How to test if your pitch is working</button>
+     <div class="tip-body" hidden>Email your pitch to a smart friend outside your company. Ask them to explain it back to you in their own words. Clarifying questions mean the pitch needs another pass. Email keeps the pitch standing on its own, the way it has to in an investor inbox.</div>
+
    </div>
 
    <div class="nav-btn-row">
@@ -5482,21 +5547,21 @@ html, body {
          </div>
          <div style="padding:16px;">
            <p style="color:var(--text-muted);margin-bottom:12px;">Hey Marcus,</p>
-           <p style="color:var(--text-muted);margin-bottom:12px;">Thanks in advance for passing on our blurb to Sarah at Benchmark. Given her vertical SaaS portfolio, I think there&rsquo;s a real fit. Let me know if she is interested in a meeting.</p>
-           <p style="color:var(--text-muted);margin-bottom:16px;">Appreciate it. Priya</p>
-           <div style="border-top:1px solid var(--border);padding-top:14px;">
-             <div style="font-weight:800;color:var(--text);letter-spacing:0.04em;margin-bottom:10px;">More about Crewpath</div>
-             <p style="color:var(--text-muted);margin-bottom:12px;">Crewpath is B2B SaaS that helps commercial general contractors eliminate project delays caused by subcontractor miscommunication. Think Slack for the job site, with RFI automation and real-time punch lists built in.</p>
-             <ul style="list-style:none;padding:0;margin:0 0 12px;display:flex;flex-direction:column;gap:6px;">
-               <li style="color:var(--text-muted);padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:var(--accent-bright);font-weight:700;">*</span><strong style="color:var(--text);">$280K ARR, 22% MoM growth</strong>. 14 paying GC customers, zero churn in 18 months</li>
-               <li style="color:var(--text-muted);padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:var(--accent-bright);font-weight:700;">*</span><strong style="color:var(--text);">$180B market</strong>. Miscommunication drives 52% of construction rework costs (McKinsey, 2023)</li>
-               <li style="color:var(--text-muted);padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:var(--accent-bright);font-weight:700;">*</span><strong style="color:var(--text);">Founder-market fit:</strong> Priya spent 6 years as a superintendent at Harlan Build Group; CTO Anand Chakravarty led infra at Jobstack for 4 years</li>
+           <p style="color:var(--text-muted);margin-bottom:12px;">Thanks in advance for passing our blurb on to Sarah at Better Tomorrow. Given her fintech infrastructure portfolio, I think there&rsquo;s a real fit. Let me know if she&rsquo;s interested in a meeting.</p>
+           <p style="color:var(--text-muted);margin-bottom:16px;">Appreciate it. Sara</p>
+           <div style="border-top:1px solid var(--border);padding-top:14px;font-size:14px;">
+             <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">More about Ledgerly</div>
+             <p style="font-size:14px;color:var(--text-muted);margin-bottom:12px;">Ledgerly is the AP automation layer for mid-market SaaS. We save the average customer ~$900K a year in late fees and missed early-pay discounts. We sit on top of the ERP, pull every invoice, code it their way, route approvals. Invoice cycle times drop from hours to minutes.</p>
+             <ul style="font-size:14px;list-style:none;padding:0;margin:0 0 12px;display:flex;flex-direction:column;gap:6px;">
+               <li style="font-size:14px;color:var(--text-muted);padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:var(--accent-bright);font-weight:700;">*</span><strong style="font-size:14px;font-weight:600;color:var(--text);">$480K ARR, 35% MoM growth</strong>. 18 paying mid-market SaaS customers, zero logo churn since launch</li>
+               <li style="font-size:14px;color:var(--text-muted);padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:var(--accent-bright);font-weight:700;">*</span><strong style="font-size:14px;font-weight:600;color:var(--text);">$4.8B AP automation market, 14% annual growth.</strong> Mid-market is the underserved middle: outgrown QuickBooks add-ons, too small for legacy enterprise platforms</li>
+               <li style="font-size:14px;color:var(--text-muted);padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:var(--accent-bright);font-weight:700;">*</span><strong style="font-size:14px;font-weight:600;color:var(--text);">Founder-market fit:</strong> Sara ran finance ops at Gusto from $50M to $300M ARR. CTO Jordan Kim built spend infrastructure at Ramp.</li>
              </ul>
-             <p style="color:var(--text-muted);margin-bottom:14px;">We&rsquo;re raising $2M to fund 18 months of runway, hire 2 account executives and 1 senior engineer, and grow ARR from $280K to $1.5M. $650K committed, including the former CEO of Jobstack.</p>
+             <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">We&rsquo;re raising $3M on a SAFE at $16M post-money. $1.2M committed from Susa Ventures and the former CFO of Looker. Funds get us to $2M ARR with two GTM hires and v2 of the auto-routing engine.</p>
              <div style="border-top:1px solid var(--border);padding-top:10px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
-               <span><strong style="color:var(--text);">Priya Okonkwo</strong></span>
-               <span>priya@crewpath.build</span>
-               <span>(617) 555-0142</span>
+               <span><strong style="color:var(--text);">Sara Patel</strong></span>
+               <span>sara@ledgerly.com</span>
+               <span>(415) 555-0142</span>
                <span style="color:var(--accent-bright);font-weight:700;cursor:pointer;">Teaser Deck &rarr;</span>
                <span style="color:var(--accent-bright);font-weight:700;cursor:pointer;">LinkedIn</span>
              </div>
@@ -5625,7 +5690,7 @@ html, body {
            <div class="clean-cta-icon"><svg class="icon"><use href="#i-clipboard"/></svg></div>
            <div class="clean-cta-body">
              <div class="clean-cta-title">View the annotated example</div>
-             <div class="clean-cta-desc">A polished one-pager for a fictional healthcare SaaS company, with annotations on what makes each choice land.</div>
+             <div class="clean-cta-desc">A polished one-pager for Ledgerly, our running B2B SaaS example, with annotations on what makes each choice land.</div>
            </div>
            <div class="clean-cta-arrow">&rarr;</div>
          </div>
@@ -11051,17 +11116,17 @@ Featured in The Information on Oct 14"></textarea>
          <div style="border-bottom:2px solid #111;padding-bottom:12px;margin-bottom:14px;">
            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;">
              <div>
-               <div style="font-size:26px;font-weight:800;color:#111;line-height:1;">Tempo</div>
-               <div style="font-size:13px;color:#555;margin-top:2px;">AI support automation for Shopify Plus brands</div>
+               <div style="font-size:26px;font-weight:800;color:#111;line-height:1;">Ledgerly</div>
+               <div style="font-size:13px;color:#555;margin-top:2px;">AP automation for mid-market SaaS finance teams</div>
              </div>
-             <div style="font-size:10.5px;color:#777;text-align:right;letter-spacing:0.04em;">tempo.ai &middot; Series contact: naomi@tempo.ai</div>
+             <div style="font-size:10.5px;color:#777;text-align:right;letter-spacing:0.04em;">ledgerly.com &middot; Series contact: sara@ledgerly.com</div>
            </div>
-           <div style="font-size:12.5px;font-weight:700;color:#111;margin-top:10px;">Auto-resolves 70%+ of tier-1 tickets in the merchant&rsquo;s own voice. $540K ARR, growing 40% MoM.</div>
+           <div style="font-size:12.5px;font-weight:700;color:#111;margin-top:10px;">Saves the average customer about $900K a year on late fees and missed early-pay discounts. $480K ARR, growing 35% MoM.</div>
            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;">
-             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">$540K ARR</span>
-             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">40% MoM</span>
-             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">23 Plus merchants</span>
-             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">NRR 140%</span>
+             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">$480K ARR</span>
+             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">35% MoM</span>
+             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">18 SaaS customers</span>
+             <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">NRR 145%</span>
              <span style="background:#f4f4f4;border:1px solid #cfcfcf;padding:2px 9px;font-size:10.5px;font-weight:700;border-radius:16px;color:#111;font-family:inherit;">0 logo churn</span>
            </div>
          </div>
@@ -11070,29 +11135,29 @@ Featured in The Information on Oct 14"></textarea>
 
            <div>
              <div style="font-size:9.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin:0 0 4px;">Problem</div>
-             <p style="font-size:11.5px;line-height:1.5;color:#222;margin:0 0 12px;">Mid-market Shopify Plus brands field 8,000+ support tickets a month, 70% of which are &ldquo;where&rsquo;s my order,&rdquo; refund requests, or sizing questions. Offshore reps answer in 12+ hours, CSAT drops, and rep turnover hits 70% annually. With CAC up 3x since 2022, every retained customer matters more than ever.</p>
+             <p style="font-size:11.5px;line-height:1.5;color:#222;margin:0 0 12px;">Mid-market SaaS AP teams process 180+ invoices a week, scattered across email, PDFs, and Slack approvals. Every GL code is mapped by hand and every approval is chased down. The typical company loses close to $900K a year to late fees and missed early-pay discounts. Invoice volume keeps climbing while CFO hiring stays frozen.</p>
 
              <div style="font-size:9.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin:0 0 4px;">Solution</div>
-             <p style="font-size:11.5px;line-height:1.5;color:#222;margin:0 0 8px;">Tempo reads every new ticket, pulls order and customer context from Shopify and Klaviyo, and drafts a brand-voice response in under 5 seconds. We fine-tune on six months of the merchant&rsquo;s resolved tickets, so the voice is theirs from day one.</p>
+             <p style="font-size:11.5px;line-height:1.5;color:#222;margin:0 0 8px;">Ledgerly sits on top of the ERP, pulls every invoice in, codes it the team&rsquo;s way, and routes approvals automatically. We fine-tune on six months of the team&rsquo;s historical invoices, so the GL coding matches their conventions from day one.</p>
              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;">
                <div style="background:#f8f8f8;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;">
-                 <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.06em;">Avg response time</div>
-                 <div style="font-size:12.5px;font-weight:700;color:#111;margin-top:2px;">12 hrs &rarr; 8 min</div>
+                 <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.06em;">Approval cycle</div>
+                 <div style="font-size:12.5px;font-weight:700;color:#111;margin-top:2px;">6 days &rarr; 14 min</div>
                </div>
                <div style="background:#f8f8f8;border:1px solid #e0e0e0;border-radius:4px;padding:7px 10px;">
-                 <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.06em;">CSAT (avg cohort)</div>
-                 <div style="font-size:12.5px;font-weight:700;color:#111;margin-top:2px;">68 &rarr; 92</div>
+                 <div style="font-size:9px;color:#777;text-transform:uppercase;letter-spacing:0.06em;">Auto-coding accuracy</div>
+                 <div style="font-size:12.5px;font-weight:700;color:#111;margin-top:2px;">91%</div>
                </div>
              </div>
 
              <div style="font-size:9.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin:0 0 4px;">Market</div>
-             <p style="font-size:11.5px;line-height:1.5;color:#222;margin:0;">120,000 Shopify Plus merchants globally. At $1,950 average monthly ACV, $2.8B TAM. Broader e-commerce support software was $8.4B in 2023, growing 18% annually. We start on Plus where integration is tightest, then expand to Standard and Hydrogen.</p>
+             <p style="font-size:11.5px;line-height:1.5;color:#222;margin:0;">45,000 mid-market SaaS companies in the US. At $26K average annual ACV, $1.2B beachhead. Broader AP automation was $4.8B in 2023, growing 14% annually. We start with SaaS where the ERP integrations are tightest, then expand into adjacent verticals.</p>
            </div>
 
            <div>
              <div style="font-size:9.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin:0 0 4px;">Traction</div>
-             <div style="font-size:20px;font-weight:800;color:#111;line-height:1;margin-bottom:2px;">$540K ARR</div>
-             <div style="font-size:10.5px;color:#555;margin-bottom:8px;">From $0 four months ago, 40% MoM growth</div>
+             <div style="font-size:20px;font-weight:800;color:#111;line-height:1;margin-bottom:2px;">$480K ARR</div>
+             <div style="font-size:10.5px;color:#555;margin-bottom:8px;">From $0 four months ago, ~35% MoM growth</div>
 
              <svg viewBox="0 0 240 70" style="width:100%;height:auto;margin-bottom:8px;" xmlns="http://www.w3.org/2000/svg">
                <defs>
@@ -11102,52 +11167,52 @@ Featured in The Information on Oct 14"></textarea>
                  </linearGradient>
                </defs>
                <line x1="0" y1="68" x2="240" y2="68" stroke="#d0d0d0" stroke-width="0.5"/>
-               <path d="M4,68 L60,49 L116,35 L172,20 L232,4 L232,68 L4,68 Z" fill="url(#arrFill)"/>
-               <path d="M4,68 L60,49 L116,35 L172,20 L232,4" fill="none" stroke="#d69e2e" stroke-width="1.8"/>
+               <path d="M4,68 L60,52 L116,38 L172,22 L232,6 L232,68 L4,68 Z" fill="url(#arrFill)"/>
+               <path d="M4,68 L60,52 L116,38 L172,22 L232,6" fill="none" stroke="#d69e2e" stroke-width="1.8"/>
                <circle cx="4" cy="68" r="2" fill="#d69e2e"/>
-               <circle cx="60" cy="49" r="2" fill="#d69e2e"/>
-               <circle cx="116" cy="35" r="2" fill="#d69e2e"/>
-               <circle cx="172" cy="20" r="2" fill="#d69e2e"/>
-               <circle cx="232" cy="4" r="3" fill="#d69e2e"/>
+               <circle cx="60" cy="52" r="2" fill="#d69e2e"/>
+               <circle cx="116" cy="38" r="2" fill="#d69e2e"/>
+               <circle cx="172" cy="22" r="2" fill="#d69e2e"/>
+               <circle cx="232" cy="6" r="3" fill="#d69e2e"/>
                <text x="4" y="64" font-size="7" fill="#888" font-family="Georgia, serif">$0</text>
-               <text x="60" y="45" font-size="7" fill="#888" font-family="Georgia, serif" text-anchor="middle">$180K</text>
-               <text x="116" y="31" font-size="7" fill="#888" font-family="Georgia, serif" text-anchor="middle">$280K</text>
-               <text x="172" y="16" font-size="7" fill="#888" font-family="Georgia, serif" text-anchor="middle">$390K</text>
-               <text x="228" y="0" font-size="7" fill="#d69e2e" font-family="Georgia, serif" font-weight="bold" text-anchor="end">$540K</text>
+               <text x="60" y="48" font-size="7" fill="#888" font-family="Georgia, serif" text-anchor="middle">$120K</text>
+               <text x="116" y="34" font-size="7" fill="#888" font-family="Georgia, serif" text-anchor="middle">$240K</text>
+               <text x="172" y="18" font-size="7" fill="#888" font-family="Georgia, serif" text-anchor="middle">$360K</text>
+               <text x="228" y="2" font-size="7" fill="#d69e2e" font-family="Georgia, serif" font-weight="bold" text-anchor="end">$480K</text>
              </svg>
 
              <ul style="font-size:11px;line-height:1.45;color:#222;margin:0 0 12px;padding-left:14px;">
-               <li>23 Shopify Plus paying customers at $1,950 avg monthly ACV</li>
-               <li>71% tier-1 auto-resolution rate, targeting 85% by Q4</li>
-               <li>NRR 140% from volume-pack expansion inside the base</li>
+               <li>18 mid-market SaaS customers at $26K avg annual ACV</li>
+               <li>91% auto-coding accuracy, targeting 95% by Q4</li>
+               <li>NRR 145% as customer invoice volume scales inside the base</li>
                <li>Zero logo churn to date</li>
              </ul>
 
              <div style="font-size:9.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin:0 0 4px;">Team</div>
-             <p style="font-size:11px;line-height:1.5;color:#222;margin:0 0 6px;"><strong>Naomi Chen, CEO.</strong> Five years as a product lead at Zendesk on their self-service AI. Grew a DTC apparel brand to $12M ARR, sold it in 2021.</p>
-             <p style="font-size:11px;line-height:1.5;color:#222;margin:0;"><strong>David Park, CTO.</strong> Former staff engineer at Shopify on fulfillment. Three patents on LLM fine-tuning.</p>
+             <p style="font-size:11px;line-height:1.5;color:#222;margin:0 0 6px;"><strong>Sara Patel, CEO.</strong> Five years running finance ops at Gusto, scaled AP from $50M to $300M ARR. Knows where every minute of an AP team&rsquo;s day goes.</p>
+             <p style="font-size:11px;line-height:1.5;color:#222;margin:0;"><strong>Jordan Kim, CTO.</strong> Former staff engineer at Ramp on the spend automation team. Three years at NetSuite before that. Three patents on document-to-GL machine learning.</p>
            </div>
          </div>
 
          <div style="margin-top:14px;background:#fffbea;border:1px solid #e8c466;border-left:4px solid #d69e2e;border-radius:4px;padding:10px 16px;">
            <div style="font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#92701a;margin-bottom:4px;">The Ask</div>
-           <p style="font-size:11.5px;line-height:1.5;color:#111;margin:0 0 4px;"><strong>Raising $3M.</strong> SAFE at $16M post-money cap. $600K committed from Afore Capital, Susa Ventures, and an operator angel from the Shopify ecosystem.</p>
-           <p style="font-size:10.5px;line-height:1.5;color:#444;margin:0;"><strong>Use of funds:</strong> $500K GTM (first two sales hires, Shopify App Store launch). $1.5M engineering (v2 of the fine-tuning pipeline). $1M runway to $2M ARR.</p>
+           <p style="font-size:11.5px;line-height:1.5;color:#111;margin:0 0 4px;"><strong>Raising $3M.</strong> SAFE at $16M post-money cap. $1.2M committed from Susa Ventures and the former CFO of Looker (operator angel).</p>
+           <p style="font-size:10.5px;line-height:1.5;color:#444;margin:0;"><strong>Use of funds:</strong> $500K GTM (first two sales hires, NetSuite and Sage Intacct App Marketplace launches). $1.5M engineering (v2 auto-routing engine, broader ERP coverage). $1M runway to $2M ARR.</p>
          </div>
 
          <div style="margin-top:10px;padding:8px 14px;background:#f9f9f9;border-left:3px solid #d69e2e;font-size:11px;line-height:1.5;color:#333;font-style:italic;">
-           &ldquo;Tempo cleared 62% of our tier-1 queue inside 30 days. Our CX lead stopped working weekends and started shipping proactive retention campaigns.&rdquo;
-           <div style="margin-top:3px;font-style:normal;color:#777;font-size:9.5px;">&mdash; Jordan Vega, Head of CX at Hearth &amp; Hand (design partner, now paying customer)</div>
+           &ldquo;Ledgerly cleared 91% of our invoice queue in the first month. Our AP lead got two days a week back and started running real cash-position analysis instead of typing GL codes.&rdquo;
+           <div style="margin-top:3px;font-style:normal;color:#777;font-size:9.5px;">&mdash; Maya Reyes, VP Finance at Beacon Analytics (design partner, now paying customer)</div>
          </div>
 
          <div style="margin-top:10px;display:grid;grid-template-columns:1.4fr 1fr;gap:16px;border-top:1px solid #e0e0e0;padding-top:10px;">
            <div>
              <div style="font-size:8.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin-bottom:2px;">Customers include</div>
-             <div style="font-size:10px;color:#444;line-height:1.4;">Meridian Goods &middot; Orbit Outdoor &middot; Stride Apparel &middot; Common Grounds &middot; Pacific Standard</div>
+             <div style="font-size:10px;color:#444;line-height:1.4;">Beacon Analytics &middot; Helix HR &middot; Pipeline OS &middot; Forecastly &middot; Amber Sales</div>
            </div>
            <div>
              <div style="font-size:8.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#111;margin-bottom:2px;">Advised by</div>
-             <div style="font-size:10px;color:#444;line-height:1.4;">Priya Sharma (fmr VP Support, Klaviyo) &middot; Marcus Webb (fmr CEO, Parker &amp; Reed, Shopify Plus exit 2023)</div>
+             <div style="font-size:10px;color:#444;line-height:1.4;">Maria Sanchez (fmr VP Finance, Datadog) &middot; Tom Bridges (fmr CFO, Looker, Google acquisition 2019)</div>
            </div>
          </div>
 
