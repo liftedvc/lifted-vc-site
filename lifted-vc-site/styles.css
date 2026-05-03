@@ -105,8 +105,8 @@ section.tight { padding: 100px 0; }
 .serif { font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; }
 
 h1, h2, h3, h4 {
-  font-family: var(--serif);
-  font-weight: 400;
+  font-family: var(--sans);
+  font-weight: 500;
   letter-spacing: -0.025em;
   margin: 0;
 }
