@@ -1,0 +1,3918 @@
+/* Playbook extras — small component additions on top of theatre.css.
+   Same vocabulary: paper white, hairlines, JetBrains Mono labels, Source Serif 4 body.
+   Used for chapter-content shapes the original Theatre didn't ship a primitive for. */
+
+/* ============================================================
+   GROUPS — labelled column stack (e.g. Lead candidates / Follow-on / Skip)
+   Same idiom as .beats but with a header band per column.
+   ============================================================ */
+.groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 28px 0 12px;
+}
+@media (max-width: 980px) {
+  .groups { grid-template-columns: 1fr; gap: 16px; }
+}
+.group {
+  background: var(--paper-soft, #f4efe6);
+  border: 1px solid var(--rule, #d9d2c2);
+  border-radius: 2px;
+  padding: 22px 22px 6px;
+}
+.group__head {
+  border-bottom: 1px solid var(--rule, #d9d2c2);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.group__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--molten, #d63d10);
+  padding: 4px 8px;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  margin-bottom: 10px;
+}
+.group--neutral .group__label { color: var(--ink-3, #6b675e); }
+.group--warn   .group__label  { color: #b85a00; }
+.group__sub {
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-2, #3a3833);
+  margin: 0;
+}
+.group__items > div {
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--rule, #d9d2c2);
+}
+.group__items > div:last-child { border-bottom: none; }
+.group__item-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink-1, #19170f);
+  margin-bottom: 6px;
+}
+.group__item-name .group__item-tag {
+  display: inline-block;
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #b85a00;
+  border: 1px solid #b85a00;
+  border-radius: 1px;
+  padding: 1px 5px;
+  vertical-align: middle;
+}
+.group__item-desc {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2, #3a3833);
+  margin: 0 0 8px;
+}
+.group__item-stage {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3, #6b675e);
+}
+
+/* ============================================================
+   TIER STRIP — 3-cell tier summary (Tier 1 / 2 / 3)
+   ============================================================ */
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+@media (max-width: 720px) { .tiers { grid-template-columns: 1fr; } }
+.tier {
+  border: 1px solid var(--rule, #d9d2c2);
+  background: var(--paper, #faf7f0);
+  padding: 18px 20px;
+  border-radius: 2px;
+}
+/* Tier 1 ("passes all") gets a sage accent — green = verified / high-conviction.
+   Reserves yellow for brand highlights and keeps the meaning clear. */
+.tier--accent {
+  background: var(--sage-tint);
+  border-color: var(--sage-deep);
+}
+/* Tier name is the meaning ("passes all" / "fails one" / "fails 2+") so it
+   carries proper heading weight. Percentage is supporting stat. */
+.tier__name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  text-transform: none;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.tier--accent .tier__name { color: var(--sage-deep); }
+.tier__pct {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+.tier--accent .tier__pct { color: var(--sage-deep); }
+.tier__desc {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2, #3a3833);
+  margin: 0;
+}
+
+/* ============================================================
+   CTA STRIP — large action prompts (e.g. "Build with AI", "Skip filtering")
+   ============================================================ */
+.cta-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.cta-strip--single { grid-template-columns: 1fr; }
+@media (max-width: 720px) { .cta-strip { grid-template-columns: 1fr; } }
+
+/* Default CTA — quiet white card with hairline border + teal arrow */
+.cta {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--rule, #e9e8e3);
+  border-radius: 8px;
+  padding: 20px 22px;
+  text-align: left;
+  cursor: pointer;
+  transition: background .12s ease, border-color .12s ease;
+  font-family: inherit;
+  width: 100%;
+  color: var(--ink, #0a0a0a);
+}
+.cta:hover {
+  background: var(--paper-2, #faf7ef);
+  border-color: var(--cobalt, #3d5c66);
+}
+/* Anchor variant — when a CTA links to an external URL instead of triggering
+   a handler. Strips the default <a> underline and keeps the button look. */
+a.cta,
+.cta--link {
+  text-decoration: none;
+}
+
+/* Example variant — sky-tinted card with cobalt accent for inline examples
+   that need more visual weight than the quiet default but less than molten.
+   Used when the example is the meaningful payload of the section. */
+.cta--example {
+  background: var(--sky-tint, #eaf2ff);
+  border: 2px solid var(--cobalt, #3d5c66);
+  border-radius: 10px;
+  padding: 22px 24px;
+  position: relative;
+}
+.cta--example::before {
+  content: "Example";
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  padding: 2px 10px;
+  background: var(--cobalt, #3d5c66);
+  color: var(--paper, #ffffff);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+.cta--example:hover {
+  background: var(--sky, #d6e7ff);
+  border-color: var(--cobalt-deep, #2a414a);
+}
+.cta--example .cta__title {
+  color: var(--ink, #0a0a0a);
+  font-size: 18px;
+}
+.cta--example .cta__desc { color: var(--ink-2, #2a2a2a); }
+.cta--example .cta__arrow { color: var(--cobalt, #3d5c66); font-weight: 700; }
+
+/* Loud variant — yellow card with teal pill arrow (Talkiatry pattern) */
+.cta--molten {
+  background: var(--molten, #edb300);
+  border-color: var(--molten, #edb300);
+  color: var(--ink, #0a0a0a);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.cta--molten::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 30% at 80% 30%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(ellipse 60% 30% at 20% 80%, rgba(0,0,0,0.04), transparent 60%);
+  pointer-events: none;
+}
+.cta--molten:hover {
+  background: var(--molten-deep, #c89500);
+  border-color: var(--molten-deep, #c89500);
+}
+.cta__icon {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--rule, #e9e8e3);
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--paper, #ffffff);
+  color: var(--ink, #0a0a0a);
+  position: relative;
+  z-index: 1;
+}
+.cta--molten .cta__icon {
+  background: rgba(255,255,255,0.55);
+  border-color: rgba(0,0,0,0.12);
+  color: var(--ink, #0a0a0a);
+}
+.cta__icon svg { width: 22px; height: 22px; }
+/* Logo variant — the icon box becomes a frame for an external brand mark
+   (e.g. YC logo on the Pitch Deck CTA). The image fills the box edge-to-edge
+   and brings its own background, so we drop the inner padding + border. */
+.cta__icon--logo {
+  padding: 0;
+  background: transparent;
+  border-color: transparent;
+  overflow: hidden;
+}
+.cta__icon--logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.cta__body { flex: 1; min-width: 0; position: relative; z-index: 1; }
+.cta__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: inherit;
+  letter-spacing: -0.005em;
+}
+.cta__desc {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-3, #6a6a66);
+}
+.cta--molten .cta__desc { color: var(--ink-2, #2a2a2a); }
+
+/* Footer note attached to a CTA — quiet, smaller, sits below the desc.
+   Used when a CTA needs a "works with X / Y / Z" qualifier. */
+.cta__note {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--rule);
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-3, #6a6a66);
+}
+.cta__note a {
+  color: var(--cobalt);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cta__note a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.cta--molten .cta__note {
+  border-top-color: rgba(0,0,0,0.18);
+  color: var(--ink-2, #2a2a2a);
+}
+
+/* Default arrow is just a glyph; molten variant turns it into a teal pill. */
+.cta__arrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  color: var(--cobalt, #3d5c66);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.cta--molten .cta__arrow {
+  background: var(--cobalt, #3d5c66);
+  color: white;
+  padding: 9px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.cta--molten:hover .cta__arrow {
+  background: var(--cobalt-deep, #2a4048);
+}
+
+/* ============================================================
+   TIP — contained advice callout. Uses sky as default color so
+   it doesn't double up on the yellow we lean on elsewhere.
+   The eyebrow floats as a "tab pill" above the top edge of the card.
+
+   Variants: .tip (default sky), .tip--sage, .tip--coral, .tip--molten.
+   ============================================================ */
+.tip {
+  --tip-bg:   var(--sky-tint);
+  --tip-edge: var(--sky-deep);
+
+  position: relative;
+  max-width: 880px;
+  margin: var(--space-8) auto;
+  background: var(--tip-bg);
+  border: 1.5px solid var(--tip-edge);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-7) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.tip--sage    { --tip-bg: var(--sage-tint);   --tip-edge: var(--sage-deep); }
+.tip--coral   { --tip-bg: var(--coral-tint);  --tip-edge: var(--coral-deep); }
+.tip--molten  { --tip-bg: var(--molten-tint); --tip-edge: var(--molten-deep); }
+/* Neutral grey — for "Note" / "Running example" / "Research" callouts that
+   carry reference info, not advice. The quietest variant. */
+.tip--neutral { --tip-bg: var(--paper-2);     --tip-edge: var(--ink-3); }
+.tip--neutral .tip__eyebrow { color: var(--paper); }
+
+.tip__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+/* The eyebrow floats out of the top of the card as a pill — like a folder tab.
+   Gives the callout visual identity without leaning on a colored background band. */
+.tip__eyebrow {
+  position: absolute;
+  top: -14px;
+  left: var(--space-6);
+  background: var(--tip-edge);
+  color: white;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  font-weight: 700;
+  align-self: flex-start;
+}
+.tip__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.014em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+}
+.tip__body {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+}
+.tip__body strong { color: var(--ink); font-weight: 700; }
+.tip__body a {
+  color: var(--tip-edge);
+  font-weight: 600;
+  text-decoration: none;
+}
+.tip__body a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Backwards-compatible alias for older .tip__chip markup. */
+.tip__chip {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--tip-edge, var(--sky-deep));
+}
+
+/* ============================================================
+   PB-SEARCH — topbar search affordance.
+   Compact pill on default that expands on hover or focus into a real
+   typeable input. Typing filters across every chapter + section and
+   shows results in a dropdown that overlays the topbar. Replaces the
+   legacy non-typing .th-search button.
+   ============================================================ */
+.pb-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  height: 36px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  background: var(--paper-2);
+  /* Compact default: just enough for the icon + ⌘K kbd with breathing room.
+     The input lives in the middle but is faded out + zero-width until hover. */
+  width: 112px;
+  flex-shrink: 0;
+  transition: width 0.2s ease, background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+.pb-search:hover,
+.pb-search.is-expanded {
+  width: 460px;
+  background: var(--paper);
+  border-color: var(--cobalt);
+  box-shadow: 0 6px 22px rgba(20, 22, 28, 0.12);
+  /* Higher z so the expansion floats over the scenebar without pushing layout. */
+  z-index: 25;
+}
+.pb-search__icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+.pb-search:hover .pb-search__icon,
+.pb-search.is-expanded .pb-search__icon {
+  color: var(--cobalt);
+}
+.pb-search__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--ink);
+  min-width: 0;
+  padding: 0;
+  /* Faded out while pill is collapsed; opacity rather than display so the
+     ⌘K shortcut can still focus the field and trigger the expansion. */
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.pb-search:hover .pb-search__input,
+.pb-search.is-expanded .pb-search__input {
+  opacity: 1;
+}
+.pb-search__input::placeholder {
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.pb-search__input::-webkit-search-cancel-button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+.pb-search__kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  flex-shrink: 0;
+}
+.pb-search__results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(20, 22, 28, 0.10), 0 4px 8px rgba(20, 22, 28, 0.06);
+  z-index: 220;
+  max-height: 480px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.pb-search__result {
+  display: grid;
+  grid-template-columns: 70px 1fr 24px;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.1s ease;
+}
+.pb-search__result:last-child { border-bottom: none; }
+.pb-search__result:hover,
+.pb-search__result:focus-visible,
+.pb-search__result.is-active {
+  background: var(--paper-2);
+  outline: none;
+}
+.pb-search__match {
+  background: var(--molten-tint);
+  color: var(--ink);
+  border-radius: 2px;
+  padding: 0 2px;
+  font-weight: 700;
+}
+.pb-search__results--empty {
+  padding: var(--space-5) var(--space-4);
+}
+.pb-search__empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: left;
+}
+.pb-search__empty-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.pb-search__empty-body {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.pb-search__empty-body strong { color: var(--ink); font-weight: 600; }
+.pb-search__result-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--molten);
+  font-weight: 700;
+}
+.pb-search__result-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.pb-search__result-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pb-search__result-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pb-search__result-snippet {
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin-top: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pb-search__result-arrow {
+  color: var(--ink-3);
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+@media (max-width: 980px) {
+  .pb-search { width: 44px; padding: 0; justify-content: center; }
+  .pb-search:hover,
+  .pb-search.is-expanded { width: 320px; padding: 0 var(--space-3); }
+  .pb-search:not(.is-expanded):not(:hover) .pb-search__kbd {
+    display: none;
+  }
+}
+
+/* Transport prev-slot placeholder used when the current view has no
+   meaningful "back" target (e.g. on home). Holds the grid slot so the
+   center label and next button stay symmetric. */
+.transport__btn--placeholder {
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   PLAYBOOK HOME — chapter index.
+   The home renders inside the same .sub-split container that every
+   chapter sub uses, so Cue + Lede + ActMarker styles flow through.
+   The chapter list itself is a grid of cards styled to match the
+   investor-card vocabulary (numeral eyebrow, large display title,
+   serif body, hover lift, accent stripe at the bottom).
+   ============================================================ */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-5);
+  margin: 0 0 var(--space-7);
+}
+.chapter-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6) var(--space-7);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-family: inherit;
+  position: relative;
+  transition: border-color 0.12s ease, transform 0.12s ease, background 0.12s ease;
+}
+.chapter-card::after {
+  content: "";
+  position: absolute;
+  left: var(--space-6);
+  right: var(--space-6);
+  bottom: var(--space-3);
+  height: 3px;
+  border-radius: 2px;
+  background: var(--molten);
+  opacity: 0.5;
+}
+.chapter-card:hover:not(:disabled) {
+  border-color: var(--cobalt);
+  background: var(--paper-2);
+  transform: translateY(-1px);
+}
+.chapter-card.is-locked {
+  opacity: 0.5;
+  cursor: default;
+}
+.chapter-card.is-locked::after {
+  background: var(--ink-3);
+}
+.chapter-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.chapter-card__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--molten);
+}
+.chapter-card.is-locked .chapter-card__num { color: var(--ink-3); }
+.chapter-card__meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.chapter-card__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+}
+.chapter-card__desc {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+  flex: 1;
+}
+.chapter-card__arrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+.chapter-card.is-locked .chapter-card__arrow { color: var(--ink-3); }
+
+@media (max-width: 720px) {
+  .chapter-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   RESUME BLOCK — featured chapter-card surfaced above the grid.
+   Same vocabulary as the chapter cards (numeral eyebrow, display
+   title, serif desc, accent stripe) but bigger and tinted sky so
+   it reads as the primary "next move" affordance. The "Pick up
+   where you left off" / "Start here" label sits above the card
+   as a separate eyebrow, not inside it.
+   ============================================================ */
+.resume-block {
+  margin: var(--space-7) 0 var(--space-8);
+}
+.resume-block__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--sky-deep);
+  margin-bottom: var(--space-3);
+}
+.chapter-card--featured {
+  background: var(--sky-tint);
+  border-color: var(--sky-deep);
+  border-width: 1.5px;
+  padding: var(--space-7) var(--space-7) var(--space-8);
+  gap: var(--space-4);
+}
+.chapter-card--featured::after {
+  background: var(--sky-deep);
+  opacity: 1;
+  height: 4px;
+}
+.chapter-card--featured:hover:not(:disabled) {
+  background: var(--paper);
+  border-color: var(--sky-deep);
+}
+.chapter-card--featured .chapter-card__num {
+  color: var(--sky-deep);
+  font-size: 12px;
+}
+.chapter-card--featured .chapter-card__meta {
+  color: var(--sky-deep);
+  font-size: 11px;
+}
+.chapter-card--featured .chapter-card__name {
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.chapter-card--featured .chapter-card__desc {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 56ch;
+}
+.chapter-card__progress {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--sky-deep);
+  margin-top: var(--space-2);
+}
+.chapter-card__progress strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.chapter-card--featured .chapter-card__arrow {
+  font-size: 13px;
+  color: var(--sky-deep);
+  margin-top: var(--space-3);
+}
+
+/* Make brand area in topbar feel clickable */
+.th-brand:focus-visible {
+  outline: 2px solid var(--molten, #d63d10);
+  outline-offset: 4px;
+}
+
+/* ============================================================
+   BRAND DROPDOWN — hover the topbar brand to jump between chapters
+   ============================================================ */
+.th-brand-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.th-brand-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 420px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 32px rgba(20, 22, 28, 0.10), 0 4px 8px rgba(20, 22, 28, 0.06);
+  overflow: hidden;
+  /* Hidden by default — fade + slide in on hover. */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  pointer-events: none;
+}
+.th-brand-wrap:hover .th-brand-menu,
+.th-brand-wrap:focus-within .th-brand-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.th-brand-menu__item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-display);
+  color: var(--ink);
+  transition: background 0.1s ease, padding 0.1s ease;
+}
+.th-brand-menu__item:last-child {
+  border-bottom: none;
+}
+.th-brand-menu__item:hover:not(:disabled) {
+  background: var(--paper-2);
+  padding-left: calc(var(--space-5) + 4px);
+}
+.th-brand-menu__item:disabled {
+  cursor: default;
+}
+.th-brand-menu__item.is-locked {
+  opacity: 0.45;
+}
+.th-brand-menu__item.is-cur {
+  background: var(--paper-soft, #f4efe6);
+}
+/* Home item — sits above the chapter list, slightly elevated visually so the
+   "jump back to the index" affordance reads clearly. */
+.th-brand-menu__item--home {
+  background: var(--paper-2);
+}
+.th-brand-menu__item--home:hover {
+  background: var(--paper-soft, #f4efe6);
+}
+.th-brand-menu__item--home .th-brand-menu__num {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cobalt);
+}
+.th-brand-menu__item--home .th-brand-menu__name {
+  color: var(--ink);
+  font-weight: 700;
+}
+.th-brand-menu__num {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-3, #6b675e);
+}
+.th-brand-menu__name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.th-brand-menu__meta {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-3, #6b675e);
+}
+
+/* Hover bridge — sits in the gap between brand and menu so cursor doesn't
+   lose hover when moving down. Lives as a sibling of .th-brand-menu (not
+   inside it) so it isn't clipped by the menu's overflow:hidden. Always
+   present and interactive — its only job is to keep wrap:hover active. */
+.th-brand-menu-bridge {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 420px;
+  height: 16px;
+  z-index: 199;
+}
+
+/* ============================================================
+   SUB-SPLIT — three-zone sub-chapter layout
+   Zone 1: Cue (full width, inside container)
+   Zone 2: Split body (reading column | action column)
+   Zone 3: Framework content (full width, ActMarker + BeatsGrid / Warning / etc.)
+   ============================================================ */
+.sub-split {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  /* 0.5 inch (48px) extra padding on each side beyond the original 48px gutter. */
+  padding: 0 calc(var(--space-7) * 2);
+}
+
+/* All Theatre primitives inside .sub-split align to the parent content area.
+   Their default max-width/padding/margin are reset so they fit the container.
+   .tip is excluded — it intentionally caps at 880px and centers itself. */
+.sub-split .cue,
+.sub-split .lede,
+.sub-split .video,
+.sub-split .pull,
+.sub-split .prose,
+.sub-split .act-marker,
+.sub-split .beats,
+.sub-split .warning,
+.sub-split .tiers,
+.sub-split .groups,
+.sub-split .cta-strip,
+.sub-split .sources {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Cue gets a strong underline and consistent margins. */
+.sub-split .cue {
+  margin: 0 0 36px;
+  padding: 56px 0 28px;
+  border-bottom: 1.5px solid var(--ink, #0a0a0a);
+}
+
+/* ActMarker in three-zone — outer padding gone, top margin generous so each
+   section feels distinct. Bump --space-9 (80px) for the full breath. */
+.sub-split .act-marker {
+  margin: var(--space-9) 0 var(--space-5);
+  padding-top: var(--space-5);
+}
+.sub-split .beats {
+  margin-top: 0;
+  margin-bottom: var(--space-7);
+}
+.sub-split .cta-strip {
+  margin-bottom: var(--space-7);
+}
+
+.sub-split__body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+@media (max-width: 980px) {
+  .sub-split__body { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.sub-split__read,
+.sub-split__act {
+  min-width: 0;
+}
+.sub-split__act {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Lede inside .sub-split — left-aligned, max 56ch. Outside body it sits
+   in the container; inside body it fills the reading column. */
+.sub-split .lede {
+  max-width: min(56ch, 100%);
+  margin: 0 0 32px;
+}
+.sub-split__body .lede { max-width: none; margin-bottom: 24px; padding-bottom: 0; }
+.sub-split__body .prose { margin: 0 0 28px; }
+.sub-split__body .pull { margin: 0; }
+.sub-split__body .video { margin: 0; }
+.sub-split__body .cta-strip { margin: 0; grid-template-columns: 1fr; gap: 0; }
+
+/* Tail padding so the content doesn't bleed against the footer */
+.sub-split { padding-bottom: 80px; }
+
+/* Prerequisite / setup card — pill with color-bar bottom (Talkiatry pattern) */
+.sub-act-card {
+  background: var(--paper, #ffffff);
+  border: 1px solid var(--rule, #e9e8e3);
+  border-radius: 24px;
+  padding: 16px 20px 18px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px;
+}
+.sub-act-card::after {
+  content: "";
+  position: absolute;
+  left: 22px; right: 22px;
+  bottom: 7px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--card-accent, var(--molten, #edb300));
+}
+.sub-act-card[data-accent="coral"] { --card-accent: var(--coral, #e5a6a6); }
+.sub-act-card[data-accent="sky"]   { --card-accent: var(--sky, #b3d4e5); }
+.sub-act-card[data-accent="sage"]  { --card-accent: var(--sage, #a4c0af); }
+.sub-act-card__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--ink-3, #6a6a66);
+  padding-top: 3px;
+}
+.sub-act-card__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.005em;
+  color: var(--ink, #0a0a0a);
+}
+.sub-act-card__desc {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-2, #2a2a2a);
+  margin: 0 0 10px;
+}
+
+/* Section sub-head used inside the action column */
+.sub-act-head {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink, #0a0a0a);
+  margin: 0 0 4px;
+}
+.sub-act-head em { font-style: normal; color: var(--molten-deep, #c89500); }
+
+.sub-act-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--ink-3, #6a6a66);
+  margin-bottom: -16px;
+}
+
+/* ============================================================
+   TIER-LIST — banded "ranked groups" layout (used in 5.02 Investor types)
+   Each tier is a horizontal band with a colored identity. Cards inside
+   flow into as many columns as the tier needs.
+   ============================================================ */
+.tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: var(--space-7) 0;
+}
+.investor-tier {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-7);
+  padding: var(--space-6) var(--space-6);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--tier-color, var(--molten));
+  border-radius: var(--radius-md);
+  align-items: start;
+}
+.investor-tier[data-tier="lead"]    { --tier-color: var(--molten); }
+.investor-tier[data-tier="follow"]  { --tier-color: var(--sage); }
+.investor-tier[data-tier="special"] { --tier-color: var(--coral); }
+/* Lower-priority tier where coral would mis-read as a warning.
+   Used in 4.01 "If it helps" priority band. */
+.investor-tier[data-tier="muted"]   { --tier-color: var(--ink-3); }
+
+.investor-tier__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+.investor-tier__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--tier-color, var(--molten));
+  margin-bottom: var(--space-1);
+}
+.investor-tier__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.15;
+}
+.investor-tier__sub {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
+.investor-tier__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+.investor-card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.investor-card:hover {
+  border-color: var(--tier-color, var(--molten));
+  transform: translateY(-1px);
+}
+.investor-card::after {
+  content: "";
+  position: absolute;
+  left: var(--space-5);
+  right: var(--space-5);
+  bottom: var(--space-2);
+  height: 3px;
+  border-radius: 2px;
+  background: var(--tier-color, var(--molten));
+  opacity: 0.5;
+}
+.investor-card__num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+}
+.investor-card__name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  margin: 0;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  line-height: 1.15;
+}
+.investor-card__skip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+.investor-card__desc {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+  flex: 1;
+}
+.investor-card__stage {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-top: 1px dashed var(--rule);
+  padding-top: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+@media (max-width: 720px) {
+  .investor-tier { grid-template-columns: 1fr; gap: var(--space-4); padding: var(--space-5); }
+  .investor-tier__items { grid-template-columns: 1fr; }
+}
+
+/* The .beats--steps variant has been merged into the default .beat treatment
+   in theatre.css — every BeatsGrid now gets the color-cycling hover stripe
+   and small black numerals. Variant class kept for backwards compatibility. */
+
+/* ============================================================
+   FRAMEWORK HIGHLIGHT — wrapper to flag a "primary" framework section.
+   Use to:
+     (a) Distinguish one of two lists in a sub (the foundational one)
+     (b) Alternate visual rhythm: a plain sub is followed by a highlighted sub
+   Default color is sky. Sage variant available for rotating between subs.
+   Yellow is reserved for brand emphasis; coral for warnings.
+   ============================================================ */
+.framework--highlight {
+  --framework-bg: var(--sky-tint);
+  --framework-edge: var(--sky-deep);
+  background: var(--framework-bg);
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--framework-edge);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-7) var(--space-7);
+  margin: var(--space-9) 0 var(--space-7);
+}
+.framework--sage {
+  --framework-bg: var(--sage-tint);
+  --framework-edge: var(--sage-deep);
+}
+/* Reset the ActMarker margins/border inside a highlight — the wrapper
+   provides the visual seal instead. */
+.sub-split .framework--highlight .act-marker {
+  margin: 0 0 var(--space-5);
+  padding-top: 0;
+  border-top: none;
+}
+.sub-split .framework--highlight .act-marker__name em {
+  color: var(--framework-edge);
+}
+/* BeatsGrid inside drops its outer black borders. Cards become white
+   against the tinted wrapper for clear internal contrast. */
+.sub-split .framework--highlight .beats {
+  margin: 0;
+  border-top: none;
+  border-bottom: none;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  overflow: hidden;
+}
+.sub-split .framework--highlight .beat {
+  background: var(--paper);
+}
+
+/* ============================================================
+   TIER-NOTE — quiet inline footnote that sits below the .tiers strip.
+   Less dramatic than .tip--coral; reads as a caption with a small label.
+   ============================================================ */
+.tier-note {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: var(--space-4) 0 var(--space-7);
+  max-width: 880px;
+}
+.tier-note__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--coral-deep);
+  margin-right: var(--space-3);
+}
+.tier-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ============================================================
+   CITE — small attribution line that sits below a fact block.
+   Used in the How Venture Capital Works chapter to keep every
+   factual claim sourced inline, without disrupting reading flow.
+   ============================================================ */
+.cite {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: calc(var(--space-3) * -1) 0 var(--space-7);
+  max-width: 880px;
+}
+
+/* ============================================================
+   TAKEAWAY — "What this means for founders" callout. Sits inside
+   data sections to draw the founder's attention to the practical
+   implication of the numbers above. White card on tinted background
+   creates clean visual hierarchy when used inside .framework--highlight.
+   ============================================================ */
+.takeaway {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--cobalt);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5) var(--space-6);
+  margin: var(--space-6) 0;
+  max-width: 880px;
+}
+.takeaway__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+.takeaway__body {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+.takeaway__body strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   PROSE-LIST — bullet/numbered list styled to read alongside
+   .prose paragraphs. Used in informational chapters where the
+   data is better in list form than in BeatsGrid card form.
+   ============================================================ */
+.prose-list {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  margin: var(--space-4) 0 var(--space-6);
+  padding-left: var(--space-7);
+  max-width: 880px;
+}
+.prose-list li {
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-2);
+}
+.prose-list li::marker {
+  color: var(--ink-3);
+}
+.prose-list strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Compact tip — same family as .tip but tightened down for use as a quieter
+   inline footnote (e.g. heads-up below the tiers strip in 5.04). Floating
+   eyebrow tab still present so it visually belongs to the .tip family. */
+.tip.tip--compact {
+  max-width: 720px;
+  margin: var(--space-5) auto var(--space-7);
+  padding: var(--space-5) var(--space-6);
+  gap: var(--space-3);
+  border-left-width: 4px;
+}
+.tip.tip--compact .tip__head { gap: var(--space-2); }
+.tip.tip--compact .tip__eyebrow {
+  font-size: 11px;
+  padding: 4px 11px;
+  top: -12px;
+}
+.tip.tip--compact .tip__title {
+  font-size: 18px;
+  line-height: 1.25;
+}
+.tip.tip--compact .tip__body {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Side-by-side .tip cards. Drops the vertical margin so two .tip--compact
+   cards can sit in a row beneath a section, breaking out of the centered
+   max-width to fit the available reading column. */
+.tip-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin: var(--space-7) 0;
+  align-items: stretch;
+}
+.tip-row .tip {
+  margin: 0;
+  max-width: none;
+}
+@media (max-width: 720px) {
+  .tip-row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   COMPARE — two-column "weak vs strong" / "neg vs pos" pair.
+   Each column is a card with optional eyebrow + body or bullets,
+   plus an optional audio player and an optional annotation footer.
+   The card itself carries the color identity (dim left for neg,
+   accent left for strong/good).
+   ============================================================ */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+  margin: var(--space-5) 0 var(--space-7);
+}
+@media (max-width: 980px) {
+  .compare { grid-template-columns: 1fr; gap: var(--space-6); }
+}
+.compare__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.compare__card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-top: 6px solid var(--ink-3);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-6) var(--space-6);
+}
+.compare__col--strong .compare__card,
+.compare__col--good .compare__card {
+  background: var(--cobalt-tint);
+  border-top-color: var(--cobalt);
+}
+.compare__col--bad .compare__card {
+  background: var(--coral-tint);
+  border-top-color: var(--coral-deep);
+}
+.compare__col--solo {
+  /* For single-card use of the strong-styled card without a paired neg col */
+  max-width: 820px;
+}
+.compare__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+  margin-bottom: var(--space-3);
+}
+.compare__col--strong .compare__eyebrow,
+.compare__col--good .compare__eyebrow { color: var(--cobalt); }
+.compare__col--bad .compare__eyebrow { color: var(--coral-deep); }
+/* Title sits between eyebrow and body. Used when a Compare card needs to
+   lead with a stat/headline (e.g. Ch6.01 "~1–3% reply rate"). */
+.compare__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+}
+.compare__col--strong .compare__title,
+.compare__col--good .compare__title { color: var(--cobalt); }
+.compare__col--bad .compare__title { color: var(--coral-deep); }
+.compare__body {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+  font-style: italic;
+}
+.compare__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.compare__items li {
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  padding-left: var(--space-4);
+  position: relative;
+}
+.compare__items li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+.compare__annotation {
+  padding: 0 var(--space-3);
+}
+.compare__annotation-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0 0 var(--space-2);
+}
+.compare__col--strong .compare__annotation-title,
+.compare__col--good .compare__annotation-title { color: var(--cobalt); }
+.compare__annotation-body {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+/* ============================================================
+   AUDIO PLAYER — styled audio block with custom button + label + progress.
+   Disabled state is the default for Ch4.02 until the .wav assets ship.
+   ============================================================ */
+.audio-player {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+}
+.audio-player--disabled { opacity: 0.55; }
+.audio-player__btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--paper-2);
+  color: var(--cobalt);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.audio-player__btn:hover:not(:disabled) {
+  background: var(--cobalt-tint);
+  border-color: var(--cobalt);
+}
+.audio-player__btn:disabled { cursor: default; }
+.audio-player__body { min-width: 0; }
+.audio-player__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: var(--space-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.audio-player__progress {
+  height: 3px;
+  background: var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.audio-player__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--cobalt);
+}
+.audio-player__time {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ============================================================
+   PILL STRIP — neutral inline pill chips, no descriptions.
+   Used in 4.05 for the deck-elements row.
+   ============================================================ */
+.pill-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-7);
+}
+.pill-strip__chip {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   EMAIL MOCKUP — high-fidelity forwarded-email artifact.
+   Used in Ch4.03 to show the blurb sitting inside an outbound email.
+   ============================================================ */
+.email-mockup {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin: var(--space-5) 0 var(--space-7);
+  box-shadow: 0 6px 18px rgba(20, 22, 28, 0.04);
+  font-family: var(--font-display);
+}
+.email-mockup__head {
+  background: var(--paper-3);
+  border-bottom: 1px solid var(--rule);
+  padding: var(--space-3) var(--space-5);
+}
+.email-mockup__row {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.email-mockup__row b { color: var(--ink); font-weight: 700; }
+.email-mockup__row--from { margin-top: 2px; }
+.email-mockup__page { padding: var(--space-5) var(--space-6) var(--space-6); }
+.email-mockup__preamble p {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0 0 var(--space-3);
+}
+.email-mockup__preamble p:last-child { margin-bottom: var(--space-5); }
+.email-mockup__body {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-4);
+}
+.email-mockup__body-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+}
+.email-mockup__body-text {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0 0 var(--space-3);
+}
+.email-mockup__bullets {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.email-mockup__bullets li {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  position: relative;
+  padding-left: var(--space-4);
+}
+.email-mockup__bullet-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--molten-deep);
+  font-weight: 700;
+}
+.email-mockup__bullets strong { color: var(--ink); font-weight: 600; }
+.email-mockup__terms {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0 0 var(--space-4);
+}
+.email-mockup__signature {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.email-mockup__signature strong { color: var(--ink); }
+.email-mockup__signature-link {
+  color: var(--cobalt);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ============================================================
+   BEATSGRID — additions for per-item eyebrow + inline meta.
+   The eyebrow sits above the title in monospace (e.g. "Pillar 01"
+   labels in Ch4.03). The meta sits inline next to the title with
+   a separator dot (e.g. existing 5.03 hard-filter percentages).
+   ============================================================ */
+.beat__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  margin-bottom: var(--space-3);
+}
+.beat__meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  text-transform: none;
+}
+
+/* ============================================================
+   GATE — milestone gate / exit-criteria block.
+   Strong-bordered card with a "lock" icon label and bullet list.
+   Used for chapter milestone gates (Ch7.06, Ch9.03).
+   ============================================================ */
+.gate {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--cobalt);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-7) var(--space-6);
+  margin: var(--space-5) 0 var(--space-7);
+  box-shadow: 0 4px 12px rgba(20, 22, 28, 0.04);
+}
+.gate__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--rule);
+}
+.gate__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--cobalt-tint);
+  border-radius: 50%;
+  color: var(--cobalt);
+  flex-shrink: 0;
+}
+.gate__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.gate__list li {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  padding-left: var(--space-5);
+  position: relative;
+}
+.gate__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 8px;
+  background: var(--cobalt);
+  border-radius: 50%;
+}
+.gate__list strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   FUNNEL STRIP — horizontal staged flow with arrows between cells.
+   Each cell shows a step num, a big count, and a label. Last cell
+   can be marked --success for the goal state.
+   ============================================================ */
+.funnel-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+.funnel-step {
+  flex: 1 1 140px;
+  min-width: 140px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.funnel-step--success {
+  background: var(--sage-tint);
+  border-color: var(--sage-deep);
+}
+.funnel-step__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.funnel-step__count {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1;
+}
+.funnel-step--success .funnel-step__count { color: var(--sage-deep); }
+.funnel-step__label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.funnel-step__arrow {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .funnel-step__arrow { display: none; }
+  .funnel-step { flex-basis: 100%; }
+}
+
+/* ============================================================
+   VIDEO PLACEHOLDER — "Coming soon" state for source video blocks
+   that don't yet have a YouTube id. Same layout slot, greyed,
+   non-interactive.
+   ============================================================ */
+.video--placeholder .video__poster--placeholder {
+  background: linear-gradient(135deg, var(--paper-3) 0%, var(--rule) 100%);
+  cursor: default;
+  filter: saturate(0.4);
+}
+.video--placeholder .video__poster--placeholder .video__play {
+  opacity: 0.45;
+}
+.video--placeholder .video__poster-tag {
+  background: var(--ink-3);
+  color: var(--paper);
+}
+
+/* ============================================================
+   PLAYBOOK MODAL — generic dialog primitive.
+   Used by every click-out handler in playbook-app.jsx. Shares the
+   chapter visual vocabulary: paper white panel, hairline border,
+   var(--radius-lg), JetBrains Mono eyebrow, Inter Tight title,
+   Source Serif body. Backdrop is rgba(0,0,0,0.45) with a 4px blur.
+   md = 640, lg = 880, xl = 1100. Below 720px wide the panel goes
+   full-width minus a 16px gutter.
+   ============================================================ */
+@keyframes pb-modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pb-modal-rise-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.pb-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 7vh 16px 16px;
+  overflow-y: auto;
+  animation: pb-modal-fade-in 0.18s ease;
+}
+
+.pb-modal {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(20, 22, 28, 0.22), 0 6px 16px rgba(20, 22, 28, 0.10);
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  animation: pb-modal-rise-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+}
+.pb-modal--lg { max-width: 880px; }
+.pb-modal--xl { max-width: 1100px; }
+
+@media (max-width: 720px) {
+  .pb-modal,
+  .pb-modal--lg,
+  .pb-modal--xl { max-width: calc(100vw - 32px); }
+  .pb-modal-backdrop { padding: 24px 16px 16px; }
+}
+
+.pb-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  color: var(--cobalt);
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  z-index: 2;
+}
+.pb-modal__close:hover {
+  background: var(--cobalt-tint);
+  border-color: var(--cobalt);
+  color: var(--cobalt-deep);
+}
+.pb-modal__close:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 2px;
+}
+
+.pb-modal__head {
+  padding: var(--space-6) var(--space-7) var(--space-3);
+  border-bottom: 1px solid var(--rule);
+}
+.pb-modal__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  margin-bottom: var(--space-2);
+}
+.pb-modal__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.014em;
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 0;
+  padding-right: var(--space-7); /* breathing room next to close X */
+}
+
+.pb-modal__body {
+  padding: var(--space-6) var(--space-7);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  overflow-y: auto;
+  max-height: 70vh;
+}
+.pb-modal__body p { margin: 0 0 var(--space-4); }
+.pb-modal__body p:last-child { margin-bottom: 0; }
+.pb-modal__body strong { color: var(--ink); font-weight: 700; }
+.pb-modal__body a {
+  color: var(--cobalt);
+  font-weight: 600;
+  text-decoration: none;
+}
+.pb-modal__body a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.pb-modal__foot {
+  padding: var(--space-4) var(--space-7) var(--space-5);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Primary CTA button used inside modal footers and bodies. */
+.pb-modal-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cobalt);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--cobalt);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.pb-modal-cta:hover {
+  background: var(--cobalt-deep);
+  border-color: var(--cobalt-deep);
+  text-decoration: none;
+}
+.pb-modal-cta--ghost {
+  background: transparent;
+  color: var(--cobalt);
+}
+.pb-modal-cta--ghost:hover {
+  background: var(--cobalt-tint);
+  color: var(--cobalt-deep);
+}
+
+/* ============================================================
+   PB-VIDEO-FRAME — 16:9 iframe slot used inside VideoLightbox.
+   ============================================================ */
+.pb-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.pb-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ============================================================
+   PB-MODAL ad-hoc layout helpers used inside modal bodies.
+   Kept as classes (no inline style{{}} in chapter modules) so that
+   the CRM, Metal, ask-form, narrative-example, glossary, and
+   "coming soon" wizard placeholders can all share spacing tokens.
+   ============================================================ */
+.pb-steps {
+  margin: 0 0 var(--space-5);
+  padding-left: var(--space-5);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.pb-steps li { margin-bottom: var(--space-3); }
+.pb-steps li:last-child { margin-bottom: 0; }
+
+.pb-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+}
+.pb-feature-card {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-4);
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+}
+.pb-feature-card__icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.pb-feature-card__name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 4px;
+  letter-spacing: -0.005em;
+}
+.pb-feature-card__desc {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* Ask-a-question form */
+.pb-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+@media (max-width: 720px) { .pb-form-row { grid-template-columns: 1fr; } }
+.pb-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.pb-form-field label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.pb-form-field input,
+.pb-form-field textarea {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.12s ease;
+}
+.pb-form-field input:focus,
+.pb-form-field textarea:focus {
+  outline: none;
+  border-color: var(--cobalt);
+}
+.pb-form-field textarea { resize: vertical; min-height: 110px; }
+.pb-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-2);
+}
+.pb-form-success {
+  background: var(--sage-tint);
+  border: 1px solid var(--sage-deep);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  margin-top: var(--space-3);
+}
+
+/* Narrative example modals — the move-marked highlighted phrase blocks.
+   Wrapped in big decorative quote marks so the example reads as a spoken
+   pitch rather than as exposition. */
+.pb-narrative {
+  background: var(--paper-2);
+  border-left: 3px solid var(--cobalt);
+  border-radius: var(--radius-md);
+  padding: var(--space-7) var(--space-7) var(--space-6);
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  line-height: 2;
+  color: var(--ink);
+  position: relative;
+}
+.pb-narrative::before,
+.pb-narrative::after {
+  position: absolute;
+  font-family: var(--font-serif);
+  font-size: 96px;
+  line-height: 1;
+  color: var(--cobalt);
+  opacity: 0.22;
+  font-weight: 700;
+  pointer-events: none;
+}
+.pb-narrative::before {
+  content: "\201C"; /* left double quote */
+  top: 12px;
+  left: 16px;
+}
+.pb-narrative::after {
+  content: "\201D"; /* right double quote */
+  bottom: -28px;
+  right: 16px;
+}
+.pb-narrative p { margin: 0 0 var(--space-4); }
+.pb-narrative p:last-child { margin-bottom: 0; }
+.pb-narrative__legend {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0 0 var(--space-4);
+}
+.pb-narrative__mark {
+  background: var(--molten-tint);
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+.pb-narrative__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  background: var(--cobalt-tint);
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin: 0 6px;
+  vertical-align: 2px;
+  white-space: nowrap;
+}
+
+/* Traction glossary */
+.pb-gloss-search {
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--rule);
+  z-index: 1;
+}
+.pb-gloss-search input {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 15px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper-2);
+  box-sizing: border-box;
+}
+.pb-gloss-search input:focus { outline: none; border-color: var(--cobalt); }
+.pb-gloss-section {
+  margin-bottom: var(--space-5);
+}
+.pb-gloss-section__name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--rule);
+  margin: 0 0 var(--space-3);
+}
+.pb-gloss-entry {
+  margin-bottom: var(--space-4);
+}
+.pb-gloss-entry__term {
+  font-family: var(--font-display);
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.pb-gloss-entry__term strong { color: var(--cobalt); font-weight: 700; }
+.pb-gloss-entry__term .dim { color: var(--ink-3); font-weight: 400; margin-left: 6px; }
+.pb-gloss-entry__desc {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+.pb-gloss-empty {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--ink-3);
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
+/* "Coming soon" placeholder body — used for wizard handlers that
+   haven't been ported in this pass. */
+.pb-coming-soon {
+  background: var(--molten-tint);
+  border: 1px solid var(--molten-deep);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.pb-coming-soon strong {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--molten-deep);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+/* One-pager example body — bullet list above the rendered page mockup */
+.pb-onepager-list {
+  margin: 0 0 var(--space-5);
+  padding-left: var(--space-5);
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.pb-onepager-list li { margin-bottom: var(--space-3); }
+.pb-onepager-note {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  background: var(--paper-2);
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin: var(--space-4) 0 0;
+}
+
+/* ============================================================
+   ASK FORM additions — bot-field honeypot + error message
+   ============================================================ */
+.pb-form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.pb-form-error {
+  background: var(--coral-tint);
+  border: 1px solid var(--coral-deep);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  color: var(--coral-deep);
+  margin: var(--space-3) 0;
+}
+.pb-modal-cta[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   WIZARDS — shared shell for Why Now, Narrative blurb, AI list
+   builder. Source HTML uses inline-styled `wiz-*` classes; we
+   give them tokenised equivalents under the `.pb-wiz__*` namespace.
+   ============================================================ */
+.pb-wiz__intro {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0 0 var(--space-4);
+}
+.pb-wiz__intro a { color: var(--cobalt); font-weight: 600; }
+.pb-wiz__intro a:hover { text-decoration: underline; }
+
+.pb-wiz__progress {
+  display: flex;
+  gap: 6px;
+  margin: var(--space-4) 0 var(--space-5);
+}
+.pb-wiz__progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--paper-3);
+  border-radius: var(--radius-pill);
+  transition: background-color 0.15s ease;
+}
+.pb-wiz__progress-bar.is-active { background: var(--cobalt); }
+
+.pb-wiz__panel { display: block; }
+
+.pb-wiz__step-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: var(--space-2);
+}
+.pb-wiz__step-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-1);
+}
+.pb-wiz__step-desc {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin-bottom: var(--space-5);
+}
+
+.pb-wiz__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.pb-wiz__field--bordered {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+.pb-wiz__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+@media (max-width: 720px) { .pb-wiz__row { grid-template-columns: 1fr; } }
+
+.pb-wiz__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.pb-wiz__label--soft {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+.pb-wiz__label-soft {
+  font-weight: 400;
+  color: var(--ink-3);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.pb-wiz__hint {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  margin: 0;
+}
+.pb-wiz__hint em { font-style: italic; }
+
+.pb-wiz__input {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.12s ease;
+}
+.pb-wiz__input:focus {
+  outline: none;
+  border-color: var(--cobalt);
+}
+textarea.pb-wiz__input { resize: vertical; min-height: 64px; line-height: 1.5; }
+
+.pb-wiz__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.pb-wiz__radio {
+  display: flex;
+  gap: var(--space-3);
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  align-items: flex-start;
+  background: var(--paper);
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.pb-wiz__radio:hover { border-color: var(--cobalt); }
+.pb-wiz__radio input[type="radio"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--cobalt);
+}
+.pb-wiz__radio.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--paper-2);
+}
+.pb-wiz__radio.is-disabled:hover { border-color: var(--rule); }
+.pb-wiz__radio-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 14.5px;
+}
+.pb-wiz__radio-desc {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+.pb-wiz__radio-disabled-note {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.pb-wiz__nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-5);
+  gap: var(--space-3);
+}
+.pb-wiz__nav--end { justify-content: flex-end; }
+
+.pb-wiz__btn-next,
+.pb-wiz__btn-back {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.pb-wiz__btn-next {
+  background: var(--cobalt);
+  color: var(--paper);
+}
+.pb-wiz__btn-next:hover { background: var(--cobalt-deep); }
+.pb-wiz__btn-back {
+  background: transparent;
+  color: var(--ink-2);
+  border-color: var(--rule);
+}
+.pb-wiz__btn-back:hover { border-color: var(--cobalt); color: var(--cobalt); }
+
+/* AI list-builder tool picker */
+.pb-wiz__tool-picker {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+@media (max-width: 720px) { .pb-wiz__tool-picker { flex-direction: column; } }
+.pb-wiz__tool-btn {
+  flex: 1;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1.5px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  cursor: pointer;
+  font-family: var(--font-display);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.pb-wiz__tool-btn:hover { border-color: var(--cobalt); }
+.pb-wiz__tool-btn.is-active {
+  border-color: var(--cobalt);
+  background: var(--cobalt-tint);
+}
+.pb-wiz__tool-name { font-weight: 700; color: var(--ink); font-size: 14px; }
+.pb-wiz__tool-desc { font-size: 12px; color: var(--ink-3); }
+.pb-wiz__tool-desc a { color: var(--cobalt); font-weight: 600; }
+
+/* CRM checkbox card */
+.pb-wiz__crm-card {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.pb-wiz__crm-card.is-active {
+  border-color: var(--cobalt);
+  background: var(--cobalt-tint);
+}
+.pb-wiz__crm-card input[type="checkbox"] {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--cobalt);
+  cursor: pointer;
+}
+.pb-wiz__crm-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.pb-wiz__crm-desc {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin-top: 3px;
+}
+.pb-wiz__crm-desc a { color: var(--cobalt); font-weight: 600; }
+.pb-wiz__crm-link-row {
+  margin-top: var(--space-2);
+  text-align: right;
+}
+.pb-wiz__crm-link {
+  background: none;
+  border: none;
+  color: var(--cobalt);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.pb-wiz__crm-link:hover { text-decoration: underline; }
+
+.pb-wiz__code {
+  font-family: var(--font-mono);
+  background: var(--paper-3);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12.5px;
+}
+
+/* Output state — green eyebrow + scrollable draft + actions + checklist */
+.pb-wiz__output { margin-top: var(--space-4); }
+.pb-wiz__output-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: var(--space-2);
+}
+.pb-wiz__output-desc {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin-bottom: var(--space-3);
+}
+.pb-wiz__output-desc a { color: var(--cobalt); font-weight: 600; }
+.pb-wiz__output-desc a:hover { text-decoration: underline; }
+.pb-wiz__draft {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+  white-space: pre-wrap;
+  max-height: 360px;
+  overflow-y: auto;
+  margin: 0;
+}
+.pb-wiz__output-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+.pb-wiz__checklist {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+}
+.pb-wiz__checklist-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: var(--space-2);
+}
+.pb-wiz__checklist-body {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.75;
+}
+
+/* ============================================================
+   ONE-PAGER MOCKUP — Ledgerly mockup ported from source HTML
+   lines 10876–10984. Class-based replacement for the inline-styled
+   sample. Renders inside the One-Pager Example modal.
+   ============================================================ */
+.pb-onepager-mockup-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-5);
+}
+.pb-onepager {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 760px;
+  padding: 40px 44px;
+  font-family: var(--font-serif);
+  line-height: 1.45;
+  box-sizing: border-box;
+}
+@media (max-width: 720px) {
+  .pb-onepager { padding: 24px 20px; }
+}
+
+.pb-onepager__head {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+.pb-onepager__head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.pb-onepager__brand {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+.pb-onepager__tagline {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.pb-onepager__contact {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+.pb-onepager__hook {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.pb-onepager__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+.pb-onepager__pill {
+  background: var(--paper-3);
+  border: 1px solid var(--rule);
+  padding: 2px 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+.pb-onepager__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+@media (max-width: 720px) { .pb-onepager__cols { grid-template-columns: 1fr; } }
+.pb-onepager__col { min-width: 0; }
+
+.pb-onepager__label {
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.pb-onepager__label--small { font-size: 8.5px; margin-bottom: 2px; }
+
+.pb-onepager__body {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 12px;
+}
+.pb-onepager__body--last { margin-bottom: 0; }
+.pb-onepager__body--team { font-size: 11px; margin-bottom: 6px; }
+.pb-onepager__body strong { color: var(--ink); font-weight: 700; }
+
+.pb-onepager__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.pb-onepager__metric {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+}
+.pb-onepager__metric-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.pb-onepager__metric-value {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 2px;
+}
+
+.pb-onepager__arr {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.pb-onepager__arr-sub {
+  font-size: 10.5px;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.pb-onepager__chart {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+.pb-onepager__chart-tick {
+  font-size: 7px;
+  fill: var(--ink-3);
+  font-family: var(--font-serif);
+}
+.pb-onepager__chart-tick--accent {
+  fill: var(--molten-deep);
+  font-weight: bold;
+}
+
+.pb-onepager__bullets {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin: 0 0 12px;
+  padding-left: 14px;
+}
+
+.pb-onepager__ask {
+  margin-top: 14px;
+  background: var(--molten-tint);
+  border: 1px solid var(--molten-deep);
+  border-left: 4px solid var(--molten-deep);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+}
+.pb-onepager__ask-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--molten-deep);
+  margin-bottom: 4px;
+}
+.pb-onepager__ask-body {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.pb-onepager__ask-body strong { font-weight: 700; }
+.pb-onepager__ask-use {
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
+.pb-onepager__ask-use strong { color: var(--ink); font-weight: 700; }
+
+.pb-onepager__quote {
+  margin: 10px 0 0;
+  padding: 8px 14px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--molten-deep);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  font-style: italic;
+}
+.pb-onepager__quote cite {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  color: var(--ink-3);
+  font-size: 9.5px;
+}
+
+.pb-onepager__foot {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+}
+@media (max-width: 720px) { .pb-onepager__foot { grid-template-columns: 1fr; } }
+.pb-onepager__foot-body {
+  font-size: 10px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   HABITS-LIST — expandable accordion for Ch3.01's nine best practices.
+   Replaces a wall of stacked cards with a row-by-row preview that
+   expands on click to reveal body + weak/strong compare.
+   ============================================================ */
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+  margin: var(--space-5) 0 var(--space-7);
+}
+.habit-row {
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  transition: background 0.12s ease;
+}
+.habit-row.is-open {
+  background: var(--paper-2);
+}
+.habit-row__head {
+  display: grid;
+  grid-template-columns: 56px 1fr 32px;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: padding 0.12s ease;
+}
+.habit-row:not(.is-open):hover .habit-row__head {
+  background: var(--paper-2);
+}
+.habit-row__num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--molten);
+}
+.habit-row.is-open .habit-row__num { color: var(--cobalt); }
+.habit-row__head-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.habit-row__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.habit-row__lead {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.habit-row__chev {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink-3);
+  text-align: center;
+  line-height: 1;
+}
+.habit-row.is-open .habit-row__chev { color: var(--cobalt); }
+.habit-row__body {
+  padding: 0 var(--space-6) var(--space-6) calc(56px + var(--space-6) + var(--space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.habit-row__body-text {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 70ch;
+}
+.habit-row__compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+@media (max-width: 720px) {
+  .habit-row__head { grid-template-columns: 40px 1fr 24px; padding: var(--space-4); }
+  .habit-row__body { padding: 0 var(--space-4) var(--space-4); }
+  .habit-row__compare { grid-template-columns: 1fr; }
+}
+.habit-row__cmp {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--ink-3);
+  border-radius: var(--radius-md);
+}
+.habit-row__cmp--weak {
+  border-left-color: var(--coral-deep);
+}
+.habit-row__cmp--strong {
+  border-left-color: var(--sage-deep);
+  background: var(--sage-tint);
+}
+.habit-row__cmp-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.habit-row__cmp--weak .habit-row__cmp-label { color: var(--coral-deep); }
+.habit-row__cmp--strong .habit-row__cmp-label { color: var(--sage-deep); }
+.habit-row__cmp-quote {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ============================================================
+   OBJECTIVES — "What you'll learn" preview band. Sits between the Lede
+   and the rest of a chapter's first sub. Quiet horizontal-rule wrapper,
+   monospace eyebrow, arrow-bulleted serif lines. Cobalt arrows mark
+   each line so the affordance reads as "next steps for the reader".
+   ============================================================ */
+.objectives {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: var(--space-5) 0;
+  margin: 0 0 var(--space-7);
+}
+.objectives__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+  margin-bottom: var(--space-3);
+}
+.objectives__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.objectives__list li {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  padding-left: var(--space-5);
+  position: relative;
+}
+.objectives__list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--cobalt);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* ============================================================
+   ACCESSIBILITY — focus-visible states for keyboard navigation.
+   Most interactive primitives already have visible borders or hover
+   states, but explicit focus rings are needed for keyboard users.
+   ============================================================ */
+.cta:focus-visible,
+.chapter-card:focus-visible,
+.tier-list .investor-card:focus-visible,
+.beat:focus-visible,
+.th-scene:focus-visible,
+.th-brand-menu__item:focus-visible,
+.th-ask:focus-visible,
+.transport__btn:focus-visible,
+.pb-search__result:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 2px;
+}
+.pb-search__input:focus-visible {
+  outline: none; /* parent .pb-search border already turns cobalt on focus */
+}
+.pb-modal__close:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 1px;
+}
+/* Screen-reader-only utility for offscreen labels. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   MOBILE — narrow-viewport overrides.
+   Topbar grid relaxes from 280/1fr/240 to a flexible flex layout;
+   the section scenebar becomes horizontally scrollable; chapter cards
+   stack to 1col; the resume CTA shrinks; modals fill the viewport.
+   ============================================================ */
+@media (max-width: 720px) {
+  /* Topbar: brand on the left, Ask + search compressed on the right.
+     The middle section-tabs row is moved below the brand row on phones. */
+  .th-topbar {
+    grid-template-columns: 1fr auto !important;
+    grid-template-rows: 56px 36px;
+    height: auto;
+    padding: 0 var(--space-4);
+    gap: var(--space-2);
+  }
+  .th-brand-wrap { grid-column: 1; grid-row: 1; }
+  .th-topbar__right { grid-column: 2; grid-row: 1; gap: var(--space-2); }
+  .th-scenebar {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    border-top: 1px solid var(--rule);
+    margin: 0 calc(var(--space-4) * -1);
+    padding: 0 var(--space-4);
+  }
+  .th-scene { min-width: 120px; padding: 0 var(--space-3); }
+  .th-scene:first-child { margin-left: 0; border-left: none; }
+  .th-scene:last-child  { margin-right: 0; }
+
+  /* Brand: shrink the wordmark, hide the chevron-bearing sub on phones to
+     save space. Dropdown still works via the brand mark click. */
+  .th-brand__name { font-size: 22px; }
+  .th-brand__sub { font-size: 9px; letter-spacing: 0.14em; }
+
+  /* Cue + Lede: scale down so the title doesn't dominate the viewport. */
+  .cue { padding: var(--space-7) 0 var(--space-5) !important; }
+  .sub-split { padding: 0 var(--space-5) var(--space-7) !important; }
+  .sub-split__body { gap: var(--space-5) !important; }
+  .sub-split .cue { padding: var(--space-7) 0 var(--space-4) !important; margin-bottom: var(--space-5) !important; }
+
+  /* Chapter cards single-column already handled. Featured card scales down. */
+  .chapter-card--featured { padding: var(--space-5) var(--space-5) var(--space-7); }
+  .chapter-card--featured .chapter-card__name { font-size: 24px; }
+  .chapter-card--featured .chapter-card__desc { font-size: 15px; }
+
+  /* Compare: stack columns on phones. */
+  .compare { grid-template-columns: 1fr !important; gap: var(--space-4) !important; }
+
+  /* Tip-row: stack on phones. */
+  .tip-row { grid-template-columns: 1fr; gap: var(--space-4); }
+
+  /* Email mockup: pad less. */
+  .email-mockup__page { padding: var(--space-4) var(--space-4) var(--space-5); }
+
+  /* Modal: fill viewport with a small gutter. */
+  .pb-modal__panel {
+    width: calc(100% - 16px) !important;
+    max-width: none !important;
+    max-height: calc(100vh - 32px);
+  }
+  .pb-modal__body {
+    padding: var(--space-5) var(--space-5) var(--space-6) !important;
+  }
+
+  /* Topbar dropdown becomes full-width sheet on tap. */
+  .th-brand-menu {
+    left: 8px;
+    right: 8px;
+    min-width: 0;
+  }
+
+  /* Funnel: stack vertically on phones (already handled in the
+     existing .funnel-step__arrow display:none rule). Just confirm. */
+  .funnel-step { flex-basis: 100% !important; }
+}
+
+/* ============================================================
+   PRINT — clean stylesheet for users who print sections.
+   Hide chrome (topbar, transport, search, modals); flatten interactive
+   primitives to their static reading state; force light scheme.
+   ============================================================ */
+@media print {
+  .th-topbar,
+  .transport,
+  .th-brand-menu,
+  .th-brand-menu-bridge,
+  .pb-modal,
+  .pb-modal-backdrop,
+  .pb-search,
+  .resume-block {
+    display: none !important;
+  }
+  body, .th-shell, .th-stage, .sub-split {
+    background: white !important;
+    color: black !important;
+  }
+  .sub-split {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  /* Cue: keep the numeral but lighten the underline and shrink. */
+  .sub-split .cue {
+    padding: 0 0 var(--space-3) !important;
+    margin-bottom: var(--space-4) !important;
+    border-bottom-width: 1px !important;
+  }
+  .cue__num { font-size: 32px !important; }
+  .cue__name { font-size: 28px !important; }
+  /* Frameworks lose tinted background to save toner. */
+  .framework--highlight,
+  .framework--sage {
+    background: white !important;
+    border: 1px solid #ccc !important;
+  }
+  /* Tips lose color background, keep border. */
+  .tip {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  /* BeatsGrid items: avoid splitting cards across pages. */
+  .beat { page-break-inside: avoid; }
+  /* Hide the chapter-card hover affordances when printing the home. */
+  .chapter-card { box-shadow: none !important; transform: none !important; }
+  /* Video posters print as a placeholder. */
+  .video__poster { background: #f0f0f0 !important; }
+  .video__poster .video__play { display: none !important; }
+  /* Force backgrounds in light scheme; respect color-adjust where supported. */
+  * {
+    -webkit-print-color-adjust: economy;
+    print-color-adjust: economy;
+  }
+}
+
+/* ============================================================
+   PB-GATE — fullscreen email + signup quiz overlay.
+   Renders before SceneBar/Stage so the playbook content is hidden
+   behind it. Visual vocabulary follows the chapter cards: paper card,
+   hairline rule border, display-style title at top, prose intro,
+   then form fields. Mandatory — backdrop click does NOT close it.
+   Source UI: lines 3601-3629 + handlers 8268-8330.
+   ============================================================ */
+.pb-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background: var(--paper-3);
+  /* Subtle paper pattern to match the playbook surface treatment. */
+  background-image: radial-gradient(
+    circle at 20% 10%,
+    var(--paper-2) 0%,
+    var(--paper-3) 60%
+  );
+  overflow-y: auto;
+}
+.th-shell--gated {
+  /* When the gate is open, the playbook chrome shouldn't be reachable
+     by tab order or assistive tech. The gate sits on top visually,
+     this hides the rest from the accessibility tree. */
+  overflow: hidden;
+}
+.th-shell--gated .th-topbar,
+.th-shell--gated .th-stage,
+.th-shell--gated .transport,
+.th-shell--gated .th-scenebar {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pb-gate__card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-7) var(--space-7) var(--space-7);
+  box-shadow: 0 20px 60px rgba(20, 22, 28, 0.10), 0 6px 16px rgba(20, 22, 28, 0.06);
+  position: relative;
+}
+.pb-gate__card::after {
+  content: "";
+  position: absolute;
+  left: var(--space-7);
+  right: var(--space-7);
+  bottom: var(--space-3);
+  height: 3px;
+  border-radius: 2px;
+  background: var(--molten);
+  opacity: 0.6;
+}
+.pb-gate__brand {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--molten);
+  margin-bottom: var(--space-4);
+}
+.pb-gate__step-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: var(--space-3);
+}
+.pb-gate__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+}
+.pb-gate__intro {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0 0 var(--space-6);
+  max-width: 56ch;
+}
+
+.pb-gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.pb-gate__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.pb-gate__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.pb-gate__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.pb-gate__label-soft {
+  color: var(--ink-4);
+  font-weight: 500;
+}
+.pb-gate__input {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  outline: none;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.pb-gate__input:hover {
+  border-color: var(--cobalt);
+}
+.pb-gate__input:focus {
+  border-color: var(--cobalt-deep);
+  background: var(--paper-2);
+}
+.pb-gate__input.is-error {
+  border-color: var(--coral-deep);
+  background: var(--coral-tint);
+}
+
+.pb-gate__btn {
+  margin-top: var(--space-3);
+  background: var(--cobalt);
+  color: var(--paper);
+  border: 1px solid var(--cobalt);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: var(--space-3) var(--space-6);
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+}
+.pb-gate__btn:hover {
+  background: var(--cobalt-deep);
+  border-color: var(--cobalt-deep);
+  transform: translateY(-1px);
+}
+.pb-gate__btn:focus-visible {
+  outline: 2px solid var(--molten);
+  outline-offset: 2px;
+}
+.pb-gate__fine {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin: var(--space-2) 0 0;
+}
+
+/* Quiz screen — 4-tile stage grid, vocabulary borrowed from
+   .chapter-card / .investor-card. */
+.pb-gate__options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.pb-gate__option {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-5);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  position: relative;
+  transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease;
+}
+.pb-gate__option:hover {
+  border-color: var(--cobalt);
+  background: var(--paper-2);
+  transform: translateY(-1px);
+}
+.pb-gate__option:focus-visible {
+  outline: 2px solid var(--molten);
+  outline-offset: 2px;
+}
+.pb-gate__option-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.pb-gate__option-arrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cobalt);
+}
+
+@media (max-width: 720px) {
+  .pb-gate { padding: var(--space-4); }
+  .pb-gate__card {
+    padding: var(--space-6) var(--space-5) var(--space-6);
+  }
+  .pb-gate__title { font-size: 24px; }
+  .pb-gate__intro { font-size: 15px; }
+  .pb-gate__row { grid-template-columns: 1fr; }
+  .pb-gate__options { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Featured principle · 1.01 layout
+   Used in the chapter intro to pair Principle 01 with the walkthrough
+   video. Card sits in the reading column at the same vertical level
+   as the Video aside on the right.
+   ============================================================ */
+.featured-principle {
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: var(--space-5) var(--space-6);
+  position: relative;
+}
+.featured-principle__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+  margin-bottom: var(--space-3);
+}
+.featured-principle__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 2.6vw, 32px);
+  letter-spacing: -0.018em;
+  margin: 0 0 var(--space-3);
+  line-height: 1.1;
+  color: var(--ink);
+}
+.featured-principle__desc {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* The sub-split body in the intro overrides default heights so the
+   featured principle on the left matches the video height on the right. */
+.intro-principles__top {
+  align-items: stretch;
+}
+.intro-principles__top .sub-split__read {
+  display: flex;
+  flex-direction: column;
+}
+.intro-principles__top .featured-principle {
+  flex: 1;
+}
+
+.intro-principles__rest {
+  margin-top: var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+.intro-principles__rest > .featured-principle {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 720px) {
+  .intro-principles__rest {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ============================================================
+   How-to-work step cards · 1.01 layout
+   Four-card horizontal row used under "How to work through the chapters".
+   Each card has a top color stripe (molten / sky / sage / cobalt cycle)
+   and a big colored step number to give the section more dynamic energy
+   than a default BeatsGrid.
+   ============================================================ */
+.how-to-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+.how-to-step {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: var(--space-5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.how-to-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent, var(--cobalt));
+}
+.how-to-step:nth-child(1) { --accent: var(--molten); }
+.how-to-step:nth-child(2) { --accent: var(--sky-deep); }
+.how-to-step:nth-child(3) { --accent: var(--sage-deep); }
+.how-to-step:nth-child(4) { --accent: var(--cobalt); }
+.how-to-step:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent, var(--cobalt));
+  box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+}
+.how-to-step__num {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent, var(--cobalt));
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+  display: block;
+  line-height: 1;
+}
+.how-to-step__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+  line-height: 1.2;
+}
+.how-to-step__desc {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+.how-to-step__desc a {
+  color: var(--cobalt);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.how-to-step__desc a:hover {
+  color: var(--accent, var(--cobalt));
+}
+@media (max-width: 980px) {
+  .how-to-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .how-to-steps { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Aside-row · tip on the left, content (ActMarker + prose) on right
+   Used in 7.04 to pair the "Two angel personas" tip alongside the
+   "First yes" ActMarker section.
+   ============================================================ */
+.aside-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: var(--space-6);
+  align-items: start;
+  margin-bottom: var(--space-6);
+}
+.aside-row > .tip { margin: 0; }
+.aside-row > .aside-row__main { min-width: 0; }
+.aside-row > .aside-row__main > :first-child { margin-top: 0; }
+.aside-row > .aside-row__main > .prose:last-child { margin-bottom: 0; }
+@media (max-width: 980px) {
+  .aside-row { grid-template-columns: 1fr; gap: var(--space-5); }
+}
+
+/* ============================================================
+   Appendix · Mistakes Index + Glossary
+   ============================================================ */
+
+.chapter-grid--appendix {
+  grid-template-columns: 1fr;
+  margin-top: var(--space-4);
+}
+.chapter-card--appendix {
+  border-color: var(--ink);
+  background: var(--paper);
+}
+.chapter-card--appendix .chapter-card__num {
+  color: var(--cobalt);
+  letter-spacing: 0.08em;
+}
+.th-brand-menu__item--appendix {
+  border-top: 1px solid var(--rule);
+  margin-top: 4px;
+  padding-top: 12px;
+}
+.th-brand-menu__item--appendix .th-brand-menu__num {
+  color: var(--cobalt);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.apx-mistakes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.apx-mistake {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: var(--space-4) var(--space-5);
+  background: var(--paper);
+}
+.apx-mistake__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+.apx-mistake__num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--cobalt);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.apx-mistake__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  flex: 1 1 auto;
+}
+.apx-mistake__link {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cobalt);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.apx-mistake__link:hover {
+  background: var(--sky-tint, #eaf2ff);
+  border-color: var(--cobalt);
+}
+.apx-mistake__pill {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: var(--paper-alt, #f7f5ee);
+}
+.apx-mistake__summary {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.apx-glossary {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.apx-glossary__row {
+  display: grid;
+  grid-template-columns: minmax(180px, 24%) 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.apx-glossary__row:last-child {
+  border-bottom: 0;
+}
+.apx-glossary__term {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.apx-glossary__def {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.apx-glossary__link {
+  display: inline-block;
+  margin-left: 8px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cobalt);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+.apx-glossary__link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .apx-glossary__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}
