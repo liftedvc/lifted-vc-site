@@ -564,6 +564,7 @@ function Video({
   runtime,
   posterTag,
   posterImg,
+  videoId,
   onPlay,
   placeholder
 }) {
@@ -591,6 +592,10 @@ function Video({
       className: "video__meta"
     }, /*#__PURE__*/React.createElement("span", null, "\u25B6 Walkthrough"), /*#__PURE__*/React.createElement("span", null, "Coming soon"), /*#__PURE__*/React.createElement("span", null, "HD")))));
   }
+  // Derive a YouTube thumbnail when a videoId is supplied and no explicit
+  // poster is set. hqdefault.jpg is the most reliable size — maxresdefault
+  // returns 404 for some IDs, hqdefault is always present.
+  const resolvedPoster = posterImg || (videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : null);
   return /*#__PURE__*/React.createElement("div", {
     className: "video"
   }, /*#__PURE__*/React.createElement("div", {
@@ -601,8 +606,8 @@ function Video({
     role: "button",
     tabIndex: 0,
     onKeyDown: e => e.key === "Enter" && onPlay(),
-    style: posterImg ? {
-      backgroundImage: `linear-gradient(180deg, rgba(20,20,22,.18) 0%, rgba(20,20,22,.65) 100%), url(${posterImg})`,
+    style: resolvedPoster ? {
+      backgroundImage: `linear-gradient(180deg, rgba(20,20,22,.18) 0%, rgba(20,20,22,.65) 100%), url(${resolvedPoster})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     } : undefined
@@ -1435,10 +1440,133 @@ function PlaybookModal({
 }
 
 // ============================================================
-// VideoLightbox — PlaybookModal sized "xl" wrapping a 16:9 YouTube
-// iframe that auto-plays. Used by every `openVideoLightbox(id, label)`
-// call across chapter modules.
+// VideoPlayer — global persistent YouTube player with two display modes:
+//   "full"   — full-screen modal with backdrop, used while the user is
+//              actively watching.
+//   "docked" — small fixed bottom-right pill that keeps playing while the
+//              user reads. Click to maximize, X button to fully close.
+//
+// The iframe element stays mounted in the same React tree position across
+// mode changes; only its wrapper's className/style changes. This is what
+// keeps playback continuous across the minimize/maximize transition.
+//
+// Backwards-compat: `VideoLightbox` is exported as an alias to VideoPlayer
+// rendered in `full` mode so older callers still work, but PBApp now uses
+// VideoPlayer directly so it can persist across modal close.
 // ============================================================
+function VideoPlayer({
+  videoId,
+  title,
+  mode,
+  onMinimize,
+  onMaximize,
+  onClose
+}) {
+  if (!mode || mode === "closed" || !videoId) return null;
+  const isFull = mode === "full";
+  const handleBackdrop = e => {
+    if (e.target === e.currentTarget) onMinimize();
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: `video-player video-player--${mode}`,
+    onClick: isFull ? handleBackdrop : undefined,
+    role: isFull ? "dialog" : undefined,
+    "aria-label": isFull ? `Video: ${title || ''}` : undefined
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "video-player__shell",
+    onClick: !isFull ? onMaximize : undefined,
+    role: !isFull ? "button" : undefined,
+    tabIndex: !isFull ? 0 : undefined,
+    onKeyDown: !isFull ? e => e.key === "Enter" && onMaximize() : undefined
+  }, isFull && /*#__PURE__*/React.createElement("header", {
+    className: "video-player__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "video-player__eyebrow"
+  }, "Walkthrough"), /*#__PURE__*/React.createElement("h3", {
+    className: "video-player__title"
+  }, title), /*#__PURE__*/React.createElement("div", {
+    className: "video-player__head-actions"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "video-player__btn",
+    onClick: onMinimize,
+    "aria-label": "Minimize to corner",
+    title: "Keep playing in corner"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M9 21H3v-6"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M21 3l-8 8"
+  }))), /*#__PURE__*/React.createElement("button", {
+    className: "video-player__btn",
+    onClick: onClose,
+    "aria-label": "Close video",
+    title: "Close"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M18 6L6 18M6 6l12 12"
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "video-player__frame"
+  }, /*#__PURE__*/React.createElement("iframe", {
+    src: `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`,
+    title: title || "Video",
+    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    allowFullScreen: true,
+    frameBorder: "0"
+  })), !isFull && /*#__PURE__*/React.createElement("div", {
+    className: "video-player__dock-controls",
+    onClick: e => e.stopPropagation()
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "video-player__btn",
+    onClick: onMaximize,
+    "aria-label": "Expand video",
+    title: "Expand"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M15 3h6v6"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M9 21H3v-6"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M21 3l-7 7"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M3 21l7-7"
+  }))), /*#__PURE__*/React.createElement("button", {
+    className: "video-player__btn",
+    onClick: onClose,
+    "aria-label": "Close video",
+    title: "Close"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M18 6L6 18M6 6l12 12"
+  }))))));
+}
+
+// Backwards-compat shim: existing callers expect a VideoLightbox component.
+// Render VideoPlayer in `full` mode with a single onClose handler that fully
+// stops playback (no minimize behavior here — minimize lives in PBApp).
 function VideoLightbox({
   videoId,
   title,
@@ -1446,21 +1574,14 @@ function VideoLightbox({
   onClose
 }) {
   if (!open) return null;
-  return /*#__PURE__*/React.createElement(PlaybookModal, {
-    open: open,
-    onClose: onClose,
-    eyebrow: "Walkthrough",
+  return /*#__PURE__*/React.createElement(VideoPlayer, {
+    videoId: videoId,
     title: title,
-    size: "xl"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pb-video-frame"
-  }, /*#__PURE__*/React.createElement("iframe", {
-    src: videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : "",
-    title: title || "Video",
-    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-    allowFullScreen: true,
-    frameBorder: "0"
-  })));
+    mode: "full",
+    onMinimize: onClose,
+    onMaximize: () => {},
+    onClose: onClose
+  });
 }
 
 // ============================================================
@@ -1545,6 +1666,7 @@ Object.assign(window, {
   Funnel,
   PlaybookModal,
   VideoLightbox,
+  VideoPlayer,
   StageOnly,
   Objectives
 });
@@ -1638,6 +1760,7 @@ function IntroOverview() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 How to use this playbook"), /*#__PURE__*/React.createElement(Video, {
     title: "How to use this playbook",
+    videoId: "IomhmMsG10s",
     onPlay: () => window.openVideoLightbox?.("IomhmMsG10s", "How to use this playbook")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "intro-principles__rest"
@@ -1809,6 +1932,7 @@ function ARCWhatIs() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 The Authentic FOMO Process"), /*#__PURE__*/React.createElement(Video, {
     title: "The Authentic FOMO Process",
+    videoId: "XPnE35a3w-s",
     onPlay: () => window.openVideoLightbox?.("XPnE35a3w-s", "The Authentic FOMO Process")
   }), /*#__PURE__*/React.createElement(Pull, {
     eyebrow: "The premise",
@@ -1909,6 +2033,7 @@ function ARCFourOutcomes() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 The Four Outcomes"), /*#__PURE__*/React.createElement(Video, {
     title: "The Four Outcomes",
+    videoId: "KM2BHWa490U",
     onPlay: () => window.openVideoLightbox?.("KM2BHWa490U", "The Four Outcomes")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
@@ -2514,6 +2639,7 @@ function CommBestPractices() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Best Practices intro"), /*#__PURE__*/React.createElement(Video, {
     title: "Best Practices intro",
+    videoId: "mRg6E5vDbmk",
     onPlay: () => window.openVideoLightbox?.("mRg6E5vDbmk", "Best Practices intro")
   }))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
@@ -2552,6 +2678,7 @@ function CommProblem() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 The Problem"), /*#__PURE__*/React.createElement(Video, {
     title: "The Problem",
+    videoId: "BjCO1BAti1s",
     onPlay: () => window.openVideoLightbox?.("BjCO1BAti1s", "The Problem")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight"
@@ -2641,6 +2768,7 @@ function CommWhyNow() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Why Now"), /*#__PURE__*/React.createElement(Video, {
     title: "Why Now",
+    videoId: "AmLm5LioP1c",
     onPlay: () => window.openVideoLightbox?.("AmLm5LioP1c", "Why Now")
   }))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
@@ -2823,6 +2951,7 @@ function CommSolution() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 The Solution"), /*#__PURE__*/React.createElement(Video, {
     title: "The Solution",
+    videoId: "S06EPzfLF3g",
     onPlay: () => window.openVideoLightbox?.("S06EPzfLF3g", "The Solution")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight"
@@ -2916,6 +3045,7 @@ function CommMarketSize() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Market Size"), /*#__PURE__*/React.createElement(Video, {
     title: "Market Size",
+    videoId: "AV-HTGhFcwI",
     onPlay: () => window.openVideoLightbox?.("AV-HTGhFcwI", "Market Size")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "tip tip--neutral tip--compact"
@@ -3016,6 +3146,7 @@ function CommTraction() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Your Traction"), /*#__PURE__*/React.createElement(Video, {
     title: "Your Traction",
+    videoId: "0phWMKQfsCM",
     onPlay: () => window.openVideoLightbox?.("0phWMKQfsCM", "Your Traction")
   }))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
@@ -3085,6 +3216,7 @@ function CommTeam() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 The Team"), /*#__PURE__*/React.createElement(Video, {
     title: "The Team",
+    videoId: "0dG2yc2ajDc",
     onPlay: () => window.openVideoLightbox?.("0dG2yc2ajDc", "The Team")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "tip tip--neutral tip--compact"
@@ -3232,6 +3364,7 @@ function CommCompetition() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 The Competition"), /*#__PURE__*/React.createElement(Video, {
     title: "The Competition",
+    videoId: "kQ8hLILlJEQ",
     onPlay: () => window.openVideoLightbox?.("kQ8hLILlJEQ", "The Competition")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "tip tip--neutral tip--compact"
@@ -3774,6 +3907,7 @@ function PrepCollateral() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Collateral prioritization"), /*#__PURE__*/React.createElement(Video, {
     title: "Collateral prioritization",
+    videoId: "5sf5VTGCurI",
     onPlay: () => window.openVideoLightbox?.("5sf5VTGCurI", "Collateral prioritization")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "tip tip--neutral tip--compact"
@@ -4261,6 +4395,7 @@ function PrepDemo() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Demo best practices"), /*#__PURE__*/React.createElement(Video, {
     title: "Demo best practices",
+    videoId: "3lVtP0HRvyA",
     onPlay: () => window.openVideoLightbox?.("3lVtP0HRvyA", "Demo best practices")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
@@ -4651,6 +4786,7 @@ function TLOverview() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 300 vs. 80"), /*#__PURE__*/React.createElement(Video, {
     title: "300 vs. 80",
+    videoId: "BW3BGTtaLug",
     onPlay: () => window.openVideoLightbox?.("BW3BGTtaLug", "300 vs. 80")
   }))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
@@ -4813,6 +4949,7 @@ function TLHardFilters() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Hard Filters"), /*#__PURE__*/React.createElement(Video, {
     title: "Hard Filters",
+    videoId: "32ALAwil7kg",
     onPlay: () => window.openVideoLightbox?.("32ALAwil7kg", "Hard Filters")
   }))), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight"
@@ -4853,6 +4990,7 @@ function TLSoftFilters() {
     className: "sub-act-eyebrow"
   }, "Walkthrough \xB7 Soft Filters"), /*#__PURE__*/React.createElement(Video, {
     title: "Soft Filters",
+    videoId: "gclEoXiYME4",
     onPlay: () => window.openVideoLightbox?.("gclEoXiYME4", "Soft Filters")
   }))), /*#__PURE__*/React.createElement(TLTierStrip, null), /*#__PURE__*/React.createElement("div", {
     className: "tip tip--molten tip--compact"
@@ -8530,16 +8668,14 @@ const {
 // without the dev flag.
 // ============================================================
 const PB_LIVE_LOCKED_IDS = new Set(['pitching',
-// Ch08
-'refine',
 // Ch09
-'pipeline',
+'refine',
 // Ch10
-'dd',
+'pipeline',
 // Ch11
-'close',
+'dd',
 // Ch12
-'fundamentals' // Provisional Ch13. New chapter under review.
+'close' // Ch13
 ]);
 function isPlaybookDevMode() {
   try {
@@ -11156,17 +11292,10 @@ function PBModalRoot({
   onClose
 }) {
   if (!openModal) return null;
-  const {
-    VideoLightbox
-  } = window;
+  // NOTE: video player no longer flows through this modal root. It's rendered
+  // independently at the PBApp root so the iframe persists across full↔docked
+  // transitions without remounting (which would stop YouTube playback).
   switch (openModal.kind) {
-    case "video":
-      return /*#__PURE__*/React.createElement(VideoLightbox, {
-        open: true,
-        onClose: onClose,
-        videoId: openModal.payload?.videoId,
-        title: openModal.payload?.title
-      });
     case "crm":
       return /*#__PURE__*/React.createElement(PBCrmModalBody, {
         onClose: onClose
@@ -11257,21 +11386,253 @@ function pbGateNeeded() {
   if (!p || !p.stage) return true;
   return false;
 }
+
+// ============================================================
+// PBLanding — full-page marketing landing that sits before the email
+// capture. Pre-sells the playbook with hero, intro video placeholder,
+// why-it-exists narrative, validation metrics, and customer quotes.
+// Embeds the firstName/lastName/email form at the bottom; on submit
+// it persists to localStorage + sheetSend then calls onComplete to
+// transition the gate into its quiz step.
+// ============================================================
+function PBLanding({
+  onComplete
+}) {
+  const [firstName, setFirstName] = useStatePB('');
+  const [lastName, setLastName] = useStatePB('');
+  const [email, setEmail] = useStatePB('');
+  const [errors, setErrors] = useStatePB({});
+  const submit = e => {
+    if (e && e.preventDefault) e.preventDefault();
+    const fn = firstName.trim();
+    const ln = lastName.trim();
+    const em = email.trim();
+    const next = {};
+    if (!fn) next.firstName = true;
+    if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) next.email = true;
+    setErrors(next);
+    if (Object.keys(next).length > 0) return;
+    const ud = {
+      firstName: fn,
+      lastName: ln,
+      email: em,
+      company: '',
+      createdAt: new Date().toISOString()
+    };
+    try {
+      localStorage.setItem('lifted_user', JSON.stringify(ud));
+    } catch (err) {}
+    try {
+      sheetSend({
+        firstName: ud.firstName,
+        lastName: ud.lastName,
+        email: ud.email,
+        company: '',
+        timestamp: ud.createdAt
+      });
+    } catch (err) {}
+    onComplete();
+  };
+  const scrollToForm = () => {
+    const el = document.getElementById('pb-landing-form');
+    if (el) el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    setTimeout(() => {
+      const input = el && el.querySelector('input');
+      if (input) input.focus();
+    }, 400);
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__container"
+  }, /*#__PURE__*/React.createElement("header", {
+    className: "pb-landing__hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__brand"
+  }, "Lifted \xB7 Fundraising Playbook"), /*#__PURE__*/React.createElement("h1", {
+    className: "pb-landing__title"
+  }, "The end-to-end playbook", /*#__PURE__*/React.createElement("br", null), "for raising venture capital."), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__lede"
+  }, "Most fundraising advice is hyper-focused on one slice: the deck, the target list, the term sheet. What's missing is the connective tissue. This playbook is the full picture, from your first target list to the wired check."), /*#__PURE__*/React.createElement("button", {
+    className: "pb-landing__cta pb-landing__cta--primary",
+    onClick: scrollToForm,
+    type: "button"
+  }, "Get the playbook", /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__cta-arrow",
+    "aria-hidden": "true"
+  }, "\u2192"))), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__section pb-landing__video-section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__eyebrow"
+  }, "From Adam"), /*#__PURE__*/React.createElement("h2", {
+    className: "pb-landing__h2"
+  }, "Why I built this."), /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__video"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__video-poster",
+    "aria-label": "Intro video coming soon"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__video-play",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "40",
+    height: "40",
+    viewBox: "0 0 24 24",
+    fill: "currentColor"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M8 5v14l11-7z"
+  }))), /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__video-tag"
+  }, "Coming soon"))), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__caption"
+  }, "A short intro on what this playbook is and why I built it.")), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__eyebrow"
+  }, "The gap"), /*#__PURE__*/React.createElement("h2", {
+    className: "pb-landing__h2"
+  }, "Most fundraising advice tells you part of the story."), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__body"
+  }, "There is no shortage of great advice on pitch decks, target lists, or term sheets. What is missing is the connective tissue: how each piece fits with the next, and how a real raise actually moves from kickoff to close."), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__body"
+  }, "This playbook is the full arc, end to end. The math behind how VCs operate, the framework that engineers Authentic FOMO, and every step from positioning your story to negotiating the term sheet, presented in the order you will actually need it.")), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__eyebrow"
+  }, "Built on"), /*#__PURE__*/React.createElement("h2", {
+    className: "pb-landing__h2"
+  }, "Years of work, packaged for you."), /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__metrics"
+  }, /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__metric-num"
+  }, "300+"), /*#__PURE__*/React.createElement("h3", {
+    className: "pb-landing__metric-title"
+  }, "Founder coaching calls"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__metric-body"
+  }, "Live conversations with founders running real raises. Every chapter is shaped by what actually works in the room.")), /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__metric-num"
+  }, "VC"), /*#__PURE__*/React.createElement("h3", {
+    className: "pb-landing__metric-title"
+  }, "Top investor thought leadership"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__metric-body"
+  }, "Frameworks and tactics drawn from the partners writing the checks at top-tier funds, distilled for the founder side of the table.")), /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__metric-num"
+  }, "$$"), /*#__PURE__*/React.createElement("h3", {
+    className: "pb-landing__metric-title"
+  }, "My own raises"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__metric-body"
+  }, "Personal experience raising from top-tier VCs, the wins and the losses, applied chapter by chapter.")), /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__metric-num"
+  }, "FF"), /*#__PURE__*/React.createElement("h3", {
+    className: "pb-landing__metric-title"
+  }, "Founders raising at top tier funds"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__metric-body"
+  }, "Tactics shared by founders who have raised from a16z, Sequoia, GV, and others. Real plays, not theory.")))), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__section"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__eyebrow"
+  }, "From founders"), /*#__PURE__*/React.createElement("h2", {
+    className: "pb-landing__h2"
+  }, "What founders are saying."), /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__quotes"
+  }, /*#__PURE__*/React.createElement("blockquote", {
+    className: "pb-landing__quote"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__quote-body"
+  }, "[Customer quote placeholder. This is where a real testimonial will live.]"), /*#__PURE__*/React.createElement("cite", {
+    className: "pb-landing__quote-cite"
+  }, "Founder Name \xB7 Company")), /*#__PURE__*/React.createElement("blockquote", {
+    className: "pb-landing__quote"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__quote-body"
+  }, "[Customer quote placeholder. Another founder testimonial.]"), /*#__PURE__*/React.createElement("cite", {
+    className: "pb-landing__quote-cite"
+  }, "Founder Name \xB7 Company")), /*#__PURE__*/React.createElement("blockquote", {
+    className: "pb-landing__quote"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__quote-body"
+  }, "[Customer quote placeholder. A third testimonial card.]"), /*#__PURE__*/React.createElement("cite", {
+    className: "pb-landing__quote-cite"
+  }, "Founder Name \xB7 Company")))), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__form-section",
+    id: "pb-landing-form"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__eyebrow"
+  }, "Get started"), /*#__PURE__*/React.createElement("h2", {
+    className: "pb-landing__h2"
+  }, "Read the playbook."), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__body"
+  }, "Free, end to end. Your progress saves so you can pick up where you left off."), /*#__PURE__*/React.createElement("form", {
+    className: "pb-landing__form",
+    onSubmit: submit,
+    noValidate: true
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__form-row"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "pb-landing__form-field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__form-label"
+  }, "First name"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: `pb-landing__form-input${errors.firstName ? ' is-error' : ''}`,
+    autoComplete: "given-name",
+    placeholder: "First name",
+    value: firstName,
+    onChange: e => setFirstName(e.target.value)
+  })), /*#__PURE__*/React.createElement("label", {
+    className: "pb-landing__form-field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__form-label"
+  }, "Last name"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "pb-landing__form-input",
+    autoComplete: "family-name",
+    placeholder: "Last name",
+    value: lastName,
+    onChange: e => setLastName(e.target.value)
+  }))), /*#__PURE__*/React.createElement("label", {
+    className: "pb-landing__form-field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__form-label"
+  }, "Email"), /*#__PURE__*/React.createElement("input", {
+    type: "email",
+    className: `pb-landing__form-input${errors.email ? ' is-error' : ''}`,
+    autoComplete: "email",
+    placeholder: "you@company.com",
+    value: email,
+    onChange: e => setEmail(e.target.value)
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "pb-landing__cta pb-landing__cta--primary pb-landing__cta--block"
+  }, "Get the playbook", /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__cta-arrow",
+    "aria-hidden": "true"
+  }, "\u2192")), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__form-fine"
+  }, "No spam, ever. We'll save your progress to this email.")))));
+}
 function PBGate({
   onComplete
 }) {
-  // Two-screen state: 'signin' first, then 'quiz'. Once both are saved
-  // to localStorage we call onComplete to drop the gate.
+  // Two-screen state: 'signin' (rendered as the full PBLanding marketing
+  // page) first, then 'quiz' (centered modal). Once both are saved to
+  // localStorage we call onComplete to drop the gate.
   const startStep = (() => {
     const u = liftedReadUser();
     return u && u.email ? 'quiz' : 'signin';
   })();
   const [step, setStep] = useStatePB(startStep);
-  const [firstName, setFirstName] = useStatePB('');
-  const [lastName, setLastName] = useStatePB('');
-  const [email, setEmail] = useStatePB('');
-  const [company, setCompany] = useStatePB('');
-  const [errors, setErrors] = useStatePB({});
   const cardRef = React.useRef(null);
 
   // Trap keyboard focus inside the gate — without this, Tab would
@@ -11296,38 +11657,6 @@ function PBGate({
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, []);
-  const submitSignin = e => {
-    if (e && e.preventDefault) e.preventDefault();
-    const fn = firstName.trim();
-    const ln = lastName.trim();
-    const em = email.trim();
-    const co = company.trim();
-    const next = {};
-    if (!fn) next.firstName = true;
-    if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) next.email = true;
-    setErrors(next);
-    if (Object.keys(next).length > 0) return;
-    const ud = {
-      firstName: fn,
-      lastName: ln,
-      email: em,
-      company: co,
-      createdAt: new Date().toISOString()
-    };
-    try {
-      localStorage.setItem('lifted_user', JSON.stringify(ud));
-    } catch (err) {}
-    try {
-      sheetSend({
-        firstName: ud.firstName,
-        lastName: ud.lastName,
-        email: ud.email,
-        company: ud.company,
-        timestamp: ud.createdAt
-      });
-    } catch (err) {}
-    setStep('quiz');
-  };
   const pickStage = answer => {
     const stageCode = PB_QUIZ_STAGE_MAP[answer] || 'seed';
     const profile = {
@@ -11352,6 +11681,14 @@ function PBGate({
     } catch (err) {}
     onComplete();
   };
+
+  // Signin = full-page marketing landing (PBLanding). On submit it
+  // transitions to the quiz step which renders as a centered modal.
+  if (step === 'signin') {
+    return /*#__PURE__*/React.createElement(PBLanding, {
+      onComplete: () => setStep('quiz')
+    });
+  }
   return /*#__PURE__*/React.createElement("div", {
     className: "pb-gate",
     role: "dialog",
@@ -11362,70 +11699,7 @@ function PBGate({
     ref: cardRef
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-gate__brand"
-  }, "Lifted \xB7 Fundraising Playbook"), step === 'signin' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", {
-    className: "pb-gate__title",
-    id: "pb-gate-title"
-  }, "Your Fundraising Playbook"), /*#__PURE__*/React.createElement("p", {
-    className: "pb-gate__intro"
-  }, "Enter your details to get started. Your progress will be saved so you can pick up where you left off."), /*#__PURE__*/React.createElement("form", {
-    className: "pb-gate__form",
-    onSubmit: submitSignin,
-    noValidate: true
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "pb-gate__row"
-  }, /*#__PURE__*/React.createElement("label", {
-    className: "pb-gate__field"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pb-gate__label"
-  }, "First name"), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    className: `pb-gate__input${errors.firstName ? ' is-error' : ''}`,
-    autoComplete: "given-name",
-    placeholder: "First name",
-    value: firstName,
-    onChange: e => setFirstName(e.target.value),
-    autoFocus: true
-  })), /*#__PURE__*/React.createElement("label", {
-    className: "pb-gate__field"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pb-gate__label"
-  }, "Last name"), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    className: "pb-gate__input",
-    autoComplete: "family-name",
-    placeholder: "Last name",
-    value: lastName,
-    onChange: e => setLastName(e.target.value)
-  }))), /*#__PURE__*/React.createElement("label", {
-    className: "pb-gate__field"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pb-gate__label"
-  }, "Email"), /*#__PURE__*/React.createElement("input", {
-    type: "email",
-    className: `pb-gate__input${errors.email ? ' is-error' : ''}`,
-    autoComplete: "email",
-    placeholder: "Email address",
-    value: email,
-    onChange: e => setEmail(e.target.value)
-  })), /*#__PURE__*/React.createElement("label", {
-    className: "pb-gate__field"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "pb-gate__label"
-  }, "Company ", /*#__PURE__*/React.createElement("span", {
-    className: "pb-gate__label-soft"
-  }, "(optional)")), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    className: "pb-gate__input",
-    autoComplete: "organization",
-    placeholder: "Company name",
-    value: company,
-    onChange: e => setCompany(e.target.value)
-  })), /*#__PURE__*/React.createElement("button", {
-    type: "submit",
-    className: "pb-gate__btn"
-  }, "Get Started"), /*#__PURE__*/React.createElement("p", {
-    className: "pb-gate__fine"
-  }, "We'll save your progress to this email. No spam, ever."))) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, "Lifted \xB7 Fundraising Playbook"), /*#__PURE__*/React.createElement("div", {
     className: "pb-gate__step-meta"
   }, "Question 1 of 1"), /*#__PURE__*/React.createElement("h1", {
     className: "pb-gate__title",
@@ -11444,7 +11718,7 @@ function PBGate({
   }, opt), /*#__PURE__*/React.createElement("span", {
     className: "pb-gate__option-arrow",
     "aria-hidden": "true"
-  }, "\u2197")))))));
+  }, "\u2197"))))));
 }
 
 // ============================================================
@@ -11696,6 +11970,28 @@ function PBApp() {
   // narrative example id, etc). `closeModal()` resets to null.
   const [openModal, setOpenModal] = useStatePB(null);
   const closeModal = useCallbackPB(() => setOpenModal(null), []);
+  // Video player state lives independently from openModal so the iframe can
+  // persist across full → docked transitions without remounting (which would
+  // stop playback). Modes: "full" (fullscreen overlay), "docked" (corner
+  // pill), or null (closed/unmounted).
+  const [videoPlayer, setVideoPlayer] = useStatePB({
+    videoId: null,
+    title: null,
+    mode: null
+  });
+  const minimizeVideo = useCallbackPB(() => setVideoPlayer(v => ({
+    ...v,
+    mode: 'docked'
+  })), []);
+  const maximizeVideo = useCallbackPB(() => setVideoPlayer(v => ({
+    ...v,
+    mode: 'full'
+  })), []);
+  const closeVideo = useCallbackPB(() => setVideoPlayer({
+    videoId: null,
+    title: null,
+    mode: null
+  }), []);
 
   // Full-text search index: { "<chId>-<subIdx>": "lowercased body text" }
   // Built once at idle by rendering every unlocked sub component into a
@@ -11795,12 +12091,15 @@ function PBApp() {
   // PlaybookModal/VideoLightbox below. Source-content references are
   // tracked in PB_TRACTION_GLOSSARY / PB_EXAMPLE_MODALS / etc above.
   useEffectPB(() => {
-    window.openVideoLightbox = (id, label) => setOpenModal({
-      kind: "video",
-      payload: {
-        videoId: id,
-        title: label
-      }
+    window.openVideoLightbox = (id, label) => setVideoPlayer({
+      videoId: id,
+      title: label,
+      mode: 'full'
+    });
+    window.closeVideoPlayer = () => setVideoPlayer({
+      videoId: null,
+      title: null,
+      mode: null
     });
     window.openExampleModal = id => setOpenModal({
       kind: "example",
@@ -11883,6 +12182,13 @@ function PBApp() {
   }))), /*#__PURE__*/React.createElement(PBModalRoot, {
     openModal: openModal,
     onClose: closeModal
+  }), /*#__PURE__*/React.createElement(window.VideoPlayer, {
+    videoId: videoPlayer.videoId,
+    title: videoPlayer.title,
+    mode: videoPlayer.mode,
+    onMinimize: minimizeVideo,
+    onMaximize: maximizeVideo,
+    onClose: closeVideo
   }));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.createElement(PBApp, null));
