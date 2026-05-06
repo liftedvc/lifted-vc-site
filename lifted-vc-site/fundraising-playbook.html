@@ -1519,7 +1519,7 @@ function VideoPlayer({
   }))))), /*#__PURE__*/React.createElement("div", {
     className: "video-player__frame"
   }, /*#__PURE__*/React.createElement("iframe", {
-    src: `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`,
+    src: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`,
     title: title || "Video",
     allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
     allowFullScreen: true,
@@ -11395,7 +11395,48 @@ function pbGateNeeded() {
 // it persists to localStorage + sheetSend then calls onComplete to
 // transition the gate into its quiz step.
 // ============================================================
+// Shared submission helper used by both the landing page bottom form and
+// the quick-signup lightbox modal. Validates, persists, fires sheetSend,
+// then transitions the gate forward.
+function pbLandingSubmit({
+  firstName,
+  lastName,
+  email,
+  setErrors,
+  onComplete
+}) {
+  const fn = firstName.trim();
+  const ln = lastName.trim();
+  const em = email.trim();
+  const next = {};
+  if (!fn) next.firstName = true;
+  if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) next.email = true;
+  setErrors(next);
+  if (Object.keys(next).length > 0) return false;
+  const ud = {
+    firstName: fn,
+    lastName: ln,
+    email: em,
+    company: '',
+    createdAt: new Date().toISOString()
+  };
+  try {
+    localStorage.setItem('lifted_user', JSON.stringify(ud));
+  } catch (err) {}
+  try {
+    sheetSend({
+      firstName: ud.firstName,
+      lastName: ud.lastName,
+      email: ud.email,
+      company: '',
+      timestamp: ud.createdAt
+    });
+  } catch (err) {}
+  onComplete();
+  return true;
+}
 function PBLanding({
+  onQuickSignup,
   onComplete
 }) {
   const [firstName, setFirstName] = useStatePB('');
@@ -11404,72 +11445,42 @@ function PBLanding({
   const [errors, setErrors] = useStatePB({});
   const submit = e => {
     if (e && e.preventDefault) e.preventDefault();
-    const fn = firstName.trim();
-    const ln = lastName.trim();
-    const em = email.trim();
-    const next = {};
-    if (!fn) next.firstName = true;
-    if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) next.email = true;
-    setErrors(next);
-    if (Object.keys(next).length > 0) return;
-    const ud = {
-      firstName: fn,
-      lastName: ln,
-      email: em,
-      company: '',
-      createdAt: new Date().toISOString()
-    };
-    try {
-      localStorage.setItem('lifted_user', JSON.stringify(ud));
-    } catch (err) {}
-    try {
-      sheetSend({
-        firstName: ud.firstName,
-        lastName: ud.lastName,
-        email: ud.email,
-        company: '',
-        timestamp: ud.createdAt
-      });
-    } catch (err) {}
-    onComplete();
-  };
-  const scrollToForm = () => {
-    const el = document.getElementById('pb-landing-form');
-    if (el) el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    pbLandingSubmit({
+      firstName,
+      lastName,
+      email,
+      setErrors,
+      onComplete
     });
-    setTimeout(() => {
-      const input = el && el.querySelector('input');
-      if (input) input.focus();
-    }, 400);
   };
   return /*#__PURE__*/React.createElement("div", {
     className: "pb-landing"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__container"
-  }, /*#__PURE__*/React.createElement("header", {
+  }, /*#__PURE__*/React.createElement("section", {
     className: "pb-landing__hero"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__hero-text"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__brand"
   }, "Lifted \xB7 Fundraising Playbook"), /*#__PURE__*/React.createElement("h1", {
     className: "pb-landing__title"
   }, "The end-to-end playbook", /*#__PURE__*/React.createElement("br", null), "for raising venture capital."), /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__lede"
-  }, "Most fundraising advice is hyper-focused on one slice: the deck, the target list, the term sheet. What's missing is the connective tissue. This playbook is the full picture, from your first target list to the wired check."), /*#__PURE__*/React.createElement("button", {
+  }, "Most fundraising advice is hyper-focused on one slice: the deck, the target list, the term sheet. This is the full picture, kickoff to wired check."), /*#__PURE__*/React.createElement("button", {
     className: "pb-landing__cta pb-landing__cta--primary",
-    onClick: scrollToForm,
+    onClick: onQuickSignup,
     type: "button"
-  }, "Get the playbook", /*#__PURE__*/React.createElement("span", {
+  }, "Access the playbook", /*#__PURE__*/React.createElement("span", {
     className: "pb-landing__cta-arrow",
     "aria-hidden": "true"
-  }, "\u2192"))), /*#__PURE__*/React.createElement("section", {
-    className: "pb-landing__section pb-landing__video-section"
+  }, "\u2192"))), /*#__PURE__*/React.createElement("aside", {
+    className: "pb-landing__hero-aside"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "pb-landing__eyebrow"
-  }, "From Adam"), /*#__PURE__*/React.createElement("h2", {
-    className: "pb-landing__h2"
-  }, "Why I built this."), /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__video-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__video-eyebrow"
+  }, "From Adam \xB7 Why I built this"), /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__video"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__video-poster",
@@ -11478,28 +11489,26 @@ function PBLanding({
     className: "pb-landing__video-play",
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("svg", {
-    width: "40",
-    height: "40",
+    width: "36",
+    height: "36",
     viewBox: "0 0 24 24",
     fill: "currentColor"
   }, /*#__PURE__*/React.createElement("path", {
     d: "M8 5v14l11-7z"
   }))), /*#__PURE__*/React.createElement("span", {
     className: "pb-landing__video-tag"
-  }, "Coming soon"))), /*#__PURE__*/React.createElement("p", {
-    className: "pb-landing__caption"
-  }, "A short intro on what this playbook is and why I built it.")), /*#__PURE__*/React.createElement("section", {
-    className: "pb-landing__section"
+  }, "Coming soon")))))), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__gap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__gap-head"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__eyebrow"
   }, "The gap"), /*#__PURE__*/React.createElement("h2", {
     className: "pb-landing__h2"
-  }, "Most fundraising advice tells you part of the story."), /*#__PURE__*/React.createElement("p", {
-    className: "pb-landing__body"
-  }, "There is no shortage of great advice on pitch decks, target lists, or term sheets. What is missing is the connective tissue: how each piece fits with the next, and how a real raise actually moves from kickoff to close."), /*#__PURE__*/React.createElement("p", {
-    className: "pb-landing__body"
-  }, "This playbook is the full arc, end to end. The math behind how VCs operate, the framework that engineers Authentic FOMO, and every step from positioning your story to negotiating the term sheet, presented in the order you will actually need it.")), /*#__PURE__*/React.createElement("section", {
-    className: "pb-landing__section"
+  }, "Most fundraising advice tells you part of the story.")), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__gap-body"
+  }, "No shortage of great advice on decks, target lists, or term sheets. What's missing is how each piece fits with the next, and how a real raise actually moves from kickoff to close. This playbook is the full arc, end to end.")), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__metrics-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__eyebrow"
   }, "Built on"), /*#__PURE__*/React.createElement("h2", {
@@ -11507,39 +11516,39 @@ function PBLanding({
   }, "Years of work, packaged for you."), /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__metrics"
   }, /*#__PURE__*/React.createElement("article", {
-    className: "pb-landing__metric"
+    className: "pb-landing__metric pb-landing__metric--cobalt"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__metric-num"
   }, "300+"), /*#__PURE__*/React.createElement("h3", {
     className: "pb-landing__metric-title"
   }, "Founder coaching calls"), /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__metric-body"
-  }, "Live conversations with founders running real raises. Every chapter is shaped by what actually works in the room.")), /*#__PURE__*/React.createElement("article", {
-    className: "pb-landing__metric"
+  }, "Live calls with founders running real raises. Every chapter shaped by what works in the room.")), /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric pb-landing__metric--molten"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__metric-num"
   }, "VC"), /*#__PURE__*/React.createElement("h3", {
     className: "pb-landing__metric-title"
-  }, "Top investor thought leadership"), /*#__PURE__*/React.createElement("p", {
+  }, "Top investor playbooks"), /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__metric-body"
-  }, "Frameworks and tactics drawn from the partners writing the checks at top-tier funds, distilled for the founder side of the table.")), /*#__PURE__*/React.createElement("article", {
-    className: "pb-landing__metric"
+  }, "Frameworks from partners writing checks at top funds, distilled for the founder side.")), /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric pb-landing__metric--sage"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__metric-num"
   }, "$$"), /*#__PURE__*/React.createElement("h3", {
     className: "pb-landing__metric-title"
   }, "My own raises"), /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__metric-body"
-  }, "Personal experience raising from top-tier VCs, the wins and the losses, applied chapter by chapter.")), /*#__PURE__*/React.createElement("article", {
-    className: "pb-landing__metric"
+  }, "Personal experience raising from top-tier VCs, wins and losses, baked into every chapter.")), /*#__PURE__*/React.createElement("article", {
+    className: "pb-landing__metric pb-landing__metric--sky"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__metric-num"
-  }, "FF"), /*#__PURE__*/React.createElement("h3", {
+  }, "a16z", /*#__PURE__*/React.createElement("br", null), "+more"), /*#__PURE__*/React.createElement("h3", {
     className: "pb-landing__metric-title"
-  }, "Founders raising at top tier funds"), /*#__PURE__*/React.createElement("p", {
+  }, "Founders at top tier funds"), /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__metric-body"
-  }, "Tactics shared by founders who have raised from a16z, Sequoia, GV, and others. Real plays, not theory.")))), /*#__PURE__*/React.createElement("section", {
-    className: "pb-landing__section"
+  }, "Tactics from founders who raised from a16z, Sequoia, GV, and others. Real plays, not theory.")))), /*#__PURE__*/React.createElement("section", {
+    className: "pb-landing__quotes-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__eyebrow"
   }, "From founders"), /*#__PURE__*/React.createElement("h2", {
@@ -11547,33 +11556,35 @@ function PBLanding({
   }, "What founders are saying."), /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__quotes"
   }, /*#__PURE__*/React.createElement("blockquote", {
-    className: "pb-landing__quote"
+    className: "pb-landing__quote pb-landing__quote--cobalt"
   }, /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__quote-body"
-  }, "[Customer quote placeholder. This is where a real testimonial will live.]"), /*#__PURE__*/React.createElement("cite", {
+  }, "[Customer quote placeholder. Real testimonial will live here.]"), /*#__PURE__*/React.createElement("cite", {
     className: "pb-landing__quote-cite"
   }, "Founder Name \xB7 Company")), /*#__PURE__*/React.createElement("blockquote", {
-    className: "pb-landing__quote"
+    className: "pb-landing__quote pb-landing__quote--sage"
   }, /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__quote-body"
-  }, "[Customer quote placeholder. Another founder testimonial.]"), /*#__PURE__*/React.createElement("cite", {
+  }, "[Customer quote placeholder. Another founder.]"), /*#__PURE__*/React.createElement("cite", {
     className: "pb-landing__quote-cite"
   }, "Founder Name \xB7 Company")), /*#__PURE__*/React.createElement("blockquote", {
-    className: "pb-landing__quote"
+    className: "pb-landing__quote pb-landing__quote--molten"
   }, /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__quote-body"
-  }, "[Customer quote placeholder. A third testimonial card.]"), /*#__PURE__*/React.createElement("cite", {
+  }, "[Customer quote placeholder. A third testimonial.]"), /*#__PURE__*/React.createElement("cite", {
     className: "pb-landing__quote-cite"
   }, "Founder Name \xB7 Company")))), /*#__PURE__*/React.createElement("section", {
     className: "pb-landing__form-section",
     id: "pb-landing-form"
   }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-landing__form-card"
+  }, /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__eyebrow"
   }, "Get started"), /*#__PURE__*/React.createElement("h2", {
     className: "pb-landing__h2"
-  }, "Read the playbook."), /*#__PURE__*/React.createElement("p", {
-    className: "pb-landing__body"
-  }, "Free, end to end. Your progress saves so you can pick up where you left off."), /*#__PURE__*/React.createElement("form", {
+  }, "Ready to dig in?"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-landing__form-intro"
+  }, "Drop your details below and the playbook is yours. Free, end to end. Progress saves automatically."), /*#__PURE__*/React.createElement("form", {
     className: "pb-landing__form",
     onSubmit: submit,
     noValidate: true
@@ -11620,20 +11631,112 @@ function PBLanding({
     "aria-hidden": "true"
   }, "\u2192")), /*#__PURE__*/React.createElement("p", {
     className: "pb-landing__form-fine"
-  }, "No spam, ever. We'll save your progress to this email.")))));
+  }, "No spam, ever. Progress saves to this email."))))));
 }
-function PBGate({
+
+// PBQuickSignup — centered modal version of the signup form, used when
+// the user clicks the hero CTA. Sits over the (blurred) playbook chrome
+// so it visually previews what's behind the gate.
+function PBQuickSignup({
   onComplete
 }) {
-  // Two-screen state: 'signin' (rendered as the full PBLanding marketing
-  // page) first, then 'quiz' (centered modal). Once both are saved to
-  // localStorage we call onComplete to drop the gate.
+  const [firstName, setFirstName] = useStatePB('');
+  const [lastName, setLastName] = useStatePB('');
+  const [email, setEmail] = useStatePB('');
+  const [errors, setErrors] = useStatePB({});
+  const submit = e => {
+    if (e && e.preventDefault) e.preventDefault();
+    pbLandingSubmit({
+      firstName,
+      lastName,
+      email,
+      setErrors,
+      onComplete
+    });
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "pb-gate pb-gate--lightbox",
+    role: "dialog",
+    "aria-modal": "true",
+    "aria-labelledby": "pb-gate-title"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-gate__card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-gate__brand"
+  }, "Lifted \xB7 Fundraising Playbook"), /*#__PURE__*/React.createElement("h1", {
+    className: "pb-gate__title",
+    id: "pb-gate-title"
+  }, "Your Fundraising Playbook"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-gate__intro"
+  }, "Enter your details to get started. Your progress will be saved so you can pick up where you left off."), /*#__PURE__*/React.createElement("form", {
+    className: "pb-gate__form",
+    onSubmit: submit,
+    noValidate: true
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "pb-gate__row"
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "pb-gate__field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-gate__label"
+  }, "First name"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: `pb-gate__input${errors.firstName ? ' is-error' : ''}`,
+    autoComplete: "given-name",
+    placeholder: "First name",
+    value: firstName,
+    onChange: e => setFirstName(e.target.value),
+    autoFocus: true
+  })), /*#__PURE__*/React.createElement("label", {
+    className: "pb-gate__field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-gate__label"
+  }, "Last name"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "pb-gate__input",
+    autoComplete: "family-name",
+    placeholder: "Last name",
+    value: lastName,
+    onChange: e => setLastName(e.target.value)
+  }))), /*#__PURE__*/React.createElement("label", {
+    className: "pb-gate__field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-gate__label"
+  }, "Email"), /*#__PURE__*/React.createElement("input", {
+    type: "email",
+    className: `pb-gate__input${errors.email ? ' is-error' : ''}`,
+    autoComplete: "email",
+    placeholder: "Email address",
+    value: email,
+    onChange: e => setEmail(e.target.value)
+  })), /*#__PURE__*/React.createElement("button", {
+    type: "submit",
+    className: "pb-gate__btn"
+  }, "Get Started"), /*#__PURE__*/React.createElement("p", {
+    className: "pb-gate__fine"
+  }, "We'll save your progress to this email. No spam, ever."))));
+}
+function PBGate({
+  onComplete,
+  onStepChange
+}) {
+  // Three-screen state:
+  //   'landing'       — full marketing page (PBLanding).
+  //   'quick-signup'  — centered modal lightbox over blurred playbook,
+  //                     reached from the hero CTA on the landing page.
+  //   'quiz'          — centered modal asking which stage they're raising.
+  // Once both signup + quiz are saved to localStorage we call onComplete.
   const startStep = (() => {
     const u = liftedReadUser();
-    return u && u.email ? 'quiz' : 'signin';
+    return u && u.email ? 'quiz' : 'landing';
   })();
   const [step, setStep] = useStatePB(startStep);
   const cardRef = React.useRef(null);
+
+  // Notify parent so it can apply the right shell class (different
+  // background treatment for landing vs lightbox-style steps).
+  useEffectPB(() => {
+    if (typeof onStepChange === 'function') onStepChange(step);
+  }, [step, onStepChange]);
 
   // Trap keyboard focus inside the gate — without this, Tab would
   // move into the (hidden) playbook chrome behind the overlay.
@@ -11681,16 +11784,19 @@ function PBGate({
     } catch (err) {}
     onComplete();
   };
-
-  // Signin = full-page marketing landing (PBLanding). On submit it
-  // transitions to the quiz step which renders as a centered modal.
-  if (step === 'signin') {
+  if (step === 'landing') {
     return /*#__PURE__*/React.createElement(PBLanding, {
+      onQuickSignup: () => setStep('quick-signup'),
+      onComplete: () => setStep('quiz')
+    });
+  }
+  if (step === 'quick-signup') {
+    return /*#__PURE__*/React.createElement(PBQuickSignup, {
       onComplete: () => setStep('quiz')
     });
   }
   return /*#__PURE__*/React.createElement("div", {
-    className: "pb-gate",
+    className: "pb-gate pb-gate--lightbox",
     role: "dialog",
     "aria-modal": "true",
     "aria-labelledby": "pb-gate-title"
@@ -11809,6 +11915,9 @@ function PBApp() {
   // edits don't require completing onboarding every time.
   const [gateOpen, setGateOpen] = useStatePB(() => pbGateNeeded());
   const closeGate = useCallbackPB(() => setGateOpen(false), []);
+  // Track which gate step is showing so the shell can render the playbook
+  // chrome differently (hidden vs blurred-behind-lightbox).
+  const [gateStep, setGateStep] = useStatePB('landing');
   const chapterRaw = currentId ? PB_CHAPTERS.find(c => c.id === currentId) : null;
   // Treat locked chapters as if the URL pointed at home, so a stale link
   // to a locked chapter (e.g. resume cookie from a previous dev session)
@@ -12142,9 +12251,10 @@ function PBApp() {
     };
   }, [goChapter]);
   return /*#__PURE__*/React.createElement("div", {
-    className: `th-shell${gateOpen ? ' th-shell--gated' : ''}`
+    className: `th-shell${gateOpen ? ' th-shell--gated th-shell--gate-' + gateStep : ''}`
   }, gateOpen ? /*#__PURE__*/React.createElement(PBGate, {
-    onComplete: closeGate
+    onComplete: closeGate,
+    onStepChange: setGateStep
   }) : null, /*#__PURE__*/React.createElement(window.SceneBar, {
     chapter: chapter,
     subIdx: safeSubIdx,
