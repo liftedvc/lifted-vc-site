@@ -979,16 +979,29 @@ function Transport({
       className: "name"
     }, prevSub.title)));
   } else if (prevChapter) {
+    // Going BACK across a chapter boundary should land on the LAST sub
+    // of the previous chapter (the natural "previous page"), not the
+    // first sub. window.goToSub takes a 1-based sub number, so passing
+    // prevChapter.subs.length lands on subIdx = length - 1 = last sub.
+    const lastSub = prevChapter.subs[prevChapter.subs.length - 1];
+    const prevSubLabel = lastSub ? `← ${parseInt(prevChapter.num, 10)}.${lastSub.num}` : `← Ch ${prevChapter.num}`;
+    const prevSubName = lastSub ? lastSub.title : prevChapter.name;
     prevBtn = /*#__PURE__*/React.createElement("button", {
       className: "transport__btn transport__btn--prev",
-      onClick: () => onPickChapter(prevChapter.id)
+      onClick: () => {
+        if (window.goToSub) {
+          window.goToSub(prevChapter.id, prevChapter.subs.length);
+        } else {
+          onPickChapter(prevChapter.id);
+        }
+      }
     }, /*#__PURE__*/React.createElement("span", {
       className: "arr"
     }, /*#__PURE__*/React.createElement(TIcon.arrowLeft, null)), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
       className: "label"
-    }, "\u2190 Ch ", prevChapter.num), /*#__PURE__*/React.createElement("span", {
+    }, prevSubLabel), /*#__PURE__*/React.createElement("span", {
       className: "name"
-    }, prevChapter.name)));
+    }, prevSubName)));
   } else if (isHome) {
     // On home, there's nowhere meaningful to go "back" to. Render a
     // placeholder that holds the slot so the center label and next
@@ -1975,7 +1988,7 @@ function ARCAnatomy() {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
     className: "sub-split__read"
-  }, /*#__PURE__*/React.createElement(Lede, null, "An Authentic FOMO raise has three phases. Preparation runs the longest. Activation is the hinge that compresses everything. The close turns momentum into wires.")), /*#__PURE__*/React.createElement("aside", {
+  }, /*#__PURE__*/React.createElement(Lede, null, "An Authentic FOMO raise has three phases. Preparation is the foundation. Activation is the hinge that compresses everything. The close turns momentum into wires.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sub-act-eyebrow"
@@ -1991,7 +2004,19 @@ function ARCAnatomy() {
   }), /*#__PURE__*/React.createElement(BeatsGrid, {
     items: ARC_PHASES,
     columns: 3
-  })), /*#__PURE__*/React.createElement(ActMarker, {
+  })), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Preparation ends only when you have enough warm intros lined up to support activation. That typically means ", /*#__PURE__*/React.createElement("strong", null, "80\u2013120 promised introductions"), ", sized to land the ", /*#__PURE__*/React.createElement("strong", null, "30\u201350+ first meetings"), " activation needs."), /*#__PURE__*/React.createElement("div", {
+    className: "tip tip--coral"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tip__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tip__eyebrow"
+  }, "Watch out"), /*#__PURE__*/React.createElement("h3", {
+    className: "tip__title"
+  }, "Don't launch too early.")), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "Launch too early and you risk not having enough meetings to support Authentic FOMO. The compression collapses, urgency never builds, and the round loses its edge before it gets going.")), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "Activation is",
     accent: "the hinge."
@@ -2133,7 +2158,7 @@ const ARC_SUBS = [{
   num: "02",
   slug: "anatomy",
   title: "Anatomy of Authentic FOMO",
-  teaser: "Three phases stacked together. Preparation runs the longest, activation is the hinge that compresses everything, and the close turns momentum into wires."
+  teaser: "Three phases stacked together. Preparation is the foundation, activation is the hinge that compresses everything, and the close turns momentum into wires."
 }, {
   num: "03",
   slug: "outcomes",
@@ -8023,9 +8048,7 @@ function FundHowItOperates() {
   const {
     Cue,
     Lede,
-    Video,
-    ActMarker,
-    Pull
+    ActMarker
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
@@ -8041,17 +8064,23 @@ function FundHowItOperates() {
     className: "sub-split__read"
   }, /*#__PURE__*/React.createElement(Lede, null, "A VC fund has a fixed lifespan, a fixed pool of capital, and a fixed math problem: own enough of the winners that those winners return the entire fund several times over."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "VCs raise capital from limited partners (LPs) such as pension funds, endowments, and family offices, then have a fixed window to deploy it. A handful of numbers govern how that happens."), /*#__PURE__*/React.createElement(Pull, {
-    eyebrow: "The rule of thumb",
-    quote: /*#__PURE__*/React.createElement(React.Fragment, null, "Most investors write checks of roughly ", /*#__PURE__*/React.createElement("strong", null, "1\u20132% of total fund size"), ". A $50M fund averaging 1.5% lands around $750K per investment.")
-  })), /*#__PURE__*/React.createElement("aside", {
+  }, "VCs raise capital from limited partners (LPs) such as pension funds, endowments, and family offices, then have a fixed window to deploy it. A handful of numbers govern how that happens.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "sub-act-eyebrow"
-  }, "Walkthrough \xB7 How a fund operates"), /*#__PURE__*/React.createElement(Video, {
-    placeholder: true,
-    title: "How a fund operates"
-  }))), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__eyebrow"
+  }, "The rule of thumb"), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__stat-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__stat"
+  }, "1\u20132%"), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__label"
+  }, "of total fund size, per check")), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__divider"
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "rule-card__example"
+  }, "A ", /*#__PURE__*/React.createElement("strong", null, "$50M fund"), " averaging ", /*#__PURE__*/React.createElement("strong", null, "1.5%"), " writes ", /*#__PURE__*/React.createElement("strong", null, "~$750K"), " per investment. Smaller funds aim for bigger ownership; larger funds spread their bets across more companies.")))), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight"
   }, /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
@@ -8079,9 +8108,7 @@ function FundFunnelAndCost() {
   const {
     Cue,
     Lede,
-    Video,
-    ActMarker,
-    Pull
+    ActMarker
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
@@ -8097,17 +8124,23 @@ function FundFunnelAndCost() {
     className: "sub-split__read"
   }, /*#__PURE__*/React.createElement(Lede, null, "Both sides of the table operate at volume. VCs see far more deals than they fund, and founders take far more meetings than they close."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Once the round closes, the math compounds for founders over the life of the company. Equity capital is permanent until exit, and founders dilute at every priced round."), /*#__PURE__*/React.createElement(Pull, {
-    eyebrow: "The number",
-    quote: /*#__PURE__*/React.createElement(React.Fragment, null, "The average founder takes ", /*#__PURE__*/React.createElement("strong", null, "39 investor meetings"), " to close a seed round.")
-  })), /*#__PURE__*/React.createElement("aside", {
+  }, "Once the round closes, the math compounds for founders over the life of the company. Equity capital is permanent until exit, and founders dilute at every priced round.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "sub-act-eyebrow"
-  }, "Walkthrough \xB7 The funnel and the cost"), /*#__PURE__*/React.createElement(Video, {
-    placeholder: true,
-    title: "The funnel and the cost"
-  }))), /*#__PURE__*/React.createElement(ActMarker, {
+    className: "rule-card"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__eyebrow"
+  }, "What it takes"), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__stat-row"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__stat"
+  }, "39"), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__label"
+  }, "investor meetings, on average, to close a seed round")), /*#__PURE__*/React.createElement("div", {
+    className: "rule-card__divider"
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "rule-card__example"
+  }, "Per Docsend's State of Seed: ", /*#__PURE__*/React.createElement("strong", null, "37%"), " of successful founders close in 1\u20136 weeks, ", /*#__PURE__*/React.createElement("strong", null, "32%"), " in 7\u201318, and the rest take 19+. Volume is what concentrates the conversations into a fast close.")))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The funnel,",
     accent: "both sides."
@@ -9307,7 +9340,17 @@ function PBHome({
     className: "resume-block__eyebrow"
   }, isContinuing ? 'Pick up where you left off' : 'Start here'), /*#__PURE__*/React.createElement("button", {
     className: "chapter-card chapter-card--featured",
-    onClick: () => onPickChapter(target.id),
+    onClick: () => {
+      // When resuming, land on the saved subIdx — not the first sub.
+      // window.goToSub takes a 1-based sub number, so add 1 to the
+      // 0-based progress.subIdx. Fallback to onPickChapter if the
+      // global isn't ready (very early boot).
+      if (isContinuing && targetSub && window.goToSub) {
+        window.goToSub(target.id, (progress.subIdx || 0) + 1);
+      } else {
+        onPickChapter(target.id);
+      }
+    },
     type: "button"
   }, /*#__PURE__*/React.createElement("div", {
     className: "chapter-card__head"
@@ -11402,12 +11445,14 @@ function pbLandingSubmit({
   firstName,
   lastName,
   email,
+  company,
   setErrors,
   onComplete
 }) {
   const fn = firstName.trim();
   const ln = lastName.trim();
   const em = email.trim();
+  const co = (company || '').trim();
   const next = {};
   if (!fn) next.firstName = true;
   if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) next.email = true;
@@ -11417,7 +11462,7 @@ function pbLandingSubmit({
     firstName: fn,
     lastName: ln,
     email: em,
-    company: '',
+    company: co,
     createdAt: new Date().toISOString()
   };
   try {
@@ -11428,7 +11473,7 @@ function pbLandingSubmit({
       firstName: ud.firstName,
       lastName: ud.lastName,
       email: ud.email,
-      company: '',
+      company: ud.company,
       timestamp: ud.createdAt
     });
   } catch (err) {}
@@ -11442,6 +11487,7 @@ function PBLanding({
   const [firstName, setFirstName] = useStatePB('');
   const [lastName, setLastName] = useStatePB('');
   const [email, setEmail] = useStatePB('');
+  const [company, setCompany] = useStatePB('');
   const [errors, setErrors] = useStatePB({});
   const submit = e => {
     if (e && e.preventDefault) e.preventDefault();
@@ -11449,6 +11495,7 @@ function PBLanding({
       firstName,
       lastName,
       email,
+      company,
       setErrors,
       onComplete
     });
@@ -11623,6 +11670,17 @@ function PBLanding({
     placeholder: "you@company.com",
     value: email,
     onChange: e => setEmail(e.target.value)
+  })), /*#__PURE__*/React.createElement("label", {
+    className: "pb-landing__form-field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-landing__form-label"
+  }, "Company"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "pb-landing__form-input",
+    autoComplete: "organization",
+    placeholder: "Company name",
+    value: company,
+    onChange: e => setCompany(e.target.value)
   })), /*#__PURE__*/React.createElement("button", {
     type: "submit",
     className: "pb-landing__cta pb-landing__cta--primary pb-landing__cta--block"
@@ -11643,6 +11701,7 @@ function PBQuickSignup({
   const [firstName, setFirstName] = useStatePB('');
   const [lastName, setLastName] = useStatePB('');
   const [email, setEmail] = useStatePB('');
+  const [company, setCompany] = useStatePB('');
   const [errors, setErrors] = useStatePB({});
   const submit = e => {
     if (e && e.preventDefault) e.preventDefault();
@@ -11650,6 +11709,7 @@ function PBQuickSignup({
       firstName,
       lastName,
       email,
+      company,
       setErrors,
       onComplete
     });
@@ -11708,6 +11768,17 @@ function PBQuickSignup({
     placeholder: "Email address",
     value: email,
     onChange: e => setEmail(e.target.value)
+  })), /*#__PURE__*/React.createElement("label", {
+    className: "pb-gate__field"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "pb-gate__label"
+  }, "Company"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    className: "pb-gate__input",
+    autoComplete: "organization",
+    placeholder: "Company name",
+    value: company,
+    onChange: e => setCompany(e.target.value)
   })), /*#__PURE__*/React.createElement("button", {
     type: "submit",
     className: "pb-gate__btn"

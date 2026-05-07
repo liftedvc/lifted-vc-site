@@ -638,6 +638,95 @@ a.cta,
 }
 
 /* ============================================================
+   TRANSPORT — responsive treatment
+   The base styles in theatre.css use a 1fr|auto|1fr grid with chapter
+   names + numbers in both prev and next buttons. That overflows below
+   ~960px because the inner padding eats half the row, and the chapter
+   names smush together. These breakpoints progressively shrink the
+   padding, drop the center label, hide the long names, and finally
+   shrink the arrow buttons for phones.
+   ============================================================ */
+
+/* Tablet — pull in the inner padding so buttons aren't stuck against
+   the edge of the chrome. Names still visible. */
+@media (max-width: 960px) {
+  .transport__inner {
+    padding: 0 var(--space-6);
+    gap: var(--space-4);
+  }
+  .transport__btn .name {
+    font-size: 16px;
+  }
+}
+
+/* Narrow tablet / wide phone — drop the center label entirely. The
+   inner grid simplifies to prev|next. Names stay visible because they
+   carry the navigation context. */
+@media (max-width: 720px) {
+  .transport__inner {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 var(--space-5);
+    gap: var(--space-3);
+  }
+  .transport__center {
+    display: none;
+  }
+  .transport__btn {
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .transport__btn .name {
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .transport__btn--next {
+    justify-self: end;
+  }
+}
+
+/* Phone — drop chapter names (the .label still says where you're going,
+   "← 2.01" / "Ch 4 →"). Tighten footer height + arrow squares. */
+@media (max-width: 520px) {
+  .th-shell { --footer-h: 64px; }
+  .transport__inner {
+    padding: 0 var(--space-4);
+  }
+  .transport__btn .name {
+    display: none;
+  }
+  .transport__btn .label {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    margin: 0;
+  }
+  .transport__btn--prev .arr,
+  .transport__btn--next .arr {
+    width: 40px;
+    height: 40px;
+  }
+  .transport__btn--prev .arr svg,
+  .transport__btn--next .arr svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Small phone — give the arrows priority, button label rides alongside
+   the arrow only if there's space. */
+@media (max-width: 380px) {
+  .transport__inner {
+    padding: 0 var(--space-3);
+  }
+  .transport__btn--prev .arr,
+  .transport__btn--next .arr {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ============================================================
    PLAYBOOK HOME — chapter index.
    The home renders inside the same .sub-split container that every
    chapter sub uses, so Cue + Lede + ActMarker styles flow through.
@@ -1319,6 +1408,70 @@ a.cta,
 }
 
 /* ============================================================
+   RULE-CARD — visual stat card used in the right aside of subs that
+   don't have a video. Stat sits inline with its label so the
+   hierarchy reads horizontally; the example flows below as prose.
+   Used in 02.02 to show the "1–2% of fund size per check" rule.
+   ============================================================ */
+.rule-card {
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+  border-top: 4px solid var(--cobalt);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 16px rgba(60, 110, 200, 0.06);
+  text-align: left;
+}
+.rule-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+}
+.rule-card__stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+.rule-card__stat {
+  font-family: var(--font-display, var(--font-serif));
+  font-size: clamp(2.25rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1;
+}
+.rule-card__label {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--ink-2);
+  flex: 1;
+  min-width: 140px;
+}
+.rule-card__divider {
+  height: 1px;
+  background: var(--rule);
+}
+.rule-card__example {
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+.rule-card__example strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ============================================================
    CITE — small attribution line that sits below a fact block.
    Used in the How Venture Capital Works chapter to keep every
    factual claim sourced inline, without disrupting reading flow.
@@ -1760,10 +1913,18 @@ a.cta,
   text-align: center;
 }
 
-/* ----- Lightbox-mode pb-gate (when used as quick-signup) ----- */
+/* ----- Lightbox-mode pb-gate (when used as quick-signup or quiz) -----
+   The base .pb-gate has a cream paper-3 background + radial gradient
+   that fully covers the playbook. In lightbox mode we want the playbook
+   visible (slightly blurred, via the .th-shell--gate-* rule), so we
+   override with a translucent dim panel. background-image must be set
+   to none explicitly because the base sets it as a separate property
+   that the background shorthand doesn't reset across selectors. */
 .pb-gate--lightbox {
-  background: rgba(20, 20, 22, 0.55);
+  background-color: rgba(20, 20, 22, 0.42);
+  background-image: none;
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 /* ============================================================
