@@ -2099,6 +2099,135 @@ a.cta,
 }
 
 /* ============================================================
+   DRAFT-WHY-ROW — 2-column layout used in 4.03's "Draft your
+   Why Now" section. Body prose sits on the left, the fill-in
+   template tip sits on the right at the same vertical level.
+   The Build Your Why Now CTA renders below this row full-width.
+   ============================================================ */
+.draft-why-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  margin: var(--space-5) 0;
+}
+.draft-why-row > .prose {
+  margin: 0;
+  max-width: none;
+}
+.draft-why-row > .tip {
+  margin: 0;
+  max-width: none;
+}
+@media (max-width: 720px) {
+  .draft-why-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ============================================================
+   WARNING — restyled. The base in theatre.css uses a heavy black
+   header band with molten icon. That treatment doesn't fit the
+   rest of the playbook's lighter, more refined design. This
+   override keeps the same structural differentiation (header +
+   numbered list with F·NN eyebrows) but switches to the coral
+   "warning" color palette and a card-based layout: white paper
+   panel with a coral left edge, soft rounded corners, and a
+   coral badge icon instead of the molten square.
+   ============================================================ */
+.warning__inner {
+  border: 1.5px solid var(--rule);
+  border-left: 5px solid var(--coral-deep, #c8553d);
+  border-radius: 12px;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(200, 85, 61, 0.06);
+}
+.warning__head {
+  background: transparent;
+  color: var(--ink);
+  padding: var(--space-5) var(--space-6) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.warning__icon {
+  width: 32px;
+  height: 32px;
+  background: var(--coral-tint, #f9e6e1);
+  color: var(--coral-deep, #c8553d);
+  border: 1.5px solid var(--coral-deep, #c8553d);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+}
+.warning__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--coral-deep, #c8553d);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.warning__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+}
+.warning__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+.warning__item {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  transition: background 0.12s ease;
+}
+.warning__item:hover {
+  background: var(--coral-tint, rgba(200, 85, 61, 0.04));
+}
+.warning__item:last-child {
+  border-bottom: 0;
+}
+.warning__item-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--coral-deep, #c8553d);
+  letter-spacing: 0.16em;
+  padding-top: 2px;
+}
+.warning__item-name {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.warning__item-body {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* ============================================================
    TAKEAWAY — "What this means for founders" callout. Sits inside
    data sections to draw the founder's attention to the practical
    implication of the numbers above. White card on tinted background
@@ -2202,6 +2331,24 @@ a.cta,
 }
 @media (max-width: 720px) {
   .tip-row { grid-template-columns: 1fr; }
+}
+/* Three-column variant for progressive comparisons (e.g., the
+   Fragile/Credible/Undeniable stacking in 4.03). */
+.tip-row--three {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 920px) {
+  .tip-row--three { grid-template-columns: 1fr; }
+}
+/* Secondary line inside a tip body — used for the italic investor
+   reaction in the 4.03 stacking examples. Smaller, dimmer, separated. */
+.tip__body--meta {
+  margin-top: var(--space-3) !important;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--rule);
+  font-size: 0.875rem !important;
+  color: var(--ink-3) !important;
 }
 
 /* ============================================================
