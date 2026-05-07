@@ -1917,11 +1917,13 @@ a.cta,
    The base .pb-gate has a cream paper-3 background + radial gradient
    that fully covers the playbook. In lightbox mode we want the playbook
    visible (slightly blurred, via the .th-shell--gate-* rule), so we
-   override with a translucent dim panel. background-image must be set
-   to none explicitly because the base sets it as a separate property
-   that the background shorthand doesn't reset across selectors. */
-.pb-gate--lightbox {
-  background-color: rgba(20, 20, 22, 0.42);
+   override with a translucent dim panel.
+
+   The selector uses .pb-gate.pb-gate--lightbox (double-class) to win on
+   specificity — the base .pb-gate rule lives later in the file, so a
+   single-class override would lose to source order. */
+.pb-gate.pb-gate--lightbox {
+  background-color: rgba(20, 20, 22, 0.30);
   background-image: none;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
