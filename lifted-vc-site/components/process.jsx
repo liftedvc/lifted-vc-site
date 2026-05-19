@@ -9,7 +9,7 @@ function Process() {
     {
       n: '2',
       title: 'Pitch',
-      lead: 'Drill your pitch, sharpen investor comms, and build your warm intro pipeline. Walk in with confidence.',
+      lead: 'Drill your pitch, strategize investor comms, and build your warm intro pipeline. Walk in with confidence.',
     },
     {
       n: '3',
