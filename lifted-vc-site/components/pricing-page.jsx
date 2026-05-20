@@ -153,7 +153,7 @@ function FAQ() {
                       cursor: 'pointer', textAlign: 'left', color: 'var(--ink)',
                     }}
                   >
-                    <span style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 400, letterSpacing: '-0.015em' }}>{it.q}</span>
+                    <span style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.015em' }}>{it.q}</span>
                     <span style={{ fontSize: 22, color: 'var(--accent)', transition: 'transform .3s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
                   </button>
                   <div style={{ maxHeight: isOpen ? 400 : 0, overflow: 'hidden', transition: 'max-height .5s, padding .3s', paddingBottom: isOpen ? 24 : 0 }}>

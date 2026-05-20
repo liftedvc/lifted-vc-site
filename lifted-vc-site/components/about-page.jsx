@@ -43,7 +43,7 @@ function AboutPage() {
 
             <div style={{ fontSize: 19, lineHeight: 1.65, color: 'var(--ink)' }}>
               <Reveal>
-                <p className="serif" style={{ fontSize: 28, lineHeight: 1.35, margin: '0 0 32px', fontWeight: 400, textWrap: 'pretty' }}>
+                <p style={{ fontSize: 28, lineHeight: 1.35, margin: '0 0 32px', fontWeight: 400, textWrap: 'pretty' }}>
                   Before tech, I spent five years on the USA Sailing Team, racing the 470 class
                   internationally. That's where I learned to prepare obsessively and perform
                   under pressure.

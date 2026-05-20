@@ -21,11 +21,10 @@ function CTA() {
             </h2>
           </Reveal>
           <Reveal delay={120}>
-            <p className="serif" style={{
+            <p style={{
               fontSize: 24, lineHeight: 1.45,
               color: 'rgba(251, 246, 236, 0.7)',
               margin: '36px auto 48px', maxWidth: 580,
-              fontStyle: 'italic',
               textWrap: 'pretty',
             }}>
               Most founders spend 6–12 months on a raise that should take 3.

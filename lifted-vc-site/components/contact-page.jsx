@@ -34,9 +34,9 @@ function ContactPage() {
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p className="serif" style={{
+              <p style={{
                 fontSize: 22, lineHeight: 1.45, color: 'var(--ink-soft)',
-                margin: '32px 0 0', maxWidth: 480, fontStyle: 'italic',
+                margin: '32px 0 0', maxWidth: 480,
                 textWrap: 'pretty',
               }}>
                 Most founders spend 6–12 months on a raise that should take 3.

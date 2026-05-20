@@ -1636,6 +1636,16 @@ a.cta,
   gap: 0.875rem;
   color: rgba(255, 255, 255, 0.85);
 }
+/* Real HTML5 video fills the same 16:9 container as the placeholder. */
+.pb-landing__video-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+  border-radius: inherit;
+}
 .pb-landing__video-play {
   display: flex;
   align-items: center;
