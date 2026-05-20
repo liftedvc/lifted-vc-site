@@ -734,6 +734,41 @@ a.cta,
    investor-card vocabulary (numeral eyebrow, large display title,
    serif body, hover lift, accent stripe at the bottom).
    ============================================================ */
+
+/* Home hero row — 2-column layout placing the resume block on the
+   left and the "How to use this playbook" video on the right. */
+.home-hero-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: stretch;
+  margin: var(--space-5) 0 var(--space-8);
+}
+.home-hero-row .resume-block { margin: 0; }
+.home-hero-row .resume-block .chapter-card { height: 100%; }
+.home-hero-video {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+.home-hero-video__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--cobalt);
+}
+.home-hero-video__frame .video {
+  margin: 0;
+}
+@media (max-width: 880px) {
+  .home-hero-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
 .chapter-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1636,13 +1671,13 @@ a.cta,
   gap: 0.875rem;
   color: rgba(255, 255, 255, 0.85);
 }
-/* Real HTML5 video fills the same 16:9 container as the placeholder. */
-.pb-landing__video-player {
+/* YouTube iframe fills the same 16:9 container as the placeholder. */
+.pb-landing__video-iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: 0;
   background: #000;
   border-radius: inherit;
 }

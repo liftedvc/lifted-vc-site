@@ -8139,7 +8139,7 @@ function FundFunnelAndCost() {
     accent: "both sides."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "VCs evaluate ", /*#__PURE__*/React.createElement("strong", null, "~101 opportunities"), " for every deal they close, with close rates below 1%. At established Series A/B/C firms, that nets out to 1\u20132 investments per partner per year. At pre-seed funds, 3\u20134."), /*#__PURE__*/React.createElement("p", {
+  }, "VCs evaluate ", /*#__PURE__*/React.createElement("strong", null, "~101 opportunities"), " for every deal they close, with close rates below 1%. At established Series A/B/C firms, that nets out to as low as 1\u20132 investments per partner per year. At pre-seed funds, 3\u20134."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "Founders run the same volume game from the other side. Per Docsend's State of Seed reports:"), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
@@ -9327,7 +9327,9 @@ function PBHome({
     name: `${possessive} Fundraising`,
     accent: "Playbook.",
     crumb: "Lifted Playbook"
-  }), /*#__PURE__*/React.createElement(Lede, null, "Work through each chapter at your own pace and build the skills you need to raise your round."), target && /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement(Lede, null, "Work through each chapter at your own pace and build the skills you need to raise your round."), /*#__PURE__*/React.createElement("div", {
+    className: "home-hero-row"
+  }, target && /*#__PURE__*/React.createElement("div", {
     className: "resume-block"
   }, /*#__PURE__*/React.createElement("div", {
     className: "resume-block__eyebrow"
@@ -9359,7 +9361,17 @@ function PBHome({
     className: "chapter-card__progress"
   }, "Resume at ", /*#__PURE__*/React.createElement("strong", null, "section ", parseInt(target.num, 10), ".", targetSub.num, " \xB7 ", targetSub.title)), /*#__PURE__*/React.createElement("span", {
     className: "chapter-card__arrow"
-  }, isContinuing ? 'Resume →' : 'Start →'))), /*#__PURE__*/React.createElement(ActMarker, {
+  }, isContinuing ? 'Resume →' : 'Start →'))), /*#__PURE__*/React.createElement("div", {
+    className: "home-hero-video"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "home-hero-video__eyebrow"
+  }, "Walkthrough \xB7 How to use this playbook"), /*#__PURE__*/React.createElement("div", {
+    className: "home-hero-video__frame"
+  }, window.Video ? /*#__PURE__*/React.createElement(window.Video, {
+    title: "How to use this playbook",
+    videoId: "9pJkEZUaCIs",
+    onPlay: () => window.openVideoLightbox?.("9pJkEZUaCIs", "How to use this playbook")
+  }) : null))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The thirteen",
     accent: "chapters."
@@ -11522,12 +11534,13 @@ function PBLanding({
     className: "pb-landing__video-eyebrow"
   }, "From Adam \xB7 Why I built this"), /*#__PURE__*/React.createElement("div", {
     className: "pb-landing__video"
-  }, /*#__PURE__*/React.createElement("video", {
-    className: "pb-landing__video-player",
-    src: "video/playbook-welcome.mp4",
-    controls: true,
-    preload: "metadata",
-    playsInline: true
+  }, /*#__PURE__*/React.createElement("iframe", {
+    className: "pb-landing__video-iframe",
+    src: "https://www.youtube.com/embed/e33wpRVlzys?rel=0&modestbranding=1",
+    title: "From Adam \u2014 Why I built this playbook",
+    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    allowFullScreen: true,
+    frameBorder: "0"
   }))))), /*#__PURE__*/React.createElement("section", {
     className: "pb-landing__gap"
   }, /*#__PURE__*/React.createElement("div", {
