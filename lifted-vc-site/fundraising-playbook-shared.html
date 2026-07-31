@@ -8769,6 +8769,46 @@ function liftedReadProfile() {
   }
 }
 
+// When the playbook is embedded in the client dashboard, the founder is already
+// authenticated. The dashboard passes their identity via URL params so the
+// email/stage gate never appears and they always have access. Returns true when
+// such an embedded/prefilled context is detected.
+function pbEmbeddedAccess() {
+  try {
+    if (typeof window === 'undefined' || !window.location) return false;
+    var q = new URLSearchParams(window.location.search || '');
+    return !!(q.get('embed') === '1' || q.get('email'));
+  } catch (e) {
+    return false;
+  }
+}
+
+// Persist the founder's identity from URL params into localStorage so progress
+// tracking and analytics have it. Best-effort: if storage is blocked (e.g. a
+// third-party iframe), pbEmbeddedAccess() still keeps the gate closed.
+(function pbPrefillFromParams() {
+  try {
+    if (typeof window === 'undefined' || !window.location) return;
+    var q = new URLSearchParams(window.location.search || '');
+    var email = q.get('email');
+    if (!email) return;
+    var u = liftedReadUser();
+    if (!u || !u.email) {
+      localStorage.setItem('lifted_user', JSON.stringify({
+        firstName: q.get('firstName') || q.get('name') || '',
+        lastName: q.get('lastName') || '',
+        email: email,
+        company: q.get('company') || '',
+        createdAt: new Date().toISOString()
+      }));
+    }
+    var p = liftedReadProfile();
+    if (!p || !p.stage) {
+      localStorage.setItem('lifted_profile', JSON.stringify({ stage: q.get('stage') || 'seed' }));
+    }
+  } catch (e) {/* storage blocked — pbEmbeddedAccess covers the gate */}
+})();
+
 // ============================================================
 // Modal content data — verbatim from uploads/fundraising-playbook.html
 // ============================================================
@@ -11428,6 +11468,7 @@ const PB_QUIZ_STAGE_MAP = {
 };
 function pbGateNeeded() {
   if (isPlaybookDevMode()) return false;
+  if (pbEmbeddedAccess()) return false;
   const u = liftedReadUser();
   const p = liftedReadProfile();
   if (!u || !u.email) return true;
