@@ -9234,6 +9234,207 @@ const PB_ONE_PAGER_BULLETS = [{
 // Chapter registry — order, names, and descriptions verbatim from
 // source allChapters at uploads/fundraising-playbook.html line 8109.
 // ============================================================
+/* Inner Game — additive Fundraising Sprint content (Quinn Fitzgerald + Adam Roberts) */
+(function () {
+  const h = React.createElement;
+  function IGShell(opts) {
+    const { Cue, Lede, Video } = window;
+    const head = [
+      h(Cue, { num: opts.num, name: opts.name, accent: opts.accent }),
+      h(Lede, null, opts.lede),
+      h("div", { className: "sub-split__body" },
+        h("section", { className: "sub-split__read" }, ...opts.read),
+        h("aside", { className: "sub-split__act" },
+          h("div", { className: "sub-act-eyebrow" }, opts.walk),
+          h(Video, { placeholder: true, title: opts.videoTitle, sub: opts.videoSub })
+        )
+      )
+    ];
+    return h("div", { className: "fade-in sub-split", "data-screen-label": opts.label },
+      ...head.concat(opts.after || []));
+  }
+
+  function P_Rollercoaster() {
+    return IGShell({
+      label: "14.01 The Emotional Rollercoaster", num: "14.01",
+      name: "The Emotional", accent: "Rollercoaster.",
+      lede: "A raise swings between highs and lows, often inside the same day. A partner leans in over coffee, then three firms pass by dinner. The founders who finish strong are not the ones who feel less, they are the ones who expect the swings and build a way to ride them.",
+      read: [
+        h("p", null, "Fundraising compresses months of rejection into a few weeks and asks you to stay sharp through all of it. The emotional volatility is not a sign that something is wrong. It is the normal shape of a process built on a lot of nos and a few yeses."),
+        h("p", null, "The work of this chapter is to make that volatility survivable and even useful, so it never leaks into the room or bleeds your energy away from the conversations that are still live.")
+      ],
+      walk: "Companion · Navigating the emotional rollercoaster",
+      videoTitle: "Navigating the Emotional Rollercoaster", videoSub: "Sprint companion · 4:32",
+      after: [
+        h(window.BeatsGrid, { columns: 3, items: [
+          { num: "01", title: "Two truths at once", desc: "Hold conviction in the company and detachment from any single meeting. The raise needs your belief and your ability to let one no roll off." },
+          { num: "02", title: "Name the dip", desc: "The low after a cluster of passes is predictable, not a verdict. Naming it as the dip keeps you from making decisions from the bottom of it." },
+          { num: "03", title: "Protect the mornings", desc: "Spend your best hours on the meetings that are still live, not the ones already behind you. Energy is the scarce resource in a raise." }
+        ] })
+      ]
+    });
+  }
+
+  function P_Passes() {
+    return IGShell({
+      label: "14.02 Empower Yourself Through Passes", num: "14.02",
+      name: "Empower Yourself", accent: "Through Passes.",
+      lede: "Most founders collect fifty to seventy nos in a single raise, and almost none of them sound like a no. Empowering yourself through passes is the skill of taking the hit, filtering the feedback, and pointing your energy at the people who have not passed yet.",
+      read: [
+        h("p", null, "Investors rarely say no outright. It is within their model to stay vague, because they may want to come back to you later, and because a blunt no can cannonball a round. Most of the time a pass means not right now, or simply not the right fit for them, not that you are uninvestable."),
+        h("p", null, "That is why every no has to run through your own filter before it touches your strategy. A pass can be a real chance to improve how you pitch, or it can be an investor who woke up on the wrong side of the bed. You often cannot tell which, so you pattern match it against what you are hearing elsewhere and decide what to keep and what to discard.")
+      ],
+      walk: "Companion · Empower yourself through passes",
+      videoTitle: "Empower Yourself Through Passes", videoSub: "Sprint companion · Adam & Quinn",
+      after: [
+        h(window.BeatsGrid, { columns: 2, items: [
+          { num: "01", eyebrow: "Move 01", title: "Judge the no back", desc: "When a pass lands, ask how good their no actually is. A real reason you can use, keep. A weak reason goes in the mental trash bin. Judging the feedback brings the power back to level." },
+          { num: "02", eyebrow: "Move 02", title: "Reframe it as communication", desc: "A pass is one investor you did not get to see the world the way you do on that one pitch. That is a communication problem on a single data point, not a ruling on your company or your worth." },
+          { num: "03", eyebrow: "Move 03", title: "Give it a cool-down", desc: "You do not owe anyone a same-day reply. Scream into a pillow, wait a couple of days, then decide if there is anything worth answering. Time brings perspective." },
+          { num: "04", eyebrow: "Move 04", title: "Make it a game", desc: "Count the nos and turn it around. Every no is one closer to the yes you need, and you only need one." }
+        ] }),
+        h(window.Callout, {
+          badLabel: "A no you drop",
+          goodLabel: "A no you use",
+          bad: "It feels a little early for us right now, but keep us posted as things develop.",
+          good: "You are pre-revenue and we need to see meaningful retention before we could lead. Ten thousand in monthly revenue holding for three months would change the conversation."
+        }),
+        h(window.Warning, {
+          eyebrow: "Where founders give away control",
+          title: "The one rule that protects your round",
+          items: [
+            { num: "1", name: "Taking direction from a non-investor", body: "Investor opinions only carry weight once they are actually on your cap table. Advice without a check is a vent that stays closed. If the feedback is genuinely good, you can choose it, but then it is your call, not their instruction." },
+            { num: "2", name: "Pausing your process on a maybe", body: "A founder who stopped sending SAFEs because a lead wanted a clean round lost the lead and the committed money both. Keep the process moving until the wire clears." },
+            { num: "3", name: "Chasing the pass", body: "Ninety-nine percent of the time a no is over in that moment. Bandwidth spent trying to flip it is bandwidth stolen from the conversations that are still live." }
+          ]
+        }),
+        h(window.Pull, {
+          eyebrow: "The vent model",
+          quote: "When in doubt, come back to yourself, your core principles, and your own filter. That ownership over your decisions is what actually matters.",
+          attr: "Quinn Fitzgerald"
+        })
+      ]
+    });
+  }
+
+  function P_Worthiness() {
+    return IGShell({
+      label: "14.03 Connecting to Your Worthiness", num: "14.03",
+      name: "Connecting to", accent: "Your Worthiness.",
+      lede: "A fundraise is a stream of small rejections, and your nervous system will try to make those rejections mean something about you. Connecting to your worthiness is the practice of separating your value as a founder and a person from any investor decision.",
+      read: [
+        h("p", null, "The founders who hold up best have decided, before the first pitch, that their worth is not on the cap table. An investor can decline the opportunity without declining you. Keeping that line clean is what lets you walk into the next meeting with the same energy you had in the first."),
+        h("p", null, "When the line blurs, borrow evidence. The customers you serve, the team that joined you, the problem you understand better than the person across the table. The facts of why you started are still true after a pass.")
+      ],
+      walk: "Companion · Connecting to your worthiness",
+      videoTitle: "Connecting to Your Worthiness", videoSub: "Sprint companion · 9:05",
+      after: [
+        h(window.BeatsGrid, { columns: 2, items: [
+          { num: "01", title: "Your worth is not on the cap table", desc: "A decision about an investment is not a decision about you. Decide that in advance so a pass cannot relitigate it in the moment." },
+          { num: "02", title: "Borrow evidence", desc: "When the doubt creeps in, return to the concrete: the customer who cannot live without it, the reason you left to build this. Conviction is easier to hold when it is anchored to facts." }
+        ] })
+      ]
+    });
+  }
+
+  function P_Confidence() {
+    return IGShell({
+      label: "14.04 Confidence Over Thirst", num: "14.04",
+      name: "Confidence", accent: "Over Thirst.",
+      lede: "Investors pattern match on energy before they process a single metric. The real confidence that comes from running a tight process reads as a signal that the round is happening with or without them.",
+      read: [
+        h("p", null, "Confidence that lands is downstream of preparation and a full pipeline. It is not bravado. It is the calm of a founder who has enough live conversations that no single meeting decides the outcome."),
+        h("p", null, "Thirst is the opposite signal and it leaks through everything: the over-eager scheduling, the apologetic tone, the willingness to bend the process for one maybe. Build the pipeline first, and the posture takes care of itself.")
+      ],
+      walk: "Companion · Confidence delivers outcomes",
+      videoTitle: "Confidence Delivers Outcomes", videoSub: "Sprint companion · 15:18",
+      after: [
+        h(window.BeatsGrid, { columns: 3, items: [
+          { num: "01", title: "Assert, do not audition", desc: "Teach the investor something in the meeting. Carry yourself like a founder who is already funded and running diligence on them too." },
+          { num: "02", title: "Kill the thirst", desc: "Desperation is loud. A calm I have thirty more pitches this week does more for you than any polished line." },
+          { num: "03", title: "Earn it upstream", desc: "The confidence that reads as real is built before the room, in a filled pipeline and a rehearsed story. Do that work and the stance follows." }
+        ] }),
+        h(window.Callout, {
+          badLabel: "Thirsty",
+          goodLabel: "Confident",
+          bad: "I would love any chance to talk whenever works for you, absolutely no pressure at all.",
+          good: "I am running meetings over the next two weeks. I have Thursday at 2 or Friday at 10, which works better?"
+        })
+      ]
+    });
+  }
+
+  function P_StarPlayer() {
+    return IGShell({
+      label: "14.05 The Star Player Mindset", num: "14.05",
+      name: "The Star Player", accent: "Mindset.",
+      lede: "A raise is a competition for a small number of checks, and investors back the founder who carries themselves like the best player on the field, not the one hoping to be picked.",
+      read: [
+        h("p", null, "Knowing the game changes how you play it. Investors are running a process, comparing you to others, reading energy and momentum. When you understand that, you stop waiting to be chosen and start selecting the partners who earn a seat on your cap table."),
+        h("p", null, "The posture is not arrogance. It is the quiet certainty of a founder who is evaluating the investor just as hard as they are being evaluated.")
+      ],
+      walk: "Companion · Competition mindset and star player mentality",
+      videoTitle: "Competition Mindset & Star Player Mentality", videoSub: "Sprint companion · 24:36",
+      after: [
+        h(window.BeatsGrid, { columns: 3, items: [
+          { num: "01", title: "Know the game", desc: "Understand what the investor is optimizing for and where you sit in their process. Awareness is what separates a star player from a benchwarmer." },
+          { num: "02", title: "Play like the star, not the bench", desc: "Show up expecting to be backed. Founders who assume the seat is theirs to give tend to be the ones investors chase." },
+          { num: "03", title: "You are running diligence too", desc: "Evaluate them out loud. Ask sharp questions about how they help, how they behave in a down round, who else is on the cap table. Selectivity signals a founder with options." }
+        ] })
+      ]
+    });
+  }
+
+  function P_Reset() {
+    return IGShell({
+      label: "14.06 Reset Your Nervous System", num: "14.06",
+      name: "Reset Your", accent: "Nervous System.",
+      lede: "Before a pitch that matters, a dysregulated nervous system will quietly undercut everything you prepared. Resetting is a physical skill you can run in the two minutes before you walk in.",
+      read: [
+        h("p", null, "The body cannot tell the difference between a threat and a high-stakes meeting. Left unmanaged, that stress response shows up as a rushed voice, shallow answers, and a thirst the investor can feel. A short, deliberate reset changes the state you bring into the room."),
+        h("p", null, "None of this is abstract. It is breath, posture, and attention, run on purpose in the moments before you begin.")
+      ],
+      walk: "Companion · Reset a dysregulated nervous system",
+      videoTitle: "Reset a Dysregulated Nervous System", videoSub: "Sprint companion",
+      after: [
+        h(window.BeatsGrid, { columns: 3, items: [
+          { num: "01", title: "Down-regulate with breath", desc: "Make the exhale longer than the inhale for a minute. A long exhale is the fastest signal to the body that it is safe." },
+          { num: "02", title: "Get back in your body", desc: "Feet on the floor, shoulders down, unclench the jaw and hands. Physical grounding pulls you out of the spin and into the present." },
+          { num: "03", title: "Set one intention", desc: "Pick a single aim for the meeting, connection over performance. One clear intention quiets the noise of trying to do everything at once." }
+        ] })
+      ]
+    });
+  }
+
+  const INNER_GAME_SUBS = [
+    { num: "01", slug: "rollercoaster", title: "The Emotional Rollercoaster", teaser: "Fundraising is emotionally volatile by design. Expect the swings and build a way to ride them." },
+    { num: "02", slug: "passes", title: "Empower Yourself Through Passes", teaser: "Fifty to seventy nos is normal. Filter the feedback and keep your energy on the live conversations." },
+    { num: "03", slug: "worthiness", title: "Connecting to Your Worthiness", teaser: "Separate your value as a founder from any single investor decision." },
+    { num: "04", slug: "confidence", title: "Confidence Over Thirst", teaser: "Real confidence is downstream of a full pipeline, and investors can feel the difference." },
+    { num: "05", slug: "star-player", title: "The Star Player Mindset", teaser: "Carry yourself like the best player on the field, and run diligence on them too." },
+    { num: "06", slug: "reset", title: "Reset Your Nervous System", teaser: "A two-minute physical reset to change the state you bring into the room." }
+  ];
+  const IG_MAP = {
+    rollercoaster: P_Rollercoaster, passes: P_Passes, worthiness: P_Worthiness,
+    confidence: P_Confidence, "star-player": P_StarPlayer, reset: P_Reset
+  };
+  function InnerGameChapter({ subIdx }) {
+    const sub = subIdx >= 0 ? INNER_GAME_SUBS[subIdx] : null;
+    if (!sub) return null;
+    const Page = IG_MAP[sub.slug];
+    return h(React.Fragment, null, Page ? h(Page, { key: sub.slug }) : null);
+  }
+  window.CHAPTER_INNER_GAME = {
+    id: "inner-game",
+    num: "14",
+    name: "The Inner Game",
+    desc: "The mental and emotional side of the raise: staying regulated, confident, and empowered through a process built on rejection.",
+    subs: INNER_GAME_SUBS,
+    Component: InnerGameChapter
+  };
+})();
+
+
 const PB_CHAPTERS = [
 // How to Use This Playbook — ported in ch-intro.jsx
 window.CHAPTER_INTRO,
@@ -9266,6 +9467,7 @@ window.CHAPTER_CLOSE,
 // Appendix · Mistakes Index + Glossary — reference material, ch-appendix.jsx.
 // Treated as kind: "appendix" so the SceneBar / home / dropdown can render it
 // without the "CH · " prefix and the "twelve chapters" framing.
+window.CHAPTER_INNER_GAME,
 window.CHAPTER_APPENDIX].filter(Boolean).map(ch =>
 // Stamp `locked: true` on chapters that are still being edited so they
 // surface as "Coming soon" in the live playbook. Dev mode (?dev=1 or
