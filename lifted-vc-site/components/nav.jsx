@@ -21,7 +21,7 @@ function Nav({ current = 'home' }) {
     { href: 'about.html', slug: 'about', label: 'About' },
     { href: 'founders.html', slug: 'founders', label: 'Founders' },
     { href: 'pricing.html', slug: 'pricing', label: 'Pricing' },
-    { href: 'partners.html', slug: 'partners', label: 'Partners' },
+    { href: 'partners.html', slug: 'partners', label: 'Investors' },
     { href: 'https://lifted.vc/fundraising-playbook', slug: 'playbook', label: 'Playbook', external: true },
   ];
 
