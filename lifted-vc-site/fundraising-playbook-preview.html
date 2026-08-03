@@ -9237,6 +9237,14 @@ const PB_ONE_PAGER_BULLETS = [{
 /* Inner Game — additive Fundraising Sprint content (Quinn Fitzgerald + Adam Roberts) */
 (function () {
   const h = React.createElement;
+  function AudioCompanion(p){
+    return h("div",{className:"audio-companion",style:{border:"1px solid rgba(20,20,22,.12)",borderRadius:"14px",padding:"18px 18px 16px",background:"rgba(255,255,255,.55)"}},
+      h("div",{style:{fontSize:".72rem",letterSpacing:".08em",textTransform:"uppercase",opacity:.55,marginBottom:"6px"}},"\u25B6 Listen"),
+      p.title&&h("h3",{style:{margin:"0 0 3px",fontSize:"1.02rem",fontWeight:600,lineHeight:1.25}},p.title),
+      p.sub&&h("div",{style:{fontSize:".8rem",opacity:.6,marginBottom:"12px"}},p.sub),
+      h("audio",{controls:true,preload:"none",style:{width:"100%"}},h("source",{src:p.src,type:"audio/mpeg"}))
+    );
+  }
   function IGShell(opts) {
     const { Cue, Lede, Video } = window;
     const head = [
@@ -9246,7 +9254,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("section", { className: "sub-split__read" }, ...opts.read),
         h("aside", { className: "sub-split__act" },
           h("div", { className: "sub-act-eyebrow" }, opts.walk),
-          h(Video, { placeholder: true, title: opts.videoTitle, sub: opts.videoSub })
+          opts.audio ? h(AudioCompanion, { title: opts.videoTitle, sub: opts.videoSub, src: opts.audio }) : h(Video, { placeholder: true, title: opts.videoTitle, sub: opts.videoSub })
         )
       )
     ];
@@ -9264,7 +9272,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p", null, "The work of this chapter is to make that volatility survivable and even useful, so it never leaks into the room or bleeds your energy away from the conversations that are still live.")
       ],
       walk: "Companion · Navigating the emotional rollercoaster",
-      videoTitle: "Navigating the Emotional Rollercoaster", videoSub: "Sprint companion · 4:32",
+      audio: "/audio/inner-game/rollercoaster.mp3", videoTitle: "Navigating the Emotional Rollercoaster", videoSub: "Sprint companion · 4:32",
       after: [
         h(window.BeatsGrid, { columns: 3, items: [
           { num: "01", title: "Two truths at once", desc: "Hold conviction in the company and detachment from any single meeting. The raise needs your belief and your ability to let one no roll off." },
@@ -9285,7 +9293,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p", null, "That is why every no has to run through your own filter before it touches your strategy. A pass can be a real chance to improve how you pitch, or it can be an investor who woke up on the wrong side of the bed. You often cannot tell which, so you pattern match it against what you are hearing elsewhere and decide what to keep and what to discard.")
       ],
       walk: "Companion · Empower yourself through passes",
-      videoTitle: "Empower Yourself Through Passes", videoSub: "Sprint companion · Adam & Quinn",
+      audio: "/audio/inner-game/empower-through-passes.mp3", videoTitle: "Empower Yourself Through Passes", videoSub: "Sprint companion · Adam & Quinn",
       after: [
         h(window.BeatsGrid, { columns: 2, items: [
           { num: "01", eyebrow: "Move 01", title: "Judge the no back", desc: "When a pass lands, ask how good their no actually is. A real reason you can use, keep. A weak reason goes in the mental trash bin. Judging the feedback brings the power back to level." },
@@ -9327,7 +9335,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p", null, "When the line blurs, borrow evidence. The customers you serve, the team that joined you, the problem you understand better than the person across the table. The facts of why you started are still true after a pass.")
       ],
       walk: "Companion · Connecting to your worthiness",
-      videoTitle: "Connecting to Your Worthiness", videoSub: "Sprint companion · 9:05",
+      audio: "/audio/inner-game/worthiness.mp3", videoTitle: "Connecting to Your Worthiness", videoSub: "Sprint companion · 9:05",
       after: [
         h(window.BeatsGrid, { columns: 2, items: [
           { num: "01", title: "Your worth is not on the cap table", desc: "A decision about an investment is not a decision about you. Decide that in advance so a pass cannot relitigate it in the moment." },
@@ -9347,7 +9355,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p", null, "Thirst is the opposite signal and it leaks through everything: the over-eager scheduling, the apologetic tone, the willingness to bend the process for one maybe. Build the pipeline first, and the posture takes care of itself.")
       ],
       walk: "Companion · Confidence delivers outcomes",
-      videoTitle: "Confidence Delivers Outcomes", videoSub: "Sprint companion · 15:18",
+      audio: "/audio/inner-game/confidence.mp3", videoTitle: "Confidence Delivers Outcomes", videoSub: "Sprint companion · 15:18",
       after: [
         h(window.BeatsGrid, { columns: 3, items: [
           { num: "01", title: "Assert, do not audition", desc: "Teach the investor something in the meeting. Carry yourself like a founder who is already funded and running diligence on them too." },
@@ -9374,7 +9382,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p", null, "The posture is not arrogance. It is the quiet certainty of a founder who is evaluating the investor just as hard as they are being evaluated.")
       ],
       walk: "Companion · Competition mindset and star player mentality",
-      videoTitle: "Competition Mindset & Star Player Mentality", videoSub: "Sprint companion · 24:36",
+      audio: "/audio/inner-game/star-player.mp3", videoTitle: "Competition Mindset & Star Player Mentality", videoSub: "Sprint companion · 24:36",
       after: [
         h(window.BeatsGrid, { columns: 3, items: [
           { num: "01", title: "Know the game", desc: "Understand what the investor is optimizing for and where you sit in their process. Awareness is what separates a star player from a benchwarmer." },
