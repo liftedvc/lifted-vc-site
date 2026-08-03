@@ -1,11 +1,11 @@
-// Founders page — all testimonials
+// Founders page — testimonials, outcome-forward
 function FoundersPage() {
   const quotes = [
-    { q: "Adam didn't just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.'", who: 'Leni', tag: 'Pre-seed founder', bg: 'var(--blush)' },
-    { q: "10/10. The sprint was extremely helpful to understand the VC game. I wish I had found it even earlier — it would have saved me at least 100 hours and $20K+.", who: 'Misha', tag: 'Sprint alum', bg: 'var(--butter)' },
-    { q: "I never ran a process before working with Adam. He made it easy — a lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period.", who: 'Ndonga', tag: 'Seed founder', bg: 'var(--sage)' },
-    { q: "Adam took me from cool science project to funded business. The curriculum gave me tangible mechanics that translated directly into capital raised.", who: 'Aidan', tag: 'Pre-seed founder', bg: 'var(--sky)' },
-    { q: "I highly recommend this program. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset.", who: 'Mary-Ann', tag: 'Seed founder', bg: 'var(--blush)' },
+    { result: 'Pre-seed, run like a Series A', q: "Adam didn't just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.'", who: 'Leni', tag: 'Pre-seed founder', bg: 'var(--blush)' },
+    { result: 'Saved 100+ hours and $20K+', q: "10/10. The coaching was extremely helpful to understand the VC game. I wish I had found it even earlier, it would have saved me at least 100 hours and $20K+.", who: 'Misha', tag: 'Coached founder', bg: 'var(--butter)' },
+    { result: 'More investor calls in 4 weeks than ever before', q: "I never ran a process before working with Adam. He made it easy. A lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period.", who: 'Ndonga', tag: 'Seed founder', bg: 'var(--sage)' },
+    { result: 'From science project to funded business', q: "Adam took me from cool science project to funded business. The coaching gave me tangible mechanics that translated directly into capital raised.", who: 'Aidan', tag: 'Pre-seed founder', bg: 'var(--sky)' },
+    { result: null, q: "I highly recommend working with Adam. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset.", who: 'Mary-Ann', tag: 'Seed founder', bg: 'var(--blush)' },
   ];
 
   return (
@@ -21,8 +21,7 @@ function FoundersPage() {
             </Reveal>
             <Reveal delay={200}>
               <p style={{ fontSize: 21, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
-                From first-time founders to repeat entrepreneurs — a small selection of recent
-                engagements.
+                From first-time founders to repeat entrepreneurs, a small selection of recent engagements.
               </p>
             </Reveal>
           </div>
@@ -34,16 +33,12 @@ function FoundersPage() {
           <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
             {quotes.map((q, i) => (
               <Reveal key={q.who} delay={(i % 2) * 80}>
-                <div style={{
-                  padding: 40,
-                  background: q.bg,
-                  borderRadius: 16,
-                  height: '100%',
-                  display: 'flex', flexDirection: 'column',
-                }}>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 80, color: 'var(--ink)', lineHeight: 0.5, marginBottom: 24, opacity: 0.4, fontStyle: 'italic' }}>"</div>
-                  <p className="serif" style={{ fontSize: 22, lineHeight: 1.4, color: 'var(--ink)', margin: '0 0 32px', textWrap: 'pretty', flex: 1, fontWeight: 400 }}>
-                    {q.q}
+                <div style={{ padding: 40, background: q.bg, borderRadius: 16, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  {q.result && (
+                    <div style={{ fontSize: 23, fontWeight: 600, lineHeight: 1.2, letterSpacing: '-0.015em', marginBottom: 16, color: 'var(--ink)' }}>{q.result}</div>
+                  )}
+                  <p className="serif" style={{ fontSize: q.result ? 19 : 24, lineHeight: 1.45, color: 'var(--ink-soft)', margin: '0 0 28px', textWrap: 'pretty', flex: 1, fontWeight: 400, fontStyle: 'italic' }}>
+                    &ldquo;{q.q}&rdquo;
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
                     <Avatar letter={q.who[0]} small />

@@ -1,10 +1,11 @@
-// Pricing page — full pricing + FAQ
+// Pricing page — consultation + stage-based round coaching + FAQ
 function PricingPage() {
   const plans = [
     {
       tag: 'Consultation', price: 'Free', cadence: '30-minute call',
       title: 'Free Fundraising Consultation',
       desc: 'An honest read on where you are and what would unblock your raise. Candid, conversational, entirely on the house.',
+      note: null,
       includes: [
         '30-minute working call',
         'Honest read on readiness',
@@ -15,9 +16,10 @@ function PricingPage() {
       bg: 'var(--sky)',
     },
     {
-      tag: 'Round coaching', price: '~$1K', cadence: 'per month',
+      tag: 'Round coaching', price: '$1–2K', cadence: 'per month',
       title: '1-on-1 Round Coaching',
       desc: 'Your dedicated co-pilot from narrative through close. We run your fundraising round together, week by week.',
+      note: 'Against a $10–20K engagement, balance due only when you close.',
       includes: [
         'Weekly 1-on-1 coaching',
         'Live pitch practice',
@@ -26,20 +28,6 @@ function PricingPage() {
       ],
       cta: 'Work with me',
       bg: 'var(--butter)',
-      highlight: true,
-    },
-    {
-      tag: 'Prep coaching', price: '~$1K', cadence: 'per month',
-      title: '1-on-1 Round Prep Coaching',
-      desc: 'For founders building toward their raise. We sharpen entrepreneurship, customer discovery, and company-building until you are investor-ready.',
-      includes: [
-        'Entrepreneurship fundamentals',
-        'Customer discovery',
-        'Company-building strategy',
-        'Investor-readiness checkpoints',
-      ],
-      cta: "Let's talk",
-      bg: 'var(--blush)',
     },
   ];
 
@@ -51,13 +39,13 @@ function PricingPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Pricing</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
-                Three ways to <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>work together.</span>
+                Simple, honest <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>pricing.</span>
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p style={{ fontSize: 21, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
-                No equity taken — ever. Pricing is honest and flexible: pick what fits your stage,
-                your timeline, and how involved you want me to be.
+                No equity, ever. Most of the fee is tied to your raise, so I only win when you do.
+                Pricing scales with your stage, your timeline, and how involved you want me to be.
               </p>
             </Reveal>
           </div>
@@ -66,7 +54,7 @@ function PricingPage() {
 
       <section style={{ paddingTop: 60, paddingBottom: 100, background: 'var(--cream)' }}>
         <div className="wrap">
-          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, maxWidth: 780, margin: '0 auto' }}>
             {plans.map((p, i) => (
               <Reveal key={p.title} delay={i * 80}>
                 <div style={{
@@ -77,20 +65,15 @@ function PricingPage() {
                   display: 'flex', flexDirection: 'column',
                   position: 'relative',
                 }}>
-                  {p.highlight && (
-                    <div style={{
-                      position: 'absolute', top: -12, right: 24,
-                      background: 'var(--ink)', color: 'var(--cream)',
-                      padding: '6px 14px', borderRadius: 999,
-                      fontSize: 12, fontWeight: 500,
-                    }}>Most popular</div>
-                  )}
                   <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 500, marginBottom: 14 }}>{p.tag}</div>
                   <h3 style={{ fontSize: 32, margin: '0 0 8px', lineHeight: 1.05 }}>{p.title}</h3>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 18 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: p.note ? 8 : 18 }}>
                     <span style={{ fontFamily: 'var(--serif)', fontSize: 40, fontWeight: 400, letterSpacing: '-0.02em' }}>{p.price}</span>
                     <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{p.cadence}</span>
                   </div>
+                  {p.note && (
+                    <div style={{ fontSize: 12.5, color: 'var(--ink-mute)', margin: '0 0 18px', lineHeight: 1.4 }}>{p.note}</div>
+                  )}
                   <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '0 0 24px', textWrap: 'pretty' }}>{p.desc}</p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
                     {p.includes.map(inc => (
@@ -100,7 +83,7 @@ function PricingPage() {
                         fontSize: 14.5, color: 'var(--ink)',
                         display: 'flex', gap: 10, alignItems: 'baseline',
                       }}>
-                        <span style={{ color: 'var(--accent)' }}>→</span> {inc}
+                        <span style={{ color: 'var(--accent)' }}>&rarr;</span> {inc}
                       </li>
                     ))}
                   </ul>
@@ -112,19 +95,94 @@ function PricingPage() {
         </div>
       </section>
 
+      <EngagementModel />
+
       <FAQ />
     </>
+  );
+}
+
+// How the engagement works — stage-based totals + success-aligned structure
+function EngagementModel() {
+  const rows = [
+    { stage: 'Pre-seed', monthly: '$1,000 / mo', total: '$10,000' },
+    { stage: 'Seed', monthly: '$1,500 / mo', total: '$15,000' },
+    { stage: 'Series A', monthly: '$2,000 / mo', total: '$20,000' },
+  ];
+  return (
+    <section className="bg-sage" style={{ paddingTop: 110, paddingBottom: 110 }}>
+      <div className="wrap">
+        <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }}>
+          <Reveal>
+            <div style={{ position: 'sticky', top: 100 }}>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>How it works</div>
+              <h2 style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1, textWrap: 'balance' }}>
+                Priced to your <span style={{ fontStyle: 'italic' }}>round.</span>
+              </h2>
+              <p style={{ fontSize: 17, color: 'var(--ink-soft)', marginTop: 22, maxWidth: 380, textWrap: 'pretty' }}>
+                Coaching scales with your stage. You pay a monthly retainer against a fixed
+                engagement total, and the balance comes due only when your round closes.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <div>
+              <div style={{ background: 'var(--cream)', borderRadius: 16, overflow: 'hidden' }}>
+                <div style={{
+                  display: 'grid', gridTemplateColumns: '1.1fr 1fr 1fr',
+                  padding: '16px 28px', fontSize: 12.5, color: 'var(--ink-mute)',
+                  fontWeight: 500, borderBottom: '1px solid var(--line)',
+                  fontFamily: 'var(--mono)', letterSpacing: '0.04em', textTransform: 'uppercase',
+                }}>
+                  <div>Stage</div>
+                  <div>Monthly retainer</div>
+                  <div>Engagement total</div>
+                </div>
+                {rows.map((r, i) => (
+                  <div key={r.stage} style={{
+                    display: 'grid', gridTemplateColumns: '1.1fr 1fr 1fr',
+                    padding: '22px 28px', alignItems: 'baseline',
+                    borderBottom: i < rows.length - 1 ? '1px solid var(--line-soft)' : 'none',
+                  }}>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontStyle: 'italic' }}>{r.stage}</div>
+                    <div style={{ fontSize: 16, color: 'var(--ink-soft)' }}>{r.monthly}</div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 24, color: 'var(--ink)' }}>{r.total}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: 24, display: 'grid', gap: 14 }}>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'baseline' }}>
+                  <span style={{ color: 'var(--accent)', fontSize: 15 }}>&rarr;</span>
+                  <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
+                    Your monthly payments count toward the total. The remaining balance is due only when
+                    you successfully close your round.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'baseline' }}>
+                  <span style={{ color: 'var(--accent)', fontSize: 15 }}>&rarr;</span>
+                  <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
+                    No equity, ever, and it is month to month. If it is not working, we will both know.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
   );
 }
 
 function FAQ() {
   const [open, setOpen] = React.useState(0);
   const items = [
-    { q: 'Do you take equity?', a: "No. I don't take equity in your startup — I want to remain unbiased and solely focused on your fundraising goals." },
+    { q: 'Do you take equity?', a: "No. I don't take equity in your startup. I want to remain unbiased and solely focused on your fundraising goals." },
     { q: 'Who do you take on as clients?', a: "I'm selective on purpose: I only work with founders I strongly believe can successfully fundraise. Small client roster, deep focus." },
-    { q: "What if I'm not sure I'm ready to fundraise?", a: "Ask me — readiness is complex. Market timing, revenue, product maturity, and traction all factor in. I help you evaluate before you commit." },
-    { q: 'Can you guarantee success?', a: "No, and be skeptical of anyone who does. What I can promise is a process that gives you the best possible shot — and the honesty to tell you when something isn't working." },
-    { q: 'How much does it cost?', a: "Round Coaching and Round Prep Coaching run around $1K/month on retainer. The fundraising consultation is on the house. Reach out and we'll find the right fit for your stage." },
+    { q: "What if I'm not sure I'm ready to fundraise?", a: "Ask me. Readiness is complex: market timing, revenue, product maturity, and traction all factor in. I help you evaluate before you commit." },
+    { q: 'Can you guarantee success?', a: "No, and be skeptical of anyone who does. What I can promise is a process that gives you the best possible shot, and the honesty to tell you when something isn't working." },
+    { q: 'How much does it cost?', a: "Round Coaching scales with your stage: $10K at pre-seed, $15K at seed, $20K at Series A, paid as a monthly retainer ($1K to $2K) against that total, with the balance due only when you close. The consultation is free, and I never take equity." },
   ];
 
   return (
@@ -169,4 +227,4 @@ function FAQ() {
   );
 }
 
-Object.assign(window, { PricingPage, FAQ });
+Object.assign(window, { PricingPage, EngagementModel, FAQ });

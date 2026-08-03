@@ -21,7 +21,8 @@ function Nav({ current = 'home' }) {
     { href: 'about.html', slug: 'about', label: 'About' },
     { href: 'founders.html', slug: 'founders', label: 'Founders' },
     { href: 'pricing.html', slug: 'pricing', label: 'Pricing' },
-    { href: 'https://lifted.vc/fundraising-playbook', slug: 'playbook', label: 'Playbook' },
+    { href: 'partners.html', slug: 'partners', label: 'Partners' },
+    { href: 'https://lifted.vc/fundraising-playbook', slug: 'playbook', label: 'Playbook', external: true },
   ];
 
   return (
@@ -53,7 +54,10 @@ function Nav({ current = 'home' }) {
                 const active = l.slug === current;
                 return (
                   <li key={l.href}>
-                    <a href={l.href} style={{
+                    <a href={l.href}
+                    target={l.external ? '_blank' : undefined}
+                    rel={l.external ? 'noopener noreferrer' : undefined}
+                    style={{
                       color: active ? 'var(--ink)' : 'var(--ink-soft)',
                       fontWeight: active ? 500 : 400,
                       transition: 'color .2s',
@@ -125,7 +129,10 @@ function Nav({ current = 'home' }) {
             const active = l.slug === current;
             return (
               <li key={l.href}>
-                <a href={l.href} style={{
+                <a href={l.href}
+                target={l.external ? '_blank' : undefined}
+                rel={l.external ? 'noopener noreferrer' : undefined}
+                style={{
                   display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
                   padding: '20px 8px',
                   borderBottom: '1px solid var(--line-soft)',

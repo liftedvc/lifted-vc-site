@@ -42,16 +42,15 @@ function Hero() {
                 margin: '36px 0 44px',
                 textWrap: 'pretty',
               }}>
-                1-on-1 fundraising coaching for founders. Built on 100+ founders coached
-                and 50+ closed rounds.
+                I run your raise with you, from narrative to close. Warm introductions instead of
+                cold outreach, and a tight two to three week sprint that turns interest into term sheets.
               </p>
             </Reveal>
 
             <Reveal delay={320}>
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                <a href="#contact" className="btn btn-primary">Work with me <Arrow /></a>
-                <a href="#process" className="btn btn-ghost">How it works</a>
-                <a href="https://lifted.vc/fundraising-playbook" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
+                <a href="contact.html" className="btn btn-primary">Work with me <Arrow /></a>
+                <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
               </div>
             </Reveal>
           </div>
@@ -86,7 +85,7 @@ function Hero() {
             borderTop: '1px solid var(--line)',
             paddingTop: 56, paddingBottom: 100,
           }}>
-            <Stat num="$80M+" label="Raised by coached founders" />
+            <Stat num="$96M+" label="Raised by coached founders" />
             <Stat num="100+" label="Founders coached" />
             <Stat num="50+" label="Closed rounds" />
           </div>

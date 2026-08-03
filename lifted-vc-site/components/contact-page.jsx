@@ -60,7 +60,7 @@ function ContactPage() {
                 </p>
 
                 <h3 style={{ fontSize: 26, margin: '0 0 8px', lineHeight: 1.1 }}>Tell me about your raise.</h3>
-                <p style={{ fontSize: 14, color: 'var(--ink-soft)', margin: '0 0 28px' }}>I respond personally within 48 hours.</p>
+                <p style={{ fontSize: 14, color: 'var(--ink-soft)', margin: '0 0 28px' }}>A few quick questions, then you'll pick a time for your free 30-minute consultation.</p>
 
                 <Field label="Name"><input type="text" name="name" placeholder="Your name" required /></Field>
                 <Field label="Email"><input type="email" name="email" placeholder="you@company.com" required /></Field>
@@ -88,7 +88,7 @@ function ContactPage() {
                 <Field label="What's on your mind?"><textarea name="message" rows={3} placeholder="Where are you, and what would help most?"></textarea></Field>
 
                 <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: 8 }}>
-                  Send it <Arrow />
+                  Continue to scheduling <Arrow />
                 </button>
               </form>
             </div>

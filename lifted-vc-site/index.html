@@ -5,16 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lifted.vc — Raise your round like a repeat founder</title>
   <meta name="description" content="1-on-1 fundraising coaching for founders. Built on 100+ founders coached and 50+ closed rounds. Pre-seed through Series A." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lifted.vc" />
+  <meta property="og:title" content="Lifted.vc — Raise your round like a repeat founder" />
+  <meta property="og:description" content="1-on-1 fundraising coaching for founders. Built on 100+ founders coached and 50+ closed rounds. Pre-seed through Series A." />
+  <meta property="og:url" content="https://lifted.vc/" />
+  <meta property="og:image" content="https://lifted.vc/images/og-image.png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lifted.vc — Raise your round like a repeat founder" />
+  <meta name="twitter:description" content="1-on-1 fundraising coaching for founders. Built on 100+ founders coached and 50+ closed rounds. Pre-seed through Series A." />
+  <meta name="twitter:image" content="https://lifted.vc/images/og-image.png" />
+  <meta name="theme-color" content="#fbf6ec" />
+  <link rel="canonical" href="https://lifted.vc/" />
+
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3" />
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "96587fd6e076409aa9c480adef2564b4"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Lifted.vc",
+    "description": "1-on-1 fundraising coaching for founders, pre-seed through Series A.",
+    "url": "https://lifted.vc",
+    "image": "https://lifted.vc/images/og-image.png",
+    "areaServed": "Worldwide",
+    "priceRange": "$$",
+    "founder": {
+      "@type": "Person",
+      "name": "Adam Roberts",
+      "jobTitle": "Fundraising Coach",
+      "sameAs": ["https://www.linkedin.com/in/robertsadamj/"]
+    },
+    "sameAs": ["https://www.linkedin.com/in/robertsadamj/"]
+  }
+  </script>
 </head>
 <body>
   <!-- Netlify form discovery: shadow form so the build crawler picks up the field schema. The real form lives in components/contact-page.jsx. -->
@@ -43,6 +80,8 @@
   <script type="text/babel" src="components/proof.jsx"></script>
   <script type="text/babel" src="components/process.jsx"></script>
   <script type="text/babel" src="components/services.jsx"></script>
+  <script type="text/babel" src="components/what-you-get.jsx"></script>
+  <script type="text/babel" src="components/who-for.jsx"></script>
   <script type="text/babel" src="components/testimonials.jsx"></script>
   <script type="text/babel" src="components/cta.jsx"></script>
   <script type="text/babel" src="components/tweaks.jsx"></script>
@@ -55,7 +94,9 @@
           <Hero />
           <Proof />
           <Process />
+          <WhatYouGet />
           <ServicesTeaser />
+          <WhoThisIsFor />
           <FeaturedQuote />
           <CTA />
         </PageShell>

@@ -1,20 +1,20 @@
-// Process — three steps, sky blue background, simpler cards
+// Process — three steps, sky blue background, the Authentic FOMO method
 function Process() {
   const phases = [
     {
       n: '1',
       title: 'Prepare',
-      lead: 'Build your investor target list, sharpen your narrative, and get your deck and data room ready so your story feels inevitable.',
+      lead: 'Sharpen your story and build a crisp one-pager, deck, and data room. We lead with the one-pager, because it is concise, investors prefer it, and it lands meetings faster.',
     },
     {
       n: '2',
       title: 'Pitch',
-      lead: 'Drill your pitch, strategize investor comms, and build your warm intro pipeline. Walk in with confidence.',
+      lead: 'Skip cold outreach. We map 20 to 30 founders who just raised in your space, turn their investors into 60 to 80 warm, double-opt-in intros, and drill your pitch until you walk in a known quantity.',
     },
     {
       n: '3',
       title: 'Close',
-      lead: 'Engineer real demand through timeline compression, parallel processes, and soft commitments. Signal momentum.',
+      lead: 'Batch every meeting into a two to three week sprint, up to five a day. Real demand, timeline pressure, and parallel processes turn interest into term sheets.',
     },
   ];
 
@@ -22,8 +22,8 @@ function Process() {
     <section id="process" className="bg-sky">
       <div className="wrap">
         <Reveal>
-          <div style={{ textAlign: 'center', marginBottom: 120, maxWidth: 760, margin: '0 auto 120px' }}>
-            <div className="eyebrow" style={{ marginBottom: 20 }}>How it works</div>
+          <div style={{ textAlign: 'center', marginBottom: 120, maxWidth: 780, margin: '0 auto 120px' }}>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>The method</div>
             <h2 style={{
               fontSize: 'clamp(44px, 6vw, 88px)',
               lineHeight: 1, textWrap: 'balance',
@@ -34,8 +34,8 @@ function Process() {
               fontSize: 19, color: 'var(--ink-soft)',
               marginTop: 24, textWrap: 'pretty',
             }}>
-              Good fundraising is built on best practices and the industry's hidden rules.
-              I make sure you walk in the room a seasoned pro.
+              It is a system I call <em>Authentic FOMO</em>: real demand, engineered honestly.
+              No cold outreach and no spray-and-pray, just momentum that makes investors move.
             </p>
           </div>
         </Reveal>
@@ -75,7 +75,7 @@ function Process() {
 
         <Reveal>
           <div style={{ textAlign: 'center', marginTop: 88 }}>
-            <a href="https://lifted.vc/fundraising-playbook" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
+            <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
           </div>
         </Reveal>
       </div>

@@ -28,8 +28,7 @@ function Footer() {
             { l: 'Founders', href: 'founders.html' },
           ]} />
           <FooterCol title="Resources" links={[
-            { l: 'Playbook', href: 'https://lifted.vc/fundraising-playbook' },
-            { l: 'Sprint', href: 'https://www.fundraisingsprint.co/' },
+            { l: 'Playbook', href: 'https://lifted.vc/fundraising-playbook', external: true },
             { l: 'FAQ', href: 'pricing.html#faq' },
           ]} />
           <FooterCol title="Connect" links={[
@@ -62,7 +61,10 @@ function FooterCol({ title, links }) {
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {links.map(l => (
           <li key={l.l} style={{ marginBottom: 10 }}>
-            <a href={l.href} style={{
+            <a href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener noreferrer' : undefined}
+            style={{
               fontSize: 15, color: 'var(--ink-soft)',
               transition: 'color .2s',
             }}

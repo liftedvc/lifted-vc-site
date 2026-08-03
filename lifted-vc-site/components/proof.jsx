@@ -1,39 +1,68 @@
-// Social proof — quiet investor names, no marquee chrome
+// Social proof — logo wall of funds that have backed coached founders.
+// Logos live in images/logos/<file>. Grayscale by default, full color on hover.
 function Proof() {
-  const investors = [
-    'Y Combinator', 'a16z', 'Pear Ventures', 'Bessemer',
-    'Founder Collective', 'Hustle Fund', 'Techstars', 'Khosla',
+  const logos = [
+    { name: 'Y Combinator', file: 'y-combinator.svg' },
+    { name: 'Bessemer', file: 'bessemer.svg' },
+    { name: 'Techstars', file: 'techstars.svg' },
+    { name: 'Pear Ventures', file: 'pear.svg' },
+    { name: 'Felicis Ventures', file: 'felicis.png' },
+    { name: 'SV Angel', file: 'sv-angel.svg' },
+    { name: 'Hustle Fund', file: 'hustle-fund.svg' },
+    { name: 'Plug and Play', file: 'plug-and-play.svg' },
+    { name: 'Alumni Ventures', file: 'alumni-ventures.svg' },
+    { name: 'a16z Speedrun', file: 'speedrun.svg' },
+    { name: 'Rebel Fund', file: 'rebel-fund.png' },
+    { name: 'HF0', file: 'hf0.png' },
+    { name: 'Everywhere Ventures', file: 'everywhere-ventures.svg' },
+    { name: 'Liquid 2 Ventures', file: 'liquid-2.svg' },
+    { name: 'HCVC', file: 'hcvc.png' },
   ];
-  const all = [...investors, ...investors];
 
   return (
     <section className="tight" style={{
-      paddingTop: 60, paddingBottom: 60,
+      paddingTop: 64, paddingBottom: 64,
       background: 'var(--cream)',
       borderTop: '1px solid var(--line)',
       borderBottom: '1px solid var(--line)',
     }}>
-      <div className="wrap" style={{ marginBottom: 28 }}>
+      <div className="wrap">
         <div style={{
           textAlign: 'center',
           fontSize: 14,
           color: 'var(--ink-soft)',
+          marginBottom: 44,
         }}>
-          Founders backed by
+          Founders I&rsquo;ve coached have raised from
         </div>
-      </div>
-      <div style={{ overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent, black 12%, black 88%, transparent)' }}>
-        <div className="marquee">
-          {all.map((name, i) => (
-            <div key={i} style={{
-              fontFamily: 'var(--serif)',
-              fontSize: 26,
-              color: 'var(--ink-soft)',
-              whiteSpace: 'nowrap',
-              fontStyle: i % 3 === 0 ? 'italic' : 'normal',
-            }}>
-              {name}
-            </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+          gap: '44px 32px',
+          alignItems: 'center',
+          justifyItems: 'center',
+          maxWidth: 1080,
+          margin: '0 auto',
+        }}>
+          {logos.map(l => (
+            <img
+              key={l.name}
+              src={`images/logos/${l.file}`}
+              alt={l.name}
+              title={l.name}
+              loading="lazy"
+              style={{
+                height: 30, width: 'auto', maxWidth: 150,
+                objectFit: 'contain',
+                opacity: 0.62,
+                filter: 'grayscale(100%)',
+                transition: 'opacity .25s ease, filter .25s ease',
+              }}
+              onError={e => { e.currentTarget.style.display = 'none'; }}
+              onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.style.filter = 'none'; }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = 0.62; e.currentTarget.style.filter = 'grayscale(100%)'; }}
+            />
           ))}
         </div>
       </div>

@@ -1,4 +1,4 @@
-// Services teaser — three offers on the home page. Sage green block.
+// Services teaser — two offers on the home page. Sage green block.
 function ServicesTeaser() {
   const items = [
     {
@@ -28,19 +28,6 @@ function ServicesTeaser() {
       href: 'contact.html',
       highlight: true,
     },
-    {
-      tag: 'Prep coaching',
-      title: '1-on-1 Round Prep Coaching',
-      desc: 'For founders building toward their raise. We sharpen entrepreneurship, customer discovery, and company-building until you are investor-ready.',
-      includes: [
-        'Entrepreneurship fundamentals',
-        'Customer discovery',
-        'Company-building strategy',
-        'Investor-readiness checkpoints',
-      ],
-      cta: "Let's talk",
-      href: 'contact.html',
-    },
   ];
 
   return (
@@ -53,7 +40,7 @@ function ServicesTeaser() {
               fontSize: 'clamp(44px, 6vw, 88px)',
               lineHeight: 1, textWrap: 'balance',
             }}>
-              Three ways in,<br/>
+              Two ways in,<br/>
               <span style={{ fontStyle: 'italic' }}>one shared goal.</span>
             </h2>
           </div>
@@ -61,9 +48,10 @@ function ServicesTeaser() {
 
         <div data-stack="true" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: 20,
           alignItems: 'stretch',
+          maxWidth: 780, margin: '0 auto',
         }}>
           {items.map((s, i) => (
             <Reveal key={s.title} delay={i * 100}>
@@ -75,14 +63,6 @@ function ServicesTeaser() {
                 height: '100%',
                 display: 'flex', flexDirection: 'column',
               }}>
-                {s.highlight && (
-                  <div style={{
-                    position: 'absolute', top: -12, right: 24,
-                    background: 'var(--ink)', color: 'var(--cream)',
-                    padding: '6px 14px', borderRadius: 999,
-                    fontSize: 12, fontWeight: 500,
-                  }}>Most popular</div>
-                )}
                 <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 500, marginBottom: 14 }}>{s.tag}</div>
                 <h4 style={{ fontSize: 28, margin: '0 0 12px', lineHeight: 1.1 }}>{s.title}</h4>
                 <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '0 0 22px', textWrap: 'pretty' }}>{s.desc}</p>
@@ -94,7 +74,7 @@ function ServicesTeaser() {
                       fontSize: 14, color: 'var(--ink)',
                       display: 'flex', gap: 10, alignItems: 'baseline',
                     }}>
-                      <span style={{ color: 'var(--accent)' }}>→</span> {inc}
+                      <span style={{ color: 'var(--accent)' }}>&rarr;</span> {inc}
                     </li>
                   ))}
                 </ul>

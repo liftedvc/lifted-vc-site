@@ -1,4 +1,12 @@
 // Shared shell — Nav + Footer + tweaks wiring. Use on every page.
+function StickyCTA() {
+  const path = (typeof window !== "undefined" && window.location) ? window.location.pathname : "";
+  if (/contact|partners/.test(path)) return null;
+  return (
+    <a href="contact.html" className="sticky-cta btn btn-primary">Work with me <Arrow size={13} /></a>
+  );
+}
+
 function PageShell({ children, current }) {
   const [tweaks, setTweak] = useTweaks(window.__TWEAKS__);
 
@@ -12,9 +20,10 @@ function PageShell({ children, current }) {
       <Nav current={current} />
       {children}
       <Footer />
+      <StickyCTA />
       <TweaksUI tweaks={tweaks} setTweak={setTweak} />
     </>
   );
 }
 
-Object.assign(window, { PageShell });
+Object.assign(window, { PageShell, StickyCTA });

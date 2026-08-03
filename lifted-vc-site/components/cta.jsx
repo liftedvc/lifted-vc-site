@@ -38,7 +38,7 @@ function CTA() {
               }}>
                 Work with me <Arrow />
               </a>
-              <a href="https://lifted.vc/fundraising-playbook" className="btn" style={{
+              <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="btn" style={{
                 background: 'transparent', color: 'var(--cream)',
                 border: '1.5px solid rgba(251, 246, 236, 0.3)',
               }}>
