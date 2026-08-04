@@ -9443,6 +9443,102 @@ const PB_ONE_PAGER_BULLETS = [{
 })();
 
 
+/* By the Numbers — additive Fundraising Sprint content */
+(function () {
+  const h = React.createElement;
+  function NumberFunnel(p){
+    return h("div",{style:{display:"flex",flexWrap:"wrap",gap:"10px",margin:"10px 0 6px"}},
+      p.stages.map(function(s,i){return h("div",{key:i,style:{flex:"1 1 140px",minWidth:"128px",border:"1px solid rgba(20,20,22,.1)",borderRadius:"12px",padding:"16px 14px",background:"rgba(255,255,255,.5)"}},
+        h("div",{style:{fontSize:"1.7rem",fontWeight:700,lineHeight:1,color:"#bf5a3c"}},s.n),
+        h("div",{style:{fontSize:".8rem",fontWeight:600,margin:"6px 0 4px"}},s.label),
+        h("div",{style:{fontSize:".74rem",opacity:.6,lineHeight:1.35}},s.sub)
+      );})
+    );
+  }
+  function NBShell(opts){
+    const Cue=window.Cue, Lede=window.Lede;
+    return h("div",{className:"fade-in sub-split","data-screen-label":opts.label},
+      [h(Cue,{key:"c",num:opts.num,name:opts.name,accent:opts.accent}),
+       h(Lede,{key:"l"},opts.lede)].concat(opts.after));
+  }
+  function P_Process(){
+    const ActMarker=window.ActMarker, BeatsGrid=window.BeatsGrid, Pull=window.Pull;
+    return NBShell({
+      label:"15.01 The End-to-End Process", num:"15.01", name:"The End-to-End", accent:"Process.",
+      lede:"A raise is not a leap, it is a sequence. Fourteen steps across two phases, from the first name on your list to the wire hitting your account. Run them in order and the urgency builds on its own; jump ahead and it falls apart.",
+      after:[
+        h(ActMarker,{key:"a1",num:"01",name:"Pre-pitch",accent:"build the pressure."}),
+        h(BeatsGrid,{key:"g1",columns:3,variant:"steps",items:[
+          {num:"1",title:"Build your target list",desc:"80 to 120 investors who fit your stage, sector, and geography."},
+          {num:"2",title:"Audit your network",desc:"Map who can open doors to the partners on that list."},
+          {num:"3",title:"Line up warm intros",desc:"Collect 60 to 120 promised introductions before anything goes out."},
+          {num:"4",title:"Prep your materials",desc:"Blurb, memo, deck, demo, and data room, built in parallel."},
+          {num:"5",title:"Iterate through practice",desc:"Drill the pitch until the numbers are cold and objections are reflex."},
+          {num:"6",title:"Send the double opt-ins",desc:"The green light. Fire everything at once, but only once you have banked enough."}
+        ]}),
+        h(ActMarker,{key:"a2",num:"02",name:"Pitch and close",accent:"cash the pressure."}),
+        h(BeatsGrid,{key:"g2",columns:4,variant:"steps",items:[
+          {num:"7",title:"First pitches",desc:"The concentrated window opens."},
+          {num:"8",title:"Second and third",desc:"Deeper meetings with the wider partnership."},
+          {num:"9",title:"Diligence",desc:"References, financials, product review."},
+          {num:"10",title:"Term sheet",desc:"The first real offer lands."},
+          {num:"11",title:"Negotiations",desc:"Price, terms, and who leads."},
+          {num:"12",title:"Fill the round",desc:"Stack follow-on and angels behind the lead."},
+          {num:"13",title:"Sign",desc:"Docs executed."},
+          {num:"14",title:"Wire hits",desc:"The money lands in the account."}
+        ]}),
+        h(Pull,{key:"p",eyebrow:"The hinge",quote:"You do not hit send on step six until you have banked enough promised intros to fill the round. That single green light is what turns a trickle of meetings into a window that generates real urgency."})
+      ]
+    });
+  }
+  function P_Funnel(){
+    const BeatsGrid=window.BeatsGrid, Pull=window.Pull, Warning=window.Warning;
+    return NBShell({
+      label:"15.02 The Funnel Math", num:"15.02", name:"The Funnel", accent:"Math.",
+      lede:"Fundraising is a numbers game with a brutal conversion rate, and knowing the math up front is what keeps a string of nos from feeling like failure. Work backwards from the check you actually need.",
+      after:[
+        h(NumberFunnel,{key:"f",stages:[
+          {n:"150+",label:"Investors identified",sub:"Fit your stage, sector, and geography"},
+          {n:"75+",label:"Intros promised",sub:"Banked before you hit send"},
+          {n:"38",label:"First meetings",sub:"Roughly half your intros convert"},
+          {n:"19",label:"In diligence",sub:"About half again go deeper"},
+          {n:"9",label:"Checks closed",sub:"A full round"}
+        ]}),
+        h("p",{key:"n",style:{fontSize:".9rem",opacity:.75,margin:"6px 0 14px"}},"That is nine yeses and about sixty-six nos on the way to the round. Coin-flip odds at each stage, which is exactly why volume and concentration matter."),
+        h(BeatsGrid,{key:"rg",columns:4,items:[
+          {num:"01",eyebrow:"Lead",title:"$1M",desc:"The institutional lead that sets the terms."},
+          {num:"02",eyebrow:"Follow-on",title:"$500K",desc:"Fills in behind the lead."},
+          {num:"03",eyebrow:"Follow-on",title:"$300K",desc:"More conviction stacked on top."},
+          {num:"04",eyebrow:"Angels and F&F",title:"$200K",desc:"Rounds out a $2M raise."}
+        ]}),
+        h(Warning,{key:"w",eyebrow:"Where the math breaks",title:"Three ways founders undercut the funnel",items:[
+          {num:"1",name:"Under-building the top",body:"Sixty investors will not produce nine checks. If the top of the funnel is thin, the round is out of reach before you start."},
+          {num:"2",name:"Sending intros too early",body:"Fire before you have banked enough promised intros and the meetings dribble out with no concentration and no urgency."},
+          {num:"3",name:"Reading nos as signal",body:"Sixty-six nos is the expected cost of nine yeses. Treating each one as a verdict is how founders talk themselves out of a raise that is on track."}
+        ]}),
+        h(Pull,{key:"p",eyebrow:"The reframe",quote:"Every no is one no closer to a yes. Nine yeses is a full round, and the other sixty-six were always part of the plan."})
+      ]
+    });
+  }
+  const BTN_SUBS=[
+    {num:"01",slug:"process",title:"The End-to-End Process",teaser:"Fourteen steps across two phases, from first list to final wire."},
+    {num:"02",slug:"funnel",title:"The Funnel Math",teaser:"Work backwards from the check: 150 investors, 75 intros, 9 closes."}
+  ];
+  const BTN_MAP={process:P_Process,funnel:P_Funnel};
+  function ByNumbersChapter(props){
+    const sub=props.subIdx>=0?BTN_SUBS[props.subIdx]:null;
+    if(!sub)return null;
+    const Page=BTN_MAP[sub.slug];
+    return h(React.Fragment,null,Page?h(Page,{key:sub.slug}):null);
+  }
+  window.CHAPTER_BY_NUMBERS={
+    id:"by-the-numbers", num:"15", name:"By the Numbers",
+    desc:"The full arc of a raise in fourteen steps, and the funnel math that shows how many intros it takes to close.",
+    subs:BTN_SUBS, Component:ByNumbersChapter
+  };
+})();
+
+
 const PB_CHAPTERS = [
 // How to Use This Playbook — ported in ch-intro.jsx
 window.CHAPTER_INTRO,
@@ -9476,6 +9572,7 @@ window.CHAPTER_CLOSE,
 // Treated as kind: "appendix" so the SceneBar / home / dropdown can render it
 // without the "CH · " prefix and the "twelve chapters" framing.
 window.CHAPTER_INNER_GAME,
+window.CHAPTER_BY_NUMBERS,
 window.CHAPTER_APPENDIX].filter(Boolean).map(ch =>
 // Stamp `locked: true` on chapters that are still being edited so they
 // surface as "Coming soon" in the live playbook. Dev mode (?dev=1 or
