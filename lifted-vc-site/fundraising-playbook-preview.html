@@ -6599,28 +6599,33 @@ window.CHAPTER_ACTIVATE = {
 // Sub 6 (closing):  lines 7221-7277
 
 // Learning objectives — verbatim from uploads/fundraising-playbook.html line 7921.
-const PT_OBJECTIVES = ["Run the three acts of a first meeting, and lead the parts that are yours", "Lead with the problem so the investor buys the question before the answer", "Answer conclusion-first, and know what to volunteer, hold, or get ahead of", "Read what investor language and behavior tend to signal, then close with a specific ask"];
+const PT_OBJECTIVES = ["Know the four phases of a first meeting, and lead the parts that are yours", "Lead with the problem so the investor buys the question before the answer", "Answer conclusion-first, and know what to volunteer, hold, or get ahead of", "Read what investor language and behavior tend to signal, then close with a specific ask"];
 
 // =====================================================================
 // Data — every string lifted verbatim from source.
 // =====================================================================
 
-// 08.01 — The three acts (source 6971-6985)
+// 09.01 — The four phases of a first meeting.
 const PT_ACTS = [{
   num: "01",
-  eyebrow: "Act 1 · ~5 min",
-  title: "Their turn",
-  desc: "The investor pitches the fund and the thesis. Don’t try to shortcut it. Listen actively, note one specific thing they said you’ll reference later."
+  eyebrow: "Phase 1 · Their open · ~5 min",
+  title: "They set the frame",
+  desc: "The investor runs the first few minutes: a little rapport, then their pitch for the fund and the thesis. Let them. Listen actively and note one specific thing to reference later. Your job here is to read the room and pick your hook, not to jump in early."
 }, {
   num: "02",
-  eyebrow: "Act 2 · ~15 to 20 min",
-  title: "Your turn",
-  desc: "The power-dynamic handoff. Acknowledge their thesis in one sentence, then bridge to the problem and run your pitch on your terms."
+  eyebrow: "Phase 2 · Your floor · ~15 to 20 min",
+  title: "You take the reins",
+  desc: "The handoff, then the pitch. Acknowledge their thesis in a sentence, bridge to the problem, and run your story on your terms. This is where most of your preparation shows: lead with the problem, then land the few messages you want them to remember."
 }, {
   num: "03",
-  eyebrow: "Act 3 · ~5 to 10 min",
-  title: "Q&A and close",
-  desc: "The meeting you came for. Answer conclusion-first, keep it specific, and leave them with a concrete next step and timeline."
+  eyebrow: "Phase 3 · The conversation · ~5 to 10 min",
+  title: "It turns into Q&A",
+  desc: "The meeting becomes a back-and-forth. Answer conclusion-first, keep it specific, and read what each question is really asking. Remember you are running diligence on them too, so ask your own questions."
+}, {
+  num: "04",
+  eyebrow: "Phase 4 · The close · last ~2 min",
+  title: "You set what happens next",
+  desc: "Before it ends, make a specific ask, name a timeline, and lock a concrete next step. How you close tends to shape whether the deal keeps moving or quietly stalls."
 }];
 
 // 08.03 — Specific beats abstract (source 7068-7079)
@@ -6733,11 +6738,11 @@ function PTAnatomy() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "09.01 Pitching Best Practices"
+    "data-screen-label": "09.01 Anatomy of a First Meeting"
   }, /*#__PURE__*/React.createElement(Cue, {
     num: "09.01",
-    name: "Pitching",
-    accent: "Best Practices.",
+    name: "Anatomy of",
+    accent: "a First Meeting.",
     crumb: "Chapter 9"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: PT_OBJECTIVES
@@ -6745,9 +6750,9 @@ function PTAnatomy() {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
     className: "sub-split__read"
-  }, /*#__PURE__*/React.createElement(Lede, null, "The craft of a first meeting. Knowing the three acts, when to lead, and how to run the parts that are yours changes the odds of every pitch you give."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement(Lede, null, "Almost every first meeting runs the same four phases. Know them, know which parts are yours to lead, and you change the odds of every pitch you give."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Almost every first meeting follows the same shape. The investor opens with their fund pitch, you take the floor and run the next 15 to 20 minutes, and the final chunk is Q&A. Knowing where you are in the arc and what each act needs from you is the difference between a meeting you run and a meeting that runs over you.")), /*#__PURE__*/React.createElement("aside", {
+  }, "The investor opens with their fund pitch, you take the floor for the bulk of it, the meeting turns into a conversation, and you close by setting what happens next. Knowing where you are in that arc, and what each phase needs from you, is the difference between a meeting you run and one that runs over you.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sub-act-eyebrow"
@@ -6758,18 +6763,24 @@ function PTAnatomy() {
     className: "framework framework--highlight"
   }, /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
-    name: "The three acts",
-    accent: "30 minutes, predictable shape."
+    name: "The four phases",
+    accent: "30 minutes, a predictable shape."
   }), /*#__PURE__*/React.createElement(BeatsGrid, {
     items: PT_ACTS,
-    columns: 3
+    columns: 2
   })), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "The handoff",
     accent: "the most important transition in the meeting."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "The moment you take the floor sets the tone for the next 20 minutes. Skip the investor\u2019s intro and you signal you only care about your pitch. Acknowledge their thesis in one sentence and you earn credibility to run the rest. Something like: \u201CLove the thesis on operational AI for mid-market. That\u2019s exactly what we\u2019re tackling. Here\u2019s what\u2019s happening on the ground.\u201D Then go."));
+  }, "The moment you take the floor sets the tone for the next 20 minutes. Skip the investor\u2019s intro and you signal you only care about your pitch. Acknowledge their thesis in one sentence and you earn credibility to run the rest. Something like: \u201CLove the thesis on operational AI for mid-market. That\u2019s exactly what we\u2019re tackling. Here\u2019s what\u2019s happening on the ground.\u201D Then go."), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "03",
+    name: "What\u2019s yours to run,",
+    accent: "and where this chapter takes it."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Phase one belongs to the investor. Everything after belongs to you, and the rest of this chapter is how to run it. Your energy sets the room from the first second. Your turn opens by leading with the problem. The conversation is won with pyramid answers and the few messages you keep repeating, and by reading what the room is actually telling you. And you close by making the ask and setting the cadence."));
 }
 function PTEnergy() {
   const {
@@ -7104,8 +7115,8 @@ function PTClosing() {
 const PT_SUBS = [{
   num: "01",
   slug: "anatomy",
-  title: "Pitching Best Practices",
-  teaser: "The craft of a first meeting. Knowing the three acts, when to lead, and how to run the parts that are yours changes the odds of every pitch you give."
+  title: "Anatomy of a First Meeting",
+  teaser: "Almost every first meeting runs the same four phases. Know them, know which parts are yours to lead, and you change the odds of every pitch you give."
 }, {
   num: "02",
   slug: "energy",
