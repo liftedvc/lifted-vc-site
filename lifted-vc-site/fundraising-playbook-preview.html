@@ -6599,7 +6599,7 @@ window.CHAPTER_ACTIVATE = {
 // Sub 6 (closing):  lines 7221-7277
 
 // Learning objectives — verbatim from uploads/fundraising-playbook.html line 7921.
-const PT_OBJECTIVES = ["Understand why simultaneous activation creates Authentic FOMO", "Calculate your fundraising funnel math by stage", "Execute the 5-step activation sequence"];
+const PT_OBJECTIVES = ["Run the three acts of a first meeting, and lead the parts that are yours", "Lead with the problem so the investor buys the question before the answer", "Answer conclusion-first, and know what to volunteer, hold, or get ahead of", "Read what investor language and behavior tend to signal, then close with a specific ask"];
 
 // =====================================================================
 // Data — every string lifted verbatim from source.
@@ -6659,6 +6659,25 @@ const PT_MESSAGES = [{
   num: "05",
   eyebrow: "Message 05",
   title: "Traction · 3 design partners live"
+}];
+
+// 09.04 — The Good / The Bad / The Ugly (Quinn, Sprint L21). How you handle
+// strengths vs. softer weaknesses vs. the issues diligence will surface.
+const PT_DISCLOSURE = [{
+  num: "01",
+  eyebrow: "The Good · be proactive",
+  title: "Volunteer and repeat",
+  desc: "Your 3 to 5 strongest, least obvious points. Pick the ones that aren’t already on the deck, share them without being asked, and say them more than once. A little redundancy is fine; they need to hear it to remember it."
+}, {
+  num: "02",
+  eyebrow: "The Bad · be reactive",
+  title: "Answer only when asked",
+  desc: "Softer weaknesses that won’t kill the deal on their own: rough UX, high CAC, a thin month. Don’t lead with them. Have a clean, honest answer ready for when they come up."
+}, {
+  num: "03",
+  eyebrow: "The Ugly · get ahead of it",
+  title: "Raise it yourself",
+  desc: "The real issues diligence will surface anyway. Name them before the investor finds them. Discovered on their own they tend to end deals; raised by you they tend to build trust."
 }];
 
 // 08.05 — Four types of rejection (source 7180-7200)
@@ -6786,7 +6805,7 @@ function PTEnergy() {
     className: "prose"
   }, "Founders who rehearse the deck obsessively start sounding like a TED talk. The investor feels the artifice and checks out. The goal is to know the fundamentals, not the words. When you stop thinking about the sentence you\u2019re delivering, your conviction about the business starts to show through instead."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "The best founders sound like they\u2019re having a conversation, not delivering prepared remarks. If you show up exhausted or scripted, the investor will feel it. If you show up with authentic energy and belief, they tend to follow."), /*#__PURE__*/React.createElement(ActMarker, {
+  }, "The best founders sound like they\u2019re having a conversation, not delivering prepared remarks. If you show up exhausted or scripted, the investor usually picks up on it. If you show up with authentic energy and belief, they tend to follow."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "Survival brain",
     accent: "getting present before the meeting."
@@ -6822,7 +6841,17 @@ function PTEnergy() {
     className: "tip__title"
   }, "Don\u2019t fake the founder archetype.")), /*#__PURE__*/React.createElement("p", {
     className: "tip__body"
-  }, "There are founder archetypes in the valley, and some founders pretend to be them. Faking autism. Manufactured nonchalance. Performing technical depth you don\u2019t have. Adopting the missionary tone you heard in a podcast. Investors pattern-match on this stuff for a living, and the performance reads as a tell. You lose the aura you were trying to manufacture. If you have it in you, investors see it without you performing it. Show up as yourself. Let the spark you actually have do the work.")));
+  }, "There are founder archetypes in the valley, and some founders pretend to be them. Faking autism. Manufactured nonchalance. Performing technical depth you don\u2019t have. Adopting the missionary tone you heard in a podcast. Investors pattern-match on this stuff for a living, and the performance reads as a tell. You lose the aura you were trying to manufacture. If you have it in you, investors see it without you performing it. Show up as yourself. Let the spark you actually have do the work.")), /*#__PURE__*/React.createElement("div", {
+    className: "tip"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tip__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tip__eyebrow"
+  }, "Tip"), /*#__PURE__*/React.createElement("h3", {
+    className: "tip__title"
+  }, "Name your read before they do.")), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "If your natural energy reads in a way you can\u2019t fully hide, get ahead of it. Name the read, explain the cause without defending it, and hand the investor a better frame. Something like: \u201cI know I can come across as low-key. That\u2019s me being realistic, not me lacking conviction.\u201d Said early, it tends to preempt the pattern-match before it forms.")));
 }
 function PTProblem() {
   const {
@@ -6866,7 +6895,17 @@ function PTProblem() {
     className: "tip__title"
   }, "The slow-tempo rule.")), /*#__PURE__*/React.createElement("p", {
     className: "tip__body"
-  }, "When you feel the urge to speed past the problem because you\u2019re excited to explain the solution, slow down instead. The investor needs to feel the pain before the solution has somewhere to land. Uncomfortable pauses in the problem section work in your favor.")));
+  }, "When you feel the urge to speed past the problem because you\u2019re excited to explain the solution, slow down instead. The investor needs to feel the pain before the solution has somewhere to land. Uncomfortable pauses in the problem section work in your favor.")), /*#__PURE__*/React.createElement("div", {
+    className: "tip tip--coral"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tip__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tip__eyebrow"
+  }, "Watch out"), /*#__PURE__*/React.createElement("h3", {
+    className: "tip__title"
+  }, "Engineer frustration, not confusion.")), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "There\u2019s a difference between an investor who is confused and one who is frustrated on your customer\u2019s behalf. Explain the pain too cleanly and it can stop sounding like a problem at all. Frustration is what you want. Walk through the broken workflow step by step, out loud, and let the investor arrive at \u201cthat\u2019s a huge problem\u201d on their own.")));
 }
 function PTPyramid() {
   const {
@@ -6901,7 +6940,7 @@ function PTPyramid() {
     accent: "conclusion first, detail after."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Investors make split-second decisions about whether to keep listening. If they don\u2019t hear the answer in the first five seconds, they\u2019re already thinking about their next meeting. Every Q&A answer leads with the conclusion, then layers in the supporting detail only if asked."), /*#__PURE__*/React.createElement("p", {
+  }, "Investors decide fast whether to keep listening. If they don\u2019t hear the answer quickly, their attention tends to drift toward the next thing. So every Q&A answer leads with the conclusion, then layers in the supporting detail only if asked."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CHow big is your market?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Pyramid answer:"), " \u201C$200B annually. Mid-market banks spending on SOC audits alone. Happy to walk you through the build if useful.\u201D ", /*#__PURE__*/React.createElement("strong", null, "The anti-pattern:"), " five minutes of methodology, a dozen caveats, and finally the number buried in the last sentence. The investor has already moved on."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
@@ -6917,6 +6956,17 @@ function PTPyramid() {
   })), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "If your team can\u2019t say the five messages out loud from memory, you don\u2019t know them well enough yet. Run the exercise before every pitch cycle."), /*#__PURE__*/React.createElement("div", {
+    className: "framework framework--highlight framework--sage"
+  }, /*#__PURE__*/React.createElement(ActMarker, {
+    num: "03",
+    name: "The Good, the Bad,",
+    accent: "and the Ugly."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "The message map is what you make sure they remember. This is how you handle everything else you know about the business. Sort what you know into three buckets and treat each one differently."), /*#__PURE__*/React.createElement(BeatsGrid, {
+    items: PT_DISCLOSURE,
+    columns: 3
+  })), /*#__PURE__*/React.createElement("div", {
     className: "tip"
   }, /*#__PURE__*/React.createElement("div", {
     className: "tip__head"
@@ -6974,7 +7024,15 @@ function PTReading() {
     className: "prose"
   }, /*#__PURE__*/React.createElement("strong", null, "\u201CProve traction first.\u201D"), " They want FOMO, not proof. Build it elsewhere."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u201CHere\u2019s what we need to see. Let\u2019s check in six weeks.\u201D"), " Real interest. Specific, time-bound, named. Keep them warm."));
+  }, /*#__PURE__*/React.createElement("strong", null, "\u201CHere\u2019s what we need to see. Let\u2019s check in six weeks.\u201D"), " Real interest. Specific, time-bound, named. Keep them warm."), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "03",
+    name: "Operate on actions,",
+    accent: "not words."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "What an investor says is noise; what they do is the signal. Real interest pulls the deal toward them. They ask specific, in-depth questions, name the date of their IC meeting, send a real diligence list, slip into mentor mode, or offer to introduce you to people. That pull is the thing worth acting on."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Almost everything else is a maybe, and a maybe is the enemy. A warm “keep us posted” with no specific next step tends to be a soft no. Advice with no check behind it is one person’s opinion, not a read on your round."));
 }
 function PTClosing() {
   const {
@@ -6997,7 +7055,7 @@ function PTClosing() {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
     className: "sub-split__read"
-  }, /*#__PURE__*/React.createElement(Lede, null, "What you leave the investor with determines what happens next. Make a specific ask, set the cadence, and read whether the room is hot.")), /*#__PURE__*/React.createElement("aside", {
+  }, /*#__PURE__*/React.createElement(Lede, null, "What you leave the investor with shapes what happens next. Make a specific ask, set the cadence, and read whether the room is hot.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sub-act-eyebrow"
@@ -7015,6 +7073,16 @@ function PTClosing() {
     columns: 3
   })), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
+    name: "The moves that close,",
+    accent: "used with care."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, /*#__PURE__*/React.createElement("strong", null, "The takeaway close."), " “We’re in diligence with a couple of folks, and I’m honestly not sure this is a fit for you. Is it something you’d want to look at?” Establishing that others are interested, and that you don’t need this one, tends to make an investor lean in. Their whole model is the fear of missing the deal that works."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, /*#__PURE__*/React.createElement("strong", null, "Close the door on a soft pass."), " A pass left half-open drifts. Close it and make them reopen it: “I don’t think this is going to work for us right now. Things are already moving. Feel free to circle back once you close, in case our round is still open.”"), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, /*#__PURE__*/React.createElement("strong", null, "Be greedy. Never leave with nothing."), " If an investor passes or stalls, ask for what they can still give: “Who are three founders or investors I should be talking to? Anyone running a chatbot in production today?” A specific ask names the job, and a named job tends to get done."), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "03",
     name: "Reading whether the meeting landed",
     accent: "hot and cool signals."
   }), /*#__PURE__*/React.createElement(Compare, {
@@ -8920,16 +8988,9 @@ const {
 // To re-lock: `localStorage.removeItem('lifted_dev')` and visit a URL
 // without the dev flag.
 // ============================================================
-const PB_LIVE_LOCKED_IDS = new Set(['pitching',
-// Ch09
-'refine',
-// Ch10
-'pipeline',
-// Ch11
-'dd',
-// Ch12
-'close' // Ch13
-]);
+// All chapters unlocked for the preview build. (Previously locked while
+// being overhauled: pitching, refine, pipeline, dd, close.)
+const PB_LIVE_LOCKED_IDS = new Set([]);
 function isPlaybookDevMode() {
   try {
     if (typeof window === 'undefined') return false;
