@@ -9585,6 +9585,65 @@ const PB_ONE_PAGER_BULLETS = [{
     {num:"03",title:"Optimize the partner",desc:"Trade a little price for the investor who genuinely moves the company forward."}
   ];
 
+  function PipelineBoard(){
+    var A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", SOFT="#f6f5f2", FLAG="#a8702e";
+    var DETAIL=[
+      {name:"Targeted", what:"A right-fit investor you have researched and want on the cap table, not yet contacted.", job:"Confirm the fit (stage, sector, check size) and find your warmest path in.", adv:"You have found a connector who can make a credible intro.", time:"Research phase, before the raise opens", crm:"Next step: ask a connector for a double opt-in"},
+      {name:"Intro Requested", what:"You have asked a connector for a double opt-in intro to the investor.", job:"Hand the connector a short forwardable blurb so the ask takes them ten seconds.", adv:"The investor replies and accepts the intro.", time:"Two to five days, and nudge the connector once", crm:"Next step: follow up with the connector Friday"},
+      {name:"Meeting Scheduled", what:"The investor accepted and a first call is on the calendar.", job:"Confirm the time, send a short pre-read, and prep Ledgerly's story cold.", adv:"The meeting actually happens.", time:"Book within a week to hold momentum", crm:"Next step: send Ledgerly's deck 24h before"},
+      {name:"First Meeting Done", what:"The intro call happened and there is genuine interest.", job:"Send a same-day follow-up with materials and one clear next step.", adv:"They ask for a second meeting, a partner meeting, or diligence.", time:"Follow up within 24 hours", crm:"Next step: recap email, propose partner meeting"},
+      {name:"Active Follow-up", what:"Live interest, with multiple touches, partner meetings, or open questions in flight.", job:"Keep the thread warm, feed information fast, and build real urgency.", adv:"They open real diligence or signal an offer is coming.", time:"Days to a couple of weeks, and keep it tight", crm:"Next step: answer model questions, hold urgency"},
+      {name:"Diligence", what:"The fund is running references, financials, and a product review.", job:"Send Ledgerly's data room, line up references, and answer every request fast.", adv:"They deliver a term sheet.", time:"One to three weeks depending on stage", crm:"Next step: share data room, brief references"},
+      {name:"Term Sheet", what:"A real offer for Ledgerly's round is on the table.", job:"Read the terms, compare, and negotiate price and lead terms.", adv:"You accept and sign.", time:"Move fast, since leverage is highest and perishable", crm:"Next step: review terms, counter on valuation"},
+      {name:"Closed", what:"Signed and wired. They are in Ledgerly's round.", job:"Send closing docs, add them to the cap table, and keep them warm for the next round.", adv:"Done, this deal is home.", time:"Complete", crm:"Next step: countersign, send a welcome note"}
+    ];
+    var NAMES=["Targeted","Intro Requested","Meeting Scheduled","First Meeting Done","Active Follow-up","Diligence","Term Sheet","Closed"];
+    var BR={paused:{name:"Paused",what:"Ghosted or a soft pass. Hold your follow-up until you have a term sheet, because the dynamic changes completely once you do."},passed:{name:"Passed",what:"A hard no. Log the reason. Patterns across several passes are what tell you where to fix the pitch and the positioning."}};
+    var sC=React.useState(2), cur=sC[0], setCur=sC[1];
+    var sS=React.useState(2), sel=sS[0], setSel=sS[1];
+    var sB=React.useState(null), br=sB[0], setBr=sB[1];
+    function pick(i){setSel(i);setBr(null);}
+    function adv(){if(cur<7){var n=cur+1;setCur(n);setSel(n);setBr(null);}}
+    function back(){if(cur>0){var n=cur-1;setCur(n);setSel(n);setBr(null);}}
+    function reset(){setCur(0);setSel(0);setBr(null);}
+    function lbl(color){return {fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:color||MUT,fontWeight:600,marginBottom:"3px"};}
+    function btn(dis,primary){return {font:"inherit",fontSize:".82rem",fontWeight:600,cursor:dis?"default":"pointer",padding:"7px 13px",borderRadius:"2px",border:"1px solid "+(primary?A:LINE),background:primary?(dis?"#9fb0b6":A):"#fff",color:primary?"#fff":(dis?"#bbb":INK)};}
+    var st=DETAIL[sel];
+    var deal=h("div",{style:{display:"flex",flexWrap:"wrap",gap:"12px",alignItems:"center",justifyContent:"space-between",border:"1px solid "+LINE,borderRadius:"2px",padding:"14px 16px",background:SOFT}},
+      h("div",null,
+        h("div",{style:{fontWeight:700,fontSize:"1rem"}},"Acme Ventures"),
+        h("div",{style:{fontSize:".8rem",color:MUT,marginTop:"2px"}},"Tier 1 · lead-capable · ~$1M into Ledgerly's $2M seed")),
+      h("div",{style:{display:"flex",alignItems:"center",gap:"10px"}},
+        h("span",{style:{fontSize:".78rem",color:MUT,minWidth:"92px",textAlign:"right"}},cur<7?("Stage "+(cur+1)+" of 8"):"In the round"),
+        h("button",{onClick:back,disabled:cur===0,style:btn(cur===0,false)},"‹ Back"),
+        h("button",{onClick:adv,disabled:cur===7,style:btn(cur===7,true)},cur===7?"Closed":"Advance ›")));
+    var rail=h("div",{style:{display:"flex",alignItems:"flex-start",overflowX:"auto",padding:"6px 2px 2px",margin:"18px 0 4px"}},
+      NAMES.map(function(nm,i){
+        var done=(i<=cur), isSel=(i===sel&&!br);
+        var node=h("button",{key:"n"+i,onClick:function(){pick(i);},style:{flex:"0 0 auto",width:"11.5%",minWidth:"88px",background:"none",border:"none",cursor:"pointer",font:"inherit",display:"flex",flexDirection:"column",alignItems:"center",gap:"6px",padding:0}},
+          h("span",{style:{width:"30px",height:"30px",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".76rem",fontWeight:700,border:"1.5px solid "+(done?A:LINE),background:done?A:"#fff",color:done?"#fff":MUT,boxShadow:isSel?"0 0 0 3px rgba(61,92,102,.22)":"none"}},(i===7&&done)?"✓":("0"+(i+1))),
+          h("span",{style:{fontSize:"10.5px",lineHeight:1.2,textAlign:"center",color:isSel?INK:MUT,fontWeight:isSel?700:500}},nm));
+        if(i===NAMES.length-1)return node;
+        return [node,h("div",{key:"c"+i,style:{flex:"1 1 auto",height:"2px",background:(i<cur)?A:LINE,marginTop:"14px",minWidth:"10px"}})];
+      }));
+    var body=br?BR[br]:st;
+    var grid=br?null:h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px 22px"}},
+      h("div",null,h("div",{style:lbl()},"Your job here"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},st.job)),
+      h("div",null,h("div",{style:lbl()},"Advance when →"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},st.adv)),
+      h("div",null,h("div",{style:lbl()},"Typical timing"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},st.time)),
+      h("div",null,h("div",{style:lbl()},"In your CRM"),h("div",{style:{fontSize:".88rem",lineHeight:1.45,color:A,fontWeight:600}},st.crm)));
+    var detail=h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px 20px",marginTop:"10px",background:"#fff"}},
+      h("div",{style:lbl(br?FLAG:A)},br?"Off the main track":("Stage 0"+(sel+1))),
+      h("div",{style:{fontSize:"1.15rem",fontWeight:700,marginBottom:"10px"}},body.name),
+      h("div",{style:{fontSize:".92rem",lineHeight:1.5,marginBottom:br?0:"14px"}},body.what),
+      grid);
+    var branches=h("div",{style:{display:"flex",gap:"10px",alignItems:"center",marginTop:"12px",flexWrap:"wrap"}},
+      h("span",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:MUT,fontWeight:600}},"Off-track states:"),
+      ["paused","passed"].map(function(k){var on=(br===k);return h("button",{key:k,onClick:function(){setBr(on?null:k);},style:{font:"inherit",fontSize:".78rem",fontWeight:600,cursor:"pointer",padding:"5px 12px",borderRadius:"2px",border:"1px dashed "+(on?FLAG:LINE),background:on?"rgba(168,112,46,.08)":"#fff",color:on?FLAG:INK}},BR[k].name);}),
+      h("button",{onClick:reset,style:{marginLeft:"auto",font:"inherit",fontSize:".76rem",cursor:"pointer",padding:"5px 10px",borderRadius:"2px",border:"1px solid "+LINE,background:"#fff",color:MUT}},"↺ Reset"));
+    var cap=h("div",{style:{fontSize:".78rem",color:MUT,marginTop:"12px",lineHeight:1.5}},"Advance the deal to walk one investor through Ledgerly's pipeline, or click any stage to see what it means and when to move on.");
+    return h("div",{className:"pl-board",style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px",background:"#fff"}},deal,rail,detail,branches,cap);
+  }
   function Setup(){
     const {Cue,Lede,ActMarker,BeatsGrid,Objectives}=window;
     return h("div",{className:"fade-in sub-split","data-screen-label":"11.01 Pipeline Setup"},
@@ -9599,10 +9658,8 @@ const PB_ONE_PAGER_BULLETS = [{
       h(ActMarker,{num:"03",name:"Start from",accent:"the template."}),
       h("p",{className:"prose"},"Begin with the Sprint's Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
       h("p",{className:"prose"},h("a",{href:"https://docs.google.com/spreadsheets/d/1oeoifKdGB3Xp05pm1u547EJuNHUGEsmj8_Yo0vvgHT4",target:"_blank",rel:"noopener"},"Open the Simple CRM template")),
-      h(ActMarker,{num:"04",name:"Pipeline stage",accent:"definitions."}),
-      h(BeatsGrid,{items:STAGES,columns:4}),
-      Tip("tip--molten tip--compact","Heads up","Paused.","Ghosted or soft pass. Hold your follow-up until you have a term sheet, because the dynamic changes completely once you do."),
-      Tip("tip--coral tip--compact","Watch out","Passed.","Hard no. Log the reason. Patterns across several passes are what tell you where to fix the pitch and the positioning."),
+      h(ActMarker,{num:"04",name:"Run a deal",accent:"through the pipeline."}),
+      h(PipelineBoard,null),
       Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business."),
       h(ActMarker,{num:"05",name:"Metrics that matter",accent:"before you pitch."}),
       h(BeatsGrid,{items:METRICS,columns:3})
