@@ -17,6 +17,18 @@ function Proof() {
     { name: 'Everywhere Ventures', file: 'everywhere-ventures.svg' },
     { name: 'Liquid 2 Ventures', file: 'liquid-2.svg' },
     { name: 'HCVC', file: 'hcvc.png' },
+    { name: '500 Global', file: '500-global.svg' },
+    { name: 'Goodwater', file: 'goodwater.svg' },
+    { name: 'NFX', file: 'nfx.svg' },
+    { name: 'SOSV', file: 'sosv.png' },
+    { name: 'gener8tor', file: 'gener8tor.png' },
+    { name: 'MassChallenge', file: 'masschallenge.png' },
+    { name: 'Capital Factory', file: 'capital-factory.png' },
+    { name: 'Pioneer Fund', file: 'pioneer-fund.png' },
+    { name: 'Gold House', file: 'gold-house.png' },
+    { name: 'Orange DAO', file: 'orange-dao.svg' },
+    { name: 'ERA', file: 'era.png' },
+    { name: 'Founder Institute', file: 'founder-institute.png' },
   ];
 
   return (
