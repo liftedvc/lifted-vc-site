@@ -29,6 +29,7 @@ function Proof() {
     { name: 'Orange DAO', file: 'orange-dao.svg' },
     { name: 'ERA', file: 'era.png' },
     { name: 'Founder Institute', file: 'founder-institute.png' },
+    { name: 'Precursor Ventures', file: 'precursor-ventures.png' },
   ];
 
   return (
