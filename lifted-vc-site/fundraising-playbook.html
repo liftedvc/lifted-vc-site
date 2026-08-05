@@ -9506,9 +9506,10 @@ const PB_ONE_PAGER_BULLETS = [{
     subs:BTN_SUBS, Component:ByNumbersChapter
   };
 })();
-/* Chapter 11 enrichment — Sprint green/red flags + CRM + audio (additive, wraps existing) */
+/* Chapter 11 — Manage Your Pipeline (full rebuild: revised 11.01 + 11.02, new 11.03 Auction) */
 (function () {
   const h = React.createElement;
+
   function PLAudio(p){
     return h("div",{className:"audio-companion",style:{border:"1px solid rgba(20,20,22,.12)",borderRadius:"14px",padding:"18px 18px 16px",background:"rgba(255,255,255,.55)",margin:"18px 0"}},
       h("div",{style:{fontSize:".72rem",letterSpacing:".08em",textTransform:"uppercase",opacity:.55,marginBottom:"6px"}},"▶ Listen"),
@@ -9517,54 +9518,161 @@ const PB_ONE_PAGER_BULLETS = [{
       h("audio",{controls:true,preload:"none",style:{width:"100%"}},h("source",{src:p.src,type:"audio/mpeg"}))
     );
   }
-  function PLSetupExtra(){
-    const {ActMarker,BeatsGrid}=window;
-    return h("div",{className:"fade-in"},
-      h(ActMarker,{num:"04",name:"Don't build it",accent:"from scratch."}),
-      h("p",{className:"prose"},"Copy the Sprint's Simple CRM template and keep every investor and connector in one place. Metal can serve as your CRM while the sheet holds research, or run the whole thing in the sheet. Make a copy before you fill it in."),
+  function Tip(cls,eyebrow,title,body){
+    return h("div",{className:"tip "+cls},
+      h("div",{className:"tip__head"},
+        h("span",{className:"tip__eyebrow"},eyebrow),
+        h("h3",{className:"tip__title"},title)),
+      h("p",{className:"tip__body"},body));
+  }
+
+  const OBJ=[
+    "Set up CRM fields that keep a fast-moving pipeline under control",
+    "Define pipeline stages and use them consistently",
+    "Qualify and tier investors so your best hours go to the conversations most likely to close"
+  ];
+  const FIELDS=[
+    {num:"01",title:"Investor name + fund",desc:""},
+    {num:"02",title:"Investor tier",desc:"Tier 1, Tier 2, or Tier 3 by how much you want them on the cap table."},
+    {num:"03",title:"Lead or follow",desc:"Lead-capable funds and brave angels write first checks. Follow-ons wait for a lead or real momentum before they move."},
+    {num:"04",title:"Expected check size",desc:""},
+    {num:"05",title:"Stage",desc:""},
+    {num:"06",title:"Last activity date",desc:""},
+    {num:"07",title:"Next step",desc:"Specific action, owner, and timeline. Never leave a meeting without this."},
+    {num:"08",title:"Notes",desc:"Objections raised, partner dynamics, and specific interests flagged."}
+  ];
+  const STAGES=[
+    {num:"01",title:"Targeted"},{num:"02",title:"Intro Requested"},{num:"03",title:"Meeting Scheduled"},
+    {num:"04",title:"First Meeting Done"},{num:"05",title:"Active Follow-up"},{num:"06",title:"Diligence"},
+    {num:"07",title:"Term Sheet"},{num:"08",title:"Closed"}
+  ];
+  const METRICS=[
+    {num:"01",title:"Connectors sourced",desc:"People who can open doors, identified and logged."},
+    {num:"02",title:"Connectors spoken to",desc:"Calls actually taken, not just names on a list."},
+    {num:"03",title:"Investors sourced",desc:"Qualified, right-fit investors in the pipeline."},
+    {num:"04",title:"Intros promised",desc:"The most important pre-pitch number. Bank 60 to 120 before you hit send."},
+    {num:"05",title:"First meetings scheduled",desc:"The count that tells you the window is filling."}
+  ];
+  const SIGNALS=[
+    {num:"01",title:"2+ weeks to respond to an intro request",desc:"Low interest. Keep your follow-up energy for the movers."},
+    {num:"02",title:"Difficulty scheduling the first meeting",desc:"Not actively moving. Calendar friction is itself a signal."},
+    {num:"03",title:"Long gap between first and partner meeting",desc:"Not championing internally. The deal has not built consensus inside the firm."},
+    {num:"04",title:"Diligence goes quiet",desc:"Likely de-prioritized. Follow up once, then redirect your time."},
+    {num:"05",title:"Quick scheduling and fast replies",desc:"Your strongest signal. Prioritize and move fast."}
+  ];
+  const LOG=[
+    {num:"01",title:"Key objections",desc:"Verbatim, not paraphrased."},
+    {num:"02",title:"What generated positive reactions",desc:""},
+    {num:"03",title:"Questions the investor asked",desc:""},
+    {num:"04",title:"Partner dynamics mentioned",desc:""},
+    {num:"05",title:"Confirmed next steps with owner and timeline",desc:""}
+  ];
+  const GREEN=[
+    {num:"01",title:"The right involvement",desc:"Decide how hands-on you want an investor, then look for the match. Too eager is a flag as much as too distant."},
+    {num:"02",title:"Expertise you are missing",desc:"Seek the specific expertise each round needs on your cap table: hardware at pre-seed, consumer at seed, a visceral read on your industry after."},
+    {num:"03",title:"They get your angle",desc:"The best investors understand your unique view without you over-explaining it, and show it by digging into the customer rather than assuming."},
+    {num:"04",title:"Shared vision and values",desc:"Do they share where you think the industry is going, and are they someone you want in the room for years? The no-asshole rule counts."}
+  ];
+  const PRIORITIZE=[
+    {num:"01",title:"Leads first",desc:"Leads set terms and write the first check. Aim for at least half your active list to be lead-capable, and give them your best hours."},
+    {num:"02",title:"Follow the speed",desc:"Quick scheduling and fast replies are your strongest signal. Concentrate energy on the investors who are actually moving."},
+    {num:"03",title:"Screen for real fit",desc:"Stage fit, thesis fit, and a recent check. An investor who is not writing at your stage right now is not really in the auction."},
+    {num:"04",title:"Skip the benchmarkers",desc:"Later-stage investors who take the meeting to benchmark you give stage-inappropriate feedback and rarely convert. Protect your time from them."}
+  ];
+  const CHOOSE=[
+    {num:"01",title:"Minimize dilution",desc:"Take the cleanest price at the ownership you are willing to give up."},
+    {num:"02",title:"Maximize price",desc:"Push valuation when the competition is real and you can defend it next round."},
+    {num:"03",title:"Optimize the partner",desc:"Trade a little price for the investor who genuinely moves the company forward."}
+  ];
+
+  function Setup(){
+    const {Cue,Lede,ActMarker,BeatsGrid,Objectives}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"11.01 Pipeline Setup"},
+      h(Cue,{num:"11.01",name:"Pipeline",accent:"Setup.",crumb:"Chapter 11"}),
+      h(Objectives,{items:OBJ}),
+      h(Lede,null,"Forty to eighty conversations move at once during a raise, and the founders who stay in control are the ones who run them on a system instead of from memory."),
+      h(ActMarker,{num:"01",name:"Why pipeline management",accent:"breaks down."}),
+      h("p",{className:"prose"},"When you have ",h("strong",null,"40 to 80 active investor conversations at once"),", memory fails. The CRM is your control system for a process that moves fast and in several directions at the same time, the place that keeps your follow-ups in sequence, surfaces timing signals early, and protects leverage you would otherwise give away."),
+      h("div",{className:"framework framework--highlight"},
+        h(ActMarker,{num:"02",name:"Investor track",accent:"required fields."}),
+        h(BeatsGrid,{items:FIELDS,columns:2})),
+      h(ActMarker,{num:"03",name:"Start from",accent:"the template."}),
+      h("p",{className:"prose"},"Begin with the Sprint's Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
       h("p",{className:"prose"},h("a",{href:"https://docs.google.com/spreadsheets/d/1oeoifKdGB3Xp05pm1u547EJuNHUGEsmj8_Yo0vvgHT4",target:"_blank",rel:"noopener"},"Open the Simple CRM template")),
+      h(ActMarker,{num:"04",name:"Pipeline stage",accent:"definitions."}),
+      h(BeatsGrid,{items:STAGES,columns:4}),
+      Tip("tip--molten tip--compact","Heads up","Paused.","Ghosted or soft pass. Hold your follow-up until you have a term sheet, because the dynamic changes completely once you do."),
+      Tip("tip--coral tip--compact","Watch out","Passed.","Hard no. Log the reason. Patterns across several passes are what tell you where to fix the pitch and the positioning."),
+      Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business."),
       h(ActMarker,{num:"05",name:"Metrics that matter",accent:"before you pitch."}),
-      h(BeatsGrid,{columns:3,items:[
-        {num:"01",title:"Connectors sourced",desc:"People who can open doors, identified and logged."},
-        {num:"02",title:"Connectors spoken to",desc:"Calls actually taken, not just names on a list."},
-        {num:"03",title:"Investors sourced",desc:"Qualified, right-fit investors in the pipeline."},
-        {num:"04",title:"Intros promised",desc:"The most important pre-pitch number. Bank 60 to 120 before you hit send."},
-        {num:"05",title:"First meetings scheduled",desc:"The count that tells you the window is filling."}
-      ]})
+      h(BeatsGrid,{items:METRICS,columns:3})
     );
   }
-  function PLSignalsExtra(){
-    const {ActMarker,BeatsGrid,Warning,Pull}=window;
-    return h("div",{className:"fade-in"},
+
+  function Signals(){
+    const {Cue,Lede,ActMarker,BeatsGrid,Warning,Pull}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"11.02 Reading Signals"},
+      h(Cue,{num:"11.02",name:"Reading",accent:"Signals.",crumb:"Chapter 11 · Manage Your Pipeline"}),
+      h(Lede,null,"Delays are data. Learn to read them."),
+      h("div",{className:"framework framework--highlight framework--sage"},
+        h(ActMarker,{num:"01",name:"Reading",accent:"timing signals."}),
+        h(BeatsGrid,{items:SIGNALS,columns:2})),
+      Tip("tip--sage","Best practice","Use the first yes to move the pipeline.","A term sheet from any credible fund accelerates every slow conversation. The framing across the pipeline shifts from convince me to are you interested in participating, and allocation becomes the lever. Send a brief update to every Paused investor the day a term sheet lands, because many re-engage fast when they see real momentum behind a real artifact."),
+      Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
+      h(ActMarker,{num:"02",name:"Tracking pitch data",accent:"after every meeting."}),
+      h("p",{className:"prose"},"Log within 30 minutes of every meeting:"),
+      h(BeatsGrid,{items:LOG,columns:2}),
+      h("p",{className:"prose"},h("strong",null,"Never leave a meeting without a confirmed next step.")," If the investor will not commit to one, that reluctance is itself a signal worth noting."),
+      h("p",{className:"prose"},"Run a standard AI review on every transcript. Record each session with a notetaker and feed the transcript the same prompt: what came up, what landed, what did I deflect, and what follow-up questions should I prepare for? Track objection frequency across sessions, because a pattern objection gets fixed in the deck rather than handled live every time."),
       h(ActMarker,{num:"03",name:"Read the investor,",accent:"not just the timing."}),
-      h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are not asking for money, you are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
+      h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
       h(PLAudio,{title:"Investor Green & Red Flags",sub:"Sprint companion · Quinn & Adam",src:"/audio/pipeline/investor-flags.mp3"}),
       h(ActMarker,{num:"04",name:"Green flags",accent:"to look for."}),
-      h(BeatsGrid,{columns:2,items:[
-        {num:"01",title:"The right involvement",desc:"Decide how hands-on you want an investor, then look for the match. Too eager is a flag as much as too distant."},
-        {num:"02",title:"Expertise you are missing",desc:"Seek the specific expertise each round needs on your cap table: hardware at pre-seed, consumer at seed, a visceral read on your industry after."},
-        {num:"03",title:"They get your angle",desc:"The best investors understand your unique view without you over-explaining it, and show it by digging into the customer rather than assuming."},
-        {num:"04",title:"Shared vision and values",desc:"Do they share where you think the industry is going, and are they someone you want in the room for years? The no-asshole rule counts."}
-      ]}),
+      h(BeatsGrid,{items:GREEN,columns:2}),
       h(Warning,{eyebrow:"Where the smoke is",title:"Red flags worth slowing down for",items:[
         {num:"1",name:"They were not really listening",body:"Questions that show they missed what you said, or energy and attitudes that clash with your values. Nonverbal cues count."},
-        {num:"2",name:"Unsophisticated for the job",body:"First-fund investors who will be extra hands-on, diligence that drags on asking what they should have asked in the pitch, or requests for materials that are not appropriate."},
+        {num:"2",name:"Unsophisticated for the job",body:"First-fund investors who will be extra hands-on, diligence that drags on asking what they should have asked in the pitch, or requests for materials that are not appropriate for your stage."},
         {num:"3",name:"Smoke without follow-through",body:"Watch async communication, references from their portfolio founders, and whether they do what they say. You may still take a deal with red flags, but naming them tells you how to manage them."}
       ]}),
       h(Pull,{eyebrow:"Treat smoke as a smoke signal",quote:"You have very little time with these people before deciding whether to spend years working with them. All you have are these signals, and they can be very meaningful."})
     );
   }
-  var C=window.CHAPTER_PIPELINE; if(!C) return;
-  var Orig=C.Component; var SUBS=C.subs;
-  function PLChapterEnriched(props){
-    var sub=props.subIdx>=0?SUBS[props.subIdx]:null;
-    return h(React.Fragment,null,
-      h(Orig,{key:"orig",subIdx:props.subIdx}),
-      sub&&sub.slug==="setup"?h(PLSetupExtra,{key:"seX"}):null,
-      sub&&sub.slug==="signals"?h(PLSignalsExtra,{key:"siX"}):null
+
+  function Auction(){
+    const {Cue,Lede,ActMarker,BeatsGrid,Pull}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"11.03 Run It Like an Auction"},
+      h(Cue,{num:"11.03",name:"Run It Like",accent:"an Auction.",crumb:"Chapter 11 · Manage Your Pipeline"}),
+      h(Lede,null,"The pipeline you just built has one job beyond staying organized: to run your raise as an auction, where real competition sets your price and your terms."),
+      h(ActMarker,{num:"01",name:"Why an auction",accent:"changes everything."}),
+      h("p",{className:"prose"},"Capital is far more abundant than the old scarcity story admits. The moment a company shows a signal of quality, strong growth, a respected angel, a demo-day slot, investors start moving together: rounds get oversubscribed, prices climb, and terms soften in the founder's favor. A wide, time-boxed process is how you surface that dynamic on purpose rather than hoping it finds you."),
+      h(ActMarker,{num:"02",name:"Prioritize",accent:"leads and fast movers."}),
+      h(BeatsGrid,{items:PRIORITIZE,columns:2}),
+      h(ActMarker,{num:"03",name:"Protect",accent:"the signal."}),
+      h("p",{className:"prose"},"Many founders fear that running an auction reads as a low-quality signal, and investors quietly encourage that belief because proprietary deal flow serves them. The logic does not hold. The quality of your company is set by what you have built, not by the list of people you happen to be talking to, so run the process openly and let the market read the company."),
+      h(ActMarker,{num:"04",name:"Use",accent:"what the process tells you."}),
+      h(BeatsGrid,{items:CHOOSE,columns:3}),
+      h("p",{className:"prose"},"The auction produces information you did not have before. Once it is running you get to choose which of these you optimize for, and that choice is leverage you created for yourself."),
+      h(Pull,{eyebrow:"Where your energy goes",quote:"Spend your bandwidth on the investors who have not passed yet. A no is one data point on one pitch, and the round gets built by the conversations that are still alive."})
     );
   }
-  C.Component=PLChapterEnriched;
+
+  const SUBS=[
+    {num:"01",slug:"setup",title:"Pipeline Setup",teaser:"Set up the CRM, define your stages, and start from the Simple CRM template."},
+    {num:"02",slug:"signals",title:"Reading Signals",teaser:"Delays are data. Read the timing and read the investor."},
+    {num:"03",slug:"auction",title:"Run It Like an Auction",teaser:"Treat the raise as an auction, prioritize leads and fast movers, and let competition set your terms."}
+  ];
+  const MAP={setup:Setup,signals:Signals,auction:Auction};
+  function PLChapter(props){
+    const sub=props.subIdx>=0?SUBS[props.subIdx]:null;
+    if(!sub) return null;
+    const P=MAP[sub.slug];
+    return h(React.Fragment,null,P?h(P,{key:sub.slug}):null);
+  }
+  window.CHAPTER_PIPELINE={
+    id:"pipeline", num:"11", name:"Manage Your Pipeline",
+    desc:"Track every conversation, read the timing signals, and run the whole raise like a competitive auction.",
+    subs:SUBS, Component:PLChapter
+  };
 })();
 // === END ADDITIVE SPRINT CHAPTERS ===
 
