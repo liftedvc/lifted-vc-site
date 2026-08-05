@@ -9652,17 +9652,15 @@ const PB_ONE_PAGER_BULLETS = [{
       h(Lede,null,"Forty to eighty conversations move at once during a raise, and the founders who stay in control are the ones who run them on a system instead of from memory."),
       h(ActMarker,{num:"01",name:"Why pipeline management",accent:"breaks down."}),
       h("p",{className:"prose"},"When you have ",h("strong",null,"40 to 80 active investor conversations at once"),", memory fails. The CRM is your control system for a process that moves fast and in several directions at the same time, the place that keeps your follow-ups in sequence, surfaces timing signals early, and protects leverage you would otherwise give away."),
-      h("div",{className:"framework framework--highlight"},
-        h(ActMarker,{num:"02",name:"Investor track",accent:"required fields."}),
-        h(BeatsGrid,{items:FIELDS,columns:2})),
-      h(ActMarker,{num:"03",name:"Start from",accent:"the template."}),
+      h(ActMarker,{num:"02",name:"Run a deal",accent:"through the pipeline."}),
+      h(PipelineBoard,null),
+      h(ActMarker,{num:"03",name:"Investor track",accent:"required fields."}),
+      h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 8px"}},
+        FIELDS.map(function(f,i){return h("li",{key:i},h("strong",null,f.title), f.desc?(": "+f.desc):null);})),
+      h(ActMarker,{num:"04",name:"Start from",accent:"the template."}),
       h("p",{className:"prose"},"Begin with the Sprint's Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
       h("p",{className:"prose"},h("a",{href:"https://docs.google.com/spreadsheets/d/1oeoifKdGB3Xp05pm1u547EJuNHUGEsmj8_Yo0vvgHT4",target:"_blank",rel:"noopener"},"Open the Simple CRM template")),
-      h(ActMarker,{num:"04",name:"Run a deal",accent:"through the pipeline."}),
-      h(PipelineBoard,null),
-      Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business."),
-      h(ActMarker,{num:"05",name:"Metrics that matter",accent:"before you pitch."}),
-      h(BeatsGrid,{items:METRICS,columns:3})
+      Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business.")
     );
   }
 
