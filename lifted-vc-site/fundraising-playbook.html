@@ -9674,6 +9674,93 @@ const PB_ONE_PAGER_BULLETS = [{
     subs:SUBS, Component:PLChapter
   };
 })();
+/* Chapters 12 & 13 enrichment — additive Sprint content (wraps existing, base untouched) */
+(function () {
+  const h = React.createElement;
+  function Resources(title, links){
+    return h("div",{style:{border:"1px solid rgba(20,20,22,.12)",borderRadius:"14px",padding:"16px 18px",background:"rgba(255,255,255,.5)",margin:"18px 0"}},
+      h("div",{style:{fontSize:".72rem",letterSpacing:".08em",textTransform:"uppercase",opacity:.55,marginBottom:"8px"}},title),
+      h("ul",{style:{margin:0,paddingLeft:"18px",lineHeight:1.7}},
+        links.map(function(l,i){return h("li",{key:i},h("a",{href:l.href,target:"_blank",rel:"noopener"},l.t));}))
+    );
+  }
+  function Tip(cls,eyebrow,title,body){
+    return h("div",{className:"tip "+cls},
+      h("div",{className:"tip__head"},
+        h("span",{className:"tip__eyebrow"},eyebrow),
+        h("h3",{className:"tip__title"},title)),
+      h("p",{className:"tip__body"},body));
+  }
+
+  // ---------- Chapter 12: Diligence & Term Sheet ----------
+  var DD=window.CHAPTER_DD;
+  if(DD){
+    var DDOrig=DD.Component, DD_SUBS=DD.subs;
+    var DD_EXCLUDE=[
+      {num:"01",title:"Deep multi-year projections",desc:"Leave out 3 to 5 year projections unless an investor asks. Early-stage numbers that far out invite scrutiny you do not need."},
+      {num:"02",title:"Tax returns",desc:"Not part of an early-stage diligence pass. Keep them out until a later round calls for them."},
+      {num:"03",title:"Board minutes",desc:"Internal deliberations stay internal. Share governance detail only when a lead is deep in confirmatory diligence."}
+    ];
+    function DDOverviewExtra(){
+      const {ActMarker,BeatsGrid}=window;
+      return h("div",{className:"fade-in"},
+        h(ActMarker,{num:"04",name:"What to leave",accent:"out."}),
+        h("p",{className:"prose"},"Err on the side of less, not more. The data room exists to answer diligence cleanly, and every extra document is one more surface where a number can disagree with itself. Give investors what they need to move, and hold the rest until they ask."),
+        h(BeatsGrid,{items:DD_EXCLUDE,columns:3}),
+        Tip("tip--coral tip--compact","Watch out","Diligence runs both ways.","A process that drags on, or that asks you now for what should have come up in the pitch, is telling you something about the investor. Sophisticated investors did their thinking before the term sheet, so a diligence phase that keeps reopening settled questions is a flag worth reading."),
+        Resources("Further reading · Data rooms",[
+          {t:"a16z — The insider's guide to data rooms",href:"https://a16z.com/the-insiders-guide-to-data-rooms-what-to-know-before-you-raise/"},
+          {t:"Carta — Data room guide",href:"https://carta.com/learn/startups/equity-management/data-room/"}
+        ])
+      );
+    }
+    function DDTermsExtra(){
+      return h("div",{className:"fade-in"},
+        Resources("Further reading · SAFEs and terms",[
+          {t:"Carta — How a SAFE works",href:"https://carta.com/learn/startups/fundraising/convertible-securities/safes/"},
+          {t:"Elizabeth Yin — To SAFE or not to SAFE",href:"https://elizabethyin.com/2019/05/31/to-safe-or-not-to-safe/"}
+        ])
+      );
+    }
+    function DDEnriched(props){
+      var sub=props.subIdx>=0?DD_SUBS[props.subIdx]:null;
+      return h(React.Fragment,null,
+        h(DDOrig,{key:"orig",subIdx:props.subIdx}),
+        sub&&sub.slug==="overview"?h(DDOverviewExtra,{key:"ovX"}):null,
+        sub&&sub.slug==="terms"?h(DDTermsExtra,{key:"tmX"}):null
+      );
+    }
+    DD.Component=DDEnriched;
+  }
+
+  // ---------- Chapter 13: Close the Round ----------
+  var CL=window.CHAPTER_CLOSE;
+  if(CL){
+    var CLOrig=CL.Component, CL_SUBS=CL.subs;
+    var CL_OVER=[
+      {num:"01",title:"Protect room for the right names",desc:"Hold allocation for the investors whose expertise or signal you actually want, even when slower money is ready to wire today."},
+      {num:"02",title:"Right-size every check",desc:"A smaller check from a high-signal fund can be worth more on the cap table than a large one from a passive source."},
+      {num:"03",title:"Keep the terms you set",desc:"Demand is leverage. Oversubscription is the moment to hold your price and clean terms, not the moment to give them away."}
+    ];
+    function CLOverviewExtra(){
+      const {ActMarker,BeatsGrid,Pull}=window;
+      return h("div",{className:"fade-in"},
+        h(ActMarker,{num:"04",name:"When you are",accent:"oversubscribed."}),
+        h("p",{className:"prose"},"The version of closing that founders rarely plan for is having too much demand. When the round is oversubscribed, allocation becomes your lever. You decide who gets in, at what size, and on what terms, so use that moment to build the cap table you actually want rather than the one that showed up first."),
+        h(BeatsGrid,{items:CL_OVER,columns:3}),
+        h(Pull,{eyebrow:"The reframe holds to the end",quote:"When demand outruns the round, you are choosing a cap table, not chasing a check."})
+      );
+    }
+    function CLEnriched(props){
+      var sub=props.subIdx>=0?CL_SUBS[props.subIdx]:null;
+      return h(React.Fragment,null,
+        h(CLOrig,{key:"orig",subIdx:props.subIdx}),
+        sub&&sub.slug==="overview"?h(CLOverviewExtra,{key:"ovX"}):null
+      );
+    }
+    CL.Component=CLEnriched;
+  }
+})();
 // === END ADDITIVE SPRINT CHAPTERS ===
 
 const PB_CHAPTERS = [
