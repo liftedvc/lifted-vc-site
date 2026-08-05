@@ -77,6 +77,19 @@ function Proof() {
               onMouseLeave={e => { e.currentTarget.style.opacity = 0.62; e.currentTarget.style.filter = 'grayscale(100%)'; }}
             />
           ))}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span
+              title="And many more"
+              style={{
+                fontSize: 13, fontWeight: 500, letterSpacing: '.01em',
+                color: 'var(--ink-mute)', border: '1px solid var(--line)',
+                borderRadius: 999, padding: '7px 16px', whiteSpace: 'nowrap',
+                cursor: 'default', transition: 'color .25s ease, border-color .25s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--ink-mute)'; e.currentTarget.style.borderColor = 'var(--line)'; }}
+            >+ many more</span>
+          </div>
         </div>
       </div>
     </section>
