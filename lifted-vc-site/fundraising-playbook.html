@@ -9664,14 +9664,41 @@ const PB_ONE_PAGER_BULLETS = [{
     );
   }
 
+  function SignalReader(){
+    var INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", A="#3d5c66";
+    var SIG=[
+      {b:"Two weeks to respond to an intro",temp:"Cold",c:"#3d6b7a",read:"Low interest, or you are buried under warmer deals in their inbox.",move:"One nudge, then deprioritize. Spend your energy on the investors who are moving."},
+      {b:"Hard to schedule the first meeting",temp:"Cool",c:"#5f8a86",read:"Not a priority for them right now. Calendar friction is itself the signal.",move:"Offer two or three specific slots, then let it sit rather than chase."},
+      {b:"Diligence goes quiet",temp:"Cooling",c:"#9a8a5a",read:"They were interested and have most likely de-prioritized you.",move:"Follow up once with a concrete update, then redirect your time."},
+      {b:"Long gap from first to partner meeting",temp:"Warm, stalling",c:"#bf7a3c",read:"Some interest, and no internal champion has built consensus in the firm yet.",move:"Arm your champion with a tight memo and metrics, and ask what the partnership needs to move."},
+      {b:"Quick scheduling and fast replies",temp:"Hot",c:"#c0512d",read:"Your strongest signal. Real interest moves fast.",move:"Prioritize them, match their speed, and drive toward a term sheet."}
+    ];
+    var s=React.useState(4),sel=s[0],setSel=s[1];
+    var x=SIG[sel];
+    var lbl={fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:MUT,fontWeight:600,marginBottom:"3px"};
+    var gauge=h("div",{style:{margin:"4px 0 14px"}},
+      h("div",{style:{height:"6px",borderRadius:"3px",background:"linear-gradient(90deg,#3d6b7a,#5f8a86,#9a8a5a,#bf7a3c,#c0512d)"}}),
+      h("div",{style:{display:"flex",justifyContent:"space-between",fontSize:"10px",letterSpacing:".08em",textTransform:"uppercase",color:MUT,fontWeight:600,marginTop:"5px"}},h("span",null,"Cold · low interest"),h("span",null,"Hot · move fast")));
+    var chips=h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(120px,1fr))",gap:"8px"}},
+      SIG.map(function(g,i){var on=(i===sel);return h("button",{key:i,onClick:function(){setSel(i);},style:{font:"inherit",cursor:"pointer",textAlign:"left",padding:"10px 12px",borderRadius:"2px",border:"1px solid "+(on?g.c:LINE),background:"#fff",boxShadow:on?("inset 3px 0 0 "+g.c):"none",color:INK}},
+        h("div",{style:{fontSize:"9.5px",letterSpacing:".07em",textTransform:"uppercase",fontWeight:700,color:g.c,marginBottom:"3px"}},g.temp),
+        h("div",{style:{fontSize:".8rem",fontWeight:on?700:500,lineHeight:1.25}},g.b));}));
+    var detail=h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"16px 18px",marginTop:"12px",background:"#fff"}},
+      h("div",{style:{display:"inline-block",fontSize:"10px",letterSpacing:".08em",textTransform:"uppercase",fontWeight:700,color:"#fff",background:x.c,borderRadius:"2px",padding:"3px 8px",marginBottom:"9px"}},x.temp),
+      h("div",{style:{fontSize:"1.1rem",fontWeight:700,marginBottom:"12px"}},x.b),
+      h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px 22px"}},
+        h("div",null,h("div",{style:lbl},"What it means"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},x.read)),
+        h("div",null,h("div",{style:lbl},"Your move"),h("div",{style:{fontSize:".88rem",lineHeight:1.45,color:A,fontWeight:600}},x.move))));
+    var cap=h("div",{style:{fontSize:".78rem",color:MUT,marginTop:"12px",lineHeight:1.5}},"How an investor behaves tells you how warm they are. Click any behavior to read the signal and what to do about it.");
+    return h("div",{className:"sig-reader",style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px",background:"#fff"}},gauge,chips,detail,cap);
+  }
   function Signals(){
     const {Cue,Lede,ActMarker,BeatsGrid,Warning,Pull}=window;
     return h("div",{className:"fade-in sub-split","data-screen-label":"11.02 Reading Signals"},
       h(Cue,{num:"11.02",name:"Reading",accent:"Signals.",crumb:"Chapter 11 · Manage Your Pipeline"}),
       h(Lede,null,"Delays are data. Learn to read them."),
-      h("div",{className:"framework framework--highlight framework--sage"},
-        h(ActMarker,{num:"01",name:"Reading",accent:"timing signals."}),
-        h(BeatsGrid,{items:SIGNALS,columns:2})),
+      h(ActMarker,{num:"01",name:"Reading",accent:"timing signals."}),
+      h(SignalReader,null),
       Tip("tip--sage","Best practice","Use the first yes to move the pipeline.","A term sheet from any credible fund accelerates every slow conversation. The framing across the pipeline shifts from convince me to are you interested in participating, and allocation becomes the lever. Send a brief update to every Paused investor the day a term sheet lands, because many re-engage fast when they see real momentum behind a real artifact."),
       Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
       h(ActMarker,{num:"02",name:"Tracking pitch data",accent:"after every meeting."}),
