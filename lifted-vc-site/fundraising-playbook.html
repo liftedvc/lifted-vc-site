@@ -9692,30 +9692,70 @@ const PB_ONE_PAGER_BULLETS = [{
     var cap=h("div",{style:{fontSize:".78rem",color:MUT,marginTop:"12px",lineHeight:1.5}},"How an investor behaves tells you how warm they are. Click any behavior to read the signal and what to do about it.");
     return h("div",{className:"sig-reader",style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px",background:"#fff"}},gauge,chips,detail,cap);
   }
+  const LOGLIST=[
+    "Key objections, captured verbatim rather than paraphrased",
+    "What clearly landed or drew a positive reaction",
+    "Every question the investor asked",
+    "Any partner or firm dynamics they mentioned",
+    "The confirmed next step, with an owner and a timeline"
+  ];
+  function PromptBox(){
+    var INK="#0a0a0a", LINE="#e9e8e3", A="#3d5c66", SOFT="#f6f5f2";
+    var PROMPT="Below is the transcript of an investor meeting. Using only what is in the transcript, pull out:\n\n1. Key objections, quoted where you can\n2. What clearly landed or drew a positive reaction\n3. Every question the investor asked\n4. Any partner or firm dynamics they mentioned\n5. The confirmed next step, with owner and timeline\n\nThen tell me whether any objection here has also shown up in my earlier meetings, and keep the whole thing tight.\n\nTranscript:\n[paste the transcript]";
+    var s=React.useState(false),copied=s[0],setCopied=s[1];
+    function copy(){try{navigator.clipboard.writeText(PROMPT);}catch(e){}setCopied(true);setTimeout(function(){setCopied(false);},1600);}
+    return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",marginTop:"14px",background:"#fff"}},
+      h("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"10px",padding:"10px 14px",borderBottom:"1px solid "+LINE,background:SOFT}},
+        h("div",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:A,fontWeight:700}},"AI prompt · pull the log from your transcript"),
+        h("button",{onClick:copy,style:{font:"inherit",fontSize:".76rem",fontWeight:600,cursor:"pointer",padding:"5px 12px",borderRadius:"2px",border:"1px solid "+A,background:copied?A:"#fff",color:copied?"#fff":A}},copied?"Copied":"Copy prompt")),
+      h("pre",{style:{margin:0,padding:"14px 16px",fontFamily:"ui-monospace,SFMono-Regular,Menlo,monospace",fontSize:".8rem",lineHeight:1.5,color:INK,whiteSpace:"pre-wrap",wordBreak:"break-word"}},PROMPT));
+  }
+  function FlagsPanel(){
+    var LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", G="#4f7d5b", R="#c0512d";
+    var GF=[
+      {t:"The right involvement",d:"Decide how hands-on you want an investor, then look for the match. Too eager is a flag as much as too distant."},
+      {t:"Expertise you are missing",d:"Seek the specific expertise each round needs on your cap table: hardware at pre-seed, consumer at seed, a visceral read on your industry after."},
+      {t:"They get your angle",d:"The best investors grasp your unique view without you over-explaining it, and show it by digging into the customer rather than assuming."},
+      {t:"Shared vision and values",d:"Do they share where you think the industry is going, and are they someone you want in the room for years? The no-asshole rule counts."}
+    ];
+    var RF=[
+      {t:"They were not really listening",d:"Questions that show they missed what you said, or energy and attitudes that clash with your values. Nonverbal cues count."},
+      {t:"Unsophisticated for the job",d:"First-fund investors who will be extra hands-on, diligence that drags on asking what they should have asked in the pitch, or requests for materials wrong for your stage."},
+      {t:"Smoke without follow-through",d:"Watch async communication, references from their portfolio founders, and whether they do what they say. You can still take a deal with red flags, but naming them tells you how to manage them."}
+    ];
+    function col(items,color,eyebrow,label){
+      return h("div",null,
+        h("div",{style:{borderTop:"3px solid "+color,paddingTop:"10px",marginBottom:"12px"}},
+          h("div",{style:{fontSize:"10px",letterSpacing:".1em",textTransform:"uppercase",color:color,fontWeight:700}},eyebrow),
+          h("div",{style:{fontSize:"1.05rem",fontWeight:700,marginTop:"2px"}},label)),
+        items.map(function(x,i){return h("div",{key:i,style:{marginBottom:"13px"}},
+          h("div",{style:{fontSize:".92rem",fontWeight:700,marginBottom:"2px"}},x.t),
+          h("div",{style:{fontSize:".85rem",lineHeight:1.45,color:MUT}},x.d));}));
+    }
+    return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"20px 22px",background:"#fff",marginTop:"12px"}},
+      h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"18px 34px"}},
+        col(GF,G,"Lean in","Green flags"),
+        col(RF,R,"Slow down","Red flags")));
+  }
   function Signals(){
     const {Cue,Lede,ActMarker,BeatsGrid,Warning,Pull}=window;
     return h("div",{className:"fade-in sub-split","data-screen-label":"11.02 Reading Signals"},
       h(Cue,{num:"11.02",name:"Reading",accent:"Signals.",crumb:"Chapter 11 · Manage Your Pipeline"}),
-      h(Lede,null,"Delays are data. Learn to read them."),
+      h(Lede,null,"Once your pitches are live, the round is won or lost on where you spend your attention, and investors keep telling you where it should go. Read the timing, capture what happens in every meeting, and read the investor as hard as they read you."),
       h(ActMarker,{num:"01",name:"Reading",accent:"timing signals."}),
       h(SignalReader,null),
       Tip("tip--sage","Best practice","Use the first yes to move the pipeline.","A term sheet from any credible fund accelerates every slow conversation. The framing across the pipeline shifts from convince me to are you interested in participating, and allocation becomes the lever. Send a brief update to every Paused investor the day a term sheet lands, because many re-engage fast when they see real momentum behind a real artifact."),
       Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
       h(ActMarker,{num:"02",name:"Tracking pitch data",accent:"after every meeting."}),
-      h("p",{className:"prose"},"Log within 30 minutes of every meeting:"),
-      h(BeatsGrid,{items:LOG,columns:2}),
+      h("p",{className:"prose"},"Log within 30 minutes of every meeting, while it is still fresh:"),
+      h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 10px"}},LOGLIST.map(function(t,i){return h("li",{key:i},t);})),
       h("p",{className:"prose"},h("strong",null,"Never leave a meeting without a confirmed next step.")," If the investor will not commit to one, that reluctance is itself a signal worth noting."),
-      h("p",{className:"prose"},"Run a standard AI review on every transcript. Record each session with a notetaker and feed the transcript the same prompt: what came up, what landed, what did I deflect, and what follow-up questions should I prepare for? Track objection frequency across sessions, because a pattern objection gets fixed in the deck rather than handled live every time."),
+      h(PromptBox,null),
       h(ActMarker,{num:"03",name:"Read the investor,",accent:"not just the timing."}),
       h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
       h(PLAudio,{title:"Investor Green & Red Flags",sub:"Sprint companion · Quinn & Adam",src:"/audio/pipeline/investor-flags.mp3"}),
-      h(ActMarker,{num:"04",name:"Green flags",accent:"to look for."}),
-      h(BeatsGrid,{items:GREEN,columns:2}),
-      h(Warning,{eyebrow:"Where the smoke is",title:"Red flags worth slowing down for",items:[
-        {num:"1",name:"They were not really listening",body:"Questions that show they missed what you said, or energy and attitudes that clash with your values. Nonverbal cues count."},
-        {num:"2",name:"Unsophisticated for the job",body:"First-fund investors who will be extra hands-on, diligence that drags on asking what they should have asked in the pitch, or requests for materials that are not appropriate for your stage."},
-        {num:"3",name:"Smoke without follow-through",body:"Watch async communication, references from their portfolio founders, and whether they do what they say. You may still take a deal with red flags, but naming them tells you how to manage them."}
-      ]}),
+      h(ActMarker,{num:"04",name:"Green flags and",accent:"red flags."}),
+      h(FlagsPanel,null),
       h(Pull,{eyebrow:"Treat smoke as a smoke signal",quote:"You have very little time with these people before deciding whether to spend years working with them. All you have are these signals, and they can be very meaningful."})
     );
   }
