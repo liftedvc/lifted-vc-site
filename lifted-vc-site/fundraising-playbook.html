@@ -9343,7 +9343,11 @@ const PB_ONE_PAGER_BULLETS = [{
           {num:"03",title:"Stand in a pillar",desc:"Shoulders up and back, a pillar down the spine connecting gut, heart, and head. Box breath, four in, four hold, four out, three times. Thirty seconds, and no one has to know."}
         ]}),
         h(window.Callout,{badLabel:"Thirsty",goodLabel:"Confident",bad:"I would love any chance to talk whenever works for you, absolutely no pressure at all.",good:"I am running meetings over the next two weeks. I have Thursday at 2 or Friday at 10, which works better?"}),
-        h(window.Pull,{eyebrow:"Garry Tan, Y Combinator",quote:"Desperation repels, contentment attracts. Real calm and real progress mean you truly do not need them."})
+        h(window.Pull,{eyebrow:"Garry Tan, Y Combinator",quote:"Desperation repels, contentment attracts. Real calm and real progress mean you truly do not need them."}),
+        h("div",{style:{margin:"16px 0 4px"}},
+          h("div",{style:{fontSize:"10px",letterSpacing:".1em",textTransform:"uppercase",color:"#3d5c66",fontWeight:700,marginBottom:"7px"}},"Watch \u00b7 Garry Tan, don't be thirsty"),
+          h("div",{style:{position:"relative",paddingBottom:"56.25%",height:0,overflow:"hidden",border:"1px solid #e9e8e3",borderRadius:"2px",background:"#000"}},
+            h("iframe",{src:"https://www.youtube.com/embed/mVUaSCoJRWk?rel=0&modestbranding=1",title:"Don't be thirsty",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",allowFullScreen:true,style:{position:"absolute",top:0,left:0,width:"100%",height:"100%",border:0}})))
       ]
     });
   }
@@ -9746,19 +9750,10 @@ const PB_ONE_PAGER_BULLETS = [{
       h(SignalReader,null),
       Tip("tip--sage","Best practice","Use the first yes to move the pipeline.","A term sheet from any credible fund accelerates every slow conversation. The framing across the pipeline shifts from convince me to are you interested in participating, and allocation becomes the lever. Send a brief update to every Paused investor the day a term sheet lands, because many re-engage fast when they see real momentum behind a real artifact."),
       Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
-      h("div",{style:{margin:"16px 0 6px"}},
-        h("div",{style:{fontSize:"10px",letterSpacing:".1em",textTransform:"uppercase",color:"#3d5c66",fontWeight:700,marginBottom:"7px"}},"Watch · Garry Tan on not being thirsty"),
-        h("div",{style:{position:"relative",paddingBottom:"56.25%",height:0,overflow:"hidden",border:"1px solid #e9e8e3",borderRadius:"2px",background:"#000"}},
-          h("iframe",{src:"https://www.youtube.com/embed/mVUaSCoJRWk?rel=0&modestbranding=1",title:"Do not be thirsty",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",allowFullScreen:true,style:{position:"absolute",top:0,left:0,width:"100%",height:"100%",border:0}}))),
-      h(ActMarker,{num:"02",name:"Tracking pitch data",accent:"after every meeting."}),
-      h("p",{className:"prose"},"Log within 30 minutes of every meeting, while it is still fresh:"),
-      h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 10px"}},LOGLIST.map(function(t,i){return h("li",{key:i},t);})),
-      h("p",{className:"prose"},h("strong",null,"Never leave a meeting without a confirmed next step.")," If the investor will not commit to one, that reluctance is itself a signal worth noting."),
-      h(PromptBox,null),
-      h(ActMarker,{num:"03",name:"Read the investor,",accent:"not just the timing."}),
+      h(ActMarker,{num:"02",name:"Read the investor,",accent:"not just the timing."}),
       h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
       h(PLAudio,{title:"Investor Green & Red Flags",sub:"Sprint companion · Quinn & Adam",src:"/audio/pipeline/investor-flags.mp3"}),
-      h(ActMarker,{num:"04",name:"Green flags and",accent:"red flags."}),
+      h(ActMarker,{num:"03",name:"Green flags and",accent:"red flags."}),
       h(FlagsPanel,null),
       h(Pull,{eyebrow:"Treat smoke as a smoke signal",quote:"You have very little time with these people before deciding whether to spend years working with them. All you have are these signals, and they can be very meaningful."})
     );
@@ -9766,8 +9761,8 @@ const PB_ONE_PAGER_BULLETS = [{
 
   function Auction(){
     const {Cue,Lede,ActMarker,BeatsGrid,Pull}=window;
-    return h("div",{className:"fade-in sub-split","data-screen-label":"11.03 Run It Like an Auction"},
-      h(Cue,{num:"11.03",name:"Run It Like",accent:"an Auction.",crumb:"Chapter 11 · Manage Your Pipeline"}),
+    return h("div",{className:"fade-in sub-split","data-screen-label":"11.04 Run It Like an Auction"},
+      h(Cue,{num:"11.04",name:"Run It Like",accent:"an Auction.",crumb:"Chapter 11 · Manage Your Pipeline"}),
       h(Lede,null,"The pipeline you just built has one job beyond staying organized: to run your raise as an auction, where real competition sets your price and your terms."),
       h(ActMarker,{num:"01",name:"Why an auction",accent:"changes everything."}),
       h("p",{className:"prose"},"Capital is far more abundant than the old scarcity story admits. The moment a company shows a signal of quality, strong growth, a respected angel, a demo-day slot, investors start moving together: rounds get oversubscribed, prices climb, and terms soften in the founder's favor. A wide, time-boxed process is how you surface that dynamic on purpose rather than hoping it finds you."),
@@ -9782,12 +9777,28 @@ const PB_ONE_PAGER_BULLETS = [{
     );
   }
 
+  function Track(){
+    const {Cue,Lede,ActMarker}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"11.03 Track Every Pitch"},
+      h(Cue,{num:"11.03",name:"Track Every",accent:"Pitch.",crumb:"Chapter 11 · Manage Your Pipeline"}),
+      h(Lede,null,"A round is decided across dozens of meetings, and the founders who close are the ones who capture each one before it blurs. A quick log after every pitch turns scattered conversations into patterns you can act on."),
+      h(ActMarker,{num:"01",name:"Log it",accent:"while it is fresh."}),
+      h("p",{className:"prose"},"Log within 30 minutes of every meeting, while it is still fresh:"),
+      h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 10px"}},LOGLIST.map(function(t,i){return h("li",{key:i},t);})),
+      h("p",{className:"prose"},h("strong",null,"Never leave a meeting without a confirmed next step.")," If the investor will not commit to one, that reluctance is itself a signal worth noting."),
+      h(ActMarker,{num:"02",name:"Pull it from",accent:"the transcript."}),
+      h("p",{className:"prose"},"Record each meeting with a notetaker and let one prompt do the logging for you, then track which objections repeat so a pattern gets fixed in the deck rather than handled live every time."),
+      h(PromptBox,null)
+    );
+  }
+
   const SUBS=[
     {num:"01",slug:"setup",title:"Pipeline Setup",teaser:"Set up the CRM, define your stages, and start from the Simple CRM template."},
     {num:"02",slug:"signals",title:"Reading Signals",teaser:"Delays are data. Read the timing and read the investor."},
-    {num:"03",slug:"auction",title:"Run It Like an Auction",teaser:"Treat the raise as an auction, prioritize leads and fast movers, and let competition set your terms."}
+    {num:"03",slug:"track",title:"Track Every Pitch",teaser:"Log the meeting while it is fresh, and let a prompt pull it from your transcript."},
+    {num:"04",slug:"auction",title:"Run It Like an Auction",teaser:"Treat the raise as an auction, prioritize leads and fast movers, and let competition set your terms."}
   ];
-  const MAP={setup:Setup,signals:Signals,auction:Auction};
+  const MAP={setup:Setup,signals:Signals,track:Track,auction:Auction};
   function PLChapter(props){
     const sub=props.subIdx>=0?SUBS[props.subIdx]:null;
     if(!sub) return null;
