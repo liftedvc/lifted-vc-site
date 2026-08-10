@@ -28,8 +28,8 @@ function HowIWork() {
         <Reveal>
           <div style={{ maxWidth: 760, marginBottom: 64 }}>
             <div className="eyebrow" style={{ marginBottom: 20 }}>How I work with you</div>
-            <h2 style={{ fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
-              A coach in your corner, <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>with a real system behind it.</span>
+            <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
+              A coach in your corner, <em>with a real system behind it.</em>
             </h2>
             <p style={{ fontSize: 20, color: 'var(--ink-soft)', marginTop: 28, textWrap: 'pretty' }}>
               The coaching is the heart of it. The system makes sure the work sticks, the momentum holds, and nothing gets lost.
@@ -39,13 +39,13 @@ function HowIWork() {
         <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
           {themes.map((th, i) => (
             <Reveal key={th.t} delay={(i % 2) * 80}>
-              <div style={{ border: '1px solid var(--line)', borderRadius: 16, padding: 36, height: '100%', background: 'var(--cream)' }}>
+              <div style={{ border: '1px solid var(--ink)', borderRadius: 4, padding: 36, height: '100%', background: 'var(--cream)' }}>
                 <h3 style={{ fontSize: 24, margin: '0 0 12px', lineHeight: 1.15 }}>{th.t}</h3>
                 <p style={{ fontSize: 16, color: 'var(--ink-soft)', margin: '0 0 22px', textWrap: 'pretty' }}>{th.d}</p>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {th.points.map((p) => (
                     <li key={p} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 15, color: 'var(--ink)' }}>
-                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 1 }}>&rarr;</span>
+                      <span style={{ color: 'var(--steel)', flexShrink: 0, marginTop: 1 }}>–</span>
                       <span>{p}</span>
                     </li>
                   ))}

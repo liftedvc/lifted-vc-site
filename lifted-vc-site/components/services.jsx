@@ -1,4 +1,4 @@
-// Services teaser — two offers on the home page. Sage green block.
+// Services teaser — two bordered cards; coaching carries the gold offset shadow.
 function ServicesTeaser() {
   const items = [
     {
@@ -31,50 +31,63 @@ function ServicesTeaser() {
   ];
 
   return (
-    <section className="bg-sage">
+    <section style={{ padding: '84px 0', background: 'var(--bg)' }}>
       <div className="wrap">
         <Reveal>
-          <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 120px' }}>
-            <div className="eyebrow" style={{ marginBottom: 20 }}>How we work together</div>
-            <h2 style={{
-              fontSize: 'clamp(44px, 6vw, 88px)',
-              lineHeight: 1, textWrap: 'balance',
-            }}>
-              Two ways in,<br/>
-              <span style={{ fontStyle: 'italic' }}>one shared goal.</span>
-            </h2>
+          <div className="sechead">
+            <span className="eyebrow">How we work together</span>
+            <span className="eyebrow">03</span>
           </div>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 style={{
+            fontSize: 'clamp(34px, 3.6vw, 46px)',
+            lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
+          }}>
+            Two ways in, <em>one shared goal.</em>
+          </h2>
         </Reveal>
 
         <div data-stack="true" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 20,
+          gap: 24,
           alignItems: 'stretch',
-          maxWidth: 780, margin: '0 auto',
+          maxWidth: 900,
+          marginTop: 54,
         }}>
           {items.map((s, i) => (
             <Reveal key={s.title} delay={i * 100}>
               <div style={{
                 position: 'relative',
-                padding: 40,
-                background: s.highlight ? 'var(--butter)' : 'var(--cream)',
-                borderRadius: 16,
+                padding: 36,
+                background: 'var(--bg)',
+                border: s.highlight ? '2px solid var(--ink)' : '1px solid var(--ink)',
+                boxShadow: s.highlight ? '6px 6px 0 var(--gold)' : 'none',
+                borderRadius: 4,
                 height: '100%',
                 display: 'flex', flexDirection: 'column',
               }}>
-                <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 500, marginBottom: 14 }}>{s.tag}</div>
-                <h4 style={{ fontSize: 28, margin: '0 0 12px', lineHeight: 1.1 }}>{s.title}</h4>
-                <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '0 0 22px', textWrap: 'pretty' }}>{s.desc}</p>
-                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', flex: 1, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
+                <div style={{
+                  fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 600,
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  color: s.highlight ? 'var(--butter-deep)' : 'var(--steel)',
+                  marginBottom: 14,
+                }}>{s.tag}</div>
+                <h4 style={{ fontSize: 25, margin: '0 0 10px', lineHeight: 1.15 }}>{s.title}</h4>
+                <p style={{
+                  fontFamily: 'var(--lit)', fontSize: 15, lineHeight: 1.6,
+                  color: 'var(--ink-soft)', margin: '0 0 20px', textWrap: 'pretty',
+                }}>{s.desc}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 26px', flex: 1, borderTop: '1px solid var(--line)' }}>
                   {s.includes.map(inc => (
                     <li key={inc} style={{
+                      fontFamily: 'var(--sans)',
                       padding: '11px 0',
-                      borderBottom: '1px solid rgba(0,0,0,0.08)',
+                      borderBottom: '1px solid var(--line)',
                       fontSize: 14, color: 'var(--ink)',
-                      display: 'flex', gap: 10, alignItems: 'baseline',
                     }}>
-                      <span style={{ color: 'var(--accent)' }}>&rarr;</span> {inc}
+                      {inc}
                     </li>
                   ))}
                 </ul>
@@ -91,8 +104,8 @@ function ServicesTeaser() {
         </div>
 
         <Reveal>
-          <div style={{ textAlign: 'center', marginTop: 88 }}>
-            <a href="pricing.html" className="btn btn-ghost">See pricing & details <Arrow /></a>
+          <div style={{ marginTop: 46 }}>
+            <a href="pricing.html" className="tlink">See pricing &amp; details</a>
           </div>
         </Reveal>
       </div>

@@ -36,8 +36,8 @@ function PartnersPage() {
           <div style={{ maxWidth: 900 }}>
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>For VCs &amp; accelerators</div></Reveal>
             <Reveal delay={100}>
-              <h1 style={{ fontSize: 'clamp(52px, 7vw, 110px)', lineHeight: 0.98, margin: 0, textWrap: 'balance' }}>
-                More of your founders, <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>funded.</span>
+              <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
+                More of your founders, <em>funded.</em>
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -59,15 +59,15 @@ function PartnersPage() {
           <Reveal>
             <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 80px' }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>Why funds partner with me</div>
-              <h2 style={{ fontSize: 'clamp(44px, 6vw, 84px)', lineHeight: 1, textWrap: 'balance' }}>
-                Your founders raise. <span style={{ fontStyle: 'italic' }}>You get the upside.</span>
+              <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, textWrap: 'balance' }}>
+                Your founders raise. <em>You get the upside.</em>
               </h2>
             </div>
           </Reveal>
           <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
             {why.map((w, i) => (
               <Reveal key={w.t} delay={(i % 2) * 80}>
-                <div style={{ background: 'var(--cream)', borderRadius: 16, padding: 36, height: '100%' }}>
+                <div style={{ background: 'var(--cream)', border: '1px solid var(--ink)', borderRadius: 4, padding: 32, height: '100%' }}>
                   <h4 style={{ fontSize: 24, margin: '0 0 12px', lineHeight: 1.15 }}>{w.t}</h4>
                   <p style={{ fontSize: 16.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{w.d}</p>
                 </div>
@@ -77,13 +77,13 @@ function PartnersPage() {
         </div>
       </section>
 
-      <section className="bg-sage">
+      <section className="bg-cream">
         <div className="wrap">
           <Reveal>
             <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 80px' }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>How I plug in</div>
-              <h2 style={{ fontSize: 'clamp(44px, 6vw, 84px)', lineHeight: 1, textWrap: 'balance' }}>
-                Three ways to <span style={{ fontStyle: 'italic' }}>work together.</span>
+              <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, textWrap: 'balance' }}>
+                Three ways to <em>work together.</em>
               </h2>
             </div>
           </Reveal>
@@ -107,7 +107,7 @@ function PartnersPage() {
             <Reveal>
               <div>
                 <div className="eyebrow" style={{ marginBottom: 20, color: 'var(--butter)' }}>Let&rsquo;s talk</div>
-                <h2 style={{ fontSize: 'clamp(44px, 6vw, 84px)', lineHeight: 0.98, color: 'var(--cream)', textWrap: 'balance' }}>
+                <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 0.98, color: 'var(--cream)', textWrap: 'balance' }}>
                   Bring me into your <span style={{ fontStyle: 'italic', color: 'var(--butter)' }}>portfolio.</span>
                 </h2>
                 <p style={{ fontSize: 19, lineHeight: 1.5, color: 'rgba(251,246,236,0.72)', margin: '24px 0 0', maxWidth: 420, textWrap: 'pretty' }}>
@@ -116,7 +116,7 @@ function PartnersPage() {
               </div>
             </Reveal>
             <Reveal delay={150}>
-              <div style={{ background: 'var(--cream)', borderRadius: 16, padding: 40 }}>
+              <div style={{ background: 'var(--cream)', borderRadius: 4, padding: 40 }}>
                 <form name="partners" method="POST" action="/partners-thanks.html" data-netlify="true" netlify-honeypot="bot-field">
                   <input type="hidden" name="form-name" value="partners" />
                   <p style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }} aria-hidden="true">

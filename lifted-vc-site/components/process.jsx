@@ -1,4 +1,4 @@
-// Process — three steps, sky blue background, the Authentic FOMO method
+// Process — three ruled columns on the periwinkle band, gold numerals
 function Process() {
   const phases = [
     {
@@ -19,52 +19,55 @@ function Process() {
   ];
 
   return (
-    <section id="process" className="bg-sky">
+    <section id="process" className="band-lav" style={{ padding: '84px 0' }}>
       <div className="wrap">
         <Reveal>
-          <div style={{ textAlign: 'center', marginBottom: 120, maxWidth: 780, margin: '0 auto 120px' }}>
-            <div className="eyebrow" style={{ marginBottom: 20 }}>The method</div>
-            <h2 style={{
-              fontSize: 'clamp(44px, 6vw, 88px)',
-              lineHeight: 1, textWrap: 'balance',
-            }}>
-              Three steps to <span style={{ fontStyle: 'italic' }}>funding.</span>
-            </h2>
-            <p style={{
-              fontSize: 19, color: 'var(--ink-soft)',
-              marginTop: 24, textWrap: 'pretty',
-            }}>
-              It is a system I call <em>Authentic FOMO</em>: real demand, engineered honestly.
-              No cold outreach and no spray-and-pray, just momentum that makes investors move.
-            </p>
+          <div className="sechead">
+            <span className="eyebrow">The method</span>
+            <span className="eyebrow">01</span>
           </div>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 style={{
+            fontSize: 'clamp(34px, 3.6vw, 46px)',
+            lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
+          }}>
+            Three steps to <em>funding.</em>
+          </h2>
+        </Reveal>
+        <Reveal delay={160}>
+          <p style={{
+            fontFamily: 'var(--lit)',
+            fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)',
+            marginTop: 18, maxWidth: 640, textWrap: 'pretty',
+          }}>
+            It is a system I call <em>Authentic FOMO</em>: real demand, engineered honestly.
+            No cold outreach and no spray-and-pray, just momentum that makes investors move.
+          </p>
         </Reveal>
 
         <div data-stack="true" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 24,
+          marginTop: 54,
         }}>
           {phases.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
               <div style={{
-                background: 'var(--cream)',
-                borderRadius: 16,
-                padding: '56px 44px 60px',
+                padding: i === 0 ? '0 40px 0 0' : '0 40px',
+                borderLeft: i === 0 ? 'none' : '1px solid #cdd3e6',
                 height: '100%',
               }}>
                 <div style={{
                   fontFamily: 'var(--serif)',
-                  fontSize: 88, lineHeight: 0.9,
-                  color: 'var(--accent)',
+                  fontSize: 52, lineHeight: 1,
+                  color: 'var(--gold)',
                   fontStyle: 'italic',
-                  marginBottom: 24,
                 }}>{p.n}</div>
-                <h3 style={{
-                  fontSize: 36, lineHeight: 1, margin: '0 0 16px',
-                }}>{p.title}</h3>
+                <h3 style={{ fontSize: 27, lineHeight: 1.1, margin: '18px 0 12px' }}>{p.title}</h3>
                 <p style={{
-                  fontSize: 16.5, lineHeight: 1.55,
+                  fontFamily: 'var(--lit)',
+                  fontSize: 15.5, lineHeight: 1.65,
                   color: 'var(--ink-soft)', margin: 0,
                   textWrap: 'pretty',
                 }}>{p.lead}</p>
@@ -74,8 +77,8 @@ function Process() {
         </div>
 
         <Reveal>
-          <div style={{ textAlign: 'center', marginTop: 88 }}>
-            <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
+          <div style={{ marginTop: 46 }}>
+            <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="tlink">Free fundraising playbook</a>
           </div>
         </Reveal>
       </div>

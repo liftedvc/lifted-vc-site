@@ -11,12 +11,12 @@ function AboutPage() {
             </Reveal>
             <Reveal delay={100}>
               <h1 style={{
-                fontSize: 'clamp(56px, 7.5vw, 120px)',
-                lineHeight: 0.96,
+                fontSize: 'clamp(42px, 4.8vw, 66px)',
+                lineHeight: 1.08,
                 margin: 0,
                 textWrap: 'balance',
               }}>
-                I've been <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>exactly</span> where you are.
+                I've been <em>exactly</em> where you are.
               </h1>
             </Reveal>
           </div>
@@ -81,8 +81,8 @@ function AboutPage() {
           <Reveal>
             <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 72px' }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>How I work</div>
-              <h2 style={{ fontSize: 'clamp(44px, 6vw, 88px)', lineHeight: 1, textWrap: 'balance' }}>
-                Coaching done <span style={{ fontStyle: 'italic' }}>differently.</span>
+              <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, textWrap: 'balance' }}>
+                Coaching done <em>differently.</em>
               </h2>
             </div>
           </Reveal>
@@ -101,7 +101,8 @@ function AboutPage() {
               <Reveal key={p.title} delay={(i % 2) * 80}>
                 <div style={{
                   background: 'var(--cream)',
-                  borderRadius: 16,
+                  border: '1px solid var(--ink)',
+                  borderRadius: 4,
                   padding: 36,
                   height: '100%',
                 }}>

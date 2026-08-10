@@ -3,7 +3,7 @@ function CaseStudies() {
   const studies = [
     {
       n: '01',
-      bg: 'var(--sky)',
+      bg: 'var(--bg)',
       result: 'A clean seed close a structural conflict could have blown up.',
       title: 'The seed round with a landmine in the cap table',
       body: [
@@ -15,7 +15,7 @@ function CaseStudies() {
     },
     {
       n: '02',
-      bg: 'var(--butter)',
+      bg: 'var(--bg)',
       result: 'A predatory offer turned into leverage, and materially better terms.',
       title: 'The term sheet that looked like money and wasn’t',
       body: [
@@ -27,7 +27,7 @@ function CaseStudies() {
     },
     {
       n: '03',
-      bg: 'var(--sage)',
+      bg: 'var(--bg)',
       result: 'A pipeline rebuilt around real interest, and more quality investor conversations than the founder had ever run.',
       title: 'Strong numbers, wasted on the wrong rooms',
       body: [
@@ -45,8 +45,8 @@ function CaseStudies() {
         <div style={{ maxWidth: 760, marginBottom: 64 }}>
           <Reveal><div className="eyebrow" style={{ marginBottom: 20 }}>Case studies</div></Reveal>
           <Reveal delay={100}>
-            <h2 style={{ fontSize: 'clamp(38px, 5vw, 68px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
-              What it looks like <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>up close.</span>
+            <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
+              What it looks like <em>up close.</em>
             </h2>
           </Reveal>
           <Reveal delay={200}>
@@ -59,12 +59,12 @@ function CaseStudies() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           {studies.map((s, i) => (
             <Reveal key={s.n} delay={(i % 2) * 80}>
-              <div className="cs-card" style={{ background: s.bg, borderRadius: 20, overflow: 'hidden' }}>
+              <div className="cs-card" style={{ background: s.bg, border: '1px solid var(--ink)', borderRadius: 4, overflow: 'hidden' }}>
                 <div className="cs-grid" data-stack="true" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 56, padding: 48, alignItems: 'start' }}>
                   <div>
-                    <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 44, color: 'rgba(0,0,0,0.28)', marginBottom: 20 }}>{s.n}</div>
+                    <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 44, color: 'var(--gold)', marginBottom: 20 }}>{s.n}</div>
                     <h3 style={{ fontSize: 'clamp(26px, 2.6vw, 34px)', lineHeight: 1.1, margin: '0 0 24px', textWrap: 'balance' }}>{s.title}</h3>
-                    <div style={{ paddingTop: 22, borderTop: '1px solid rgba(0,0,0,0.15)' }}>
+                    <div style={{ paddingTop: 22, borderTop: '1px solid var(--line)' }}>
                       <div style={{ fontSize: 12, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--ink-soft)', marginBottom: 10, fontWeight: 500 }}>Result</div>
                       <p className="serif" style={{ fontSize: 20, lineHeight: 1.35, fontStyle: 'italic', color: 'var(--ink)', margin: 0, textWrap: 'pretty' }}>{s.result}</p>
                     </div>

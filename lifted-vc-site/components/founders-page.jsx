@@ -1,11 +1,11 @@
 // Founders page — testimonials, outcome-forward
 function FoundersPage() {
   const quotes = [
-    { result: 'Pre-seed, run like a Series A', q: "Adam didn't just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.'", who: 'Leni', tag: 'Pre-seed founder', bg: 'var(--blush)' },
-    { result: 'Saved 100+ hours and $20K+', q: "10/10. The coaching was extremely helpful to understand the VC game. I wish I had found it even earlier, it would have saved me at least 100 hours and $20K+.", who: 'Misha', tag: 'Coached founder', bg: 'var(--butter)' },
-    { result: 'More investor calls in 4 weeks than ever before', q: "I never ran a process before working with Adam. He made it easy. A lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period.", who: 'Ndonga', tag: 'Seed founder', bg: 'var(--sage)' },
-    { result: 'From science project to funded business', q: "Adam took me from cool science project to funded business. The coaching gave me tangible mechanics that translated directly into capital raised.", who: 'Aidan', tag: 'Pre-seed founder', bg: 'var(--sky)' },
-    { result: null, q: "I highly recommend working with Adam. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset.", who: 'Mary-Ann', tag: 'Seed founder', bg: 'var(--blush)' },
+    { result: 'Pre-seed, run like a Series A', q: "Adam didn't just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.'", who: 'Leni', tag: 'Pre-seed founder', },
+    { result: 'Saved 100+ hours and $20K+', q: "10/10. The coaching was extremely helpful to understand the VC game. I wish I had found it even earlier, it would have saved me at least 100 hours and $20K+.", who: 'Misha', tag: 'Coached founder', },
+    { result: 'More investor calls in 4 weeks than ever before', q: "I never ran a process before working with Adam. He made it easy. A lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period.", who: 'Ndonga', tag: 'Seed founder', },
+    { result: 'From science project to funded business', q: "Adam took me from cool science project to funded business. The coaching gave me tangible mechanics that translated directly into capital raised.", who: 'Aidan', tag: 'Pre-seed founder', },
+    { result: null, q: "I highly recommend working with Adam. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset.", who: 'Mary-Ann', tag: 'Seed founder', },
   ];
 
   return (
@@ -16,7 +16,7 @@ function FoundersPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Founders</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
-                Results speak <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>louder.</span>
+                Results speak <em>louder.</em>
               </h1>
             </Reveal>
             <Reveal delay={200}>

@@ -29,7 +29,7 @@ function Nav({ current = 'home' }) {
     <React.Fragment>
       <nav style={{
         position: 'sticky', top: 0, zIndex: 50,
-        background: scrolled || open ? 'rgba(251, 246, 236, 0.92)' : 'transparent',
+        background: scrolled || open ? 'rgba(247, 246, 242, 0.94)' : 'transparent',
         backdropFilter: scrolled || open ? 'blur(18px) saturate(140%)' : 'none',
         WebkitBackdropFilter: scrolled || open ? 'blur(18px) saturate(140%)' : 'none',
         borderBottom: scrolled || open ? '1px solid var(--line-soft)' : '1px solid transparent',
