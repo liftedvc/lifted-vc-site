@@ -6479,6 +6479,50 @@ const PT_CLOSE = [{
 // Sub-chapter components
 // =====================================================================
 
+function PTMessageMap() {
+  var h = React.createElement;
+  var A = "#3d5c66", LINE = "#e9e8e3", MUT = "rgba(10,10,10,.55)";
+  var MSG = [{k:"Market",v:"$200B TAM",d:"How big this can get."},{k:"Customer",v:"Mid-market banks",d:"Who feels it most."},{k:"Problem",v:"SOC audits eat 40 hours",d:"The pain, quantified."},{k:"Wedge",v:"New OCC rule, Q3 deadline",d:"Why now, and why you."},{k:"Traction",v:"3 design partners live",d:"Proof it is working."}];
+  return h("div", {style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",padding:"18px"}},
+    h("p", {style:{fontSize:".92rem",lineHeight:1.55,margin:"0 0 6px"}}, "Five sentences your whole team can say from memory. Every answer in the meeting ties back to one of them, so the story stays consistent no matter who gets asked or what they ask."),
+    h("p", {style:{fontSize:".8rem",color:MUT,fontStyle:"italic",margin:"0 0 14px"}}, "The values below are a made-up example for one company. Yours will look nothing like this. The point is the five slots, not these numbers."),
+    h("div", {style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:"10px"}},
+      MSG.map(function(m,i){return h("div",{key:i,style:{border:"1px solid "+LINE,borderLeft:"3px solid "+A,borderRadius:"2px",padding:"12px 14px"}},
+        h("div",{style:{fontSize:"10px",letterSpacing:".08em",textTransform:"uppercase",color:A,fontWeight:700}}, "0"+(i+1)+" · "+m.k),
+        h("div",{style:{fontSize:"1rem",fontWeight:700,margin:"3px 0 2px"}}, m.v),
+        h("div",{style:{fontSize:".8rem",color:MUT,lineHeight:1.4}}, m.d));})));
+}
+function PTRejectionDecoder() {
+  var h = React.createElement, us = React.useState;
+  var INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", A="#3d5c66";
+  var REJ=[{t:"Specific",p:"The sales cycle feels long.",c:"#4f7d5b",mean:"A real thesis gap, and it is actionable. Honest, specific feedback tells you exactly what to address.",move:"Fix the gap, then re-engage with new data."},{t:"Vague",p:"Timing isn't right for us.",c:"#9a8a5a",mean:"Capital or logistics, not your deal. The investor is constrained or distracted.",move:"Stay on their radar and do not push. They may re-engage later."},{t:"Ghosting",p:"(no reply, no follow-up)",c:"#7a6f63",mean:"The process failed on their side. It fell through their filter or bounced to the wrong partner.",move:"One light follow-up, then a warm re-intro from a mutual contact."},{t:"Re-engage ask",p:"Come back when you have a lead.",c:"#c0512d",mean:"A FOMO trigger, not real feedback. They are interested but want someone else to move first.",move:"Build momentum elsewhere and let them feel it."}];
+  var st=us(0), sel=st[0], setSel=st[1]; var x=REJ[sel];
+  var lbl=function(c){return {fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:c||MUT,fontWeight:700,marginBottom:"3px"};};
+  return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",padding:"16px"}},
+    h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:"8px"}},
+      REJ.map(function(r,i){var on=i===sel;return h("button",{key:i,onClick:function(){setSel(i);},style:{font:"inherit",cursor:"pointer",textAlign:"left",padding:"9px 11px",borderRadius:"2px",border:"1px solid "+(on?r.c:LINE),background:"#fff",boxShadow:on?"inset 3px 0 0 "+r.c:"none",color:INK}},
+        h("div",{style:{fontSize:"9.5px",letterSpacing:".07em",textTransform:"uppercase",fontWeight:700,color:r.c}}, r.t),
+        h("div",{style:{fontSize:".8rem",fontWeight:on?700:500,marginTop:"2px",lineHeight:1.25,fontStyle:"italic"}}, "“"+r.p+"”"));})),
+    h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px 22px",marginTop:"14px",borderTop:"1px solid "+LINE,paddingTop:"14px"}},
+      h("div",null,h("div",{style:lbl()},"What it means"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}}, x.mean)),
+      h("div",null,h("div",{style:lbl(A)},"Your move"),h("div",{style:{fontSize:".88rem",lineHeight:1.45,color:A,fontWeight:600}}, x.move))));
+}
+function PTRoomMoves() {
+  var h = React.createElement, us = React.useState;
+  var INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", A="#3d5c66", SOFT="#f6f5f2";
+  var M=[{cue:"You are explaining too much",title:"Over-explaining is the alarm",body:"Catching yourself explaining a lot is the signal you have lost them, not a sign of diligence. Stop, name the thing they are quietly stuck on, and hand it back to them."},{cue:"The investor is flat and hard to read",title:"Ask, then route through the answer",body:"After your one-to-two-minute elevator, ask a crafted question that pulls engagement and shows what they are thinking, then run the rest of the meeting through their answer."},{cue:"They drill into the weeds",title:"Taking a step back",body:"Answer great question, taking a step back, lead with how you think as a company, then give the detail. You bring the room back to the vision instead of being pulled up to it."},{cue:"They are testing your conviction",title:"Put them in their corner",body:"Once per pitch, push back with a reason or say why a different question matters more. Done once, it reads as leadership, and investors quietly want to be put in their corner."}];
+  var st=us(0), sel=st[0], setSel=st[1]; var x=M[sel];
+  return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",overflow:"hidden"}},
+    h("div",{style:{display:"flex",flexWrap:"wrap"}},
+      M.map(function(m,i){var on=i===sel;return h("button",{key:i,onClick:function(){setSel(i);},style:{font:"inherit",cursor:"pointer",textAlign:"left",flex:"1 1 165px",padding:"11px 13px",border:"none",borderBottom:"2px solid "+(on?A:LINE),background:on?SOFT:"#fff",color:INK}},
+        h("div",{style:{fontSize:"9px",letterSpacing:".06em",textTransform:"uppercase",color:MUT,fontWeight:600,marginBottom:"2px"}},"When"),
+        h("div",{style:{fontSize:".82rem",fontWeight:on?700:500,lineHeight:1.25}}, m.cue));})),
+    h("div",{style:{padding:"16px 18px"}},
+      h("div",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:A,fontWeight:700,marginBottom:"4px"}},"Your move"),
+      h("div",{style:{fontSize:"1.05rem",fontWeight:700,marginBottom:"6px"}}, x.title),
+      h("div",{style:{fontSize:".9rem",lineHeight:1.5}}, x.body)));
+}
+
 function PTAnatomy() {
   const {
     Cue,
@@ -6504,7 +6548,7 @@ function PTAnatomy() {
     className: "sub-split__read"
   }, /*#__PURE__*/React.createElement(Lede, null, "The craft of a first meeting. Knowing the three acts, when to lead, and how to run the parts that are yours changes the odds of every pitch you give."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Almost every first meeting follows the same shape. The investor opens with their fund pitch, you take the floor and run the next 15 to 20 minutes, and the final chunk is Q&A. Knowing where you are in the arc and what each act needs from you is the difference between a meeting you run and a meeting that runs over you.")), /*#__PURE__*/React.createElement("aside", {
+  }, "Most first meetings tend to flow through a similar shape, though nothing here is a rule and plenty of investors run it their own way. Generally the investor opens with their fund pitch, you take the floor for the next 15 to 20 minutes, and the last chunk is Q&A. Knowing roughly where you are in that arc, and what each part tends to need from you, is the difference between a meeting you run and a meeting that runs over you.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sub-act-eyebrow"
@@ -6516,7 +6560,7 @@ function PTAnatomy() {
   }, /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The three acts",
-    accent: "30 minutes, predictable shape."
+    accent: "the shape most meetings settle into."
   }), /*#__PURE__*/React.createElement(BeatsGrid, {
     items: PT_ACTS,
     columns: 3
@@ -6679,18 +6723,15 @@ function PTPyramid() {
     className: "prose"
   }, "Investors make split-second decisions about whether to keep listening. If they don\u2019t hear the answer in the first five seconds, they\u2019re already thinking about their next meeting. Every Q&A answer leads with the conclusion, then layers in the supporting detail only if asked. Building to an epiphany, saving your point for a dramatic reveal, works on a keynote stage and quietly loses the investor in a Q&A."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CHow big is your market?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Conclusion first:"), " \u201C$200B annually. Mid-market banks spending on SOC audits alone. Happy to walk you through the build if useful.\u201D ", /*#__PURE__*/React.createElement("strong", null, "Leading to an epiphany:"), " five minutes of methodology, a dozen caveats, and finally the number buried in the last sentence. The investor has already moved on."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CHow big is your market?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Conclusion first:"), " \u201C$200B annually. Mid-market banks spending on SOC audits alone. Happy to walk you through the build if useful.\u201D ", /*#__PURE__*/React.createElement("strong", null, "Leading to an epiphany:"), " “It is a great question, and it really starts with how underserved mid-market banks have been. If you trace how compliance evolved after 2008, the audit burden keeps compounding, and once you add up every team and vendor and run the bottoms-up math across all of it, the number gets large... it lands around $200B.” Thirty seconds of build-up, and the investor stopped listening before the number arrived."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CWhat\u2019s your revenue?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Conclusion first:"), " \u201C$50K MRR growing 15% month over month, with another $100K in cARR from pilots that start billing this quarter.\u201D ", /*#__PURE__*/React.createElement("strong", null, "Leading to an epiphany:"), " a single inflated number that mixes LOIs, pilots, and recurring revenue under one label. Investors pattern-match on the precision of the answer, and the credibility hit lasts the rest of the meeting."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CWhat\u2019s your revenue?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Conclusion first:"), " \u201C$50K MRR growing 15% month over month, with another $100K in cARR from pilots that start billing this quarter.\u201D ", /*#__PURE__*/React.createElement("strong", null, "The credibility trap:"), " a single inflated number that mixes LOIs, pilots, and recurring revenue under one label. Investors pattern-match on the precision of the answer, and the credibility hit lasts the rest of the meeting."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight"
   }, /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "The five-message framework",
     accent: "a message map you can anchor every answer to."
-  }), /*#__PURE__*/React.createElement(BeatsGrid, {
-    items: PT_MESSAGES,
-    columns: 3
-  })), /*#__PURE__*/React.createElement("p", {
+  }), /*#__PURE__*/React.createElement(PTMessageMap, null)), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "If your team can\u2019t say the five messages out loud from memory, you don\u2019t know them well enough yet. Run the exercise before every pitch cycle."), /*#__PURE__*/React.createElement("div", {
     className: "tip"
@@ -6735,10 +6776,7 @@ function PTReading() {
     num: "01",
     name: "Four types of rejection",
     accent: "each calls for a different move."
-  }), /*#__PURE__*/React.createElement(BeatsGrid, {
-    items: PT_REJECTIONS,
-    columns: 2
-  }), /*#__PURE__*/React.createElement(ActMarker, {
+  }), /*#__PURE__*/React.createElement(PTRejectionDecoder, null), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "Decode",
     accent: "the common phrases."
@@ -6750,7 +6788,7 @@ function PTReading() {
     className: "prose"
   }, /*#__PURE__*/React.createElement("strong", null, "\u201CProve traction first.\u201D"), " They want FOMO, not proof. Build it elsewhere."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u201CHere\u2019s what we need to see. Let\u2019s check in six weeks.\u201D"), " Real interest. Specific, time-bound, named. Keep them warm."), /*#__PURE__*/React.createElement(ActMarker, {num: "03", name: "In-the-room moves", accent: "steer a meeting that is drifting."}), /*#__PURE__*/React.createElement(BeatsGrid, {columns: 2, items: [{num:"01",title:"Over-explaining is the alarm",desc:"If you catch yourself explaining too much, that is the signal you have lost them, not a sign of diligence. Stop, name what they are quietly stuck on, and hand it back."},{num:"02",title:"Ask a question, then route through it",desc:"After your one-to-two-minute elevator, when a flat investor is hard to read, ask a crafted question that pulls engagement and shows what they are thinking, then run the rest of the meeting through their answer."},{num:"03",title:"Taking a step back",desc:"When they drill into a detail, answer great question, taking a step back, lead with how you think as a company, then give the detail. You bring the room back to the vision instead of being pulled up to it."},{num:"04",title:"Put them in their corner",desc:"Once per pitch, push back with a reason or say why a different question matters more. Done once, it reads as leadership, and investors quietly want to be put in their corner."}]}), /*#__PURE__*/React.createElement("div", {className: "tip"}, /*#__PURE__*/React.createElement("div", {className: "tip__head"}, /*#__PURE__*/React.createElement("span", {className: "tip__eyebrow"}, "Reframe"), /*#__PURE__*/React.createElement("h3", {className: "tip__title"}, "When they do not get it, you are failing them.")), /*#__PURE__*/React.createElement("p", {className: "tip__body"}, "When an investor labels the company wrong or asks a question that feels dumb, flip the subject of the sentence. The question is not why they missed it, it is what you did that let them. Every miss is a pitch bug to fix on your side, which is the only side you control.")));
+  }, /*#__PURE__*/React.createElement("strong", null, "\u201CHere\u2019s what we need to see. Let\u2019s check in six weeks.\u201D"), " Real interest. Specific, time-bound, named. Keep them warm."), /*#__PURE__*/React.createElement(ActMarker, {num: "03", name: "In-the-room moves", accent: "steer a meeting that is drifting."}), /*#__PURE__*/React.createElement(PTRoomMoves, null), /*#__PURE__*/React.createElement("div", {className: "tip"}, /*#__PURE__*/React.createElement("div", {className: "tip__head"}, /*#__PURE__*/React.createElement("span", {className: "tip__eyebrow"}, "Reframe"), /*#__PURE__*/React.createElement("h3", {className: "tip__title"}, "When they do not get it, you are failing them.")), /*#__PURE__*/React.createElement("p", {className: "tip__body"}, "When an investor labels the company wrong or asks a question that feels dumb, flip the subject of the sentence. The question is not why they missed it, it is what you did that let them. Every miss is a pitch bug to fix on your side, which is the only side you control.")));
 }
 function PTClosing() {
   const {
