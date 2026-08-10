@@ -10,7 +10,7 @@ function FoundersPage() {
 
   return (
     <>
-      <section style={{ paddingTop: 80, paddingBottom: 60, background: 'var(--cream)' }}>
+      <section style={{ paddingTop: 56, paddingBottom: 40, background: 'var(--cream)' }}>
         <div className="wrap">
           <div style={{ maxWidth: 880 }}>
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Founders</div></Reveal>
@@ -28,31 +28,39 @@ function FoundersPage() {
         </div>
       </section>
 
-      <section style={{ paddingTop: 40, paddingBottom: 120, background: 'var(--cream)' }}>
-        <div className="wrap">
-          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
-            {quotes.map((q, i) => (
-              <Reveal key={q.who} delay={(i % 2) * 80}>
-                <div style={{ padding: 40, background: q.bg, borderRadius: 16, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  {q.result && (
-                    <div style={{ fontSize: 23, fontWeight: 600, lineHeight: 1.2, letterSpacing: '-0.015em', marginBottom: 16, color: 'var(--ink)' }}>{q.result}</div>
-                  )}
-                  <p className="serif" style={{ fontSize: q.result ? 19 : 24, lineHeight: 1.45, color: 'var(--ink-soft)', margin: '0 0 28px', textWrap: 'pretty', flex: 1, fontWeight: 400, fontStyle: 'italic' }}>
-                    &ldquo;{q.q}&rdquo;
-                  </p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
-                    <Avatar letter={q.who[0]} small />
-                    <div>
-                      <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontStyle: 'italic' }}>{q.who}</div>
-                      <div style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{q.tag}</div>
-                    </div>
+      <section style={{ paddingTop: 24, paddingBottom: 72, background: 'var(--cream)', overflow: 'hidden' }}>
+        <div
+          onMouseEnter={e => { const m = e.currentTarget.querySelector('.marquee'); if (m) m.style.animationPlayState = 'paused'; }}
+          onMouseLeave={e => { const m = e.currentTarget.querySelector('.marquee'); if (m) m.style.animationPlayState = 'running'; }}
+        >
+          <div className="marquee" style={{ gap: 20, alignItems: 'stretch', animationDuration: '60s' }}>
+            {[...quotes, ...quotes].map((q, i) => (
+              <div key={q.who + i} style={{
+                width: 'min(420px, 78vw)',
+                flexShrink: 0,
+                padding: 30,
+                background: 'var(--bg)',
+                border: '1px solid var(--ink)',
+                borderRadius: 4,
+                display: 'flex', flexDirection: 'column',
+              }}>
+                <div style={{ fontFamily: 'var(--serif)', fontSize: 56, color: 'var(--gold)', lineHeight: 0.5, marginBottom: 18, fontStyle: 'italic' }}>&ldquo;</div>
+                <p className="serif" style={{ fontSize: 16.5, lineHeight: 1.5, color: 'var(--ink)', margin: '0 0 22px', textWrap: 'pretty', flex: 1, fontWeight: 400, fontStyle: 'italic' }}>
+                  {q.q}
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
+                  <Avatar letter={q.who[0]} small />
+                  <div>
+                    <div style={{ fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 600 }}>{q.who}</div>
+                    <div style={{ fontFamily: 'var(--sans)', fontSize: 12.5, color: 'var(--ink-mute)' }}>{q.tag}</div>
                   </div>
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
       </section>
+
     </>
   );
 }
