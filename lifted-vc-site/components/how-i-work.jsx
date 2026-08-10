@@ -23,11 +23,16 @@ function HowIWork() {
     },
   ];
   return (
-    <section style={{ background: 'var(--cream)' }}>
+    <section className="band-lav" style={{ padding: '84px 0' }}>
       <div className="wrap">
         <Reveal>
-          <div style={{ maxWidth: 760, marginBottom: 64 }}>
-            <div className="eyebrow" style={{ marginBottom: 20 }}>How I work with you</div>
+          <div className="sechead">
+            <span className="eyebrow">How I work with you</span>
+            <span className="eyebrow">01</span>
+          </div>
+        </Reveal>
+        <Reveal delay={60}>
+          <div style={{ maxWidth: 760, marginBottom: 64, marginTop: 26 }}>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
               A coach in your corner, with a real system behind it.
             </h2>
@@ -39,7 +44,7 @@ function HowIWork() {
         <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
           {themes.map((th, i) => (
             <Reveal key={th.t} delay={(i % 2) * 80}>
-              <div style={{ border: '1px solid var(--ink)', borderRadius: 4, padding: 36, height: '100%', background: 'var(--cream)' }}>
+              <div style={{ border: '1px solid var(--ink)', borderRadius: 4, padding: 36, height: '100%', background: 'var(--bg)' }}>
                 <h3 style={{ fontSize: 24, margin: '0 0 12px', lineHeight: 1.15 }}>{th.t}</h3>
                 <p style={{ fontSize: 16, color: 'var(--ink-soft)', margin: '0 0 22px', textWrap: 'pretty' }}>{th.d}</p>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>

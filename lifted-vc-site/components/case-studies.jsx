@@ -40,10 +40,15 @@ function CaseStudies() {
   ];
 
   return (
-    <section style={{ paddingTop: 40, paddingBottom: 120, background: 'var(--cream)' }}>
+    <section className="band-gold" style={{ padding: '84px 0 110px' }}>
       <div className="wrap">
-        <div style={{ maxWidth: 760, marginBottom: 64 }}>
-          <Reveal><div className="eyebrow" style={{ marginBottom: 20 }}>Case studies</div></Reveal>
+        <Reveal>
+          <div className="sechead">
+            <span className="eyebrow">Case studies</span>
+            <span className="eyebrow">02</span>
+          </div>
+        </Reveal>
+        <div style={{ maxWidth: 760, marginBottom: 64, marginTop: 26 }}>
           <Reveal delay={100}>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
               What it looks like up close.

@@ -10,8 +10,9 @@ function FoundersPage() {
 
   return (
     <>
-      <section style={{ paddingTop: 56, paddingBottom: 40, background: 'var(--cream)' }}>
+      <section style={{ paddingTop: 0, paddingBottom: 40, background: 'var(--cream)' }}>
         <div className="wrap">
+          <div className="rule-thick" style={{ marginBottom: 56 }} />
           <div style={{ maxWidth: 880 }}>
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Founders</div></Reveal>
             <Reveal delay={100}>
