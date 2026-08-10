@@ -17,7 +17,7 @@ function CTA() {
               color: 'var(--bg)',
               textWrap: 'balance',
             }}>
-              Ready to <em>raise?</em>
+              Ready to raise?
             </h2>
           </Reveal>
           <Reveal delay={120}>

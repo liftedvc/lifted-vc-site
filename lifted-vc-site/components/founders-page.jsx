@@ -16,7 +16,7 @@ function FoundersPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Founders</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
-                Results speak <em>louder.</em>
+                Results speak louder.
               </h1>
             </Reveal>
             <Reveal delay={200}>

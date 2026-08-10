@@ -22,7 +22,7 @@ function WhatYouGet() {
             fontSize: 'clamp(34px, 3.6vw, 46px)',
             lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
           }}>
-            Everything a real <em>raise</em> needs.
+            Everything a real raise needs.
           </h2>
         </Reveal>
         <Reveal delay={160}>

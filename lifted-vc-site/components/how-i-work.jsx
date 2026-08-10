@@ -29,7 +29,7 @@ function HowIWork() {
           <div style={{ maxWidth: 760, marginBottom: 64 }}>
             <div className="eyebrow" style={{ marginBottom: 20 }}>How I work with you</div>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
-              A coach in your corner, <em>with a real system behind it.</em>
+              A coach in your corner, with a real system behind it.
             </h2>
             <p style={{ fontSize: 20, color: 'var(--ink-soft)', marginTop: 28, textWrap: 'pretty' }}>
               The coaching is the heart of it. The system makes sure the work sticks, the momentum holds, and nothing gets lost.

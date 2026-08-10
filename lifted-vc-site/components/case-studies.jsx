@@ -46,7 +46,7 @@ function CaseStudies() {
           <Reveal><div className="eyebrow" style={{ marginBottom: 20 }}>Case studies</div></Reveal>
           <Reveal delay={100}>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
-              What it looks like <em>up close.</em>
+              What it looks like up close.
             </h2>
           </Reveal>
           <Reveal delay={200}>

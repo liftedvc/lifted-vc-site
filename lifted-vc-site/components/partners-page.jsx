@@ -37,7 +37,7 @@ function PartnersPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>For VCs &amp; accelerators</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
-                More of your founders, <em>funded.</em>
+                More of your founders, funded.
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -60,7 +60,7 @@ function PartnersPage() {
             <div style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto 80px' }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>Why funds partner with me</div>
               <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, textWrap: 'balance' }}>
-                Your founders raise. <em>You get the upside.</em>
+                Your founders raise. You get the upside.
               </h2>
             </div>
           </Reveal>
@@ -83,7 +83,7 @@ function PartnersPage() {
             <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 80px' }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>How I plug in</div>
               <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, textWrap: 'balance' }}>
-                Three ways to <em>work together.</em>
+                Three ways to work together.
               </h2>
             </div>
           </Reveal>
@@ -108,7 +108,7 @@ function PartnersPage() {
               <div>
                 <div className="eyebrow" style={{ marginBottom: 20, color: 'var(--butter)' }}>Let&rsquo;s talk</div>
                 <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 0.98, color: 'var(--cream)', textWrap: 'balance' }}>
-                  Bring me into your <span style={{ fontStyle: 'italic', color: 'var(--butter)' }}>portfolio.</span>
+                  Bring me into your portfolio.
                 </h2>
                 <p style={{ fontSize: 19, lineHeight: 1.5, color: 'rgba(251,246,236,0.72)', margin: '24px 0 0', maxWidth: 420, textWrap: 'pretty' }}>
                   Tell me about your fund and your founders. I read every note personally and will get back to you.

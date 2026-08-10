@@ -39,7 +39,7 @@ function PricingPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Pricing</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
-                Simple, honest <em>pricing.</em>
+                Simple, honest pricing.
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -119,7 +119,7 @@ function EngagementModel() {
             <div style={{ position: 'sticky', top: 100 }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>How it works</div>
               <h2 style={{ fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1.1, textWrap: 'balance' }}>
-                Priced to your <em>round.</em>
+                Priced to your round.
               </h2>
               <p style={{ fontSize: 17, color: 'var(--ink-soft)', marginTop: 22, maxWidth: 380, textWrap: 'pretty' }}>
                 Coaching scales with your stage. You pay a monthly retainer against a fixed
@@ -195,7 +195,7 @@ function FAQ() {
             <div style={{ position: 'sticky', top: 100 }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>FAQ</div>
               <h2 style={{ fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1.1, textWrap: 'balance' }}>
-                Good questions,<br/><em>straight</em> answers.
+                Good questions,<br/>straight answers.
               </h2>
             </div>
           </Reveal>

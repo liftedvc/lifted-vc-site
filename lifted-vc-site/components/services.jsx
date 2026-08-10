@@ -44,7 +44,7 @@ function ServicesTeaser() {
             fontSize: 'clamp(34px, 3.6vw, 46px)',
             lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
           }}>
-            Two ways in, <em>one shared goal.</em>
+            Two ways in, one shared goal.
           </h2>
         </Reveal>
 

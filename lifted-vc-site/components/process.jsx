@@ -32,7 +32,7 @@ function Process() {
             fontSize: 'clamp(34px, 3.6vw, 46px)',
             lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
           }}>
-            Three steps to <em>funding.</em>
+            Three steps to funding.
           </h2>
         </Reveal>
         <Reveal delay={160}>

@@ -25,7 +25,7 @@ function Hero() {
                 margin: 0,
                 textWrap: 'balance',
               }}>
-                Raise your round like a <em>repeat founder.</em>
+                Raise your round like a repeat founder.
               </h1>
             </Reveal>
 
