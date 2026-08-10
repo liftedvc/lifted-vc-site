@@ -35,7 +35,7 @@ function AboutPage() {
             <Reveal>
               <div style={{ position: 'sticky', top: 100 }}>
                 <Photo ratio="4 / 5" src="images/adam-470.jpg" alt="USA Sailing Team · 470" />
-                <div style={{ marginTop: 14, fontSize: 14, color: 'var(--ink-soft)', fontStyle: 'italic', fontFamily: 'var(--serif)' }}>
+                <div style={{ marginTop: 14, fontSize: 14, color: 'var(--ink-soft)', fontStyle: 'italic', fontFamily: 'var(--lit)' }}>
                   Five years at the international level<br/>before tech.
                 </div>
               </div>

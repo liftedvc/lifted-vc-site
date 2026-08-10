@@ -147,7 +147,7 @@ function EngagementModel() {
                     padding: '22px 28px', alignItems: 'baseline',
                     borderBottom: i < rows.length - 1 ? '1px solid var(--line-soft)' : 'none',
                   }}>
-                    <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontStyle: 'italic' }}>{r.stage}</div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 600 }}>{r.stage}</div>
                     <div style={{ fontSize: 16, color: 'var(--ink-soft)' }}>{r.monthly}</div>
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 24, color: 'var(--ink)' }}>{r.total}</div>
                   </div>

@@ -34,7 +34,7 @@
   --accent: #2a1b4e;      /* buttons/links now indigo */
   --accent-deep: #1c1136;
 
-  --serif: 'Besley', 'Iowan Old Style', Georgia, serif;
+  --serif: 'Gabarito', 'Helvetica Neue', sans-serif;   /* display face (logo cousin) */
   --lit: 'Literata', Georgia, serif;
   --sans: 'Familjen Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', monospace;
@@ -80,10 +80,11 @@ section.tight { padding: 72px 0; }
 
 h1, h2, h3, h4 {
   font-family: var(--serif);
-  font-weight: 500;
-  letter-spacing: -0.012em;
+  font-weight: 700;
+  letter-spacing: -0.018em;
   margin: 0;
 }
+h3, h4 { font-weight: 600; }
 h1 em, h2 em, h3 em { font-weight: 400; font-style: italic; color: inherit; }
 
 /* Small-caps label (replaces the dotted eyebrow) */

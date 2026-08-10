@@ -45,8 +45,8 @@ function FoundersPage() {
                 borderRadius: 4,
                 display: 'flex', flexDirection: 'column',
               }}>
-                <div style={{ fontFamily: 'var(--serif)', fontSize: 56, color: 'var(--gold)', lineHeight: 0.5, marginBottom: 18, fontStyle: 'italic' }}>&ldquo;</div>
-                <p className="serif" style={{ fontSize: 16.5, lineHeight: 1.5, color: 'var(--ink)', margin: '0 0 22px', textWrap: 'pretty', flex: 1, fontWeight: 400, fontStyle: 'italic' }}>
+                <div style={{ fontFamily: 'var(--lit)', fontSize: 56, color: 'var(--gold)', lineHeight: 0.5, marginBottom: 18, fontStyle: 'italic' }}>&ldquo;</div>
+                <p style={{ fontFamily: 'var(--lit)', fontSize: 16.5, lineHeight: 1.5, color: 'var(--ink)', margin: '0 0 22px', textWrap: 'pretty', flex: 1, fontWeight: 400, fontStyle: 'italic' }}>
                   {q.q}
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid var(--line)' }}>

@@ -66,7 +66,6 @@ function Process() {
                     fontFamily: 'var(--serif)',
                     fontSize: 40, lineHeight: 1,
                     color: 'var(--gold)',
-                    fontStyle: 'italic',
                     flexShrink: 0,
                   }}>{p.n}</span>
                   <h3 style={{ fontSize: 23, lineHeight: 1.2, margin: 0 }}>{p.title}</h3>

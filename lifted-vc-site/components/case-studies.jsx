@@ -67,11 +67,11 @@ function CaseStudies() {
               <div className="cs-card" style={{ background: s.bg, border: '1px solid var(--ink)', borderRadius: 4, overflow: 'hidden' }}>
                 <div className="cs-grid" data-stack="true" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 56, padding: 48, alignItems: 'start' }}>
                   <div>
-                    <div style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 44, color: 'var(--gold)', marginBottom: 20 }}>{s.n}</div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 44, color: 'var(--gold)', marginBottom: 20 }}>{s.n}</div>
                     <h3 style={{ fontSize: 'clamp(26px, 2.6vw, 34px)', lineHeight: 1.1, margin: '0 0 24px', textWrap: 'balance' }}>{s.title}</h3>
                     <div style={{ paddingTop: 22, borderTop: '1px solid var(--line)' }}>
                       <div style={{ fontSize: 12, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--ink-soft)', marginBottom: 10, fontWeight: 500 }}>Result</div>
-                      <p className="serif" style={{ fontSize: 20, lineHeight: 1.35, fontStyle: 'italic', color: 'var(--ink)', margin: 0, textWrap: 'pretty' }}>{s.result}</p>
+                      <p style={{ fontFamily: 'var(--lit)', fontSize: 20, lineHeight: 1.35, fontStyle: 'italic', color: 'var(--ink)', margin: 0, textWrap: 'pretty' }}>{s.result}</p>
                     </div>
                   </div>
                   <div>

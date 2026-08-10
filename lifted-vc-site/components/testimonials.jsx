@@ -11,11 +11,11 @@ function FeaturedQuote() {
           }}>
             <div className="eyebrow" style={{ marginBottom: 10 }}>What founders say</div>
             <div style={{
-              fontFamily: 'var(--serif)', fontStyle: 'italic',
+              fontFamily: 'var(--lit)', fontStyle: 'italic',
               fontSize: 84, lineHeight: 0.4, color: 'var(--gold)',
             }}>&ldquo;</div>
             <p style={{
-              fontFamily: 'var(--serif)',
+              fontFamily: 'var(--lit)',
               fontSize: 'clamp(28px, 3vw, 40px)',
               lineHeight: 1.3,
               letterSpacing: '-0.01em',
@@ -46,8 +46,8 @@ function Avatar({ letter, small }) {
       width: size, height: size, borderRadius: '50%',
       background: 'var(--lav)', color: 'var(--indigo)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontFamily: 'var(--serif)', fontStyle: 'italic',
-      fontSize: small ? 16 : 22, fontWeight: 400,
+      fontFamily: 'var(--serif)',
+      fontSize: small ? 16 : 22, fontWeight: 600,
       flexShrink: 0,
     }}>{letter}</div>
   );

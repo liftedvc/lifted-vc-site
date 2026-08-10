@@ -91,7 +91,7 @@ function PartnersPage() {
             {how.map((h, i) => (
               <Reveal key={h.t} delay={i * 80}>
                 <div style={{ background: 'var(--cream)', borderRadius: 16, padding: '40px 34px', height: '100%' }}>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 40, fontStyle: 'italic', color: 'var(--accent)', marginBottom: 18 }}>{String(i + 1).padStart(2, '0')}</div>
+                  <div style={{ fontFamily: 'var(--serif)', fontSize: 40, color: 'var(--gold)', marginBottom: 18 }}>{String(i + 1).padStart(2, '0')}</div>
                   <h4 style={{ fontSize: 24, margin: '0 0 12px', lineHeight: 1.15 }}>{h.t}</h4>
                   <p style={{ fontSize: 16, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{h.d}</p>
                 </div>
