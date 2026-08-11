@@ -37,7 +37,7 @@ function PartnersPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>For VCs &amp; accelerators</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
-                More of your founders, funded
+                More funding means fewer write-offs
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -91,8 +91,10 @@ function PartnersPage() {
             {how.map((h, i) => (
               <Reveal key={h.t} delay={i * 80}>
                 <div style={{ background: 'var(--cream)', borderRadius: 16, padding: '40px 34px', height: '100%' }}>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 40, color: 'var(--gold)', marginBottom: 18 }}>{String(i + 1).padStart(2, '0')}</div>
-                  <h4 style={{ fontSize: 24, margin: '0 0 12px', lineHeight: 1.15 }}>{h.t}</h4>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, margin: '0 0 12px' }}>
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: 32, lineHeight: 1, color: 'var(--gold)', flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
+                    <h4 style={{ fontSize: 24, margin: 0, lineHeight: 1.15 }}>{h.t}</h4>
+                  </div>
                   <p style={{ fontSize: 16, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{h.d}</p>
                 </div>
               </Reveal>
