@@ -30,7 +30,7 @@ function FeaturedQuote() {
               <b style={{ color: 'var(--ink)' }}>Leni</b> · Pre-seed founder
             </div>
             <div style={{ marginTop: 26 }}>
-              <a href="founders.html" className="tlink">Read more stories</a>
+              <a href="/founders" className="tlink">Read more stories</a>
             </div>
           </div>
         </Reveal>

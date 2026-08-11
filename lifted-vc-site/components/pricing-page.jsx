@@ -89,7 +89,7 @@ function PricingPage() {
                       </li>
                     ))}
                   </ul>
-                  <a href="contact.html" className="btn btn-primary" style={{ marginTop: 24, justifyContent: 'center' }}>{p.cta} <Arrow /></a>
+                  <a href="/contact" className="btn btn-primary" style={{ marginTop: 24, justifyContent: 'center' }}>{p.cta} <Arrow /></a>
                 </div>
               </Reveal>
             ))}

@@ -23,17 +23,17 @@ function Footer() {
           </div>
 
           <FooterCol title="Site" links={[
-            { l: 'Home', href: 'index.html' },
-            { l: 'About', href: 'about.html' },
-            { l: 'Pricing', href: 'pricing.html' },
-            { l: 'Founders', href: 'founders.html' },
+            { l: 'Home', href: '/' },
+            { l: 'About', href: '/about' },
+            { l: 'Pricing', href: '/pricing' },
+            { l: 'Founders', href: '/founders' },
           ]} />
           <FooterCol title="Resources" links={[
             { l: 'Playbook', href: 'https://lifted.vc/fundraising-playbook', external: true },
-            { l: 'FAQ', href: 'pricing.html#faq' },
+            { l: 'FAQ', href: '/pricing#faq' },
           ]} />
           <FooterCol title="Connect" links={[
-            { l: 'Contact', href: 'contact.html' },
+            { l: 'Contact', href: '/contact' },
             { l: 'LinkedIn', href: 'https://www.linkedin.com/in/robertsadamj/' },
             { l: 'Email', href: 'mailto:adam@lifted.vc' },
           ]} />

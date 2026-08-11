@@ -34,7 +34,7 @@ function CTA() {
           </Reveal>
           <Reveal delay={220}>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="contact.html" className="btn btn-gold">
+              <a href="/contact" className="btn btn-gold">
                 Work with me <Arrow />
               </a>
               <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="btn" style={{

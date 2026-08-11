@@ -17,11 +17,11 @@ function Nav({ current = 'home' }) {
   }, [open]);
 
   const links = [
-    { href: 'index.html', slug: 'home', label: 'Home' },
-    { href: 'about.html', slug: 'about', label: 'About' },
-    { href: 'founders.html', slug: 'founders', label: 'Founders' },
-    { href: 'pricing.html', slug: 'pricing', label: 'Pricing' },
-    { href: 'partners.html', slug: 'partners', label: 'Investors' },
+    { href: '/', slug: 'home', label: 'Home' },
+    { href: '/about', slug: 'about', label: 'About' },
+    { href: '/founders', slug: 'founders', label: 'Founders' },
+    { href: '/pricing', slug: 'pricing', label: 'Pricing' },
+    { href: '/partners', slug: 'partners', label: 'Investors' },
     { href: 'https://lifted.vc/fundraising-playbook', slug: 'playbook', label: 'Playbook', external: true },
   ];
 
@@ -39,7 +39,7 @@ function Nav({ current = 'home' }) {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           height: 'var(--nav-h, 76px)',
         }}>
-          <a href="index.html" style={{ display: 'flex', alignItems: 'center' }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
             <Wordmark />
           </a>
 
@@ -71,7 +71,7 @@ function Nav({ current = 'home' }) {
                 );
               })}
             </ul>
-            <a href="contact.html" className="btn btn-primary" style={{ padding: '11px 22px', fontSize: 14 }}>
+            <a href="/contact" className="btn btn-primary" style={{ padding: '11px 22px', fontSize: 14 }}>
               Work with me <Arrow size={12} />
             </a>
           </div>
@@ -151,7 +151,7 @@ function Nav({ current = 'home' }) {
             );
           })}
         </ul>
-        <a href="contact.html" className="btn btn-primary" style={{
+        <a href="/contact" className="btn btn-primary" style={{
           marginTop: 32, alignSelf: 'flex-start',
           padding: '16px 28px', fontSize: 15,
         }}>

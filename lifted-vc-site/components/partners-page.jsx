@@ -119,7 +119,7 @@ function PartnersPage() {
             </Reveal>
             <Reveal delay={150}>
               <div style={{ background: 'var(--cream)', borderRadius: 4, padding: 40 }}>
-                <form name="partners" method="POST" action="/partners-thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+                <form name="partners" method="POST" action="/partners-thanks" data-netlify="true" netlify-honeypot="bot-field">
                   <input type="hidden" name="form-name" value="partners" />
                   <p style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }} aria-hidden="true">
                     <label>Do not fill this out: <input name="bot-field" /></label>

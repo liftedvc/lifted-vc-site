@@ -46,7 +46,7 @@ function Hero() {
 
             <Reveal delay={320}>
               <div style={{ display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
-                <a href="contact.html" className="btn btn-primary">Work with me <Arrow /></a>
+                <a href="/contact" className="btn btn-primary">Work with me <Arrow /></a>
                 <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="tlink">Free fundraising playbook</a>
               </div>
             </Reveal>

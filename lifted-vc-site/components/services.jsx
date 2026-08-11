@@ -41,8 +41,8 @@ function ServicesTeaser() {
                 Candid, conversational, entirely on the house.
               </p>
               <div style={{ marginTop: 32, display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
-                <a href="contact.html" className="btn btn-primary">Book a free consultation <Arrow /></a>
-                <a href="pricing.html" className="tlink">See pricing &amp; details</a>
+                <a href="/contact" className="btn btn-primary">Book a free consultation <Arrow /></a>
+                <a href="/pricing" className="tlink">See pricing &amp; details</a>
               </div>
             </div>
           </Reveal>

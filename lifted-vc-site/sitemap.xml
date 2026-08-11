@@ -6,22 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lifted.vc/about.html</loc>
+    <loc>https://lifted.vc/about</loc>
     <lastmod>2026-04-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lifted.vc/founders.html</loc>
+    <loc>https://lifted.vc/founders</loc>
     <lastmod>2026-04-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lifted.vc/pricing.html</loc>
+    <loc>https://lifted.vc/pricing</loc>
     <lastmod>2026-04-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lifted.vc/contact.html</loc>
+    <loc>https://lifted.vc/contact</loc>
     <lastmod>2026-04-30</lastmod>
     <priority>0.7</priority>
   </url>
@@ -31,7 +31,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://lifted.vc/partners.html</loc>
+    <loc>https://lifted.vc/partners</loc>
     <lastmod>2026-08-03</lastmod>
     <priority>0.8</priority>
   </url>
