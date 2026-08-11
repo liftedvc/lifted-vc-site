@@ -1,77 +1,70 @@
-// Process — three ruled columns on the periwinkle band, gold numerals
+// Process — three steps, sky blue background, the Authentic FOMO method
 function Process() {
   const phases = [
     {
       n: '1',
-      title: 'Build the story investors buy',
-      lead: "Investors decide in the first minutes, so we build your narrative the way they listen: problem first, conclusion first, plain English. One page before ten slides, because the one-pager is what lands meetings. Then we pressure-test it in mock sessions until the hardest question in the room is one you've already answered.",
+      title: 'Prepare',
+      lead: 'Sharpen your story and build a crisp one-pager, deck, and data room. We lead with the one-pager, because it is concise, investors prefer it, and it lands meetings faster.',
     },
     {
       n: '2',
-      title: 'Engineer warm access at volume',
-      lead: "Cold outreach doesn't convert, so we never do it. We work the math backward from your round: a target list of 60 to 100 right-fit investors, reached through connectors ranked by whether they'll name the exact investor they'll introduce you to. The result is 60 to 80 warm, double-opt-in introductions, real access, at the volume a round actually requires.",
+      title: 'Pitch',
+      lead: 'Skip cold outreach. We map 20 to 30 founders who just raised in your space, turn their investors into 60 to 80 warm, double-opt-in intros, and drill your pitch until you walk in a known quantity.',
     },
     {
       n: '3',
-      title: 'Compress the round until it closes',
-      lead: "Interest expires, so we stack every first meeting into a two to three week sprint. When a dozen funds are moving at once, the urgency is real and investors can feel it. We lock in the yeses, respect the nos, kill the maybes, and when term sheets land, we negotiate from upside, with the leverage to walk.",
+      title: 'Close',
+      lead: 'Batch every meeting into a two to three week sprint, up to five a day. Real demand, timeline pressure, and parallel processes turn interest into term sheets.',
     },
   ];
 
   return (
-    <section id="process" className="band-lav" style={{ padding: '84px 0' }}>
+    <section id="process" className="bg-sky">
       <div className="wrap">
         <Reveal>
-          <div className="sechead">
-            <span className="eyebrow">The method</span>
-            <span className="eyebrow">01</span>
+          <div style={{ textAlign: 'center', marginBottom: 120, maxWidth: 780, margin: '0 auto 120px' }}>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>The method</div>
+            <h2 style={{
+              fontSize: 'clamp(44px, 6vw, 88px)',
+              lineHeight: 1, textWrap: 'balance',
+            }}>
+              Three steps to <span style={{ fontStyle: 'italic' }}>funding.</span>
+            </h2>
+            <p style={{
+              fontSize: 19, color: 'var(--ink-soft)',
+              marginTop: 24, textWrap: 'pretty',
+            }}>
+              It is a system I call <em>Authentic FOMO</em>: real demand, engineered honestly.
+              No cold outreach and no spray-and-pray, just momentum that makes investors move.
+            </p>
           </div>
-        </Reveal>
-        <Reveal delay={80}>
-          <h2 style={{
-            fontSize: 'clamp(34px, 3.6vw, 46px)',
-            lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
-          }}>
-            Thoughtfully raising your round
-          </h2>
-        </Reveal>
-        <Reveal delay={160}>
-          <p style={{
-            fontFamily: 'var(--lit)',
-            fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)',
-            marginTop: 18, maxWidth: 640, textWrap: 'pretty',
-          }}>
-            Experienced founders craft a story built for how investors actually listen, line up
-            warm intros at volume, and schedule every meeting compressed into one decisive window.
-            I've turned that pattern into a system I call <em>Authentic FOMO</em> that generates
-            real demand, engineered honestly, and we'll run it together.
-          </p>
         </Reveal>
 
         <div data-stack="true" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          marginTop: 54,
+          gap: 24,
         }}>
           {phases.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
               <div style={{
-                padding: i === 0 ? '0 40px 0 0' : '0 40px',
-                borderLeft: i === 0 ? 'none' : '1px solid #cdd3e6',
+                background: 'var(--cream)',
+                borderRadius: 16,
+                padding: '56px 44px 60px',
                 height: '100%',
               }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, margin: '0 0 12px' }}>
-                  <span style={{
-                    fontFamily: 'var(--serif)',
-                    fontSize: 40, lineHeight: 1,
-                    color: 'var(--gold)',
-                    flexShrink: 0,
-                  }}>{p.n}</span>
-                  <h3 style={{ fontSize: 23, lineHeight: 1.2, margin: 0 }}>{p.title}</h3>
-                </div>
+                <div style={{
+                  fontFamily: 'var(--serif)',
+                  fontSize: 88, lineHeight: 0.9,
+                  color: 'var(--accent)',
+                  fontStyle: 'italic',
+                  marginBottom: 24,
+                }}>{p.n}</div>
+                <h3 style={{
+                  fontSize: 36, lineHeight: 1, margin: '0 0 16px',
+                }}>{p.title}</h3>
                 <p style={{
-                  fontFamily: 'var(--lit)',
-                  fontSize: 15.5, lineHeight: 1.65,
+                  fontSize: 16.5, lineHeight: 1.55,
                   color: 'var(--ink-soft)', margin: 0,
                   textWrap: 'pretty',
                 }}>{p.lead}</p>
@@ -81,8 +74,8 @@ function Process() {
         </div>
 
         <Reveal>
-          <div style={{ marginTop: 46 }}>
-            <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="tlink">Free fundraising playbook</a>
+          <div style={{ textAlign: 'center', marginTop: 88 }}>
+            <a href="https://lifted.vc/fundraising-playbook" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
           </div>
         </Reveal>
       </div>

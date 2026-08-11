@@ -1,14 +1,10 @@
 [build]
   publish = "."
 
-# Framing is controlled via CSP frame-ancestors: the site may only be embedded
-# by Lifted's own dashboard origins (clickjacking protection is preserved).
-# This replaces X-Frame-Options: DENY so the fundraising playbook can be embedded
-# inside the client dashboard.
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "frame-ancestors 'self' https://lifted.vc https://www.lifted.vc https://app.lifted.vc https://lifted-dashboard-staging.netlify.app"
+    X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"

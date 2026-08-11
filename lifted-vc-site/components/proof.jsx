@@ -17,37 +17,33 @@ function Proof() {
     { name: 'Everywhere Ventures', file: 'everywhere-ventures.svg' },
     { name: 'Liquid 2 Ventures', file: 'liquid-2.svg' },
     { name: 'HCVC', file: 'hcvc.png' },
-    { name: '500 Global', file: '500-global.svg' },
-    { name: 'Goodwater', file: 'goodwater.svg' },
-    { name: 'NFX', file: 'nfx.svg' },
-    { name: 'SOSV', file: 'sosv.png' },
-    { name: 'gener8tor', file: 'gener8tor.png' },
-    { name: 'MassChallenge', file: 'masschallenge.png' },
-    { name: 'Capital Factory', file: 'capital-factory.png' },
-    { name: 'Pioneer Fund', file: 'pioneer-fund.png' },
-    { name: 'Gold House', file: 'gold-house.png' },
-    { name: 'Orange DAO', file: 'orange-dao.svg' },
-    { name: 'ERA', file: 'era.png' },
-    { name: 'Founder Institute', file: 'founder-institute.png' },
-    { name: 'Precursor Ventures', file: 'precursor-ventures.png' },
   ];
 
   return (
     <section className="tight" style={{
-      paddingTop: 56, paddingBottom: 64,
-      background: 'var(--bg)',
+      paddingTop: 64, paddingBottom: 64,
+      background: 'var(--cream)',
+      borderTop: '1px solid var(--line)',
+      borderBottom: '1px solid var(--line)',
     }}>
       <div className="wrap">
-        <div className="eyebrow" style={{ marginBottom: 34 }}>
+        <div style={{
+          textAlign: 'center',
+          fontSize: 14,
+          color: 'var(--ink-soft)',
+          marginBottom: 44,
+        }}>
           Founders I&rsquo;ve coached have raised from
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-          gap: '38px 36px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+          gap: '44px 32px',
           alignItems: 'center',
           justifyItems: 'center',
+          maxWidth: 1080,
+          margin: '0 auto',
         }}>
           {logos.map(l => (
             <img
@@ -57,30 +53,17 @@ function Proof() {
               title={l.name}
               loading="lazy"
               style={{
-                height: 26, width: 'auto', maxWidth: 130,
+                height: 30, width: 'auto', maxWidth: 150,
                 objectFit: 'contain',
-                opacity: 0.58,
+                opacity: 0.62,
                 filter: 'grayscale(100%)',
                 transition: 'opacity .25s ease, filter .25s ease',
               }}
               onError={e => { e.currentTarget.style.display = 'none'; }}
               onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.style.filter = 'none'; }}
-              onMouseLeave={e => { e.currentTarget.style.opacity = 0.58; e.currentTarget.style.filter = 'grayscale(100%)'; }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = 0.62; e.currentTarget.style.filter = 'grayscale(100%)'; }}
             />
           ))}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span
-              title="And many more"
-              style={{
-                fontFamily: 'var(--sans)',
-                fontSize: 15, fontWeight: 500,
-                color: 'var(--ink-mute)', whiteSpace: 'nowrap', opacity: 0.8,
-                cursor: 'default', transition: 'color .25s ease',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = 'var(--steel)'; }}
-              onMouseLeave={e => { e.currentTarget.style.color = 'var(--ink-mute)'; }}
-            >+ many more</span>
-          </div>
         </div>
       </div>
     </section>
