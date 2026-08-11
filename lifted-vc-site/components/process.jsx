@@ -32,7 +32,7 @@ function Process() {
             fontSize: 'clamp(34px, 3.6vw, 46px)',
             lineHeight: 1.1, marginTop: 26, textWrap: 'balance',
           }}>
-            How rounds actually get raised.
+            Thoughtfully raising your round
           </h2>
         </Reveal>
         <Reveal delay={160}>
@@ -41,11 +41,10 @@ function Process() {
             fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)',
             marginTop: 18, maxWidth: 640, textWrap: 'pretty',
           }}>
-            Oversubscribed rounds aren't luck. They follow a pattern repeat founders know by
-            heart: a story built for how investors actually listen, warm access at real volume,
-            and every meeting compressed into one decisive window. I've turned that pattern into
-            a system I call <em>Authentic FOMO</em>, real demand, engineered honestly, and we run
-            it together.
+            Experienced founders craft a story built for how investors actually listen, line up
+            warm intros at volume, and schedule every meeting compressed into one decisive window.
+            I've turned that pattern into a system I call <em>Authentic FOMO</em> that generates
+            real demand, engineered honestly, and we'll run it together.
           </p>
         </Reveal>
 
