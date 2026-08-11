@@ -29,8 +29,8 @@ function ContactPage() {
           <div>
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Let's talk</div></Reveal>
             <Reveal delay={100}>
-              <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
-                Ready to <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>raise?</span>
+              <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
+                Ready to raise?
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -46,11 +46,11 @@ function ContactPage() {
           </div>
 
           <Reveal delay={150}>
-            <div style={{ background: 'var(--butter)', borderRadius: 16, padding: 40 }}>
+            <div style={{ background: 'var(--bg)', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--gold)', borderRadius: 4, padding: 40 }}>
               <form
                 name="contact"
                 method="POST"
-                action="/thank-you.html"
+                action="/thank-you"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
               >
@@ -76,8 +76,8 @@ function ContactPage() {
                           padding: '8px 16px',
                           background: stage === s ? 'var(--ink)' : 'transparent',
                           color: stage === s ? 'var(--cream)' : 'var(--ink)',
-                          border: '1.5px solid var(--ink)',
-                          borderRadius: 999, fontSize: 14, cursor: 'pointer',
+                          border: '1px solid var(--ink)',
+                          borderRadius: 3, fontSize: 14, cursor: 'pointer',
                           fontFamily: 'var(--sans)',
                         }}
                       >{s}</button>

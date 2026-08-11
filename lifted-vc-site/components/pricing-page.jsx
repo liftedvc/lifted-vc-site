@@ -13,7 +13,7 @@ function PricingPage() {
         'Open agenda, candid feedback',
       ],
       cta: 'Book a call',
-      bg: 'var(--sky)',
+      bg: 'var(--bg)',
     },
     {
       tag: 'Round coaching', price: '$1–2K', cadence: 'per month',
@@ -27,7 +27,7 @@ function PricingPage() {
         'Process management through close',
       ],
       cta: 'Work with me',
-      bg: 'var(--butter)',
+      bg: 'var(--bg)', highlight: true,
     },
   ];
 
@@ -38,8 +38,8 @@ function PricingPage() {
           <div style={{ maxWidth: 880 }}>
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Pricing</div></Reveal>
             <Reveal delay={100}>
-              <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
-                Simple, honest <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>pricing.</span>
+              <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
+                Pricing
               </h1>
             </Reveal>
             <Reveal delay={200}>
@@ -60,12 +60,14 @@ function PricingPage() {
                 <div style={{
                   padding: 36,
                   background: p.bg,
-                  borderRadius: 16,
+                  border: p.highlight ? '2px solid var(--ink)' : '1px solid var(--ink)',
+                  boxShadow: p.highlight ? '6px 6px 0 var(--gold)' : 'none',
+                  borderRadius: 4,
                   height: '100%',
                   display: 'flex', flexDirection: 'column',
                   position: 'relative',
                 }}>
-                  <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 500, marginBottom: 14 }}>{p.tag}</div>
+                  <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: p.highlight ? 'var(--butter-deep)' : 'var(--steel)', marginBottom: 14 }}>{p.tag}</div>
                   <h3 style={{ fontSize: 32, margin: '0 0 8px', lineHeight: 1.05 }}>{p.title}</h3>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: p.note ? 8 : 18 }}>
                     <span style={{ fontFamily: 'var(--serif)', fontSize: 40, fontWeight: 400, letterSpacing: '-0.02em' }}>{p.price}</span>
@@ -83,11 +85,11 @@ function PricingPage() {
                         fontSize: 14.5, color: 'var(--ink)',
                         display: 'flex', gap: 10, alignItems: 'baseline',
                       }}>
-                        <span style={{ color: 'var(--accent)' }}>&rarr;</span> {inc}
+                        {inc}
                       </li>
                     ))}
                   </ul>
-                  <a href="contact.html" className="btn btn-primary" style={{ marginTop: 24, justifyContent: 'center' }}>{p.cta} <Arrow /></a>
+                  <a href="/contact" className="btn btn-primary" style={{ marginTop: 24, justifyContent: 'center' }}>{p.cta} <Arrow /></a>
                 </div>
               </Reveal>
             ))}
@@ -116,8 +118,8 @@ function EngagementModel() {
           <Reveal>
             <div style={{ position: 'sticky', top: 100 }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>How it works</div>
-              <h2 style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1, textWrap: 'balance' }}>
-                Priced to your <span style={{ fontStyle: 'italic' }}>round.</span>
+              <h2 style={{ fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1.1, textWrap: 'balance' }}>
+                Priced to your round
               </h2>
               <p style={{ fontSize: 17, color: 'var(--ink-soft)', marginTop: 22, maxWidth: 380, textWrap: 'pretty' }}>
                 Coaching scales with your stage. You pay a monthly retainer against a fixed
@@ -128,7 +130,7 @@ function EngagementModel() {
 
           <Reveal delay={100}>
             <div>
-              <div style={{ background: 'var(--cream)', borderRadius: 16, overflow: 'hidden' }}>
+              <div style={{ background: 'var(--bg)', border: '1px solid var(--ink)', borderRadius: 4, overflow: 'hidden' }}>
                 <div style={{
                   display: 'grid', gridTemplateColumns: '1.1fr 1fr 1fr',
                   padding: '16px 28px', fontSize: 12.5, color: 'var(--ink-mute)',
@@ -145,7 +147,7 @@ function EngagementModel() {
                     padding: '22px 28px', alignItems: 'baseline',
                     borderBottom: i < rows.length - 1 ? '1px solid var(--line-soft)' : 'none',
                   }}>
-                    <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontStyle: 'italic' }}>{r.stage}</div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 600 }}>{r.stage}</div>
                     <div style={{ fontSize: 16, color: 'var(--ink-soft)' }}>{r.monthly}</div>
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 24, color: 'var(--ink)' }}>{r.total}</div>
                   </div>
@@ -154,14 +156,14 @@ function EngagementModel() {
 
               <div style={{ marginTop: 24, display: 'grid', gap: 14 }}>
                 <div style={{ display: 'flex', gap: 12, alignItems: 'baseline' }}>
-                  <span style={{ color: 'var(--accent)', fontSize: 15 }}>&rarr;</span>
+                  <span style={{ color: 'var(--steel)', fontSize: 15 }}>–</span>
                   <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
                     Your monthly payments count toward the total. The remaining balance is due only when
                     you successfully close your round.
                   </p>
                 </div>
                 <div style={{ display: 'flex', gap: 12, alignItems: 'baseline' }}>
-                  <span style={{ color: 'var(--accent)', fontSize: 15 }}>&rarr;</span>
+                  <span style={{ color: 'var(--steel)', fontSize: 15 }}>–</span>
                   <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
                     No equity, ever, and it is month to month. If it is not working, we will both know.
                   </p>
@@ -192,8 +194,8 @@ function FAQ() {
           <Reveal>
             <div style={{ position: 'sticky', top: 100 }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>FAQ</div>
-              <h2 style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1, textWrap: 'balance' }}>
-                Good questions,<br/><span style={{ fontStyle: 'italic' }}>straight</span> answers.
+              <h2 style={{ fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1.1, textWrap: 'balance' }}>
+                Good questions,<br/>straight answers
               </h2>
             </div>
           </Reveal>
@@ -212,7 +214,7 @@ function FAQ() {
                     }}
                   >
                     <span style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.015em' }}>{it.q}</span>
-                    <span style={{ fontSize: 22, color: 'var(--accent)', transition: 'transform .3s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
+                    <span style={{ fontSize: 22, color: 'var(--gold)', transition: 'transform .3s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
                   </button>
                   <div style={{ maxHeight: isOpen ? 400 : 0, overflow: 'hidden', transition: 'max-height .5s, padding .3s', paddingBottom: isOpen ? 24 : 0 }}>
                     <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: 0, maxWidth: 640, textWrap: 'pretty' }}>{it.a}</p>

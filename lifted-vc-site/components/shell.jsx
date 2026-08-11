@@ -1,9 +1,9 @@
 // Shared shell — Nav + Footer + tweaks wiring. Use on every page.
 function StickyCTA() {
   const path = (typeof window !== "undefined" && window.location) ? window.location.pathname : "";
-  if (/contact|partners|scorecard/.test(path)) return null;
+  if (/contact|partners/.test(path)) return null;
   return (
-    <a href="contact.html" className="sticky-cta btn btn-primary">Work with me <Arrow size={13} /></a>
+    <a href="/contact" className="sticky-cta btn btn-primary">Work with me <Arrow size={13} /></a>
   );
 }
 

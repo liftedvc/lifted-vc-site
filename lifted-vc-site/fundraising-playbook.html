@@ -425,7 +425,7 @@ function SceneBar({
     className: "th-brand-wrap"
   }, /*#__PURE__*/React.createElement("div", {
     className: "th-brand",
-    onClick: () => { window.open("https://lifted.vc/", "_self"); },
+    onClick: onGoHome,
     role: "button",
     tabIndex: 0,
     style: {
@@ -6375,7 +6375,7 @@ window.CHAPTER_ACTIVATE = {
 // Sub 6 (closing):  lines 7221-7277
 
 // Learning objectives — verbatim from uploads/fundraising-playbook.html line 7921.
-const PT_OBJECTIVES = ["Understand why simultaneous activation creates Authentic FOMO", "Calculate your fundraising funnel math by stage", "Execute the 5-step activation sequence"];
+const PT_OBJECTIVES = ["Run the three acts of a first meeting and own the room", "Make the investor feel the problem before you show the solution", "Answer conclusion-first and read what the room is telling you"];
 
 // =====================================================================
 // Data — every string lifted verbatim from source.
@@ -6479,6 +6479,50 @@ const PT_CLOSE = [{
 // Sub-chapter components
 // =====================================================================
 
+function PTMessageMap() {
+  var h = React.createElement;
+  var A = "#3d5c66", LINE = "#e9e8e3", MUT = "rgba(10,10,10,.55)";
+  var MSG = [{k:"Market",v:"$200B TAM",d:"How big this can get."},{k:"Customer",v:"Mid-market banks",d:"Who feels it most."},{k:"Problem",v:"SOC audits eat 40 hours",d:"The pain, quantified."},{k:"Wedge",v:"New OCC rule, Q3 deadline",d:"Why now, and why you."},{k:"Traction",v:"3 design partners live",d:"Proof it is working."}];
+  return h("div", {style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",padding:"18px"}},
+    h("p", {style:{fontSize:".92rem",lineHeight:1.55,margin:"0 0 6px"}}, "Five sentences your whole team can say from memory. Every answer in the meeting ties back to one of them, so the story stays consistent no matter who gets asked or what they ask."),
+    h("p", {style:{fontSize:".8rem",color:MUT,fontStyle:"italic",margin:"0 0 14px"}}, "The values below are a made-up example for one company. Yours will look nothing like this. The point is the five slots, not these numbers."),
+    h("div", {style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(150px,1fr))",gap:"10px"}},
+      MSG.map(function(m,i){return h("div",{key:i,style:{border:"1px solid "+LINE,borderLeft:"3px solid "+A,borderRadius:"2px",padding:"12px 14px"}},
+        h("div",{style:{fontSize:"10px",letterSpacing:".08em",textTransform:"uppercase",color:A,fontWeight:700}}, "0"+(i+1)+" · "+m.k),
+        h("div",{style:{fontSize:"1rem",fontWeight:700,margin:"3px 0 2px"}}, m.v),
+        h("div",{style:{fontSize:".8rem",color:MUT,lineHeight:1.4}}, m.d));})));
+}
+function PTRejectionDecoder() {
+  var h = React.createElement, us = React.useState;
+  var INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", A="#3d5c66";
+  var REJ=[{t:"Specific",p:"The sales cycle feels long.",c:"#4f7d5b",mean:"A real thesis gap, and it is actionable. Honest, specific feedback tells you exactly what to address.",move:"Fix the gap, then re-engage with new data."},{t:"Vague",p:"Timing isn't right for us.",c:"#9a8a5a",mean:"Capital or logistics, not your deal. The investor is constrained or distracted.",move:"Stay on their radar and do not push. They may re-engage later."},{t:"Ghosting",p:"(no reply, no follow-up)",c:"#7a6f63",mean:"The process failed on their side. It fell through their filter or bounced to the wrong partner.",move:"One light follow-up, then a warm re-intro from a mutual contact."},{t:"Re-engage ask",p:"Come back when you have a lead.",c:"#c0512d",mean:"A FOMO trigger, not real feedback. They are interested but want someone else to move first.",move:"Build momentum elsewhere and let them feel it."}];
+  var st=us(0), sel=st[0], setSel=st[1]; var x=REJ[sel];
+  var lbl=function(c){return {fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:c||MUT,fontWeight:700,marginBottom:"3px"};};
+  return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",padding:"16px"}},
+    h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:"8px"}},
+      REJ.map(function(r,i){var on=i===sel;return h("button",{key:i,onClick:function(){setSel(i);},style:{font:"inherit",cursor:"pointer",textAlign:"left",padding:"9px 11px",borderRadius:"2px",border:"1px solid "+(on?r.c:LINE),background:"#fff",boxShadow:on?"inset 3px 0 0 "+r.c:"none",color:INK}},
+        h("div",{style:{fontSize:"9.5px",letterSpacing:".07em",textTransform:"uppercase",fontWeight:700,color:r.c}}, r.t),
+        h("div",{style:{fontSize:".8rem",fontWeight:on?700:500,marginTop:"2px",lineHeight:1.25,fontStyle:"italic"}}, "“"+r.p+"”"));})),
+    h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px 22px",marginTop:"14px",borderTop:"1px solid "+LINE,paddingTop:"14px"}},
+      h("div",null,h("div",{style:lbl()},"What it means"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}}, x.mean)),
+      h("div",null,h("div",{style:lbl(A)},"Your move"),h("div",{style:{fontSize:".88rem",lineHeight:1.45,color:A,fontWeight:600}}, x.move))));
+}
+function PTRoomMoves() {
+  var h = React.createElement, us = React.useState;
+  var INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", A="#3d5c66", SOFT="#f6f5f2";
+  var M=[{cue:"You are explaining too much",title:"Over-explaining is the alarm",body:"Catching yourself explaining a lot is the signal you have lost them, not a sign of diligence. Stop, name the thing they are quietly stuck on, and hand it back to them."},{cue:"The investor is flat and hard to read",title:"Ask, then route through the answer",body:"After your one-to-two-minute elevator, ask a crafted question that pulls engagement and shows what they are thinking, then run the rest of the meeting through their answer."},{cue:"They drill into the weeds",title:"Taking a step back",body:"Answer great question, taking a step back, lead with how you think as a company, then give the detail. You bring the room back to the vision instead of being pulled up to it."},{cue:"They are testing your conviction",title:"Put them in their corner",body:"Once per pitch, push back with a reason or say why a different question matters more. Done once, it reads as leadership, and investors quietly want to be put in their corner."}];
+  var st=us(0), sel=st[0], setSel=st[1]; var x=M[sel];
+  return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",overflow:"hidden"}},
+    h("div",{style:{display:"flex",flexWrap:"wrap"}},
+      M.map(function(m,i){var on=i===sel;return h("button",{key:i,onClick:function(){setSel(i);},style:{font:"inherit",cursor:"pointer",textAlign:"left",flex:"1 1 165px",padding:"11px 13px",border:"none",borderBottom:"2px solid "+(on?A:LINE),background:on?SOFT:"#fff",color:INK}},
+        h("div",{style:{fontSize:"9px",letterSpacing:".06em",textTransform:"uppercase",color:MUT,fontWeight:600,marginBottom:"2px"}},"When"),
+        h("div",{style:{fontSize:".82rem",fontWeight:on?700:500,lineHeight:1.25}}, m.cue));})),
+    h("div",{style:{padding:"16px 18px"}},
+      h("div",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:A,fontWeight:700,marginBottom:"4px"}},"Your move"),
+      h("div",{style:{fontSize:"1.05rem",fontWeight:700,marginBottom:"6px"}}, x.title),
+      h("div",{style:{fontSize:".9rem",lineHeight:1.5}}, x.body)));
+}
+
 function PTAnatomy() {
   const {
     Cue,
@@ -6490,12 +6534,12 @@ function PTAnatomy() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "09.01 Pitching Best Practices"
+    "data-screen-label": "10.01 Pitching Best Practices"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "09.01",
+    num: "10.01",
     name: "Pitching",
     accent: "Best Practices.",
-    crumb: "Chapter 9"
+    crumb: "Chapter 10"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: PT_OBJECTIVES
   }), /*#__PURE__*/React.createElement("div", {
@@ -6504,7 +6548,7 @@ function PTAnatomy() {
     className: "sub-split__read"
   }, /*#__PURE__*/React.createElement(Lede, null, "The craft of a first meeting. Knowing the three acts, when to lead, and how to run the parts that are yours changes the odds of every pitch you give."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Almost every first meeting follows the same shape. The investor opens with their fund pitch, you take the floor and run the next 15 to 20 minutes, and the final chunk is Q&A. Knowing where you are in the arc and what each act needs from you is the difference between a meeting you run and a meeting that runs over you.")), /*#__PURE__*/React.createElement("aside", {
+  }, "Most first meetings tend to flow through a similar shape, though nothing here is a rule and plenty of investors run it their own way. Generally the investor opens with their fund pitch, you take the floor for the next 15 to 20 minutes, and the last chunk is Q&A. Knowing roughly where you are in that arc, and what each part tends to need from you, is the difference between a meeting you run and a meeting that runs over you.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sub-act-eyebrow"
@@ -6516,7 +6560,7 @@ function PTAnatomy() {
   }, /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The three acts",
-    accent: "30 minutes, predictable shape."
+    accent: "the shape most meetings settle into."
   }), /*#__PURE__*/React.createElement(BeatsGrid, {
     items: PT_ACTS,
     columns: 3
@@ -6526,79 +6570,39 @@ function PTAnatomy() {
     accent: "the most important transition in the meeting."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "The moment you take the floor sets the tone for the next 20 minutes. Skip the investor\u2019s intro and you signal you only care about your pitch. Acknowledge their thesis in one sentence and you earn credibility to run the rest. Something like: \u201CLove the thesis on operational AI for mid-market. That\u2019s exactly what we\u2019re tackling. Here\u2019s what\u2019s happening on the ground.\u201D Then go."));
+  }, "The moment you take the floor sets the tone for the next 20 minutes. Skip the investor\u2019s intro and you signal you only care about your pitch. Acknowledge their thesis in one sentence and you earn credibility to run the rest. Something like: \u201CLove the thesis on operational AI for mid-market. That\u2019s exactly what we\u2019re tackling. Here\u2019s what\u2019s happening on the ground.\u201D Then go."), /*#__PURE__*/React.createElement(ActMarker, {num: "03", name: "Own the room", accent: "a pitch is a control mechanism."}), /*#__PURE__*/React.createElement("p", {className: "prose"}, "Underneath the three acts sits one idea: a pitch is a control mechanism, and your job is to own the room and be the driver. You do not ask permission, you just start. You tell the investor what to think, then take their questions on it. Owning your worldview is the persona investors respect enough to back, even the ones who have deployed hundreds of millions. If you are not driving the ship so they see what they need to see, that is where you lose it."));
 }
 function PTEnergy() {
-  const {
-    Cue,
-    Lede,
-    Video,
-    ActMarker
-  } = window;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "fade-in sub-split",
-    "data-screen-label": "09.02 Your Energy Sets the Room\u2019s Energy"
-  }, /*#__PURE__*/React.createElement(Cue, {
-    num: "09.02",
-    name: "Your Energy Sets",
-    accent: "the Room\u2019s Energy.",
-    crumb: "Chapter 9 \xB7 Pitching Best Practices"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "sub-split__body"
-  }, /*#__PURE__*/React.createElement("section", {
-    className: "sub-split__read"
-  }, /*#__PURE__*/React.createElement(Lede, null, "Investors pattern-match on energy before they pattern-match on anything else. Over-prepared reads as artifice. Show up rested, present, and believing.")), /*#__PURE__*/React.createElement("aside", {
-    className: "sub-split__act"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "sub-act-eyebrow"
-  }, "Walkthrough \xB7 Your energy sets the room"), /*#__PURE__*/React.createElement(Video, {
-    placeholder: true,
-    title: "Your energy sets the room"
-  }))), /*#__PURE__*/React.createElement(ActMarker, {
-    num: "01",
-    name: "Vibe check over script",
-    accent: "how over-preparing kills you."
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "prose"
-  }, "Founders who rehearse the deck obsessively start sounding like a TED talk. The investor feels the artifice and checks out. The goal is to know the fundamentals, not the words. When you stop thinking about the sentence you\u2019re delivering, your conviction about the business starts to show through instead."), /*#__PURE__*/React.createElement("p", {
-    className: "prose"
-  }, "The best founders sound like they\u2019re having a conversation, not delivering prepared remarks. If you show up exhausted or scripted, the investor will feel it. If you show up with authentic energy and belief, they tend to follow."), /*#__PURE__*/React.createElement(ActMarker, {
-    num: "02",
-    name: "Survival brain",
-    accent: "getting present before the meeting."
-  }), /*#__PURE__*/React.createElement("p", {
-    className: "prose"
-  }, "Urgency and stress responses block real investor conversations. Getting out of survival brain before a meeting matters more than one more deck rehearsal. When you\u2019re fighting for your life in the meeting, the investor reads it as low conviction. When you\u2019re present and grounded, your story lands."), /*#__PURE__*/React.createElement("div", {
-    className: "tip"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tip__head"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "tip__eyebrow"
-  }, "Tip"), /*#__PURE__*/React.createElement("h3", {
-    className: "tip__title"
-  }, "The founder is most of what\u2019s being evaluated.")), /*#__PURE__*/React.createElement("p", {
-    className: "tip__body"
-  }, "At pre-seed and seed, the founder is most of what an investor is evaluating. Your judgment, your demeanor, your energy, and the way you build relationships all sit alongside the deck and the traction numbers. Every interaction tends to land as a data point. The most reliable thing you can do is keep showing up as yourself, because polish is something the materials and the practice can carry for you.")), /*#__PURE__*/React.createElement("div", {
-    className: "tip"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tip__head"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "tip__eyebrow"
-  }, "Tip"), /*#__PURE__*/React.createElement("h3", {
-    className: "tip__title"
-  }, "A five-minute pre-meeting ritual.")), /*#__PURE__*/React.createElement("p", {
-    className: "tip__body"
-  }, "Stand, breathe, drop your shoulders. Name what you want the investor to feel by the end of the meeting, not what you want to tell them. Then remember one customer who told you this mattered. Walk in believing your own story rather than defending it.")), /*#__PURE__*/React.createElement("div", {
-    className: "tip tip--coral"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "tip__head"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "tip__eyebrow"
-  }, "Watch out"), /*#__PURE__*/React.createElement("h3", {
-    className: "tip__title"
-  }, "Don\u2019t fake the founder archetype.")), /*#__PURE__*/React.createElement("p", {
-    className: "tip__body"
-  }, "There are founder archetypes in the valley, and some founders pretend to be them. Faking autism. Manufactured nonchalance. Performing technical depth you don\u2019t have. Adopting the missionary tone you heard in a podcast. Investors pattern-match on this stuff for a living, and the performance reads as a tell. You lose the aura you were trying to manufacture. If you have it in you, investors see it without you performing it. Show up as yourself. Let the spark you actually have do the work.")));
+  const { Cue, Lede, Video, ActMarker } = window;
+  var h = React.createElement;
+  var LINE = "#e9e8e3", A = "#3d5c66", MUT = "rgba(10,10,10,.55)";
+  var RITUAL = [
+    {t:"Stand and breathe", d:"Drop your shoulders and take a few slow breaths to get out of survival brain."},
+    {t:"Name the feeling", d:"Decide what you want the investor to feel by the end, not what you want to tell them."},
+    {t:"Remember one customer", d:"Bring to mind one person who told you this mattered, so you walk in believing your story rather than defending it."}
+  ];
+  return h("div", {className:"fade-in sub-split","data-screen-label":"10.02 Your Energy Sets the Room’s Energy"},
+    h(Cue, {num:"10.02",name:"Your Energy Sets",accent:"the Room’s Energy.",crumb:"Chapter 10 · Pitching Best Practices"}),
+    h("div", {className:"sub-split__body"},
+      h("section", {className:"sub-split__read"},
+        h(Lede, null, "Investors pattern-match on energy before they pattern-match on anything else. Over-prepared reads as artifice. Show up rested, present, and believing."),
+        h("p", {className:"prose"}, "At pre-seed and seed, the founder is most of what an investor is evaluating. Your judgment, your demeanor, your energy, and how you build relationships all sit alongside the deck and the numbers, and every interaction lands as a data point. Polish is something the materials and the practice can carry for you, so the most reliable move is to keep showing up as yourself.")),
+      h("aside", {className:"sub-split__act"},
+        h("div", {className:"sub-act-eyebrow"}, "Walkthrough · Your energy sets the room"),
+        h(Video, {placeholder:true,title:"Your energy sets the room"}))),
+    h(ActMarker, {num:"01",name:"Vibe check over script",accent:"how over-preparing kills you."}),
+    h("p", {className:"prose"}, "Founders who rehearse the deck obsessively start sounding like a TED talk. The investor feels the artifice and checks out. The goal is to know the fundamentals, not the words. When you stop thinking about the sentence you’re delivering, your conviction about the business starts to show through instead."),
+    h("p", {className:"prose"}, "The best founders sound like they’re having a conversation, not delivering prepared remarks. Pace does a lot of the work here: when you rush the open the investor struggles to track it, and delivering the same lines noticeably slower is what reads as the confidence they are actually buying."),
+    h("div", {className:"tip tip--coral"},
+      h("div", {className:"tip__head"}, h("span", {className:"tip__eyebrow"}, "Watch out"), h("h3", {className:"tip__title"}, "Don’t fake the founder archetype.")),
+      h("p", {className:"tip__body"}, "There are founder archetypes in the valley, and some founders pretend to be them. Faking autism. Manufactured nonchalance. Performing technical depth you don’t have. Adopting the missionary tone you heard in a podcast. Investors pattern-match on this for a living, and the performance reads as a tell, so you lose the aura you were trying to manufacture. If you have it in you, investors see it without you performing it. Show up as yourself and let the spark you actually have do the work.")),
+    h(ActMarker, {num:"02",name:"Survival brain",accent:"getting present before the meeting."}),
+    h("p", {className:"prose"}, "Urgency and stress responses block real investor conversations, and getting out of survival brain before a meeting matters more than one more deck rehearsal. When you’re fighting for your life in the room, the investor reads it as low conviction. When you’re present and grounded, your story lands."),
+    h("div", {style:{border:"1px solid "+LINE,borderLeft:"3px solid "+A,borderRadius:"2px",background:"#fff",padding:"16px 18px",marginTop:"12px"}},
+      h("div", {style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:A,fontWeight:700,marginBottom:"10px"}}, "Before you walk in · a two-minute reset"),
+      RITUAL.map(function(r,i){return h("div",{key:i,style:{display:"flex",gap:"12px",marginBottom:i<RITUAL.length-1?"11px":0}},
+        h("div",{style:{flex:"0 0 22px",height:"22px",borderRadius:"50%",background:A,color:"#fff",fontSize:".72rem",fontWeight:700,display:"flex",alignItems:"center",justifyContent:"center"}}, String(i+1)),
+        h("div",null, h("div",{style:{fontSize:".92rem",fontWeight:700}}, r.t), h("div",{style:{fontSize:".85rem",color:MUT,lineHeight:1.45,marginTop:"1px"}}, r.d)));})));
 }
 function PTProblem() {
   const {
@@ -6609,12 +6613,12 @@ function PTProblem() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "09.03 Lead With the Problem"
+    "data-screen-label": "10.03 Lead With the Problem"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "09.03",
+    num: "10.03",
     name: "Lead With",
     accent: "the Problem.",
-    crumb: "Chapter 9 \xB7 Pitching Best Practices"
+    crumb: "Chapter 10 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement(Lede, null, "Make the investor fall in love with the problem before you touch the solution. Slow the tempo, use specific people and real stories, and hold longer than feels comfortable."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The problem",
@@ -6642,7 +6646,7 @@ function PTProblem() {
     className: "tip__title"
   }, "The slow-tempo rule.")), /*#__PURE__*/React.createElement("p", {
     className: "tip__body"
-  }, "When you feel the urge to speed past the problem because you\u2019re excited to explain the solution, slow down instead. The investor needs to feel the pain before the solution has somewhere to land. Uncomfortable pauses in the problem section work in your favor.")));
+  }, "When you feel the urge to speed past the problem because you\u2019re excited to explain the solution, slow down instead. The investor needs to feel the pain before the solution has somewhere to land. Uncomfortable pauses in the problem section work in your favor.")), /*#__PURE__*/React.createElement(ActMarker, {num: "03", name: "Engineer frustration,", accent: "not confusion."}), /*#__PURE__*/React.createElement("p", {className: "prose"}, "A complex problem can land as confusion or as frustration, and they are not equal. Confusion leaves the investor lost. Frustration makes them decide, on their own, that this obviously needs solving. Pick the emotion before you touch the script: slow down, number every step out loud, and let the length of the walkthrough become the point, so they feel the pain of the process instead of being told about it."), /*#__PURE__*/React.createElement("p", {className: "prose"}, "For a genuinely tangled problem, confusion can even be a deliberate weapon. Confuse the investor on purpose to convey that this is a disaster for every company in the space, then release the tension with the punchline: sounds confusing, right? Now let me tell you more."));
 }
 function PTPyramid() {
   const {
@@ -6654,43 +6658,40 @@ function PTPyramid() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "09.04 Pyramid Answers and the Five Messages"
+    "data-screen-label": "10.04 Conclusion First"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "09.04",
-    name: "Pyramid Answers and",
-    accent: "the Five Messages.",
-    crumb: "Chapter 9 \xB7 Pitching Best Practices"
+    num: "10.04",
+    name: "Answer",
+    accent: "Conclusion-First.",
+    crumb: "Chapter 10 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
     className: "sub-split__read"
-  }, /*#__PURE__*/React.createElement(Lede, null, "Answer conclusion-first. Build a five-word message map. Anchor every Q&A answer back to it.")), /*#__PURE__*/React.createElement("aside", {
+  }, /*#__PURE__*/React.createElement(Lede, null, "Answer conclusion-first, not by building to an epiphany. State the answer in the first breath, layer in the support only if asked, and anchor every response to a five-message map.")), /*#__PURE__*/React.createElement("aside", {
     className: "sub-split__act"
   }, /*#__PURE__*/React.createElement("div", {
     className: "sub-act-eyebrow"
-  }, "Walkthrough \xB7 Pyramid answers and the five messages"), /*#__PURE__*/React.createElement(Video, {
+  }, "Walkthrough \xB7 Conclusion-first answers"), /*#__PURE__*/React.createElement(Video, {
     placeholder: true,
-    title: "Pyramid answers and the five messages"
+    title: "Conclusion-first answers"
   }))), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
-    name: "Pyramid answers",
-    accent: "conclusion first, detail after."
+    name: "Conclusion first,",
+    accent: "not building to an epiphany."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Investors make split-second decisions about whether to keep listening. If they don\u2019t hear the answer in the first five seconds, they\u2019re already thinking about their next meeting. Every Q&A answer leads with the conclusion, then layers in the supporting detail only if asked."), /*#__PURE__*/React.createElement("p", {
+  }, "Investors make split-second decisions about whether to keep listening. If they don\u2019t hear the answer in the first five seconds, they\u2019re already thinking about their next meeting. Every Q&A answer leads with the conclusion, then layers in the supporting detail only if asked. Building to an epiphany, saving your point for a dramatic reveal, works on a keynote stage and quietly loses the investor in a Q&A."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CHow big is your market?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Pyramid answer:"), " \u201C$200B annually. Mid-market banks spending on SOC audits alone. Happy to walk you through the build if useful.\u201D ", /*#__PURE__*/React.createElement("strong", null, "The anti-pattern:"), " five minutes of methodology, a dozen caveats, and finally the number buried in the last sentence. The investor has already moved on."), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CHow big is your market?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Conclusion first:"), " \u201C$200B annually. Mid-market banks spending on SOC audits alone. Happy to walk you through the build if useful.\u201D ", /*#__PURE__*/React.createElement("strong", null, "Leading to an epiphany:"), " “It is a great question, and it really starts with how underserved mid-market banks have been. If you trace how compliance evolved after 2008, the audit burden keeps compounding, and once you add up every team and vendor and run the bottoms-up math across all of it, the number gets large... it lands around $200B.” Thirty seconds of build-up, and the investor stopped listening before the number arrived."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CWhat\u2019s your revenue?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Pyramid answer:"), " \u201C$50K MRR growing 15% month over month, with another $100K in cARR from pilots that start billing this quarter.\u201D ", /*#__PURE__*/React.createElement("strong", null, "The anti-pattern:"), " a single inflated number that mixes LOIs, pilots, and recurring revenue under one label. Investors pattern-match on the precision of the answer, and the credibility hit lasts the rest of the meeting."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("strong", null, "Question:"), " \u201CWhat\u2019s your revenue?\u201D ", /*#__PURE__*/React.createElement("strong", null, "Conclusion first:"), " \u201C$50K MRR growing 15% month over month, with another $100K in cARR from pilots that start billing this quarter.\u201D ", /*#__PURE__*/React.createElement("strong", null, "The credibility trap:"), " a single inflated number that mixes LOIs, pilots, and recurring revenue under one label. Investors pattern-match on the precision of the answer, and the credibility hit lasts the rest of the meeting."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight"
   }, /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "The five-message framework",
     accent: "a message map you can anchor every answer to."
-  }), /*#__PURE__*/React.createElement(BeatsGrid, {
-    items: PT_MESSAGES,
-    columns: 3
-  })), /*#__PURE__*/React.createElement("p", {
+  }), /*#__PURE__*/React.createElement(PTMessageMap, null)), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "If your team can\u2019t say the five messages out loud from memory, you don\u2019t know them well enough yet. Run the exercise before every pitch cycle."), /*#__PURE__*/React.createElement("div", {
     className: "tip"
@@ -6714,12 +6715,12 @@ function PTReading() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "09.05 Reading the Room"
+    "data-screen-label": "10.05 Reading the Room"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "09.05",
+    num: "10.05",
     name: "Reading",
     accent: "the Room.",
-    crumb: "Chapter 9 \xB7 Pitching Best Practices"
+    crumb: "Chapter 10 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6735,10 +6736,7 @@ function PTReading() {
     num: "01",
     name: "Four types of rejection",
     accent: "each calls for a different move."
-  }), /*#__PURE__*/React.createElement(BeatsGrid, {
-    items: PT_REJECTIONS,
-    columns: 2
-  }), /*#__PURE__*/React.createElement(ActMarker, {
+  }), /*#__PURE__*/React.createElement(PTRejectionDecoder, null), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
     name: "Decode",
     accent: "the common phrases."
@@ -6750,7 +6748,7 @@ function PTReading() {
     className: "prose"
   }, /*#__PURE__*/React.createElement("strong", null, "\u201CProve traction first.\u201D"), " They want FOMO, not proof. Build it elsewhere."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("strong", null, "\u201CHere\u2019s what we need to see. Let\u2019s check in six weeks.\u201D"), " Real interest. Specific, time-bound, named. Keep them warm."));
+  }, /*#__PURE__*/React.createElement("strong", null, "\u201CHere\u2019s what we need to see. Let\u2019s check in six weeks.\u201D"), " Real interest. Specific, time-bound, named. Keep them warm."), /*#__PURE__*/React.createElement(ActMarker, {num: "03", name: "In-the-room moves", accent: "steer a meeting that is drifting."}), /*#__PURE__*/React.createElement(PTRoomMoves, null), /*#__PURE__*/React.createElement("div", {className: "tip"}, /*#__PURE__*/React.createElement("div", {className: "tip__head"}, /*#__PURE__*/React.createElement("span", {className: "tip__eyebrow"}, "Reframe"), /*#__PURE__*/React.createElement("h3", {className: "tip__title"}, "When they do not get it, you are failing them.")), /*#__PURE__*/React.createElement("p", {className: "tip__body"}, "When an investor labels the company wrong or asks a question that feels dumb, flip the subject of the sentence. The question is not why they missed it, it is what you did that let them. Every miss is a pitch bug to fix on your side, which is the only side you control.")));
 }
 function PTClosing() {
   const {
@@ -6763,12 +6761,12 @@ function PTClosing() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "09.06 Closing the Meeting"
+    "data-screen-label": "10.06 Closing the Meeting"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "09.06",
+    num: "10.06",
     name: "Closing",
     accent: "the Meeting.",
-    crumb: "Chapter 9 \xB7 Pitching Best Practices"
+    crumb: "Chapter 10 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6803,7 +6801,7 @@ function PTClosing() {
       eyebrow: "Cool signals",
       body: /*#__PURE__*/React.createElement(React.Fragment, null, "\u201CWe\u2019ll be in touch.\u201D \u201CInteresting but not quite a fit right now.\u201D \u201CCome back once you have a lead.\u201D Generic questions about the market instead of specific ones about your company. No reference to timing or process.")
     }
-  }));
+  }), /*#__PURE__*/React.createElement(ActMarker, {num: "03", name: "The good, the bad, and the ugly", accent: "manage what they will find."}), /*#__PURE__*/React.createElement(BeatsGrid, {columns: 3, items: [{num:"01",eyebrow:"The good",title:"Surface it, proactively",desc:"Pick the three to five strengths you most want them to remember and repeat them through the pitch and the Q&A. It is fine to feel redundant, because they are hearing it for the first time."},{num:"02",eyebrow:"The bad",title:"Handle it, reactively",desc:"Softer issues like weak conversion or high CAC will not kill the deal, so do not raise them yourself. Have a clean answer ready for when they ask."},{num:"03",eyebrow:"The ugly",title:"Get ahead of it, proactively",desc:"The things that will get discovered and can kill the deal, you name first. Quinn lost a deal by dodging the Apple Watch question until a partner asked it and her champion had no answer, so after that she raised it herself every time."}]}), /*#__PURE__*/React.createElement("div", {className: "tip"}, /*#__PURE__*/React.createElement("div", {className: "tip__head"}, /*#__PURE__*/React.createElement("span", {className: "tip__eyebrow"}, "Best practice"), /*#__PURE__*/React.createElement("h3", {className: "tip__title"}, "Ask the question you are afraid to ask.")), /*#__PURE__*/React.createElement("p", {className: "tip__body"}, "The deal was never real until the make-or-break question is answered, so asking it puts nothing at risk. Ask the thing that forces an honest response, like whether this is a nice-to-have or mission-critical for them. A no just arrives sooner and saves you weeks, and your job is to make the investor able to pitch you well when you are not in the room, because they will have to.")));
 }
 
 // =====================================================================
@@ -6827,8 +6825,8 @@ const PT_SUBS = [{
 }, {
   num: "04",
   slug: "pyramid",
-  title: "Pyramid Answers and the Five Messages",
-  teaser: "Answer conclusion-first. Build a five-word message map. Anchor every Q&A answer back to it."
+  title: "Conclusion First",
+  teaser: "Answer conclusion-first, not by building to an epiphany, and anchor every answer to a five-message map."
 }, {
   num: "05",
   slug: "reading",
@@ -6862,7 +6860,7 @@ function PTChapter({
 // Chapter name + desc verbatim from source allChapters[] line 8117.
 window.CHAPTER_PITCHING = {
   id: "pitching",
-  num: "09",
+  num: "10",
   name: "Pitching Best Practices",
   desc: "Master the craft of the first meeting: anatomy, energy, pyramid answers, reading the room, closing.",
   subs: PT_SUBS,
@@ -6922,12 +6920,12 @@ function RFWhy() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "10.01 Why Practice Matters"
+    "data-screen-label": "11.01 Why Practice Matters"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "10.01",
+    num: "11.01",
     name: "Why Practice",
     accent: "Matters.",
-    crumb: "Chapter 10"
+    crumb: "Chapter 11"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: RF_OBJECTIVES
   }), /*#__PURE__*/React.createElement(Lede, null, "Practice until your pitch is conversational, your numbers are cold, and your objection handling is instinctive."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -6965,12 +6963,12 @@ function RFHow() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "10.02 How to Practice"
+    "data-screen-label": "11.02 How to Practice"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "10.02",
+    num: "11.02",
     name: "How to",
     accent: "Practice.",
-    crumb: "Chapter 10 \xB7 Refine Through Practice"
+    crumb: "Chapter 11 \xB7 Refine Through Practice"
   }), /*#__PURE__*/React.createElement(Lede, null, "Your pitch doesn\u2019t need to be perfect before you start. It needs to be good enough that you\u2019re comfortable, so your energy goes into the conversation, not the content."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "How much practice",
@@ -7002,12 +7000,12 @@ function RFGate() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "10.03 Milestone Gate"
+    "data-screen-label": "11.03 Milestone Gate"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "10.03",
+    num: "11.03",
     name: "Milestone",
     accent: "Gate.",
-    crumb: "Chapter 10 \xB7 Refine Through Practice"
+    crumb: "Chapter 11 \xB7 Refine Through Practice"
   }), /*#__PURE__*/React.createElement(Lede, null, "Every bar below cleared before you activate the intro pipeline. Practice is the gate, not a phase you pass through."), /*#__PURE__*/React.createElement(Gate, {
     label: "Don\u2019t activate your intro pipeline until",
     items: ["You know your numbers cold. No hesitation on KPIs, unit economics, or model assumptions.", "You can deliver the pitch conversationally without notes.", "Top objections are identified and rehearsed.", "Deck has been updated to address anything that consistently trips you up in practice.", "Throwaway pitches are scheduled at the front of your window."]
@@ -7049,7 +7047,7 @@ function RFChapter({
 // Chapter name + desc verbatim from source allChapters[] line 8118.
 window.CHAPTER_REFINE = {
   id: "refine",
-  num: "10",
+  num: "11",
   name: "Refine Through Practice",
   desc: "Practice until your pitch is conversational and objection-proof.",
   subs: RF_SUBS,
@@ -7061,7 +7059,7 @@ window.CHAPTER_REFINE = {
 <!-- ===== ch-pipeline.jsx ===== -->
 <script data-source="ch-pipeline.jsx">
 /* global React, window */
-// Chapter 10 · Manage Your Pipeline
+// Chapter 11 · Manage Your Pipeline
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 7280-7392.
 // Sub 1 (setup):     lines 7281-7345
 // Sub 2 (signals):   lines 7347-7390
@@ -7198,12 +7196,12 @@ function PLSetup() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "11.01 Pipeline Setup"
+    "data-screen-label": "12.01 Pipeline Setup"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "11.01",
+    num: "12.01",
     name: "Pipeline",
     accent: "Setup.",
-    crumb: "Chapter 11"
+    crumb: "Chapter 12"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: PL_OBJECTIVES
   }), /*#__PURE__*/React.createElement(Lede, null, "Track every interaction, read timing signals, and keep your process tight."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -7269,12 +7267,12 @@ function PLSignals() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "11.02 Reading Signals"
+    "data-screen-label": "12.02 Reading Signals"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "11.02",
+    num: "12.02",
     name: "Reading",
     accent: "Signals.",
-    crumb: "Chapter 11 \xB7 Manage Your Pipeline"
+    crumb: "Chapter 12 \xB7 Manage Your Pipeline"
   }), /*#__PURE__*/React.createElement(Lede, null, "Delays are data. Learn to read them."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
   }, /*#__PURE__*/React.createElement(ActMarker, {
@@ -7360,15 +7358,15 @@ window.CHAPTER_PIPELINE = {
 <!-- ===== ch-diligence.jsx ===== -->
 <script data-source="ch-diligence.jsx">
 /* global React, window */
-// Chapter 11 · Diligence & Term Sheet
+// Chapter 12 · Diligence & Term Sheet
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 7394-7605.
 // Sub 1 (overview):  lines 7395-7488
 // Sub 2 (terms):     lines 7490-7541
 // Sub 3 (sheet):     lines 7543-7604
 //
 // Source uses the older `chapter-hero` shape. Per-sub Ledes for 11.02 and
-// 11.03 derived. Stale cross-reference at 11.02 ("That's Chapter 10")
-// silently corrected to "Chapter 12" since negotiation lives in Ch12.
+// 11.03 derived. Stale cross-reference at 11.02 ("That's Chapter 11")
+// silently corrected to "Chapter 13" since negotiation lives in Ch12.
 
 // Learning objectives — verbatim from uploads/fundraising-playbook.html line 7931.
 const DD_OBJECTIVES = ["Know what triggers diligence and how to prepare your data room", "Understand the six key terms in a term sheet", "Follow the right process when a term sheet arrives"];
@@ -7508,12 +7506,12 @@ function DDOverview() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "12.01 Diligence & Term Sheet"
+    "data-screen-label": "13.01 Diligence & Term Sheet"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "12.01",
+    num: "13.01",
     name: "Diligence &",
     accent: "Term Sheet.",
-    crumb: "Chapter 12"
+    crumb: "Chapter 13"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: DD_OBJECTIVES
   }), /*#__PURE__*/React.createElement(Lede, null, "Prepare your data room, understand key terms, and handle term sheets like a pro."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -7598,12 +7596,12 @@ function DDTerms() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "12.02 Key Terms"
+    "data-screen-label": "13.02 Key Terms"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "12.02",
+    num: "13.02",
     name: "Key",
     accent: "Terms.",
-    crumb: "Chapter 12 \xB7 Diligence & Term Sheet"
+    crumb: "Chapter 13 \xB7 Diligence & Term Sheet"
   }), /*#__PURE__*/React.createElement(Lede, null, "Vocabulary first. Know the six terms below cold before a lead comes in."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "This isn\u2019t about negotiating tactics yet. That\u2019s ", /*#__PURE__*/React.createElement("strong", null, "Close the Round"), ". This is vocabulary. Know it cold before you need it."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -7626,12 +7624,12 @@ function DDTermSheet() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "12.03 When a Term Sheet Arrives"
+    "data-screen-label": "13.03 When a Term Sheet Arrives"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "12.03",
+    num: "13.03",
     name: "When a Term Sheet",
     accent: "Arrives.",
-    crumb: "Chapter 12 \xB7 Diligence & Term Sheet"
+    crumb: "Chapter 13 \xB7 Diligence & Term Sheet"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -7735,7 +7733,7 @@ function DDChapter({
 // Chapter name + desc verbatim from source allChapters[] line 8120.
 window.CHAPTER_DD = {
   id: "dd",
-  num: "12",
+  num: "13",
   name: "Diligence & Term Sheet",
   desc: "Prepare your data room and negotiate terms with confidence.",
   subs: DD_SUBS,
@@ -7747,14 +7745,14 @@ window.CHAPTER_DD = {
 <!-- ===== ch-close.jsx ===== -->
 <script data-source="ch-close.jsx">
 /* global React, window */
-// Chapter 12 · Close the Round
+// Chapter 13 · Close the Round
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 7607-7724.
 // Sub 1 (overview):  lines 7608-7675
 // Sub 2 (wire):      lines 7677-7722
 //
 // Source uses the older `chapter-hero` shape. Per-sub Lede for 12.02 derived.
-// Stale cross-reference at 12.01 ("multiple term sheets in Chapter 9")
-// silently corrected to "Chapter 11" since term sheet aim lives in Ch11.
+// Stale cross-reference at 12.01 ("multiple term sheets in Chapter 10")
+// silently corrected to "Chapter 12" since term sheet aim lives in Ch11.
 
 // Learning objectives — verbatim from uploads/fundraising-playbook.html line 7936.
 const CL_OBJECTIVES = ["Execute the “lead first, then fill” strategy", "Apply the five negotiation principles", "Complete the signing and wire process correctly"];
@@ -7842,12 +7840,12 @@ function CLOverview() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "13.01 Close the Round"
+    "data-screen-label": "14.01 Close the Round"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "13.01",
+    num: "14.01",
     name: "Close",
     accent: "the Round.",
-    crumb: "Chapter 13"
+    crumb: "Chapter 14"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: CL_OBJECTIVES
   }), /*#__PURE__*/React.createElement(Lede, null, "Secure the lead, fill the rest, negotiate with confidence, and get the wire."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -7888,12 +7886,12 @@ function CLWire() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "13.02 Getting the Wire"
+    "data-screen-label": "14.02 Getting the Wire"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "13.02",
+    num: "14.02",
     name: "Getting",
     accent: "the Wire.",
-    crumb: "Chapter 13 \xB7 Close the Round"
+    crumb: "Chapter 14 \xB7 Close the Round"
   }), /*#__PURE__*/React.createElement(Lede, null, "Term sheet to wire. Know the steps, plan around the wire date, handle the unexpected with steady hands."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
   }, /*#__PURE__*/React.createElement(ActMarker, {
@@ -7951,7 +7949,7 @@ function CLChapter({
 // Chapter name + desc verbatim from source allChapters[] line 8121.
 window.CHAPTER_CLOSE = {
   id: "close",
-  num: "13",
+  num: "14",
   name: "Close the Round",
   desc: "Secure the lead, fill the round, and get the wire.",
   subs: CL_SUBS,
@@ -8696,16 +8694,7 @@ const {
 // To re-lock: `localStorage.removeItem('lifted_dev')` and visit a URL
 // without the dev flag.
 // ============================================================
-const PB_LIVE_LOCKED_IDS = new Set(['pitching',
-// Ch09
-'refine',
-// Ch10
-'pipeline',
-// Ch11
-'dd',
-// Ch12
-'close' // Ch13
-]);
+const PB_LIVE_LOCKED_IDS = new Set([]);
 function isPlaybookDevMode() {
   try {
     if (typeof window === 'undefined') return false;
@@ -9233,6 +9222,662 @@ const PB_ONE_PAGER_BULLETS = [{
 // Chapter registry — order, names, and descriptions verbatim from
 // source allChapters at uploads/fundraising-playbook.html line 8109.
 // ============================================================
+// === ADDITIVE SPRINT CHAPTERS (spliced) ===
+/* Inner Game — additive Fundraising Sprint content (Quinn Fitzgerald + Adam Roberts) */
+(function () {
+  const h = React.createElement;
+  function AudioCompanion(p){
+    return h("div",{className:"audio-companion",style:{border:"1px solid rgba(20,20,22,.12)",borderRadius:"14px",padding:"18px 18px 16px",background:"rgba(255,255,255,.55)"}},
+      h("div",{style:{fontSize:".72rem",letterSpacing:".08em",textTransform:"uppercase",opacity:.55,marginBottom:"6px"}},"▶ Listen"),
+      p.title&&h("h3",{style:{margin:"0 0 3px",fontSize:"1.02rem",fontWeight:600,lineHeight:1.25}},p.title),
+      p.sub&&h("div",{style:{fontSize:".8rem",opacity:.6,marginBottom:"12px"}},p.sub),
+      h("audio",{controls:true,preload:"none",style:{width:"100%"}},h("source",{src:p.src,type:"audio/mpeg"}))
+    );
+  }
+  function IGShell(opts){
+    const { Cue, Lede, Video } = window;
+    const head = [
+      h(Cue,{num:opts.num,name:opts.name,accent:opts.accent}),
+      h(Lede,null,opts.lede),
+      h("div",{className:"sub-split__body"},
+        h("section",{className:"sub-split__read"},...opts.read),
+        h("aside",{className:"sub-split__act"},
+          h("div",{className:"sub-act-eyebrow"},opts.walk),
+          opts.audio ? h(AudioCompanion,{title:opts.videoTitle,sub:opts.videoSub,src:opts.audio}) : h(Video,{placeholder:true,title:opts.videoTitle,sub:opts.videoSub})
+        )
+      )
+    ];
+    return h("div",{className:"fade-in sub-split","data-screen-label":opts.label},...head.concat(opts.after||[]));
+  }
+
+  function P_Rollercoaster(){
+    return IGShell({
+      label:"09.01 The Emotional Rollercoaster", num:"09.01", name:"The Emotional", accent:"Rollercoaster.",
+      lede:"An emotional rollercoaster is a run of intense, shifting emotions, and while you are on it, up or down, it is much harder to stay objective and make good calls. The work is not to avoid the ride. It is to notice when you or the investor is on it, and steer accordingly.",
+      read:[
+        h("p",null,"The highs are as dangerous as the lows. A meeting that runs ninety minutes long and feels like you found your venture soulmate is often a meeting where the investor never got down to the real evaluation, and the cool-down comes later as a slow ghost."),
+        h("p",null,"There will be highs and lows while you raise. It's important to embrace that even an oversubscribed round collects far more nos than yeses. Paying attention to your own mental approach helps reduce the negative impact of the inevitable low points.")
+      ],
+      walk:"Companion · Navigating the emotional rollercoaster",
+      videoTitle:"Navigating the Emotional Rollercoaster", videoSub:"Sprint companion · 4:32",
+      audio:"/audio/inner-game/rollercoaster.mp3",
+      after:[
+        h(window.BeatsGrid,{columns:3,items:[
+          {num:"01",title:"Riding too high",desc:"When a meeting is all laughs and alignment, bring it back to earth so the real evaluation questions actually get asked. A meeting that never gets down to business tends to end in a ghost."},
+          {num:"02",title:"Riding too low",desc:"A no feels like a verdict and it is not one. Protect your confidence, keep your mental trash bin open, and most of the time the right response to a pass is to note it and move on."},
+          {num:"03",title:"Keep it steady, Eddie",desc:"You are the expert in the room, not the investor. Do not tear up the pitch after a single no unless you are hearing the same thing again and again, or it is undeniably logical."}
+        ]}),
+        h(window.Pull,{eyebrow:"The steadying line",quote:"It is not about avoiding the rollercoaster. It is about noticing when you or the investor is riding it, so you can act accordingly and keep making good decisions."})
+      ]
+    });
+  }
+
+  function P_Passes(){
+    return IGShell({
+      label:"09.02 Empower Yourself Through Passes", num:"09.02", name:"Empower Yourself", accent:"Through Passes.",
+      lede:"Most founders collect fifty to seventy nos in a single raise, and almost none of them sound like a no. Empowering yourself through passes is the skill of taking the hit, filtering the feedback, and pointing your energy at the people who have not passed yet.",
+      read:[
+        h("p",null,"Investors rarely say no outright. It is within their model to stay vague, because they may want to come back to you later, and because a blunt no can cannonball a round."),
+        h("p",null,"That is why every no has to run through your own filter before it touches your strategy. A pass can be a chance to improve how you pitch, or it can be an investor who woke up on the wrong side of the bed. You often cannot tell which, so you pattern-match it against what you are hearing elsewhere and decide what to keep. Most of the time, a pass means not right now, or simply not the right fit for them, not that you are uninvestable.")
+      ],
+      walk:"Companion · Empower yourself through passes",
+      videoTitle:"Empower Yourself Through Passes", videoSub:"Sprint companion · Adam & Quinn",
+      audio:"/audio/inner-game/empower-through-passes.mp3",
+      after:[
+        h(window.BeatsGrid,{columns:2,items:[
+          {num:"01",eyebrow:"Move 01",title:"Judge the no back",desc:"When a pass lands, ask how good their no actually is. A real reason you can use, keep. A weak reason goes in the mental trash bin. Judging the feedback brings the power back to level."},
+          {num:"02",eyebrow:"Move 02",title:"Reframe it as communication",desc:"A pass is one investor you did not get to see the world the way you do on that one pitch. That is a communication problem on a single data point, not a ruling on your company or your worth."},
+          {num:"03",eyebrow:"Move 03",title:"Give it a cool-down",desc:"You do not owe anyone a same-day reply. Scream into a pillow, wait a couple of days, then decide if there is anything worth answering. Time brings perspective."},
+          {num:"04",eyebrow:"Move 04",title:"Make it a game",desc:"Count the nos and turn it around. Every no is one closer to the yes you need, and you only need one."}
+        ]}),
+        h(window.Callout,{badLabel:"A no you drop",goodLabel:"A no you use",bad:"It feels a little early for us right now, but keep us posted as things develop.",good:"You are pre-revenue and we need to see meaningful retention before we could lead. Ten thousand in monthly revenue holding for three months would change the conversation."}),
+        h(window.Warning,{eyebrow:"Where founders give away control",title:"The one rule that protects your round",items:[
+          {num:"1",name:"Taking direction from a non-investor",body:"Investor opinions only carry weight once they are actually on your cap table. Advice without a check is a vent that stays closed. If the feedback is genuinely good, you can choose it, but then it is your call, not their instruction."},
+          {num:"2",name:"Pausing your process on a maybe",body:"A founder who stopped sending SAFEs because a lead wanted a clean round lost the lead and the committed money both. Keep the process moving until the wire clears."},
+          {num:"3",name:"Chasing the pass",body:"Ninety-nine percent of the time a no is over in that moment. Bandwidth spent trying to flip it is bandwidth stolen from the conversations that are still live."}
+        ]}),
+        h(window.Pull,{eyebrow:"The vent model",quote:"When in doubt, come back to yourself, your core principles, and your own filter. That ownership over your decisions is what actually matters.",attr:"Quinn Fitzgerald"})
+      ]
+    });
+  }
+
+  function P_Worthiness(){
+    return IGShell({
+      label:"09.03 Connecting to Your Worthiness", num:"09.03", name:"Connecting to", accent:"Your Worthiness.",
+      lede:"Who gets to decide whether you are worthy, and why would you hand them that power? A raise is a deal you are offering, not a ruling on your value, and worthiness comes from within. These are the five tactics for staying connected to it when the nos stack up.",
+      read:[
+        h("p",null,"Anxiety tends to live in the head; pride tends to live in the heart. Most of these tactics are ways to get out of the spinning head and back into the body and the reasons you started.")
+      ],
+      walk:"Companion · Connecting to your worthiness",
+      videoTitle:"Connecting to Your Worthiness", videoSub:"Sprint companion · 9:05",
+      audio:"/audio/inner-game/worthiness.mp3",
+      after:[
+        h(window.BeatsGrid,{columns:3,items:[
+          {num:"01",eyebrow:"Tactic 01",title:"Own your decisions",desc:"Founding is making calls inside a black box without full information. Standing fully behind your decisions, and your gut, is the ground your worthiness stands on."},
+          {num:"02",eyebrow:"Tactic 02",title:"Drop into your heart",desc:"When doubt hits, ask your heart the real question: am I qualified for this, and why does it matter? What matters is that you put yourself out there and left nothing on the table."},
+          {num:"03",eyebrow:"Tactic 03",title:"Know your reason why",desc:"Answer why you are a founder right now in a way that is simple, true only to you, and not contingent on the company succeeding. That reason is your real upside."},
+          {num:"04",eyebrow:"Tactic 04",title:"Breathe and ground",desc:"Box breath, in for four, hold four, out four, three times. Or run five-four-three-two-one: five things you see, four you hear, three you touch, two you taste or smell."},
+          {num:"05",eyebrow:"Tactic 05",title:"Visualize the act",desc:"Do not picture the podium. Picture the doing, how you show up and carry yourself, controlling only the controllables."}
+        ]})
+      ]
+    });
+  }
+
+  function P_Confidence(){
+    return IGShell({
+      label:"09.04 Confidence Over Thirst", num:"09.04", name:"Confidence", accent:"Over Thirst.",
+      lede:"Investors are betting on the people, and they read confidence as your ability to navigate the everyday insanity of a startup. Not bravado, the real kind, built on a full pipeline and on owning exactly who you are, mistakes and all.",
+      read:[
+        h("p",null,"They do not expect perfect. You can own that you are on a hard, risky journey and own your mistakes without shame, and it lands as strength. Humility is a superpower in the room."),
+        h("p",null,"The opposite signal is thirst, and it leaks. Desperation repels while contentment attracts, and the calm of a founder with real progress is the tell that you do not actually need this investor.")
+      ],
+      walk:"Companion · Confidence delivers outcomes",
+      videoTitle:"Confidence Delivers Outcomes", videoSub:"Sprint companion · 15:18",
+      audio:"/audio/inner-game/confidence.mp3",
+      after:[
+        h(window.BeatsGrid,{columns:3,items:[
+          {num:"01",title:"Own your imperfection",desc:"Own the risk and own your mistakes without shame. Founders who are comfortable being on a hard journey read as the ones who can navigate it."},
+          {num:"02",title:"Prime your state",desc:"Before a pitch, fill your energy with a run, hype music, or a quick dance with your cofounder, and off-gas the anxiety first so it does not sit in your body during the meeting."},
+          {num:"03",title:"Stand in a pillar",desc:"Shoulders up and back, a pillar down the spine connecting gut, heart, and head. Box breath, four in, four hold, four out, three times. Thirty seconds, and no one has to know."}
+        ]}),
+        h(window.Callout,{badLabel:"Thirsty",goodLabel:"Confident",bad:"I would love any chance to talk whenever works for you, absolutely no pressure at all.",good:"I am running meetings over the next two weeks. I have Thursday at 2 or Friday at 10, which works better?"}),
+        h(window.Pull,{eyebrow:"Garry Tan, Y Combinator",quote:"Desperation repels, contentment attracts. Real calm and real progress mean you truly do not need them."}),
+        h("div",{style:{margin:"16px 0 4px"}},
+          h("div",{style:{fontSize:"10px",letterSpacing:".1em",textTransform:"uppercase",color:"#3d5c66",fontWeight:700,marginBottom:"7px"}},"Watch \u00b7 Garry Tan, don't be thirsty"),
+          h("div",{style:{position:"relative",paddingBottom:"56.25%",height:0,overflow:"hidden",border:"1px solid #e9e8e3",borderRadius:"2px",background:"#000"}},
+            h("iframe",{src:"https://www.youtube.com/embed/mVUaSCoJRWk?rel=0&modestbranding=1",title:"Don't be thirsty",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",allowFullScreen:true,style:{position:"absolute",top:0,left:0,width:"100%",height:"100%",border:0}})))
+      ]
+    });
+  }
+
+  function P_StarPlayer(){
+    return IGShell({
+      label:"09.05 The Star Player Mindset", num:"09.05", name:"The Star Player", accent:"Mindset.",
+      lede:"A pitch is a game you are actively playing, not an audition you are hoping to pass. You step onto the field, put the jersey on, and bring your equipment: the team and traction, the process, the story, the deck, and the data room.",
+      read:[
+        h("p",null,"It helps to know what game they are playing. VCs answer to their own investors, and in a fund of 100 investments, they need 4-6 companies to return the whole fund, so they are buying rapid growth. When you take the money, you are signing up for this model.")
+      ],
+      walk:"Companion · Competition mindset and star player mentality",
+      videoTitle:"Competition Mindset & Star Player Mentality", videoSub:"Sprint companion · 24:36",
+      audio:"/audio/inner-game/star-player.mp3",
+      after:[
+        h(window.BeatsGrid,{columns:3,items:[
+          {num:"01",title:"Know how to score",desc:"Know your key numbers cold and the one-liners that declare your value on contact. A star player puts their best foot forward; a benchwarmer is trying to prove they belong."},
+          {num:"02",title:"Work the power dynamics",desc:"Investors want you to treat them as the smartest in the room, but they back the founders who prove otherwise. Earn their trust by educating them, not becoming a sycophant."},
+          {num:"03",title:"Lead with the grandiose",desc:"Open with the big vision, then caveat, never the reverse. When they drill into a detail, that is your opening: take a step back to the vision, then hand them the number they asked for."}
+        ]}),
+        h(window.Pull,{eyebrow:"Permission, especially for female founders",quote:"You have been conditioned to cross every T and be second-guessed. That does not serve you here. Consider this your permission to make the grandiose claim and hold the room."})
+      ]
+    });
+  }
+
+  const INNER_GAME_SUBS = [
+    { num:"01", slug:"rollercoaster", title:"The Emotional Rollercoaster", teaser:"Fundraising is emotionally volatile by design. Notice the ride, up or down, and steer." },
+    { num:"02", slug:"passes", title:"Empower Yourself Through Passes", teaser:"Fifty to seventy nos is normal. Filter the feedback and keep your energy on the live conversations." },
+    { num:"03", slug:"worthiness", title:"Connecting to Your Worthiness", teaser:"Five tactics to keep your value separate from any single investor decision." },
+    { num:"04", slug:"confidence", title:"Confidence Over Thirst", teaser:"Real confidence is downstream of a full pipeline, and investors can feel the difference." },
+    { num:"05", slug:"star-player", title:"The Star Player Mindset", teaser:"Play the game like the best player on the field, and run diligence on them too." }
+  ];
+  const IG_MAP = { rollercoaster:P_Rollercoaster, passes:P_Passes, worthiness:P_Worthiness, confidence:P_Confidence, "star-player":P_StarPlayer };
+  function InnerGameChapter({ subIdx }) {
+    const sub = subIdx >= 0 ? INNER_GAME_SUBS[subIdx] : null;
+    if (!sub) return null;
+    const Page = IG_MAP[sub.slug];
+    return h(React.Fragment, null, Page ? h(Page, { key: sub.slug }) : null);
+  }
+  window.CHAPTER_INNER_GAME = {
+    id:"inner-game", num:"09", name:"The Inner Game",
+    desc:"The mental and emotional side of the raise: staying regulated, confident, and empowered through a process built on rejection.",
+    subs:INNER_GAME_SUBS, Component:InnerGameChapter
+  };
+})();
+/* By the Numbers — additive Fundraising Sprint content */
+(function () {
+  const h = React.createElement;
+  function NumberFunnel(p){
+    return h("div",{style:{display:"flex",flexWrap:"wrap",gap:"10px",margin:"10px 0 6px"}},
+      p.stages.map(function(s,i){return h("div",{key:i,style:{flex:"1 1 140px",minWidth:"128px",border:"1px solid rgba(20,20,22,.1)",borderRadius:"12px",padding:"16px 14px",background:"rgba(255,255,255,.5)"}},
+        h("div",{style:{fontSize:"1.7rem",fontWeight:700,lineHeight:1,color:"#bf5a3c"}},s.n),
+        h("div",{style:{fontSize:".8rem",fontWeight:600,margin:"6px 0 4px"}},s.label),
+        h("div",{style:{fontSize:".74rem",opacity:.6,lineHeight:1.35}},s.sub)
+      );})
+    );
+  }
+  function NBShell(opts){
+    const Cue=window.Cue, Lede=window.Lede;
+    return h("div",{className:"fade-in sub-split","data-screen-label":opts.label},
+      [h(Cue,{key:"c",num:opts.num,name:opts.name,accent:opts.accent}),
+       h(Lede,{key:"l"},opts.lede)].concat(opts.after));
+  }
+  function P_Process(){
+    const ActMarker=window.ActMarker, BeatsGrid=window.BeatsGrid, Pull=window.Pull;
+    return NBShell({
+      label:"The End-to-End Process", num:"15.01", name:"The End-to-End", accent:"Process.",
+      lede:"A raise is not a leap, it is a sequence. Fourteen steps across two phases, from the first name on your list to the wire hitting your account. Run them in order and the urgency builds on its own; jump ahead and it falls apart.",
+      after:[
+        h(ActMarker,{key:"a1",num:"01",name:"Pre-pitch",accent:"build the pressure."}),
+        h(BeatsGrid,{key:"g1",columns:3,variant:"steps",items:[
+          {num:"1",title:"Build your target list",desc:"80 to 120 investors who fit your stage, sector, and geography."},
+          {num:"2",title:"Audit your network",desc:"Map who can open doors to the partners on that list."},
+          {num:"3",title:"Line up warm intros",desc:"Collect 60 to 120 promised introductions before anything goes out."},
+          {num:"4",title:"Prep your materials",desc:"Blurb, memo, deck, demo, and data room, built in parallel."},
+          {num:"5",title:"Iterate through practice",desc:"Drill the pitch until the numbers are cold and objections are reflex."},
+          {num:"6",title:"Send the double opt-ins",desc:"The green light. Fire everything at once, but only once you have banked enough."}
+        ]}),
+        h(ActMarker,{key:"a2",num:"02",name:"Pitch and close",accent:"cash the pressure."}),
+        h(BeatsGrid,{key:"g2",columns:4,variant:"steps",items:[
+          {num:"7",title:"First pitches",desc:"The concentrated window opens."},
+          {num:"8",title:"Second and third",desc:"Deeper meetings with the wider partnership."},
+          {num:"9",title:"Diligence",desc:"References, financials, product review."},
+          {num:"10",title:"Term sheet",desc:"The first real offer lands."},
+          {num:"11",title:"Negotiations",desc:"Price, terms, and who leads."},
+          {num:"12",title:"Fill the round",desc:"Stack follow-on and angels behind the lead."},
+          {num:"13",title:"Sign",desc:"Docs executed."},
+          {num:"14",title:"Wire hits",desc:"The money lands in the account."}
+        ]}),
+        h(Pull,{key:"p",eyebrow:"The hinge",quote:"You do not hit send on step six until you have banked enough promised intros to fill the round. That single green light is what turns a trickle of meetings into a window that generates real urgency."})
+      ]
+    });
+  }
+  function P_Funnel(){
+    const BeatsGrid=window.BeatsGrid, Pull=window.Pull, Warning=window.Warning;
+    return NBShell({
+      label:"The Funnel Math", num:"15.02", name:"The Funnel", accent:"Math.",
+      lede:"Fundraising is a numbers game with a brutal conversion rate, and knowing the math up front is what keeps a string of nos from feeling like failure. Work backwards from the check you actually need.",
+      after:[
+        h("div",{key:"ex",style:{border:"1px dashed rgba(191,90,60,.5)",borderRadius:"12px",padding:"12px 16px",margin:"4px 0 14px",background:"rgba(191,90,60,.06)",fontSize:".86rem",lineHeight:1.5}},
+          h("strong",null,"These are example numbers, not a promise."),
+          " The figures below illustrate the shape of a raise for a roughly $2M round. Your funnel will look different. Run it backwards from your own target: your round size, realistic check sizes for your stage, and honest conversion at each step."),
+        h(NumberFunnel,{key:"f",stages:[
+          {n:"150+",label:"Investors identified",sub:"Fit your stage, sector, and geography"},
+          {n:"75+",label:"Intros promised",sub:"Banked before you hit send"},
+          {n:"38",label:"First meetings",sub:"Roughly half your intros convert"},
+          {n:"19",label:"In diligence",sub:"About half again go deeper"},
+          {n:"9",label:"Checks closed",sub:"A full round"}
+        ]}),
+        h("p",{key:"n",style:{fontSize:".9rem",opacity:.75,margin:"6px 0 14px"}},"In this example that is nine yeses and about sixty-six nos on the way to the round. Coin-flip odds at each stage, which is exactly why volume and concentration matter."),
+        h(BeatsGrid,{key:"rg",columns:4,items:[
+          {num:"01",eyebrow:"Lead",title:"$1M",desc:"The institutional lead that sets the terms."},
+          {num:"02",eyebrow:"Follow-on",title:"$500K",desc:"Fills in behind the lead."},
+          {num:"03",eyebrow:"Follow-on",title:"$300K",desc:"More conviction stacked on top."},
+          {num:"04",eyebrow:"Angels and F&F",title:"$200K",desc:"Rounds out the example $2M raise."}
+        ]}),
+        h(Warning,{key:"w",eyebrow:"Where the math breaks",title:"Three ways founders undercut the funnel",items:[
+          {num:"1",name:"Under-building the top",body:"Sixty investors will not produce nine checks. If the top of the funnel is thin, the round is out of reach before you start."},
+          {num:"2",name:"Sending intros too early",body:"Fire before you have banked enough promised intros and the meetings dribble out with no concentration and no urgency."},
+          {num:"3",name:"Reading nos as signal",body:"A pile of nos is the expected cost of the yeses. Treating each one as a verdict is how founders talk themselves out of a raise that is on track."}
+        ]}),
+        h(Pull,{key:"p",eyebrow:"The reframe",quote:"Every no is one no closer to a yes. The yeses are a full round, and the nos were always part of the plan."})
+      ]
+    });
+  }
+  const BTN_SUBS=[
+    {num:"01",slug:"process",title:"The End-to-End Process",teaser:"Fourteen steps across two phases, from first list to final wire."},
+    {num:"02",slug:"funnel",title:"The Funnel Math",teaser:"Work backwards from the check. Example: 150 investors, 75 intros, 9 closes."}
+  ];
+  const BTN_MAP={process:P_Process,funnel:P_Funnel};
+  function ByNumbersChapter(props){
+    const sub=props.subIdx>=0?BTN_SUBS[props.subIdx]:null;
+    if(!sub)return null;
+    const Page=BTN_MAP[sub.slug];
+    return h(React.Fragment,null,Page?h(Page,{key:sub.slug}):null);
+  }
+  window.CHAPTER_BY_NUMBERS={
+    id:"by-the-numbers", num:"15", name:"By the Numbers",
+    desc:"The full arc of a raise in fourteen steps, and the funnel math that shows how many intros it takes to close.",
+    subs:BTN_SUBS, Component:ByNumbersChapter
+  };
+})();
+/* Chapter 12 — Manage Your Pipeline (full rebuild: revised 11.01 + 11.02, new 11.03 Auction) */
+(function () {
+  const h = React.createElement;
+
+  function PLAudio(p){
+    return h("div",{className:"audio-companion",style:{border:"1px solid rgba(20,20,22,.12)",borderRadius:"14px",padding:"18px 18px 16px",background:"rgba(255,255,255,.55)",margin:"18px 0"}},
+      h("div",{style:{fontSize:".72rem",letterSpacing:".08em",textTransform:"uppercase",opacity:.55,marginBottom:"6px"}},"▶ Listen"),
+      h("h3",{style:{margin:"0 0 3px",fontSize:"1.02rem",fontWeight:600}},p.title),
+      p.sub&&h("div",{style:{fontSize:".8rem",opacity:.6,marginBottom:"12px"}},p.sub),
+      h("audio",{controls:true,preload:"none",style:{width:"100%"}},h("source",{src:p.src,type:"audio/mpeg"}))
+    );
+  }
+  function Tip(cls,eyebrow,title,body){
+    return h("div",{className:"tip "+cls},
+      h("div",{className:"tip__head"},
+        h("span",{className:"tip__eyebrow"},eyebrow),
+        h("h3",{className:"tip__title"},title)),
+      h("p",{className:"tip__body"},body));
+  }
+
+  const OBJ=[
+    "Set up CRM fields that keep a fast-moving pipeline under control",
+    "Define pipeline stages and use them consistently",
+    "Qualify and tier investors so your best hours go to the conversations most likely to close"
+  ];
+  const FIELDS=[
+    {num:"01",title:"Investor name + fund",desc:""},
+    {num:"02",title:"Investor tier",desc:"Tier 1, Tier 2, or Tier 3 by how much you want them on the cap table."},
+    {num:"03",title:"Lead or follow",desc:"Lead-capable funds and brave angels write first checks. Follow-ons wait for a lead or real momentum before they move."},
+    {num:"04",title:"Expected check size",desc:""},
+    {num:"05",title:"Stage",desc:""},
+    {num:"06",title:"Last activity date",desc:""},
+    {num:"07",title:"Next step",desc:"Specific action, owner, and timeline. Never leave a meeting without this."},
+    {num:"08",title:"Notes",desc:"Objections raised, partner dynamics, and specific interests flagged."}
+  ];
+  const STAGES=[
+    {num:"01",title:"Targeted"},{num:"02",title:"Intro Requested"},{num:"03",title:"Meeting Scheduled"},
+    {num:"04",title:"First Meeting Done"},{num:"05",title:"Active Follow-up"},{num:"06",title:"Diligence"},
+    {num:"07",title:"Term Sheet"},{num:"08",title:"Closed"}
+  ];
+  const METRICS=[
+    {num:"01",title:"Connectors sourced",desc:"People who can open doors, identified and logged."},
+    {num:"02",title:"Connectors spoken to",desc:"Calls actually taken, not just names on a list."},
+    {num:"03",title:"Investors sourced",desc:"Qualified, right-fit investors in the pipeline."},
+    {num:"04",title:"Intros promised",desc:"The most important pre-pitch number. Bank 60 to 120 before you hit send."},
+    {num:"05",title:"First meetings scheduled",desc:"The count that tells you the window is filling."}
+  ];
+  const SIGNALS=[
+    {num:"01",title:"2+ weeks to respond to an intro request",desc:"Low interest. Keep your follow-up energy for the movers."},
+    {num:"02",title:"Difficulty scheduling the first meeting",desc:"Not actively moving. Calendar friction is itself a signal."},
+    {num:"03",title:"Long gap between first and partner meeting",desc:"Not championing internally. The deal has not built consensus inside the firm."},
+    {num:"04",title:"Diligence goes quiet",desc:"Likely de-prioritized. Follow up once, then redirect your time."},
+    {num:"05",title:"Quick scheduling and fast replies",desc:"Your strongest signal. Prioritize and move fast."}
+  ];
+  const LOG=[
+    {num:"01",title:"Key objections",desc:"Verbatim, not paraphrased."},
+    {num:"02",title:"What generated positive reactions",desc:""},
+    {num:"03",title:"Questions the investor asked",desc:""},
+    {num:"04",title:"Partner dynamics mentioned",desc:""},
+    {num:"05",title:"Confirmed next steps with owner and timeline",desc:""}
+  ];
+  const GREEN=[
+    {num:"01",title:"The right involvement",desc:"Decide how hands-on you want an investor, then look for the match. Too eager is a flag as much as too distant."},
+    {num:"02",title:"Expertise you are missing",desc:"Seek the specific expertise each round needs on your cap table: hardware at pre-seed, consumer at seed, a visceral read on your industry after."},
+    {num:"03",title:"They get your angle",desc:"The best investors understand your unique view without you over-explaining it, and show it by digging into the customer rather than assuming."},
+    {num:"04",title:"Shared vision and values",desc:"Do they share where you think the industry is going, and are they someone you want in the room for years? The no-asshole rule counts."}
+  ];
+  const PRIORITIZE=[
+    {num:"01",title:"Leads first",desc:"Leads set terms and write the first check. Aim for at least half your active list to be lead-capable, and give them your best hours."},
+    {num:"02",title:"Follow the speed",desc:"Quick scheduling and fast replies are your strongest signal. Concentrate energy on the investors who are actually moving."},
+    {num:"03",title:"Screen for real fit",desc:"Stage fit, thesis fit, and a recent check. An investor who is not writing at your stage right now is not really in the auction."},
+    {num:"04",title:"Skip the benchmarkers",desc:"Later-stage investors who take the meeting to benchmark you give stage-inappropriate feedback and rarely convert. Protect your time from them."}
+  ];
+  const CHOOSE=[
+    {num:"01",title:"Minimize dilution",desc:"Take the cleanest price at the ownership you are willing to give up."},
+    {num:"02",title:"Maximize price",desc:"Push valuation when the competition is real and you can defend it next round."},
+    {num:"03",title:"Optimize the partner",desc:"Trade a little price for the investor who genuinely moves the company forward."}
+  ];
+
+  function PipelineBoard(){
+    var A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", SOFT="#f6f5f2", FLAG="#a8702e";
+    var DETAIL=[
+      {name:"Targeted", what:"A right-fit investor you have researched and want on the cap table, not yet contacted.", job:"Confirm the fit (stage, sector, check size) and find your warmest path in.", adv:"You have found a connector who can make a credible intro.", time:"Research phase, before the raise opens", crm:"Next step: ask a connector for a double opt-in"},
+      {name:"Intro Requested", what:"You have asked a connector for a double opt-in intro to the investor.", job:"Hand the connector a short forwardable blurb so the ask takes them ten seconds.", adv:"The investor replies and accepts the intro.", time:"Two to five days, and nudge the connector once", crm:"Next step: follow up with the connector Friday"},
+      {name:"Meeting Scheduled", what:"The investor accepted and a first call is on the calendar.", job:"Confirm the time, send a short pre-read, and prep Ledgerly's story cold.", adv:"The meeting actually happens.", time:"Book within a week to hold momentum", crm:"Next step: send Ledgerly's deck 24h before"},
+      {name:"First Meeting Done", what:"The intro call happened and there is genuine interest.", job:"Send a same-day follow-up with materials and one clear next step.", adv:"They ask for a second meeting, a partner meeting, or diligence.", time:"Follow up within 24 hours", crm:"Next step: recap email, propose partner meeting"},
+      {name:"Active Follow-up", what:"Live interest, with multiple touches, partner meetings, or open questions in flight.", job:"Keep the thread warm, feed information fast, and build real urgency.", adv:"They open real diligence or signal an offer is coming.", time:"Days to a couple of weeks, and keep it tight", crm:"Next step: answer model questions, hold urgency"},
+      {name:"Diligence", what:"The fund is running references, financials, and a product review.", job:"Send Ledgerly's data room, line up references, and answer every request fast.", adv:"They deliver a term sheet.", time:"One to three weeks depending on stage", crm:"Next step: share data room, brief references"},
+      {name:"Term Sheet", what:"A real offer for Ledgerly's round is on the table.", job:"Read the terms, compare, and negotiate price and lead terms.", adv:"You accept and sign.", time:"Move fast, since leverage is highest and perishable", crm:"Next step: review terms, counter on valuation"},
+      {name:"Closed", what:"Signed and wired. They are in Ledgerly's round.", job:"Send closing docs, add them to the cap table, and keep them warm for the next round.", adv:"Done, this deal is home.", time:"Complete", crm:"Next step: countersign, send a welcome note"}
+    ];
+    var NAMES=["Targeted","Intro Requested","Meeting Scheduled","First Meeting Done","Active Follow-up","Diligence","Term Sheet","Closed"];
+    var BR={paused:{name:"Paused",what:"Ghosted or a soft pass. Hold your follow-up until you have a term sheet, because the dynamic changes completely once you do."},passed:{name:"Passed",what:"A hard no. Log the reason. Patterns across several passes are what tell you where to fix the pitch and the positioning."}};
+    var sC=React.useState(2), cur=sC[0], setCur=sC[1];
+    var sS=React.useState(2), sel=sS[0], setSel=sS[1];
+    var sB=React.useState(null), br=sB[0], setBr=sB[1];
+    function pick(i){setSel(i);setBr(null);}
+    function adv(){if(cur<7){var n=cur+1;setCur(n);setSel(n);setBr(null);}}
+    function back(){if(cur>0){var n=cur-1;setCur(n);setSel(n);setBr(null);}}
+    function reset(){setCur(0);setSel(0);setBr(null);}
+    function lbl(color){return {fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:color||MUT,fontWeight:600,marginBottom:"3px"};}
+    function btn(dis,primary){return {font:"inherit",fontSize:".82rem",fontWeight:600,cursor:dis?"default":"pointer",padding:"7px 13px",borderRadius:"2px",border:"1px solid "+(primary?A:LINE),background:primary?(dis?"#9fb0b6":A):"#fff",color:primary?"#fff":(dis?"#bbb":INK)};}
+    var st=DETAIL[sel];
+    var deal=h("div",{style:{display:"flex",flexWrap:"wrap",gap:"12px",alignItems:"center",justifyContent:"space-between",border:"1px solid "+LINE,borderRadius:"2px",padding:"14px 16px",background:SOFT}},
+      h("div",null,
+        h("div",{style:{fontWeight:700,fontSize:"1rem"}},"Acme Ventures"),
+        h("div",{style:{fontSize:".8rem",color:MUT,marginTop:"2px"}},"Tier 1 · lead-capable · ~$1M into Ledgerly's $2M seed")),
+      h("div",{style:{display:"flex",alignItems:"center",gap:"10px"}},
+        h("span",{style:{fontSize:".78rem",color:MUT,minWidth:"92px",textAlign:"right"}},cur<7?("Stage "+(cur+1)+" of 8"):"In the round"),
+        h("button",{onClick:back,disabled:cur===0,style:btn(cur===0,false)},"‹ Back"),
+        h("button",{onClick:adv,disabled:cur===7,style:btn(cur===7,true)},cur===7?"Closed":"Advance ›")));
+    var rail=h("div",{style:{display:"flex",alignItems:"flex-start",overflowX:"auto",padding:"6px 2px 2px",margin:"18px 0 4px"}},
+      NAMES.map(function(nm,i){
+        var done=(i<=cur), isSel=(i===sel&&!br);
+        var node=h("button",{key:"n"+i,onClick:function(){pick(i);},style:{flex:"0 0 auto",width:"12.5%",minWidth:"88px",background:"none",border:"none",cursor:"pointer",font:"inherit",display:"flex",flexDirection:"column",alignItems:"center",gap:"6px",padding:0}},
+          h("span",{style:{width:"30px",height:"30px",borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".76rem",fontWeight:700,border:"1.5px solid "+(done?A:LINE),background:done?A:"#fff",color:done?"#fff":MUT,boxShadow:isSel?"0 0 0 3px rgba(61,92,102,.22)":"none"}},(i===7&&done)?"✓":("0"+(i+1))),
+          h("span",{style:{fontSize:"11.5px",lineHeight:1.2,textAlign:"center",color:isSel?INK:MUT,fontWeight:isSel?700:500}},nm));
+        if(i===NAMES.length-1)return node;
+        return [node,h("div",{key:"c"+i,style:{flex:"1 1 auto",height:"2px",background:(i<cur)?A:LINE,marginTop:"14px",minWidth:"10px"}})];
+      }));
+    var body=br?BR[br]:st;
+    var grid=br?null:h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px 22px"}},
+      h("div",null,h("div",{style:lbl()},"Your job here"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},st.job)),
+      h("div",null,h("div",{style:lbl()},"Advance when →"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},st.adv)),
+      h("div",null,h("div",{style:lbl()},"Typical timing"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},st.time)),
+      h("div",null,h("div",{style:lbl()},"In your CRM"),h("div",{style:{fontSize:".88rem",lineHeight:1.45,color:A,fontWeight:600}},st.crm)));
+    var detail=h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px 20px",marginTop:"10px",background:"#fff"}},
+      h("div",{style:lbl(br?FLAG:A)},br?"Off the main track":("Stage 0"+(sel+1))),
+      h("div",{style:{fontSize:"1.15rem",fontWeight:700,marginBottom:"10px"}},body.name),
+      h("div",{style:{fontSize:".92rem",lineHeight:1.5,marginBottom:br?0:"14px"}},body.what),
+      grid);
+    var branches=h("div",{style:{display:"flex",gap:"10px",alignItems:"center",marginTop:"12px",flexWrap:"wrap"}},
+      h("span",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:MUT,fontWeight:600}},"Off-track states:"),
+      ["paused","passed"].map(function(k){var on=(br===k);return h("button",{key:k,onClick:function(){setBr(on?null:k);},style:{font:"inherit",fontSize:".78rem",fontWeight:600,cursor:"pointer",padding:"5px 12px",borderRadius:"2px",border:"1px dashed "+(on?FLAG:LINE),background:on?"rgba(168,112,46,.08)":"#fff",color:on?FLAG:INK}},BR[k].name);}),
+      h("button",{onClick:reset,style:{marginLeft:"auto",font:"inherit",fontSize:".76rem",cursor:"pointer",padding:"5px 10px",borderRadius:"2px",border:"1px solid "+LINE,background:"#fff",color:MUT}},"↺ Reset"));
+    var cap=h("div",{style:{fontSize:".78rem",color:MUT,marginTop:"12px",lineHeight:1.5}},"Advance the deal to walk one investor through Ledgerly's pipeline, or click any stage to see what it means and when to move on.");
+    return h("div",{className:"pl-board",style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px",background:"#fff"}},deal,rail,detail,branches,cap);
+  }
+  function Setup(){
+    const {Cue,Lede,ActMarker,BeatsGrid,Objectives}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"12.01 Pipeline Setup"},
+      h(Cue,{num:"12.01",name:"Pipeline",accent:"Setup.",crumb:"Chapter 12"}),
+      h(Objectives,{items:OBJ}),
+      h(Lede,null,"Forty to eighty conversations move at once during a raise, and the founders who stay in control are the ones who run them on a system instead of from memory."),
+      h(ActMarker,{num:"01",name:"Why pipeline management",accent:"breaks down."}),
+      h("p",{className:"prose"},"When you have ",h("strong",null,"40 to 80 active investor conversations at once"),", memory fails. The CRM is your control system for a process that moves fast and in several directions at the same time, the place that keeps your follow-ups in sequence, surfaces timing signals early, and protects leverage you would otherwise give away."),
+      h(ActMarker,{num:"02",name:"Run a deal",accent:"through the pipeline."}),
+      h(PipelineBoard,null),
+      h(ActMarker,{num:"03",name:"Investor track",accent:"required fields."}),
+      h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 8px"}},
+        FIELDS.map(function(f,i){return h("li",{key:i},h("strong",null,f.title), f.desc?(": "+f.desc):null);})),
+      h(ActMarker,{num:"04",name:"Start from",accent:"the template."}),
+      h("p",{className:"prose"},"Begin with the Sprint's Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
+      h("p",{className:"prose"},h("a",{href:"https://docs.google.com/spreadsheets/d/1oeoifKdGB3Xp05pm1u547EJuNHUGEsmj8_Yo0vvgHT4",target:"_blank",rel:"noopener"},"Open the Simple CRM template")),
+      Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business.")
+    );
+  }
+
+  function SignalReader(){
+    var INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", A="#3d5c66";
+    var SIG=[
+      {b:"Two weeks to respond to an intro",temp:"Cold",c:"#3d6b7a",read:"Low interest, or you are buried under warmer deals in their inbox.",move:"One nudge, then deprioritize. Spend your energy on the investors who are moving."},
+      {b:"Hard to schedule the first meeting",temp:"Cool",c:"#5f8a86",read:"Not a priority for them right now. Calendar friction is itself the signal.",move:"Offer two or three specific slots, then let it sit rather than chase."},
+      {b:"Diligence goes quiet",temp:"Cooling",c:"#9a8a5a",read:"They were interested and have most likely de-prioritized you.",move:"Follow up once with a concrete update, then redirect your time."},
+      {b:"Long gap from first to partner meeting",temp:"Warm, stalling",c:"#bf7a3c",read:"Some interest, and no internal champion has built consensus in the firm yet.",move:"Arm your champion with a tight memo and metrics, and ask what the partnership needs to move."},
+      {b:"Quick scheduling and fast replies",temp:"Hot",c:"#c0512d",read:"Your strongest signal. Real interest moves fast.",move:"Prioritize them, match their speed, and drive toward a term sheet."}
+    ];
+    var s=React.useState(4),sel=s[0],setSel=s[1];
+    var x=SIG[sel];
+    var lbl={fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:MUT,fontWeight:600,marginBottom:"3px"};
+    var gauge=h("div",{style:{margin:"4px 0 14px"}},
+      h("div",{style:{height:"6px",borderRadius:"3px",background:"linear-gradient(90deg,#3d6b7a,#5f8a86,#9a8a5a,#bf7a3c,#c0512d)"}}),
+      h("div",{style:{display:"flex",justifyContent:"space-between",fontSize:"10px",letterSpacing:".08em",textTransform:"uppercase",color:MUT,fontWeight:600,marginTop:"5px"}},h("span",null,"Cold · low interest"),h("span",null,"Hot · move fast")));
+    var chips=h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(120px,1fr))",gap:"8px"}},
+      SIG.map(function(g,i){var on=(i===sel);return h("button",{key:i,onClick:function(){setSel(i);},style:{font:"inherit",cursor:"pointer",textAlign:"left",padding:"10px 12px",borderRadius:"2px",border:"1px solid "+(on?g.c:LINE),background:"#fff",boxShadow:on?("inset 3px 0 0 "+g.c):"none",color:INK}},
+        h("div",{style:{fontSize:"9.5px",letterSpacing:".07em",textTransform:"uppercase",fontWeight:700,color:g.c,marginBottom:"3px"}},g.temp),
+        h("div",{style:{fontSize:".8rem",fontWeight:on?700:500,lineHeight:1.25}},g.b));}));
+    var detail=h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"16px 18px",marginTop:"12px",background:"#fff"}},
+      h("div",{style:{display:"inline-block",fontSize:"10px",letterSpacing:".08em",textTransform:"uppercase",fontWeight:700,color:"#fff",background:x.c,borderRadius:"2px",padding:"3px 8px",marginBottom:"9px"}},x.temp),
+      h("div",{style:{fontSize:"1.1rem",fontWeight:700,marginBottom:"12px"}},x.b),
+      h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px 22px"}},
+        h("div",null,h("div",{style:lbl},"What it means"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},x.read)),
+        h("div",null,h("div",{style:lbl},"Your move"),h("div",{style:{fontSize:".88rem",lineHeight:1.45,color:A,fontWeight:600}},x.move))));
+    var cap=h("div",{style:{fontSize:".78rem",color:MUT,marginTop:"12px",lineHeight:1.5}},"How an investor behaves tells you how warm they are. Click any behavior to read the signal and what to do about it.");
+    return h("div",{className:"sig-reader",style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px",background:"#fff"}},gauge,chips,detail,cap);
+  }
+  const LOGLIST=[
+    "Key objections, captured verbatim rather than paraphrased",
+    "What clearly landed or drew a positive reaction",
+    "Every question the investor asked",
+    "Any partner or firm dynamics they mentioned",
+    "The confirmed next step, with an owner and a timeline"
+  ];
+  function PromptBox(){
+    var INK="#0a0a0a", LINE="#e9e8e3", A="#3d5c66", SOFT="#f6f5f2";
+    var PROMPT="Below is the transcript of an investor meeting. Using only what is in the transcript, pull out:\n\n1. Key objections, quoted where you can\n2. What clearly landed or drew a positive reaction\n3. Every question the investor asked\n4. Any partner or firm dynamics they mentioned\n5. The confirmed next step, with owner and timeline\n\nThen tell me whether any objection here has also shown up in my earlier meetings, and keep the whole thing tight.\n\nTranscript:\n[paste the transcript]";
+    var s=React.useState(false),copied=s[0],setCopied=s[1];
+    function copy(){try{navigator.clipboard.writeText(PROMPT);}catch(e){}setCopied(true);setTimeout(function(){setCopied(false);},1600);}
+    return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",marginTop:"14px",background:"#fff"}},
+      h("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"10px",padding:"10px 14px",borderBottom:"1px solid "+LINE,background:SOFT}},
+        h("div",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:A,fontWeight:700}},"AI prompt · pull the log from your transcript"),
+        h("button",{onClick:copy,style:{font:"inherit",fontSize:".76rem",fontWeight:600,cursor:"pointer",padding:"5px 12px",borderRadius:"2px",border:"1px solid "+A,background:copied?A:"#fff",color:copied?"#fff":A}},copied?"Copied":"Copy prompt")),
+      h("pre",{style:{margin:0,padding:"14px 16px",fontFamily:"ui-monospace,SFMono-Regular,Menlo,monospace",fontSize:".8rem",lineHeight:1.5,color:INK,whiteSpace:"pre-wrap",wordBreak:"break-word"}},PROMPT));
+  }
+  function FlagsPanel(){
+    var LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", G="#4f7d5b", R="#c0512d";
+    var GF=[
+      {t:"The right involvement",d:"Decide how hands-on you want an investor, then look for the match. Too eager is a flag as much as too distant."},
+      {t:"Expertise you are missing",d:"Seek the specific expertise each round needs on your cap table: hardware at pre-seed, consumer at seed, a visceral read on your industry after."},
+      {t:"They get your angle",d:"The best investors grasp your unique view without you over-explaining it, and show it by digging into the customer rather than assuming."},
+      {t:"Shared vision and values",d:"Do they share where you think the industry is going, and are they someone you want in the room for years? The no-asshole rule counts."}
+    ];
+    var RF=[
+      {t:"They were not really listening",d:"Questions that show they missed what you said, or energy and attitudes that clash with your values. Nonverbal cues count."},
+      {t:"Unsophisticated for the job",d:"First-fund investors who will be extra hands-on, diligence that drags on asking what they should have asked in the pitch, or requests for materials wrong for your stage."},
+      {t:"Smoke without follow-through",d:"Watch async communication, references from their portfolio founders, and whether they do what they say. You can still take a deal with red flags, but naming them tells you how to manage them."}
+    ];
+    function col(items,color,eyebrow,label){
+      return h("div",null,
+        h("div",{style:{borderTop:"3px solid "+color,paddingTop:"10px",marginBottom:"12px"}},
+          h("div",{style:{fontSize:"10px",letterSpacing:".1em",textTransform:"uppercase",color:color,fontWeight:700}},eyebrow),
+          h("div",{style:{fontSize:"1.05rem",fontWeight:700,marginTop:"2px"}},label)),
+        items.map(function(x,i){return h("div",{key:i,style:{marginBottom:"13px"}},
+          h("div",{style:{fontSize:".92rem",fontWeight:700,marginBottom:"2px"}},x.t),
+          h("div",{style:{fontSize:".85rem",lineHeight:1.45,color:MUT}},x.d));}));
+    }
+    return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"20px 22px",background:"#fff",marginTop:"12px"}},
+      h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"18px 34px"}},
+        col(GF,G,"Lean in","Green flags"),
+        col(RF,R,"Slow down","Red flags")));
+  }
+  function Signals(){
+    const {Cue,Lede,ActMarker,BeatsGrid,Warning,Pull}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"12.02 Reading Signals"},
+      h(Cue,{num:"12.02",name:"Reading",accent:"Signals.",crumb:"Chapter 12 · Manage Your Pipeline"}),
+      h(Lede,null,"Once your pitches are live, the round is won or lost on where you spend your attention, and investors keep telling you where it should go. Read the timing, capture what happens in every meeting, and read the investor as hard as they read you."),
+      h(ActMarker,{num:"01",name:"Reading",accent:"timing signals."}),
+      h(SignalReader,null),
+      Tip("tip--sage","Best practice","Use the first yes to move the pipeline.","A term sheet from any credible fund accelerates every slow conversation. The framing across the pipeline shifts from convince me to are you interested in participating, and allocation becomes the lever. Send a brief update to every Paused investor the day a term sheet lands, because many re-engage fast when they see real momentum behind a real artifact."),
+      Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
+      h(ActMarker,{num:"02",name:"Read the investor,",accent:"not just the timing."}),
+      h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
+      h(PLAudio,{title:"Investor Green & Red Flags",sub:"Sprint companion · Quinn & Adam",src:"/audio/pipeline/investor-flags.mp3"}),
+      h(ActMarker,{num:"03",name:"Green flags and",accent:"red flags."}),
+      h(FlagsPanel,null),
+      h(Pull,{eyebrow:"Treat smoke as a smoke signal",quote:"You have very little time with these people before deciding whether to spend years working with them. All you have are these signals, and they can be very meaningful."})
+    );
+  }
+
+  function Auction(){
+    const {Cue,Lede,ActMarker,BeatsGrid,Pull}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"12.04 Run It Like an Auction"},
+      h(Cue,{num:"12.04",name:"Run It Like",accent:"an Auction.",crumb:"Chapter 12 · Manage Your Pipeline"}),
+      h(Lede,null,"The pipeline you just built has one job beyond staying organized: to run your raise as an auction, where real competition sets your price and your terms."),
+      h(ActMarker,{num:"01",name:"Why an auction",accent:"changes everything."}),
+      h("p",{className:"prose"},"Capital is far more abundant than the old scarcity story admits. The moment a company shows a signal of quality, strong growth, a respected angel, a demo-day slot, investors start moving together: rounds get oversubscribed, prices climb, and terms soften in the founder's favor. A wide, time-boxed process is how you surface that dynamic on purpose rather than hoping it finds you."),
+      h(ActMarker,{num:"02",name:"Prioritize",accent:"leads and fast movers."}),
+      h(BeatsGrid,{items:PRIORITIZE,columns:2}),
+      h(ActMarker,{num:"03",name:"Protect",accent:"the signal."}),
+      h("p",{className:"prose"},"Many founders fear that running an auction reads as a low-quality signal, and investors quietly encourage that belief because proprietary deal flow serves them. The logic does not hold. The quality of your company is set by what you have built, not by the list of people you happen to be talking to, so run the process openly and let the market read the company."),
+      h(ActMarker,{num:"04",name:"Use",accent:"what the process tells you."}),
+      h(BeatsGrid,{items:CHOOSE,columns:3}),
+      h("p",{className:"prose"},"The auction produces information you did not have before. Once it is running you get to choose which of these you optimize for, and that choice is leverage you created for yourself."),
+      h(Pull,{eyebrow:"Where your energy goes",quote:"Spend your bandwidth on the investors who have not passed yet. A no is one data point on one pitch, and the round gets built by the conversations that are still alive."})
+    );
+  }
+
+  function Track(){
+    const {Cue,Lede,ActMarker}=window;
+    return h("div",{className:"fade-in sub-split","data-screen-label":"12.03 Track Every Pitch"},
+      h(Cue,{num:"12.03",name:"Track Every",accent:"Pitch.",crumb:"Chapter 12 · Manage Your Pipeline"}),
+      h(Lede,null,"A round is decided across dozens of meetings, and the founders who close are the ones who capture each one before it blurs. A quick log after every pitch turns scattered conversations into patterns you can act on."),
+      h(ActMarker,{num:"01",name:"Log it",accent:"while it is fresh."}),
+      h("p",{className:"prose"},"Log within 30 minutes of every meeting, while it is still fresh:"),
+      h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 10px"}},LOGLIST.map(function(t,i){return h("li",{key:i},t);})),
+      h("p",{className:"prose"},h("strong",null,"Never leave a meeting without a confirmed next step.")," If the investor will not commit to one, that reluctance is itself a signal worth noting."),
+      h(ActMarker,{num:"02",name:"Pull it from",accent:"the transcript."}),
+      h("p",{className:"prose"},"Record each meeting with a notetaker and let one prompt do the logging for you, then track which objections repeat so a pattern gets fixed in the deck rather than handled live every time."),
+      h(PromptBox,null)
+    );
+  }
+
+  const SUBS=[
+    {num:"01",slug:"setup",title:"Pipeline Setup",teaser:"Set up the CRM, define your stages, and start from the Simple CRM template."},
+    {num:"02",slug:"signals",title:"Reading Signals",teaser:"Delays are data. Read the timing and read the investor."},
+    {num:"03",slug:"track",title:"Track Every Pitch",teaser:"Log the meeting while it is fresh, and let a prompt pull it from your transcript."},
+    {num:"04",slug:"auction",title:"Run It Like an Auction",teaser:"Treat the raise as an auction, prioritize leads and fast movers, and let competition set your terms."}
+  ];
+  const MAP={setup:Setup,signals:Signals,track:Track,auction:Auction};
+  function PLChapter(props){
+    const sub=props.subIdx>=0?SUBS[props.subIdx]:null;
+    if(!sub) return null;
+    const P=MAP[sub.slug];
+    return h(React.Fragment,null,P?h(P,{key:sub.slug}):null);
+  }
+  window.CHAPTER_PIPELINE={
+    id:"pipeline", num:"12", name:"Manage Your Pipeline",
+    desc:"Track every conversation, read the timing signals, and run the whole raise like a competitive auction.",
+    subs:SUBS, Component:PLChapter
+  };
+})();
+/* Chapters 12 & 13 enrichment — additive Sprint content (wraps existing, base untouched) */
+(function () {
+  const h = React.createElement;
+  function Resources(title, links){
+    return h("div",{style:{border:"1px solid rgba(20,20,22,.12)",borderRadius:"14px",padding:"16px 18px",background:"rgba(255,255,255,.5)",margin:"18px 0"}},
+      h("div",{style:{fontSize:".72rem",letterSpacing:".08em",textTransform:"uppercase",opacity:.55,marginBottom:"8px"}},title),
+      h("ul",{style:{margin:0,paddingLeft:"18px",lineHeight:1.7}},
+        links.map(function(l,i){return h("li",{key:i},h("a",{href:l.href,target:"_blank",rel:"noopener"},l.t));}))
+    );
+  }
+  function Tip(cls,eyebrow,title,body){
+    return h("div",{className:"tip "+cls},
+      h("div",{className:"tip__head"},
+        h("span",{className:"tip__eyebrow"},eyebrow),
+        h("h3",{className:"tip__title"},title)),
+      h("p",{className:"tip__body"},body));
+  }
+
+  // ---------- Chapter 13: Diligence & Term Sheet ----------
+  var DD=window.CHAPTER_DD;
+  if(DD){
+    var DDOrig=DD.Component, DD_SUBS=DD.subs;
+    var DD_EXCLUDE=[
+      {num:"01",title:"Deep multi-year projections",desc:"Leave out 3 to 5 year projections unless an investor asks. Early-stage numbers that far out invite scrutiny you do not need."},
+      {num:"02",title:"Tax returns",desc:"Not part of an early-stage diligence pass. Keep them out until a later round calls for them."},
+      {num:"03",title:"Board minutes",desc:"Internal deliberations stay internal. Share governance detail only when a lead is deep in confirmatory diligence."}
+    ];
+    function DDOverviewExtra(){
+      const {ActMarker,BeatsGrid}=window;
+      return h("div",{className:"fade-in"},
+        h(ActMarker,{num:"04",name:"What to leave",accent:"out."}),
+        h("p",{className:"prose"},"Err on the side of less, not more. The data room exists to answer diligence cleanly, and every extra document is one more surface where a number can disagree with itself. Give investors what they need to move, and hold the rest until they ask."),
+        h(BeatsGrid,{items:DD_EXCLUDE,columns:3}),
+        Tip("tip--coral tip--compact","Watch out","Diligence runs both ways.","A process that drags on, or that asks you now for what should have come up in the pitch, is telling you something about the investor. Sophisticated investors did their thinking before the term sheet, so a diligence phase that keeps reopening settled questions is a flag worth reading."),
+        Resources("Further reading · Data rooms",[
+          {t:"a16z — The insider's guide to data rooms",href:"https://a16z.com/the-insiders-guide-to-data-rooms-what-to-know-before-you-raise/"},
+          {t:"Carta — Data room guide",href:"https://carta.com/learn/startups/equity-management/data-room/"}
+        ])
+      );
+    }
+    function DDTermsExtra(){
+      return h("div",{className:"fade-in"},
+        Resources("Further reading · SAFEs and terms",[
+          {t:"Carta — How a SAFE works",href:"https://carta.com/learn/startups/fundraising/convertible-securities/safes/"},
+          {t:"Elizabeth Yin — To SAFE or not to SAFE",href:"https://elizabethyin.com/2019/05/31/to-safe-or-not-to-safe/"}
+        ])
+      );
+    }
+    function DDEnriched(props){
+      var sub=props.subIdx>=0?DD_SUBS[props.subIdx]:null;
+      return h(React.Fragment,null,
+        h(DDOrig,{key:"orig",subIdx:props.subIdx}),
+        sub&&sub.slug==="overview"?h(DDOverviewExtra,{key:"ovX"}):null,
+        sub&&sub.slug==="terms"?h(DDTermsExtra,{key:"tmX"}):null
+      );
+    }
+    DD.Component=DDEnriched;
+  }
+
+  // ---------- Chapter 14: Close the Round ----------
+  var CL=window.CHAPTER_CLOSE;
+  if(CL){
+    var CLOrig=CL.Component, CL_SUBS=CL.subs;
+    var CL_OVER=[
+      {num:"01",title:"Protect room for the right names",desc:"Hold allocation for the investors whose expertise or signal you actually want, even when slower money is ready to wire today."},
+      {num:"02",title:"Right-size every check",desc:"A smaller check from a high-signal fund can be worth more on the cap table than a large one from a passive source."},
+      {num:"03",title:"Keep the terms you set",desc:"Demand is leverage. Oversubscription is the moment to hold your price and clean terms, not the moment to give them away."}
+    ];
+    function CLOverviewExtra(){
+      const {ActMarker,BeatsGrid,Pull}=window;
+      return h("div",{className:"fade-in"},
+        h(ActMarker,{num:"04",name:"When you are",accent:"oversubscribed."}),
+        h("p",{className:"prose"},"The version of closing that founders rarely plan for is having too much demand. When the round is oversubscribed, allocation becomes your lever. You decide who gets in, at what size, and on what terms, so use that moment to build the cap table you actually want rather than the one that showed up first."),
+        h(BeatsGrid,{items:CL_OVER,columns:3}),
+        h(Pull,{eyebrow:"The reframe holds to the end",quote:"When demand outruns the round, you are choosing a cap table, not chasing a check."})
+      );
+    }
+    function CLEnriched(props){
+      var sub=props.subIdx>=0?CL_SUBS[props.subIdx]:null;
+      return h(React.Fragment,null,
+        h(CLOrig,{key:"orig",subIdx:props.subIdx}),
+        sub&&sub.slug==="overview"?h(CLOverviewExtra,{key:"ovX"}):null
+      );
+    }
+    CL.Component=CLEnriched;
+  }
+})();
+// === END ADDITIVE SPRINT CHAPTERS ===
+
 const PB_CHAPTERS = [
 // How to Use This Playbook — ported in ch-intro.jsx
 window.CHAPTER_INTRO,
@@ -9253,6 +9898,7 @@ window.CHAPTER_CONNECTORS,
 // Activate Your Intros — ported in ch-activate.jsx
 window.CHAPTER_ACTIVATE,
 // Pitching Best Practices — ported in ch-pitching.jsx
+window.CHAPTER_INNER_GAME,
 window.CHAPTER_PITCHING,
 // Refine Through Practice — ported in ch-refine.jsx
 window.CHAPTER_REFINE,
@@ -9265,6 +9911,7 @@ window.CHAPTER_CLOSE,
 // Appendix · Mistakes Index + Glossary — reference material, ch-appendix.jsx.
 // Treated as kind: "appendix" so the SceneBar / home / dropdown can render it
 // without the "CH · " prefix and the "twelve chapters" framing.
+window.CHAPTER_BY_NUMBERS,
 window.CHAPTER_APPENDIX].filter(Boolean).map(ch =>
 // Stamp `locked: true` on chapters that are still being edited so they
 // surface as "Coming soon" in the live playbook. Dev mode (?dev=1 or
@@ -9521,90 +10168,8 @@ function PBMetalModalBody({
 // Posts URL-encoded form data to "/" so Netlify Forms picks it up. Uses
 // `mode: 'no-cors'` so file:// previews don't choke on the cross-origin POST;
 // the response is opaque but Netlify still records the submission.
-// ============================================================
-// Conversion components — end-of-chapter Ask block, closing CTA,
-// persistent site footer. Lift founder -> client conversion.
-// ============================================================
-var PB_ACCENT = "#3d5c66";
-var PB_SEEDED_QUESTIONS = {
-  fundamentals: ["How big should my round actually be at pre-seed?", "What ownership will a lead expect at this stage?"],
-  arc: ["How do I create real urgency without faking FOMO?", "How many investor conversations should I start at once?"],
-  comm: ["Can you gut-check my one-line pitch?", "How do I frame traction that still feels early?"],
-  prep: ["Will you review my deck?", "How long should a pre-seed deck really be?"],
-  "target-list": ["How do I tell if an investor is a genuine fit for my stage?", "How many investors belong on my list?"],
-  connectors: ["How do I ask for a warm intro without it being awkward?", "What exactly do I send a connector to forward?"],
-  activate: ["What should my intro email actually say?", "How do I follow up without seeming desperate?"],
-  pitching: ["Can you help me prep for a specific investor meeting?", "How do I handle the 'what is your moat' question?"],
-  refine: ["How do I get sharper at answering hard questions live?", "How should I practise before the real meetings?"],
-  pipeline: ["How do I run several investors in parallel?", "A VC went quiet on me. What do I do?"],
-  dd: ["A VC wants my full customer list before a term sheet. Normal?", "Can you help me read this term sheet?"],
-  close: ["I have one yes. How do I turn it into a full round?", "How do I negotiate without losing my lead?"],
-  _default: ["What is the one thing I should focus on in my raise right now?", "Can you gut-check where my raise stands?"]
-};
-function PBAskBlock(props) {
-  var h = React.createElement;
-  var chapter = props.chapter;
-  var qs = PB_SEEDED_QUESTIONS[chapter.id] || PB_SEEDED_QUESTIONS._default;
-  return h("aside", { className: "pb-ask-block", style: { marginTop: 56, padding: "26px 26px 28px", background: "#f6f5f2", border: "1px solid #e9e8e3", borderRadius: 2 } },
-    h("div", { style: { display: "flex", alignItems: "center", gap: 12, marginBottom: 16 } },
-      h("img", { src: "images/adam-470.jpg", alt: "Adam Roberts", width: 44, height: 44, style: { width: 44, height: 44, borderRadius: "50%", objectFit: "cover", flex: "0 0 auto" } }),
-      h("div", null,
-        h("div", { style: { fontWeight: 600, letterSpacing: "-0.01em" } }, "Stuck on this chapter?"),
-        h("div", { style: { fontSize: 13, color: "rgba(10,10,10,.55)" } }, "Ask Adam. He reads every message and replies personally.")
-      )
-    ),
-    h("div", { style: { display: "flex", flexWrap: "wrap", gap: 8 } },
-      qs.map(function (q, i) {
-        return h("button", { key: i, type: "button", onClick: function () { window.openAskModal && window.openAskModal(q); }, style: { textAlign: "left", cursor: "pointer", padding: "9px 13px", fontSize: 13.5, lineHeight: 1.3, color: "#0a0a0a", background: "#fff", border: "1px solid #e9e8e3", borderRadius: 2 } }, q);
-      }),
-      h("button", { type: "button", onClick: function () { window.openAskModal && window.openAskModal(); }, style: { cursor: "pointer", padding: "9px 15px", fontSize: 13.5, fontWeight: 600, color: "#fff", background: PB_ACCENT, border: "1px solid " + PB_ACCENT, borderRadius: 2 } }, "Ask your own →")
-    )
-  );
-}
-function PBClosingCTA() {
-  var h = React.createElement;
-  return h("aside", { className: "pb-closing-cta", style: { marginTop: 28, padding: "34px 30px 36px", background: "#0a0a0a", color: "#fff", borderRadius: 2 } },
-    h("div", { style: { fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,.55)", marginBottom: 12 } }, "Where to go from here"),
-    h("h3", { style: { margin: "0 0 12px", fontSize: 26, lineHeight: 1.15, letterSpacing: "-0.02em", fontWeight: 700 } }, "You have the whole playbook. Want a second set of eyes on your raise?"),
-    h("p", { style: { margin: "0 0 22px", fontSize: 15.5, lineHeight: 1.55, color: "rgba(255,255,255,.75)", maxWidth: 560 } }, "Book a free 30-minute working call. An honest read on where your round stands and what would actually unblock it. Open agenda, no obligation."),
-    h("div", { style: { display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", marginBottom: 26 } },
-      h("a", { href: "https://calendly.com/adam-gozh/free-fundraising-consultation", target: "_blank", rel: "noopener", style: { display: "inline-block", padding: "12px 20px", fontSize: 15, fontWeight: 600, color: "#0a0a0a", background: "#fff", borderRadius: 2, textDecoration: "none" } }, "Book a free consultation →"),
-      h("button", { type: "button", onClick: function () { window.openAskModal && window.openAskModal(); }, style: { padding: "12px 20px", fontSize: 15, fontWeight: 600, color: "#fff", background: "transparent", border: "1px solid rgba(255,255,255,.3)", borderRadius: 2, cursor: "pointer" } }, "Or ask a quick question")
-    ),
-    h("div", { style: { display: "flex", flexWrap: "wrap", gap: "10px 26px", paddingTop: 22, borderTop: "1px solid rgba(255,255,255,.15)", fontSize: 13.5, color: "rgba(255,255,255,.7)" } },
-      h("span", null, h("strong", { style: { color: "#fff" } }, "100+"), " founders coached"),
-      h("span", null, h("strong", { style: { color: "#fff" } }, "50+"), " closed rounds"),
-      h("span", null, "Pre-seed through Series A")
-    ),
-    h("blockquote", { style: { margin: "22px 0 0", fontStyle: "italic", fontSize: 15, lineHeight: 1.5, color: "rgba(255,255,255,.85)" } }, "“10/10. I wish I had found this even earlier. It would have saved me at least 100 hours and $20K+.”",
-      h("cite", { style: { display: "block", marginTop: 8, fontStyle: "normal", fontSize: 13, color: "rgba(255,255,255,.55)" } }, "Misha · Pre-seed founder"))
-  );
-}
-function PBChapterOutro(props) {
-  var chapter = props.chapter;
-  var subIdx = props.subIdx;
-  if (!chapter || chapter.kind === "appendix") return null;
-  var subs = chapter.subs || [];
-  if (subIdx !== subs.length - 1) return null;
-  var h = React.createElement;
-  return h(React.Fragment, null,
-    h(PBAskBlock, { chapter: chapter }),
-    chapter.id === "close" ? h(PBClosingCTA, null) : null
-  );
-}
-function PBSiteFooter() {
-  var h = React.createElement;
-  return h("footer", { className: "pb-site-footer", style: { textAlign: "center", padding: "26px 20px", borderTop: "1px solid #e9e8e3", fontSize: 13, color: "rgba(10,10,10,.55)" } },
-    h("a", { href: "https://lifted.vc/", style: { color: "#3d5c66", textDecoration: "none", fontWeight: 600 } }, "Lifted.vc"),
-    h("span", { style: { margin: "0 10px", color: "#d8d6cf" } }, "·"),
-    "1-on-1 fundraising coaching, pre-seed through Series A",
-    h("span", { style: { margin: "0 10px", color: "#d8d6cf" } }, "·"),
-    h("a", { href: "https://calendly.com/adam-gozh/free-fundraising-consultation", target: "_blank", rel: "noopener", style: { color: "#3d5c66", textDecoration: "none" } }, "Book a call")
-  );
-}
 function PBAskModalBody({
-  onClose,
-  prefill
+  onClose
 }) {
   const {
     PlaybookModal
@@ -9653,19 +10218,7 @@ function PBAskModalBody({
     eyebrow: "Ask a question",
     title: "Stuck on something? Ask Adam.",
     size: "md"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: { display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }
-  }, /*#__PURE__*/React.createElement("img", {
-    src: "images/adam-470.jpg",
-    alt: "Adam Roberts",
-    width: 46,
-    height: 46,
-    style: { width: 46, height: 46, borderRadius: "50%", objectFit: "cover" }
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    style: { fontWeight: 600 }
-  }, "Adam Roberts"), /*#__PURE__*/React.createElement("div", {
-    style: { fontSize: 13, color: "rgba(10,10,10,.55)" }
-  }, "Founder, Lifted · 100+ founders coached"))), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("a", {
     href: "https://www.linkedin.com/in/robertsadamj/",
     target: "_blank",
     rel: "noopener"
@@ -9714,7 +10267,6 @@ function PBAskModalBody({
     name: "message",
     rows: "5",
     required: true,
-    defaultValue: prefill || "",
     placeholder: "Anything fundraising-related. Strategy, materials, intros, term sheets, the messy parts..."
   })), errorMsg && /*#__PURE__*/React.createElement("div", {
     className: "pb-form-error"
@@ -11452,8 +12004,7 @@ function PBModalRoot({
       });
     case "ask":
       return /*#__PURE__*/React.createElement(PBAskModalBody, {
-        onClose: onClose,
-        prefill: openModal.payload && openModal.payload.prefill
+        onClose: onClose
       });
     case "example":
       return /*#__PURE__*/React.createElement(PBExampleModalBody, {
@@ -12407,11 +12958,8 @@ function PBApp() {
     window.openNarrWizard = () => setOpenModal({
       kind: "narrWizard"
     });
-    window.openAskModal = prefill => setOpenModal({
-      kind: "ask",
-      payload: {
-        prefill: prefill
-      }
+    window.openAskModal = () => setOpenModal({
+      kind: "ask"
     });
     window.goToChapter = id => goChapter(id);
     window.goToSub = (chapterId, n) => {
@@ -12441,9 +12989,6 @@ function PBApp() {
   }, /*#__PURE__*/React.createElement(chapter.Component, {
     subIdx: safeSubIdx,
     sub: chapter.subs[safeSubIdx]
-  }), /*#__PURE__*/React.createElement(PBChapterOutro, {
-    chapter: chapter,
-    subIdx: safeSubIdx
   })), /*#__PURE__*/React.createElement(window.Transport, {
     chapter: chapter,
     subIdx: safeSubIdx,
@@ -12462,7 +13007,7 @@ function PBApp() {
     prevChapter: null,
     nextChapter: PB_CHAPTERS.find(c => !c.locked && c.kind !== 'appendix') || null,
     onPickChapter: goChapter
-  }))), /*#__PURE__*/React.createElement(PBSiteFooter, null), /*#__PURE__*/React.createElement(PBModalRoot, {
+  }))), /*#__PURE__*/React.createElement(PBModalRoot, {
     openModal: openModal,
     onClose: closeModal
   }), /*#__PURE__*/React.createElement(window.VideoPlayer, {
