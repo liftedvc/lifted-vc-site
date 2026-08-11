@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lifted.vc — Redesign preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+/* ==========================================================
+   Lifted.vc — Simple, colorful editorial system
+   ========================================================== */
+
+:root {
+  /* Default palette — warm cream base, colored section blocks */
+  --bg: #fbf6ec;          /* warm off-white base */
+  --ink: #1a1a1a;         /* near-black */
+  --ink-soft: #4f4d49;    /* muted text */
+  --ink-mute: #8a8680;    /* tertiary */
+  --line: #e6dfd0;
+  --line-soft: #efe9db;
+
+  /* Color blocks (used as section backgrounds) */
+  --butter: #f5d574;      /* sunny yellow */
+  --butter-deep: #d9b449;
+  --sage: #b6cdb4;        /* soft sage green */
+  --sage-deep: #6f8e6e;
+  --sky: #aac4dd;         /* dusty sky blue */
+  --sky-deep: #5d7d9c;
+  --blush: #efbfb1;       /* warm blush */
+  --blush-deep: #c2806e;
+  --deep: #1a2235;        /* deep navy ink */
+  --cream: #fbf6ec;
+
+  /* Accent for buttons/links */
+  --accent: #c25a3c;      /* warm terracotta */
+  --accent-deep: #8d3a24;
+
+  --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+/* Alt palette: punchier */
+[data-palette="bright"] {
+  --butter: #ffd95a;
+  --sage: #a8d8b0;
+  --sky: #9cc1e5;
+  --blush: #f5b8a5;
+  --accent: #e85a3c;
+}
+/* Alt palette: muted */
+[data-palette="muted"] {
+  --butter: #ead7a0;
+  --sage: #c2d2c0;
+  --sky: #b8cad8;
+  --blush: #e6c8be;
+  --accent: #a85c44;
+}
+/* Alt palette: editorial mono */
+[data-palette="mono"] {
+  --butter: #ece5d3;
+  --sage: #ddd9ce;
+  --sky: #d4d2cb;
+  --blush: #ebd9d2;
+  --accent: #1a1a1a;
+}
+
+/* Type pairs */
+[data-type="fraunces-inter"] {
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Inter Tight', 'Helvetica Neue', sans-serif;
+}
+[data-type="newsreader-geist"] {
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Geist', 'Helvetica Neue', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--accent); color: var(--cream); }
+
+/* Layout */
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
+
+section { padding: 200px 0; position: relative; }
+section.tight { padding: 100px 0; }
+
+/* Type */
+.serif { font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.eyebrow::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+/* Buttons — pill, soft */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn .arrow {
+  transition: transform .25s ease;
+}
+.btn:hover .arrow { transform: translateX(3px); }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Photo placeholder */
+.photo {
+  position: relative;
+  background: var(--cream);
+  overflow: hidden;
+  border-radius: 8px;
+}
+.photo .stripes {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 14px,
+    rgba(0,0,0,0.04) 14px 15px
+  );
+}
+.photo .label {
+  position: absolute;
+  left: 14px; bottom: 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  background: var(--cream);
+  padding: 5px 9px;
+  border-radius: 3px;
+}
+.photo .caption {
+  position: absolute;
+  left: 14px; top: 14px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  display: flex;
+  gap: 64px;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+/* Underline link */
+.ulink {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: color .25s, border-color .25s;
+}
+.ulink:hover { color: var(--accent); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }
+
+/* Color blocks */
+.bg-butter { background: var(--butter); }
+.bg-sage { background: var(--sage); }
+.bg-sky { background: var(--sky); }
+.bg-blush { background: var(--blush); }
+.bg-deep { background: var(--deep); color: var(--cream); }
+.bg-cream { background: var(--cream); }
+
+/* ====== Responsive ====== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .wrap { padding: 0 32px; }
+  section { padding: 140px 0; }
+  body { font-size: 17px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wrap { padding: 0 20px; }
+  section { padding: 80px 0 !important; }
+  section.tight { padding: 60px 0 !important; }
+  .cta-section { padding: 100px 0 !important; }
+  body { font-size: 16px; }
+
+  /* Stack any 2/3-column grids tagged with data-stack */
+  [data-stack="true"] { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Hero — stack and tighten */
+  .hero-grid { min-height: auto !important; padding-top: 40px !important; padding-bottom: 80px !important; }
+
+  /* Stats stack with separators */
+  .stats-grid { gap: 32px !important; padding-top: 40px !important; padding-bottom: 60px !important; }
+
+  /* Footer stack tighter */
+  .footer-grid { gap: 36px !important; }
+  .footer-bottom { flex-direction: column; gap: 8px !important; }
+  .footer-bottom > div { text-align: left !important; }
+
+  /* Buttons */
+  .btn { padding: 13px 22px; font-size: 15px; }
+
+  /* Marquee items smaller */
+  .marquee > div { font-size: 18px !important; }
+  .marquee { gap: 36px !important; }
+
+  /* Forms — full width */
+  .field-input input, .field-input textarea { font-size: 16px !important; }
+
+  /* Tweaks panel — fit screen */
+  .tweaks-panel { width: calc(100vw - 24px) !important; right: 12px !important; left: 12px !important; max-width: none !important; }
+}
+
+/* Mobile nav — drawer */
+.mobile-toggle { display: none; }
+@media (max-width: 900px) {
+  .desktop-nav { display: none !important; }
+  .mobile-toggle { display: flex !important; }
+  :root { --nav-h: 64px; }
+  .wordmark-img { height: 28px !important; }
+}
+@media (min-width: 901px) {
+  .mobile-drawer { display: none !important; }
+}
+
+:root { color-scheme: light; }
+html, body { background: var(--bg); }
+</style>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useEffect, useRef, useState } = React;
+// === primitives.jsx ===
+// Primitives — shared building blocks
+
+function useReveal() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
+function Reveal({ children, delay = 0, as = 'div', className = '', ...rest }) {
+  const ref = useReveal();
+  const Comp = as;
+  return (
+    <Comp ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }} {...rest}>
+      {children}
+    </Comp>
+  );
+}
+
+// Photo placeholder — labeled, striped. Caption = where it sits, label = what photo to drop in.
+function Photo({ label, caption, ratio = '4 / 5', src, alt, style = {}, className = '' }) {
+  return (
+    <div className={`photo ${className}`} style={{ aspectRatio: ratio, ...style }}>
+      {src ? <img src={src} alt={alt || label} /> : <div className="stripes" />}
+      {caption && <div className="caption">{caption}</div>}
+      {label && !src && <div className="label">{label}</div>}
+    </div>
+  );
+}
+
+// Arrow glyph
+function Arrow({ size = 14 }) {
+  return (
+    <svg className="arrow" width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+// Counting number (animated reveal)
+function CountUp({ value, prefix = '', suffix = '', duration = 1400 }) {
+  const ref = useRef(null);
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const start = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            setShown(Math.round(value * eased));
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value, duration]);
+  return <span ref={ref}>{prefix}{shown}{suffix}</span>;
+}
+
+// (stripped Object.assign)
+// === hero.jsx ===
+// Hero — simpler, butter yellow color block, less chrome
+function Hero() {
+  return (
+    <section id="top" style={{
+      paddingTop: 40, paddingBottom: 0,
+      background: 'var(--cream)',
+    }}>
+      <div className="wrap">
+        <div data-stack="true" className="hero-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '1.3fr 1fr',
+          gap: 64,
+          alignItems: 'center',
+          minHeight: '88vh',
+          paddingTop: 100, paddingBottom: 140,
+        }}>
+          <div>
+            <Reveal>
+              <div className="eyebrow" style={{ marginBottom: 28 }}>
+                Pre-seed · Seed · Series A
+              </div>
+            </Reveal>
+
+            <Reveal delay={100}>
+              <h1 style={{
+                fontSize: 'clamp(56px, 7.5vw, 124px)',
+                lineHeight: 0.96,
+                margin: 0,
+                textWrap: 'balance',
+              }}>
+                Raise your<br/>round like a<br/>
+                <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>repeat founder.</span>
+              </h1>
+            </Reveal>
+
+            <Reveal delay={220}>
+              <p style={{
+                fontSize: 22,
+                lineHeight: 1.45,
+                color: 'var(--ink-soft)',
+                maxWidth: 540,
+                margin: '36px 0 44px',
+                textWrap: 'pretty',
+              }}>
+                1-on-1 fundraising coaching for founders. Built on 100+ founders coached
+                and 50+ closed rounds.
+              </p>
+            </Reveal>
+
+            <Reveal delay={320}>
+              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+                <a href="#contact" className="btn btn-primary">Work with me <Arrow /></a>
+                <a href="#process" className="btn btn-ghost">How it works</a>
+                <a href="https://lifted.vc/fundraising-playbook" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={180}>
+            <div style={{ position: 'relative' }}>
+              {/* Big color blob behind photo */}
+              <div style={{
+                position: 'absolute',
+                inset: '-30px -30px -30px -30px',
+                background: 'var(--butter)',
+                borderRadius: '50% 50% 50% 50% / 60% 40% 60% 40%',
+                zIndex: 0,
+              }} />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <Photo
+                  ratio="4 / 5"
+                  src="images/adam-sailing.jpg"
+                  alt="Adam Roberts"
+                />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Stats bar */}
+        <Reveal>
+          <div data-stack="true" className="stats-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 0,
+            borderTop: '1px solid var(--line)',
+            paddingTop: 56, paddingBottom: 100,
+          }}>
+            <Stat num="$80M+" label="Raised by coached founders" />
+            <Stat num="100+" label="Founders coached" />
+            <Stat num="50+" label="Closed rounds" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ num, label }) {
+  return (
+    <div>
+      <div style={{
+        fontFamily: 'var(--serif)',
+        fontSize: 'clamp(48px, 6vw, 80px)',
+        letterSpacing: '-0.03em',
+        lineHeight: 1,
+        color: 'var(--ink)',
+      }}>{num}</div>
+      <div style={{
+        fontSize: 14,
+        color: 'var(--ink-soft)',
+        marginTop: 12,
+      }}>{label}</div>
+    </div>
+  );
+}
+
+// (stripped Object.assign)
+// === proof.jsx ===
+// Social proof — quiet investor names, no marquee chrome
+function Proof() {
+  const investors = [
+    'Y Combinator', 'a16z', 'Pear Ventures', 'Bessemer',
+    'Founder Collective', 'Hustle Fund', 'Techstars', 'Khosla',
+  ];
+  const all = [...investors, ...investors];
+
+  return (
+    <section className="tight" style={{
+      paddingTop: 60, paddingBottom: 60,
+      background: 'var(--cream)',
+      borderTop: '1px solid var(--line)',
+      borderBottom: '1px solid var(--line)',
+    }}>
+      <div className="wrap" style={{ marginBottom: 28 }}>
+        <div style={{
+          textAlign: 'center',
+          fontSize: 14,
+          color: 'var(--ink-soft)',
+        }}>
+          Founders backed by
+        </div>
+      </div>
+      <div style={{ overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent, black 12%, black 88%, transparent)' }}>
+        <div className="marquee">
+          {all.map((name, i) => (
+            <div key={i} style={{
+              fontFamily: 'var(--serif)',
+              fontSize: 26,
+              color: 'var(--ink-soft)',
+              whiteSpace: 'nowrap',
+              fontStyle: i % 3 === 0 ? 'italic' : 'normal',
+            }}>
+              {name}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// (stripped Object.assign)
+// === process.jsx ===
+// Process — three steps, sky blue background, simpler cards
+function Process() {
+  const phases = [
+    {
+      n: '1',
+      title: 'Prepare',
+      lead: 'Build your investor target list, sharpen your narrative, and get your deck and data room ready so your story feels inevitable.',
+    },
+    {
+      n: '2',
+      title: 'Pitch',
+      lead: 'Drill your pitch, strategize investor comms, and build your warm intro pipeline. Walk in with confidence.',
+    },
+    {
+      n: '3',
+      title: 'Close',
+      lead: 'Engineer real demand through timeline compression, parallel processes, and soft commitments. Signal momentum.',
+    },
+  ];
+
+  return (
+    <section id="process" className="bg-sky">
+      <div className="wrap">
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 120, maxWidth: 760, margin: '0 auto 120px' }}>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>How it works</div>
+            <h2 style={{
+              fontSize: 'clamp(44px, 6vw, 88px)',
+              lineHeight: 1, textWrap: 'balance',
+            }}>
+              Three steps to <span style={{ fontStyle: 'italic' }}>funding.</span>
+            </h2>
+            <p style={{
+              fontSize: 19, color: 'var(--ink-soft)',
+              marginTop: 24, textWrap: 'pretty',
+            }}>
+              Good fundraising is built on best practices and the industry's hidden rules.
+              I make sure you walk in the room a seasoned pro.
+            </p>
+          </div>
+        </Reveal>
+
+        <div data-stack="true" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 24,
+        }}>
+          {phases.map((p, i) => (
+            <Reveal key={p.title} delay={i * 100}>
+              <div style={{
+                background: 'var(--cream)',
+                borderRadius: 16,
+                padding: '56px 44px 60px',
+                height: '100%',
+              }}>
+                <div style={{
+                  fontFamily: 'var(--serif)',
+                  fontSize: 88, lineHeight: 0.9,
+                  color: 'var(--accent)',
+                  fontStyle: 'italic',
+                  marginBottom: 24,
+                }}>{p.n}</div>
+                <h3 style={{
+                  fontSize: 36, lineHeight: 1, margin: '0 0 16px',
+                }}>{p.title}</h3>
+                <p style={{
+                  fontSize: 16.5, lineHeight: 1.55,
+                  color: 'var(--ink-soft)', margin: 0,
+                  textWrap: 'pretty',
+                }}>{p.lead}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal>
+          <div style={{ textAlign: 'center', marginTop: 88 }}>
+            <a href="https://lifted.vc/fundraising-playbook" className="btn btn-ghost">Free fundraising playbook <Arrow /></a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// (stripped Object.assign)
+// === services.jsx ===
+// Services teaser — three offers on the home page. Sage green block.
+function ServicesTeaser() {
+  const items = [
+    {
+      tag: 'Consultation',
+      title: 'Free Fundraising Consultation',
+      desc: 'An honest read on where you are and what would unblock your raise. Candid, conversational, entirely on the house.',
+      includes: [
+        '30-minute working call',
+        'Honest read on readiness',
+        'Concrete next steps',
+        'Open agenda, candid feedback',
+      ],
+      cta: 'Book a call',
+      href: 'contact.html',
+    },
+    {
+      tag: 'Round coaching',
+      title: '1-on-1 Round Coaching',
+      desc: 'Your dedicated co-pilot from narrative through close. We run your fundraising round together, week by week.',
+      includes: [
+        'Weekly 1-on-1 coaching',
+        'Live pitch practice',
+        'Investor list & deck reviews',
+        'Process management through close',
+      ],
+      cta: 'Work with me',
+      href: 'contact.html',
+      highlight: true,
+    },
+    {
+      tag: 'Prep coaching',
+      title: '1-on-1 Round Prep Coaching',
+      desc: 'For founders building toward their raise. We sharpen entrepreneurship, customer discovery, and company-building until you are investor-ready.',
+      includes: [
+        'Entrepreneurship fundamentals',
+        'Customer discovery',
+        'Company-building strategy',
+        'Investor-readiness checkpoints',
+      ],
+      cta: "Let's talk",
+      href: 'contact.html',
+    },
+  ];
+
+  return (
+    <section className="bg-sage">
+      <div className="wrap">
+        <Reveal>
+          <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 120px' }}>
+            <div className="eyebrow" style={{ marginBottom: 20 }}>How we work together</div>
+            <h2 style={{
+              fontSize: 'clamp(44px, 6vw, 88px)',
+              lineHeight: 1, textWrap: 'balance',
+            }}>
+              Three ways in,<br/>
+              <span style={{ fontStyle: 'italic' }}>one shared goal.</span>
+            </h2>
+          </div>
+        </Reveal>
+
+        <div data-stack="true" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 20,
+          alignItems: 'stretch',
+        }}>
+          {items.map((s, i) => (
+            <Reveal key={s.title} delay={i * 100}>
+              <div style={{
+                position: 'relative',
+                padding: 40,
+                background: s.highlight ? 'var(--butter)' : 'var(--cream)',
+                borderRadius: 16,
+                height: '100%',
+                display: 'flex', flexDirection: 'column',
+              }}>
+                {s.highlight && (
+                  <div style={{
+                    position: 'absolute', top: -12, right: 24,
+                    background: 'var(--ink)', color: 'var(--cream)',
+                    padding: '6px 14px', borderRadius: 999,
+                    fontSize: 12, fontWeight: 500,
+                  }}>Most popular</div>
+                )}
+                <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 500, marginBottom: 14 }}>{s.tag}</div>
+                <h4 style={{ fontSize: 28, margin: '0 0 12px', lineHeight: 1.1 }}>{s.title}</h4>
+                <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '0 0 22px', textWrap: 'pretty' }}>{s.desc}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', flex: 1, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
+                  {s.includes.map(inc => (
+                    <li key={inc} style={{
+                      padding: '11px 0',
+                      borderBottom: '1px solid rgba(0,0,0,0.08)',
+                      fontSize: 14, color: 'var(--ink)',
+                      display: 'flex', gap: 10, alignItems: 'baseline',
+                    }}>
+                      <span style={{ color: 'var(--accent)' }}>→</span> {inc}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={s.href}
+                  className={s.highlight ? 'btn btn-primary' : 'btn btn-ghost'}
+                  style={{ marginTop: 'auto', justifyContent: 'center' }}
+                >
+                  {s.cta} <Arrow />
+                </a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal>
+          <div style={{ textAlign: 'center', marginTop: 88 }}>
+            <a href="pricing.html" className="btn btn-ghost">See pricing & details <Arrow /></a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// (stripped Object.assign)
+// === testimonials.jsx ===
+// Featured testimonial — short version for home page. Blush block.
+function FeaturedQuote() {
+  return (
+    <section className="bg-blush">
+      <div className="wrap">
+        <Reveal>
+          <div style={{
+            maxWidth: 980,
+            margin: '0 auto',
+            textAlign: 'center',
+          }}>
+            <div className="eyebrow" style={{ marginBottom: 32 }}>What founders say</div>
+            <p className="serif" style={{
+              fontSize: 'clamp(32px, 4vw, 56px)',
+              lineHeight: 1.2,
+              letterSpacing: '-0.02em',
+              margin: '0 0 40px',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              textWrap: 'balance',
+            }}>
+              "He gave me a process. One that replaced guesswork with clarity, confidence, and precision."
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+              <Avatar letter="L" />
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontStyle: 'italic' }}>Leni</div>
+                <div style={{ fontSize: 13, color: 'var(--ink-soft)' }}>Pre-seed founder</div>
+              </div>
+            </div>
+            <div style={{ marginTop: 40 }}>
+              <a href="founders.html" className="btn btn-ghost">Read more stories <Arrow /></a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Avatar({ letter, small }) {
+  const size = small ? 38 : 48;
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: '50%',
+      background: 'var(--cream)', color: 'var(--accent)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: 'var(--serif)', fontStyle: 'italic',
+      fontSize: small ? 16 : 22, fontWeight: 400,
+      flexShrink: 0,
+    }}>{letter}</div>
+  );
+}
+
+// (stripped Object.assign)
+// === cta.jsx ===
+// CTA — closing call-to-action. Deep navy block.
+function CTA() {
+  return (
+    <section id="contact" className="bg-deep cta-section" style={{ paddingTop: 200, paddingBottom: 200 }}>
+      <div className="wrap">
+        <div style={{
+          maxWidth: 900,
+          margin: '0 auto',
+          textAlign: 'center',
+        }}>
+          <Reveal>
+            <h2 style={{
+              fontSize: 'clamp(56px, 8vw, 132px)',
+              lineHeight: 0.94,
+              fontWeight: 400,
+              margin: 0,
+              color: 'var(--cream)',
+              textWrap: 'balance',
+            }}>
+              Ready to <span style={{ fontStyle: 'italic', color: 'var(--butter)' }}>raise?</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <p style={{
+              fontSize: 24, lineHeight: 1.45,
+              color: 'rgba(251, 246, 236, 0.7)',
+              margin: '36px auto 48px', maxWidth: 580,
+              textWrap: 'pretty',
+            }}>
+              Most founders spend 6–12 months on a raise that should take 3.
+              Let's change that.
+            </p>
+          </Reveal>
+          <Reveal delay={220}>
+            <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="contact.html" className="btn" style={{
+                background: 'var(--butter)', color: 'var(--deep)',
+              }}>
+                Work with me <Arrow />
+              </a>
+              <a href="https://lifted.vc/fundraising-playbook" className="btn" style={{
+                background: 'transparent', color: 'var(--cream)',
+                border: '1.5px solid rgba(251, 246, 236, 0.3)',
+              }}>
+                Use the free playbook
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// (stripped Object.assign)
+// === footer.jsx ===
+// Footer — same on every page
+function Footer() {
+  return (
+    <footer style={{ background: 'var(--cream)', borderTop: '1px solid var(--line)', padding: '64px 0 36px' }}>
+      <div className="wrap">
+        <div data-stack="true" className="footer-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: '2fr 1fr 1fr 1fr',
+          gap: 56,
+          marginBottom: 56,
+        }}>
+          <div>
+            <Wordmark />
+            <p style={{
+              marginTop: 18, fontSize: 16, lineHeight: 1.5,
+              color: 'var(--ink-soft)', maxWidth: 320,
+              fontFamily: 'var(--serif)', fontStyle: 'italic',
+            }}>
+              Helping founders raise pre-seed through Series A — methodically, honestly,
+              on a timeline that actually works.
+            </p>
+          </div>
+
+          <FooterCol title="Site" links={[
+            { l: 'Home', href: 'index.html' },
+            { l: 'About', href: 'about.html' },
+            { l: 'Pricing', href: 'pricing.html' },
+            { l: 'Founders', href: 'founders.html' },
+          ]} />
+          <FooterCol title="Resources" links={[
+            { l: 'Playbook', href: 'https://lifted.vc/fundraising-playbook' },
+            { l: 'Sprint', href: 'https://www.fundraisingsprint.co/' },
+            { l: 'FAQ', href: 'pricing.html#faq' },
+          ]} />
+          <FooterCol title="Connect" links={[
+            { l: 'Contact', href: 'contact.html' },
+            { l: 'LinkedIn', href: 'https://www.linkedin.com/in/robertsadamj/' },
+            { l: 'Email', href: 'mailto:adam@lifted.vc' },
+          ]} />
+        </div>
+
+        <div className="footer-bottom" style={{
+          paddingTop: 28, borderTop: '1px solid var(--line)',
+          display: 'flex', justifyContent: 'space-between',
+          gap: 16, flexWrap: 'wrap',
+          fontSize: 13, color: 'var(--ink-mute)',
+        }}>
+          <div>© 2026 Lifted.vc</div>
+          <div style={{ fontStyle: 'italic', fontFamily: 'var(--serif)', fontSize: 15, color: 'var(--ink-soft)' }}>
+            Honest fundraising. Tighter timelines.
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function FooterCol({ title, links }) {
+  return (
+    <div>
+      <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 16, color: 'var(--ink)' }}>{title}</div>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {links.map(l => (
+          <li key={l.l} style={{ marginBottom: 10 }}>
+            <a href={l.href} style={{
+              fontSize: 15, color: 'var(--ink-soft)',
+              transition: 'color .2s',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--ink-soft)'}
+            >{l.l}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// (stripped Object.assign)
+// === nav.jsx ===
+// Top navigation — multi-page version. `current` is the active page slug.
+function Nav({ current = 'home' }) {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Lock body scroll when drawer open
+  React.useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  const links = [
+    { href: 'index.html', slug: 'home', label: 'Home' },
+    { href: 'about.html', slug: 'about', label: 'About' },
+    { href: 'founders.html', slug: 'founders', label: 'Founders' },
+    { href: 'pricing.html', slug: 'pricing', label: 'Pricing' },
+    { href: 'https://lifted.vc/fundraising-playbook', slug: 'playbook', label: 'Playbook' },
+  ];
+
+  return (
+    <React.Fragment>
+      <nav style={{
+        position: 'sticky', top: 0, zIndex: 50,
+        background: scrolled || open ? 'rgba(251, 246, 236, 0.92)' : 'transparent',
+        backdropFilter: scrolled || open ? 'blur(18px) saturate(140%)' : 'none',
+        WebkitBackdropFilter: scrolled || open ? 'blur(18px) saturate(140%)' : 'none',
+        borderBottom: scrolled || open ? '1px solid var(--line-soft)' : '1px solid transparent',
+        transition: 'background .35s ease, border-color .35s ease',
+      }}>
+        <div className="wrap" style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          height: 'var(--nav-h, 76px)',
+        }}>
+          <a href="index.html" style={{ display: 'flex', alignItems: 'center' }}>
+            <Wordmark />
+          </a>
+
+          {/* Desktop nav */}
+          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+            <ul style={{
+              listStyle: 'none', margin: 0, padding: 0,
+              display: 'flex', gap: 32,
+              fontSize: 15,
+            }}>
+              {links.map(l => {
+                const active = l.slug === current;
+                return (
+                  <li key={l.href}>
+                    <a href={l.href} style={{
+                      color: active ? 'var(--ink)' : 'var(--ink-soft)',
+                      fontWeight: active ? 500 : 400,
+                      transition: 'color .2s',
+                      borderBottom: active ? '1.5px solid var(--accent)' : '1.5px solid transparent',
+                      paddingBottom: 4,
+                    }}
+                    onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = 'var(--ink)'; }}
+                    onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = 'var(--ink-soft)'; }}
+                    >{l.label}</a>
+                  </li>
+                );
+              })}
+            </ul>
+            <a href="contact.html" className="btn btn-primary" style={{ padding: '11px 22px', fontSize: 14 }}>
+              Work with me <Arrow size={12} />
+            </a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="mobile-toggle"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen(o => !o)}
+            style={{
+              display: 'none',
+              alignItems: 'center', justifyContent: 'center',
+              width: 44, height: 44,
+              background: 'transparent',
+              border: '1px solid var(--line)',
+              borderRadius: 999,
+              cursor: 'pointer',
+              color: 'var(--ink)',
+            }}
+          >
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
+              <line x1="0" y1="1" x2="18" y2="1" stroke="currentColor" strokeWidth="1.5"
+                style={{ transition: 'transform .25s, opacity .25s', transformOrigin: '50% 50%',
+                  transform: open ? 'translate(0, 6px) rotate(45deg)' : 'none' }}/>
+              <line x1="0" y1="7" x2="18" y2="7" stroke="currentColor" strokeWidth="1.5"
+                style={{ transition: 'opacity .2s', opacity: open ? 0 : 1 }}/>
+              <line x1="0" y1="13" x2="18" y2="13" stroke="currentColor" strokeWidth="1.5"
+                style={{ transition: 'transform .25s, opacity .25s', transformOrigin: '50% 50%',
+                  transform: open ? 'translate(0, -6px) rotate(-45deg)' : 'none' }}/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile drawer */}
+      <div className="mobile-drawer" style={{
+        position: 'fixed',
+        top: 'var(--nav-h, 76px)', left: 0, right: 0, bottom: 0,
+        zIndex: 49,
+        background: 'var(--bg)',
+        transform: open ? 'translateY(0)' : 'translateY(-110%)',
+        opacity: open ? 1 : 0,
+        pointerEvents: open ? 'auto' : 'none',
+        transition: 'transform .35s ease, opacity .25s ease',
+        display: 'flex', flexDirection: 'column',
+        padding: '40px 24px 60px',
+      }}>
+        <ul style={{
+          listStyle: 'none', margin: 0, padding: 0,
+          display: 'flex', flexDirection: 'column', gap: 4,
+          fontFamily: 'var(--serif)',
+        }}>
+          {links.map(l => {
+            const active = l.slug === current;
+            return (
+              <li key={l.href}>
+                <a href={l.href} style={{
+                  display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+                  padding: '20px 8px',
+                  borderBottom: '1px solid var(--line-soft)',
+                  fontSize: 32, fontWeight: 400,
+                  letterSpacing: '-0.02em',
+                  color: active ? 'var(--accent)' : 'var(--ink)',
+                  fontStyle: active ? 'italic' : 'normal',
+                }}>
+                  <span>{l.label}</span>
+                  <span style={{
+                    fontFamily: 'var(--mono)', fontSize: 11,
+                    color: 'var(--ink-mute)', letterSpacing: '0.1em',
+                  }}>{String(links.indexOf(l) + 1).padStart(2, '0')}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <a href="contact.html" className="btn btn-primary" style={{
+          marginTop: 32, alignSelf: 'flex-start',
+          padding: '16px 28px', fontSize: 15,
+        }}>
+          Work with me <Arrow size={13} />
+        </a>
+      </div>
+    </React.Fragment>
+  );
+}
+
+function Wordmark() {
+  return (
+    <img
+      src="assets/lifted-logo-full.png"
+      alt="Lifted"
+      className="wordmark-img"
+      style={{ height: 36, width: 'auto', display: 'block' }}
+    />
+  );
+}
+
+// (stripped Object.assign)
+// === about-page.jsx ===
+// About page — full story + philosophy/ethos consolidated
+function AboutPage() {
+  return (
+    <>
+      {/* Header */}
+      <section style={{ paddingTop: 80, paddingBottom: 60, background: 'var(--cream)' }}>
+        <div className="wrap">
+          <div style={{ maxWidth: 880 }}>
+            <Reveal>
+              <div className="eyebrow" style={{ marginBottom: 24 }}>About</div>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 style={{
+                fontSize: 'clamp(56px, 7.5vw, 120px)',
+                lineHeight: 0.96,
+                margin: 0,
+                textWrap: 'balance',
+              }}>
+                I've been <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>exactly</span> where you are.
+              </h1>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Story — sage block */}
+      <section className="bg-sage" style={{ paddingTop: 100, paddingBottom: 100 }}>
+        <div className="wrap">
+          <div data-stack="true" style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.4fr',
+            gap: 80,
+            alignItems: 'start',
+          }}>
+            <Reveal>
+              <div style={{ position: 'sticky', top: 100 }}>
+                <Photo ratio="4 / 5" src="images/adam-470.jpg" alt="USA Sailing Team · 470" />
+                <div style={{ marginTop: 14, fontSize: 14, color: 'var(--ink-soft)', fontStyle: 'italic', fontFamily: 'var(--serif)' }}>
+                  Five years at the international level<br/>before tech.
+                </div>
+              </div>
+            </Reveal>
+
+            <div style={{ fontSize: 19, lineHeight: 1.65, color: 'var(--ink)' }}>
+              <Reveal>
+                <p style={{ fontSize: 28, lineHeight: 1.35, margin: '0 0 32px', fontWeight: 400, textWrap: 'pretty' }}>
+                  Before tech, I spent five years on the USA Sailing Team, racing the 470 class
+                  internationally. That's where I learned to prepare obsessively and perform
+                  under pressure.
+                </p>
+              </Reveal>
+              <Reveal delay={100}>
+                <p style={{ margin: '0 0 24px', textWrap: 'pretty', color: 'var(--ink-soft)' }}>
+                  My first tech role was as the first sales hire at <a className="ulink" href="#">inDinero</a>, helping
+                  them hit $1M ARR. I then founded <a className="ulink" href="#">Paid Labs</a>, went through Y
+                  Combinator S2014, and raised from Pear Ventures and Founder Collective before
+                  the company was acquired.
+                </p>
+              </Reveal>
+              <Reveal delay={180}>
+                <p style={{ margin: '0 0 24px', textWrap: 'pretty', color: 'var(--ink-soft)' }}>
+                  After the sale, I joined Zinc Technologies (YC) as head of sales, then became
+                  an EIR at Wefunder, where I rediscovered what I love: helping founders turn a
+                  messy, terrifying process into something <em>methodical and winnable</em>.
+                </p>
+              </Reveal>
+              <Reveal delay={260}>
+                <p style={{ margin: 0, textWrap: 'pretty', color: 'var(--ink-soft)' }}>
+                  That led me to launch Lifted.vc. Since then, I've coached <strong style={{ color: 'var(--ink)' }}>100+ founders</strong> from
+                  pre-seed through Series A, helping them raise over <strong style={{ color: 'var(--ink)' }}>$80M</strong> in total capital.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Principles — combined philosophy + ethos, simpler */}
+      <section className="bg-butter">
+        <div className="wrap">
+          <Reveal>
+            <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 72px' }}>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>How I work</div>
+              <h2 style={{ fontSize: 'clamp(44px, 6vw, 88px)', lineHeight: 1, textWrap: 'balance' }}>
+                Coaching done <span style={{ fontStyle: 'italic' }}>differently.</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          <div data-stack="true" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 24,
+          }}>
+            {[
+              { title: 'Founder-focused', body: "I've successfully fundraised myself. My advice comes from the founder perspective, not from a consultant who's never done it." },
+              { title: 'No equity, ever', body: "I don't take equity in your startup. I want to remain unbiased and solely focused on your fundraising goals." },
+              { title: 'Tactical + mental', body: "Real strategies AND real support to navigate the emotional rollercoaster. Both matter equally." },
+              { title: 'Direct, no filler', body: "I cut to the chase, focus on what moves the needle, and never give you homework you'll never do." },
+            ].map((p, i) => (
+              <Reveal key={p.title} delay={(i % 2) * 80}>
+                <div style={{
+                  background: 'var(--cream)',
+                  borderRadius: 16,
+                  padding: 36,
+                  height: '100%',
+                }}>
+                  <h4 style={{ fontSize: 28, margin: '0 0 14px', lineHeight: 1.1 }}>{p.title}</h4>
+                  <p style={{ fontSize: 16.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// (stripped Object.assign)
+// === founders-page.jsx ===
+// Founders page — all testimonials
+function FoundersPage() {
+  const quotes = [
+    { q: "Adam didn't just give me coaching, he gave me a process. One that replaced guesswork with clarity, confidence, and precision. Other founders kept saying, 'You're raising your pre-seed with the diligence of a Series A.'", who: 'Leni', tag: 'Pre-seed founder', bg: 'var(--blush)' },
+    { q: "10/10. The sprint was extremely helpful to understand the VC game. I wish I had found it even earlier — it would have saved me at least 100 hours and $20K+.", who: 'Misha', tag: 'Sprint alum', bg: 'var(--butter)' },
+    { q: "I never ran a process before working with Adam. He made it easy — a lot of work, but the consistent effort paid off in more investor calls than I've ever taken in a 4-week period.", who: 'Ndonga', tag: 'Seed founder', bg: 'var(--sage)' },
+    { q: "Adam took me from cool science project to funded business. The curriculum gave me tangible mechanics that translated directly into capital raised.", who: 'Aidan', tag: 'Pre-seed founder', bg: 'var(--sky)' },
+    { q: "I highly recommend this program. You'll learn a lot about how to run a tight fundraising process, refine your pitch, and set the right mindset.", who: 'Mary-Ann', tag: 'Seed founder', bg: 'var(--blush)' },
+  ];
+
+  return (
+    <>
+      <section style={{ paddingTop: 80, paddingBottom: 60, background: 'var(--cream)' }}>
+        <div className="wrap">
+          <div style={{ maxWidth: 880 }}>
+            <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Founders</div></Reveal>
+            <Reveal delay={100}>
+              <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
+                Results speak <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>louder.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p style={{ fontSize: 21, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
+                From first-time founders to repeat entrepreneurs — a small selection of recent
+                engagements.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 40, paddingBottom: 120, background: 'var(--cream)' }}>
+        <div className="wrap">
+          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+            {quotes.map((q, i) => (
+              <Reveal key={q.who} delay={(i % 2) * 80}>
+                <div style={{
+                  padding: 40,
+                  background: q.bg,
+                  borderRadius: 16,
+                  height: '100%',
+                  display: 'flex', flexDirection: 'column',
+                }}>
+                  <div style={{ fontFamily: 'var(--serif)', fontSize: 80, color: 'var(--ink)', lineHeight: 0.5, marginBottom: 24, opacity: 0.4, fontStyle: 'italic' }}>"</div>
+                  <p className="serif" style={{ fontSize: 22, lineHeight: 1.4, color: 'var(--ink)', margin: '0 0 32px', textWrap: 'pretty', flex: 1, fontWeight: 400 }}>
+                    {q.q}
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, paddingTop: 24, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
+                    <Avatar letter={q.who[0]} small />
+                    <div>
+                      <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontStyle: 'italic' }}>{q.who}</div>
+                      <div style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{q.tag}</div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// (stripped Object.assign)
+// === pricing-page.jsx ===
+// Pricing page — full pricing + FAQ
+function PricingPage() {
+  const plans = [
+    {
+      tag: 'Consultation', price: 'Free', cadence: '30-minute call',
+      title: 'Free Fundraising Consultation',
+      desc: 'An honest read on where you are and what would unblock your raise. Candid, conversational, entirely on the house.',
+      includes: [
+        '30-minute working call',
+        'Honest read on readiness',
+        'Concrete next steps',
+        'Open agenda, candid feedback',
+      ],
+      cta: 'Book a call',
+      bg: 'var(--sky)',
+    },
+    {
+      tag: 'Round coaching', price: '~$1K', cadence: 'per month',
+      title: '1-on-1 Round Coaching',
+      desc: 'Your dedicated co-pilot from narrative through close. We run your fundraising round together, week by week.',
+      includes: [
+        'Weekly 1-on-1 coaching',
+        'Live pitch practice',
+        'Investor list & deck reviews',
+        'Process management through close',
+      ],
+      cta: 'Work with me',
+      bg: 'var(--butter)',
+      highlight: true,
+    },
+    {
+      tag: 'Prep coaching', price: '~$1K', cadence: 'per month',
+      title: '1-on-1 Round Prep Coaching',
+      desc: 'For founders building toward their raise. We sharpen entrepreneurship, customer discovery, and company-building until you are investor-ready.',
+      includes: [
+        'Entrepreneurship fundamentals',
+        'Customer discovery',
+        'Company-building strategy',
+        'Investor-readiness checkpoints',
+      ],
+      cta: "Let's talk",
+      bg: 'var(--blush)',
+    },
+  ];
+
+  return (
+    <>
+      <section style={{ paddingTop: 80, paddingBottom: 60, background: 'var(--cream)' }}>
+        <div className="wrap">
+          <div style={{ maxWidth: 880 }}>
+            <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Pricing</div></Reveal>
+            <Reveal delay={100}>
+              <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
+                Three ways to <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>work together.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p style={{ fontSize: 21, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
+                No equity taken — ever. Pricing is honest and flexible: pick what fits your stage,
+                your timeline, and how involved you want me to be.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 60, paddingBottom: 100, background: 'var(--cream)' }}>
+        <div className="wrap">
+          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+            {plans.map((p, i) => (
+              <Reveal key={p.title} delay={i * 80}>
+                <div style={{
+                  padding: 36,
+                  background: p.bg,
+                  borderRadius: 16,
+                  height: '100%',
+                  display: 'flex', flexDirection: 'column',
+                  position: 'relative',
+                }}>
+                  {p.highlight && (
+                    <div style={{
+                      position: 'absolute', top: -12, right: 24,
+                      background: 'var(--ink)', color: 'var(--cream)',
+                      padding: '6px 14px', borderRadius: 999,
+                      fontSize: 12, fontWeight: 500,
+                    }}>Most popular</div>
+                  )}
+                  <div style={{ fontSize: 13, color: 'var(--accent)', fontWeight: 500, marginBottom: 14 }}>{p.tag}</div>
+                  <h3 style={{ fontSize: 32, margin: '0 0 8px', lineHeight: 1.05 }}>{p.title}</h3>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 18 }}>
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: 40, fontWeight: 400, letterSpacing: '-0.02em' }}>{p.price}</span>
+                    <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>{p.cadence}</span>
+                  </div>
+                  <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '0 0 24px', textWrap: 'pretty' }}>{p.desc}</p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
+                    {p.includes.map(inc => (
+                      <li key={inc} style={{
+                        padding: '12px 0',
+                        borderBottom: '1px solid rgba(0,0,0,0.08)',
+                        fontSize: 14.5, color: 'var(--ink)',
+                        display: 'flex', gap: 10, alignItems: 'baseline',
+                      }}>
+                        <span style={{ color: 'var(--accent)' }}>→</span> {inc}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="contact.html" className="btn btn-primary" style={{ marginTop: 24, justifyContent: 'center' }}>{p.cta} <Arrow /></a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <FAQ />
+    </>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = React.useState(0);
+  const items = [
+    { q: 'Do you take equity?', a: "No. I don't take equity in your startup — I want to remain unbiased and solely focused on your fundraising goals." },
+    { q: 'Who do you take on as clients?', a: "I'm selective on purpose: I only work with founders I strongly believe can successfully fundraise. Small client roster, deep focus." },
+    { q: "What if I'm not sure I'm ready to fundraise?", a: "Ask me — readiness is complex. Market timing, revenue, product maturity, and traction all factor in. I help you evaluate before you commit." },
+    { q: 'Can you guarantee success?', a: "No, and be skeptical of anyone who does. What I can promise is a process that gives you the best possible shot — and the honesty to tell you when something isn't working." },
+    { q: 'How much does it cost?', a: "Round Coaching and Round Prep Coaching run around $1K/month on retainer. The fundraising consultation is on the house. Reach out and we'll find the right fit for your stage." },
+  ];
+
+  return (
+    <section id="faq" style={{ background: 'var(--cream)', paddingTop: 120, paddingBottom: 140 }}>
+      <div className="wrap">
+        <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 80, alignItems: 'start' }}>
+          <Reveal>
+            <div style={{ position: 'sticky', top: 100 }}>
+              <div className="eyebrow" style={{ marginBottom: 20 }}>FAQ</div>
+              <h2 style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1, textWrap: 'balance' }}>
+                Good questions,<br/><span style={{ fontStyle: 'italic' }}>straight</span> answers.
+              </h2>
+            </div>
+          </Reveal>
+          <div>
+            {items.map((it, i) => {
+              const isOpen = open === i;
+              return (
+                <div key={it.q} style={{ borderBottom: '1px solid var(--line)' }}>
+                  <button
+                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    style={{
+                      width: '100%', display: 'flex',
+                      justifyContent: 'space-between', alignItems: 'center', gap: 24,
+                      padding: '28px 0', background: 'transparent', border: 0,
+                      cursor: 'pointer', textAlign: 'left', color: 'var(--ink)',
+                    }}
+                  >
+                    <span style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.015em' }}>{it.q}</span>
+                    <span style={{ fontSize: 22, color: 'var(--accent)', transition: 'transform .3s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
+                  </button>
+                  <div style={{ maxHeight: isOpen ? 400 : 0, overflow: 'hidden', transition: 'max-height .5s, padding .3s', paddingBottom: isOpen ? 24 : 0 }}>
+                    <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: 0, maxWidth: 640, textWrap: 'pretty' }}>{it.a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// (stripped Object.assign)
+// === contact-page.jsx ===
+// Contact page — full form
+function ContactPage() {
+  const [stage, setStage] = React.useState('Pre-seed');
+  const [submitted, setSubmitted] = React.useState(false);
+  const stages = ['Pre-seed', 'Seed', 'Series A', 'Not sure yet'];
+
+  // Inject input styles once
+  React.useEffect(() => {
+    if (document.getElementById('form-styles')) return;
+    const s = document.createElement('style');
+    s.id = 'form-styles';
+    s.innerHTML = `
+      .field-input input, .field-input textarea {
+        width: 100%; background: transparent; border: 0;
+        border-bottom: 1.5px solid var(--line); padding: 14px 0;
+        color: var(--ink); font-family: var(--sans); font-size: 17px;
+        outline: none; transition: border-color .25s; resize: vertical;
+      }
+      .field-input input::placeholder, .field-input textarea::placeholder { color: var(--ink-mute); }
+      .field-input input:focus, .field-input textarea:focus { border-color: var(--accent); }
+    `;
+    document.head.appendChild(s);
+  }, []);
+
+  return (
+    <section style={{ paddingTop: 80, paddingBottom: 120, background: 'var(--cream)' }}>
+      <div className="wrap">
+        <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
+          <div>
+            <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Let's talk</div></Reveal>
+            <Reveal delay={100}>
+              <h1 style={{ fontSize: 'clamp(56px, 7.5vw, 120px)', lineHeight: 0.96, margin: 0, textWrap: 'balance' }}>
+                Ready to <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>raise?</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p style={{
+                fontSize: 22, lineHeight: 1.45, color: 'var(--ink-soft)',
+                margin: '32px 0 0', maxWidth: 480,
+                textWrap: 'pretty',
+              }}>
+                Most founders spend 6–12 months on a raise that should take 3.
+                Let's change that.
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={150}>
+            <div style={{ background: 'var(--butter)', borderRadius: 16, padding: 40 }}>
+              {submitted ? (
+                <div style={{ padding: '40px 0', textAlign: 'center' }}>
+                  <div className="serif" style={{ fontSize: 40, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 16 }}>Thanks.</div>
+                  <p style={{ color: 'var(--ink-soft)', fontSize: 17 }}>I'll get back to you within 48 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+                  <h3 style={{ fontSize: 26, margin: '0 0 8px', lineHeight: 1.1 }}>Tell me about your raise.</h3>
+                  <p style={{ fontSize: 14, color: 'var(--ink-soft)', margin: '0 0 28px' }}>I respond personally within 48 hours.</p>
+
+                  <Field label="Name"><input type="text" placeholder="Your name" /></Field>
+                  <Field label="Email"><input type="email" placeholder="you@company.com" /></Field>
+                  <Field label="Company"><input type="text" placeholder="What you're building" /></Field>
+
+                  <div style={{ marginBottom: 24 }}>
+                    <label style={{ display: 'block', fontSize: 12, color: 'var(--ink-soft)', marginBottom: 10, fontWeight: 500 }}>Stage</label>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                      {stages.map(s => (
+                        <button type="button" key={s} onClick={() => setStage(s)}
+                          style={{
+                            padding: '8px 16px',
+                            background: stage === s ? 'var(--ink)' : 'transparent',
+                            color: stage === s ? 'var(--cream)' : 'var(--ink)',
+                            border: '1.5px solid var(--ink)',
+                            borderRadius: 999, fontSize: 14, cursor: 'pointer',
+                            fontFamily: 'var(--sans)',
+                          }}
+                        >{s}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Field label="What's on your mind?"><textarea rows={3} placeholder="Where are you, and what would help most?" /></Field>
+
+                  <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: 8 }}>
+                    Send it <Arrow />
+                  </button>
+                </form>
+              )}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Field({ label, children }) {
+  return (
+    <div className="field-input" style={{ marginBottom: 18 }}>
+      <label style={{ display: 'block', fontSize: 12, color: 'var(--ink-soft)', marginBottom: 4, fontWeight: 500 }}>{label}</label>
+      {children}
+    </div>
+  );
+}
+
+// (stripped Object.assign)
+
+// === Mini router so internal links switch pages in-place ===
+function App() {
+  const [page, setPage] = useState('home');
+
+  useEffect(() => {
+    const handler = (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      if (!href) return;
+      if (href.startsWith('http') || href.startsWith('mailto:')) return;
+      const map = {
+        'index.html': 'home',
+        'about.html': 'about',
+        'founders.html': 'founders',
+        'pricing.html': 'pricing',
+        'contact.html': 'contact',
+      };
+      const cleanHref = href.split('#')[0];
+      if (cleanHref in map) {
+        e.preventDefault();
+        setPage(map[cleanHref]);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else if (href.startsWith('#')) {
+        // allow same-page anchor scrolling
+      } else if (href === '') {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+  }, []);
+
+  let body;
+  if (page === 'home') body = <><Hero /><Proof /><Process /><ServicesTeaser /><FeaturedQuote /><CTA /></>;
+  else if (page === 'about') body = <><AboutPage /><CTA /></>;
+  else if (page === 'founders') body = <><FoundersPage /><CTA /></>;
+  else if (page === 'pricing') body = <><PricingPage /><CTA /></>;
+  else if (page === 'contact') body = <ContactPage />;
+
+  return (
+    <>
+      <Nav current={page === 'home' ? 'home' : page} />
+      {body}
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>
