@@ -13024,5 +13024,173 @@ ReactDOM.createRoot(document.getElementById('root')).render(/*#__PURE__*/React.c
 
 </script>
 
+<!-- ASK-ENH v3 -->
+<style id="ask-enh-style">
+.ohx-fab{position:fixed;left:22px;bottom:22px;z-index:9000;display:inline-flex;align-items:center;gap:10px;background:var(--molten,#edb300);color:var(--ink,#0a0a0a);border:1.5px solid var(--molten-deep,#c89500);border-radius:100px;padding:11px 20px 11px 13px;font-family:var(--font-display,'Inter Tight',sans-serif);font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 14px 32px -12px rgba(200,149,0,.85);transition:transform .15s,background .2s}
+.ohx-fab:hover{background:var(--molten-deep,#c89500);transform:translateY(-2px)}
+.ohx-fab .av{width:30px;height:30px;border-radius:50%;background:var(--cobalt,#3d5c66);color:#fff;display:grid;place-items:center;font-family:var(--font-serif,'Source Serif 4',serif);font-weight:600;font-size:15px}
+.ohx-fab .dot{width:8px;height:8px;border-radius:50%;background:var(--sage-deep,#4f7960);animation:ohxpz 2.4s infinite;margin-left:2px}
+@keyframes ohxpz{0%{box-shadow:0 0 0 0 rgba(79,121,96,.55)}70%{box-shadow:0 0 0 8px rgba(79,121,96,0)}100%{box-shadow:0 0 0 0 rgba(79,121,96,0)}}
+.ohx-scrim{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;background:rgba(10,10,10,.55)}
+.ohx-scrim.open{display:flex}
+.ohx-panel{background:var(--paper,#fff);width:100%;max-width:560px;border:1.5px solid var(--ink,#0a0a0a);box-shadow:0 40px 90px -30px rgba(0,0,0,.55);animation:ohxrise .28s cubic-bezier(.2,.8,.2,1);font-family:var(--font-display,'Inter Tight',sans-serif)}
+@keyframes ohxrise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ohx-head{background:var(--cobalt,#3d5c66);color:#fff;padding:18px 22px;display:flex;gap:14px;align-items:center}
+.ohx-head .av{width:50px;height:50px;border-radius:50%;flex:0 0 auto;background:var(--molten,#edb300);color:var(--ink,#0a0a0a);display:grid;place-items:center;font-family:var(--font-serif,serif);font-weight:600;font-size:22px;box-shadow:0 0 0 3px rgba(255,255,255,.25)}
+.ohx-head .eyb2{font-family:var(--font-mono,monospace);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:3px}
+.ohx-head h2{font-family:var(--font-display,sans-serif);font-weight:800;font-size:23px;letter-spacing:-.025em;margin:0;line-height:1.05}
+.ohx-head .x{margin-left:auto;align-self:flex-start;width:30px;height:30px;display:grid;place-items:center;background:rgba(255,255,255,.15);color:#fff;font-size:20px;border:0;border-radius:4px;cursor:pointer}
+.ohx-hbar{display:flex;align-items:center;gap:12px;padding:9px 22px;background:var(--cobalt-deep,#2a4048);color:#dfe7e9;font-family:var(--font-mono,monospace);font-size:11px;letter-spacing:.03em;flex-wrap:wrap}
+.ohx-hbar .cd{color:#fff;font-weight:700}
+.ohx-hbar .sep{opacity:.4}
+.ohx-body{padding:22px 24px 26px}
+.ohx-dots{display:flex;gap:6px;margin-bottom:16px}
+.ohx-dots i{width:26px;height:4px;border-radius:2px;background:var(--rule,#e9e8e3)}
+.ohx-dots i.on{background:var(--molten,#edb300)}
+.ohx-q{font-family:var(--font-display,sans-serif);font-weight:700;font-size:20px;letter-spacing:-.01em;margin:0 0 4px;color:var(--ink,#0a0a0a)}
+.ohx-sub{font-family:var(--font-serif,serif);font-size:14.5px;color:var(--ink-3,#6a6a66);margin:0 0 16px}
+.ohx-opts{display:flex;flex-direction:column;gap:8px}
+.ohx-opt{display:flex;align-items:center;gap:12px;text-align:left;background:var(--paper,#fff);border:1.5px solid var(--rule,#e9e8e3);border-radius:8px;padding:13px 15px;font-family:var(--font-display,sans-serif);font-size:15.5px;color:var(--ink,#0a0a0a);cursor:pointer;transition:border-color .14s,background .14s;width:100%}
+.ohx-opt:hover{border-color:var(--cobalt,#3d5c66);background:var(--paper-2,#faf7ef)}
+.ohx-opt .k{font-family:var(--font-mono,monospace);font-size:11px;color:var(--cobalt,#3d5c66);font-weight:700;background:var(--cobalt-tint,#e7eced);border-radius:4px;padding:3px 7px}
+.ohx-opt .arw{margin-left:auto;color:var(--cobalt,#3d5c66);font-weight:700;opacity:0;transition:opacity .14s}
+.ohx-opt:hover .arw{opacity:1}
+.ohx-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ohx-chip{background:var(--paper,#fff);border:1.5px solid var(--rule,#e9e8e3);border-radius:100px;padding:9px 16px;font-family:var(--font-display,sans-serif);font-size:14.5px;color:var(--ink,#0a0a0a);cursor:pointer;transition:all .14s}
+.ohx-chip:hover{border-color:var(--cobalt,#3d5c66);background:var(--paper-2,#faf7ef)}
+.ohx-wall{margin-top:20px;border-top:1px solid var(--rule,#e9e8e3);padding-top:16px}
+.ohx-wall .lbl{font-family:var(--font-mono,monospace);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3,#6a6a66);margin-bottom:10px}
+.ohx-qa{margin-bottom:12px}
+.ohx-qa .qq{font-family:var(--font-serif,serif);font-size:14px;color:var(--ink,#0a0a0a);font-style:italic}
+.ohx-qa .aa{font-family:var(--font-display,sans-serif);font-size:13px;color:var(--ink-3,#6a6a66);margin-top:2px}
+.ohx-qa .aa b{color:var(--sage-deep,#4f7960);font-weight:700;font-family:var(--font-mono,monospace);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.ohx-made{font-family:var(--font-mono,monospace);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-deep,#4f7960);font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.ohx-body textarea#ohxComposed{width:100%;font-family:var(--font-serif,serif);font-size:16px;line-height:1.5;color:var(--ink,#0a0a0a);background:var(--paper,#fff);border:1.5px solid var(--cobalt,#3d5c66);border-radius:8px;padding:14px;min-height:120px;resize:vertical;outline:none}
+.ohx-hint{font-family:var(--font-display,sans-serif);font-size:13px;color:var(--ink-3,#6a6a66);margin:8px 0 16px}
+.ohx-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px}
+@media(max-width:520px){.ohx-row{grid-template-columns:1fr}}
+.ohx-fld label{display:block;font-family:var(--font-mono,monospace);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3,#6a6a66);margin-bottom:6px}
+.ohx-fld input{width:100%;font-family:var(--font-display,sans-serif);font-size:15px;border:1.5px solid var(--rule,#e9e8e3);border-radius:6px;padding:11px 12px;outline:none}
+.ohx-fld input:focus{border-color:var(--cobalt,#3d5c66)}
+.ohx-send{width:100%;margin-top:16px;background:var(--molten,#edb300);color:var(--ink,#0a0a0a);border:1.5px solid var(--molten-deep,#c89500);border-radius:8px;padding:15px;font-family:var(--font-display,sans-serif);font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px}
+.ohx-send:hover{background:var(--molten-deep,#c89500)}
+.ohx-send .arw{background:var(--cobalt,#3d5c66);color:#fff;font-family:var(--font-mono,monospace);font-size:10.5px;padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+.ohx-back{background:none;border:0;color:var(--ink-3,#6a6a66);font-family:var(--font-display,sans-serif);font-size:13.5px;cursor:pointer;margin-top:14px;padding:4px 0}
+.ohx-back:hover{color:var(--ink,#0a0a0a)}
+.ohx-err{color:var(--coral-deep,#a64a4a);font-family:var(--font-display,sans-serif);font-size:13.5px;margin:8px 0 0}
+.ohx-confirm{text-align:center;padding:12px 6px}
+.ohx-confirm .av{width:66px;height:66px;border-radius:50%;margin:0 auto 16px;background:var(--molten,#edb300);color:var(--ink,#0a0a0a);display:grid;place-items:center;font-family:var(--font-serif,serif);font-weight:600;font-size:28px}
+.ohx-confirm h3{font-family:var(--font-display,sans-serif);font-weight:800;font-size:25px;letter-spacing:-.02em;margin:0 0 8px}
+.ohx-confirm p{font-family:var(--font-serif,serif);font-size:15.5px;color:var(--ink-2,#2a2a2a);max-width:400px;margin:0 auto 8px}
+.ohx-batch{display:inline-flex;align-items:center;gap:8px;margin-top:10px;background:var(--sage-tint,#ebf2ed);border:1px solid var(--sage-deep,#4f7960);border-radius:100px;padding:7px 15px;font-family:var(--font-mono,monospace);font-size:11px;color:var(--sage-deep,#4f7960);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.ohx-hidden{display:none!important}
+</style>
+<button class="ohx-fab" type="button" onclick="window.ohxOpen&&window.ohxOpen()" aria-label="Ask Adam a question"><span class="av">A</span>Ask Adam<span class="dot"></span></button>
+<div class="ohx-scrim" id="ohxScrim" role="dialog" aria-modal="true" aria-label="Ask Adam a question">
+  <div class="ohx-panel">
+    <div class="ohx-head">
+      <div class="av">A</div>
+      <div><div class="eyb2">Ask Adam &middot; Office Hours</div><h2>Get your question answered</h2></div>
+      <button class="x" type="button" onclick="window.ohxClose()" aria-label="Close">&times;</button>
+    </div>
+    <div class="ohx-hbar"><span>I answer founder questions every Friday, personally.</span><span class="sep">&middot;</span><span>Next batch in <span class="cd" id="ohxCd">&mdash;</span></span><span class="sep">&middot;</span><span id="ohxAnswered">answered</span></div>
+    <div class="ohx-body">
+      <div class="ohx-dots"><i id="ohxd1" class="on"></i><i id="ohxd2"></i><i id="ohxd3"></i></div>
+      <div id="ohxStep1">
+        <h3 class="ohx-q">First, where are you?</h3>
+        <p class="ohx-sub">So the answer fits your stage, not a generic one.</p>
+        <div class="ohx-chips">
+          <button class="ohx-chip" onclick="window.ohxStage('pre-seed','Pre-seed')">Pre-seed</button>
+          <button class="ohx-chip" onclick="window.ohxStage('seed','Seed')">Seed</button>
+          <button class="ohx-chip" onclick="window.ohxStage('Series A','Series A')">Series A</button>
+          <button class="ohx-chip" onclick="window.ohxStage('','Not sure yet')">Not sure yet</button>
+        </div>
+        <div class="ohx-wall">
+          <div class="lbl">A few Adam answered recently</div>
+          <div class="ohx-qa"><div class="qq">"Getting second meetings but no term sheets after 6 weeks. What's wrong?"</div><div class="aa"><b>Adam &rarr;</b> Usually the narrative, not the traction. Here's how to find the break...</div></div>
+          <div class="ohx-qa"><div class="qq">"My target list is 15 firms and I've run out. Where do I find more?"</div><div class="aa"><b>Adam &rarr;</b> You need about 120 at the top. Three sources most founders miss...</div></div>
+        </div>
+      </div>
+      <div id="ohxStep2" class="ohx-hidden">
+        <h3 class="ohx-q">What's most in your way right now?</h3>
+        <p class="ohx-sub">Pick the one that stings most. I'll turn it into a sharp question.</p>
+        <div class="ohx-opts">
+          <button class="ohx-opt" onclick="window.ohxBlocker('list','My investor list feels too thin')"><span class="k">01</span>My investor list feels too thin<span class="arw">&rarr;</span></button>
+          <button class="ohx-opt" onclick="window.ohxBlocker('noTS','Meetings, but no term sheets')"><span class="k">02</span>Meetings, but no term sheets<span class="arw">&rarr;</span></button>
+          <button class="ohx-opt" onclick="window.ohxBlocker('stall','Round may be stalling')"><span class="k">03</span>I can't tell if my round is stalling<span class="arw">&rarr;</span></button>
+          <button class="ohx-opt" onclick="window.ohxBlocker('story','Story isn't landing')"><span class="k">04</span>My story isn't landing<span class="arw">&rarr;</span></button>
+          <button class="ohx-opt" onclick="window.ohxBlocker('real','Is this VC real?')"><span class="k">05</span>Is this VC real, or wasting my time?<span class="arw">&rarr;</span></button>
+          <button class="ohx-opt" onclick="window.ohxBlocker('close','Negotiating and closing')"><span class="k">06</span>Negotiating and closing the round<span class="arw">&rarr;</span></button>
+          <button class="ohx-opt" onclick="window.ohxBlocker('other','Something else')"><span class="k">07</span>Something else<span class="arw">&rarr;</span></button>
+        </div>
+        <button class="ohx-back" onclick="window.ohxGo(1)">&larr; Back</button>
+      </div>
+      <div id="ohxStep3" class="ohx-hidden">
+        <div class="ohx-made"><span>&#10022;</span> Here's the question I'd ask on your behalf</div>
+        <textarea id="ohxComposed"></textarea>
+        <div class="ohx-hint">Make it yours. Tweak a word, add your specifics. The more real, the better my answer.</div>
+        <div class="ohx-row">
+          <div class="ohx-fld"><label>Your name</label><input id="ohxNm" placeholder="First name is fine"></div>
+          <div class="ohx-fld"><label>Where I reply</label><input id="ohxEm" type="email" placeholder="you@company.com"></div>
+        </div>
+        <div class="ohx-err" id="ohxErr"></div>
+        <button class="ohx-send" id="ohxSend" onclick="window.ohxSubmit()">Add me to Friday's batch <span class="arw">SEND</span></button>
+        <button class="ohx-back" onclick="window.ohxGo(2)">&larr; Pick a different blocker</button>
+      </div>
+      <div id="ohxDone" class="ohx-hidden ohx-confirm">
+        <div class="av">A</div>
+        <h3>You're in Friday's batch.</h3>
+        <p>I read every question myself and reply personally by email, usually within a day. This one's a good one, talk soon.</p>
+        <div class="ohx-batch">&#10003; Question sent to Adam</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  // ---- answered counter: no backend; grows every Friday from a base you set ----
+  var AC_BASE = 134;                        // opening number (Adam's pick)
+  var AC_ANCHOR = Date.UTC(2026,7,7,17,0,0); // Fri Aug 8 2026 anchor; bumps land each Friday
+  var AC_MIN = 5, AC_MAX = 12;               // random-looking weekly bump range
+  function answered(){
+    var weeks=Math.floor((Date.now()-AC_ANCHOR)/(7*24*3.6e6)); if(weeks<0)weeks=0;
+    var total=AC_BASE;
+    for(var i=1;i<=weeks;i++){var x=Math.sin(i*928.371)*10000;x=x-Math.floor(x);total+=AC_MIN+Math.floor(x*(AC_MAX-AC_MIN+1));}
+    return total;
+  }
+  function nextFriday(){var n=new Date();var d=new Date(n);var day=n.getDay();var add=(5-day+7)%7;if(add===0&&n.getHours()>=9)add=7;d.setDate(n.getDate()+add);d.setHours(9,0,0,0);return d;}
+  function tick(){var el=document.getElementById('ohxCd');if(!el)return;var ms=nextFriday()-new Date();if(ms<0)ms=0;var h=Math.floor(ms/3.6e6);var dd=Math.floor(h/24);var hh=h%24;el.textContent=(dd>0?dd+'d ':'')+hh+'h';}
+  var stage='',stageLabel='',blocker='',blockerLabel='';
+  var Q={
+   list:function(s){return "I'm raising a "+s+" round and my target list feels thin, and I can confidently name only about [12] firms I'd be excited about. How do I widen the top of my funnel to the number I actually need, and where do I find good-fit investors beyond the obvious names?";},
+   noTS:function(s){return "I'm getting "+s+" first and second meetings but no term sheets after about [6] weeks. How do I diagnose whether it's my narrative, my traction, or the room I'm in, and what would you change this week?";},
+   stall:function(s){return "My "+s+" round has been open around [5] weeks and I honestly can't tell if it's stalling or just slow. What signals tell you a process is quietly dying versus normal, and how do I re-create momentum without looking desperate?";},
+   story:function(s){return "Investors seem interested at first but my "+s+" narrative isn't landing, and I feel them drift somewhere in the pitch. How do I find the exact moment it breaks and rebuild the story around what they actually care about?";},
+   real:function(s){return "I have a "+s+" investor taking lots of meetings, but I can't tell if they're real or just gathering market intel. How do I read their signals and push for a clear yes-or-no without burning the relationship?";},
+   close:function(s){return "I'm at the "+s+" term-sheet stage and out of my depth on terms and leverage. Which terms actually matter for a founder, and how do I create enough competitive tension to close on good ones?";}
+  };
+  function $(id){return document.getElementById(id);}
+  function setDots(n){[1,2,3].forEach(function(i){$('ohxd'+i).classList.toggle('on',i<=n);});}
+  window.ohxGo=function(n){['ohxStep1','ohxStep2','ohxStep3','ohxDone'].forEach(function(id){$(id).classList.add('ohx-hidden');});
+    if(n===1){$('ohxStep1').classList.remove('ohx-hidden');setDots(1);}
+    if(n===2){$('ohxStep2').classList.remove('ohx-hidden');setDots(2);}
+    if(n===3){$('ohxStep3').classList.remove('ohx-hidden');setDots(3);}
+    if(n===4){$('ohxDone').classList.remove('ohx-hidden');setDots(3);}};
+  window.ohxOpen=function(){stage='';blocker='';$('ohxErr').textContent='';var a=$('ohxAnswered');if(a)a.textContent=answered().toLocaleString()+' answered';tick();window.ohxGo(1);$('ohxScrim').classList.add('open');var f=document.querySelector('.ohx-fab');if(f)f.style.display='none';};
+  window.ohxClose=function(){$('ohxScrim').classList.remove('open');var f=document.querySelector('.ohx-fab');if(f)f.style.display='';};
+  window.ohxStage=function(v,label){stage=v;stageLabel=label;window.ohxGo(2);};
+  window.ohxBlocker=function(key,label){blocker=key;blockerLabel=label;var s=stage||'a';var text=(key==='other')?("Here's what's actually on my mind about my "+(stage||'')+" raise: "):Q[key](s);$('ohxComposed').value=text;window.ohxGo(3);setTimeout(function(){try{var t=$('ohxComposed');t.focus();t.setSelectionRange(t.value.length,t.value.length);}catch(e){}},80);};
+  window.ohxSubmit=function(){var send=$('ohxSend');if(send.disabled)return;var q=($('ohxComposed').value||'').trim();var nm=($('ohxNm').value||'').trim();var em=($('ohxEm').value||'').trim();if(!q){$('ohxErr').textContent='Add your question first.';return;}if(!em){$('ohxErr').textContent='Add an email so Adam can reply.';return;}$('ohxErr').textContent='';var msg=q+"\n\n----\nStage: "+(stageLabel||'unspecified')+" | Stuck on: "+(blockerLabel||'unspecified')+"\nSent from the Fundraising Playbook, Office Hours";var fields={'form-name':'ask-a-question','bot-field':'','name':nm,'email':em,'message':msg};var body=Object.keys(fields).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(fields[k]);}).join('&');send.disabled=true;var old=send.innerHTML;send.textContent='Sending...';fetch('/',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(){window.ohxGo(4);}).catch(function(){$('ohxErr').textContent='Something went wrong. Please try again, or email adam@lifted.vc directly.';}).finally(function(){send.disabled=false;send.innerHTML=old;});};
+  function install(){window.openAskModal=window.ohxOpen;}
+  install();[250,800,1800,3200].forEach(function(t){setTimeout(install,t);});
+  document.addEventListener('DOMContentLoaded',install);
+  var sc=$('ohxScrim');if(sc){sc.addEventListener('click',function(e){if(e.target===sc)window.ohxClose();});}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')window.ohxClose();});
+  tick();setInterval(tick,60000);
+  var a0=$('ohxAnswered');if(a0)a0.textContent=answered().toLocaleString()+' answered';
+})();
+</script>
+<!-- /ASK-ENH -->
+
 </body>
 </html>
