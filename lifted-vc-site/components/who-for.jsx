@@ -25,7 +25,7 @@ function WhoThisIsFor() {
                 fontSize: 'clamp(34px, 3.6vw, 46px)',
                 lineHeight: 1.1, textWrap: 'balance',
               }}>
-                Selective on purpose.
+                Selective on purpose
               </h2>
               <p style={{
                 fontFamily: 'var(--lit)',

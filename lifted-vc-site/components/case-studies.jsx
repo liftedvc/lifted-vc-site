@@ -51,7 +51,7 @@ function CaseStudies() {
         <div style={{ maxWidth: 760, marginBottom: 64, marginTop: 26 }}>
           <Reveal delay={100}>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, margin: 0, textWrap: 'balance' }}>
-              What it looks like up close.
+              What it looks like up close
             </h2>
           </Reveal>
           <Reveal delay={200}>

@@ -16,7 +16,7 @@ function AboutPage() {
                 margin: 0,
                 textWrap: 'balance',
               }}>
-                I've been exactly where you are.
+                I've been exactly where you are
               </h1>
             </Reveal>
           </div>
@@ -82,7 +82,7 @@ function AboutPage() {
             <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 72px' }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>How I work</div>
               <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1, textWrap: 'balance' }}>
-                Coaching done differently.
+                Coaching done differently
               </h2>
             </div>
           </Reveal>

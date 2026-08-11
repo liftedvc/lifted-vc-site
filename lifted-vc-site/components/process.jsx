@@ -3,17 +3,17 @@ function Process() {
   const phases = [
     {
       n: '1',
-      title: 'Build the story investors buy.',
+      title: 'Build the story investors buy',
       lead: "Investors decide in the first minutes, so we build your narrative the way they listen: problem first, conclusion first, plain English. One page before ten slides, because the one-pager is what lands meetings. Then we pressure-test it in mock sessions until the hardest question in the room is one you've already answered.",
     },
     {
       n: '2',
-      title: 'Engineer warm access at volume.',
+      title: 'Engineer warm access at volume',
       lead: "Cold outreach doesn't convert, so we never do it. We work the math backward from your round: a target list of 60 to 100 right-fit investors, reached through connectors ranked by whether they'll name the exact investor they'll introduce you to. The result is 60 to 80 warm, double-opt-in introductions, real access, at the volume a round actually requires.",
     },
     {
       n: '3',
-      title: 'Compress the round until it closes.',
+      title: 'Compress the round until it closes',
       lead: "Interest expires, so we stack every first meeting into a two to three week sprint. When a dozen funds are moving at once, the urgency is real and investors can feel it. We lock in the yeses, respect the nos, kill the maybes, and when term sheets land, we negotiate from upside, with the leverage to walk.",
     },
   ];
