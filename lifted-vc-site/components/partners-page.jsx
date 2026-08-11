@@ -148,9 +148,9 @@ function PartnersPage() {
           </Reveal>
           <Reveal delay={220}>
             <p style={{ fontFamily: 'var(--lit)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.6, color: 'var(--ink)', marginTop: 24, maxWidth: 620, textWrap: 'pretty' }}>
-              If a founder isn't a fit for institutional venture, I'll say so on the first call and
-              send them back with a straight answer. Your referral is your reputation. I treat it
-              that way.
+              Every founder you send gets a straight answer on the first call, including the times
+              the honest answer is to wait a quarter or tighten something before going out.
+              Your referral is your reputation. I treat it that way.
             </p>
           </Reveal>
         </div>
