@@ -1,5 +1,9 @@
 [build]
   publish = "."
+  # Regenerate the client dashboard's playbook (fundraising-playbook-shared.html)
+  # from the single source of truth (fundraising-playbook.html) on every deploy,
+  # so the two never drift. The script is best-effort and never fails the build.
+  command = "node scripts/build-shared-playbook.mjs"
 
 # Framing is controlled via CSP frame-ancestors: the site may only be embedded
 # by Lifted's own dashboard origins (clickjacking protection is preserved).
