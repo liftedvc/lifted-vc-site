@@ -9418,6 +9418,60 @@ const PB_ONE_PAGER_BULLETS = [{
   }
   function pp(key,text){return h("p",{key:key,className:"prose"},text);}
 
+  // ---- ranked strength ladder (replaces the too-yellow eyebrow grid) ----
+  function StrengthLadder(p){
+    const A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)";
+    return h("div",{style:{display:"flex",flexDirection:"column",gap:"10px",margin:"6px 0"}},
+      p.items.map(function(it,i){
+        return h("div",{key:i,style:{display:"flex",gap:"18px",alignItems:"flex-start",border:"1px solid "+LINE,borderLeft:"3px solid "+it.color,borderRadius:"2px",padding:"15px 20px",background:"#fff"}},
+          h("div",{style:{flex:"0 0 auto",display:"flex",flexDirection:"column",gap:"7px",minWidth:"96px"}},
+            h("span",{style:{fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:it.color,fontWeight:700}},it.eyebrow),
+            h("div",{style:{display:"flex",gap:"3px"}},
+              [0,1,2,3].map(function(seg){return h("span",{key:seg,style:{width:"15px",height:"5px",borderRadius:"1px",background:(seg<it.bars)?it.color:"rgba(10,10,10,.1)"}});}))),
+          h("div",{style:{flex:"1 1 auto"}},
+            h("div",{style:{fontWeight:700,fontSize:".98rem",marginBottom:"3px",color:INK}},it.title),
+            h("div",{style:{fontSize:".86rem",lineHeight:1.5,color:MUT}},it.desc)));
+      }));
+  }
+
+  // ---- interactive checklist (replaces the flat white materials grid) ----
+  function Checklist(p){
+    const A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", SAGE="#4f7960";
+    const st=React.useState({}), checked=st[0], setChecked=st[1];
+    var total=p.items.length;
+    var done=p.items.filter(function(it,i){return checked[i];}).length;
+    function toggle(i){var n=Object.assign({},checked);n[i]=!n[i];setChecked(n);}
+    var pct=Math.round(done/total*100);
+    var full=done===total;
+    return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",background:"#fff",margin:"6px 0",overflow:"hidden"}},
+      h("div",{style:{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"12px",padding:"13px 18px",background:"#f6f5f2"}},
+        h("span",{style:{fontSize:"11px",letterSpacing:".08em",textTransform:"uppercase",fontWeight:700,color:A}},p.title||"Your pre-launch checklist"),
+        h("span",{style:{fontSize:".8rem",fontWeight:600,color:full?SAGE:MUT}},full?(done+" / "+total+"  ready to launch"):(done+" / "+total))),
+      h("div",{style:{height:"3px",background:"rgba(10,10,10,.07)"}},h("div",{style:{height:"100%",width:pct+"%",background:full?SAGE:A,transition:"width .25s ease"}})),
+      h("div",null,p.items.map(function(it,i){
+        var on=!!checked[i];
+        return h("button",{key:i,onClick:function(){toggle(i);},style:{display:"flex",gap:"14px",alignItems:"flex-start",width:"100%",textAlign:"left",font:"inherit",cursor:"pointer",background:on?"rgba(79,121,96,.05)":"#fff",border:"none",borderTop:"1px solid "+LINE,padding:"14px 18px"}},
+          h("span",{style:{flex:"0 0 auto",width:"20px",height:"20px",borderRadius:"4px",border:"1.5px solid "+(on?SAGE:"rgba(10,10,10,.28)"),background:on?SAGE:"#fff",color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",fontSize:".72rem",fontWeight:800,marginTop:"1px"}},on?"✓":""),
+          h("div",{style:{flex:"1 1 auto"}},
+            h("div",{style:{fontWeight:700,fontSize:".95rem",color:INK,textDecoration:on?"line-through":"none",opacity:on?.55:1}},it.title),
+            h("div",{style:{fontSize:".85rem",lineHeight:1.45,color:MUT,marginTop:"2px"}},it.desc)));
+      })));
+  }
+
+  // ---- cleaner accented card grid (replaces flat white BeatsGrids) ----
+  function CleanGrid(p){
+    const A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", TINT="#e7eced";
+    var accent=p.accent||A, pillBg=p.pillBg||TINT, pillFg=p.pillFg||A, min=p.min||"210px";
+    return h("div",{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax("+min+",1fr))",gap:"12px",margin:"6px 0"}},
+      p.items.map(function(it,i){
+        return h("div",{key:i,style:{border:"1px solid "+LINE,borderTop:"2px solid "+accent,borderRadius:"2px",padding:"16px 16px 15px",background:"#fff"}},
+          h("div",{style:{display:"flex",alignItems:"center",gap:"10px",marginBottom:"9px"}},
+            h("span",{style:{flex:"0 0 auto",minWidth:"24px",height:"24px",padding:"0 7px",borderRadius:"20px",background:pillBg,color:pillFg,fontSize:".72rem",fontWeight:700,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'JetBrains Mono',monospace"}},it.num),
+            h("div",{style:{fontWeight:700,fontSize:".95rem",color:INK,lineHeight:1.25}},it.title)),
+          h("div",{style:{fontSize:".85rem",lineHeight:1.5,color:MUT}},it.desc));
+      }));
+  }
+
   // ---- interactive: the arc of a raise (stage walker) ----
   function RaiseArc(){
     const A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", SOFT="#f6f5f2", GOLD="#c89500";
@@ -9473,7 +9527,7 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"Raising starts with a decision that is bigger than most founders treat it, because you are choosing to spend a season of the company selling equity instead of building product.",
       after:[
         h(window.ActMarker,{key:"a",num:"01",name:"What you are actually",accent:"weighing."}),
-        h(window.BeatsGrid,{key:"g",columns:4,items:[
+        h(CleanGrid,{key:"g",items:[
           {num:"01",title:"Your runway",desc:"How many months of cash you truly have, not the optimistic version."},
           {num:"02",title:"The milestone",desc:"What you need to prove to unlock the next round on good terms."},
           {num:"03",title:"Your real stage",desc:"What investors see when they look at you, not what it feels like inside."},
@@ -9490,12 +9544,12 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"The work that decides most raises happens before you talk to a single investor, in the story you sharpen and the list you build.",
       after:[
         h(window.ActMarker,{key:"a",num:"01",name:"The materials every raise",accent:"runs on."}),
-        h(window.BeatsGrid,{key:"g",columns:3,variant:"steps",items:[
-          {num:"1",title:"Forwardable blurb",desc:"A few lines a connector can paste in ten seconds."},
-          {num:"2",title:"One-pager or memo",desc:"The whole story on a page for a fast read."},
-          {num:"3",title:"Deck",desc:"Problem, why now, solution, market, traction, team, ask."},
-          {num:"4",title:"Demo",desc:"Proof the thing is real and works."},
-          {num:"5",title:"Data room",desc:"The basics an investor will ask for in diligence."}
+        h(Checklist,{key:"g",title:"The pre-launch checklist",items:[
+          {title:"Forwardable blurb",desc:"A few lines a connector can paste in ten seconds."},
+          {title:"One-pager or memo",desc:"The whole story on a page for a fast read."},
+          {title:"Deck",desc:"Problem, why now, solution, market, traction, team, ask."},
+          {title:"Demo",desc:"Proof the thing is real and works."},
+          {title:"Data room",desc:"The basics an investor will ask for in diligence."}
         ]}),
         pp("a","In parallel you build a target list of the specific investors who fit your stage, your sector, your geography, and your check size, and you sharpen a narrative that leads with a problem an investor can feel."),
         Tip("tip--sage","Do this first","Get the list right.","A great meeting with the wrong fund is a wasted week. When this stage is done well everything downstream gets easier, because you walk in prepared and pointed at people who can actually say yes.")
@@ -9508,11 +9562,11 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"Investors are harder to reach on purpose than founders expect, and the way you get into the room shapes the meeting before you say a word.",
       after:[
         h(window.ActMarker,{key:"a",num:"01",name:"The paths in, strongest",accent:"first."}),
-        h(window.BeatsGrid,{key:"g",columns:2,items:[
-          {eyebrow:"Strongest",title:"Warm introductions",desc:"Someone the investor trusts vouches for you and forwards your blurb. Most real meetings start here."},
-          {eyebrow:"Strong",title:"Accelerators & communities",desc:"Demo days, angel networks, and founder groups turn cold names into warm ones."},
-          {eyebrow:"Situational",title:"Events",desc:"A well-run conversation in person can create the relationship an intro needs."},
-          {eyebrow:"Weakest",title:"Cold outreach",desc:"It occasionally works, converts far worse, and starts you a step behind."}
+        h(StrengthLadder,{key:"g",items:[
+          {eyebrow:"Strongest",bars:4,color:"#4f7960",title:"Warm introductions",desc:"Someone the investor trusts vouches for you and forwards your blurb. Most real meetings start here."},
+          {eyebrow:"Strong",bars:3,color:"#3d5c66",title:"Accelerators & communities",desc:"Demo days, angel networks, and founder groups turn cold names into warm ones."},
+          {eyebrow:"Situational",bars:2,color:"#c89500",title:"Events",desc:"A well-run conversation in person can create the relationship an intro needs."},
+          {eyebrow:"Weakest",bars:1,color:"#a64a4a",title:"Cold outreach",desc:"It occasionally works, converts far worse, and starts you a step behind."}
         ]}),
         pp("a","Most of the access game is mapping who in your network can open which doors. The founders who get the most at-bats treat access as its own project, lining up a large stack of promised introductions before anything goes out."),
         h(window.Pull,{key:"p",eyebrow:"The move",quote:"Bank the intros before you launch, so the calendar floods in a tight window instead of trickling out over months."})
@@ -9525,7 +9579,7 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"Once meetings start, a raise becomes a gauntlet of conversations that build on each other, from a first filter call to a decision made by the whole partnership.",
       after:[
         h(window.ActMarker,{key:"a",num:"01",name:"What they are quietly",accent:"weighing."}),
-        h(window.BeatsGrid,{key:"g",columns:3,items:[
+        h(CleanGrid,{key:"g",items:[
           {num:"01",title:"The market",desc:"Is it big enough to matter to a fund that needs outsized outcomes?"},
           {num:"02",title:"The team",desc:"Are you the person to go win this particular problem?"},
           {num:"03",title:"The traction",desc:"Is there real proof the thing is already working?"}
@@ -9541,14 +9595,14 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"When an investor gets serious the tone shifts from selling to verifying, and the whole raise points toward one thing: a written offer.",
       after:[
         h(window.ActMarker,{key:"a1",num:"01",name:"What they",accent:"verify."}),
-        h(window.BeatsGrid,{key:"g1",columns:4,items:[
+        h(CleanGrid,{key:"g1",min:"178px",items:[
           {num:"01",title:"References",desc:"Calls with people who know you."},
           {num:"02",title:"Data room",desc:"A closer read of financials and metrics."},
           {num:"03",title:"Customer calls",desc:"Direct conversations with a few of your users."},
           {num:"04",title:"Deep Q&A",desc:"Detailed questions on the numbers and the plan."}
         ]}),
         h(window.ActMarker,{key:"a2",num:"02",name:"Anatomy of a",accent:"term sheet."}),
-        h(window.BeatsGrid,{key:"g2",columns:4,items:[
+        h(CleanGrid,{key:"g2",min:"178px",accent:"#c89500",pillBg:"rgba(200,149,0,.14)",pillFg:"#c89500",items:[
           {num:"01",title:"Valuation",desc:"The price the round is done at."},
           {num:"02",title:"Amount",desc:"How much this investor is putting in."},
           {num:"03",title:"Key terms",desc:"The rights and mechanics beyond price."},
@@ -9564,7 +9618,7 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"A term sheet is a milestone rather than the finish line, and closing is the work of turning that offer into money in the bank.",
       after:[
         h(window.ActMarker,{key:"a",num:"01",name:"From offer to",accent:"wired."}),
-        h(window.BeatsGrid,{key:"g",columns:4,variant:"steps",items:[
+        h(CleanGrid,{key:"g",min:"178px",items:[
           {num:"1",title:"Leverage",desc:"A real offer brings every slow investor to a decision."},
           {num:"2",title:"Fill",desc:"Stack follow-on checks and angels behind the lead."},
           {num:"3",title:"Sign",desc:"Lawyers paper the deal and both sides sign."},
@@ -9592,7 +9646,7 @@ const PB_ONE_PAGER_BULLETS = [{
           {n:"9",label:"Checks closed",sub:"A full round"}
         ]}),
         h(window.ActMarker,{key:"ac",num:"01",name:"How long it really",accent:"takes."}),
-        h(window.BeatsGrid,{key:"tl",columns:2,items:[
+        h(CleanGrid,{key:"tl",items:[
           {num:"01",title:"Pre-seed & seed",desc:"Roughly six to nine weeks from going live to a term sheet."},
           {num:"02",title:"Series A",desc:"Commonly six to nine months, with deeper diligence."}
         ]}),
