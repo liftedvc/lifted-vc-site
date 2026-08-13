@@ -45,7 +45,7 @@ function PartnersPage() {
 
   const gap = [
     { t: 'Better outcomes, better returns', d: 'Founders who run a real process raise faster and at stronger terms. That flows straight into your markups and follow-on.' },
-    { t: 'Off your platform team', d: "You can't coach every founder through a raise. I become the dedicated resource who does, at portfolio scale." },
+    { t: 'Off your platform team', d: 'Fundraising attention comes one founder at a time. I give every company those hours, so your team keeps its leverage.' },
     { t: 'A proven method', d: 'Warm introductions over cold outreach, a compression sprint, and honest, direct guidance. The playbook is public at lifted.vc/fundraising-playbook.' },
     { t: 'Access, not discounts', d: 'One published price for every founder, no equity, ever. What partners get is priority access, portfolio programming, and reporting, never a coupon.' },
   ];
@@ -66,20 +66,19 @@ function PartnersPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>For VCs &amp; accelerators</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
-                The fundraising bench for your portfolio
+                Your portfolio's fundraising expert in residence
               </h1>
             </Reveal>
             <Reveal delay={200}>
               <p style={{ fontFamily: 'var(--lit)', fontSize: 19, lineHeight: 1.65, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 28, textWrap: 'pretty' }}>
-                Your founders' next round is your next markup. I embed with your portfolio as their
-                fundraising expert, 1:1, pre-seed through Series A, so more of your companies run a
+                Your founders' next round is your next markup. I embed with your portfolio and work
+                with your founders 1:1, pre-seed through Series A, so more of your companies run a
                 real process and raise faster, without adding load to your platform team.
               </p>
             </Reveal>
             <Reveal delay={300}>
               <div style={{ marginTop: 36, display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
                 <a href="#partner" className="btn btn-gold">Partner with Lifted <Arrow /></a>
-                {/* TODO(adam): upload lifted-portfolio-program.pdf; link 404s until then */}
                 <a href="/lifted-portfolio-program.pdf" target="_blank" rel="noopener noreferrer" className="tlink">Download the program one-pager</a>
               </div>
             </Reveal>
@@ -103,11 +102,13 @@ function PartnersPage() {
           </Reveal>
           <Reveal delay={160}>
             <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
-              Platform teams are small. Fundraising help inside most funds is a deck review the week
-              before the raise and a list of intros. But the difference between a founder who raises
-              in six weeks and one who stalls for six months is rarely the intros. It's narrative,
-              sequencing, and reps. That work takes hours per founder that no platform team has.
-              Funds route it to Lifted.
+              Fundraising coaching is 1:1 work. Every founder needs their own narrative, their own
+              investor list, and weekly reps with someone who has run the process before. That is
+              hours per founder, every week, across a three-month raise. Partners and platform teams
+              are spread across dozens of companies at once, so the help most founders get is a deck
+              review the week before they go out and a list of intros. The difference between raising
+              in six weeks and stalling for six months is narrative, sequencing, and reps. Funds
+              route that work to Lifted.
             </p>
           </Reveal>
           <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 44 }}>
@@ -243,7 +244,6 @@ function PartnersPage() {
                     founder's first conversation is free.
                   </p>
                   <div style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
-                    {/* TODO(adam): upload lifted-portfolio-program.pdf to the site root; this link 404s until then */}
                     <a href="/lifted-portfolio-program.pdf" target="_blank" rel="noopener noreferrer" className="tlink" style={{ color: 'var(--bg)' }}>Download the program one-pager</a>
                     <CopyEmailButton />
                   </div>

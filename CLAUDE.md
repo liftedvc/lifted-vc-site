@@ -41,7 +41,9 @@ The generator is deliberately best-effort: if a marker it looks for has moved it
 
 ### After editing the playbook
 
-Node-check every `<script>` block. Extract each inline block to a temp file and run `node --check` on it. A syntax error in one block silently kills the whole SPA in the browser.
+Node-check every `<script>` block. Extract each inline block to a temp file and run `node --check` on it. A syntax error in one block silently kills the whole SPA in the browser. As of the last check: 18 `<script>` tags in the main file, 17 checkable, all passing.
+
+To verify the generator still round-trips, copy both files plus `scripts/` to a temp dir, re-run the script, and diff its output against the committed `fundraising-playbook-shared.html`. They should be byte-identical. Note the script logs a *character* count, not bytes — the two differ because of multibyte UTF-8, so don't read that as a mismatch.
 
 ## House style
 
@@ -64,7 +66,7 @@ The dashboard at `app.lifted.vc` iframes `lifted.vc/fundraising-playbook-shared`
 
 ## Gotchas
 
-- **Never run git commands against this repo from a Cowork sandbox.** It can leave a `.git/index.lock` that blocks GitHub Desktop. Use file tools only; Adam runs git in GitHub Desktop.
+- **Never run git commands against this repo from a Cowork sandbox.** It can leave a `.git/index.lock` or `.git/HEAD.lock` that blocks GitHub Desktop with no useful error — the commit simply doesn't land and `refs/heads/main` stays put. If it happens: with GitHub Desktop idle, delete the zero-byte `*.lock` files from `.git/` using file tools, then retry the commit. Use file tools only; Adam runs git in GitHub Desktop.
 - Division of labor: Claude edits and verifies files, Adam commits and pushes, Netlify deploys.
 - Always work in `/Users/adamroberts/Documents/GitHub/lifted-vc-site`. Older copies under `Documents/Claude/Projects/…` are stale and superseded.
 - The website and the dashboard are **separate repos with separate deploys**. Dashboard code lives in `liftedvc/lifted-dashboard`.
