@@ -1657,9 +1657,56 @@ function StageOnly({
 // ============================================================
 // Export to globals so per-chapter modules + the app can use them
 // ============================================================
+// AudioCompanion — the Sprint recording block. Same markup the Inner Game and
+// Pipeline chapters use locally; hoisted here so any chapter block can render
+// one. Those two IIFEs keep their own local copies, which shadow this
+// harmlessly. Pass title, sub ("Quinn Fitzgerald and Adam Roberts podcast · 27:43"), and src.
+function AudioCompanion(p) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "audio-companion",
+    style: {
+      border: "1px solid rgba(20,20,22,.12)",
+      borderRadius: "14px",
+      padding: "18px 18px 16px",
+      background: "rgba(255,255,255,.55)",
+      margin: "18px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: ".72rem",
+      letterSpacing: ".08em",
+      textTransform: "uppercase",
+      opacity: .55,
+      marginBottom: "6px"
+    }
+  }, "▶ Listen"), p.title && /*#__PURE__*/React.createElement("h3", {
+    style: {
+      margin: "0 0 3px",
+      fontSize: "1.02rem",
+      fontWeight: 600,
+      lineHeight: 1.25
+    }
+  }, p.title), p.sub && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: ".8rem",
+      opacity: .6,
+      marginBottom: "12px"
+    }
+  }, p.sub), /*#__PURE__*/React.createElement("audio", {
+    controls: true,
+    preload: "none",
+    style: {
+      width: "100%"
+    }
+  }, /*#__PURE__*/React.createElement("source", {
+    src: p.src,
+    type: "audio/mpeg"
+  })));
+}
 Object.assign(window, {
   TIcon,
   SceneBar,
+  AudioCompanion,
   Cue,
   Lede,
   ActMarker,
@@ -1987,6 +2034,10 @@ function ARCAnatomy() {
     name: "Anatomy of",
     accent: "Authentic FOMO.",
     crumb: "Chapter 4 \xB7 Authentic FOMO"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Fundraising Process · Deep Dive into Authentic FOMO",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 27:47",
+    src: "/audio/arc/fomo-process.mp3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -2647,6 +2698,10 @@ function CommBestPractices() {
     name: "Best",
     accent: "Practices.",
     crumb: "Chapter 5 \xB7 Communicate Your Story"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Storytelling, Cohesion, and Authenticity",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 13:17",
+    src: "/audio/comm/storytelling.mp3"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: COMM_OBJECTIVES
   }), /*#__PURE__*/React.createElement("div", {
@@ -4009,7 +4064,8 @@ function PrepElevator() {
       body: "“Ledgerly is an AI-powered, end-to-end finance automation platform purpose-built for the modern CFO office. We leverage machine learning and agentic workflows to transform accounts payable, accounts receivable, close, and spend across the enterprise. Our best-in-class intelligent platform unlocks operational efficiencies and empowers finance teams to focus on strategic, value-add work. We’re the leading next-generation intelligence layer for mid-market finance teams and high-growth B2B SaaS.”",
       audio: {
         src: "audio/weak-opener.wav",
-        label: "Weak elevator · read aloud"
+        label: "Weak elevator · read aloud",
+        disabled: true
       },
       annotation: {
         title: "Why it falls flat",
@@ -4021,7 +4077,8 @@ function PrepElevator() {
       body: "“Ledgerly is the AP automation layer for mid-market SaaS. We save the average customer ~$900K a year in late fees and missed early-pay discounts by sitting on top of their ERP, pulling every invoice in, coding it the team’s way, and routing approvals automatically. AP teams that used to push 180 invoices a week through manual GL mapping and Slack approval chases now clear the same volume in a fraction of the time.”",
       audio: {
         src: "audio/strong-opener.wav",
-        label: "Strong elevator · read aloud"
+        label: "Strong elevator · read aloud",
+        disabled: true
       },
       annotation: {
         title: "Why it lands",
@@ -4290,6 +4347,10 @@ function PrepDeck() {
     name: "Pitch",
     accent: "Deck.",
     crumb: "Chapter 6 \xB7 Prepare Your Materials"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Pitch Decks That Perform",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 23:18",
+    src: "/audio/prep/pitch-decks.mp3"
   }), /*#__PURE__*/React.createElement(Lede, null, "There are a lot of opinions about how to build a deck, plenty of online content and guidance, and an entire profession of consultants dedicated to helping founders put them together. The size of that industry alone tells you how big this topic is. What follows is our big-picture best practices to frame your thinking as you go."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "A great deck is one that is effective. There\u2019s no perfect slide order or formula, but the decks that land share a set of principles and cover the same essentials."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -4858,6 +4919,10 @@ function TLTypes() {
     name: "Types of",
     accent: "Investors.",
     crumb: "Chapter 7 \xB7 Build Your Target List"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Identifying Target Investors",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 19:50",
+    src: "/audio/target-list/identifying-investors.mp3"
   }), /*#__PURE__*/React.createElement(Lede, null, "Different investor types play different roles in a round. Sort them by what they actually do before you start filtering."), /*#__PURE__*/React.createElement(TLGroups, null));
 }
 function TLWhoToTarget() {
@@ -5462,6 +5527,10 @@ function CNWhatIs() {
     name: "What a",
     accent: "Connector Is.",
     crumb: "Chapter 8"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Connectors Overview · Find Connectors and Make the Ask",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 12:50",
+    src: "/audio/connectors/connectors-overview.mp3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5619,6 +5688,10 @@ function CNCalls() {
     name: "Connector",
     accent: "Calls.",
     crumb: "Chapter 8 \xB7 Map Your Connectors"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Connector Call Game Plan and Strategy",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 27:43",
+    src: "/audio/connectors/connector-calls.mp3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6540,6 +6613,14 @@ function PTAnatomy() {
     name: "Pitching",
     accent: "Best Practices.",
     crumb: "Chapter 11"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "You Are the Architect of Your Process",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 15:29",
+    src: "/audio/pitching/architect.mp3"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Pitching: The Good, the Bad, and the Ugly",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 9:07",
+    src: "/audio/pitching/good-bad-ugly.mp3"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: PT_OBJECTIVES
   }), /*#__PURE__*/React.createElement("div", {
@@ -6926,6 +7007,10 @@ function RFWhy() {
     name: "Why Practice",
     accent: "Matters.",
     crumb: "Chapter 12"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Developing an Iterative Pitching Mindset",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 8:06",
+    src: "/audio/refine/iterative-mindset.mp3"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: RF_OBJECTIVES
   }), /*#__PURE__*/React.createElement(Lede, null, "Practice until your pitch is conversational, your numbers are cold, and your objection handling is instinctive."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -9831,7 +9916,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"There will be highs and lows while you raise. It's important to embrace that even an oversubscribed round collects far more nos than yeses. Paying attention to your own mental approach helps reduce the negative impact of the inevitable low points.")
       ],
       walk:"Companion · Navigating the emotional rollercoaster",
-      videoTitle:"Navigating the Emotional Rollercoaster", videoSub:"Sprint companion · 4:32",
+      videoTitle:"Navigating the Emotional Rollercoaster", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 4:32",
       audio:"/audio/inner-game/rollercoaster.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9853,7 +9938,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"That is why every no has to run through your own filter before it touches your strategy. A pass can be a chance to improve how you pitch, or it can be an investor who woke up on the wrong side of the bed. You often cannot tell which, so you pattern-match it against what you are hearing elsewhere and decide what to keep. Most of the time, a pass means not right now, or simply not the right fit for them, not that you are uninvestable.")
       ],
       walk:"Companion · Empower yourself through passes",
-      videoTitle:"Empower Yourself Through Passes", videoSub:"Sprint companion · Adam & Quinn",
+      videoTitle:"Empower Yourself Through Passes", videoSub:"Quinn Fitzgerald and Adam Roberts podcast",
       audio:"/audio/inner-game/empower-through-passes.mp3",
       after:[
         h(window.BeatsGrid,{columns:2,items:[
@@ -9881,7 +9966,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"Anxiety tends to live in the head; pride tends to live in the heart. Most of these tactics are ways to get out of the spinning head and back into the body and the reasons you started.")
       ],
       walk:"Companion · Connecting to your worthiness",
-      videoTitle:"Connecting to Your Worthiness", videoSub:"Sprint companion · 9:05",
+      videoTitle:"Connecting to Your Worthiness", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 9:05",
       audio:"/audio/inner-game/worthiness.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9904,7 +9989,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"The opposite signal is thirst, and it leaks. Desperation repels while contentment attracts, and the calm of a founder with real progress is the tell that you do not actually need this investor.")
       ],
       walk:"Companion · Confidence delivers outcomes",
-      videoTitle:"Confidence Delivers Outcomes", videoSub:"Sprint companion · 15:18",
+      videoTitle:"Confidence Delivers Outcomes", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 15:18",
       audio:"/audio/inner-game/confidence.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9930,7 +10015,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"It helps to know what game they are playing. VCs answer to their own investors, and in a fund of 100 investments, they need 4-6 companies to return the whole fund, so they are buying rapid growth. When you take the money, you are signing up for this model.")
       ],
       walk:"Companion · Competition mindset and star player mentality",
-      videoTitle:"Competition Mindset & Star Player Mentality", videoSub:"Sprint companion · 24:36",
+      videoTitle:"Competition Mindset & Star Player Mentality", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 24:36",
       audio:"/audio/inner-game/star-player.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -10409,7 +10494,7 @@ const PB_ONE_PAGER_BULLETS = [{
       h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 8px"}},
         FIELDS.map(function(f,i){return h("li",{key:i},h("strong",null,f.title), f.desc?(": "+f.desc):null);})),
       h(ActMarker,{num:"04",name:"Start from",accent:"the template."}),
-      h("p",{className:"prose"},"Begin with the Sprint's Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
+      h("p",{className:"prose"},"Begin with the Lifted Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
       h("p",{className:"prose"},h("a",{href:"https://docs.google.com/spreadsheets/d/1oeoifKdGB3Xp05pm1u547EJuNHUGEsmj8_Yo0vvgHT4",target:"_blank",rel:"noopener"},"Open the Simple CRM template")),
       Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business.")
     );
@@ -10499,7 +10584,7 @@ const PB_ONE_PAGER_BULLETS = [{
       Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
       h(ActMarker,{num:"02",name:"Read the investor,",accent:"not just the timing."}),
       h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
-      h(PLAudio,{title:"Investor Green & Red Flags",sub:"Sprint companion · Quinn & Adam",src:"/audio/pipeline/investor-flags.mp3"}),
+      h(PLAudio,{title:"Investor Green & Red Flags",sub:"Quinn Fitzgerald and Adam Roberts podcast",src:"/audio/pipeline/investor-flags.mp3"}),
       h(ActMarker,{num:"03",name:"Green flags and",accent:"red flags."}),
       h(FlagsPanel,null),
       h(Pull,{eyebrow:"Treat smoke as a smoke signal",quote:"You have very little time with these people before deciding whether to spend years working with them. All you have are these signals, and they can be very meaningful."})
