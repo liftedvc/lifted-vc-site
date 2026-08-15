@@ -8633,6 +8633,142 @@ window.CHAPTER_CLOSE = {
 const FUND_OBJECTIVES = ["Understand the power law that shapes VC returns", "See the math inside a fund: lifecycle, check size, and ownership targets", "See the volume both sides run, and what equity costs founders over time"];
 
 // ============================================================
+// Chapter 02 data visualizations (inline-styled SVG, self-contained).
+// Rendered via dangerouslySetInnerHTML so they need no external CSS.
+// Every figure is verbatim from the chapter's cited sources.
+// ============================================================
+function FundChart(props) {
+  return /*#__PURE__*/React.createElement("figure", {
+    style: {
+      margin: "18px 0 6px",
+      border: "1px solid #e9e8e3",
+      borderRadius: "3px",
+      background: "#fff",
+      padding: "20px 18px 16px"
+    },
+    dangerouslySetInnerHTML: { __html: props.svg }
+  });
+}
+
+var PB_SANS = "'Inter Tight',system-ui,sans-serif";
+var PB_MONO = "'JetBrains Mono',ui-monospace,monospace";
+
+// ---- 02.01 The Power Law: returns distribution ----
+var CHART_POWERLAW =
+'<svg viewBox="0 0 720 400" role="img" aria-label="Power law distribution of venture returns" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<line x1="70" y1="330" x2="700" y2="330" stroke="#e9e8e3" stroke-width="2"/>' +
+  '<g font-family="'+PB_MONO+'" font-size="11" font-weight="500" fill="rgba(10,10,10,.35)">' +
+    '<text x="60" y="334" text-anchor="end">0%</text>' +
+    '<line x1="70" y1="252" x2="700" y2="252" stroke="#f0efe9" stroke-width="1"/><text x="60" y="256" text-anchor="end">25%</text>' +
+    '<line x1="70" y1="174" x2="700" y2="174" stroke="#f0efe9" stroke-width="1"/><text x="60" y="178" text-anchor="end">50%</text>' +
+    '<line x1="70" y1="96" x2="700" y2="96" stroke="#f0efe9" stroke-width="1"/><text x="60" y="100" text-anchor="end">75%</text>' +
+  '</g>' +
+  '<rect x="95" y="127" width="120" height="203" rx="4" fill="#3d5c66"/>' +
+  '<text x="155" y="112" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#0a0a0a">65%</text>' +
+  '<text x="155" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="13" fill="rgba(10,10,10,.55)">Lost money</text>' +
+  '<text x="155" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">returned &lt;1x</text>' +
+  '<rect x="255" y="252" width="120" height="78" rx="4" fill="#5c7b84"/>' +
+  '<text x="315" y="238" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#0a0a0a">25%</text>' +
+  '<text x="315" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="13" fill="rgba(10,10,10,.55)">Broke even</text>' +
+  '<text x="315" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">1&#8211;5x</text>' +
+  '<rect x="415" y="311" width="120" height="19" rx="4" fill="#8aa1a8"/>' +
+  '<text x="475" y="299" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#0a0a0a">6%</text>' +
+  '<text x="475" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="13" fill="rgba(10,10,10,.55)">Solid</text>' +
+  '<text x="475" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">5&#8211;10x</text>' +
+  '<rect x="575" y="317" width="120" height="13" rx="4" fill="#c89500"/>' +
+  '<text x="635" y="305" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#c89500">4%</text>' +
+  '<text x="635" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="13" fill="#0a0a0a">Carry the fund</text>' +
+  '<text x="635" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">10x+</text>' +
+  '<path d="M635 285 Q635 250 560 205" fill="none" stroke="#c89500" stroke-width="1.5" stroke-dasharray="3 3"/>' +
+  '<rect x="360" y="150" width="300" height="52" rx="4" fill="#fbf3da"/>' +
+  '<text x="375" y="172" font-family="'+PB_SANS+'" font-weight="600" font-size="13.5" fill="#8a6800">The whole game is being this 4%.</text>' +
+  '<text x="375" y="190" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">51% of all VC dollars over the past decade lost money.</text>' +
+'</svg>';
+
+// ---- 02.02 The ten-year fund clock ----
+var CHART_FUNDCLOCK =
+'<svg viewBox="0 0 720 300" role="img" aria-label="Ten year fund lifecycle timeline" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<rect x="70" y="120" width="620" height="46" rx="4" fill="#eef1f2"/>' +
+  '<rect x="70" y="120" width="310" height="46" rx="4" fill="#cdd7da"/>' +
+  '<rect x="70" y="120" width="186" height="46" rx="4" fill="#c89500"/>' +
+  '<text x="163" y="148" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="12.5" fill="#3a2c00">Core deployment</text>' +
+  '<text x="320" y="148" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="#33484f">New checks</text>' +
+  '<text x="537" y="148" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="#5d6b6f">Reserves &#183; follow-on only</text>' +
+  '<line x1="70" y1="185" x2="690" y2="185" stroke="#e9e8e3" stroke-width="1.5"/>' +
+  '<g font-family="'+PB_MONO+'" font-size="11" font-weight="500" fill="rgba(10,10,10,.35)" text-anchor="middle">' +
+    '<line x1="70" y1="180" x2="70" y2="190" stroke="#d7d6cf"/><text x="70" y="206">Yr 0</text>' +
+    '<line x1="256" y1="180" x2="256" y2="190" stroke="#d7d6cf"/><text x="256" y="206">3</text>' +
+    '<line x1="380" y1="180" x2="380" y2="190" stroke="#d7d6cf"/><text x="380" y="206">5</text>' +
+    '<line x1="690" y1="180" x2="690" y2="190" stroke="#d7d6cf"/><text x="690" y="206">10</text>' +
+  '</g>' +
+  '<rect x="70" y="54" width="278" height="48" rx="4" fill="#fbf3da"/>' +
+  '<text x="84" y="76" font-family="'+PB_SANS+'" font-weight="600" font-size="13" fill="#8a6800">Target funds in years 0&#8211;3.</text>' +
+  '<text x="84" y="93" font-family="'+PB_SANS+'" font-weight="500" font-size="11.5" fill="rgba(10,10,10,.55)">That&#8217;s the window when new checks get written.</text>' +
+  '<path d="M150 102 L163 118" fill="none" stroke="#c89500" stroke-width="1.5"/>' +
+  '<g font-family="'+PB_SANS+'" font-weight="500" font-size="11.5" fill="rgba(10,10,10,.55)">' +
+    '<rect x="70" y="236" width="13" height="13" rx="2" fill="#c89500"/><text x="90" y="247">Core deployment &#183; 1.5&#8211;3 yrs</text>' +
+    '<rect x="280" y="236" width="13" height="13" rx="2" fill="#cdd7da"/><text x="300" y="247">Active period &#183; 3&#8211;5 yrs</text>' +
+    '<rect x="470" y="236" width="13" height="13" rx="2" fill="#eef1f2"/><text x="490" y="247">Reserves &#183; to year 10</text>' +
+  '</g>' +
+'</svg>';
+
+// ---- 02.03 The two-sided funnel ----
+var CHART_FUNNEL =
+'<svg viewBox="0 0 720 340" role="img" aria-label="Two sided funnel, investor and founder" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<line x1="360" y1="30" x2="360" y2="300" stroke="#e9e8e3" stroke-width="1.5"/>' +
+  '<text x="60" y="30" font-family="'+PB_MONO+'" font-size="11" font-weight="600" letter-spacing="1" fill="#3d5c66">THE INVESTOR</text>' +
+  '<path d="M60 58 L320 58 L250 118 L130 118 Z" fill="#3d5c66"/>' +
+  '<path d="M130 128 L250 128 L214 188 L166 188 Z" fill="#5c7b84"/>' +
+  '<path d="M166 198 L214 198 L200 250 L180 250 Z" fill="#c89500"/>' +
+  '<text x="190" y="94" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="20" fill="#fff">~101</text>' +
+  '<text x="190" y="112" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="11" fill="#dfe6e8">opportunities seen</text>' +
+  '<text x="190" y="166" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="14" fill="#fff">screened</text>' +
+  '<text x="190" y="182" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="10.5" fill="#e3eaec">&#8203;</text>' +
+  '<text x="190" y="238" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="17" fill="#fff">1</text>' +
+  '<text x="190" y="278" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="600" font-size="12" fill="#8a6800">&#8776;1 deal &#183; under 1% close</text>' +
+  '<text x="410" y="30" font-family="'+PB_MONO+'" font-size="11" font-weight="600" letter-spacing="1" fill="#4f7960">THE FOUNDER</text>' +
+  '<path d="M400 58 L660 58 L590 118 L470 118 Z" fill="#4f7960"/>' +
+  '<path d="M470 128 L590 128 L554 188 L506 188 Z" fill="#6d9079"/>' +
+  '<path d="M506 198 L554 198 L540 250 L520 250 Z" fill="#c89500"/>' +
+  '<text x="530" y="94" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="20" fill="#fff">39</text>' +
+  '<text x="530" y="112" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="11" fill="#e0ebe3">meetings taken</text>' +
+  '<text x="530" y="166" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="14" fill="#fff">deeper</text>' +
+  '<text x="530" y="182" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="10.5" fill="#e6efe8">&#8203;</text>' +
+  '<text x="530" y="238" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="17" fill="#fff">1</text>' +
+  '<text x="530" y="278" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="600" font-size="12" fill="#8a6800">&#8776;1 close &#183; seed round</text>' +
+  '<text x="360" y="320" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12.5" fill="rgba(10,10,10,.55)">Same shape, opposite chairs. The drop at each step is the job, not a failure.</text>' +
+'</svg>';
+
+// ---- 02.03 The cost of equity: dilution curve ----
+var CHART_DILUTION =
+'<svg viewBox="0 0 720 380" role="img" aria-label="Founder ownership declining across rounds" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<line x1="90" y1="300" x2="690" y2="300" stroke="#e9e8e3" stroke-width="2"/>' +
+  '<g font-family="'+PB_MONO+'" font-size="11" font-weight="500" fill="rgba(10,10,10,.35)">' +
+    '<text x="80" y="304" text-anchor="end">0%</text>' +
+    '<line x1="90" y1="180" x2="690" y2="180" stroke="#f0efe9"/><text x="80" y="184" text-anchor="end">50%</text>' +
+    '<line x1="90" y1="60" x2="690" y2="60" stroke="#f0efe9"/><text x="80" y="64" text-anchor="end">100%</text>' +
+  '</g>' +
+  '<path d="M130 60 L320 165 L510 213 L660 245 L660 300 L130 300 Z" fill="#e7eced"/>' +
+  '<path d="M130 60 L320 165 L510 213 L660 245" fill="none" stroke="#3d5c66" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>' +
+  '<g font-family="'+"'Source Serif 4',serif"+'" font-style="italic" font-size="11.5" fill="rgba(10,10,10,.55)" text-anchor="middle">' +
+    '<text x="225" y="100">&#8722;20.1%</text><text x="415" y="176">&#8722;20.5%</text><text x="585" y="216">&#8722;16.7%</text>' +
+  '</g>' +
+  '<circle cx="130" cy="60" r="5" fill="#fff" stroke="#3d5c66" stroke-width="2.5"/>' +
+  '<text x="130" y="44" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="600" font-size="14" fill="#6b7a80">~100%</text>' +
+  '<text x="130" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">At founding</text>' +
+  '<circle cx="320" cy="165" r="5.5" fill="#3d5c66"/>' +
+  '<text x="320" y="150" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="16" fill="#0a0a0a">56.2%</text>' +
+  '<text x="320" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">After seed</text>' +
+  '<circle cx="510" cy="213" r="5.5" fill="#3d5c66"/>' +
+  '<text x="510" y="199" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="16" fill="#0a0a0a">36.1%</text>' +
+  '<text x="510" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">After Series A</text>' +
+  '<circle cx="660" cy="245" r="5.5" fill="#c89500"/>' +
+  '<text x="660" y="231" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="16" fill="#a67c00">23%</text>' +
+  '<text x="660" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">After Series B</text>' +
+'</svg>';
+
+
+// ============================================================
 // Sub 02.01 — The Power Law
 // ============================================================
 function FundPowerLaw() {
@@ -8679,7 +8815,9 @@ function FundPowerLaw() {
     accent: "distribution."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Correlation Ventures analyzed 21,000+ U.S. VC financings between 2004 and 2013. The distribution of outcomes:"), /*#__PURE__*/React.createElement("ul", {
+  }, "Correlation Ventures analyzed 21,000+ U.S. VC financings between 2004 and 2013. The distribution of outcomes:"), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_POWERLAW
+  }), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~65%"), " of investments returned less than 1x. The capital was lost."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~25%"), " returned 1\u20135x."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~6%"), " returned 5\u201310x."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~4%"), " returned 10x or more. These are the outcomes that carry the fund.")), /*#__PURE__*/React.createElement("div", {
     className: "takeaway"
@@ -8737,6 +8875,8 @@ function FundHowItOperates() {
     num: "01",
     name: "Fund",
     accent: "mechanics."
+  }), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_FUNDCLOCK
   }), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Fund life:"), " 10 years standard, with 1\u20133 year extensions common."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Active investment period:"), " 3\u20135 years. Most baseline portfolios get built in the first 1.5\u20133."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Check size:"), " roughly 1\u20132% of total fund size."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Ownership target:"), " at seed, funds typically aim to own 5\u201310% per company at entry. Concentrated funds aim higher; large portfolios aim lower.")), /*#__PURE__*/React.createElement("p", {
@@ -8795,6 +8935,8 @@ function FundFunnelAndCost() {
     num: "01",
     name: "The funnel,",
     accent: "both sides."
+  }), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_FUNNEL
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "VCs evaluate ", /*#__PURE__*/React.createElement("strong", null, "~101 opportunities"), " for every deal they close, with close rates below 1%. At established Series A/B/C firms, that nets out to as low as 1\u20132 investments per partner per year. At pre-seed funds, 3\u20134."), /*#__PURE__*/React.createElement("p", {
@@ -8815,7 +8957,9 @@ function FundFunnelAndCost() {
     className: "prose"
   }, "Per Carta's Q1 2024 Dilution Report, median dilution per round runs ", /*#__PURE__*/React.createElement("strong", null, "20.1% at seed, 20.5% at Series A, and 16.7% at Series B"), ". The compounding effect on founder ownership over time, per Carta's 2025 Founder Ownership Report (45,000+ startups, 2015\u20132024):"), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "56.2%"), " median founding team ownership after seed."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "36.1%"), " after Series A."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "23%"), " after Series B.")), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "56.2%"), " median founding team ownership after seed."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "36.1%"), " after Series A."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "23%"), " after Series B.")), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_DILUTION
+  }), /*#__PURE__*/React.createElement("p", {
     className: "cite"
   }, "Source: Carta Q1 2024 Dilution Report; Carta 2025 Founder Ownership Report.")));
 }

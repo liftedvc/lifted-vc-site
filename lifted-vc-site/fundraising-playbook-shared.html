@@ -1655,9 +1655,56 @@ function StageOnly({
 // ============================================================
 // Export to globals so per-chapter modules + the app can use them
 // ============================================================
+// AudioCompanion — the Sprint recording block. Same markup the Inner Game and
+// Pipeline chapters use locally; hoisted here so any chapter block can render
+// one. Those two IIFEs keep their own local copies, which shadow this
+// harmlessly. Pass title, sub ("Quinn Fitzgerald and Adam Roberts podcast · 27:43"), and src.
+function AudioCompanion(p) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "audio-companion",
+    style: {
+      border: "1px solid rgba(20,20,22,.12)",
+      borderRadius: "14px",
+      padding: "18px 18px 16px",
+      background: "rgba(255,255,255,.55)",
+      margin: "18px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: ".72rem",
+      letterSpacing: ".08em",
+      textTransform: "uppercase",
+      opacity: .55,
+      marginBottom: "6px"
+    }
+  }, "▶ Listen"), p.title && /*#__PURE__*/React.createElement("h3", {
+    style: {
+      margin: "0 0 3px",
+      fontSize: "1.02rem",
+      fontWeight: 600,
+      lineHeight: 1.25
+    }
+  }, p.title), p.sub && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: ".8rem",
+      opacity: .6,
+      marginBottom: "12px"
+    }
+  }, p.sub), /*#__PURE__*/React.createElement("audio", {
+    controls: true,
+    preload: "none",
+    style: {
+      width: "100%"
+    }
+  }, /*#__PURE__*/React.createElement("source", {
+    src: p.src,
+    type: "audio/mpeg"
+  })));
+}
 Object.assign(window, {
   TIcon,
   SceneBar,
+  AudioCompanion,
   Cue,
   Lede,
   ActMarker,
@@ -1984,7 +2031,11 @@ function ARCAnatomy() {
     num: "04.02",
     name: "Anatomy of",
     accent: "Authentic FOMO.",
-    crumb: "Chapter 3 \xB7 Authentic FOMO"
+    crumb: "Chapter 4 \xB7 Authentic FOMO"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Fundraising Process · Deep Dive into Authentic FOMO",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 27:47",
+    src: "/audio/arc/fomo-process.mp3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -2044,7 +2095,7 @@ function ARCFourOutcomes() {
     num: "04.03",
     name: "The Four",
     accent: "Outcomes.",
-    crumb: "Chapter 3 \xB7 Authentic FOMO"
+    crumb: "Chapter 4 \xB7 Authentic FOMO"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -2098,7 +2149,7 @@ function ARCWhyItWorks() {
     num: "04.04",
     name: "Why FOMO Works",
     accent: "in Venture.",
-    crumb: "Chapter 3 \xB7 Authentic FOMO"
+    crumb: "Chapter 4 \xB7 Authentic FOMO"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -2203,7 +2254,7 @@ window.CHAPTER_ARC = {
 <!-- ===== ch-comm.jsx ===== -->
 <script data-source="ch-comm.jsx">
 /* global React, window */
-// Chapter 03 · Communicate Your Story
+// Chapter 5 · Communicate Your Story
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 5942–6943.
 // Sub 1 (best-practices): lines 5945–6135
 // Sub 2 (problem):        lines 6137–6216
@@ -2644,7 +2695,11 @@ function CommBestPractices() {
     num: "05.01",
     name: "Best",
     accent: "Practices.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Storytelling, Cohesion, and Authenticity",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 13:17",
+    src: "/audio/comm/storytelling.mp3"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: COMM_OBJECTIVES
   }), /*#__PURE__*/React.createElement("div", {
@@ -2695,7 +2750,7 @@ function CommProblem() {
     num: "05.02",
     name: "The",
     accent: "Problem.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -2785,7 +2840,7 @@ function CommWhyNow() {
     num: "05.03",
     name: "Why",
     accent: "Now.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -2968,7 +3023,7 @@ function CommSolution() {
     num: "05.04",
     name: "The",
     accent: "Solution.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -3062,7 +3117,7 @@ function CommMarketSize() {
     num: "05.05",
     name: "Market",
     accent: "Size.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -3163,7 +3218,7 @@ function CommTraction() {
     num: "05.06",
     name: "Your",
     accent: "Traction.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -3233,7 +3288,7 @@ function CommTeam() {
     num: "05.07",
     name: "The",
     accent: "Team.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -3381,7 +3436,7 @@ function CommCompetition() {
     num: "05.08",
     name: "The",
     accent: "Competition.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -3484,7 +3539,7 @@ function CommAsk() {
     num: "05.09",
     name: "The",
     accent: "Ask.",
-    crumb: "Chapter 4 \xB7 Communicate Your Story"
+    crumb: "Chapter 5 \xB7 Communicate Your Story"
   }), /*#__PURE__*/React.createElement(Lede, null, "The ask is the moment a fundraising conversation turns from storytelling into a transaction. Founders who skip it leave deals on the table every meeting."), /*#__PURE__*/React.createElement("div", {
     className: "tip tip--neutral tip--compact"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3644,7 +3699,7 @@ window.CHAPTER_COMM = {
 <!-- ===== ch-prep.jsx ===== -->
 <script data-source="ch-prep.jsx">
 /* global React, window */
-// Chapter 04 · Prepare Your Materials
+// Chapter 6 · Prepare Your Materials
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 5212-5838.
 // Sub 1 (collateral): lines 5213-5299
 // Sub 2 (elevator):   lines 5301-5407
@@ -3979,7 +4034,7 @@ function PrepElevator() {
     num: "06.02",
     name: "Elevator",
     accent: "Pitch.",
-    crumb: "Chapter 5 \xB7 Prepare Your Materials"
+    crumb: "Chapter 6 \xB7 Prepare Your Materials"
   }), /*#__PURE__*/React.createElement(Lede, null, "Two short pitches that make your business land in an investor\u2019s head. A ~25-second verbal version, and a 2-4 sentence written version that seeds your forwardable email. Both are the root of every other piece of fundraising collateral you build."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "A note on",
@@ -4007,7 +4062,8 @@ function PrepElevator() {
       body: "“Ledgerly is an AI-powered, end-to-end finance automation platform purpose-built for the modern CFO office. We leverage machine learning and agentic workflows to transform accounts payable, accounts receivable, close, and spend across the enterprise. Our best-in-class intelligent platform unlocks operational efficiencies and empowers finance teams to focus on strategic, value-add work. We’re the leading next-generation intelligence layer for mid-market finance teams and high-growth B2B SaaS.”",
       audio: {
         src: "audio/weak-opener.wav",
-        label: "Weak elevator · read aloud"
+        label: "Weak elevator · read aloud",
+        disabled: true
       },
       annotation: {
         title: "Why it falls flat",
@@ -4019,7 +4075,8 @@ function PrepElevator() {
       body: "“Ledgerly is the AP automation layer for mid-market SaaS. We save the average customer ~$900K a year in late fees and missed early-pay discounts by sitting on top of their ERP, pulling every invoice in, coding it the team’s way, and routing approvals automatically. AP teams that used to push 180 invoices a week through manual GL mapping and Slack approval chases now clear the same volume in a fraction of the time.”",
       audio: {
         src: "audio/strong-opener.wav",
-        label: "Strong elevator · read aloud"
+        label: "Strong elevator · read aloud",
+        disabled: true
       },
       annotation: {
         title: "Why it lands",
@@ -4067,7 +4124,7 @@ function PrepBlurb() {
     num: "06.03",
     name: "Email",
     accent: "Blurb.",
-    crumb: "Chapter 5 \xB7 Prepare Your Materials"
+    crumb: "Chapter 6 \xB7 Prepare Your Materials"
   }), /*#__PURE__*/React.createElement(Lede, null, "Succinct and forward-ready. Your best foot forward at landing the meeting. The blurb earns the conversation, and the conversation is where the rest of the pitch and the path to a check actually open up."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The three",
@@ -4187,7 +4244,7 @@ function PrepOnePager() {
     num: "06.04",
     name: "One-",
     accent: "Pager.",
-    crumb: "Chapter 5 \xB7 Prepare Your Materials"
+    crumb: "Chapter 6 \xB7 Prepare Your Materials"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -4287,7 +4344,11 @@ function PrepDeck() {
     num: "06.05",
     name: "Pitch",
     accent: "Deck.",
-    crumb: "Chapter 5 \xB7 Prepare Your Materials"
+    crumb: "Chapter 6 \xB7 Prepare Your Materials"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Pitch Decks That Perform",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 23:18",
+    src: "/audio/prep/pitch-decks.mp3"
   }), /*#__PURE__*/React.createElement(Lede, null, "There are a lot of opinions about how to build a deck, plenty of online content and guidance, and an entire profession of consultants dedicated to helping founders put them together. The size of that industry alone tells you how big this topic is. What follows is our big-picture best practices to frame your thinking as you go."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "A great deck is one that is effective. There\u2019s no perfect slide order or formula, but the decks that land share a set of principles and cover the same essentials."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -4369,7 +4430,7 @@ function PrepDataRoom() {
     num: "06.06",
     name: "Data",
     accent: "Room.",
-    crumb: "Chapter 5 \xB7 Prepare Your Materials"
+    crumb: "Chapter 6 \xB7 Prepare Your Materials"
   }), /*#__PURE__*/React.createElement(Lede, null, "Start building the data room early. When and how you share it depends on where you are in the process. The role it usually plays is to substantiate what you said in the pitch with the actual receipts behind every claim."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "Build it now. When and how you share it is a strategic call. Either way, its job is to substantiate what you\u2019ve already said. Every claim you made in a meeting has a receipt here."), /*#__PURE__*/React.createElement("div", {
@@ -4410,7 +4471,7 @@ function PrepDemo() {
     num: "06.07",
     name: "Demo",
     accent: "Best Practices.",
-    crumb: "Chapter 5 \xB7 Prepare Your Materials"
+    crumb: "Chapter 6 \xB7 Prepare Your Materials"
   }), /*#__PURE__*/React.createElement(Lede, null, "Keeping it short and high value is the goal. Anything more than five minutes is likely way too long."), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -4541,7 +4602,7 @@ window.CHAPTER_PREP = {
 <!-- ===== ch-target-list.jsx ===== -->
 <script data-source="ch-target-list.jsx">
 /* global React, window */
-// Chapter 05 · Build Your Target List
+// Chapter 7 · Build Your Target List
 // Content lifted verbatim from uploads/fundraising-playbook.html
 // Sub 1 (overview):       lines 4126–4174
 // Sub 2 (types):          lines 4177–4250
@@ -4855,7 +4916,11 @@ function TLTypes() {
     num: "07.02",
     name: "Types of",
     accent: "Investors.",
-    crumb: "Chapter 6 \xB7 Build Your Target List"
+    crumb: "Chapter 7 \xB7 Build Your Target List"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Identifying Target Investors",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 19:50",
+    src: "/audio/target-list/identifying-investors.mp3"
   }), /*#__PURE__*/React.createElement(Lede, null, "Different investor types play different roles in a round. Sort them by what they actually do before you start filtering."), /*#__PURE__*/React.createElement(TLGroups, null));
 }
 function TLWhoToTarget() {
@@ -4874,7 +4939,7 @@ function TLWhoToTarget() {
     num: "07.03",
     name: "Who to Target",
     accent: "at the Fund.",
-    crumb: "Chapter 6 \xB7 Build Your Target List"
+    crumb: "Chapter 7 \xB7 Build Your Target List"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -4951,7 +5016,7 @@ function TLHardFilters() {
     num: "07.04",
     name: "Hard",
     accent: "Filters.",
-    crumb: "Chapter 6 \xB7 Build Your Target List"
+    crumb: "Chapter 7 \xB7 Build Your Target List"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -4995,7 +5060,7 @@ function TLSoftFilters() {
     num: "07.05",
     name: "Soft",
     accent: "Filters.",
-    crumb: "Chapter 6 \xB7 Build Your Target List"
+    crumb: "Chapter 7 \xB7 Build Your Target List"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5043,7 +5108,7 @@ function TLBuild() {
     num: "07.06",
     name: "Start Building",
     accent: "Your List.",
-    crumb: "Chapter 6 \xB7 Build Your Target List"
+    crumb: "Chapter 7 \xB7 Build Your Target List"
   }), /*#__PURE__*/React.createElement(Lede, null, "You know who exists and how to filter them. Now actually build the list. Getting started today matters more than getting it complete in one sitting."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
   }, /*#__PURE__*/React.createElement(ActMarker, {
@@ -5185,7 +5250,7 @@ window.CHAPTER_TARGET_LIST = {
 <!-- ===== ch-connectors.jsx ===== -->
 <script data-source="ch-connectors.jsx">
 /* global React, window */
-// Chapter 06 · Map Your Connectors
+// Chapter 8 · Map Your Connectors
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 4451-4823.
 // Sub 1 (warm-intros):    lines 4454-4507
 // Sub 2 (double-opt-in):  migrated from Ch7. Content from
@@ -5460,6 +5525,10 @@ function CNWhatIs() {
     name: "What a",
     accent: "Connector Is.",
     crumb: "Chapter 8"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Connectors Overview · Find Connectors and Make the Ask",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 12:50",
+    src: "/audio/connectors/connectors-overview.mp3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5524,7 +5593,7 @@ function CNProcess() {
     num: "08.04",
     name: "The Connector",
     accent: "Process.",
-    crumb: "Chapter 7 \xB7 Map Your Connectors"
+    crumb: "Chapter 8 \xB7 Map Your Connectors"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5559,7 +5628,7 @@ function CNFinding() {
     num: "08.05",
     name: "Finding Your",
     accent: "Connectors.",
-    crumb: "Chapter 7 \xB7 Map Your Connectors"
+    crumb: "Chapter 8 \xB7 Map Your Connectors"
   }), /*#__PURE__*/React.createElement(Lede, null, "Here is where you can find connectors. It won\u2019t always be efficient, but thoughtful work here will pay off in the long run."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "How to build",
@@ -5616,7 +5685,11 @@ function CNCalls() {
     num: "08.06",
     name: "Connector",
     accent: "Calls.",
-    crumb: "Chapter 7 \xB7 Map Your Connectors"
+    crumb: "Chapter 8 \xB7 Map Your Connectors"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Connector Call Game Plan and Strategy",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 27:43",
+    src: "/audio/connectors/connector-calls.mp3"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5682,7 +5755,7 @@ function CNDoubleOptIn() {
     num: "08.02",
     name: "The Double",
     accent: "Opt-In System.",
-    crumb: "Chapter 7 \xB7 Map Your Connectors"
+    crumb: "Chapter 8 \xB7 Map Your Connectors"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5722,7 +5795,7 @@ function CNTrouble() {
     num: "08.07",
     name: "",
     accent: "Troubleshooting.",
-    crumb: "Chapter 7 \xB7 Map Your Connectors"
+    crumb: "Chapter 8 \xB7 Map Your Connectors"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -5839,7 +5912,7 @@ window.CHAPTER_CONNECTORS = {
 <!-- ===== ch-activate.jsx ===== -->
 <script data-source="ch-activate.jsx">
 /* global React, window */
-// Chapter 07 · Activate Your Intros
+// Chapter 9 · Activate Your Intros
 // Original verbatim source: uploads/fundraising-playbook.html lines 4828-5207.
 // Sub 1 (plan):       lines 4831-4880
 // Sub 2 (rate):       migrated from Ch6 (was 6.06); content originally
@@ -6061,7 +6134,7 @@ function ACRate() {
     num: "09.02",
     name: "Rate Your",
     accent: "List.",
-    crumb: "Chapter 8 \xB7 Activate Your Intros"
+    crumb: "Chapter 9 \xB7 Activate Your Intros"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6147,7 +6220,7 @@ function ACLaunch() {
     num: "09.03",
     name: "The Simultaneous",
     accent: "Launch.",
-    crumb: "Chapter 8 \xB7 Activate Your Intros"
+    crumb: "Chapter 9 \xB7 Activate Your Intros"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6210,7 +6283,7 @@ function ACScheduling() {
     num: "09.04",
     name: "Scheduling",
     accent: "Strategy.",
-    crumb: "Chapter 8 \xB7 Activate Your Intros"
+    crumb: "Chapter 9 \xB7 Activate Your Intros"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6277,7 +6350,7 @@ function ACGate() {
     num: "09.05",
     name: "Milestone",
     accent: "Gate.",
-    crumb: "Chapter 8 \xB7 Activate Your Intros"
+    crumb: "Chapter 9 \xB7 Activate Your Intros"
   }), /*#__PURE__*/React.createElement(Lede, null, "Activation isn\u2019t done when promises are collected. It\u2019s done when intros are firing and meetings are stacking up. Both halves have to clear the bar."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The promises",
@@ -6363,7 +6436,7 @@ window.CHAPTER_ACTIVATE = {
 <!-- ===== ch-pitching.jsx ===== -->
 <script data-source="ch-pitching.jsx">
 /* global React, window */
-// Chapter 08 · Pitching Best Practices
+// Chapter 11 · Pitching Best Practices
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 6947-7277.
 // Sub 1 (anatomy):  lines 6948-6999
 // Sub 2 (energy):   lines 7001-7048
@@ -6538,6 +6611,14 @@ function PTAnatomy() {
     name: "Pitching",
     accent: "Best Practices.",
     crumb: "Chapter 11"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "You Are the Architect of Your Process",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 15:29",
+    src: "/audio/pitching/architect.mp3"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Pitching: The Good, the Bad, and the Ugly",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 9:07",
+    src: "/audio/pitching/good-bad-ugly.mp3"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: PT_OBJECTIVES
   }), /*#__PURE__*/React.createElement("div", {
@@ -6580,7 +6661,7 @@ function PTEnergy() {
     {t:"Remember one customer", d:"Bring to mind one person who told you this mattered, so you walk in believing your story rather than defending it."}
   ];
   return h("div", {className:"fade-in sub-split","data-screen-label":"11.02 Your Energy Sets the Room’s Energy"},
-    h(Cue, {num:"11.02",name:"Your Energy Sets",accent:"the Room’s Energy.",crumb:"Chapter 10 · Pitching Best Practices"}),
+    h(Cue, {num:"11.02",name:"Your Energy Sets",accent:"the Room’s Energy.",crumb:"Chapter 11 · Pitching Best Practices"}),
     h("div", {className:"sub-split__body"},
       h("section", {className:"sub-split__read"},
         h(Lede, null, "Investors pattern-match on energy before they pattern-match on anything else. Over-prepared reads as artifice. Show up rested, present, and believing."),
@@ -6616,7 +6697,7 @@ function PTProblem() {
     num: "11.03",
     name: "Lead With",
     accent: "the Problem.",
-    crumb: "Chapter 10 \xB7 Pitching Best Practices"
+    crumb: "Chapter 11 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement(Lede, null, "Make the investor fall in love with the problem before you touch the solution. Slow the tempo, use specific people and real stories, and hold longer than feels comfortable."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "The problem",
@@ -6661,7 +6742,7 @@ function PTPyramid() {
     num: "11.04",
     name: "Answer",
     accent: "Conclusion-First.",
-    crumb: "Chapter 10 \xB7 Pitching Best Practices"
+    crumb: "Chapter 11 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6718,7 +6799,7 @@ function PTReading() {
     num: "11.05",
     name: "Reading",
     accent: "the Room.",
-    crumb: "Chapter 10 \xB7 Pitching Best Practices"
+    crumb: "Chapter 11 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6764,7 +6845,7 @@ function PTClosing() {
     num: "11.06",
     name: "Closing",
     accent: "the Meeting.",
-    crumb: "Chapter 10 \xB7 Pitching Best Practices"
+    crumb: "Chapter 11 \xB7 Pitching Best Practices"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -6870,7 +6951,7 @@ window.CHAPTER_PITCHING = {
 <!-- ===== ch-refine.jsx ===== -->
 <script data-source="ch-refine.jsx">
 /* global React, window */
-// Chapter 09 · Refine Through Practice
+// Chapter 12 · Refine Through Practice
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 5839-5938.
 // Sub 1 (why):     lines 5841-5870
 // Sub 2 (how):     lines 5872-5906
@@ -6924,6 +7005,10 @@ function RFWhy() {
     name: "Why Practice",
     accent: "Matters.",
     crumb: "Chapter 12"
+  }), /*#__PURE__*/React.createElement(window.AudioCompanion, {
+    title: "Developing an Iterative Pitching Mindset",
+    sub: "Quinn Fitzgerald and Adam Roberts podcast · 8:06",
+    src: "/audio/refine/iterative-mindset.mp3"
   }), /*#__PURE__*/React.createElement(Objectives, {
     items: RF_OBJECTIVES
   }), /*#__PURE__*/React.createElement(Lede, null, "Practice until your pitch is conversational, your numbers are cold, and your objection handling is instinctive."), /*#__PURE__*/React.createElement(ActMarker, {
@@ -6966,7 +7051,7 @@ function RFHow() {
     num: "12.02",
     name: "How to",
     accent: "Practice.",
-    crumb: "Chapter 11 \xB7 Refine Through Practice"
+    crumb: "Chapter 12 \xB7 Refine Through Practice"
   }), /*#__PURE__*/React.createElement(Lede, null, "Your pitch doesn\u2019t need to be perfect before you start. It needs to be good enough that you\u2019re comfortable, so your energy goes into the conversation, not the content."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
     name: "How much practice",
@@ -7003,7 +7088,7 @@ function RFGate() {
     num: "12.03",
     name: "Milestone",
     accent: "Gate.",
-    crumb: "Chapter 11 \xB7 Refine Through Practice"
+    crumb: "Chapter 12 \xB7 Refine Through Practice"
   }), /*#__PURE__*/React.createElement(Lede, null, "Every bar below cleared before you activate the intro pipeline. Practice is the gate, not a phase you pass through."), /*#__PURE__*/React.createElement(Gate, {
     label: "Don\u2019t activate your intro pipeline until",
     items: ["You know your numbers cold. No hesitation on KPIs, unit economics, or model assumptions.", "You can deliver the pitch conversationally without notes.", "Top objections are identified and rehearsed.", "Deck has been updated to address anything that consistently trips you up in practice.", "Throwaway pitches are scheduled at the front of your window."]
@@ -7057,7 +7142,7 @@ window.CHAPTER_REFINE = {
 <!-- ===== ch-pipeline.jsx ===== -->
 <script data-source="ch-pipeline.jsx">
 /* global React, window */
-// Chapter 11 · Manage Your Pipeline
+// Chapter 13 · Manage Your Pipeline
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 7280-7392.
 // Sub 1 (setup):     lines 7281-7345
 // Sub 2 (signals):   lines 7347-7390
@@ -7270,7 +7355,7 @@ function PLSignals() {
     num: "13.02",
     name: "Reading",
     accent: "Signals.",
-    crumb: "Chapter 12 \xB7 Manage Your Pipeline"
+    crumb: "Chapter 13 \xB7 Manage Your Pipeline"
   }), /*#__PURE__*/React.createElement(Lede, null, "Delays are data. Learn to read them."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
   }, /*#__PURE__*/React.createElement(ActMarker, {
@@ -7353,10 +7438,478 @@ window.CHAPTER_PIPELINE = {
 
 
 </script>
+<!-- ===== ch-structures.jsx ===== -->
+<script data-source="ch-structures.jsx">
+/* global React, window */
+// Chapter 14 · Deal Structures
+// New chapter. Sits between Manage Your Pipeline (13) and Diligence & Term
+// Sheet (15), so a founder walks into diligence already fluent in the paper.
+//
+// Voice: neutral primer by design. This chapter explains mechanics rather than
+// taking a position, because the right instrument depends on round size, lead
+// appetite, and what rights the investor is actually asking for. The advisory
+// voice returns in 15 and 16, where the decisions are.
+//
+// Every figure carries a source. Market data is Carta, PitchBook-NVCA, Cooley,
+// and Wilson Sonsini as of Q2 2026; mechanics are Y Combinator's Post-Money
+// SAFE User Guide and Cooley GO's convertible debt primer. Refresh the numbers
+// in ST_MARKET, ST_BANDS and ST_NOTE_TERMS when the quarterly reports land.
+(function () {
+  const h = React.createElement;
+
+  // Local link block. Same shape as the Sprint enrichment helper so the two
+  // render identically wherever they land on a page.
+  function Resources(title, links) {
+    return h("div", {
+      style: {
+        border: "1px solid rgba(20,20,22,.12)",
+        borderRadius: "14px",
+        padding: "16px 18px",
+        background: "rgba(255,255,255,.5)",
+        margin: "18px 0"
+      }
+    }, h("div", {
+      style: {
+        fontSize: ".72rem",
+        letterSpacing: ".08em",
+        textTransform: "uppercase",
+        opacity: .55,
+        marginBottom: "8px"
+      }
+    }, title), h("ul", {
+      style: { margin: 0, paddingLeft: "18px", lineHeight: 1.7 }
+    }, links.map(function (l, i) {
+      return h("li", { key: i }, h("a", {
+        href: l.href, target: "_blank", rel: "noopener"
+      }, l.t));
+    })));
+  }
+
+  function Tip(cls, eyebrow, title, body) {
+    return h("div", { className: "tip " + cls },
+      h("div", { className: "tip__head" },
+        h("span", { className: "tip__eyebrow" }, eyebrow),
+        h("h3", { className: "tip__title" }, title)),
+      h("p", { className: "tip__body" }, body));
+  }
+
+  // =====================================================================
+  // Data
+  // =====================================================================
+
+  const ST_OBJECTIVES = [
+    "Tell the difference between a converting instrument and priced equity",
+    "Read a valuation cap, a discount, and an MFN clause correctly",
+    "Match the structure to the round you are actually running"
+  ];
+
+  // 14.01 — The three instruments at a glance
+  const ST_THREE = [{
+    num: "01",
+    title: "SAFE",
+    desc: "A contract right to future equity. No interest, no maturity date, no repayment. It converts to preferred stock automatically at your next priced round. The dominant pre-seed instrument by a wide margin."
+  }, {
+    num: "02",
+    title: "Convertible note",
+    desc: "The same conversion idea wrapped in debt. It accrues interest, it has a maturity date, and it sits ahead of every class of equity if the company winds down. Now a small share of early rounds."
+  }, {
+    num: "03",
+    title: "Priced round",
+    desc: "You sell preferred stock at an agreed price per share. The valuation is set, ownership is fixed by arithmetic, every outstanding SAFE and note converts, and governance becomes institutional."
+  }];
+
+  // 14.01 — Market position. Carta State of Pre-Seed, Q1 2026 and FY2025.
+  const ST_MARKET = [{
+    num: "01",
+    title: "93% of pre-seed deals use SAFEs",
+    desc: "SAFEs carried 93% of pre-seed rounds and 92% of pre-seed dollars on Carta in Q1 2026, and specifically post-money valuation-cap SAFEs."
+  }, {
+    num: "02",
+    title: "Notes are at 7% of rounds",
+    desc: "A record low as of Q1 2026, and 8% of dollars. SAFEs now lead even in biotech, pharma, and medical devices, the last note-friendly sectors."
+  }, {
+    num: "03",
+    title: "Priced rounds take over near $4M",
+    desc: "At $3M raised, priced and unpriced are equally common. Above $4M, priced is the most likely structure. That crossover moved up from about $3M in 2024."
+  }, {
+    num: "04",
+    title: "Post-money is the default form",
+    desc: "90% of SAFEs were post-money by Q1 2026, up from 81% across 2025. The pre-money form is legacy, and mixing the two on one cap table creates uncertainty you have to model around."
+  }];
+
+  // 14.01 — Choosing by round size. Carta thresholds plus CRV's published bands.
+  const ST_BANDS = [{
+    num: "01",
+    title: "Under $1M",
+    desc: "Post-money SAFE, effectively without exception. Legal cost runs $0–$4,000 on an unmodified form, and the money can land in days."
+  }, {
+    num: "02",
+    title: "$1M–$2M",
+    desc: "SAFEs remain the norm. Watch the running total of ownership sold rather than the dollar total raised, because caps are additive."
+  }, {
+    num: "03",
+    title: "$2M–$5M",
+    desc: "The decision zone. Model both structures with the option pool included before you sign anything. This is the band where founders most often underestimate dilution."
+  }, {
+    num: "04",
+    title: "Above $5M",
+    desc: "Priced equity dominates, and most institutional leads at this level expect preferred stock. A committed lead who wants a board seat pushes you here regardless of size."
+  }];
+
+  // 14.02 — The permutations. YC publishes three US forms plus a side letter.
+  const ST_PERMUTATIONS = [{
+    num: "01",
+    title: "Valuation cap, no discount",
+    desc: "The standard SAFE and the form most of them use. The cap sets the highest valuation at which the money converts. Ownership equals investment divided by the post-money cap, fixed the day you sign."
+  }, {
+    num: "02",
+    title: "Discount, no cap",
+    desc: "The investor converts at a percentage off the next round's price. A 20% discount is written as a Discount Rate of 80%, and 20% is the setting you will see most often where a discount appears at all."
+  }, {
+    num: "03",
+    title: "Cap and discount",
+    desc: "Whichever term is more favorable to the investor applies, never both. YC does not publish this combination in its post-money suite, so a SAFE carrying both is usually working from an older template or a redline."
+  }, {
+    num: "04",
+    title: "MFN, no cap or discount",
+    desc: "No price at all. The investor gets the right to adopt the terms of a later SAFE if those terms are better. Used for genuine price-it-later situations: first money in, accelerator capital, an investor who will not set a number."
+  }];
+
+  // 14.02 — The stacking table. WilmerHale, 14 Apr 2026.
+  const ST_STACK = [{
+    num: "01",
+    title: "$400K at an $8M cap",
+    desc: "5.00% sold. Running total 5.00%."
+  }, {
+    num: "02",
+    title: "$725K at an $11.5M cap",
+    desc: "6.30% sold. Running total 11.30%."
+  }, {
+    num: "03",
+    title: "$1.2M at a $16M cap",
+    desc: "7.50% sold. Running total 18.80%."
+  }, {
+    num: "04",
+    title: "$2M at a $32M cap",
+    desc: "6.25% sold. Running total 25.05%, on $4.325M raised, before the priced round dilutes anyone."
+  }];
+
+  // 14.03 — Note terms. Cooley GO primer, reviewed Sept 2025, plus Carta Q1 2025.
+  const ST_NOTE_TERMS = [{
+    num: "01",
+    title: "Interest",
+    desc: "Carta's median was 7% in Q1 2025, down from an 8% peak in Q2 2024. Cooley sees 4% on genuinely early deals. It usually converts into extra shares rather than being repaid in cash, so read it as additional dilution."
+  }, {
+    num: "02",
+    title: "Maturity",
+    desc: "Commonly 12–24 months, though no primary source publishes a standard. At maturity the principal is contractually due. A later date is better for the company, and clustered maturities mean simultaneous negotiations."
+  }, {
+    num: "03",
+    title: "Discount",
+    desc: "15–25% per Cooley, with 20% the setting you will see most often. Where a note carries both a cap and a discount they operate in the alternative, whichever produces the lower conversion price."
+  }, {
+    num: "04",
+    title: "Qualified financing threshold",
+    desc: "The round size that triggers conversion, usually one to two times the principal outstanding. Set it too high and a real round can close without converting your notes."
+  }];
+
+  // 14.03 — Where notes still fit
+  const ST_NOTE_FIT = [{
+    num: "01",
+    title: "Bridges and extensions",
+    desc: "The default instrument for a bridge between priced rounds, where the next price is genuinely unknown and existing investors are the buyers."
+  }, {
+    num: "02",
+    title: "Outside the United States",
+    desc: "The YC SAFE is built on Delaware law. UK founders use ASAs for SEIS/EIS eligibility and convertible loan notes otherwise. Germany, the Netherlands, and France require a notary and a capital increase, and Germany penalizes a zero-interest instrument."
+  }, {
+    num: "03",
+    title: "Investor preference",
+    desc: "Some investors want interest accruing and a repayment timeline. The maturity date is a forcing function, which is exactly why some of them prefer it."
+  }];
+
+  // 14.04 — What a priced round requires
+  const ST_PRICED_DOCS = [{
+    num: "01",
+    title: "Stock purchase agreement",
+    desc: "The contract for the sale itself: price per share, closing conditions, representations on both sides."
+  }, {
+    num: "02",
+    title: "Amended certificate of incorporation",
+    desc: "The load-bearing document. This is where the preferred stock and its rights are actually created, and where protective provisions live."
+  }, {
+    num: "03",
+    title: "Investors' rights agreement",
+    desc: "Information rights, registration rights, and the right of first offer on future rounds. Usually limited to Major Investors above a stated threshold."
+  }, {
+    num: "04",
+    title: "Voting agreement",
+    desc: "Board composition and the drag-along, which compels minority holders including founders to vote for an approved sale."
+  }, {
+    num: "05",
+    title: "ROFR and co-sale agreement",
+    desc: "The company and then the investors get first refusal on founder share transfers, plus tag-along rights. Quiet secondary sales are off the table."
+  }];
+
+  // 14.04 — Cost and timeline
+  const ST_PRICED_COST = [{
+    num: "01",
+    title: "$40,000–$120,000 all-in",
+    desc: "Carta’s May 2026 figure for legal and administrative expenses on a seed or Series A close, counting both sides. One published flat-fee firm charges $24,000 for a Series Seed and $48,000 for a Series A."
+  }, {
+    num: "02",
+    title: "A SAFE costs $0–$4,000",
+    desc: "On an unmodified form. Investors who redline the template are what turn that number into a real bill."
+  }, {
+    num: "03",
+    title: "A 30–45 day no-shop is enough",
+    desc: "Cooley’s view is that 30–45 days of exclusivity is plenty to finalize almost any venture investment. That window is the post-term-sheet leg only, not the length of the raise."
+  }, {
+    num: "04",
+    title: "Diligence drives the bill",
+    desc: "Most of the legal cost comes from records cleanup and legal diligence rather than lawyers arguing over terms. Clean corporate records are the cheapest thing you can bring to a close."
+  }];
+
+  // =====================================================================
+  // Sub-chapter components
+  // =====================================================================
+
+  function STOverview() {
+    const { Cue, Lede, ActMarker, BeatsGrid, Compare, Objectives } = window;
+    return h("div", {
+      className: "fade-in sub-split",
+      "data-screen-label": "14.01 Deal Structures"
+    },
+      h(Cue, { num: "14.01", name: "Deal", accent: "Structures.", crumb: "Chapter 14" }),
+      h(Objectives, { items: ST_OBJECTIVES }),
+      h(Lede, null, "Three instruments carry almost every early-stage round. What separates them is when the price gets set and what rights travel with the money."),
+
+      h(ActMarker, { num: "01", name: "Two ways to sell", accent: "a piece of the company." }),
+      h("p", { className: "prose" }, "You can price the company today, or you can agree to price it later. Everything else follows from that one choice. A priced round establishes a value per share now and issues stock against it. A converting instrument takes the money now and settles the ownership question at the next priced round, using terms you agree to up front."),
+      h(Compare, {
+        pos: {
+          eyebrow: "Converting · SAFE or note",
+          title: "Price the company later",
+          body: "Money lands in days on a short standard form. No board seat, no protective provisions, no per-share price. Ownership is set by the cap you agreed to, and it resolves when the priced round closes."
+        },
+        neg: {
+          tone: "neutral",
+          eyebrow: "Priced · preferred stock",
+          title: "Price the company now",
+          body: "A defined price per share, a full document set, and a lead who sets terms. Ownership is certain the day it closes, and so are the control rights that come with it."
+        }
+      }),
+
+      h(ActMarker, { num: "02", name: "The three", accent: "instruments." }),
+      h(BeatsGrid, { items: ST_THREE, columns: 3 }),
+
+      Tip("tip--molten tip--compact", "Vocabulary", "Post-money means after this money.", "Pre-money valuation is what the company is worth before the round; post-money is pre-money plus the round. Dilution math runs off post-money, and a post-money SAFE cap is the number your ownership is calculated against. The same $500,000 at a $4.5M pre-money cap and a $5M post-money cap buy different amounts of the company."),
+
+      h(ActMarker, { num: "03", name: "Where the market", accent: "actually sits." }),
+      h("p", { className: "prose" }, "The early-stage market has consolidated hard around one instrument. Knowing the distribution is useful for the same reason knowing fund math is useful: it tells you which conversations are standard and which ones require an explanation."),
+      h("div", { className: "framework framework--highlight" },
+        h(BeatsGrid, { items: ST_MARKET, columns: 2 })),
+
+      h(ActMarker, { num: "04", name: "Choosing", accent: "by round size." }),
+      h("p", { className: "prose" }, "Round size predicts structure better than stage does. The bands below are where the market sits, not a rule, and a lead with a strong preference overrides all of them."),
+      h(BeatsGrid, { items: ST_BANDS, columns: 2 }),
+      h("p", { className: "prose" }, "There is a second question underneath the size question. Once ownership certainty is solved, the choice between a SAFE and a priced round mostly comes down to what other rights the investor wants: a board seat, veto rights over specific decisions, formal information rights. An investor who asks to price the round is often asking for those, so ask directly what they are after before you agree to the structure."),
+
+      Resources("Further reading · structures", [
+        { t: "Y Combinator — SAFE overview and calculator", href: "https://www.ycombinator.com/safe" },
+        { t: "Carta — Priced rounds explained", href: "https://carta.com/learn/startups/fundraising/priced-rounds/" },
+        { t: "Carta — The disappearing middle of the pre-seed market", href: "https://carta.com/data/disappearing-middle-pre-seed-market/" }
+      ])
+    );
+  }
+
+  function STSafe() {
+    const { Cue, Lede, ActMarker, BeatsGrid, Compare } = window;
+    return h("div", {
+      className: "fade-in sub-split",
+      "data-screen-label": "14.02 The SAFE"
+    },
+      h(Cue, { num: "14.02", name: "The", accent: "SAFE.", crumb: "Chapter 14 · Deal Structures" }),
+      h(Lede, null, "Caps, discounts, MFN, and pro rata. Four terms, and one piece of arithmetic that surprises founders at the Series A."),
+
+      h(ActMarker, { num: "01", name: "What a SAFE", accent: "actually is." }),
+      h("p", { className: "prose" }, "A Simple Agreement for Future Equity is a contract right to shares that do not exist yet. Y Combinator published it in 2013 to replace convertible notes, and stripped out the two features that made notes awkward at the earliest stage: interest and a maturity date. There is nothing to repay and nothing that comes due."),
+      h("p", { className: "prose" }, "Conversion is automatic and it is not optional for the holder. Unlike a note, the post-money SAFE carries no threshold the round has to clear, so any equity financing converts it. On conversion the money becomes shadow preferred, usually labeled Series A-1 and A-2: identical rights to the new preferred, with the liquidation amount and conversion price set off the SAFE price rather than the round price. That detail is what keeps a low-cap SAFE from turning into an oversized liquidation preference."),
+
+      h(ActMarker, { num: "02", name: "Pre-money and post-money", accent: "the 2018 change." }),
+      h("p", { className: "prose" }, "The original 2013 SAFE was designed as a bridge into a priced round. By 2018 founders were raising multi-year seed rounds on SAFEs alone, so YC rewrote the form to match how it was being used. About 90% of SAFEs were post-money by Q1 2026, up from 81% across 2025."),
+      h(Compare, {
+        pos: {
+          eyebrow: "Post-money · current standard",
+          title: "Ownership is fixed at signature",
+          body: "Investment divided by the post-money cap, and that number does not move. Later SAFEs are counted in the capitalization, so they no longer dilute earlier SAFEs. That dilution lands on founders and employees instead."
+        },
+        neg: {
+          tone: "neutral",
+          eyebrow: "Pre-money · legacy form",
+          title: "Ownership resolved later",
+          body: "SAFEs diluted each other, and the answer depended on how much was raised on other SAFEs plus an option pool increase negotiated years later. Not recommended, and mixing the two forms creates cap table uncertainty."
+        }
+      }),
+      h("p", { className: "prose" }, "The trade is worth naming plainly. Investors accepted a higher headline number in exchange for certainty about where they land, so $500,000 at a $4.5M pre-money cap became $500,000 at a $5.5M post-money cap. Founders got the same certainty on their side of the table, and took on all of the dilution from every SAFE that follows."),
+
+      h(ActMarker, { num: "03", name: "The four", accent: "permutations." }),
+      h(BeatsGrid, { items: ST_PERMUTATIONS, columns: 2 }),
+      h("p", { className: "prose" }, "YC currently publishes three of these as US forms plus a pro rata side letter. The post-money suite has never included a cap-and-discount version, which is worth knowing if one arrives on your desk carrying both."),
+
+      Tip("tip--coral tip--compact", "Watch out", "The cap is a ceiling, not a floor.", "If the Series A prices below your cap, or close to it, the SAFE converts at the new money price and the investor gets more shares than the cap implies. The cap protects the investor against a high-priced round; it does nothing to protect you in a low-priced one."),
+
+      h(ActMarker, { num: "04", name: "MFN", accent: "and why sequence matters." }),
+      h("p", { className: "prose" }, "A most favored nation clause lets the holder adopt the terms of any SAFE you issue later, if those terms are better. It is a reasonable answer to a real problem: an investor writing the first check often cannot price the company, and MFN lets them defer without guessing."),
+      h("p", { className: "prose" }, "Three mechanics decide whether it helps or hurts you. It typically fires once, so the holder amends into one later SAFE and the MFN is gone unless that later SAFE carries an MFN of its own. There is no cherry-picking, because the amended SAFE becomes identical to the later one apart from the amount. And it is triggered by the holder, at the moment of their choosing, which means every subsequent SAFE you issue is a term you are effectively offering backwards."),
+      Tip("tip--coral tip--compact", "Watch out", "Sign an MFN, then a low cap, and the MFN gets the low cap.", "This is the trap YC names in its own guidance. A $500,000 MFN followed six months later by a $10M cap gives the first investor that $10M cap. The practical consequence is that an MFN in the stack discourages small capped SAFEs afterward and pushes you toward one clean priced seed. Narrow the clause to a time window or to specific terms if you want it to stay contained."),
+
+      h(ActMarker, { num: "05", name: "Pro rata", accent: "lives in a side letter." }),
+      h("p", { className: "prose" }, "Pro rata is the right to invest again in the round where the SAFE converts, in order to maintain ownership. YC moved it out of the SAFE body in 2018 and into an optional side letter, on the reasoning that no single standard fits a company raising $100,000 and a company raising $1M. It only works alongside a cap, because the calculation runs off the post-money valuation cap, so it cannot be paired with the discount-only or MFN-only forms."),
+      h("p", { className: "prose" }, "Granting it to everyone is the expedient choice and it defers a real negotiation to your Series A, where those investors compete for allocation with your new lead. The cleaner approach is a minimum investment threshold, which rewards larger early checks and leaves fewer holders to coordinate at closing."),
+
+      h(ActMarker, { num: "06", name: "The stacking", accent: "math." }),
+      h("p", { className: "prose" }, "Post-money caps are additive. Five $100,000 SAFEs at a $5M cap is 10% of the company sold, not 2%. Each one locks its own percentage and none of them dilute each other, so the running total is the number that matters and the dollar total is the one that misleads."),
+      h("div", { className: "framework framework--highlight framework--sage" },
+        h(BeatsGrid, { items: ST_STACK, columns: 2 })),
+      h("p", { className: "prose" }, "Note which line does the damage. The $2M check at a $32M cap costs less ownership than the $1.2M check at $16M, because the cap sets the price and the dollars only set the size. A deep enough stack costs what a priced seed costs, and median dilution at a priced seed or Series A runs 18–20%. Track the cumulative percentage from the first check, and re-run the full conversion including the option pool increase before you sign each new one."),
+
+      Resources("Further reading · SAFEs", [
+        { t: "Y Combinator — Post-Money SAFE User Guide and documents", href: "https://www.ycombinator.com/documents" },
+        { t: "Y Combinator — SAFE vs convertible note", href: "https://www.ycombinator.com/safe/safe-vs-convertible-note" },
+        { t: "Carta — How a SAFE works", href: "https://carta.com/learn/startups/fundraising/convertible-securities/safes/" },
+        { t: "Elizabeth Yin — To SAFE or not to SAFE", href: "https://elizabethyin.com/2019/05/31/to-safe-or-not-to-safe/" }
+      ])
+    );
+  }
+
+  function STNotes() {
+    const { Cue, Lede, ActMarker, BeatsGrid } = window;
+    return h("div", {
+      className: "fade-in sub-split",
+      "data-screen-label": "14.03 Convertible Notes"
+    },
+      h(Cue, { num: "14.03", name: "Convertible", accent: "Notes.", crumb: "Chapter 14 · Deal Structures" }),
+      h(Lede, null, "Debt that turns into equity. Down to 7% of pre-seed rounds, and still the right answer in a few specific places."),
+
+      h(ActMarker, { num: "01", name: "What makes a note", accent: "different." }),
+      h("p", { className: "prose" }, "A convertible note does the same job as a SAFE and carries it in a different legal wrapper. The note is debt, which changes four things: interest accrues, a maturity date exists, the money sits senior to every class of equity including SAFEs, and an unpaid note at maturity is a defaulted loan rather than an awkward conversation."),
+      h("p", { className: "prose" }, "In practice the interest almost always converts into additional shares rather than being repaid in cash, so treat it as extra dilution rather than a cost of capital. Three notes totaling $450,000 at 5–6% grow to roughly $485,000 over eighteen months, which is $35,000 of equity nobody modeled. Most companies do not carry their convertible debt on the cap table at all, and that is where the surprise comes from."),
+
+      h(ActMarker, { num: "02", name: "The terms", accent: "you will see." }),
+      h(BeatsGrid, { items: ST_NOTE_TERMS, columns: 2 }),
+      Tip("tip--molten tip--compact", "Heads up", "What actually happens at maturity.", "Almost always an extension. Cooley's read is that companies reach out before maturity and holders agree, because the company cannot repay and the holders are not excited about being repaid anyway. Aggressive collection at maturity is rare. It is also not automatic: extensions require you to go ask, and a note that matures in the middle of a raise hands the holder leverage they did not have the day before."),
+
+      h(ActMarker, { num: "03", name: "Why the market", accent: "moved on." }),
+      h("p", { className: "prose" }, "Notes carried a large share of pre-seed rounds through the 2010s. The line since is one direction: 12% in Q3 2024, 10% in Q1 2025, and 7% of rounds and 8% of dollars by Q1 2026, a record low. By 2025 SAFEs led even in biotech, pharma, and medical devices."),
+      h("p", { className: "prose" }, "The reasons are structural rather than fashionable. Debt introduces an insolvency risk that no early-stage company can actually service, the maturity date creates a deadline that serves the investor, interest complicates the conversion arithmetic, and the qualified financing threshold can leave notes unconverted through a round that should have cleared them. The SAFE removed all four and lost nothing the early-stage investor was relying on."),
+
+      h(ActMarker, { num: "04", name: "Where notes", accent: "still fit." }),
+      h(BeatsGrid, { items: ST_NOTE_FIT, columns: 3 }),
+      h("p", { className: "prose" }, "The honest version of this is that instrument choice is rarely worth a fight. If an investor strongly prefers a note and the terms are fair, the cost of arguing usually exceeds the cost of the paper."),
+
+      Tip("tip--coral", "Watch out", "Do not mix notes and SAFEs in the same stack.", "Debt is senior to equity, and a SAFE is equity. A note sitting alongside SAFEs takes priority over them in a wind-down and complicates every conversion model you build. YC's guidance is to keep early money on one instrument, and if you have already issued several notes, to keep issuing notes for simplicity rather than switching mid-stack."),
+
+      Resources("Further reading · convertible notes", [
+        { t: "Cooley GO — Primer on convertible debt", href: "https://www.cooleygo.com/convertible-debt/" },
+        { t: "Cooley GO — Convertible debt FAQ", href: "https://www.cooleygo.com/frequently-asked-questions-convertible-debt/" }
+      ])
+    );
+  }
+
+  function STPriced() {
+    const { Cue, Lede, ActMarker, BeatsGrid, Pull } = window;
+    return h("div", {
+      className: "fade-in sub-split",
+      "data-screen-label": "14.04 Priced Rounds"
+    },
+      h(Cue, { num: "14.04", name: "Priced", accent: "Rounds.", crumb: "Chapter 14 · Deal Structures" }),
+      h(Lede, null, "Preferred stock at a set price per share. What it requires, what it costs, and the point where you cross over."),
+
+      h(ActMarker, { num: "01", name: "What makes a round", accent: "priced." }),
+      h("p", { className: "prose" }, "A priced round sells preferred stock at an agreed price per share. The valuation is set rather than deferred, ownership is fixed by arithmetic on the day it closes, every outstanding SAFE and note converts, and reporting and governance become institutional. A signed term sheet is not a priced round. The round exists when the definitive documents are signed and the money is wired."),
+      h(BeatsGrid, { items: ST_PRICED_DOCS, columns: 2 }),
+      h("p", { className: "prose" }, "The amended certificate of incorporation is the one to read closely. Liquidation preference, anti-dilution, and protective provisions are all created there, which means they are charter-level rights rather than contract terms you can quietly renegotiate later."),
+
+      h(ActMarker, { num: "02", name: "Two document", accent: "sets." }),
+      h("p", { className: "prose" }, "Almost every US priced round runs on one of two standards. The NVCA model documents are the institutional default, maintained by a general counsel advisory board and updated roughly annually, and the core set runs about 132 pages. Series Seed is the lighter alternative at about 49 pages, originally published in 2010 and now maintained as a fork by Cooley, with the upstream project effectively dormant. The rule of thumb practitioners use is Series Seed under $2M and NVCA above that or wherever the lead is institutional."),
+      Tip("tip--molten tip--compact", "Heads up", "The free generators lag the real forms.", "The NVCA documents were substantially updated in October 2025, with the charter, purchase agreement, and investors' rights agreement all revised, and the voting agreement and co-sale agreement updated again in 2026. The widely used free NVCA generator states on its own page that it does not reflect updates released from October 2024 onward. Have counsel work from the current forms."),
+
+      h(ActMarker, { num: "03", name: "What it costs", accent: "and how long." }),
+      h(BeatsGrid, { items: ST_PRICED_COST, columns: 2 }),
+      h("p", { className: "prose" }, "You will usually be asked to cover the investor's legal fees as well as your own, capped at a negotiated number. Ask to strike it first. If that fails, the practical bands people land on are roughly $10,000–$25,000 at seed and higher at Series A, and a handful of funds pay their own counsel as policy."),
+
+      h(ActMarker, { num: "04", name: "409A", accent: "and the option pool." }),
+      h("p", { className: "prose" }, "A priced round is a material event, which invalidates your existing 409A valuation and requires a fresh one for option grants. The appraisal sets the fair market value of common stock, and back-solve methods commonly land common somewhere between 25% and 50% of the preferred price, and published estimates vary by provider. Line up the provider before the round closes rather than after. A SAFE cap is not fair market value and cannot be used as a strike price."),
+      h("p", { className: "prose" }, "The option pool is where the quiet dilution happens. When a term sheet says a pre-money valuation including an option pool equal to a percentage of the post-financing capitalization, the new pool is carved out of the pre-money, so it dilutes everyone already on the cap table rather than the incoming investor. Post-money SAFE holders are contractually shielded from it, which concentrates the effect on founders and employees. In the worked case where the round itself is 20% of post-money, a pool set at 20% of post is 25% of pre. Build a twelve-month hiring plan, size the pool bottom-up from actual roles, and settle it before you discuss valuation rather than after."),
+      h(Pull, {
+        eyebrow: "The mechanic worth internalizing",
+        quote: "The pool comes out of the pre-money, so every point you add to it is a point you pay for alone."
+      }),
+
+      h(ActMarker, { num: "05", name: "When to cross", accent: "over." }),
+      h("p", { className: "prose" }, "The market answer is a size threshold. Once a financing reaches $3M, priced and unpriced rounds are equally common; above $4M, priced is the most likely structure. That crossover has moved up rather than down, which is worth noting because the common assumption is that priced seed is returning. It is not, broadly. Fewer and larger unpriced checks are feeding a smaller and more expensive priced seed at the top of the market."),
+      h("p", { className: "prose" }, "The signals that actually move a company across are more specific than a dollar figure. A committed lead who wants a board seat pushes you to a priced round at any size. A SAFE stack deep enough that new investors cannot model their own ownership does the same, and the crowding problem is one of the more common reasons a lead walks. So does an investor asking for control rights, information rights, or veto provisions, none of which a SAFE can carry."),
+      h("p", { className: "prose" }, "Two disciplines are worth keeping regardless of which side of the line you are on. Use the unmodified standard form and push back on edits, because a modified SAFE costs what a priced round costs. And model the full conversion scenario including the option pool expansion before every signature. Both take under an hour."),
+
+      Resources("Further reading · priced rounds", [
+        { t: "NVCA — Model legal documents", href: "https://nvca.org/model-legal-documents/" },
+        { t: "Y Combinator — Series A term sheet template", href: "https://www.ycombinator.com/series_a_term_sheet" },
+        { t: "Cooley GO — Series Seed equity financing package", href: "https://www.cooleygo.com/documents/series-seed-equity-financing-package/" },
+        { t: "Venture Hacks — The option pool shuffle", href: "https://venturehacks.com/option-pool-shuffle" }
+      ])
+    );
+  }
+
+  // =====================================================================
+  // Chapter export
+  // =====================================================================
+  const ST_SUBS = [{
+    num: "01",
+    slug: "overview",
+    title: "Deal Structures",
+    teaser: "Three instruments, one decision. When the price gets set, and what rights travel with the money."
+  }, {
+    num: "02",
+    slug: "safe",
+    title: "The SAFE",
+    teaser: "Caps, discounts, MFN, and pro rata. Four terms, and one piece of arithmetic that surprises founders."
+  }, {
+    num: "03",
+    slug: "notes",
+    title: "Convertible Notes",
+    teaser: "Debt that turns into equity. Down to 7% of pre-seed rounds, and still right in a few specific places."
+  }, {
+    num: "04",
+    slug: "priced",
+    title: "Priced Rounds",
+    teaser: "Preferred stock at a set price. What it requires, what it costs, and the point where you cross over."
+  }];
+
+  const ST_MAP = { overview: STOverview, safe: STSafe, notes: STNotes, priced: STPriced };
+
+  function STChapter(props) {
+    const sub = props.subIdx >= 0 ? ST_SUBS[props.subIdx] : null;
+    if (!sub) return null;
+    const P = ST_MAP[sub.slug];
+    return h(React.Fragment, null, P ? h(P, { key: sub.slug }) : null);
+  }
+
+  window.CHAPTER_STRUCTURES = {
+    id: "structures",
+    num: "14",
+    name: "Deal Structures",
+    desc: "How SAFEs, convertible notes, and priced rounds actually work.",
+    subs: ST_SUBS,
+    Component: STChapter
+  };
+})();
+
+</script>
 <!-- ===== ch-diligence.jsx ===== -->
 <script data-source="ch-diligence.jsx">
 /* global React, window */
-// Chapter 12 · Diligence & Term Sheet
+// Chapter 15 · Diligence & Term Sheet
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 7394-7605.
 // Sub 1 (overview):  lines 7395-7488
 // Sub 2 (terms):     lines 7490-7541
@@ -7377,19 +7930,19 @@ const DD_OBJECTIVES = ["Know what triggers diligence and how to prepare your dat
 const DD_TRIGGERS = [{
   num: "01",
   title: "Reference calls requested",
-  desc: ""
+  desc: "They want to talk to customers, former colleagues, or existing investors. Nobody spends that time on a company they have already passed on."
 }, {
   num: "02",
   title: "Data room access requested",
-  desc: ""
+  desc: "The ask is the signal. An investor who wants the folder is building a case internally, and the request tells you more than anything they said in the meeting."
 }, {
   num: "03",
   title: "Partner meeting scheduled",
-  desc: ""
+  desc: "Your champion is putting their credibility in front of the rest of the firm. Ask who will be in the room and what each of them cares about."
 }, {
   num: "04",
   title: "Specific follow-up questions",
-  desc: "About metrics, unit economics, cap table, or model."
+  desc: "About metrics, unit economics, cap table, or model. Vague questions are politeness; specific ones are someone building a model."
 }];
 
 // 11.01 — Data room sections (source 7424-7458)
@@ -7447,7 +8000,23 @@ const DD_TERMS = [{
 }, {
   num: "06",
   title: "Liquidation Preference",
-  desc: "Payout order if the company is sold. 1x non-participating is standard and founder-friendly. Anything more aggressive (2x, participating preferred) warrants scrutiny."
+  desc: "Payout order if the company is sold. 1x non-participating is standard and founder-friendly, and it appears in 95–98% of financings. Participating preferred is a down-round term rather than a market term, so anything more aggressive warrants scrutiny."
+}, {
+  num: "07",
+  title: "Anti-Dilution",
+  desc: "What happens to the investor’s conversion price if you later raise at a lower valuation. Broad-based weighted average is the standard, and it has been essentially universal for years. Full ratchet sits in the low single digits and is a flag, not a negotiation."
+}, {
+  num: "08",
+  title: "No-Shop / Exclusivity",
+  desc: "Signing the term sheet stops you talking to other investors, usually for 30–60 days. This is the single term that converts your leverage into their timeline, so negotiate the length before you sign rather than after."
+}, {
+  num: "09",
+  title: "Founder Vesting",
+  desc: "Your own shares get put on a vesting schedule, typically four years with a one-year cliff, sometimes with credit for time already served. Ask for credit, and read what happens to unvested shares if you are terminated or the company is acquired."
+}, {
+  num: "10",
+  title: "Drag-Along",
+  desc: "Compels minority holders, including you, to vote for a sale the required majority has approved. Standard and rarely worth fighting. Read it alongside the M&A veto, because an investor holding both can force a sale and block one."
 }];
 
 // 11.03 — When a term sheet arrives (source 7556-7559)
@@ -7504,9 +8073,9 @@ function DDOverview() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "14.01 Diligence & Term Sheet"
+    "data-screen-label": "15.01 Diligence & Term Sheet"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "14.01",
+    num: "15.01",
     name: "Diligence &",
     accent: "Term Sheet.",
     crumb: "Chapter 14"
@@ -7594,22 +8163,56 @@ function DDTerms() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "14.02 Key Terms"
+    "data-screen-label": "15.02 Key Terms"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "14.02",
+    num: "15.02",
     name: "Key",
     accent: "Terms.",
-    crumb: "Chapter 13 \xB7 Diligence & Term Sheet"
-  }), /*#__PURE__*/React.createElement(Lede, null, "Vocabulary first. Know the six terms below cold before a lead comes in."), /*#__PURE__*/React.createElement("p", {
+    crumb: "Chapter 15 \xB7 Diligence & Term Sheet"
+  }), /*#__PURE__*/React.createElement(Lede, null, "Vocabulary first. Know the ten terms below cold before a lead comes in."), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "This isn\u2019t about negotiating tactics yet. That\u2019s ", /*#__PURE__*/React.createElement("strong", null, "Close the Round"), ". This is vocabulary. Know it cold before you need it."), /*#__PURE__*/React.createElement(ActMarker, {
+  }, "This isn’t about negotiating tactics yet. That’s ", /*#__PURE__*/React.createElement("strong", null, "Close the Round"), ". This is vocabulary. Know it cold before you need it."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "A term sheet does two separate jobs, and reading it as one document is how founders lose things they cared about. The economic terms decide who gets paid what, and in what order, the day there is money to divide. The control terms decide who makes decisions between now and then. Valuation sits in the first group and gets almost all of a founder’s attention; the terms that determine whether you are still running the company in four years sit in the second."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "The structure of your round decides which of these terms even apply. A SAFE carries a cap and, sometimes, a discount, an MFN clause, and pro rata. Everything else on this list arrives with preferred stock. If you haven’t read ", /*#__PURE__*/React.createElement("strong", null, "Deal Structures"), " yet, read it before the term sheet lands."), /*#__PURE__*/React.createElement(ActMarker, {
     num: "01",
-    name: "The six",
+    name: "The ten",
     accent: "key terms."
   }), /*#__PURE__*/React.createElement(BeatsGrid, {
     items: DD_TERMS,
     columns: 2
-  }));
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "tip tip--molten tip--compact"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tip__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tip__eyebrow"
+  }, "Heads up"), /*#__PURE__*/React.createElement("h3", {
+    className: "tip__title"
+  }, "Most of these are standard, and that is the point.")), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "Structure creep reversed after 2023. By 2026 roughly 98% of financings carry a 1x preference, 96% are non-participating, anti-dilution is broad-based weighted average in essentially every deal, and a majority of rounds have no dividend provision at all. Knowing where the market sits means you can spend your negotiating capital on the two or three terms that are genuinely off-market rather than on the ten that aren’t.")), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "02",
+    name: "The terms that",
+    accent: "should stop you."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "A short list is worth memorizing, because each one says something specific about how the investor is thinking. A liquidation preference above 1x, participating preferred, cumulative dividends, and warrant coverage all do the same thing: they protect the investor against losing money rather than betting on you making them some. Full ratchet anti-dilution and redemption rights belong in the same group."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Board structure is the one that gets least attention and matters most. A 2-1 board with founders in control is the clean early-stage shape, and the shape that costs founders control at a Series A is 2-2-1, where a single independent seat decides every contested vote. Nobody publishes board composition data, so treat both as conventions rather than measured norms. What is not a convention is the consequence: the board is who decides whether you keep the chair. Watch also for a separate provision requiring the investor director’s approval on operating decisions like budget, executive hiring, or a change of direction, which achieves the same thing without touching the board math."), /*#__PURE__*/React.createElement("div", {
+    className: "tip tip--coral"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tip__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tip__eyebrow"
+  }, "Watch out"), /*#__PURE__*/React.createElement("h3", {
+    className: "tip__title"
+  }, "A harsh clause is sometimes there to be fought.")), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "A lead who expects a fight will occasionally plant something aggressive so that the fight happens over that clause instead of over the valuation. You spend your one big objection removing a term they were always willing to drop, and the price stays where they set it. Read the whole sheet before you react to any single line, decide in advance which two things you actually want, and treat a clause that seems gratuitously harsh as information about their strategy rather than an insult."), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "When a term sheet is written to take power away from founders, the stated justification is usually governance or accountability. Believe the terms rather than the framing.")));
 }
 function DDTermSheet() {
   const {
@@ -7622,12 +8225,12 @@ function DDTermSheet() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "14.03 When a Term Sheet Arrives"
+    "data-screen-label": "15.03 When a Term Sheet Arrives"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "14.03",
+    num: "15.03",
     name: "When a Term Sheet",
     accent: "Arrives.",
-    crumb: "Chapter 13 \xB7 Diligence & Term Sheet"
+    crumb: "Chapter 15 \xB7 Diligence & Term Sheet"
   }), /*#__PURE__*/React.createElement("div", {
     className: "sub-split__body"
   }, /*#__PURE__*/React.createElement("section", {
@@ -7731,7 +8334,7 @@ function DDChapter({
 // Chapter name + desc verbatim from source allChapters[] line 8120.
 window.CHAPTER_DD = {
   id: "dd",
-  num: "14",
+  num: "15",
   name: "Diligence & Term Sheet",
   desc: "Prepare your data room and negotiate terms with confidence.",
   subs: DD_SUBS,
@@ -7743,7 +8346,7 @@ window.CHAPTER_DD = {
 <!-- ===== ch-close.jsx ===== -->
 <script data-source="ch-close.jsx">
 /* global React, window */
-// Chapter 13 · Close the Round
+// Chapter 16 · Close the Round
 // Content lifted verbatim from uploads/fundraising-playbook.html lines 7607-7724.
 // Sub 1 (overview):  lines 7608-7675
 // Sub 2 (wire):      lines 7677-7722
@@ -7753,7 +8356,7 @@ window.CHAPTER_DD = {
 // silently corrected to "Chapter 12" since term sheet aim lives in Ch11.
 
 // Learning objectives — verbatim from uploads/fundraising-playbook.html line 7936.
-const CL_OBJECTIVES = ["Execute the “lead first, then fill” strategy", "Apply the five negotiation principles", "Complete the signing and wire process correctly"];
+const CL_OBJECTIVES = ["Execute the “lead first, then fill” strategy", "Apply the five negotiation principles", "Manage allocation, pro rata, and the cap table into a clean close", "Complete the signing and wire process correctly"];
 
 // =====================================================================
 // Data
@@ -7763,19 +8366,23 @@ const CL_OBJECTIVES = ["Execute the “lead first, then fill” strategy", "Appl
 const CL_FILL = [{
   num: "01",
   title: "Re-engage Tier 2 and Tier 3 pipeline",
-  desc: "Investors who passed or went quiet often reverse on a credible term sheet."
+  desc: "Investors who passed or went quiet often reverse on a credible term sheet. A pass was a judgment about risk, and a lead just removed most of it."
 }, {
   num: "02",
   title: "Activate angels and small funds",
-  desc: "They move faster and are less sensitive to valuation."
+  desc: "They move faster and are less sensitive to valuation. An angel who already knows you is frequently a one-call close, and the paperwork is a single form."
 }, {
   num: "03",
   title: "Set a clear allocation framework",
-  desc: "Know how much room you have and who gets priority."
+  desc: "Know how much room you have and who gets priority before the calls start. Deciding allocation live, inside the conversation, is how founders end up with a cap table they didn’t choose."
 }, {
   num: "04",
   title: "Create urgency that’s real",
-  desc: /*#__PURE__*/React.createElement(React.Fragment, null, "\u201CWe\u2019re closing the round in X weeks\u201D is more effective when it\u2019s true.")
+  desc: /*#__PURE__*/React.createElement(React.Fragment, null, "Shrinking allocation is the honest version of pressure. “The lead is in and we’re filling the rest” does more work than any deadline, and it has the advantage of being true.")
+}, {
+  num: "05",
+  title: "Close one angel, then let them recruit",
+  desc: "Get the first signature before you introduce anyone to anyone. Angels deciding as a group is how a yes turns into a maybe, because somebody in the group always has a reason."
 }];
 
 // 12.01 — Negotiation principles (source 7642-7666)
@@ -7785,12 +8392,12 @@ const CL_NEGOTIATION = [{
   desc: "Pro rata rights, board composition, information rights, and protective provisions all matter. A high valuation with bad terms can hurt you more than a lower one with clean terms."
 }, {
   num: "02",
-  title: "Leverage = competition",
-  desc: "This is why you aimed for multiple term sheets in Diligence & Term Sheet. Without a competing offer, you’re negotiating from zero leverage."
+  title: "Leverage is competition",
+  desc: "This is why you aimed for multiple term sheets in Diligence & Term Sheet. Without a competing offer you negotiate from zero leverage, and a second interested party degrades the value of the first offer the moment it appears."
 }, {
   num: "03",
-  title: "Know your BATNA",
-  desc: "What’s your best alternative if this deal falls through? Knowing that clearly makes you a better negotiator. Ambiguity breeds concessions."
+  title: "Know your walk-away",
+  desc: "What happens if this deal falls through? Knowing it precisely is what lets you push for an answer instead of protecting the conversation. The founder willing to hear a no applies more pressure than the founder who needs a yes."
 }, {
   num: "04",
   title: "A solid deal now beats a perfect deal later",
@@ -7799,21 +8406,25 @@ const CL_NEGOTIATION = [{
   num: "05",
   title: "Get a lawyer. Always.",
   desc: "Every term sheet. Founders who skip this step almost always regret it. Terms are legally binding and compounding."
+}, {
+  num: "06",
+  title: "Never name a close date publicly",
+  desc: "A date you announce is a date investors can wait out, and it inverts your leverage the moment it passes. Describe the situation instead: the lead is in, the meetings are booked, allocation is filling."
 }];
 
 // 12.02 — Signing and wire process (source 7689-7693)
 const CL_WIRE_STEPS = [{
   num: "01",
   title: "Term sheet signed",
-  desc: "Triggers exclusivity. Typically 30–60 days. The clock starts now."
+  desc: "Triggers the no-shop. Typically 30–60 days, and Cooley’s view is that 30–45 is plenty for almost any venture deal. Negotiate the length before you sign, because this is the clause that converts your leverage into their timeline."
 }, {
   num: "02",
   title: "Legal documentation",
   desc: "Investor counsel drafts definitive agreements. Minimum 2–4 weeks. Plan for it to take longer."
 }, {
   num: "03",
-  title: "Final diligence + cap table clean-up",
-  desc: "Resolve any open items. All SAFEs, prior notes, and option pool must be clean before closing."
+  title: "Final diligence and cap table clean-up",
+  desc: "Every SAFE and note converts here, and the option pool gets sized. Most of the legal bill comes from records cleanup rather than lawyers arguing terms, so clean corporate records are the cheapest thing you can bring to a close."
 }, {
   num: "04",
   title: "Signing",
@@ -7822,6 +8433,10 @@ const CL_WIRE_STEPS = [{
   num: "05",
   title: "Wire confirmation",
   desc: "3–10 business days after signing. Build your runway planning around the wire date. Not the signing date."
+}, {
+  num: "06",
+  title: "Post-close housekeeping",
+  desc: "A priced round invalidates your 409A, so a fresh valuation is needed before the next option grant. Line up the provider before the close rather than after."
 }];
 
 // =====================================================================
@@ -7834,13 +8449,14 @@ function CLOverview() {
     Lede,
     ActMarker,
     BeatsGrid,
-    Objectives
+    Objectives,
+    Pull
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "15.01 Close the Round"
+    "data-screen-label": "16.01 Close the Round"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "15.01",
+    num: "16.01",
     name: "Close",
     accent: "the Round.",
     crumb: "Chapter 15"
@@ -7872,7 +8488,30 @@ function CLOverview() {
   }), /*#__PURE__*/React.createElement(BeatsGrid, {
     items: CL_NEGOTIATION,
     columns: 2
-  })));
+  })), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "04",
+    name: "Choosing between",
+    accent: "leads."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Running a simultaneous process is supposed to produce more than one offer, and the playbook mostly stops there. Two term sheets is a better problem than one, and it is still a problem, because the second offer is only leverage until you have to pick."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Read the terms before you read the valuation. A higher price attached to a board seat you didn\u2019t want, a pool sized against you, or protective provisions that block your next round is the more expensive deal. The structure of each offer also tells you which round you actually want to run, and a larger number sometimes arrives with a valuation you cannot grow into by the Series A."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Then read the partner. You are choosing the person who joins every hard conversation for the next several years, and the fund brand matters less than which partner is assigned and how they behave when something goes wrong. Ask each of them how they work with founders, what they do when a company misses a quarter, and which of their founders you can call without the partner on the line. The difference between an $11M and a $12M valuation is small next to who ends up on the other side of the table."), /*#__PURE__*/React.createElement(Pull, {
+    eyebrow: "The reframe at the decision point",
+    quote: "You are not optimizing the valuation. You are choosing the cap table you will live with."
+  }), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "05",
+    name: "Existing investors",
+    accent: "and pro rata."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Anyone holding pro rata rights has a claim on allocation you may want to give to a new investor. They are either fully in or fully out, and left alone they will make that decision on the timeline that suits them rather than the one that suits your close."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Put them on the same clock as every follow-on and ask for the answer early, before the rest of the pipeline knows the allocation is contestable. Coming back later to say you need a decision because someone else wants their room is the weakest version of the conversation, because the obvious reply is that they will take it if others want it. Ask while the answer is still cheap for them to give."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "An investor who does exercise is worth more than the check. Following on is the clearest signal a new lead reads, and it tends to make that investor a more active connector for the rest of the round."));
 }
 function CLWire() {
   const {
@@ -7884,12 +8523,12 @@ function CLWire() {
   } = window;
   return /*#__PURE__*/React.createElement("div", {
     className: "fade-in sub-split",
-    "data-screen-label": "15.02 Getting the Wire"
+    "data-screen-label": "16.02 Getting the Wire"
   }, /*#__PURE__*/React.createElement(Cue, {
-    num: "15.02",
+    num: "16.02",
     name: "Getting",
     accent: "the Wire.",
-    crumb: "Chapter 14 \xB7 Close the Round"
+    crumb: "Chapter 16 \xB7 Close the Round"
   }), /*#__PURE__*/React.createElement(Lede, null, "Term sheet to wire. Know the steps, plan around the wire date, handle the unexpected with steady hands."), /*#__PURE__*/React.createElement("div", {
     className: "framework framework--highlight framework--sage"
   }, /*#__PURE__*/React.createElement(ActMarker, {
@@ -7901,6 +8540,24 @@ function CLWire() {
     columns: 2
   })), /*#__PURE__*/React.createElement(ActMarker, {
     num: "02",
+    name: "Getting the money",
+    accent: "in the door."
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "A signature is not a wire. The gap between the two is where founders lose weeks, and it runs opposite to intuition: the smaller the check, the harder the money is to extract. Somebody writing $100,000 tends to wire the next day. Somebody writing $25,000 needs three reminders, and the two hours you spend chasing them is the worst trade in the round."), /*#__PURE__*/React.createElement("p", {
+    className: "prose"
+  }, "Sequence the collection accordingly. Chase the large checks personally and put the long tail on a standard follow-up cadence you can run in fifteen minutes a week. If the tail gets big enough to be a real drag, an SPV pulls all of them behind one signature and one wire, and it can be assembled after the fact. A visibly shrinking allocation does useful work while you wait, because every investor still deciding can watch the room get smaller in real time."), /*#__PURE__*/React.createElement("div", {
+    className: "tip tip--molten tip--compact"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "tip__head"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "tip__eyebrow"
+  }, "Heads up"), /*#__PURE__*/React.createElement("h3", {
+    className: "tip__title"
+  }, "Nothing is real until it clears.")), /*#__PURE__*/React.createElement("p", {
+    className: "tip__body"
+  }, "Keep the process running until the money is in the account. A verbal yes, a signed SAFE, and a countersigned term sheet are all reversible, and pausing outreach on any of them is how a founder ends up restarting a raise from a cold pipeline. Keep sending paper, keep booking meetings, and let the round close underneath you.")), /*#__PURE__*/React.createElement(ActMarker, {
+    num: "03",
     name: "When the round",
     accent: "doesn\u2019t come together."
   }), /*#__PURE__*/React.createElement("p", {
@@ -7947,7 +8604,7 @@ function CLChapter({
 // Chapter name + desc verbatim from source allChapters[] line 8121.
 window.CHAPTER_CLOSE = {
   id: "close",
-  num: "15",
+  num: "16",
   name: "Close the Round",
   desc: "Secure the lead, fill the round, and get the wire.",
   subs: CL_SUBS,
@@ -7959,7 +8616,7 @@ window.CHAPTER_CLOSE = {
 <!-- ===== ch-fundamentals.jsx ===== -->
 <script data-source="ch-fundamentals.jsx">
 /* global React, window */
-// Chapter 02 · How Venture Capital Works
+// Chapter 2 · How Venture Capital Works
 // Factual primer chapter. Voice is dry and informational by design; this
 // chapter sets the foundation for the rest of the playbook so it stays out
 // of editorial framing and lets the data sit on the page. Trimmed to the
@@ -7972,6 +8629,142 @@ window.CHAPTER_CLOSE = {
 // below; framework--highlight on the most foundational data block per sub.
 
 const FUND_OBJECTIVES = ["Understand the power law that shapes VC returns", "See the math inside a fund: lifecycle, check size, and ownership targets", "See the volume both sides run, and what equity costs founders over time"];
+
+// ============================================================
+// Chapter 02 data visualizations (inline-styled SVG, self-contained).
+// Rendered via dangerouslySetInnerHTML so they need no external CSS.
+// Every figure is verbatim from the chapter's cited sources.
+// ============================================================
+function FundChart(props) {
+  return /*#__PURE__*/React.createElement("figure", {
+    style: {
+      margin: "18px 0 6px",
+      border: "1px solid #e9e8e3",
+      borderRadius: "3px",
+      background: "#fff",
+      padding: "20px 18px 16px"
+    },
+    dangerouslySetInnerHTML: { __html: props.svg }
+  });
+}
+
+var PB_SANS = "'Inter Tight',system-ui,sans-serif";
+var PB_MONO = "'JetBrains Mono',ui-monospace,monospace";
+
+// ---- 02.01 The Power Law: returns distribution ----
+var CHART_POWERLAW =
+'<svg viewBox="0 0 720 400" role="img" aria-label="Power law distribution of venture returns" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<line x1="70" y1="330" x2="700" y2="330" stroke="#e9e8e3" stroke-width="2"/>' +
+  '<g font-family="'+PB_MONO+'" font-size="11" font-weight="500" fill="rgba(10,10,10,.35)">' +
+    '<text x="60" y="334" text-anchor="end">0%</text>' +
+    '<line x1="70" y1="252" x2="700" y2="252" stroke="#f0efe9" stroke-width="1"/><text x="60" y="256" text-anchor="end">25%</text>' +
+    '<line x1="70" y1="174" x2="700" y2="174" stroke="#f0efe9" stroke-width="1"/><text x="60" y="178" text-anchor="end">50%</text>' +
+    '<line x1="70" y1="96" x2="700" y2="96" stroke="#f0efe9" stroke-width="1"/><text x="60" y="100" text-anchor="end">75%</text>' +
+  '</g>' +
+  '<rect x="95" y="127" width="120" height="203" rx="4" fill="#3d5c66"/>' +
+  '<text x="155" y="112" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#0a0a0a">65%</text>' +
+  '<text x="155" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="13" fill="rgba(10,10,10,.55)">Lost money</text>' +
+  '<text x="155" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">returned &lt;1x</text>' +
+  '<rect x="255" y="252" width="120" height="78" rx="4" fill="#5c7b84"/>' +
+  '<text x="315" y="238" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#0a0a0a">25%</text>' +
+  '<text x="315" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="13" fill="rgba(10,10,10,.55)">Broke even</text>' +
+  '<text x="315" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">1&#8211;5x</text>' +
+  '<rect x="415" y="311" width="120" height="19" rx="4" fill="#8aa1a8"/>' +
+  '<text x="475" y="299" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#0a0a0a">6%</text>' +
+  '<text x="475" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="13" fill="rgba(10,10,10,.55)">Solid</text>' +
+  '<text x="475" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">5&#8211;10x</text>' +
+  '<rect x="575" y="317" width="120" height="13" rx="4" fill="#c89500"/>' +
+  '<text x="635" y="305" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="19" fill="#c89500">4%</text>' +
+  '<text x="635" y="352" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="13" fill="#0a0a0a">Carry the fund</text>' +
+  '<text x="635" y="370" text-anchor="middle" font-family="'+PB_MONO+'" font-size="11" fill="rgba(10,10,10,.35)">10x+</text>' +
+  '<path d="M635 285 Q635 250 560 205" fill="none" stroke="#c89500" stroke-width="1.5" stroke-dasharray="3 3"/>' +
+  '<rect x="360" y="150" width="300" height="52" rx="4" fill="#fbf3da"/>' +
+  '<text x="375" y="172" font-family="'+PB_SANS+'" font-weight="600" font-size="13.5" fill="#8a6800">The whole game is being this 4%.</text>' +
+  '<text x="375" y="190" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">51% of all VC dollars over the past decade lost money.</text>' +
+'</svg>';
+
+// ---- 02.02 The ten-year fund clock ----
+var CHART_FUNDCLOCK =
+'<svg viewBox="0 0 720 300" role="img" aria-label="Ten year fund lifecycle timeline" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<rect x="70" y="120" width="620" height="46" rx="4" fill="#eef1f2"/>' +
+  '<rect x="70" y="120" width="310" height="46" rx="4" fill="#cdd7da"/>' +
+  '<rect x="70" y="120" width="186" height="46" rx="4" fill="#c89500"/>' +
+  '<text x="163" y="148" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="12.5" fill="#3a2c00">Core deployment</text>' +
+  '<text x="320" y="148" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="#33484f">New checks</text>' +
+  '<text x="537" y="148" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="#5d6b6f">Reserves &#183; follow-on only</text>' +
+  '<line x1="70" y1="185" x2="690" y2="185" stroke="#e9e8e3" stroke-width="1.5"/>' +
+  '<g font-family="'+PB_MONO+'" font-size="11" font-weight="500" fill="rgba(10,10,10,.35)" text-anchor="middle">' +
+    '<line x1="70" y1="180" x2="70" y2="190" stroke="#d7d6cf"/><text x="70" y="206">Yr 0</text>' +
+    '<line x1="256" y1="180" x2="256" y2="190" stroke="#d7d6cf"/><text x="256" y="206">3</text>' +
+    '<line x1="380" y1="180" x2="380" y2="190" stroke="#d7d6cf"/><text x="380" y="206">5</text>' +
+    '<line x1="690" y1="180" x2="690" y2="190" stroke="#d7d6cf"/><text x="690" y="206">10</text>' +
+  '</g>' +
+  '<rect x="70" y="54" width="278" height="48" rx="4" fill="#fbf3da"/>' +
+  '<text x="84" y="76" font-family="'+PB_SANS+'" font-weight="600" font-size="13" fill="#8a6800">Target funds in years 0&#8211;3.</text>' +
+  '<text x="84" y="93" font-family="'+PB_SANS+'" font-weight="500" font-size="11.5" fill="rgba(10,10,10,.55)">That&#8217;s the window when new checks get written.</text>' +
+  '<path d="M150 102 L163 118" fill="none" stroke="#c89500" stroke-width="1.5"/>' +
+  '<g font-family="'+PB_SANS+'" font-weight="500" font-size="11.5" fill="rgba(10,10,10,.55)">' +
+    '<rect x="70" y="236" width="13" height="13" rx="2" fill="#c89500"/><text x="90" y="247">Core deployment &#183; 1.5&#8211;3 yrs</text>' +
+    '<rect x="280" y="236" width="13" height="13" rx="2" fill="#cdd7da"/><text x="300" y="247">Active period &#183; 3&#8211;5 yrs</text>' +
+    '<rect x="470" y="236" width="13" height="13" rx="2" fill="#eef1f2"/><text x="490" y="247">Reserves &#183; to year 10</text>' +
+  '</g>' +
+'</svg>';
+
+// ---- 02.03 The two-sided funnel ----
+var CHART_FUNNEL =
+'<svg viewBox="0 0 720 340" role="img" aria-label="Two sided funnel, investor and founder" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<line x1="360" y1="30" x2="360" y2="300" stroke="#e9e8e3" stroke-width="1.5"/>' +
+  '<text x="60" y="30" font-family="'+PB_MONO+'" font-size="11" font-weight="600" letter-spacing="1" fill="#3d5c66">THE INVESTOR</text>' +
+  '<path d="M60 58 L320 58 L250 118 L130 118 Z" fill="#3d5c66"/>' +
+  '<path d="M130 128 L250 128 L214 188 L166 188 Z" fill="#5c7b84"/>' +
+  '<path d="M166 198 L214 198 L200 250 L180 250 Z" fill="#c89500"/>' +
+  '<text x="190" y="94" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="20" fill="#fff">~101</text>' +
+  '<text x="190" y="112" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="11" fill="#dfe6e8">opportunities seen</text>' +
+  '<text x="190" y="166" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="14" fill="#fff">screened</text>' +
+  '<text x="190" y="182" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="10.5" fill="#e3eaec">&#8203;</text>' +
+  '<text x="190" y="238" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="17" fill="#fff">1</text>' +
+  '<text x="190" y="278" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="600" font-size="12" fill="#8a6800">&#8776;1 deal &#183; under 1% close</text>' +
+  '<text x="410" y="30" font-family="'+PB_MONO+'" font-size="11" font-weight="600" letter-spacing="1" fill="#4f7960">THE FOUNDER</text>' +
+  '<path d="M400 58 L660 58 L590 118 L470 118 Z" fill="#4f7960"/>' +
+  '<path d="M470 128 L590 128 L554 188 L506 188 Z" fill="#6d9079"/>' +
+  '<path d="M506 198 L554 198 L540 250 L520 250 Z" fill="#c89500"/>' +
+  '<text x="530" y="94" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="20" fill="#fff">39</text>' +
+  '<text x="530" y="112" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="11" fill="#e0ebe3">meetings taken</text>' +
+  '<text x="530" y="166" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="600" font-size="14" fill="#fff">deeper</text>' +
+  '<text x="530" y="182" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="10.5" fill="#e6efe8">&#8203;</text>' +
+  '<text x="530" y="238" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="17" fill="#fff">1</text>' +
+  '<text x="530" y="278" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="600" font-size="12" fill="#8a6800">&#8776;1 close &#183; seed round</text>' +
+  '<text x="360" y="320" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12.5" fill="rgba(10,10,10,.55)">Same shape, opposite chairs. The drop at each step is the job, not a failure.</text>' +
+'</svg>';
+
+// ---- 02.03 The cost of equity: dilution curve ----
+var CHART_DILUTION =
+'<svg viewBox="0 0 720 380" role="img" aria-label="Founder ownership declining across rounds" style="display:block;width:100%;height:auto;overflow:visible">' +
+  '<line x1="90" y1="300" x2="690" y2="300" stroke="#e9e8e3" stroke-width="2"/>' +
+  '<g font-family="'+PB_MONO+'" font-size="11" font-weight="500" fill="rgba(10,10,10,.35)">' +
+    '<text x="80" y="304" text-anchor="end">0%</text>' +
+    '<line x1="90" y1="180" x2="690" y2="180" stroke="#f0efe9"/><text x="80" y="184" text-anchor="end">50%</text>' +
+    '<line x1="90" y1="60" x2="690" y2="60" stroke="#f0efe9"/><text x="80" y="64" text-anchor="end">100%</text>' +
+  '</g>' +
+  '<path d="M130 60 L320 165 L510 213 L660 245 L660 300 L130 300 Z" fill="#e7eced"/>' +
+  '<path d="M130 60 L320 165 L510 213 L660 245" fill="none" stroke="#3d5c66" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>' +
+  '<g font-family="'+"'Source Serif 4',serif"+'" font-style="italic" font-size="11.5" fill="rgba(10,10,10,.55)" text-anchor="middle">' +
+    '<text x="225" y="100">&#8722;20.1%</text><text x="415" y="176">&#8722;20.5%</text><text x="585" y="216">&#8722;16.7%</text>' +
+  '</g>' +
+  '<circle cx="130" cy="60" r="5" fill="#fff" stroke="#3d5c66" stroke-width="2.5"/>' +
+  '<text x="130" y="44" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="600" font-size="14" fill="#6b7a80">~100%</text>' +
+  '<text x="130" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">At founding</text>' +
+  '<circle cx="320" cy="165" r="5.5" fill="#3d5c66"/>' +
+  '<text x="320" y="150" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="16" fill="#0a0a0a">56.2%</text>' +
+  '<text x="320" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">After seed</text>' +
+  '<circle cx="510" cy="213" r="5.5" fill="#3d5c66"/>' +
+  '<text x="510" y="199" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="16" fill="#0a0a0a">36.1%</text>' +
+  '<text x="510" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">After Series A</text>' +
+  '<circle cx="660" cy="245" r="5.5" fill="#c89500"/>' +
+  '<text x="660" y="231" text-anchor="middle" font-family="'+PB_MONO+'" font-weight="700" font-size="16" fill="#a67c00">23%</text>' +
+  '<text x="660" y="322" text-anchor="middle" font-family="'+PB_SANS+'" font-weight="500" font-size="12" fill="rgba(10,10,10,.55)">After Series B</text>' +
+'</svg>';
+
 
 // ============================================================
 // Sub 02.01 — The Power Law
@@ -8020,7 +8813,9 @@ function FundPowerLaw() {
     accent: "distribution."
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
-  }, "Correlation Ventures analyzed 21,000+ U.S. VC financings between 2004 and 2013. The distribution of outcomes:"), /*#__PURE__*/React.createElement("ul", {
+  }, "Correlation Ventures analyzed 21,000+ U.S. VC financings between 2004 and 2013. The distribution of outcomes:"), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_POWERLAW
+  }), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~65%"), " of investments returned less than 1x. The capital was lost."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~25%"), " returned 1\u20135x."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~6%"), " returned 5\u201310x."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "~4%"), " returned 10x or more. These are the outcomes that carry the fund.")), /*#__PURE__*/React.createElement("div", {
     className: "takeaway"
@@ -8078,6 +8873,8 @@ function FundHowItOperates() {
     num: "01",
     name: "Fund",
     accent: "mechanics."
+  }), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_FUNDCLOCK
   }), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Fund life:"), " 10 years standard, with 1\u20133 year extensions common."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Active investment period:"), " 3\u20135 years. Most baseline portfolios get built in the first 1.5\u20133."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Check size:"), " roughly 1\u20132% of total fund size."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "Ownership target:"), " at seed, funds typically aim to own 5\u201310% per company at entry. Concentrated funds aim higher; large portfolios aim lower.")), /*#__PURE__*/React.createElement("p", {
@@ -8136,6 +8933,8 @@ function FundFunnelAndCost() {
     num: "01",
     name: "The funnel,",
     accent: "both sides."
+  }), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_FUNNEL
   }), /*#__PURE__*/React.createElement("p", {
     className: "prose"
   }, "VCs evaluate ", /*#__PURE__*/React.createElement("strong", null, "~101 opportunities"), " for every deal they close, with close rates below 1%. At established Series A/B/C firms, that nets out to as low as 1\u20132 investments per partner per year. At pre-seed funds, 3\u20134."), /*#__PURE__*/React.createElement("p", {
@@ -8156,7 +8955,9 @@ function FundFunnelAndCost() {
     className: "prose"
   }, "Per Carta's Q1 2024 Dilution Report, median dilution per round runs ", /*#__PURE__*/React.createElement("strong", null, "20.1% at seed, 20.5% at Series A, and 16.7% at Series B"), ". The compounding effect on founder ownership over time, per Carta's 2025 Founder Ownership Report (45,000+ startups, 2015\u20132024):"), /*#__PURE__*/React.createElement("ul", {
     className: "prose-list"
-  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "56.2%"), " median founding team ownership after seed."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "36.1%"), " after Series A."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "23%"), " after Series B.")), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "56.2%"), " median founding team ownership after seed."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "36.1%"), " after Series A."), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("strong", null, "23%"), " after Series B.")), /*#__PURE__*/React.createElement(FundChart, {
+    svg: CHART_DILUTION
+  }), /*#__PURE__*/React.createElement("p", {
     className: "cite"
   }, "Source: Carta Q1 2024 Dilution Report; Carta 2025 Founder Ownership Report.")));
 }
@@ -8283,7 +9084,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "activate",
     subIdx: 1,
-    label: "Ch8.02"
+    label: "Ch9.02"
   }
 }, {
   term: "Allocation",
@@ -8291,7 +9092,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "activate",
     subIdx: 3,
-    label: "Ch8.04"
+    label: "Ch9.04"
   }
 }, {
   term: "Authentic FOMO",
@@ -8299,7 +9100,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "arc",
     subIdx: 0,
-    label: "Ch3.01"
+    label: "Ch4.01"
   }
 }, {
   term: "Blurb",
@@ -8307,7 +9108,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "prep",
     subIdx: 2,
-    label: "Ch5.03"
+    label: "Ch6.03"
   }
 }, {
   term: "Bottom-up market sizing",
@@ -8315,7 +9116,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "comm",
     subIdx: 4,
-    label: "Ch4.05"
+    label: "Ch5.05"
   }
 }, {
   term: "Connector",
@@ -8323,7 +9124,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "connectors",
     subIdx: 2,
-    label: "Ch7.03"
+    label: "Ch8.03"
   }
 }, {
   term: "Connector tiers · A, B, C",
@@ -8331,7 +9132,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "connectors",
     subIdx: 2,
-    label: "Ch7.03"
+    label: "Ch8.03"
   }
 }, {
   term: "Discrete pricing",
@@ -8339,7 +9140,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "arc",
     subIdx: 1,
-    label: "Ch3.02"
+    label: "Ch4.02"
   }
 }, {
   term: "Double opt-in",
@@ -8347,7 +9148,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "connectors",
     subIdx: 1,
-    label: "Ch7.02"
+    label: "Ch8.02"
   }
 }, {
   term: "Error of omission",
@@ -8355,7 +9156,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "arc",
     subIdx: 1,
-    label: "Ch3.02"
+    label: "Ch4.02"
   }
 }, {
   term: "Follow-on investor",
@@ -8363,7 +9164,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "target-list",
     subIdx: 1,
-    label: "Ch6.02"
+    label: "Ch7.02"
   }
 }, {
   term: "Funnel · volume math",
@@ -8371,7 +9172,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "activate",
     subIdx: 2,
-    label: "Ch8.03"
+    label: "Ch9.03"
   }
 }, {
   term: "Hard filters",
@@ -8379,7 +9180,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "target-list",
     subIdx: 3,
-    label: "Ch6.04"
+    label: "Ch7.04"
   }
 }, {
   term: "Hype FOMO",
@@ -8387,7 +9188,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "arc",
     subIdx: 0,
-    label: "Ch3.01"
+    label: "Ch4.01"
   }
 }, {
   term: "Investor tiers · 1, 2, 3",
@@ -8395,7 +9196,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "target-list",
     subIdx: 4,
-    label: "Ch6.05"
+    label: "Ch7.05"
   }
 }, {
   term: "Lead investor",
@@ -8403,15 +9204,15 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "close",
     subIdx: 0,
-    label: "Ch13.01"
+    label: "Ch16.01"
   }
 }, {
   term: "MFN · most favored nation",
   def: "A SAFE clause that automatically gives the early investor the same terms as any later investor who gets better ones. Standard for pre-seed angel SAFEs.",
   ref: {
-    chapter: "dd",
+    chapter: "structures",
     subIdx: 1,
-    label: "Ch12.02"
+    label: "Ch14.02"
   }
 }, {
   term: "Naming Rule",
@@ -8419,7 +9220,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "connectors",
     subIdx: 5,
-    label: "Ch7.06"
+    label: "Ch8.06"
   }
 }, {
   term: "One-pager",
@@ -8427,7 +9228,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "prep",
     subIdx: 3,
-    label: "Ch5.04"
+    label: "Ch6.04"
   }
 }, {
   term: "Post-money / Pre-money",
@@ -8435,7 +9236,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "dd",
     subIdx: 1,
-    label: "Ch12.02"
+    label: "Ch15.02"
   }
 }, {
   term: "Pro rata",
@@ -8443,7 +9244,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "dd",
     subIdx: 1,
-    label: "Ch12.02"
+    label: "Ch15.02"
   }
 }, {
   term: "Promised intro",
@@ -8451,7 +9252,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "connectors",
     subIdx: 5,
-    label: "Ch7.06"
+    label: "Ch8.06"
   }
 }, {
   term: "Runway",
@@ -8465,9 +9266,9 @@ const APX_GLOSSARY = [{
   term: "SAFE",
   def: "Simple Agreement for Future Equity. The standard pre-seed instrument. Converts to equity at the next priced round, usually with a valuation cap and/or discount. Pair with MFN for early angel checks.",
   ref: {
-    chapter: "dd",
+    chapter: "structures",
     subIdx: 1,
-    label: "Ch12.02"
+    label: "Ch14.02"
   }
 }, {
   term: "Series A bar",
@@ -8475,7 +9276,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "dd",
     subIdx: 0,
-    label: "Ch12.01"
+    label: "Ch15.01"
   }
 }, {
   term: "Simultaneous launch",
@@ -8483,7 +9284,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "activate",
     subIdx: 2,
-    label: "Ch8.03"
+    label: "Ch9.03"
   }
 }, {
   term: "Soft filters",
@@ -8491,7 +9292,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "target-list",
     subIdx: 4,
-    label: "Ch6.05"
+    label: "Ch7.05"
   }
 }, {
   term: "TAM · SAM · SOM",
@@ -8499,7 +9300,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "comm",
     subIdx: 4,
-    label: "Ch4.05"
+    label: "Ch5.05"
   }
 }, {
   term: "Term sheet",
@@ -8507,7 +9308,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "dd",
     subIdx: 2,
-    label: "Ch12.03"
+    label: "Ch15.03"
   }
 }, {
   term: "Throwaway pitch",
@@ -8515,7 +9316,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "activate",
     subIdx: 2,
-    label: "Ch8.03"
+    label: "Ch9.03"
   }
 }, {
   term: "Vibes",
@@ -8523,7 +9324,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "arc",
     subIdx: 1,
-    label: "Ch3.02"
+    label: "Ch4.02"
   }
 }, {
   term: "Wire",
@@ -8531,7 +9332,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "close",
     subIdx: 1,
-    label: "Ch13.02"
+    label: "Ch16.02"
   }
 }, {
   term: "Quality mix",
@@ -8539,7 +9340,7 @@ const APX_GLOSSARY = [{
   ref: {
     chapter: "activate",
     subIdx: 1,
-    label: "Ch8.02"
+    label: "Ch9.02"
   }
 }];
 
@@ -9257,7 +10058,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"There will be highs and lows while you raise. It's important to embrace that even an oversubscribed round collects far more nos than yeses. Paying attention to your own mental approach helps reduce the negative impact of the inevitable low points.")
       ],
       walk:"Companion · Navigating the emotional rollercoaster",
-      videoTitle:"Navigating the Emotional Rollercoaster", videoSub:"Sprint companion · 4:32",
+      videoTitle:"Navigating the Emotional Rollercoaster", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 4:32",
       audio:"/audio/inner-game/rollercoaster.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9279,7 +10080,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"That is why every no has to run through your own filter before it touches your strategy. A pass can be a chance to improve how you pitch, or it can be an investor who woke up on the wrong side of the bed. You often cannot tell which, so you pattern-match it against what you are hearing elsewhere and decide what to keep. Most of the time, a pass means not right now, or simply not the right fit for them, not that you are uninvestable.")
       ],
       walk:"Companion · Empower yourself through passes",
-      videoTitle:"Empower Yourself Through Passes", videoSub:"Sprint companion · Adam & Quinn",
+      videoTitle:"Empower Yourself Through Passes", videoSub:"Quinn Fitzgerald and Adam Roberts podcast",
       audio:"/audio/inner-game/empower-through-passes.mp3",
       after:[
         h(window.BeatsGrid,{columns:2,items:[
@@ -9307,7 +10108,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"Anxiety tends to live in the head; pride tends to live in the heart. Most of these tactics are ways to get out of the spinning head and back into the body and the reasons you started.")
       ],
       walk:"Companion · Connecting to your worthiness",
-      videoTitle:"Connecting to Your Worthiness", videoSub:"Sprint companion · 9:05",
+      videoTitle:"Connecting to Your Worthiness", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 9:05",
       audio:"/audio/inner-game/worthiness.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9330,7 +10131,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"The opposite signal is thirst, and it leaks. Desperation repels while contentment attracts, and the calm of a founder with real progress is the tell that you do not actually need this investor.")
       ],
       walk:"Companion · Confidence delivers outcomes",
-      videoTitle:"Confidence Delivers Outcomes", videoSub:"Sprint companion · 15:18",
+      videoTitle:"Confidence Delivers Outcomes", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 15:18",
       audio:"/audio/inner-game/confidence.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9356,7 +10157,7 @@ const PB_ONE_PAGER_BULLETS = [{
         h("p",null,"It helps to know what game they are playing. VCs answer to their own investors, and in a fund of 100 investments, they need 4-6 companies to return the whole fund, so they are buying rapid growth. When you take the money, you are signing up for this model.")
       ],
       walk:"Companion · Competition mindset and star player mentality",
-      videoTitle:"Competition Mindset & Star Player Mentality", videoSub:"Sprint companion · 24:36",
+      videoTitle:"Competition Mindset & Star Player Mentality", videoSub:"Quinn Fitzgerald and Adam Roberts podcast · 24:36",
       audio:"/audio/inner-game/star-player.mp3",
       after:[
         h(window.BeatsGrid,{columns:3,items:[
@@ -9835,7 +10636,7 @@ const PB_ONE_PAGER_BULLETS = [{
       h("ul",{className:"prose",style:{lineHeight:1.7,paddingLeft:"20px",margin:"6px 0 8px"}},
         FIELDS.map(function(f,i){return h("li",{key:i},h("strong",null,f.title), f.desc?(": "+f.desc):null);})),
       h(ActMarker,{num:"04",name:"Start from",accent:"the template."}),
-      h("p",{className:"prose"},"Begin with the Sprint's Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
+      h("p",{className:"prose"},"Begin with the Lifted Simple CRM template rather than a blank sheet. It already holds these fields, so copy it, make it your own, and keep every investor and connector in one place. Metal can handle research while the sheet runs the pipeline, or you can run the whole thing in the sheet."),
       h("p",{className:"prose"},h("a",{href:"https://docs.google.com/spreadsheets/d/1oeoifKdGB3Xp05pm1u547EJuNHUGEsmj8_Yo0vvgHT4",target:"_blank",rel:"noopener"},"Open the Simple CRM template")),
       Tip("tip--sage","Best practice","Reply fast.","Investors weight email response speed heavily as a founder-quality signal. Reply to partner emails within hours and to associate emails the same day. The CRM gives you the tracking, the discipline is yours, and speed protects the meetings you have already earned. Founders who let conversations sit for 48+ hours read as low-conviction even when they are simply buried in the business.")
     );
@@ -9917,7 +10718,7 @@ const PB_ONE_PAGER_BULLETS = [{
   function Signals(){
     const {Cue,Lede,ActMarker,BeatsGrid,Warning,Pull}=window;
     return h("div",{className:"fade-in sub-split","data-screen-label":"13.02 Reading Signals"},
-      h(Cue,{num:"13.02",name:"Reading",accent:"Signals.",crumb:"Chapter 12 · Manage Your Pipeline"}),
+      h(Cue,{num:"13.02",name:"Reading",accent:"Signals.",crumb:"Chapter 13 · Manage Your Pipeline"}),
       h(Lede,null,"Once your pitches are live, the round is won or lost on where you spend your attention, and investors keep telling you where it should go. Read the timing, capture what happens in every meeting, and read the investor as hard as they read you."),
       h(ActMarker,{num:"01",name:"Reading",accent:"timing signals."}),
       h(SignalReader,null),
@@ -9925,7 +10726,7 @@ const PB_ONE_PAGER_BULLETS = [{
       Tip("tip--coral","Watch out","Do not be thirsty.","Multi-touch chasing reads as low conviction, so send one follow-up on silence and then move on. Keep close dates private and let real activity signal the urgency. Wait for a term sheet before asking an investor to intro you to their network, because a next-day ask reads as I have already decided you are in and dilutes the FOMO working in your favor."),
       h(ActMarker,{num:"02",name:"Read the investor,",accent:"not just the timing."}),
       h("p",{className:"prose"},"Timing tells you who is moving. This tells you who is worth moving with. You are offering a deal that you are also deciding whether you want, so read the investor as hard as they read you."),
-      h(PLAudio,{title:"Investor Green & Red Flags",sub:"Sprint companion · Quinn & Adam",src:"/audio/pipeline/investor-flags.mp3"}),
+      h(PLAudio,{title:"Investor Green & Red Flags",sub:"Quinn Fitzgerald and Adam Roberts podcast",src:"/audio/pipeline/investor-flags.mp3"}),
       h(ActMarker,{num:"03",name:"Green flags and",accent:"red flags."}),
       h(FlagsPanel,null),
       h(Pull,{eyebrow:"Treat smoke as a smoke signal",quote:"You have very little time with these people before deciding whether to spend years working with them. All you have are these signals, and they can be very meaningful."})
@@ -9935,7 +10736,7 @@ const PB_ONE_PAGER_BULLETS = [{
   function Auction(){
     const {Cue,Lede,ActMarker,BeatsGrid,Pull}=window;
     return h("div",{className:"fade-in sub-split","data-screen-label":"13.04 Run It Like an Auction"},
-      h(Cue,{num:"13.04",name:"Run It Like",accent:"an Auction.",crumb:"Chapter 12 · Manage Your Pipeline"}),
+      h(Cue,{num:"13.04",name:"Run It Like",accent:"an Auction.",crumb:"Chapter 13 · Manage Your Pipeline"}),
       h(Lede,null,"The pipeline you just built has one job beyond staying organized: to run your raise as an auction, where real competition sets your price and your terms."),
       h(ActMarker,{num:"01",name:"Why an auction",accent:"changes everything."}),
       h("p",{className:"prose"},"Capital is far more abundant than the old scarcity story admits. The moment a company shows a signal of quality, strong growth, a respected angel, a demo-day slot, investors start moving together: rounds get oversubscribed, prices climb, and terms soften in the founder's favor. A wide, time-boxed process is how you surface that dynamic on purpose rather than hoping it finds you."),
@@ -9953,7 +10754,7 @@ const PB_ONE_PAGER_BULLETS = [{
   function Track(){
     const {Cue,Lede,ActMarker}=window;
     return h("div",{className:"fade-in sub-split","data-screen-label":"13.03 Track Every Pitch"},
-      h(Cue,{num:"13.03",name:"Track Every",accent:"Pitch.",crumb:"Chapter 12 · Manage Your Pipeline"}),
+      h(Cue,{num:"13.03",name:"Track Every",accent:"Pitch.",crumb:"Chapter 13 · Manage Your Pipeline"}),
       h(Lede,null,"A round is decided across dozens of meetings, and the founders who close are the ones who capture each one before it blurs. A quick log after every pitch turns scattered conversations into patterns you can act on."),
       h(ActMarker,{num:"01",name:"Log it",accent:"while it is fresh."}),
       h("p",{className:"prose"},"Log within 30 minutes of every meeting, while it is still fresh:"),
@@ -10101,6 +10902,10 @@ window.CHAPTER_PITCHING,
 window.CHAPTER_REFINE,
 // Manage Your Pipeline — ported in ch-pipeline.jsx
 window.CHAPTER_PIPELINE,
+// Deal Structures — ch-structures.jsx. Instruments primer: SAFEs and their
+// permutations, convertible notes and their decline, and priced rounds.
+// Sits ahead of diligence so founders read a term sheet already fluent.
+window.CHAPTER_STRUCTURES,
 // Diligence & Term Sheet — ported in ch-diligence.jsx
 window.CHAPTER_DD,
 // Close the Round — ported in ch-close.jsx
