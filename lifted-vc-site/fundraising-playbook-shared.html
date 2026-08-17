@@ -10226,12 +10226,12 @@ const PB_ONE_PAGER_BULLETS = [{
   function RaiseArc(){
     const A="#3d5c66", INK="#0a0a0a", LINE="#e9e8e3", MUT="rgba(10,10,10,.55)", SOFT="#f6f5f2", GOLD="#c89500";
     const S=[
-      {name:"Decide", what:"You choose to raise, size the round backwards from your next milestone, and set a target check and valuation the market would call reasonable.", job:"Confirm you are raising from strength, then lock the number.", time:"A week or two of honest thinking.", feel:"Equal parts conviction and dread. Naming the fear is the work."},
-      {name:"Prepare", what:"You build the story and the materials, and assemble a target list of investors who genuinely fit your stage, sector, and check size.", job:"Get the narrative, deck, data room, and list ready before anyone sees them.", time:"Two to four weeks, mostly invisible.", feel:"A quiet grind. This is where the raise is won or lost."},
-      {name:"Get in front", what:"You map who can open doors, bank a large stack of promised warm introductions, then fire them all inside a tight window.", job:"Line up sixty-plus intros so launch floods the calendar instead of trickling.", time:"A week or two to load, then a 24 to 48 hour launch.", feel:"Nervous anticipation, then a rush when the replies land."},
-      {name:"Meet", what:"First meetings become partner meetings across a concentrated few weeks, and the density starts to create real momentum.", job:"Run a tight pipeline, move fast, and let the market feel the heat.", time:"Two to three weeks of back-to-back conversations.", feel:"Overwhelm and adrenaline. Protect your energy."},
-      {name:"Diligence & term sheet", what:"Serious investors verify with references, your data room, and customer calls, and the first written offer lands.", job:"Feed information fast and turn conviction into a term sheet.", time:"One to three weeks from serious to a signed offer.", feel:"Cautious hope. Keep the pace up."},
-      {name:"Close", what:"You use the first offer to bring everyone to a decision, fill the round behind the lead, sign, and the money hits the account.", job:"Create urgency, fill the round, and get to signed and wired.", time:"One to three weeks to a full, closed round.", feel:"The finish. Engineered right, it can feel like cheating."}
+      {name:"Decide & size", what:"You choose to raise, size the round backwards from your next milestone, and set a target check and valuation the market would call reasonable.", job:"Confirm you are raising from strength, then lock the number.", time:"A week or two of honest thinking.", feel:"Raising without a clear milestone, or waiting until cash is almost gone."},
+      {name:"Prepare materials", what:"You build the story and the materials, assemble a target list of investors who genuinely fit your stage, sector, and check size, and start mapping the connectors who can reach them.", job:"Get the narrative, deck, data room, and list ready before anyone sees them.", time:"Two to four weeks, mostly invisible.", feel:"Talking to investors before the story and list are ready."},
+      {name:"Line up warm intros", what:"You work your network of connectors, map who can open doors to the investors on your list, bank a large stack of promised warm introductions, then fire them all inside a tight window.", job:"Line up sixty-plus warm intros through connectors so launch floods the calendar.", time:"A week or two to load, then a 24 to 48 hour launch.", feel:"Firing intros before you have banked enough, so meetings trickle."},
+      {name:"Run the meetings", what:"First meetings become partner meetings across a concentrated few weeks, and the density starts to create real momentum.", job:"Run a tight pipeline, move fast, and let the market feel the heat.", time:"Two to three weeks of back-to-back conversations.", feel:"Spreading meetings out, so no momentum builds."},
+      {name:"Diligence & term sheet", what:"Serious investors verify with references, your data room, and customer calls, and the first written offer lands.", job:"Feed information fast and turn conviction into a term sheet.", time:"One to three weeks from serious to a signed offer.", feel:"Going slow and letting a warm process cool."},
+      {name:"Close the round", what:"You use the first offer to bring everyone to a decision, fill the round behind the lead, sign, and the money hits the account.", job:"Create urgency, fill the round, and get to signed and wired.", time:"One to three weeks to a full, closed round.", feel:"Treating the term sheet as the finish and letting the round drift."}
     ];
     const stt=React.useState(0), cur=stt[0], setCur=stt[1];
     function lbl(c){return {fontSize:"10px",letterSpacing:".09em",textTransform:"uppercase",color:c||MUT,fontWeight:600,marginBottom:"3px"};}
@@ -10256,7 +10256,7 @@ const PB_ONE_PAGER_BULLETS = [{
       h("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px 22px"}},
         h("div",null,h("div",{style:lbl()},"Your job here"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},s.job)),
         h("div",null,h("div",{style:lbl()},"How long"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},s.time)),
-        h("div",{style:{gridColumn:"1 / -1"}},h("div",{style:lbl(GOLD)},"How it feels"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},s.feel))));
+        h("div",{style:{gridColumn:"1 / -1"}},h("div",{style:lbl(GOLD)},"Watch out for"),h("div",{style:{fontSize:".88rem",lineHeight:1.45}},s.feel))));
     const cap=h("div",{style:{fontSize:".78rem",color:MUT,marginTop:"12px",lineHeight:1.5}},"Advance through the arc, or click any stage. Each one gets its own section below.");
     return h("div",{style:{border:"1px solid "+LINE,borderRadius:"2px",padding:"18px",background:SOFT,margin:"4px 0 6px"}},head,rail,detail,cap);
   }
@@ -10274,7 +10274,7 @@ const PB_ONE_PAGER_BULLETS = [{
       lede:"A raise is a sequence of stages that almost every founder moves through in the same order. Click through the arc below to see the whole journey at a glance, then the rest of this chapter takes each stage one at a time.",
       after:[
         h(RaiseArc,{key:"arc"}),
-        h(window.Pull,{key:"p",eyebrow:"The reframe",quote:"A raise is a process. Founders who can see the whole arc stop panicking at the parts and start running the sequence."})
+        h(window.Pull,{key:"p",eyebrow:"The reframe",quote:"A raise is a process, and knowing it upfront will help you make better strategic decisions."})
       ]
     });
   }
