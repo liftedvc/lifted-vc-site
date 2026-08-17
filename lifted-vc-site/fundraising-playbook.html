@@ -10273,10 +10273,10 @@ const PB_ONE_PAGER_BULLETS = [{
   function P_Arc(){
     return NBShell({
       label:"03.01 The Arc of a Raise", num:"03.01", name:"The arc of a", accent:"raise.",
-      lede:"A raise is not a leap, it is a sequence of stages that almost every founder moves through in the same order. Click through the arc below to see the whole journey at a glance, then the rest of this chapter takes each stage one at a time.",
+      lede:"A raise is a sequence of stages that almost every founder moves through in the same order. Click through the arc below to see the whole journey at a glance, then the rest of this chapter takes each stage one at a time.",
       after:[
         h(RaiseArc,{key:"arc"}),
-        h(window.Pull,{key:"p",eyebrow:"The reframe",quote:"A raise is a process, not a pitch. Founders who can see the whole arc stop panicking at the parts and start running the sequence."})
+        h(window.Pull,{key:"p",eyebrow:"The reframe",quote:"A raise is a process. Founders who can see the whole arc stop panicking at the parts and start running the sequence."})
       ]
     });
   }
@@ -10288,9 +10288,9 @@ const PB_ONE_PAGER_BULLETS = [{
         CH3FIG(FIG_DECIDE,"figdec"),
         h(window.ActMarker,{key:"a",num:"01",name:"What you are actually",accent:"weighing."}),
         h(CleanGrid,{key:"g",items:[
-          {num:"01",title:"Your runway",desc:"How many months of cash you truly have, not the optimistic version."},
+          {num:"01",title:"Your runway",desc:"The honest number of months of cash you have."},
           {num:"02",title:"The milestone",desc:"What you need to prove to unlock the next round on good terms."},
-          {num:"03",title:"Your real stage",desc:"What investors see when they look at you, not what it feels like inside."},
+          {num:"03",title:"Your real stage",desc:"What investors see when they look at you from the outside."},
           {num:"04",title:"The market price",desc:"What a company like yours can realistically raise right now."}
         ]}),
         pp("a","You size the round backwards from that milestone, then set a target check and a valuation range a real investor would call reasonable. For the weeks or months a raise is live, fundraising becomes close to a full-time job for whoever leads it."),
@@ -10372,7 +10372,7 @@ const PB_ONE_PAGER_BULLETS = [{
   function P_Close(){
     return NBShell({
       label:"03.07 Closing the Round", num:"03.07", name:"Closing the", accent:"round.",
-      lede:"A term sheet is a milestone rather than the finish line, and closing is the work of turning that offer into money in the bank.",
+      lede:"A term sheet is a milestone on the way to close, and closing is the work of turning that offer into money in the bank.",
       after:[
         CH3FIG(FIG_CLOSE,"figcls"),
         h(window.ActMarker,{key:"a",num:"01",name:"From offer to",accent:"wired."}),
@@ -10392,9 +10392,9 @@ const PB_ONE_PAGER_BULLETS = [{
       label:"03.08 The Shape and the Clock", num:"03.08", name:"The shape and the", accent:"clock.",
       lede:"Two things help more than almost anything once you are inside a raise: knowing the shape of the funnel, and knowing the clock.",
       after:[
-        pp("a","The funnel is simply the reality that it takes many investors at the top to produce a few checks at the bottom, and the drop at each step is normal rather than a sign that something is broken."),
+        pp("a","The funnel is simply the reality that it takes many investors at the top to produce a few checks at the bottom, and the drop at each step is the normal shape of a raise."),
         h("div",{key:"ex",style:{border:"1px dashed rgba(191,90,60,.5)",borderRadius:"12px",padding:"12px 16px",margin:"4px 0 14px",background:"rgba(191,90,60,.06)",fontSize:".86rem",lineHeight:1.5}},
-          h("strong",null,"These are example numbers, not a promise."),
+          h("strong",null,"These are example numbers that show the shape."),
           " The figures below show the shape of a raise for a roughly $2M round. Your funnel will look different, so run it backwards from your own target: your round size, realistic check sizes for your stage, and honest conversion at each step."),
         CH3FIG(FIG_FUNNEL,"f"),
         h(window.ActMarker,{key:"ac",num:"01",name:"How long it really",accent:"takes."}),
@@ -10404,7 +10404,7 @@ const PB_ONE_PAGER_BULLETS = [{
         ]}),
         pp("clk","The emotional ride follows a curve of its own, from the fear before you start, through a stretch of silence and small rejections that can feel like failure, into a surge when momentum catches and offers begin to move."),
         h(window.Warning,{key:"w",eyebrow:"How founders misread it",title:"Three ways the process gets misjudged",items:[
-          {num:"1",name:"Under-building the top",body:"A thin list of investors cannot produce a full round. If the top of the funnel is small, the raise is out of reach before it starts."},
+          {num:"1",name:"Under-building the top",body:"A full round needs a deep list of investors. If the top of the funnel is small, the raise is out of reach before it starts."},
           {num:"2",name:"Launching too early",body:"Firing intros before you have banked enough means meetings dribble out with no concentration and no momentum."},
           {num:"3",name:"Reading nos as a verdict",body:"A pile of nos is the expected cost of the yeses. Treating each one as a judgment is how founders talk themselves out of a raise that is on track."}
         ]}),
