@@ -47,7 +47,7 @@ function PartnersPage() {
     { t: 'Better outcomes, better returns', d: 'Founders who run a real process raise faster and at stronger terms. That flows straight into your markups and follow-on.' },
     { t: 'Off your platform team', d: 'Fundraising attention comes one founder at a time. I give every company those hours, so your team keeps its leverage.' },
     { t: 'A proven method', d: 'Warm introductions over cold outreach, a compression sprint, and honest, direct guidance. The playbook is public at lifted.vc/fundraising-playbook.' },
-    { t: 'Access, not discounts', d: 'One published price for every founder, no equity, ever. What partners get is priority access, portfolio programming, and reporting, never a coupon.' },
+    { t: 'Founder-friendly pricing', d: 'I take a small retainer and push the majority of what I charge post-raise, with no equity, ever.' },
   ];
   const program = [
     { t: 'Free office hours', d: 'Any founder in your portfolio can book time to talk through their raise, at no cost, not just the ones actively raising.' },
@@ -71,9 +71,9 @@ function PartnersPage() {
             </Reveal>
             <Reveal delay={200}>
               <p style={{ fontFamily: 'var(--lit)', fontSize: 19, lineHeight: 1.65, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 28, textWrap: 'pretty' }}>
-                Your founders' next round is your next markup. I embed with your portfolio and work
-                with your founders 1:1, pre-seed through Series A, so more of your companies run a
-                real process and raise faster, without adding load to your platform team.
+                I embed with your portfolio and work with your founders 1:1, pre-seed through
+                Series A, so more of your companies run a real process and raise faster, without
+                adding load to your platform team.
               </p>
             </Reveal>
             <Reveal delay={300}>
@@ -102,13 +102,10 @@ function PartnersPage() {
           </Reveal>
           <Reveal delay={160}>
             <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
-              Fundraising coaching is 1:1 work. Every founder needs their own narrative, their own
-              investor list, and weekly reps with someone who has run the process before. That is
-              hours per founder, every week, across a three-month raise. Partners and platform teams
-              are spread across dozens of companies at once, so the help most founders get is a deck
-              review the week before they go out and a list of intros. The difference between raising
-              in six weeks and stalling for six months is narrative, sequencing, and reps. Funds
-              route that work to Lifted.
+              Fundraising is a full-time strategic job for your founders, and platform teams
+              typically have time for a handful of investor intros and nothing beyond that. Lifted
+              closes that gap with 1-on-1 coaching through every stage of the raise, and your
+              portcos get it free.
             </p>
           </Reveal>
           <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 44 }}>
