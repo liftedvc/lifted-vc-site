@@ -49,6 +49,16 @@ function PartnersPage() {
     { t: 'A proven method', d: 'Warm introductions over cold outreach, a compression sprint, and honest, direct guidance. The playbook is public at lifted.vc/fundraising-playbook.' },
     { t: 'Founder-friendly pricing', d: 'I take a small retainer and push the majority of what I charge post-raise, with no equity, ever.' },
   ];
+  const founderValue = [
+    { t: 'Free office hours to start', d: 'Any founder in your portfolio can book time with me, whether they are raising now or a year out. We talk through where they are and what would actually move the raise.' },
+    { t: 'A weekly working session', d: 'We meet every week and run the raise like an operating cadence. I send a brief before, they leave with action items after, and the agenda is whatever is live in their pipeline that week.' },
+    { t: 'A private Slack channel and ad hoc calls', d: 'A term sheet comes in, a partner meeting gets pulled forward, an investor goes quiet. Every founder has a private Slack channel with me, so they drop it in and we get on a call. Fundraising moves on its own schedule, so I do too.' },
+    { t: 'An investor list we build together', d: 'We build their target list side by side: who funds their stage and sector, who is writing checks right now, and who can get them in warm. It is their list. My job is to make it sharp, and big enough to run a real process.' },
+    { t: 'A story that lands in two minutes', d: 'We work the narrative until it lands fast: problem first, plain English, one page before ten slides. Then mock investor sessions until the hardest question in the room is one they have already answered.' },
+    { t: 'A raise built for speed', d: 'Everything we do is aimed at shortening the raise. First meetings get stacked into a tight window so investors move at the same time, momentum is real, and the round closes on their timeline.' },
+    { t: 'Backup when terms land', d: 'When an offer comes in, we read it together and negotiate from upside. They go into that conversation knowing what to push on, what to give, and when walking away is the strongest move.' },
+    { t: 'Everything in one place', d: 'A private dashboard at app.lifted.vc with their pipeline and investor CRM, and full transcripts of every session.' },
+  ];
   const program = [
     { t: 'Free office hours', d: 'Any founder in your portfolio can book time to talk through their raise, at no cost, not just the ones actively raising.' },
     { t: 'Quarterly portfolio workshops', d: 'Live sessions where founders bring their real pitch or outreach and we sharpen it on the spot.' },
@@ -121,31 +131,48 @@ function PartnersPage() {
         </div>
       </section>
 
-      {/* Who to send */}
+      {/* What your founders get */}
       <section style={{ padding: '84px 0', background: 'var(--bg)' }}>
         <div className="wrap">
           <Reveal>
             <div className="sechead">
-              <span className="eyebrow">Who to send</span>
+              <span className="eyebrow">What your founders get</span>
               <span className="eyebrow">02</span>
             </div>
           </Reveal>
           <Reveal delay={80}>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1.1, marginTop: 26, maxWidth: 820, textWrap: 'balance' }}>
-              Send me any founder raising pre-seed through Series A
+              When founders choose to work with Lifted, they get&hellip;
             </h2>
           </Reveal>
           <Reveal delay={160}>
             <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
-              This works across your whole portfolio, not just the companies that are struggling.
-              Your breakout founders raise faster and on better terms with an expert running the
-              process alongside them; your quieter ones get a raise that actually comes together.
-              The highest-leverage moments to start are a few weeks before going out, or mid-raise
-              when momentum stalls, but earlier is always fine.
+              It starts with a free call, and for the founders who want a coach through the whole
+              raise, this is what the work looks like.
             </p>
           </Reveal>
+
+          <div data-stack="true" style={{
+            display: 'grid', gridTemplateColumns: '1fr 1fr',
+            gap: '0 70px', marginTop: 48,
+          }}>
+            {founderValue.map((it, i) => (
+              <Reveal key={it.t} delay={(i % 2) * 80}>
+                <div data-stack="true" style={{
+                  padding: '22px 0',
+                  borderTop: '1px solid var(--line)',
+                  display: 'grid', gridTemplateColumns: '200px 1fr', gap: 24,
+                  height: '100%',
+                }}>
+                  <h4 style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.3, margin: 0, color: 'var(--ink)' }}>{it.t}</h4>
+                  <p style={{ fontFamily: 'var(--lit)', fontSize: 15, lineHeight: 1.6, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{it.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
           <Reveal delay={220}>
-            <p style={{ fontFamily: 'var(--lit)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.6, color: 'var(--ink)', marginTop: 24, maxWidth: 620, textWrap: 'pretty' }}>
+            <p style={{ fontFamily: 'var(--lit)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.6, color: 'var(--ink)', marginTop: 48, maxWidth: 620, textWrap: 'pretty' }}>
               Every founder you send gets a straight answer on the first call, including the times
               the honest answer is to wait a quarter or tighten something before going out.
               Your referral is your reputation. I treat it that way.
