@@ -45,8 +45,8 @@ function PartnersPage() {
 
   const gap = [
     { t: 'Better outcomes, better returns', d: 'Founders who run a real process raise faster and at stronger terms. That flows straight into your markups and follow-on.' },
-    { t: 'Off your platform team', d: 'Fundraising attention comes one founder at a time. I give every company those hours, so your team keeps its leverage.' },
-    { t: 'A proven method', d: 'Warm introductions over cold outreach, a compression sprint, and honest, direct guidance. The playbook is public at lifted.vc/fundraising-playbook.' },
+    { t: 'Off your platform team', d: 'Fundraising attention comes one founder at a time. I give every company those hours, so your team doesn’t have to.' },
+    { t: 'A proven method', d: 'No gimmicks or outlier plays—just a methodology that has landed over $100M in the last three years.' },
     { t: 'Founder-friendly pricing', d: 'I take a small retainer and push the majority of what I charge post-raise, with no equity, ever.' },
   ];
   const founderValue = [
@@ -114,8 +114,7 @@ function PartnersPage() {
             <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
               Fundraising is a full-time strategic job for your founders, and platform teams
               typically have time for a handful of investor intros and nothing beyond that. Lifted
-              closes that gap with 1-on-1 coaching through every stage of the raise, and your
-              portcos get it free.
+              closes that gap with 1-on-1 coaching through every stage of the raise.
             </p>
           </Reveal>
           <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 44 }}>
