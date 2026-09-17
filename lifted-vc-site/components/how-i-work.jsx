@@ -2,28 +2,28 @@
 function HowIWork() {
   const themes = [
     {
-      t: 'A weekly rhythm that ships',
+      t: 'Weekly 1-on-1 sessions',
       d: 'The core of the engagement: we meet every week and run your raise like an operating cadence.',
-      points: ['Weekly 1-on-1 working sessions', 'An agenda driven by your live pipeline', 'Action items in your inbox after every call'],
+      points: ['Weekly 1-on-1 working sessions', 'An agenda set by whatever is live in your pipeline', 'Action items at the end of every session'],
     },
     {
-      t: 'There between sessions',
-      d: "Fundraising doesn't wait for the next call, so neither do I.",
-      points: ['A private Slack line for drafts, reviews, and gut checks', 'Ad hoc sessions when something big lands'],
+      t: 'Slack and ad hoc calls in between',
+      d: 'A term sheet comes in, an investor sends a vague email, a partner meeting moves up.',
+      points: ['A private Slack channel with me for quick action', 'Drafts, reviews, and gut checks between calls', 'Ad hoc calls when something big lands'],
     },
     {
-      t: 'Built to win the room',
-      d: 'Your story and materials, sharpened and pressure-tested before investors ever see them.',
-      points: ['Narrative, deck, and one-pager built with you', 'Mock investor sessions and a red-team panel', 'Term-sheet and negotiation support when offers land'],
+      t: 'Narrative, collateral, and pitch reps',
+      d: 'Your story and materials, built with you and drilled until the pitch holds up.',
+      points: ['Story, one-pager, deck, and data room', 'Mock investor sessions until you are ready for anything in Q&A', 'Term sheet negotiation with leverage when offers come in'],
     },
     {
-      t: 'Warm access, earned',
-      d: 'No one can hand you intros worth having. I coach you through earning them at volume.',
-      points: ['A targeted investor list of 60 to 100', 'A process that earns 60 to 80 double-opt-in introductions', 'Connector strategy that gets you in the room'],
+      t: 'Warm intros and momentum',
+      d: "Cold outreach doesn't convert, so we never do it. No founder is born with an investor network, and we build yours.",
+      points: ['A target investor list we build together and tier', 'Every investor on the list mapped to a connector who can get you in warm', 'First meetings stacked into a compressed window so a dozen funds are moving at once'],
     },
     {
-      t: 'Resources at your fingertips',
-      d: 'Everything running your raise lives in one place, so nothing slips between sessions.',
+      t: 'The whole raise in one place',
+      d: 'Everything running your raise lives in one place.',
       points: ['Your private dashboard at app.lifted.vc', 'An investor CRM, built and kept current', 'Full transcripts of every session', 'The free fundraising playbook, woven into the work'],
     },
     {

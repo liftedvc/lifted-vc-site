@@ -1,5 +1,5 @@
 // Partners page — for VCs & accelerators. Netlify form "partners" emails Adam.
-// Content per partner-program brief: no client/fund names, no discounts, access not coupons.
+// Content per partner-program brief: no client/fund names. Partners get free office hours, quarterly workshops, and a discount on 1:1 coaching.
 function CopyEmailButton() {
   const [copied, setCopied] = React.useState(false);
   /* TODO(adam): replace this draft intro email with the final text that ships with the one-pager */
@@ -177,7 +177,6 @@ function PartnersPage() {
             <p style={{ fontFamily: 'var(--lit)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.6, color: 'var(--ink)', marginTop: 48, maxWidth: 620, textWrap: 'pretty' }}>
               Every founder you send gets a straight answer on the first call, including the times
               the honest answer is to wait a quarter or tighten something before going out.
-              Your referral is your reputation. I treat it that way.
             </p>
           </Reveal>
         </div>

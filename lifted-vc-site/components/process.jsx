@@ -14,7 +14,7 @@ function Process() {
     {
       n: '3',
       title: 'Compress meetings for leverage',
-      lead: "We stack every first meeting into a compressed time window. When a dozen funds are moving at once, the urgency is real, and investors can feel it. We lock in the yeses, respect the nos, kill the maybes, and when term sheets land, we negotiate with leverage.",
+      lead: "We stack every first meeting into a compressed time window. When a dozen funds are moving at once, the urgency is real, and investors can feel it. We lock in the yeses, respect the nos, kill the maybes, and operate with leverage.",
     },
   ];
 

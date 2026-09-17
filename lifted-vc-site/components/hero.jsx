@@ -40,7 +40,8 @@ function Hero() {
                 textWrap: 'pretty',
               }}>
                 I run your raise with you, from narrative to close. Warm introductions instead of
-                cold outreach, and a tight two to three week sprint that turns interest into term sheets.
+                cold outreach, and every first meeting stacked into a compressed window that turns
+                interest into term sheets.
               </p>
             </Reveal>
 
