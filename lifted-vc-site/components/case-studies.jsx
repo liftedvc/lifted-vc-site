@@ -56,7 +56,7 @@ function CaseStudies() {
           </Reveal>
           <Reveal delay={200}>
             <p style={{ fontFamily: 'var(--lit)', fontSize: 20, lineHeight: 1.5, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 28, textWrap: 'pretty' }}>
-              Three real engagements, anonymized. The moments where the process earned its keep.
+              Anonymized case studies from real client engagements. Note: all client relationships remain confidential!
             </p>
           </Reveal>
         </div>
