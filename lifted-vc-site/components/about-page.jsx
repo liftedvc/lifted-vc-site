@@ -67,7 +67,7 @@ function AboutPage() {
               <Reveal delay={260}>
                 <p style={{ margin: 0, textWrap: 'pretty', color: 'var(--ink-soft)' }}>
                   That led me to launch Lifted.vc. Since then, I've coached <strong style={{ color: 'var(--ink)' }}>100+ founders</strong> from
-                  pre-seed through Series A, helping them raise over <strong style={{ color: 'var(--ink)' }}>$96M</strong> in total capital.
+                  pre-seed through Series A, helping them raise <strong style={{ color: 'var(--ink)' }}>over $100M</strong> in total capital.
                 </p>
               </Reveal>
             </div>

@@ -17,7 +17,7 @@ function FoundersPage() {
             <Reveal><div className="eyebrow" style={{ marginBottom: 24 }}>Founders</div></Reveal>
             <Reveal delay={100}>
               <h1 style={{ fontSize: 'clamp(42px, 4.8vw, 66px)', lineHeight: 1.08, margin: 0, textWrap: 'balance' }}>
-                $96M raised since 2024
+                Over $100M raised since 2024
               </h1>
             </Reveal>
             <Reveal delay={200}>

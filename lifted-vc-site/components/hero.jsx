@@ -79,7 +79,7 @@ function Hero() {
             marginTop: 64,
             paddingTop: 24, paddingBottom: 0,
           }}>
-            <Stat num="$96M+" label="Raised by coached founders" />
+            <Stat num="Over $100M" label="Raised by coached founders" />
             <Stat num="100+" label="Founders coached" />
             <Stat num="50+" label="Closed rounds" />
           </div>
