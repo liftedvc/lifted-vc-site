@@ -43,7 +43,7 @@ function PricingPage() {
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p style={{ fontSize: 21, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
+              <p style={{ fontFamily: 'var(--lit)', fontSize: 21, lineHeight: 1.5, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
                 No equity, ever. Most of the fee is tied to your raise, so I only win when you do.
                 Pricing scales with your stage, your timeline, and how involved you want me to be.
               </p>
@@ -76,7 +76,7 @@ function PricingPage() {
                   {p.note && (
                     <div style={{ fontSize: 12.5, color: 'var(--ink-mute)', margin: '0 0 18px', lineHeight: 1.4 }}>{p.note}</div>
                   )}
-                  <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: '0 0 24px', textWrap: 'pretty' }}>{p.desc}</p>
+                  <p style={{ fontFamily: 'var(--lit)', fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink-soft)', margin: '0 0 24px', textWrap: 'pretty' }}>{p.desc}</p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, flex: 1, borderTop: '1px solid rgba(0,0,0,0.12)' }}>
                     {p.includes.map(inc => (
                       <li key={inc} style={{
@@ -121,7 +121,7 @@ function EngagementModel() {
               <h2 style={{ fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1.1, textWrap: 'balance' }}>
                 Priced to your round
               </h2>
-              <p style={{ fontSize: 17, color: 'var(--ink-soft)', marginTop: 22, maxWidth: 380, textWrap: 'pretty' }}>
+              <p style={{ fontFamily: 'var(--lit)', fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', marginTop: 22, maxWidth: 380, textWrap: 'pretty' }}>
                 Coaching scales with your stage. You pay a monthly retainer against a fixed
                 engagement total, and the balance comes due only when your round closes.
               </p>
@@ -157,14 +157,14 @@ function EngagementModel() {
               <div style={{ marginTop: 24, display: 'grid', gap: 14 }}>
                 <div style={{ display: 'flex', gap: 12, alignItems: 'baseline' }}>
                   <span style={{ color: 'var(--steel)', fontSize: 15 }}>–</span>
-                  <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
+                  <p style={{ fontFamily: 'var(--lit)', fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
                     Your monthly payments count toward the total. The remaining balance is due only when
                     you successfully close your round.
                   </p>
                 </div>
                 <div style={{ display: 'flex', gap: 12, alignItems: 'baseline' }}>
                   <span style={{ color: 'var(--steel)', fontSize: 15 }}>–</span>
-                  <p style={{ fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
+                  <p style={{ fontFamily: 'var(--lit)', fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>
                     No equity, ever, and it is month to month. If it is not working, we will both know.
                   </p>
                 </div>
@@ -213,11 +213,11 @@ function FAQ() {
                       cursor: 'pointer', textAlign: 'left', color: 'var(--ink)',
                     }}
                   >
-                    <span style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-0.015em' }}>{it.q}</span>
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 500, letterSpacing: '-0.015em' }}>{it.q}</span>
                     <span style={{ fontSize: 22, color: 'var(--gold)', transition: 'transform .3s', transform: isOpen ? 'rotate(45deg)' : 'rotate(0)' }}>+</span>
                   </button>
                   <div style={{ maxHeight: isOpen ? 400 : 0, overflow: 'hidden', transition: 'max-height .5s, padding .3s', paddingBottom: isOpen ? 24 : 0 }}>
-                    <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: 0, maxWidth: 640, textWrap: 'pretty' }}>{it.a}</p>
+                    <p style={{ fontFamily: 'var(--lit)', fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: 0, maxWidth: 640, textWrap: 'pretty' }}>{it.a}</p>
                   </div>
                 </div>
               );

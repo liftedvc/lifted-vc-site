@@ -4,7 +4,7 @@ function HowIWork() {
     {
       t: 'Weekly 1-on-1 sessions',
       d: 'The core of the engagement: we meet every week and run your raise like an operating cadence.',
-      points: ['Weekly 1-on-1 working sessions', 'An agenda set by whatever is live in your pipeline', 'Action items at the end of every session'],
+      points: ['An agenda set by whatever is live in your pipeline', 'Action items at the end of every session', 'The mental side of the raise, worked alongside the tactics'],
     },
     {
       t: 'Slack and ad hoc calls in between',
@@ -19,7 +19,7 @@ function HowIWork() {
     {
       t: 'Warm intros and momentum',
       d: "Cold outreach doesn't convert, so we never do it. No founder is born with an investor network, and we build yours.",
-      points: ['A target investor list we build together and tier', 'Every investor on the list mapped to a connector who can get you in warm', 'First meetings stacked into a compressed window so a dozen funds are moving at once'],
+      points: ['A target investor list we build together and tier: who invests at your stage, and who is deploying right now', 'Every investor on the list mapped to a connector who can get you in warm', 'First meetings stacked into a compressed window so a dozen funds are moving at once'],
     },
     {
       t: 'The whole raise in one place',
@@ -29,7 +29,7 @@ function HowIWork() {
     {
       t: 'Aligned from day one',
       d: 'Simple terms that keep the focus on your raise.',
-      points: ['No equity, ever', 'Month to month, no lock-in', 'A small roster, deep focus'],
+      points: ['No equity, ever', 'Most of the fee comes due after you close', 'Month to month, no lock-in', 'A small roster, deep focus'],
     },
   ];
   return (
@@ -54,8 +54,9 @@ function HowIWork() {
               fontSize: 18, color: 'var(--ink-soft)', lineHeight: 1.65,
               marginTop: 18, textWrap: 'pretty',
             }}>
-              The coaching is the heart of it. The system makes sure the work sticks, the
-              momentum holds, and nothing gets lost.
+              I co-pilot the whole round with you, week by week from prep to close. It is the
+              tactical mechanics, the strategy, and the mental side of raising, kept succinct
+              and direct.
             </p>
           </div>
         </Reveal>

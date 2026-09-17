@@ -15,7 +15,7 @@ function Footer() {
             <p style={{
               marginTop: 16, fontSize: 15.5, lineHeight: 1.55,
               color: 'var(--ink-soft)', maxWidth: 320,
-              fontFamily: 'var(--lit)', fontStyle: 'italic',
+              fontFamily: 'var(--lit)',
             }}>
               Helping founders raise pre-seed through Series A — methodically, honestly,
               on a timeline that actually works.
@@ -46,7 +46,7 @@ function Footer() {
           fontSize: 13, color: 'var(--ink-mute)',
         }}>
           <div>© 2026 Lifted.vc</div>
-          <div style={{ fontStyle: 'italic', fontFamily: 'var(--lit)', fontSize: 15, color: 'var(--ink-soft)' }}>
+          <div style={{ fontFamily: 'var(--lit)', fontSize: 15, color: 'var(--ink-soft)' }}>
             Honest fundraising. Tighter timelines.
           </div>
         </div>

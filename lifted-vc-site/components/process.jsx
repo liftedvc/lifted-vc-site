@@ -43,7 +43,7 @@ function Process() {
           }}>
             Experienced founders craft a story built for how investors take in information, line up
             quality warm intros at volume, and schedule every meeting compressed into one decisive window.
-            I've turned that pattern into a system I call <em>Authentic FOMO</em> that generates
+            I've turned that pattern into a system I call <strong style={{ color: 'var(--ink)', fontWeight: 500 }}>Authentic FOMO</strong> that generates
             real demand, engineered honestly, and we'll run it together.
           </p>
         </Reveal>

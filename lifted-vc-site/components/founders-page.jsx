@@ -21,7 +21,7 @@ function FoundersPage() {
               </h1>
             </Reveal>
             <Reveal delay={200}>
-              <p style={{ fontSize: 21, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
+              <p style={{ fontFamily: 'var(--lit)', fontSize: 21, lineHeight: 1.5, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 32, textWrap: 'pretty' }}>
                 From first-time founders to repeat entrepreneurs, a small selection of recent engagements.
               </p>
             </Reveal>
@@ -45,9 +45,8 @@ function FoundersPage() {
                 borderRadius: 4,
                 display: 'flex', flexDirection: 'column',
               }}>
-                <div style={{ fontFamily: 'var(--lit)', fontSize: 56, color: 'var(--gold)', lineHeight: 0.5, marginBottom: 18, fontStyle: 'italic' }}>&ldquo;</div>
-                <p style={{ fontFamily: 'var(--lit)', fontSize: 16.5, lineHeight: 1.5, color: 'var(--ink)', margin: '0 0 22px', textWrap: 'pretty', flex: 1, fontWeight: 400, fontStyle: 'italic' }}>
-                  {q.q}
+                <p style={{ fontFamily: 'var(--serif)', fontSize: 18, lineHeight: 1.3, letterSpacing: '-0.005em', color: 'var(--ink)', margin: '0 0 22px', textWrap: 'pretty', flex: 1, fontWeight: 500 }}>
+                  &ldquo;{q.q}&rdquo;
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 16, borderTop: '1px solid var(--line)' }}>
                   <Avatar letter={q.who[0]} small />

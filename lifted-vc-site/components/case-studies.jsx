@@ -55,7 +55,7 @@ function CaseStudies() {
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p style={{ fontSize: 20, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 28, textWrap: 'pretty' }}>
+            <p style={{ fontFamily: 'var(--lit)', fontSize: 20, lineHeight: 1.5, color: 'var(--ink-soft)', maxWidth: 640, marginTop: 28, textWrap: 'pretty' }}>
               Three real engagements, anonymized. The moments where the process earned its keep.
             </p>
           </Reveal>
@@ -73,12 +73,12 @@ function CaseStudies() {
                     </div>
                     <div style={{ paddingTop: 22, borderTop: '1px solid var(--line)' }}>
                       <div style={{ fontSize: 12, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--ink-soft)', marginBottom: 10, fontWeight: 500 }}>Result</div>
-                      <p style={{ fontFamily: 'var(--lit)', fontSize: 20, lineHeight: 1.35, fontStyle: 'italic', color: 'var(--ink)', margin: 0, textWrap: 'pretty' }}>{s.result}</p>
+                      <p style={{ fontFamily: 'var(--lit)', fontSize: 20, lineHeight: 1.35, color: 'var(--ink)', margin: 0, textWrap: 'pretty' }}>{s.result}</p>
                     </div>
                   </div>
                   <div>
                     {s.body.map((p, j) => (
-                      <p key={j} style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: '0 0 18px', textWrap: 'pretty' }}>{p}</p>
+                      <p key={j} style={{ fontFamily: 'var(--lit)', fontSize: 17, lineHeight: 1.6, color: 'var(--ink-soft)', margin: '0 0 18px', textWrap: 'pretty' }}>{p}</p>
                     ))}
                     <div style={{ marginTop: 26, fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--ink-soft)' }}>{s.who}</div>
                   </div>

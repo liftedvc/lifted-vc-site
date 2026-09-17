@@ -35,13 +35,13 @@ function AboutPage() {
             <Reveal>
               <div style={{ position: 'sticky', top: 100 }}>
                 <Photo ratio="4 / 5" src="images/adam-470.jpg" alt="USA Sailing Team · 470" />
-                <div style={{ marginTop: 14, fontSize: 14, color: 'var(--ink-soft)', fontStyle: 'italic', fontFamily: 'var(--lit)' }}>
+                <div style={{ marginTop: 14, fontSize: 14, color: 'var(--ink-soft)', fontFamily: 'var(--lit)' }}>
                   Five years at the international level<br/>before tech.
                 </div>
               </div>
             </Reveal>
 
-            <div style={{ fontSize: 19, lineHeight: 1.65, color: 'var(--ink)' }}>
+            <div style={{ fontFamily: 'var(--lit)', fontSize: 19, lineHeight: 1.65, color: 'var(--ink)' }}>
               <Reveal>
                 <p style={{ fontSize: 28, lineHeight: 1.35, margin: '0 0 32px', fontWeight: 400, textWrap: 'pretty' }}>
                   Before tech, I spent five years on the USA Sailing Team, racing the 470 class
@@ -61,7 +61,7 @@ function AboutPage() {
                 <p style={{ margin: '0 0 24px', textWrap: 'pretty', color: 'var(--ink-soft)' }}>
                   After the sale, I joined Zinc Technologies (YC) as head of sales, then became
                   an EIR at Wefunder, where I rediscovered what I love: helping founders turn a
-                  messy, terrifying process into something <em>methodical and winnable</em>.
+                  messy, terrifying process into something <strong style={{ color: 'var(--ink)', fontWeight: 500 }}>methodical and winnable</strong>.
                 </p>
               </Reveal>
               <Reveal delay={260}>
@@ -93,10 +93,10 @@ function AboutPage() {
             gap: 24,
           }}>
             {[
-              { title: 'Founder-focused', body: "I've successfully fundraised myself. My advice comes from the founder perspective, not from a consultant who's never done it." },
-              { title: 'No equity, ever', body: "I don't take equity in your startup. I want to remain unbiased and solely focused on your fundraising goals." },
-              { title: 'Tactical + mental', body: "Real strategies AND real support to navigate the emotional rollercoaster. Both matter equally." },
-              { title: 'Direct, no filler', body: "I cut to the chase, focus on what moves the needle, and never give you homework you'll never do." },
+              { title: 'Founder-focused', body: "I'm a YC alum who raised my own company, Paid Labs, from Pear Ventures and Founder Collective. Everything I coach comes from having sat in the founder seat and run the raise myself." },
+              { title: 'No equity, ever', body: "I don't take equity or a percentage of your raise, and most of what I charge comes due after you close. The only thing I'm optimizing for is a speedy close on good terms." },
+              { title: 'Tactical and mental', body: "It's the tactical mechanics, the strategy, and the mental side of raising. Months of pitching and hearing no wear on everyone, so we work that part too, and it's a real reason rounds get closed." },
+              { title: 'Direct, no filler', body: "You get a straight answer on where you stand, including when the honest answer is to wait a quarter or tighten something before going out. Sessions are succinct, and the action items are ones you'll actually do." },
             ].map((p, i) => (
               <Reveal key={p.title} delay={(i % 2) * 80}>
                 <div style={{
@@ -107,7 +107,7 @@ function AboutPage() {
                   height: '100%',
                 }}>
                   <h4 style={{ fontSize: 28, margin: '0 0 14px', lineHeight: 1.1 }}>{p.title}</h4>
-                  <p style={{ fontSize: 16.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{p.body}</p>
+                  <p style={{ fontFamily: 'var(--lit)', fontSize: 16.5, lineHeight: 1.55, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{p.body}</p>
                 </div>
               </Reveal>
             ))}

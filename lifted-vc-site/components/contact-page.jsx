@@ -35,7 +35,8 @@ function ContactPage() {
             </Reveal>
             <Reveal delay={200}>
               <p style={{
-                fontSize: 22, lineHeight: 1.45, color: 'var(--ink-soft)',
+                fontFamily: 'var(--lit)',
+                fontSize: 22, lineHeight: 1.5, color: 'var(--ink-soft)',
                 margin: '32px 0 0', maxWidth: 480,
                 textWrap: 'pretty',
               }}>

@@ -10,21 +10,16 @@ function FeaturedQuote() {
             textAlign: 'center',
           }}>
             <div className="eyebrow" style={{ marginBottom: 10 }}>What founders say</div>
-            <div style={{
-              fontFamily: 'var(--lit)', fontStyle: 'italic',
-              fontSize: 84, lineHeight: 0.4, color: 'var(--gold)',
-            }}>&ldquo;</div>
             <p style={{
-              fontFamily: 'var(--lit)',
+              fontFamily: 'var(--serif)',
               fontSize: 'clamp(28px, 3vw, 40px)',
-              lineHeight: 1.3,
+              lineHeight: 1.2,
               letterSpacing: '-0.01em',
               margin: '18px 0 26px',
-              fontStyle: 'italic',
-              fontWeight: 400,
+              fontWeight: 500,
               textWrap: 'balance',
             }}>
-              He gave me a process. One that replaced guesswork with clarity, confidence, and precision.&rdquo;
+              &ldquo;He gave me a process. One that replaced guesswork with clarity, confidence, and precision.&rdquo;
             </p>
             <div style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--ink-soft)' }}>
               <b style={{ color: 'var(--ink)' }}>Leni</b> · Pre-seed founder
