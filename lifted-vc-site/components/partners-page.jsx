@@ -47,7 +47,7 @@ function PartnersPage() {
     { t: 'Free office hours across your portfolio', d: 'Any founder you back can book time with me, raising now or a year out, at no cost to them or to you. Plus quarterly portfolio workshops, where we set up your entire portfolio for success.' },
     { t: 'Better outcomes, better returns', d: 'Founders who run a real process raise faster and at stronger terms. That flows straight into your markups and follow-on. No gimmicks, just a methodology that has landed over $100M in the last three years.' },
     { t: 'Off your platform team', d: 'I give your founders’ raises the focused attention they need so your team doesn’t have to. I lean into the time-consuming activities like pitch practice, collateral proofing, bespoke raise strategy, etc.' },
-    { t: 'Founder-friendly pricing', d: 'For founders who want a co-pilot through the whole raise, I take a small retainer and push the majority of what I charge post-raise, with no equity.' },
+    { t: 'Founder-friendly pricing & Partner Discount', d: 'For founders who want a co-pilot through the whole raise, I take a small retainer and push the majority of what I charge post-raise, with no equity. I also offer exclusive discounts as part of our partnership.' },
   ];
   const founderValue = [
     { t: 'Free office hours to start', d: 'Any founder in your portfolio can book time with me, whether they are raising now or a year out. We talk through where they are and what would actually move the raise.' },
@@ -192,7 +192,7 @@ function PartnersPage() {
           </Reveal>
           <Reveal delay={80}>
             <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1.1, marginTop: 26, textWrap: 'balance' }}>
-              The scoreboard is public
+              The scoreboard:
             </h2>
           </Reveal>
           <div data-stack="true" style={{ display: 'flex', gap: 80, marginTop: 40, flexWrap: 'wrap' }}>
