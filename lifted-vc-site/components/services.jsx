@@ -38,7 +38,7 @@ function ServicesTeaser() {
                 color: 'var(--ink-soft)', margin: 0, maxWidth: 520, textWrap: 'pretty',
               }}>
                 An honest read on where you are and what would unblock your raise.
-                Candid, conversational, entirely on the house.
+                Candid, conversational, and no strings attached.
               </p>
               <div style={{ marginTop: 32, display: 'flex', gap: 24, alignItems: 'center', flexWrap: 'wrap' }}>
                 <a href="/contact" className="btn btn-primary">Book a free consultation <Arrow /></a>

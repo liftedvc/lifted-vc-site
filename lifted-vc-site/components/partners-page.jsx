@@ -51,8 +51,8 @@ function PartnersPage() {
   ];
   const founderValue = [
     { t: 'Weekly 1-on-1 sessions', d: 'We meet every week and run the raise like an operating cadence. The agenda is whatever is live in their pipeline, and every session ends with action items.' },
-    { t: 'Slack and ad hoc calls in between', d: 'A term sheet comes in, an investor goes quiet, a partner meeting moves up. Every founder has a private Slack channel with me, so they send it over and we get on a call.' },
-    { t: 'A target investor list we build together', d: 'Who invests at their stage and in their space, who is actually deploying right now, and who can get them in warm. We build it together and tier it, because a tight list of real fits beats a long list of maybes.' },
+    { t: 'Slack and ad hoc calls in between', d: 'A term sheet comes in, an investor sends a vague email, a partner meeting moves up. Every founder has a private Slack channel with me for quick action.' },
+    { t: 'A target investor list we build together', d: 'Who invests at their stage and in their space, and who is actually deploying right now. We build it together and tier it, because a tight list of real fits beats a long list of maybes.' },
     { t: 'Narrative, collateral, and pitch reps', d: 'The story, one-pager, deck, and data room, built with them and drilled in mock investor sessions until the pitch holds up and they are ready for anything in Q&A.' },
     { t: 'A warm-intro pipeline', d: 'Cold outreach doesn’t convert, so we map every investor on the list to a connector who can get them in warm. No founder is born with an investor network, and we build theirs.' },
     { t: 'Momentum that closes rounds', d: 'We stack first meetings into a compressed window so a dozen funds are moving at once. Investors can feel that, and it is what gets rounds closed quickly.' },

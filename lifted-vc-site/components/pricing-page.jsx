@@ -4,7 +4,7 @@ function PricingPage() {
     {
       tag: 'Consultation', price: 'Free', cadence: '30-minute call',
       title: 'Free Fundraising Consultation',
-      desc: 'An honest read on where you are and what would unblock your raise. Candid, conversational, entirely on the house.',
+      desc: 'An honest read on where you are and what would unblock your raise. Candid, conversational, and no strings attached.',
       note: null,
       includes: [
         '30-minute working call',

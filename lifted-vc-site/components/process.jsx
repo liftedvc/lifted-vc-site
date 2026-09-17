@@ -3,7 +3,7 @@ function Process() {
   const phases = [
     {
       n: '1',
-      title: 'Build the story investors buy',
+      title: 'Build a narrative that resonates with investors',
       lead: "Investors decide in the first minutes, so we build your narrative the way they listen: problem first, conclusion first, plain English. We will pressure-test in mock sessions until we know it lands, and make sure you are ready for anything during Q&A.",
     },
     {
