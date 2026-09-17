@@ -1,12 +1,14 @@
 // What you get — the navy band. Ruled ledger of deliverables.
 function WhatYouGet() {
   const items = [
-    { t: 'Weekly 1-on-1 coaching', d: 'Weekly working sessions and live pitch reps until you walk into every meeting a known quantity.' },
-    { t: 'A narrative that lands', d: 'A sharpened story, a tight one-pager, and a deck investors want to read, then pressure-tested in mock investor sessions.' },
-    { t: 'Your investor pipeline', d: 'A process that earns 60 to 80 warm, double-opt-in introductions from a targeted list built for your round, instead of cold outreach.' },
-    { t: 'Your fundraising command center', d: 'A private dashboard with your live pipeline, an investor CRM, and every fundraise number in one place.' },
-    { t: 'Every session captured', d: 'Full transcripts of each meeting and action items after, so nothing slips between sessions.' },
-    { t: 'A partner through close', d: 'A private Slack line between sessions, plus investor comms and pipeline management from first meeting to signed term sheet.' },
+    { t: 'Weekly 1-on-1 sessions', d: 'We meet every week and run your raise like an operating cadence. The agenda is whatever is live in your pipeline, and every session ends with action items.' },
+    { t: 'Slack and ad hoc calls in between', d: 'A term sheet comes in, an investor goes quiet, a partner meeting moves up. You have a private Slack channel with me, so you send it over and we get on a call.' },
+    { t: 'A target investor list we build together', d: 'Who invests at your stage and in your space, who is actually deploying right now, and who can get you in warm. We build it together and tier it, because a tight list of real fits beats a long list of maybes.' },
+    { t: 'Narrative, collateral, and pitch reps', d: 'Your story, one-pager, deck, and data room, built with you and drilled in mock investor sessions until the pitch holds up and you are ready for anything in Q&A.' },
+    { t: 'A warm-intro pipeline', d: 'Cold outreach doesn’t convert, so we map every investor on your list to a connector who can get you in warm. No founder is born with an investor network, and we build yours.' },
+    { t: 'Momentum that closes rounds', d: 'We stack your first meetings into a compressed window so a dozen funds are moving at once. Investors can feel that, and it is what gets rounds closed quickly.' },
+    { t: 'Term sheet negotiation', d: 'When offers come in, we read them together and negotiate with leverage, so you know what to push on, what to give, and when to walk.' },
+    { t: 'The whole raise in one place', d: 'A private dashboard at app.lifted.vc with your pipeline, an investor CRM, and full transcripts of every session.' },
   ];
   return (
     <section className="band-navy" style={{ padding: '84px 0' }}>
@@ -31,7 +33,8 @@ function WhatYouGet() {
             fontSize: 18, lineHeight: 1.65, color: 'rgba(247,246,242,0.75)',
             marginTop: 18, maxWidth: 640, textWrap: 'pretty',
           }}>
-            You get me in your corner every week, with a real operating system behind the work so nothing slips.
+            I co-pilot the whole round with you, week by week from prep to close. It is the tactical
+            mechanics, the strategy, and the mental side of raising, kept succinct and direct.
           </p>
         </Reveal>
 

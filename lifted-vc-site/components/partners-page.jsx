@@ -50,14 +50,14 @@ function PartnersPage() {
     { t: 'Founder-friendly pricing & Partner Discount', d: 'For founders who want a co-pilot through the whole raise, I take a small retainer and push the majority of what I charge post-raise, with no equity. I also offer exclusive discounts as part of our partnership.' },
   ];
   const founderValue = [
-    { t: 'Free office hours to start', d: 'Any founder in your portfolio can book time with me, whether they are raising now or a year out. We talk through where they are and what would actually move the raise.' },
-    { t: 'A weekly working session', d: 'We meet every week and run the raise like an operating cadence. The agenda is whatever is live in their pipeline that week, and they leave with action items.' },
-    { t: 'A private Slack channel and ad hoc calls', d: 'A term sheet comes in, a partner meeting gets pulled forward, an investor goes quiet. Every founder has a private Slack channel with me, so they drop it in and we get on a call. Fundraising moves on its own schedule, so I do too.' },
-    { t: 'An investor list we build together', d: 'We build their target list side by side: who funds their stage and sector, who is writing checks right now, and who can get them in warm. It is their list. My job is to make it sharp, and big enough to run a real process.' },
-    { t: 'A story that lands in two minutes', d: 'We work the narrative until it lands fast: problem first, plain English, one page before ten slides. Then mock investor sessions until the hardest question in the room is one they have already answered.' },
-    { t: 'A raise built for speed', d: 'Everything we do is aimed at shortening the raise. First meetings get stacked into a tight window so investors move at the same time, momentum is real, and the round closes on their timeline.' },
-    { t: 'Backup when terms land', d: 'When an offer comes in, we read it together and negotiate from upside. They go into that conversation knowing what to push on, what to give, and when walking away is the strongest move.' },
-    { t: 'Everything in one place', d: 'A private dashboard at app.lifted.vc with their pipeline and investor CRM, and full transcripts of every session.' },
+    { t: 'Weekly 1-on-1 sessions', d: 'We meet every week and run the raise like an operating cadence. The agenda is whatever is live in their pipeline, and every session ends with action items.' },
+    { t: 'Slack and ad hoc calls in between', d: 'A term sheet comes in, an investor goes quiet, a partner meeting moves up. Every founder has a private Slack channel with me, so they send it over and we get on a call.' },
+    { t: 'A target investor list we build together', d: 'Who invests at their stage and in their space, who is actually deploying right now, and who can get them in warm. We build it together and tier it, because a tight list of real fits beats a long list of maybes.' },
+    { t: 'Narrative, collateral, and pitch reps', d: 'The story, one-pager, deck, and data room, built with them and drilled in mock investor sessions until the pitch holds up and they are ready for anything in Q&A.' },
+    { t: 'A warm-intro pipeline', d: 'Cold outreach doesn’t convert, so we map every investor on the list to a connector who can get them in warm. No founder is born with an investor network, and we build theirs.' },
+    { t: 'Momentum that closes rounds', d: 'We stack first meetings into a compressed window so a dozen funds are moving at once. Investors can feel that, and it is what gets rounds closed quickly.' },
+    { t: 'Term sheet negotiation', d: 'When offers come in, we read them together and negotiate with leverage, so they know what to push on, what to give, and when to walk.' },
+    { t: 'The whole raise in one place', d: 'A private dashboard at app.lifted.vc with the pipeline, an investor CRM, and full transcripts of every session.' },
   ];
   return (
     <>
@@ -147,8 +147,10 @@ function PartnersPage() {
           </Reveal>
           <Reveal delay={160}>
             <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
-              It starts with a free call, and for the founders who want a coach through the whole
-              raise, this is what the work looks like.
+              Any founder in your portfolio can start with free office hours. For the ones who want
+              a co-pilot through the whole round, this is the work, week by week from prep to close:
+              the tactical mechanics, the strategy, and the mental side of raising, kept succinct
+              and direct.
             </p>
           </Reveal>
 
