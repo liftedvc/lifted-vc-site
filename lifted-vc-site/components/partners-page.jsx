@@ -44,9 +44,9 @@ function PartnersPage() {
   }, []);
 
   const fundValue = [
-    { t: 'Free office hours across your portfolio', d: 'Any founder you back can book time with me, raising now or a year out, at no cost to them or to you. Plus quarterly portfolio workshops, where founders bring their real pitch or outreach and we sharpen it on the spot.' },
-    { t: 'Better outcomes, better returns', d: 'Founders who run a real process raise faster and at stronger terms. That flows straight into your markups and follow-on. No gimmicks or outlier plays—just a methodology that has landed over $100M in the last three years.' },
-    { t: 'Off your platform team', d: 'Fundraising attention comes one founder at a time. I give every company those hours, so your team doesn’t have to. Know a founder heading into a raise? Introduce us anytime. Every note gets a reply within a day.' },
+    { t: 'Free office hours across your portfolio', d: 'Any founder you back can book time with me, raising now or a year out, at no cost to them or to you. Plus quarterly portfolio workshops, where we set up your entire portfolio for success.' },
+    { t: 'Better outcomes, better returns', d: 'Founders who run a real process raise faster and at stronger terms. That flows straight into your markups and follow-on. No gimmicks, just a methodology that has landed over $100M in the last three years.' },
+    { t: 'Off your platform team', d: 'I give your founders’ raises the focused attention they need so your team doesn’t have to. I lean into the time-consuming activities like pitch practice, collateral proofing, bespoke raise strategy, etc.' },
     { t: 'Founder-friendly pricing', d: 'For founders who want a co-pilot through the whole raise, I take a small retainer and push the majority of what I charge post-raise, with no equity, ever.' },
   ];
   const founderValue = [
@@ -89,13 +89,55 @@ function PartnersPage() {
         </div>
       </section>
 
+      {/* The gap + what your fund gets */}
+      <section className="band-gold" style={{ padding: '84px 0' }}>
+        <div className="wrap">
+          <Reveal>
+            <div className="sechead">
+              <span className="eyebrow">The Lifted Partner Program</span>
+              <span className="eyebrow">01</span>
+            </div>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1.1, marginTop: 26, textWrap: 'balance' }}>
+              Every fund has this gap
+            </h2>
+          </Reveal>
+          <Reveal delay={160}>
+            <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
+              Fundraising is a full-time strategic job for your founders, and platform teams
+              typically have time for a handful of investor intros and nothing beyond that. Lifted
+              closes that gap with 1-on-1 coaching through every stage of the raise.
+            </p>
+          </Reveal>
+          <Reveal delay={200}>
+            <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 640, textWrap: 'pretty' }}>
+              What your fund gets:
+            </p>
+          </Reveal>
+          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 40 }}>
+            {fundValue.map((h, i) => (
+              <Reveal key={h.t} delay={(i % 2) * 80}>
+                <div style={{ background: 'rgba(255,255,255,0.35)', border: '1px solid #e2d5b4', borderRadius: 4, padding: 28, height: '100%' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, margin: '0 0 10px' }}>
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: 30, lineHeight: 1, color: 'var(--gold)', flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
+                    <h4 style={{ fontSize: 21, margin: 0, lineHeight: 1.2 }}>{h.t}</h4>
+                  </div>
+                  <p style={{ fontFamily: 'var(--lit)', fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{h.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* What your founders get */}
       <section style={{ padding: '84px 0', background: 'var(--bg)' }}>
         <div className="wrap">
           <Reveal>
             <div className="sechead">
               <span className="eyebrow">What your founders get</span>
-              <span className="eyebrow">01</span>
+              <span className="eyebrow">02</span>
             </div>
           </Reveal>
           <Reveal delay={80}>
@@ -136,48 +178,6 @@ function PartnersPage() {
               Your referral is your reputation. I treat it that way.
             </p>
           </Reveal>
-        </div>
-      </section>
-
-      {/* The gap + what your fund gets */}
-      <section className="band-gold" style={{ padding: '84px 0' }}>
-        <div className="wrap">
-          <Reveal>
-            <div className="sechead">
-              <span className="eyebrow">The Lifted Partner Program</span>
-              <span className="eyebrow">02</span>
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <h2 style={{ fontSize: 'clamp(34px, 3.6vw, 46px)', lineHeight: 1.1, marginTop: 26, textWrap: 'balance' }}>
-              Every fund has this gap
-            </h2>
-          </Reveal>
-          <Reveal delay={160}>
-            <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 680, textWrap: 'pretty' }}>
-              Fundraising is a full-time strategic job for your founders, and platform teams
-              typically have time for a handful of investor intros and nothing beyond that. Lifted
-              closes that gap with 1-on-1 coaching through every stage of the raise.
-            </p>
-          </Reveal>
-          <Reveal delay={200}>
-            <p style={{ fontFamily: 'var(--lit)', fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)', marginTop: 18, maxWidth: 640, textWrap: 'pretty' }}>
-              What your fund gets:
-            </p>
-          </Reveal>
-          <div data-stack="true" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 40 }}>
-            {fundValue.map((h, i) => (
-              <Reveal key={h.t} delay={(i % 2) * 80}>
-                <div style={{ background: 'rgba(255,255,255,0.35)', border: '1px solid #e2d5b4', borderRadius: 4, padding: 28, height: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, margin: '0 0 10px' }}>
-                    <span style={{ fontFamily: 'var(--serif)', fontSize: 30, lineHeight: 1, color: 'var(--gold)', flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
-                    <h4 style={{ fontSize: 21, margin: 0, lineHeight: 1.2 }}>{h.t}</h4>
-                  </div>
-                  <p style={{ fontFamily: 'var(--lit)', fontSize: 15.5, color: 'var(--ink-soft)', margin: 0, textWrap: 'pretty' }}>{h.d}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
