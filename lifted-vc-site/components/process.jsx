@@ -4,17 +4,17 @@ function Process() {
     {
       n: '1',
       title: 'Build the story investors buy',
-      lead: "Investors decide in the first minutes, so we build your narrative the way they listen: problem first, conclusion first, plain English. One page before ten slides, because the one-pager is what lands meetings. Then we pressure-test it in mock sessions until the hardest question in the room is one you've already answered.",
+      lead: "Investors decide in the first minutes, so we build your narrative the way they listen: problem first, conclusion first, plain English. We will pressure-test in mock sessions until we know it lands, and make sure you are ready for anything during Q&A.",
     },
     {
       n: '2',
       title: 'Engineer warm access at volume',
-      lead: "Cold outreach doesn't convert, so we never do it. We work the math backward from your round: a target list of 60 to 100 right-fit investors, reached through connectors ranked by whether they'll name the exact investor they'll introduce you to. The result is 60 to 80 warm, double-opt-in introductions, real access, at the volume a round actually requires.",
+      lead: "Cold outreach to investors doesn't convert, so we never do it. We'll craft a high-fit target investor list and network our way into high-quality introductions to every investor. No founder is born with an investor network, and we will build yours.",
     },
     {
       n: '3',
-      title: 'Compress the round until it closes',
-      lead: "Interest expires, so we stack every first meeting into a two to three week sprint. When a dozen funds are moving at once, the urgency is real and investors can feel it. We lock in the yeses, respect the nos, kill the maybes, and when term sheets land, we negotiate from upside, with the leverage to walk.",
+      title: 'Compress meetings for leverage',
+      lead: "We stack every first meeting into a compressed time window. When a dozen funds are moving at once, the urgency is real, and investors can feel it. We lock in the yeses, respect the nos, kill the maybes, and when term sheets land, we negotiate with leverage.",
     },
   ];
 
@@ -41,8 +41,8 @@ function Process() {
             fontSize: 18, lineHeight: 1.65, color: 'var(--ink-soft)',
             marginTop: 18, maxWidth: 640, textWrap: 'pretty',
           }}>
-            Experienced founders craft a story built for how investors actually listen, line up
-            warm intros at volume, and schedule every meeting compressed into one decisive window.
+            Experienced founders craft a story built for how investors take in information, line up
+            quality warm intros at volume, and schedule every meeting compressed into one decisive window.
             I've turned that pattern into a system I call <em>Authentic FOMO</em> that generates
             real demand, engineered honestly, and we'll run it together.
           </p>

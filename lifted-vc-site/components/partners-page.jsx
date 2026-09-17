@@ -51,7 +51,7 @@ function PartnersPage() {
   ];
   const founderValue = [
     { t: 'Free office hours to start', d: 'Any founder in your portfolio can book time with me, whether they are raising now or a year out. We talk through where they are and what would actually move the raise.' },
-    { t: 'A weekly working session', d: 'We meet every week and run the raise like an operating cadence. I send a brief before, they leave with action items after, and the agenda is whatever is live in their pipeline that week.' },
+    { t: 'A weekly working session', d: 'We meet every week and run the raise like an operating cadence. The agenda is whatever is live in their pipeline that week, and they leave with action items.' },
     { t: 'A private Slack channel and ad hoc calls', d: 'A term sheet comes in, a partner meeting gets pulled forward, an investor goes quiet. Every founder has a private Slack channel with me, so they drop it in and we get on a call. Fundraising moves on its own schedule, so I do too.' },
     { t: 'An investor list we build together', d: 'We build their target list side by side: who funds their stage and sector, who is writing checks right now, and who can get them in warm. It is their list. My job is to make it sharp, and big enough to run a real process.' },
     { t: 'A story that lands in two minutes', d: 'We work the narrative until it lands fast: problem first, plain English, one page before ten slides. Then mock investor sessions until the hardest question in the room is one they have already answered.' },

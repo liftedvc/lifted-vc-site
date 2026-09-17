@@ -9,7 +9,7 @@ function HowIWork() {
     {
       t: 'There between sessions',
       d: "Fundraising doesn't wait for the next call, so neither do I.",
-      points: ['A private Slack line for drafts, reviews, and gut checks', 'Ad hoc sessions when something big lands', 'A brief before every call so we start at full speed'],
+      points: ['A private Slack line for drafts, reviews, and gut checks', 'Ad hoc sessions when something big lands'],
     },
     {
       t: 'Built to win the room',

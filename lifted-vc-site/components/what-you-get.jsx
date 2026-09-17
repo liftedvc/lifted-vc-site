@@ -5,7 +5,7 @@ function WhatYouGet() {
     { t: 'A narrative that lands', d: 'A sharpened story, a tight one-pager, and a deck investors want to read, then pressure-tested in mock investor sessions.' },
     { t: 'Your investor pipeline', d: 'A process that earns 60 to 80 warm, double-opt-in introductions from a targeted list built for your round, instead of cold outreach.' },
     { t: 'Your fundraising command center', d: 'A private dashboard with your live pipeline, an investor CRM, and every fundraise number in one place.' },
-    { t: 'Every session captured', d: 'Full transcripts of each meeting, a brief before every call, and action items after, so nothing slips between sessions.' },
+    { t: 'Every session captured', d: 'Full transcripts of each meeting and action items after, so nothing slips between sessions.' },
     { t: 'A partner through close', d: 'A private Slack line between sessions, plus investor comms and pipeline management from first meeting to signed term sheet.' },
   ];
   return (
