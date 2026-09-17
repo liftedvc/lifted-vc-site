@@ -16,7 +16,7 @@ function PricingPage() {
       bg: 'var(--bg)',
     },
     {
-      tag: 'Round coaching', price: '$1–2K', cadence: 'per month',
+      tag: 'Round coaching', price: '$1.25–2K', cadence: 'per month',
       title: '1-on-1 Round Coaching',
       desc: 'Your dedicated co-pilot from narrative through close. We run your fundraising round together, week by week.',
       note: 'Against a $12.5–20K engagement, balance due only when you close.',
@@ -107,7 +107,7 @@ function PricingPage() {
 // How the engagement works — stage-based totals + success-aligned structure
 function EngagementModel() {
   const rows = [
-    { stage: 'Pre-seed', monthly: '$1,000 / mo', total: '$12,500' },
+    { stage: 'Pre-seed', monthly: '$1,250 / mo', total: '$12,500' },
     { stage: 'Seed', monthly: '$1,500 / mo', total: '$15,000' },
     { stage: 'Series A', monthly: '$2,000 / mo', total: '$20,000' },
   ];
@@ -184,7 +184,7 @@ function FAQ() {
     { q: 'Who do you take on as clients?', a: "I'm selective on purpose: I only work with founders I strongly believe can successfully fundraise. Small client roster, deep focus." },
     { q: "What if I'm not sure I'm ready to fundraise?", a: "Ask me. Readiness is complex: market timing, revenue, product maturity, and traction all factor in. I help you evaluate before you commit." },
     { q: 'Can you guarantee success?', a: "No, and be skeptical of anyone who does. What I can promise is a process that gives you the best possible shot, and the honesty to tell you when something isn't working." },
-    { q: 'How much does it cost?', a: "Round Coaching scales with your stage: $12.5K at pre-seed, $15K at seed, $20K at Series A, paid as a monthly retainer ($1K to $2K) against that total, with the balance due only when you close. The consultation is free, and I never take equity." },
+    { q: 'How much does it cost?', a: "Round Coaching scales with your stage: $12.5K at pre-seed, $15K at seed, $20K at Series A, paid as a monthly retainer ($1.25K to $2K) against that total, with the balance due only when you close. The consultation is free, and I never take equity." },
   ];
 
   return (
