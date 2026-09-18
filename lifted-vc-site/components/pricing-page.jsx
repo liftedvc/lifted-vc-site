@@ -180,10 +180,10 @@ function EngagementModel() {
 function FAQ() {
   const [open, setOpen] = React.useState(0);
   const items = [
-    { q: 'Do you take equity?', a: "No. I don't take equity in your startup. I want to remain unbiased and solely focused on your fundraising goals." },
-    { q: 'Who do you take on as clients?', a: "I'm selective on purpose: I only work with founders I strongly believe can successfully fundraise. Small client roster, deep focus." },
-    { q: "What if I'm not sure I'm ready to fundraise?", a: "Ask me. Readiness is complex: market timing, revenue, product maturity, and traction all factor in. I help you evaluate before you commit." },
-    { q: 'Can you guarantee success?', a: "No, and be skeptical of anyone who does. What I can promise is a process that gives you the best possible shot, and the honesty to tell you when something isn't working." },
+    { q: 'Do you take equity?', a: "No. I don't take equity in your startup. I want to remain unbiased and solely focused on your fundraising goals. Also, I don't think this motion should earn me a place on your cap table." },
+    { q: 'Who do you take on as clients?', a: "I'm selective on purpose: I only work with founders I strongly believe can successfully fundraise. This is mostly an ethics stance: I don't want to take money from someone if I don't have conviction myself. Also, I am much more active with my clients than a typical coach, so my client list needs to remain small." },
+    { q: "What if I'm not sure I'm ready to fundraise?", a: "Readiness is complex: market timing, revenue, product maturity, runway, and traction all factor in. I help you evaluate readiness so you make the right decision about timing your raise." },
+    { q: 'Can you guarantee success?', a: "No, and be skeptical of anyone who does. What I can promise is a process that gives you the best possible shot. Sometimes even the best companies struggle to raise, because successful raises are an outlier when VCs fund less than 1% of the deals they see." },
     { q: 'How much does it cost?', a: "Round Coaching scales with your stage: $12.5K at pre-seed, $15K at seed, $20K at Series A, paid as a monthly retainer ($1.25K to $2K) against that total, with the balance due only when you close. The consultation is free, and I never take equity." },
   ];
 
@@ -195,7 +195,7 @@ function FAQ() {
             <div style={{ position: 'sticky', top: 100 }}>
               <div className="eyebrow" style={{ marginBottom: 20 }}>FAQ</div>
               <h2 style={{ fontSize: 'clamp(32px, 3.4vw, 44px)', lineHeight: 1.1, textWrap: 'balance' }}>
-                Good questions,<br/>straight answers
+                Frequently Asked Questions
               </h2>
             </div>
           </Reveal>
