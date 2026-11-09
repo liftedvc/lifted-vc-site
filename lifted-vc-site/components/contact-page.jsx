@@ -5,6 +5,15 @@ function ContactPage() {
   const [company, setCompany] = React.useState('');
   // Netlify Forms uses a hidden `subject` field as the notification email subject.
   const subject = company.trim() ? `Lifted Inquiry: ${company.trim()}` : 'Lifted Inquiry';
+  const websiteRef = React.useRef(null);
+  // Accept whatever they type (www.acme.com, acme.com, linkedin.com/in/…) and prepend https:// if no scheme.
+  const normalizeWebsite = () => {
+    const el = websiteRef.current;
+    if (!el) return;
+    const v = el.value.trim();
+    if (v && !/^[a-z][a-z0-9+.-]*:\/\//i.test(v)) el.value = 'https://' + v.replace(/^\/+/, '');
+    else el.value = v;
+  };
   const stages = ['Pre-seed', 'Seed', 'Series A', 'Not sure yet'];
 
   // Inject input styles once
@@ -57,6 +66,7 @@ function ContactPage() {
                 action="/thank-you"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
+                onSubmit={normalizeWebsite}
               >
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="subject" value={subject} />
@@ -70,7 +80,7 @@ function ContactPage() {
                 <Field label="Name"><input type="text" name="name" placeholder="Your name" required /></Field>
                 <Field label="Email"><input type="email" name="email" placeholder="you@company.com" required /></Field>
                 <Field label="Company"><input type="text" name="company" placeholder="What you're building" value={company} onChange={e => setCompany(e.target.value)} /></Field>
-                <Field label="Company website or LinkedIn"><input type="url" name="website" placeholder="https://" inputMode="url" /></Field>
+                <Field label="Company website or LinkedIn"><input ref={websiteRef} type="text" name="website" placeholder="acme.com or linkedin.com/in/you" inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} onBlur={normalizeWebsite} /></Field>
 
                 <div style={{ marginBottom: 24 }}>
                   <label style={{ display: 'block', fontSize: 12, color: 'var(--ink-soft)', marginBottom: 10, fontWeight: 500 }}>Stage</label>
