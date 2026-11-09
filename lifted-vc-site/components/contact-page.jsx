@@ -2,6 +2,9 @@
 // A hidden static shadow form lives in index.html so Netlify discovers it at build time.
 function ContactPage() {
   const [stage, setStage] = React.useState('Pre-seed');
+  const [company, setCompany] = React.useState('');
+  // Netlify Forms uses a hidden `subject` field as the notification email subject.
+  const subject = company.trim() ? `Lifted Inquiry: ${company.trim()}` : 'Lifted Inquiry';
   const stages = ['Pre-seed', 'Seed', 'Series A', 'Not sure yet'];
 
   // Inject input styles once
@@ -56,16 +59,18 @@ function ContactPage() {
                 netlify-honeypot="bot-field"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="subject" value={subject} />
                 <p style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }} aria-hidden="true">
                   <label>Don't fill this out: <input name="bot-field" /></label>
                 </p>
 
                 <h3 style={{ fontSize: 26, margin: '0 0 8px', lineHeight: 1.1 }}>Tell me about your raise.</h3>
-                <p style={{ fontSize: 14, color: 'var(--ink-soft)', margin: '0 0 28px' }}>A few quick questions, then you'll pick a time for your free 30-minute consultation.</p>
+                <p style={{ fontSize: 14, color: 'var(--ink-soft)', margin: '0 0 28px' }}>A few quick questions so I can get a read on your raise before we talk.</p>
 
                 <Field label="Name"><input type="text" name="name" placeholder="Your name" required /></Field>
                 <Field label="Email"><input type="email" name="email" placeholder="you@company.com" required /></Field>
-                <Field label="Company"><input type="text" name="company" placeholder="What you're building" /></Field>
+                <Field label="Company"><input type="text" name="company" placeholder="What you're building" value={company} onChange={e => setCompany(e.target.value)} /></Field>
+                <Field label="Company website or LinkedIn"><input type="url" name="website" placeholder="https://" inputMode="url" /></Field>
 
                 <div style={{ marginBottom: 24 }}>
                   <label style={{ display: 'block', fontSize: 12, color: 'var(--ink-soft)', marginBottom: 10, fontWeight: 500 }}>Stage</label>
@@ -89,7 +94,7 @@ function ContactPage() {
                 <Field label="What's on your mind?"><textarea name="message" rows={3} placeholder="Where are you, and what would help most?"></textarea></Field>
 
                 <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: 8 }}>
-                  Continue to scheduling <Arrow />
+                  Submit <Arrow />
                 </button>
               </form>
             </div>
